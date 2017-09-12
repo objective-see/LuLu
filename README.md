@@ -15,3 +15,25 @@ By design, LuLu (currently) implements only limited 'self-defense' mechanisms.
 ```
 
 Love this product or want to support it? Check out my [patreon page](https://www.patreon.com/objective_see) :)
+
+**Mahalo!**<br>
+This product is supported by the following patrons:
++ Lance Gaines
++ Ash Morgan
++ Khalil Sehnaoui
++ Nando Mendonca
++ Bill Smartt
++ Martin OConnell
++ David Sulpy
++ Shain Singh
++ Chad Collins
++ Harry Hoffman
++ Keelian Wardle
++ Christopher Giffard
++ Conrad Rushing
++ soreq
++ Stuart Ashenbrenner
++ trifero
++ Peter Sinclair
++ Ming
++ Gamer Bot
