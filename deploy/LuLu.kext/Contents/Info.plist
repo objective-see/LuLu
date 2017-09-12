@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BuildMachineOSBuild</key>
+	<string>16E195</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleExecutable</key>
+	<string>LuLu</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.objective-see.lulu</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>LuLu</string>
+	<key>CFBundlePackageType</key>
+	<string>KEXT</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.9.0</string>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>MacOSX</string>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>DTCompiler</key>
+	<string>com.apple.compilers.llvm.clang.1_0</string>
+	<key>DTPlatformBuild</key>
+	<string>8E3004b</string>
+	<key>DTPlatformVersion</key>
+	<string>GM</string>
+	<key>DTSDKBuild</key>
+	<string>16E185</string>
+	<key>DTSDKName</key>
+	<string>macosx10.12</string>
+	<key>DTXcode</key>
+	<string>0833</string>
+	<key>DTXcodeBuild</key>
+	<string>8E3004b</string>
+	<key>IOKitPersonalities</key>
+	<dict>
+		<key>Firewall</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.objective-see.lulu</string>
+			<key>IOClass</key>
+			<string>com_objective_see_firewall</string>
+			<key>IOMatchCategory</key>
+			<string>com_objective_see_firewall</string>
+			<key>IOProviderClass</key>
+			<string>IOResources</string>
+			<key>IOResourceMatch</key>
+			<string>IOBSD</string>
+		</dict>
+	</dict>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright (c) 2017 Objective-See. All rights reserved.</string>
+	<key>OSBundleLibraries</key>
+	<dict>
+		<key>com.apple.kpi.bsd</key>
+		<string>14</string>
+		<key>com.apple.kpi.iokit</key>
+		<string>14</string>
+		<key>com.apple.kpi.libkern</key>
+		<string>14</string>
+		<key>com.apple.kpi.mach</key>
+		<string>14</string>
+		<key>com.apple.kpi.unsupported</key>
+		<string>14</string>
+	</dict>
+</dict>
+</plist>
