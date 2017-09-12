@@ -30,10 +30,10 @@
       </FileRef>
    </Group>
    <Group
-      location = "group:../loginItem"
+      location = "group:loginItem"
       name = "loginItem">
       <FileRef
-         location = "group:../lulu/loginItem/loginItem.xcodeproj">
+         location = "group:loginItem.xcodeproj">
       </FileRef>
    </Group>
 </Workspace>
