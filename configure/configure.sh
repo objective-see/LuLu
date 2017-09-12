@@ -28,6 +28,9 @@ if [ "$1" == "-install" ]
 then
     echo "installing"
 
+    #remove all xattrs
+    /usr/bin/xattr -rc *
+
     #main LuLu directory
     mkdir -p /Library/Objective-See/LuLu
 
