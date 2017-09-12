@@ -8,7 +8,7 @@ Full details and usage instructions can be found [here](https://objective-see.co
 LuLu should build cleanly in Xcode (though you will have remove code signing constrains, or replace with you own Apple developer/kernel code signing certificate).
 
 **To Install**<br>
-For now, LuLu must be installed via the command-line. Build LuLu or download the pre-built binaries/components from the [deploy](https://github.com/objective-see/LuLu/tree/master/deploy) directory (LuLu.zip contains everything), then execute the configuration script (`configure.sh`) with the `-install` flag, as root:
+For now, LuLu must be installed via the command-line. Build LuLu or download the pre-built binaries/components from the [deploy](https://github.com/objective-see/LuLu/tree/master/deploy) directory (`LuLu.zip` contains everything), then execute the configuration script (`configure.sh`) with the `-install` flag, as root:
 ```
 //install
 $ sudo configure.sh -install
