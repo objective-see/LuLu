@@ -28,6 +28,9 @@
 //delete rule
 -(void)deleteRule:(NSString*)path;
 
+//import rules
+-(void)importRules:(NSString*)rulesFile;
+
 //process alert request from client
 -(void)alertRequest:(void (^)(NSDictionary* alert))reply;
 

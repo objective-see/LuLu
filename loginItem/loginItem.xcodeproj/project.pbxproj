@@ -14,9 +14,6 @@
 		7D3B75151F13354900568828 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D3B75011F13354900568828 /* MainMenu.xib */; };
 		7D3B751A1F13354900568828 /* statusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3B750B1F13354900568828 /* statusIcon.png */; };
 		7D3B751B1F13354900568828 /* statusIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3B750C1F13354900568828 /* statusIcon@2x.png */; };
-		7D3B751D1F13354900568828 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D3B750F1F13354900568828 /* Contents.json */; };
-		7D3B751E1F13354900568828 /* statusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3B75101F13354900568828 /* statusIcon.png */; };
-		7D3B751F1F13354900568828 /* statusIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3B75111F13354900568828 /* statusIcon@2x.png */; };
 		7D3B75251F13357D00568828 /* logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B75231F13357D00568828 /* logging.m */; };
 		7D46FF111F60EBAE00FEB0F8 /* luluText.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D46FF0F1F60EBAE00FEB0F8 /* luluText.png */; };
 		7D46FF121F60EBAE00FEB0F8 /* luluIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D46FF101F60EBAE00FEB0F8 /* luluIcon.png */; };
@@ -56,9 +53,6 @@
 		7D3B75021F13354900568828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = MainMenu.xib; sourceTree = "<group>"; };
 		7D3B750B1F13354900568828 /* statusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusIcon.png; sourceTree = "<group>"; };
 		7D3B750C1F13354900568828 /* statusIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusIcon@2x.png"; sourceTree = "<group>"; };
-		7D3B750F1F13354900568828 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
-		7D3B75101F13354900568828 /* statusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusIcon.png; sourceTree = "<group>"; };
-		7D3B75111F13354900568828 /* statusIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusIcon@2x.png"; sourceTree = "<group>"; };
 		7D3B75211F13357D00568828 /* userCommsInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = userCommsInterface.h; path = ../shared/userCommsInterface.h; sourceTree = "<group>"; };
 		7D3B75221F13357D00568828 /* const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = const.h; path = ../shared/const.h; sourceTree = "<group>"; };
 		7D3B75231F13357D00568828 /* logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = logging.m; path = ../shared/logging.m; sourceTree = "<group>"; };
@@ -142,16 +136,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		7D3B750E1F13354900568828 /* StatusBarIcon.imageset */ = {
-			isa = PBXGroup;
-			children = (
-				7D3B750F1F13354900568828 /* Contents.json */,
-				7D3B75101F13354900568828 /* statusIcon.png */,
-				7D3B75111F13354900568828 /* statusIcon@2x.png */,
-			);
-			path = StatusBarIcon.imageset;
-			sourceTree = "<group>";
-		};
 		7D3B75201F13356900568828 /* shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,7 +196,6 @@
 				7DD2BF941F1FF64300B33214 /* AlertWindow.xib */,
 				7D3B75001F13354900568828 /* Base.lproj */,
 				7D3B75091F13354900568828 /* Images */,
-				7D3B750E1F13354900568828 /* StatusBarIcon.imageset */,
 				7D7755EE1F02E05B00D0017D /* MainMenu.xib */,
 				7D7755F11F02E05B00D0017D /* Info.plist */,
 				7D7755E91F02E05B00D0017D /* Supporting Files */,
@@ -313,12 +296,9 @@
 				7DD260201F25621400277EC4 /* parentsIcon.png in Resources */,
 				7D46FF111F60EBAE00FEB0F8 /* luluText.png in Resources */,
 				7D3B751B1F13354900568828 /* statusIcon@2x.png in Resources */,
-				7D3B751D1F13354900568828 /* Contents.json in Resources */,
-				7D3B751F1F13354900568828 /* statusIcon@2x.png in Resources */,
 				7DD260181F2537CC00277EC4 /* virusTotalBG.png in Resources */,
 				7D46FF121F60EBAE00FEB0F8 /* luluIcon.png in Resources */,
 				7D7755F01F02E05B00D0017D /* MainMenu.xib in Resources */,
-				7D3B751E1F13354900568828 /* statusIcon.png in Resources */,
 				7DD260031F2442BB00277EC4 /* unsigned.png in Resources */,
 				7D3B75151F13354900568828 /* MainMenu.xib in Resources */,
 				7DD260221F25621400277EC4 /* parentsIconOver.png in Resources */,

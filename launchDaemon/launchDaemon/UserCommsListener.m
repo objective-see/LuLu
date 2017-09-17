@@ -151,22 +151,19 @@ bail:
     //dbg msg
     logMsg(LOG_DEBUG, @"received request to connect to XPC interface");
     
-    //set invalidation handler
-    newConnection.invalidationHandler = ^{
+    //set interrupt & invalidation handler
+    newConnection.interruptionHandler = newConnection.invalidationHandler = ^{
         
         //make strong ref
         // see: https://stackoverflow.com/a/23628986/3854841
         __strong typeof(NSXPCConnection*)strongConnection = weakConnection;
         
         //dbg msg
-        logMsg(LOG_DEBUG, @"connection invalidated");
+        logMsg(LOG_DEBUG, @"connection interrupted/invalidated");
         
         //handle invalidation
         [self connectionInvalidated:strongConnection];
     };
-    
-    //TODO: maybe set interruption handler?
-    // newConnection.interruptionHandler = 
     
     //init signing req string
     requirementString = [NSString stringWithFormat:@"anchor trusted and certificate leaf [subject.CN] = \"%@\"", SIGNING_AUTH];
@@ -226,7 +223,7 @@ bail:
     UserComms* userComms = nil;
     
     //dbg msg
-    logMsg(LOG_DEBUG, @"XPC connection invalidated");
+    logMsg(LOG_DEBUG, @"XPC connection interrupted/invalidated");
 
     //sanity check
     if(nil == connection)

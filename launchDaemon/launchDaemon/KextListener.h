@@ -9,10 +9,12 @@
 
 @import Foundation;
 
+#import <sys/ioctl.h>
 #import <sys/types.h>
 #import <sys/socket.h>
+#import <sys/kern_event.h>
 
-//custom struct
+//custom struct for network events
 // format of data that's broadcast from kext
 struct connectionEvent
 {
@@ -25,8 +27,7 @@ struct connectionEvent
     //remote socket address
     struct sockaddr remoteAddress;
     
-    //resonse required?
-    //bool responseRequired;
+    //socket type
     int socketType;
 };
 
@@ -39,8 +40,12 @@ struct connectionEvent
 /* PROPERTIES */
 
 //list of alerts, by pid
-// ->ensures that only one alert for process is shown to user
+// ensures that only one alert for process is shown to user
 @property(nonatomic, retain)NSMutableSet* alerts;
+
+//DNS 'cache'
+// mappings of IP:URL
+@property(nonatomic, retain)NSMutableDictionary* dnsCache;
 
 /* METHODS */
 

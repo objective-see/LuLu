@@ -161,8 +161,71 @@ bool broadcastEvent(int type, socket_t so, const struct sockaddr *to)
     //all happy
     result = true;
     
-//bail
 bail:
     
     return result;
 }
+
+//broadcast an DNS reponse to user mode
+bool broadcastDNSReponse(int type, void* packet, size_t length)
+{
+    //return var
+    bool result = false;
+    
+    //kernel event message
+    struct kev_msg kEventMsg = {0};
+    
+    //ignore packets that are too big
+    // shouldn't happen to much, and just means won't have IP:URL for that connection
+    if(length > (MAX_KEV_MSG - sizeof(struct kev_msg)))
+    {
+        //err msg
+        IOLog("LULU ERROR: DNS response too long, won't broadcast to user-mode\n");
+        
+        //bail
+        goto bail;
+    }
+    
+    //zero out kernel message
+    bzero(&kEventMsg, sizeof(kEventMsg));
+    
+    //set vendor code
+    kEventMsg.vendor_code = objSeeVendorID;
+    
+    //set class
+    kEventMsg.kev_class = KEV_ANY_CLASS;
+    
+    //set subclass
+    kEventMsg.kev_subclass = KEV_ANY_SUBCLASS;
+    
+    //set event code
+    kEventMsg.event_code = type;
+    
+    //add packet length
+    kEventMsg.dv[0].data_length = (u_int32_t)length;
+    
+    //add packet bytes
+    // DNS response packet
+    kEventMsg.dv[0].data_ptr = packet;
+    
+    //dbg msg
+    IOLog("LULU: broadcasting DNS response into to user mode (size: 0x%zx bytes)\n", length);
+    
+    //broadcast msg to user-mode
+    if(KERN_SUCCESS != kev_msg_post(&kEventMsg))
+    {
+        //err msg
+        IOLog("LULU ERROR: kev_msg_post() failed\n");
+        
+        //bail
+        goto bail;
+    }
+    
+    //all happy
+    result = true;
+
+bail:
+    
+    return result;
+}
+

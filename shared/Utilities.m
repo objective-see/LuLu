@@ -550,6 +550,7 @@ NSImage* getIconForProcess(NSString* path)
     return icon;
 }
 
+
 //wait until a window is non nil
 // then make it modal
 void makeModal(NSWindowController* windowController)
@@ -657,9 +658,10 @@ bail:
     return processID;
 }
 
-//convert socket numeric address to (ns)string
+
+//convert IP addr to (ns)string
 // from: https://stackoverflow.com/a/29147085/3854841
-NSString* convertSocketAddr(struct sockaddr* socket)
+NSString* convertIPAddr(unsigned char* ipAddr, __uint8_t socketFamily)
 {
     //string
     NSString* socketDescription = nil;
@@ -668,28 +670,22 @@ NSString* convertSocketAddr(struct sockaddr* socket)
     unsigned char socketAddress[INET6_ADDRSTRLEN+1] = {0};
     
     //what family?
-    switch(socket->sa_family)
+    switch(socketFamily)
     {
         //IPv4
         case AF_INET:
         {
-            //typecast
-            struct sockaddr_in *addr_in = (struct sockaddr_in *)socket;
-            
             //convert
-            inet_ntop(AF_INET, &(addr_in->sin_addr), (char*)&socketAddress, INET_ADDRSTRLEN);
+            inet_ntop(AF_INET, ipAddr, (char*)&socketAddress, INET_ADDRSTRLEN);
             
             break;
         }
-        
+            
         //IPV6
         case AF_INET6:
         {
-            //typecast
-            struct sockaddr_in6 *addr_in6 = (struct sockaddr_in6 *)socket;
-            
             //convert
-            inet_ntop(AF_INET6, &(addr_in6->sin6_addr), (char*)&socketAddress, INET6_ADDRSTRLEN);
+            inet_ntop(AF_INET6, ipAddr, (char*)&socketAddress, INET6_ADDRSTRLEN);
             
             break;
         }
@@ -703,6 +699,46 @@ NSString* convertSocketAddr(struct sockaddr* socket)
     {
         //convert
         socketDescription = [NSString stringWithUTF8String:(const char*)socketAddress];
+    }
+    
+    return socketDescription;
+}
+
+//convert socket numeric address to (ns)string
+NSString* convertSocketAddr(struct sockaddr* socket)
+{
+    //string
+    NSString* socketDescription = nil;
+    
+    //what family?
+    switch(socket->sa_family)
+    {
+        //IPv4
+        case AF_INET:
+        {
+            //typecast
+            struct sockaddr_in *addr_in = (struct sockaddr_in *)socket;
+            
+            //convert
+            socketDescription = convertIPAddr((unsigned char*)&addr_in->sin_addr, AF_INET);
+            
+            break;
+        }
+        
+        //IPV6
+        case AF_INET6:
+        {
+            //typecast
+            struct sockaddr_in6 *addr_in6 = (struct sockaddr_in6 *)socket;
+
+            //convert
+            socketDescription = convertIPAddr((unsigned char*)&addr_in6->sin6_addr, AF_INET6);
+
+            break;
+        }
+            
+        default:
+            break;
     }
     
     return socketDescription;
@@ -881,7 +917,6 @@ NSMutableArray* generateProcessHierarchy(pid_t pid)
         
         //next
         currentPID = parentPID;
-        
     }
     
     //dbg msg
@@ -891,3 +926,87 @@ NSMutableArray* generateProcessHierarchy(pid_t pid)
     
     return processHierarchy;
 }
+
+//check if an instance of an app is already running
+BOOL isAppRunning(NSString* bundleID)
+{
+    //flag
+    BOOL alreadyRunning = NO;
+    
+    //aleady an instance?
+    // make that instance active and then bail
+    for(NSRunningApplication* runningApp in [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleID])
+    {
+        //another instance that's not this?
+        if(YES != [runningApp isEqual:[NSRunningApplication currentApplication]])
+        {
+            //set flag
+            alreadyRunning = YES;
+            
+            //make (already) running instance first
+            [runningApp activateWithOptions:NSApplicationActivateAllWindows|NSApplicationActivateIgnoringOtherApps];
+            
+            //done looking
+            break;
+        }
+    }
+    
+    return alreadyRunning;
+}
+
+//extract a DNS url
+// per spec, format is: [len]bytes[len][bytes]0x0
+NSMutableString* extractDNSURL(unsigned char* dnsData, unsigned char* dnsDataEnd)
+{
+    //size of chunk
+    NSUInteger chunkSize = 0;
+    
+    //url
+    NSMutableString* url = nil;
+    
+    //alloc
+    url = [NSMutableString string];
+    
+    //until we hit a NULL
+    while(0x0 != *dnsData)
+    {
+        //grab size & check
+        chunkSize = *dnsData++ & 0xFF;
+        if(dnsData+chunkSize >= dnsDataEnd)
+        {
+            //bail
+            goto bail;
+        }
+        
+        //append each byte of url chunk
+        for(NSUInteger i = 0; i < chunkSize; i++)
+        {
+            //sanity check
+            if(0 == (dnsData[i] & 0xFF))
+            {
+                //bail
+                goto bail;
+            }
+            
+            //add byte
+            [url appendFormat:@"%c", dnsData[i]];
+        }
+        
+        //next chunk
+        dnsData += chunkSize;
+        
+        //not last chunk?
+        // add a '.' to url
+        if( (dnsData < dnsDataEnd) &&
+            (0x0 != *dnsData) )
+        {
+            //append dot
+            [url appendString:@"."];
+        }
+    }
+    
+bail:
+    
+    return url;
+}
+

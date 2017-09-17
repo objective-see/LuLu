@@ -29,8 +29,14 @@
 //data out (UDP)
 #define EVENT_DATA_OUT 0x2
 
+//dns response
+#define EVENT_DNS_RESPONSE 0x3
+
 //log to file flag
 #define LOG_TO_FILE 0x10
+
+//max size of msg
+#define MAX_KEV_MSG 254
 
 //max Q items
 #define MAX_FIREWALL_EVENT 512
@@ -105,6 +111,9 @@
 //prefs
 // update mode
 #define PREF_NOUPDATES_MODE @"noupdatesMode"
+
+//log file
+#define LOG_FILE_NAME @"LuLu.log"
 
 /* LOGIN ITEM */
 

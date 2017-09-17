@@ -42,28 +42,14 @@ extern KextListener* kextListener;
     //status
     BOOL result = NO;
     
-    //master port
-    mach_port_t masterPort = 0;
-    
     //service object
     io_service_t serviceObject = 0;
     
     //status
     kern_return_t status = KERN_FAILURE;
-    
-    //get master port
-    status = IOMasterPort(MACH_PORT_NULL, &masterPort);
-    if(KERN_SUCCESS != status)
-    {
-        //err msg
-        logMsg(LOG_ERR, [NSString stringWithFormat:@"IOMasterPort() failed with: %#x", status]);
-    
-        //bail
-        goto bail;
-    }
-    
+
     //get matching service
-    serviceObject = IOServiceGetMatchingService(masterPort, IOServiceMatching(LULU_SERVICE_NAME));
+    serviceObject = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching(LULU_SERVICE_NAME));
     if(0 == serviceObject)
     {
         //err msg
@@ -95,7 +81,15 @@ extern KextListener* kextListener;
     
 bail:
     
-    //TODO: release serviceObject?
+    //release matching service
+    if(0 != serviceObject)
+    {
+        //release
+        IOObjectRelease(serviceObject);
+        
+        //unset
+        serviceObject = 0;
+    }
     
     return result;
 }
@@ -111,7 +105,6 @@ bail:
     return IOConnectCallScalarMethod(self.connection, kTestUserClientEnable, NULL, 0, NULL, NULL);
 }
 
-
 //disable socket filtering in kernel
 -(kern_return_t)disable
 {
@@ -122,7 +115,6 @@ bail:
     // ->disable firewall
     return IOConnectCallScalarMethod(self.connection, kTestUserClientDisable, NULL, 0, NULL, NULL);
 }
-
 
 //add a rule by pid/action
 -(kern_return_t)addRule:(uint32_t)pid action:(uint32_t)action
@@ -144,7 +136,6 @@ bail:
     return IOConnectCallScalarMethod(self.connection, kTestUserClientAddRule, scalarIn, 2, NULL, NULL);
 }
 
-
 //remove a rule by pid
 -(kern_return_t)removeRule:(uint32_t)pid;
 {
@@ -165,6 +156,5 @@ bail:
     return IOConnectCallScalarMethod(self.connection, kTestUserClientRemoveRule, scalarIn, 1, NULL, NULL);
 
 }
-
 
 @end

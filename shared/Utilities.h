@@ -65,8 +65,17 @@ pid_t findProcess(NSString* processName);
 //hash a file (sha1)
 NSMutableString* hashFile(NSString* filePath);
 
+//convert IP addr to (ns)string
+NSString* convertIPAddr(unsigned char* ipAddr, __uint8_t socketFamily);
+
 //convert socket numeric address to (ns)string
-// from: https://stackoverflow.com/a/29147085/3854841
 NSString* convertSocketAddr(struct sockaddr* socket);
+
+//check if an instance of an app is already running
+BOOL isAppRunning(NSString* bundleID);
+
+//extract a DNS url
+// per spec, format is: [len]bytes[len][bytes]0x0
+NSMutableString* extractDNSURL(unsigned char* dnsData, unsigned char* dnsDataEnd);
 
 #endif

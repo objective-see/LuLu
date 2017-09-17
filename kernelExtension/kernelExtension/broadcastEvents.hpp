@@ -32,4 +32,7 @@ bool initBroadcast();
 //broadcast an event to user mode
 bool broadcastEvent(int type, socket_t so, const struct sockaddr *to);
 
+//broadcast an DNS reponse to user mode
+bool broadcastDNSReponse(int type, void* packet, size_t length);
+
 #endif

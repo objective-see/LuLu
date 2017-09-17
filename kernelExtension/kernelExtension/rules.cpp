@@ -55,8 +55,6 @@ bool initRules()
         goto bail;
     }
     
-    IOLog("LULU OMG: alloc'd rule's lock\n");
-    
     //alloc rule's dictionary
     rules = OSDictionary::withCapacity(1024);
     
@@ -98,8 +96,6 @@ void uninitRules()
     //free rules lock
     if(NULL != rulesLock)
     {
-        IOLog("LULU OMG: free'ing rule's lock\n");
-        
         //free
         IOLockFree(rulesLock);
         
@@ -173,10 +169,7 @@ int queryRule(int processID)
     
     //get rule
     ruleState = OSDynamicCast(OSNumber, rules->getObject(key));
-    
-    //unlock
-    IOLockUnlock(rulesLock);
-    
+
     //found
     // ->set state
     if(NULL != ruleState)
@@ -184,6 +177,9 @@ int queryRule(int processID)
         //set state
         result = ruleState->unsigned8BitValue();
     }
+    
+    //unlock
+    IOLockUnlock(rulesLock);
     
     return result;
 }
@@ -197,12 +193,6 @@ void rulesRemove(int processID)
     //init key
     snprintf(key, sizeof(key), "%d", processID);
     
-    //IOLog("LULU OMG: removing rule lock...\n");
-    if(NULL == rulesLock)
-    {
-        IOLog("LULU OMG: removing rule lock:is NULL\n");
-    }
-    
     //lock
     IOLockLock(rulesLock);
     
@@ -211,8 +201,6 @@ void rulesRemove(int processID)
     
     //unlock
     IOLockUnlock(rulesLock);
-    
-    //IOLog("LULU OMG: removing rule unlocked...\n");
     
     return;
 }

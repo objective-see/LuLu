@@ -33,15 +33,25 @@
 //load from disk
 -(BOOL)load;
 
+//start query for all installed apps
+-(void)startBaselining;
+
 //find
-// ->for now, just by path
+// for now, just by path
 -(Rule*)find:(NSString*)path;
 
 //add rule
 -(BOOL)add:(NSString*)path action:(NSUInteger)action type:(NSUInteger)type user:(NSUInteger)user;
 
+//add to kernel
+// TOOD: check hash, etc
+-(void)addToKernel:(Rule*)rule;
+
 //delete rule
 -(BOOL)delete:(NSString*)path;
+
+//delete all rules
+-(BOOL)deleteAll;
 
 //convert list of rule objects to dictionary
 -(NSMutableDictionary*)serialize;

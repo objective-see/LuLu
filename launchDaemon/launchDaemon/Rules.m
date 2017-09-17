@@ -76,10 +76,6 @@ extern KextComms* kextComms;
         self.rules[rule.path] = rule;
     }
     
-    //add default/pre-existing apps
-    // TODO: maybe move this into installer!
-    [self startBaselining];
-    
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded %lu rules from: %@", (unsigned long)self.rules.count, RULES_FILE]);
     
@@ -122,9 +118,25 @@ bail:
 }
 
 //start query for all installed apps
-// TODO: maybe move this into installer
+// each will be allowed, as a 'baselined' application
+// TODO: note: in the future, the installer will control this more, like whether to skip, baseline only apple apps, etc
 -(void)startBaselining
 {
+    //check if baselining was already done
+    // this is done by seeing if there are any rules w/ type 'baseline'
+    for(NSString* path in self.rules.allKeys)
+    {
+        //baseline rule?
+        if(RULE_TYPE_BASELINE == ((Rule*)self.rules[path]).type.intValue)
+        {
+            //bail
+            goto bail;
+        }
+    }
+
+    //dbg msg
+    logMsg(LOG_DEBUG, @"generating 'allow' rules for all existing applications");
+    
     //alloc
     appQuery = [[NSMetadataQuery alloc] init];
     
@@ -138,11 +150,14 @@ bail:
     // ->will generate notification when done
     [self.appQuery startQuery];
     
+bail:
+    
     return;
 }
 
 //invoked when spotlight query is done
-// ->process each app by adding 'allow' rule
+// process each installed app by adding 'allow' rule
+// TODO: note: in the future, the installer will control this more, like whether to skip, baseline only apple apps, etc
 -(void)endBaselining:(NSNotification *)notification
 {
     //app url
@@ -152,7 +167,7 @@ bail:
     __block NSString* currentAppBinary = nil;
     
     //iterate over all
-    // ->create/add default/baseline rule for each
+    // create/add default/baseline rule for each
     [self.appQuery enumerateResultsUsingBlock:^(id result, NSUInteger idx, BOOL *stop)
     {
         //grab current app
@@ -164,7 +179,7 @@ bail:
         }
         
         //skip app store
-        // ->its a default/system rule already
+        // it's a default/system rule already
         if(YES == [currentApp isEqualToString:@"/Applications/App Store.app"])
         {
             //skip
@@ -180,8 +195,9 @@ bail:
         }
         
         //add
-        // ->allow, type: 'baseline'
+        // allow, type: 'baseline'
         [self add:currentAppBinary action:RULE_STATE_ALLOW type:RULE_TYPE_BASELINE user:0];
+        
     }];
     
     return;
@@ -212,7 +228,7 @@ bail:
 }
 
 //find
-// ->for now, just by path
+// for now, just by path
 -(Rule*)find:(NSString*)path
 {
     //matching rule
@@ -240,7 +256,7 @@ bail:
 }
 
 //add rule
-// TODO: ignore if it matches existing rule (also do this check in the client)
+// note: ignore if rule matches existing rule
 -(BOOL)add:(NSString*)path action:(NSUInteger)action type:(NSUInteger)type user:(NSUInteger)user
 {
     //result
@@ -255,6 +271,16 @@ bail:
         //init rule
         rule = [[Rule alloc] init:path rule:@{RULE_ACTION:[NSNumber numberWithUnsignedInteger:action], RULE_TYPE:[NSNumber numberWithUnsignedInteger:type], RULE_USER:[NSNumber numberWithUnsignedInteger:user]}];
         
+        //ignore
+        if(nil != self.rules[path])
+        {
+            //err msg
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"ignoring add request for rule, as it already exists: %@", path]);
+            
+            //bail
+            goto bail;
+        }
+        
         //add
         self.rules[path] = rule;
         
@@ -262,17 +288,8 @@ bail:
         [self save];
     }
     
-    //for user rules find any running processes that match
-    // ->then for each, tell the kernel to add/update any rules it has
-    if(RULE_TYPE_USER == type)
-    {
-        //find processes and add
-        for(NSNumber* processID in getProcessIDs(path, -1))
-        {
-            //add rule
-            [kextComms addRule:[processID unsignedShortValue] action:(unsigned int)action];
-        }
-    }
+    //tell kernel to add
+    [self addToKernel:rule];
 
     //happy
     result = YES;
@@ -280,6 +297,22 @@ bail:
 bail:
     
     return result;
+}
+
+//add to kernel
+// TOOD: check hash, etc
+-(void)addToKernel:(Rule*)rule
+{
+    //find processes and add
+    for(NSNumber* processID in getProcessIDs(rule.path, -1))
+    {
+        //TODO: hash/sig matches?
+        
+        //add rule
+        [kextComms addRule:[processID unsignedShortValue] action:(unsigned int)rule.action];
+    }
+    
+    return;
 }
 
 //delete rule
@@ -291,8 +324,8 @@ bail:
     //sync to access
     @synchronized(self.rules)
     {
-        //add
-        self.rules[path] = nil;
+        //remove
+        [self.rules removeObjectForKey:path];
         
         //save to disk
         [self save];
@@ -306,6 +339,59 @@ bail:
         [kextComms removeRule:[processID unsignedShortValue]];
     }
 
+    //happy
+    result = YES;
+    
+bail:
+    
+    return result;
+}
+
+//delete all rules
+-(BOOL)deleteAll
+{
+    //result
+    BOOL result = NO;
+
+    //error
+    NSError* error = nil;
+    
+    //sync to access
+    @synchronized(self.rules)
+    {
+        //delete all
+        for(NSString* path in self.rules.allKeys)
+        {
+            //remove
+            [self.rules removeObjectForKey:path];
+            
+            //find any running processes that match
+            // ->then for each, tell the kernel to delete any rules it has
+            for(NSNumber* processID in getProcessIDs(path, -1))
+            {
+                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"pid (%@)", processID]);
+                
+                //remove rule
+                [kextComms removeRule:[processID unsignedShortValue]];
+            }
+        }
+        
+        //remove old rules file
+        if(YES == [[NSFileManager defaultManager] fileExistsAtPath:RULES_FILE])
+        {
+            //remove
+            if(YES != [[NSFileManager defaultManager] removeItemAtPath:RULES_FILE error:&error])
+            {
+                //err msg
+                logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to delete existing rules file %@ (error: %@)", RULES_FILE, error]);
+                
+                //bail
+                goto bail;
+            }
+        }
+        
+    }//sync
+    
     //happy
     result = YES;
     

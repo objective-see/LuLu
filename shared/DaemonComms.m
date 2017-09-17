@@ -41,7 +41,7 @@
 -(void)setClientStatus:(NSInteger)status
 {
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"sending request to set client status (to %lu) via XPC", (unsigned long)status]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"sending request, via XPC, to set client status (status: %lu)", (unsigned long)status]);
     
     //set status
     [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
@@ -59,7 +59,7 @@
 -(void)getRules:(BOOL)wait4Change reply:(void (^)(NSDictionary*))reply;
 {
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"sending request to get RULES from Daemon via XPC (wait: %d)", wait4Change]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"sending request, via XPC, to get rules (wait: %d)", wait4Change]);
     
     
     [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
@@ -84,7 +84,7 @@
 -(void)addRule:(NSString*)processPath action:(NSUInteger)action
 {
     //dbg msg
-    logMsg(LOG_DEBUG, @"sending request to add rule from Daemon via XPC");
+    logMsg(LOG_DEBUG, @"sending request, via XPC, to add rule");
     
     //add rule
     [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
@@ -101,9 +101,9 @@
 -(void)deleteRule:(NSString*)processPath
 {
     //dbg msg
-    logMsg(LOG_DEBUG, @"sending request to delete rule from Daemon via XPC");
+    logMsg(LOG_DEBUG, @"sending request, via XPC, to delete rule");
     
-    //add rule
+    //delete rule
     [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
         //err msg
@@ -114,11 +114,28 @@
     return;
 }
 
+//import rules
+-(void)importRules:(NSString*)rulesFile
+{
+    //dbg msg
+    logMsg(LOG_DEBUG, @"sending request, via XPC, to import rules");
+    
+    //import rules
+    [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
+    {
+          //err msg
+          logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute 'importRules' method on launch daemon (error: %@)", proxyError]);
+          
+    }] importRules:rulesFile];
+    
+    return;
+}
+
 //ask (and then block) for an alert
 -(void)alertRequest:(void (^)(NSDictionary* alert))reply
 {
     //dbg msg
-    logMsg(LOG_DEBUG, @"sending request to daemon (via xpc) for alert");
+    logMsg(LOG_DEBUG, @"sending request, via XPC, for alert");
     
     //request alert
     [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
@@ -139,7 +156,7 @@
 -(void)alertResponse:(NSDictionary *)alert
 {
     //dbg msg
-    logMsg(LOG_DEBUG, @"sending request to daemon (via xpc) for alert response");
+    logMsg(LOG_DEBUG, @"sending request, via XPC, for alert response");
     
     //respond to alert
     [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)

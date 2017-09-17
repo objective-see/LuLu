@@ -19,7 +19,6 @@
 /* TODOs:
 
  a) add IPV6 support
- b) implement data_in for IP/URL resolution?
  
 */
 
@@ -29,6 +28,7 @@ static errno_t attach(void **cookie, socket_t so);
 static void unregistered(sflt_handle handle);
 static errno_t connect_out(void *cookie, socket_t so, const struct sockaddr *to);
 static errno_t data_out(void *cookie, socket_t so, const struct sockaddr *to, mbuf_t *data, mbuf_t *control, sflt_data_flag_t flags);
+static errno_t data_in(void *cookie, socket_t so, const struct sockaddr *from, mbuf_t *data, mbuf_t *control, sflt_data_flag_t flags);
 
 /* GLOBALS */
 
@@ -79,7 +79,7 @@ static struct sflt_filter udpFilterIPV4 = {
     NULL,
     NULL,
     NULL,
-    NULL,
+    data_in,
     data_out,
     NULL,
     NULL,
@@ -314,21 +314,245 @@ static void detach(void *cookie, socket_t so)
     return;
 }
 
-/* 
 
-//TODO: might need this for DNS/UDP responses for IPs!
+//callback for incoming data
+// only interested in DNS responses for IP:URL mappings
+// code inspired by: https://github.com/williamluke/peerguardian-linux/blob/master/pgosx/kern/ppfilter.c
 static errno_t data_in(void *cookie, socket_t so, const struct sockaddr *from, mbuf_t *data, mbuf_t *control, sflt_data_flag_t flags)
 {
-    //result
-    errno_t result = 0;
+    //dbg msg
+    IOLog("LULU: in %s\n", __FUNCTION__);
+    
+    //port
+    in_port_t port = 0;
+    
+    //peer name
+    struct sockaddr_in6 peerName = {0};
+    
+    //mem buffer
+    mbuf_t memBuffer = NULL;
+    
+    //dns header
+    dnsHeader* dnsHeader = NULL;
+    
+    //destination socket ('from') might be null?
+    // if so, grab it via 'getpeername' from the socket
+    if(NULL == from)
+    {
+        //lookup remote socket info
+        if(0 != sock_getpeername(so, (struct sockaddr*)&peerName, sizeof(peerName)))
+        {
+            //err msg
+            IOLog("LULU ERROR: sock_getpeername() failed\n");
+            
+            //bail
+            goto bail;
+        }
+        
+        //now, assign
+        from = (const struct sockaddr*)&peerName;
+    }
+
+    //get port
+    switch(from->sa_family)
+    {
+        //IPv4
+        case AF_INET:
+            port = ntohs(((const struct sockaddr_in*)from)->sin_port);
+            break;
+            
+        //IPv6
+        case AF_INET6:
+            port = ntohs(((const struct sockaddr_in6*)from)->sin6_port);
+            break;
+            
+        default:
+            break;
+    }
+    
+    //ignore non-DNS
+    if(53 != port)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //init memory buffer
+    memBuffer = *data;
+    if(NULL == memBuffer)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //get memory buffer
+    while(MBUF_TYPE_DATA != mbuf_type(memBuffer))
+    {
+        //get next
+        memBuffer = mbuf_next(memBuffer);
+        if(NULL == memBuffer)
+        {
+            //bail
+            goto bail;
+        }
+    }
+    
+    //sanity check length
+    if(mbuf_len(memBuffer) <= sizeof(struct dnsHeader))
+    {
+        //bail
+        goto bail;
+    }
+    
+    //get data
+    // should be a DNS header
+    dnsHeader = (struct dnsHeader*)mbuf_data(memBuffer);
+    
+    //ignore everything that isn't a DNS response
+    // top bit flag will be 0x1, for "a name service response"
+    if(0 == ((ntohs(dnsHeader->flags)) & (1<<(15))))
+    {
+        //bail
+        goto bail;
+    }
+    
+    //ignore any errors
+    // bottom (4) bits will be 0x0 for "successful response"
+    if(0 != ((ntohs(dnsHeader->flags)) & (1<<(0))))
+    {
+        //bail
+        goto bail;
+    }
+    
+    //ignore any packets that don't have answers
+    if(0 == ntohs(dnsHeader->ancount))
+    {
+        //bail
+        goto bail;
+    }
+    
+    //ok, likely candidate
+    // let's broadcast to user mode for parsing
+    if(true != broadcastDNSReponse(EVENT_DNS_RESPONSE, mbuf_data(memBuffer), mbuf_len(memBuffer)))
+    {
+        //err msg
+        IOLog("LULU ERROR: failed to broadcast DNS response to user mode\n");
+        
+        //bail
+        goto bail;
+
+    }
+    
+
+    /*
+        
+    
+    mbuf_t mdata = *data;
+    while (mdata && MBUF_TYPE_DATA != mbuf_type(mdata)) {
+        mdata = mbuf_next(mdata);
+    }
+    if (!mdata)
+        return (0);
+    
+    char *pkt = (char*)mbuf_data(mdata);
+    if (!pkt)
+        return (0);
+    size_t len = mbuf_len(mdata);
+    
+    char* dnsData = pkt+sizeof(struct dns_header);
     
     //dbg msg
-    //IOLog("LULU: in %s\n", __FUNCTION__);
+    printf("LULUX: port (dns): %d\n", port);
+    printf("LULUX: length: %d\n", len);
     
-    return result;
+    
+    dns_header* header = (struct dns_header*)pkt;
+    
+    printf("LULUX DNS HEADER\n");
+    printf("LULUX id:%x\n", ntohs(header->id));
+    printf("LULUX flags:%x\n", ntohs(header->flags));
+    
+    if((ntohs(header->flags)) & (1<<(15)))
+    {
+        printf("LULUX top bit set: Response (%d)\n", (ntohs(header->flags)) & (1<<(15)));
+    }
+    else
+    {
+        printf("LULUX ignoring, as not response\n");
+        
+        //ignore
+        return kIOReturnSuccess;
+    }
+    
+    
+    //log show --style syslog | grep LULUX
+    
+    if(0 == ((ntohs(header->flags)) & (1<<(0))))
+    {
+        printf("LULUX bottom bit set yah: no errors\n");
+    }
+    
+    
+    if(0 == ntohs(header->ancount))
+    {
+        printf("LULUX ignoring, as no answers\n");
+        //ignore
+        return kIOReturnSuccess;
+        
+    }
+    
+    printf("LULUX # questions:%d\n", ntohs(header->qdcount));
+    printf("LULUX # answers:%d\n", ntohs(header->ancount));
+    printf("LULUX # ns:%d\n", ntohs(header->nscount));
+    printf("LULUX # ar:%d\n", ntohs(header->arcount));
+    
+    */
+    //broadcast to user more for parsing
+    
+    //printf("LULUX # would broadcast to user mode\n");
+    
+    //return kIOReturnSuccess;
+    
+    /*
+    
+    int numRRs = ntohs(header->qdcount) + ntohs(header->ancount) + ntohs(header->nscount) + ntohs(header->arcount);
+    int i;
+    
+    printf("LULUX:  (%d)", numRRs);
+    
+    //numRRs = 0;
+    for(i=0; i<numRRs; i++){
+        //	printf("%sRR(%d)\n", tab, i);
+        printf("LULUX:  (%d)", sizeofUrl(dnsData)-2);
+        print_url(dnsData);
+        printf("\n");
+        
+        // extract variables
+        static_RR* RRd = (static_RR*)((char*)dnsData + sizeofUrl(dnsData));
+        int type = ntohs(RRd->type);
+        int clas = ntohs(RRd->clas);
+        int ttl = (uint32_t)ntohl(RRd->ttl);
+        int rdlength = ntohs(RRd->rdlength);
+        uint8_t* rd = (uint8_t*)(char*)(&RRd->rdlength + sizeof(uint16_t));
+        
+        printf("LULUX type(%d):",type); printRRType( ntohs(RRd->type) ); printf("\n");
+        printf("LULUX class:%d TTL:%d RDlength:%d\n", clas, ttl, rdlength);
+        if( rdlength != 0 ){
+            printf("LULUX data:");
+            printf("LULUX %d.%d.%d.%d",rd[0], rd[1], rd[2], rd[3]  );
+            printf("\n");
+        }
+        
+    }
+    */
+    
+    
+bail:
+    
+    return kIOReturnSuccess;
     
 }
-*/
+
 
 //callback for outgoing (UDP) connections
 // NULL rule: broadcast event to user and sleep

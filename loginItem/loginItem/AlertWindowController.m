@@ -16,7 +16,6 @@
 #import "DaemonComms.h"
 #import "AlertWindowController.h"
 
-
 //TODO:
 // maybe disable VT button if LuLu helper is not approved for network connections (as we only show one connection at a time)
 
@@ -58,13 +57,33 @@
     NSString* remoteAddress = nil;
     
     //check occlusion binary flag
+    // window going invisble, unset everything
     if(0 == (self.window.occlusionState & NSWindowOcclusionStateVisible))
     {
+        //unset icon
+        self.processIcon.image = nil;
+        
+        //unset name
+        self.processName.stringValue = @"";
+        
+        //unset alert msg
+        self.alertMessage.stringValue = @"";
+        
+        //unset process id
+        self.processID.stringValue = @"";
+        
+        //unset process path
+        self.processPath.stringValue = @"";
+        
+        //unset ip address
+        self.ipAddress.stringValue = @"";
+        
+        //unset port & proto
+        self.portProto.stringValue = @"";
+        
         //bail
         goto bail;
     }
-    
-    //TODO: in the future, should always have host name
     
     //host name?
     if(nil != self.alert[ALERT_HOSTNAME])
@@ -79,7 +98,6 @@
         //user ip addr
         remoteAddress = self.alert[ALERT_IPADDR];
     }
-    
     
     /* TOP */
     
@@ -161,7 +179,7 @@ bail:
 
 
 //set signing icon
-// TODO: maybe make it clickable/more info?
+// TODO: maybe make this clickable/more info? (signing auths, etc)
 -(void)processSigningInfo
 {
     //signing info

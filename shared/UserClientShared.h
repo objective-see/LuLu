@@ -53,4 +53,27 @@ typedef struct {
     
 } firewallEvent;
 
+//dns header
+//http://www.nersc.gov/~scottc/software/snort/dns_head.html
+#pragma pack(push,1)
+struct dnsHeader {
+    unsigned short id;
+    unsigned short flags;
+    unsigned short qdcount;
+    unsigned short ancount;
+    unsigned short nscount;
+    unsigned short arcount;
+};
+#pragma pack(pop)
+
+//TODO
+#pragma pack(push,1)
+typedef struct {
+    uint16_t type;
+    uint16_t clas;
+    uint32_t ttl;
+    uint16_t rdlength;
+} static_RR;
+#pragma pack(pop)
+
 #endif

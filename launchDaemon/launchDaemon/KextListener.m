@@ -21,24 +21,27 @@
 #import "ProcListener.h"
 #import "UserClientShared.h"
 
-//global rules obj
+/* GlOBALS */
+
+//rules obj
 extern Rules* rules;
 
-//global kext comms obj
+//kext comms obj
 extern KextComms* kextComms;
 
-//global queue object
+//queue object
 extern Queue* eventQueue;
 
-//global process monitor
+//process monitor
 extern ProcessListener* processListener;
 
-//global client status
+//client status
 extern NSInteger clientStatus;
 
 @implementation KextListener
 
 @synthesize alerts;
+@synthesize dnsCache;
 
 //init
 -(id)init
@@ -49,6 +52,9 @@ extern NSInteger clientStatus;
     {
         //init alerts list
         alerts = [NSMutableSet set];
+        
+        //init DNS 'cache'
+        dnsCache = [NSMutableDictionary dictionary];
     }
     
     return self;
@@ -59,6 +65,9 @@ extern NSInteger clientStatus;
 {
     //start thread to get connection notifications from kext
     //[NSThread detachNewThreadSelector:@selector(recvNotifications) toTarget:self withObject:nil];
+    
+    //start thread to get dns requests from the kext
+    [NSThread detachNewThreadSelector:@selector(recvDNSResponses) toTarget:self withObject:nil];
     
     //start thread to listen for queue events from kext
     [NSThread detachNewThreadSelector:@selector(processEvents) toTarget:self withObject:nil];
@@ -125,10 +134,7 @@ extern NSInteger clientStatus;
     status = ioctl(systemSocket, SIOCGKEVVENDOR, &vendorCode);
     if(0 != status)
     {
-        //err msg
-        //logMsg(LOG_ERR, [NSString stringWithFormat:@"ioctl(...,SIOCGKEVVENDOR,...) failed with %d", status]);
-        
-        //goto bail;
+        //bail
         goto bail;
     }
     
@@ -160,7 +166,7 @@ extern NSInteger clientStatus;
     #endif
     
     //foreverz
-    // ->listen/parse process creation events from kext
+    // ->listen/parse network events from kext
     while(YES)
     {
         //ask the kext for process began events
@@ -219,6 +225,342 @@ bail:
 }
 
 */
+
+//thread function
+// recv() & parse DNS requests from the kext
+// note this info is just to provide URL (instead of IP addr) in alert, so if packet can't easily be parse, we just give up
+-(void)recvDNSResponses
+{
+    //status var
+    int status = -1;
+    
+    //system socket
+    int systemSocket = -1;
+    
+    //struct for vendor code
+    // ->set via call to ioctl/SIOCGKEVVENDOR
+    struct kev_vendor_code vendorCode = {0};
+    
+    //struct for kernel request
+    // ->set filtering options
+    struct kev_request kevRequest = {0};
+    
+    //struct for broadcast data from the kext
+    struct kern_event_msg *kernEventMsg = {0};
+    
+    //message from kext
+    // add a plus one so can always stop parsing on (final) NULL
+    unsigned char kextMsg[MAX_KEV_MSG+1] = {0};
+    
+    //bytes received from system socket
+    ssize_t bytesReceived = -1;
+    
+    //dns header
+    struct dnsHeader* dnsHeader = NULL;
+    
+    //dns data
+    unsigned char* dnsData = NULL;
+    
+    //offset to URL
+    NSUInteger urlOffset = 0;
+    
+    //URL
+    NSMutableString* url = nil;
+    
+    //type
+    // A, AAAA
+    unsigned short addressType = 0;
+    
+    //ip address
+    NSString* ipAddress = nil;
+    
+    //flag
+    BOOL validPacket = YES;
+    
+    //create system socket
+    systemSocket = socket(PF_SYSTEM, SOCK_RAW, SYSPROTO_EVENT);
+    if(-1 == systemSocket)
+    {
+        //set status var
+        status = errno;
+        
+        //err msg
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"socket(PF_SYSTEM, ..., SYSPROTO_EVENT) failed with %d", status]);
+        
+        //bail
+        goto bail;
+    }
+    
+    //set vendor name string
+    strncpy(vendorCode.vendor_string, OBJECTIVE_SEE_VENDOR, KEV_VENDOR_CODE_MAX_STR_LEN);
+    
+    //get vendor name -> vendor code mapping
+    status = ioctl(systemSocket, SIOCGKEVVENDOR, &vendorCode);
+    if(0 != status)
+    {
+        //err msg
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"ioctl(...,SIOCGKEVVENDOR,...) failed with %d", status]);
+        
+        //bail
+        goto bail;
+    }
+    
+    //init filtering options
+    // ->only interested in objective-see's events
+    kevRequest.vendor_code = vendorCode.vendor_code;
+    
+    //...any class
+    kevRequest.kev_class = KEV_ANY_CLASS;
+
+    //...any subclass
+    kevRequest.kev_subclass = KEV_ANY_SUBCLASS;
+    
+    //tell kernel what we want to filter on
+    status = ioctl(systemSocket, SIOCSKEVFILT, &kevRequest);
+    if(0 != status)
+    {
+        //err msg
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"ioctl(...,SIOCSKEVFILT,...) failed with %d", status]);
+        
+        //goto bail;
+        goto bail;
+    }
+    
+    //dbg msg
+    #ifdef DEBUG
+    logMsg(LOG_DEBUG, @"created system socket & set options, now entering recv() loop");
+    #endif
+    
+    //foreverz
+    // ->listen/parse
+    while(YES)
+    {
+        //reset
+        validPacket = YES;
+        
+        //reset
+        memset(kextMsg, 0x0, sizeof(kextMsg));
+        
+        //ask the kext for DNS response events
+        // call will block until event is ready
+        bytesReceived = recv(systemSocket, kextMsg, sizeof(kextMsg)-1, 0);
+        
+        //type cast
+        // ->to access kev_event_msg header
+        kernEventMsg = (struct kern_event_msg*)kextMsg;
+        
+        //sanity check
+        // ->make sure data recv'd looks ok, sizewise
+        if( (bytesReceived < KEV_MSG_HEADER_SIZE) ||
+            (bytesReceived != kernEventMsg->total_size))
+        {
+            //dbg msg
+            #ifdef DEBUG
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"recv count: %d, wanted: %d", (int)bytesReceived, kernEventMsg->total_size]);
+            #endif
+            
+            //ignore
+            continue;
+        }
+        
+        //only care about DNS response
+        if(EVENT_DNS_RESPONSE != kernEventMsg->event_code)
+        {
+            //skip
+            continue;
+        }
+        
+        //type cast custom data
+        // begins right after kernel message header
+        dnsHeader = (struct dnsHeader*)&kernEventMsg->event_data[0];
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"recv'd %0zx bytes from kernel", bytesReceived]);
+        
+        /* print out packet
+        unsigned char* bytes = (char*)&kernEventMsg->event_data[0]
+        for(int i = 0; i<bytesReceived; i++)
+        {
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"%d/%02x", i, bytes[i] & 0xFF]);
+        }
+        */
+    
+        //init pointer to DNS data
+        // begins right after (fixed) DNS header
+        dnsData = (unsigned char*)((unsigned char*)dnsHeader + sizeof(struct dnsHeader));
+        
+        //skip over any question entries
+        // they should always come first, ya?
+        for(NSUInteger i = 0; i < ntohs(dnsHeader->qdcount); i++)
+        {
+            //sanity check
+            if(dnsData >= kextMsg+sizeof(kextMsg))
+            {
+                //not valid
+                validPacket = NO;
+                
+                break;
+            }
+            
+            //skip over URL
+            // look for NULL terminator
+            while(*dnsData++);
+            
+            //skip question type
+            dnsData += sizeof(unsigned short);
+            
+            //skip question class
+            dnsData += sizeof(unsigned short);
+
+        }
+        
+        //invalid?
+        if(YES != validPacket)
+        {
+            //skip
+            continue;
+        }
+        
+        //now, parse answers
+        // this is all we really care about
+        for(NSUInteger i = 0; i < ntohs(dnsHeader->ancount); i++)
+        {
+            //first byte indicates a pointer?
+            if(0xC0 != *dnsData++)
+            {
+                //not valid
+                validPacket = NO;
+                
+                break;
+            }
+            
+            //extract URL offset
+            urlOffset = *dnsData++ & 0xFF;
+            if(urlOffset >= bytesReceived)
+            {
+                //not valid
+                validPacket = NO;
+                
+                break;
+            }
+            
+            //extract URL
+            // pass in offset and end of packet
+            url = extractDNSURL((unsigned char*)dnsHeader + urlOffset, (unsigned char*)dnsHeader + bytesReceived);
+            if(0 == url.length)
+            {
+                //not valid
+                validPacket = NO;
+                
+                break;
+            }
+            
+            //dbg msg
+            //logMsg(LOG_DEBUG, [NSString stringWithFormat:@"extracted url: %@", url]);
+            
+            //extract address type
+            addressType = ntohs(*(unsigned short*)dnsData);
+            
+            //only accept A and AAAA
+            if( (0x1 != addressType) &&
+                (0x1C != addressType) )
+            {
+                //not valid
+                validPacket = NO;
+                
+                break;
+            }
+            
+            //skip over type
+            dnsData += sizeof(unsigned short);
+            
+            //skip class
+            dnsData += sizeof(unsigned short);
+            
+            //skip ttl
+            dnsData += sizeof(unsigned int);
+            
+            //type A
+            if(0x1 == addressType)
+            {
+                //length should be 4
+                if(0x4 !=  ntohs(*(unsigned short*)dnsData))
+                {
+                    //not valid
+                    validPacket = NO;
+                    
+                    break;
+                }
+                
+                //skip over length
+                dnsData += sizeof(unsigned short);
+                
+                //covert
+                ipAddress = convertIPAddr(dnsData, AF_INET);
+                
+                //skip over IP address
+                // for IPv4 addresses, this will always be 4
+                dnsData += 0x4;
+            }
+            
+            //type AAAA
+            if(0x1C == addressType)
+            {
+                //length should be 0x10
+                if(0x10 != ntohs(*(unsigned short*)dnsData))
+                {
+                    //not valid
+                    validPacket = NO;
+                    
+                    break;
+                }
+                
+                //skip over length
+                dnsData += sizeof(unsigned short);
+                
+                //convert
+                ipAddress = convertIPAddr(dnsData, AF_INET6);
+                
+                //skip over IP address
+                // for IPv4 addresses, this will always be 0x10
+                dnsData += 0x10;
+            }
+            
+            //add to DNS 'cache'
+            if(0 != ipAddress.length)
+            {
+                //dbg msg
+                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding %@ -> %@ to DNS 'cache'", url, ipAddress]);
+                
+                //add
+                self.dnsCache[ipAddress] = url;
+            }
+            
+        }//parse answers
+        
+        //invalid?
+        if(YES != validPacket)
+        {
+            //skip
+            continue;
+        }
+        
+    }//while(YES)
+    
+bail:
+    
+    //close socket
+    if(-1 != systemSocket)
+    {
+        //close
+        close(systemSocket);
+        
+        //unset
+        systemSocket = -1;
+    }
+    
+    return;
+}
 
 
 //process events from the kernel (queue)
@@ -296,7 +638,7 @@ bail:
     while(kIOReturnSuccess == IODataQueueWaitForAvailableData((IODataQueueMemory *)mappedMemory, recvPort))
     {
         //more data?
-        while (IODataQueueDataAvailable((IODataQueueMemory *)mappedMemory))
+        while(IODataQueueDataAvailable((IODataQueueMemory *)mappedMemory))
         {
             //reset
             memset(&event, 0x0, sizeof(firewallEvent));
@@ -387,7 +729,8 @@ bail:
                     (STATUS_CLIENT_UNKNOWN == clientStatus) )
                 {
                     //dbg msg
-                    logMsg(LOG_DEBUG, @"no active (enabled) client, so telling kernel to 'allow'");
+                    // also log to file
+                    logMsg(LOG_DEBUG|LOG_TO_FILE, @"no active (enabled) client, so telling kernel to 'allow'");
                     
                     //allow
                     [kextComms addRule:event.pid action:RULE_STATE_ALLOW];
@@ -488,7 +831,6 @@ bail:
 }
 
 //create an alert object
-// TODO: need to figure out how to get remote host (sniff DNS response?)
 -(NSMutableDictionary*)createAlert:(firewallEvent*)event process:(Process*)process
 {
     //event for alert
@@ -496,6 +838,9 @@ bail:
     
     //remote ip address
     NSString* remoteAddress = nil;
+    
+    //remote host name
+    NSString* remoteHost = nil;
     
     //alloc
     alertInfo = [NSMutableDictionary dictionary];
@@ -512,15 +857,22 @@ bail:
     //add (remote) ip
     alertInfo[ALERT_IPADDR] = convertSocketAddr((struct sockaddr*)&(event->remoteAddress));
     
-    /*
-    //add (remote) host name
-    if(nil != remoteHost)
+    //try get host name from DNS cache
+    // since it's based on recv'ing data from kernel, try a bit...
+    for(int i=0; i<5; i++)
     {
-        //add
-        alertInfo[ALERT_HOSTNAME] = remoteHost;
+        //nap
+        [NSThread sleepForTimeInterval:0.10f];
+        
+        //try grab host name
+        remoteHost = self.dnsCache[alertInfo[ALERT_IPADDR]];
+        if(nil != remoteHost)
+        {
+            //add
+            alertInfo[ALERT_HOSTNAME] = remoteHost;
+        }
     }
-    */
-    
+
     //add (remote) port
     alertInfo[ALERT_PORT] = [NSNumber numberWithUnsignedShort:ntohs(event->remoteAddress.sin_port)];
     

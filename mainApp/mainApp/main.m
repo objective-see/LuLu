@@ -12,6 +12,7 @@
 
 #import "const.h"
 #import "logging.h"
+#import "Utilities.h"
 
 int main(int argc, const char * argv[])
 {
@@ -44,6 +45,16 @@ int main(int argc, const char * argv[])
             // don't want to show UI or do anything else
             goto bail;
         }
+    }
+    
+    //already running?
+    if(YES == isAppRunning([[NSBundle mainBundle] bundleIdentifier]))
+    {
+        //err msg
+        logMsg(LOG_DEBUG, @"an instance of LuLu (main app) is already running");
+        
+        //bail
+        goto bail;
     }
     
     //launch app normally

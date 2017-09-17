@@ -13,6 +13,7 @@
                 <outlet property="addRuleButton" destination="XnJ-SV-lDg" id="YqK-bz-bc0"/>
                 <outlet property="addRuleLabel" destination="eUD-fD-sWd" id="BHL-mp-mNT"/>
                 <outlet property="addRulePanel" destination="cna-Y1-PEc" id="a7H-3I-8qq"/>
+                <outlet property="rulesStatusMsg" destination="N1C-d0-irl" id="bbR-QD-deN"/>
                 <outlet property="searchBox" destination="6hG-3v-G35" id="fzu-Bv-orq"/>
                 <outlet property="tableView" destination="rpa-sZ-jQp" id="SvF-Yi-OKB"/>
                 <outlet property="toolbar" destination="VgN-2b-k77" id="SSB-SZ-3tL"/>
@@ -264,23 +265,68 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button toolTip="import rules" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wLD-v3-0h8">
+                        <rect key="frame" x="20" y="8" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="6Me-r5-aQN"/>
+                            <constraint firstAttribute="width" constant="24" id="tLw-mP-oRx"/>
+                        </constraints>
+                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="importRules" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="ZZb-4o-iuv">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="importRules:" target="-2" id="E1K-FD-SPa"/>
+                        </connections>
+                    </button>
+                    <button toolTip="export rules" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MHk-d5-Sde">
+                        <rect key="frame" x="68" y="8" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="aaM-3f-Lnb"/>
+                            <constraint firstAttribute="width" constant="24" id="gwJ-pJ-Wh6"/>
+                        </constraints>
+                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="exportRules" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="3iL-2b-TOF">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="exportRules:" target="-2" id="hdg-8h-q1M"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1C-d0-irl">
+                        <rect key="frame" x="102" y="11" width="106" height="19"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="import/export" id="fjk-ev-N5X">
+                            <font key="font" size="13" name="Menlo-Regular"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="gth-To-Lf2" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="-1" id="0Jc-HW-sRY"/>
                     <constraint firstItem="17j-c5-vs7" firstAttribute="centerY" secondItem="eUD-fD-sWd" secondAttribute="centerY" constant="1" id="0uF-f4-SVh"/>
                     <constraint firstAttribute="bottom" secondItem="gth-To-Lf2" secondAttribute="bottom" constant="41" id="1XM-Vv-cJW"/>
+                    <constraint firstItem="wLD-v3-0h8" firstAttribute="top" secondItem="gth-To-Lf2" secondAttribute="bottom" constant="9" id="4ak-cM-Sua"/>
                     <constraint firstItem="17j-c5-vs7" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="8la-8n-39d"/>
                     <constraint firstAttribute="trailing" secondItem="gth-To-Lf2" secondAttribute="trailing" constant="-1" id="GjA-Ta-LSr"/>
+                    <constraint firstItem="MHk-d5-Sde" firstAttribute="leading" secondItem="wLD-v3-0h8" secondAttribute="trailing" constant="24" id="HDh-sh-Jxz"/>
+                    <constraint firstItem="N1C-d0-irl" firstAttribute="top" secondItem="gth-To-Lf2" secondAttribute="bottom" constant="11" id="QTx-6y-q4F"/>
                     <constraint firstItem="XnJ-SV-lDg" firstAttribute="leading" secondItem="eUD-fD-sWd" secondAttribute="trailing" constant="15" id="ZNv-12-r52"/>
+                    <constraint firstAttribute="bottom" secondItem="N1C-d0-irl" secondAttribute="bottom" constant="11" id="acZ-Hd-g0q"/>
                     <constraint firstAttribute="bottom" secondItem="eUD-fD-sWd" secondAttribute="bottom" constant="10" id="edr-zK-zzy"/>
                     <constraint firstItem="gth-To-Lf2" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="-1" id="ehW-gX-Et6"/>
                     <constraint firstAttribute="trailing" secondItem="gth-To-Lf2" secondAttribute="trailing" constant="-1" id="ga8-g4-rt6"/>
                     <constraint firstItem="gth-To-Lf2" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="-1" id="gtf-7O-hid"/>
                     <constraint firstAttribute="bottom" secondItem="XnJ-SV-lDg" secondAttribute="bottom" constant="10" id="ica-33-2p6"/>
                     <constraint firstItem="gth-To-Lf2" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="-1" id="jrL-0c-zSr"/>
+                    <constraint firstAttribute="bottom" secondItem="wLD-v3-0h8" secondAttribute="bottom" constant="8" id="kbE-Uz-2gf"/>
+                    <constraint firstItem="MHk-d5-Sde" firstAttribute="top" secondItem="gth-To-Lf2" secondAttribute="bottom" constant="9" id="oIW-xs-xtr"/>
                     <constraint firstAttribute="trailing" secondItem="XnJ-SV-lDg" secondAttribute="trailing" constant="14" id="p6n-Hw-ZiX"/>
+                    <constraint firstAttribute="bottom" secondItem="MHk-d5-Sde" secondAttribute="bottom" constant="8" id="pBT-cg-7oN"/>
                     <constraint firstAttribute="bottom" secondItem="17j-c5-vs7" secondAttribute="bottom" constant="-5" id="pXp-qF-5J6"/>
+                    <constraint firstItem="N1C-d0-irl" firstAttribute="leading" secondItem="MHk-d5-Sde" secondAttribute="trailing" constant="12" id="ulr-DL-btB"/>
                     <constraint firstAttribute="bottom" secondItem="eUD-fD-sWd" secondAttribute="bottom" constant="10" id="v81-33-9xE"/>
+                    <constraint firstItem="wLD-v3-0h8" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="vnZ-gV-0K2"/>
                     <constraint firstItem="eUD-fD-sWd" firstAttribute="top" secondItem="gth-To-Lf2" secondAttribute="bottom" constant="11" id="vzq-sh-AkM"/>
                 </constraints>
             </view>
@@ -370,6 +416,8 @@
         <image name="NSColorPanel" width="32" height="32"/>
         <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
         <image name="allow" width="24" height="24"/>
+        <image name="exportRules" width="24" height="24"/>
+        <image name="importRules" width="24" height="24"/>
         <image name="luluText" width="169" height="51"/>
         <image name="rulesAll" width="32" height="32"/>
         <image name="rulesBaseline" width="32" height="32"/>

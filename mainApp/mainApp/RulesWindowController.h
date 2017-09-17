@@ -73,12 +73,22 @@
 //add rules popup controller
 @property (strong) AddRuleWindowController *addRuleWindowController;
 
+//status message for import/export rules
+@property (weak) IBOutlet NSTextField *rulesStatusMsg;
+
 /* METHODS */
 
 //process rules dictionary received from daemon
 -(void)processRulesDictionary:(NSDictionary*)daemonRules;
 
+//handle tool bar icon clicks
 -(IBAction)toolbarHandler:(id)sender;
+
+//import rules
+-(IBAction)importRules:(id)sender;
+
+//export rules
+-(IBAction)exportRules:(id)sender;
 
 //add a rule
 -(IBAction)addRule:(id)sender;

@@ -24,7 +24,7 @@
 /* GLOBALS */
 
 //malloc tag
-OSMallocTag allocTag = (OSMallocTag)0x4242424242424242;
+OSMallocTag allocTag = NULL;
 
 //data queue
 IOSharedDataQueue *sharedDataQueue = NULL;

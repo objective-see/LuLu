@@ -40,6 +40,12 @@ NSInteger clientStatus = STATUS_CLIENT_DISABLED;
 //'rule changed' semaphore
 dispatch_semaphore_t rulesChanged = 0;
 
+/* FUNCTIONS */
+
+//init a handler for SIGTERM
+// can perform actions such as disabling firewall and closing logging
+void register4Shutdown();
+
 //main
 // init & kickoff stuffz
 int main(int argc, const char * argv[])
@@ -57,6 +63,20 @@ int main(int argc, const char * argv[])
         
         //alloc/init process listener obj
         processListener = [[ProcessListener alloc] init];
+        
+        //init logging
+        if(YES != initLogging())
+        {
+            //err msg
+            logMsg(LOG_ERR, @"failed to init logging");
+
+            //bail
+            goto bail;
+        }
+        
+        //register for shutdown
+        // so, can disable firewall and close logging
+        register4Shutdown();
         
         //start listening for process events
         [processListener monitor];
@@ -86,6 +106,10 @@ int main(int argc, const char * argv[])
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded rules from %@", RULES_FILE]);
         
+        //add default/pre-existing apps
+        // has logic to only do this first time
+        [rules startBaselining];
+
         //init rule changed semaphore
         rulesChanged = dispatch_semaphore_create(0);
         
@@ -106,7 +130,7 @@ int main(int argc, const char * argv[])
         //connect to kext
         if(YES != [kextComms connect])
         {
-            //high sierra, users have to approved kext
+            //high sierra, users have to approve kext
             // so, just wait for that the kext to load....
             if(YES == NSProcessInfo.processInfo.operatingSystemVersion.minorVersion >= 13)
             {
@@ -158,9 +182,20 @@ int main(int argc, const char * argv[])
         //dbg msg
         logMsg(LOG_DEBUG, @"listening for kernel events");
         
+        //now kext is loaded
+        // finally add all rules to kernel
+        @synchronized(rules.rules)
+        {
+            //iterate & add all
+            for(NSString* path in rules.rules)
+            {
+                //add
+                [rules addToKernel:rules.rules[path]];
+            }
+        }
+
         //run loop
         [[NSRunLoop currentRunLoop] run];
-
     }
     
 bail:
@@ -173,4 +208,38 @@ bail:
     [kextComms disable];
     
     return 0;
+}
+
+//init a handler for SIGTERM
+// can perform actions such as disabling firewall and closing logging
+void register4Shutdown()
+{
+    //dispatch source for SIGTERM
+    dispatch_source_t dispatchSource = nil;
+    
+    //ignore sigterm
+    // handling it via GCD dispatch
+    signal(SIGTERM, SIG_IGN);
+    
+    //init dispatch source for SIGTERM
+    dispatchSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_SIGNAL, SIGTERM, 0, dispatch_get_main_queue());
+    
+    //set handler
+    // disable kext & close logging
+    dispatch_source_set_event_handler(dispatchSource, ^{
+        
+        //tell kext to disable
+        [kextComms disable];
+        
+        //close logging
+        deinitLogging();
+        
+        //bye!
+        exit(SIGTERM);
+    });
+    
+    //resume
+    dispatch_resume(dispatchSource);
+    
+    return;
 }

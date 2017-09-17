@@ -16,7 +16,9 @@
 
 //remote deamon proxy object
 @property(nonatomic, retain) id <UserProtocol> daemon;
-@property (atomic, strong, readwrite) NSXPCConnection * xpcServiceConnection;
+
+//xpc connection
+@property (atomic, strong, readwrite) NSXPCConnection* xpcServiceConnection;
 
 //set client status
 -(void)setClientStatus:(NSInteger)status;
@@ -29,6 +31,9 @@
 
 //delete rule
 -(void)deleteRule:(NSString*)processPath;
+
+//import rules
+-(void)importRules:(NSString*)rulesFile;
 
 //ask for alert
 -(void)alertRequest:(void (^)(NSDictionary* alert))reply;

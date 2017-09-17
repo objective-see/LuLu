@@ -69,17 +69,17 @@
 			isa = PBXGroup;
 			children = (
 				7D7756061F05845600D0017D /* shared */,
-				7D7756001F05844800D0017D /* userInterface.cpp */,
-				7D7756011F05844800D0017D /* userInterface.hpp */,
+				7D77560E1F05EDC600D0017D /* broadcastEvents.hpp */,
+				7D77560D1F05EDC600D0017D /* broadcastEvents.cpp */,
 				7D5208F41E41C23900832F57 /* driver.hpp */,
 				7D5208F61E41C23900832F57 /* driver.cpp */,
 				7D5208F81E41C23900832F57 /* Info.plist */,
 				7DBEB5051E4C54A900BEA37C /* rules.hpp */,
 				7DBEB5041E4C54A900BEA37C /* rules.cpp */,
-				7D77560E1F05EDC600D0017D /* broadcastEvents.hpp */,
-				7D77560D1F05EDC600D0017D /* broadcastEvents.cpp */,
 				7D77560A1F05EACE00D0017D /* socketEvents.hpp */,
 				7D7756091F05EACE00D0017D /* socketEvents.cpp */,
+				7D7756011F05844800D0017D /* userInterface.hpp */,
+				7D7756001F05844800D0017D /* userInterface.cpp */,
 			);
 			name = src;
 			path = kernelExtension;

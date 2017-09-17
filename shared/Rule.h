@@ -32,15 +32,15 @@
 
 
 //action
-// ->allow, deny, etc
+// allow, deny, etc
 @property(nonatomic, retain)NSNumber* action;
 
 //type
-// ->default, baseline, user
+// default, baseline, user
 @property(nonatomic, retain)NSNumber* type;
 
 //user
-// ->what user created this
+// what user created this
 @property(nonatomic, retain)NSNumber* user;
 
 /* METHODS */

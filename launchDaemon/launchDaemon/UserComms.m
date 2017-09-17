@@ -50,7 +50,6 @@ extern NSInteger clientStatus;
     {
         //set status
         self.currentStatus = STATUS_CLIENT_UNKNOWN;
-        
     }
     
     return self;
@@ -72,16 +71,24 @@ extern NSInteger clientStatus;
     clientStatus = status;
     
     //enable?
-    // ->tell kext to enable firewall
+    // tell kext to enable firewall
     if(STATUS_CLIENT_ENABLED == status)
     {
+        //dbg msg
+        // and log to file
+        logMsg(LOG_DEBUG|LOG_TO_FILE, @"enabling firewall");
+        
         //enable firewall
         [kextComms enable];
     }
     //disable?
-    // ->tell kext to disable firewall
+    // tell kext to disable firewall
     else if(STATUS_CLIENT_DISABLED == status)
     {
+        //dbg msg
+        // and log to file
+        logMsg(LOG_DEBUG|LOG_TO_FILE, @"disabling firewall");
+        
         //disable firewall
         [kextComms disable];
     }
@@ -118,6 +125,9 @@ extern NSInteger clientStatus;
 {
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: ADD RULE (%@/%lu)", path, action]);
+    
+    //log to file
+    logMsg(LOG_TO_FILE, [NSString stringWithFormat:@"adding rule (path: %@ / action: %lu)", path, action]);
 
     //add
     // ->type is 'user'
@@ -139,21 +149,87 @@ extern NSInteger clientStatus;
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: DELETE RULE (%@)", path]);
     
-    //remove
+    //log to file
+    logMsg(LOG_TO_FILE, [NSString stringWithFormat:@"deleting rule (path: %@)", path]);
+    
+    //remove row
     if(YES != [rules delete:path])
     {
         //err msg
         logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to delete rule for %@", path]);
+        
+        //bail
+        goto bail;
     }
     
     //signal all threads that rules changed
     while(0 != dispatch_semaphore_signal(rulesChanged));
     
+bail:
+    
+    return;
+}
+
+//import rules
+-(void)importRules:(NSString*)rulesFile
+{
+    //error
+    NSError* error = nil;
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: IMPORT RULES (%@)", rulesFile]);
+    
+    //delete all
+    if(YES != [rules deleteAll])
+    {
+        //err msg
+        logMsg(LOG_ERR, @"failed to delete existing rules");
+        
+        //bail
+        goto bail;
+    }
+
+    //save new rules
+    if(YES != [[NSFileManager defaultManager] copyItemAtPath:rulesFile toPath:RULES_FILE error:&error])
+    {
+        //err msg
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to save imported rules file %@ (error: %@)", RULES_FILE, error]);
+        
+        //bail
+        goto bail;
+    }
+    
+    //load rules
+    if(YES != [rules load])
+    {
+        //err msg
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to load rules from %@", RULES_FILE]);
+        
+        //bail
+        goto bail;
+    }
+
+    //add all rules to kernel
+    @synchronized(rules.rules)
+    {
+        //iterate & add all
+        for(NSString* rulePath in rules.rules)
+        {
+            //add
+            [rules addToKernel:rules.rules[rulePath]];
+        }
+    }
+    
+    //signal all threads that rules changed
+    while(0 != dispatch_semaphore_signal(rulesChanged));
+    
+bail:
+    
     return;
 }
 
 //process alert request from client
-// ->blocks for queue item, then sends to client
+// blocks for queue item, then sends to client
 -(void)alertRequest:(void (^)(NSDictionary* alert))reply
 {
     //dbg msg
@@ -163,12 +239,15 @@ extern NSInteger clientStatus;
     self.dequeuedAlert = nil;
     
     //read off queue
-    // ->will block
+    // will block until alert is ready
     self.dequeuedAlert = [eventQueue dequeue];
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"dequeued alert: %@", self.dequeuedAlert]);
     
+    //log to file
+    logMsg(LOG_TO_FILE, [NSString stringWithFormat:@"showing alert to user: %@", self.dequeuedAlert]);
+
     //return alert
     reply(self.dequeuedAlert);
     
@@ -176,7 +255,7 @@ extern NSInteger clientStatus;
 }
 
 //process client response to alert
-// ->tells kext/update rules/etc...
+// tells kext/update rules/etc...
 -(void)alertResponse:(NSMutableDictionary*)alert
 {
     //path
@@ -193,7 +272,7 @@ extern NSInteger clientStatus;
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: alert response: %@", alert]);
-    
+
     //sanity check
     if( (nil == alert[ALERT_PID]) ||
         (nil == alert[ALERT_PATH]) ||
@@ -218,6 +297,9 @@ extern NSInteger clientStatus;
     
     //extract action
     action = [alert[ALERT_ACTION] unsignedIntValue];
+    
+    //log to file
+    logMsg(LOG_TO_FILE, [NSString stringWithFormat:@"alert response: %@", alert]);
     
     //tell kext
     // TODO: add support for 'user'

@@ -9,8 +9,29 @@
 
 @import Cocoa;
 
+#import "logging.h"
+#import "Utilities.h"
+
 int main(int argc, const char * argv[])
 {
-    return NSApplicationMain(argc, argv);
+    //return var
+    int iReturn = -1;
+    
+    //already running?
+    if(YES == isAppRunning([[NSBundle mainBundle] bundleIdentifier]))
+    {
+        //err msg
+        logMsg(LOG_DEBUG, @"an instance of LuLu (helper app) is already running");
+        
+        //bail
+        goto bail;
+    }
+    
+    //launch app normally
+    iReturn = NSApplicationMain(argc, argv);
+    
+bail:
+    
+    return iReturn;
 }
 

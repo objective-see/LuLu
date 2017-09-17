@@ -45,7 +45,7 @@ void logMsg(int level, NSString* msg)
     #ifdef DEBUG
     
     //in debug mode promote debug msgs to LOG_NOTICE
-    // ->OS X only shows LOG_NOTICE and above
+    // OSX/macOS only shows LOG_NOTICE and above
     if(LOG_DEBUG == level)
     {
         //promote
@@ -54,8 +54,13 @@ void logMsg(int level, NSString* msg)
     
     #endif
     
-    //log to syslog
-    syslog(level, "%s: %s", [logPrefix UTF8String], [msg UTF8String]);
+    //log to syslog if a level was specified
+    // as code doesn't use LOG_EMERG (0), this check is ok
+    if(0 != level)
+    {
+        //log to syslog
+        syslog(level, "%s: %s", [logPrefix UTF8String], [msg UTF8String]);
+    }
     
     //when a message is to be logged to file
     // ->log it, when logging is enabled
@@ -72,43 +77,11 @@ void logMsg(int level, NSString* msg)
     return;
 }
 
-//get path to log file
-NSString* logFilePath()
-{
-    //TODO: where?
-    return nil;
-    
-    /*
-    //path to log directory
-    NSString* logDirectory = nil;
-    
-    //path to log file
-    NSString* logFile = nil;
-    
-    //get log file directory
-    logDirectory = supportDirectory();
-    if(nil == logDirectory)
-    {
-        //bail
-        goto bail;
-    }
-    
-    //build path
-    logFile = [logDirectory stringByAppendingPathComponent:LOG_FILE_NAME];
-    
-//bail
-bail:
-    
-     return logFile;
-     
-     */
-}
-
 //log to file
 void log2File(NSString* msg)
 {
     //append timestamp
-    // ->write msg out to disk
+    // write msg out to disk
     [logFileHandle writeData:[[NSString stringWithFormat:@"%@: %@\n", [NSDate date], msg] dataUsingEncoding:NSUTF8StringEncoding]];
     
     return;
@@ -136,42 +109,26 @@ BOOL initLogging()
     //ret var
     BOOL bRet = NO;
     
-    /*
-    
     //log file path
     NSString* logPath = nil;
     
-    //create log directory if needed
-    if(YES != [[NSFileManager defaultManager] fileExistsAtPath:supportDirectory()])
+    //init log path
+    // '/Library/Logs/Lulu.log'
+    logPath = [@"/Library/Logs/" stringByAppendingPathComponent:LOG_FILE_NAME];
+    
+    //first time
+    //  create file
+    if(YES != [[NSFileManager defaultManager] fileExistsAtPath:logPath])
     {
-        //create it
-        if(YES != [[NSFileManager defaultManager] createDirectoryAtPath:supportDirectory() withIntermediateDirectories:YES attributes:nil error:NULL])
+        //create
+        if(YES != [[NSFileManager defaultManager] createFileAtPath:logPath contents:nil attributes:nil])
         {
             //err msg
-            logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to create directory (%@) for log file", supportDirectory()]);
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to create log file, %@", logPath]);
             
             //bail
             goto bail;
         }
-    }
-    
-    //get path to log file
-    logPath = logFilePath();
-    if(nil == logPath)
-    {
-        //err msg
-        logMsg(LOG_ERR, @"failed to build path for log file");
-        
-        //bail
-        goto bail;
-    }
-    
-    //first time
-    // ->create
-    if(YES != [[NSFileManager defaultManager] fileExistsAtPath:logPath])
-    {
-        //create
-        [[NSFileManager defaultManager] createFileAtPath:logPath contents:nil attributes:nil];
     }
     
     //get file handle
@@ -196,13 +153,10 @@ BOOL initLogging()
     //dbg msg
     // ->and to file
     logMsg(LOG_DEBUG|LOG_TO_FILE, @"logging intialized");
-     
-    */
     
     //happy
     bRet = YES;
     
-//bail
 bail:
     
     return bRet;

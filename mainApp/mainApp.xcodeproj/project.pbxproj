@@ -25,6 +25,8 @@
 		7D564DE61F18446200B8AAD6 /* logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DE41F18446200B8AAD6 /* logging.m */; };
 		7D564DEA1F1855E900B8AAD6 /* UpdateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DE71F1855E900B8AAD6 /* UpdateWindowController.m */; };
 		7D564DEB1F1855E900B8AAD6 /* UpdateWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D564DE81F1855E900B8AAD6 /* UpdateWindow.xib */; };
+		7D704AB71F6C83BF0067224E /* importRules.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D704AB51F6C83BF0067224E /* importRules.png */; };
+		7D704AB81F6C83BF0067224E /* exportRules.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D704AB61F6C83BF0067224E /* exportRules.png */; };
 		7D75537F1F22E40E0010FE88 /* PrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D75537D1F22E40E0010FE88 /* PrefsWindowController.m */; };
 		7D7553801F22E40E0010FE88 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D75537E1F22E40E0010FE88 /* Preferences.xib */; };
 		7D7553831F23199A0010FE88 /* prefsGeneral.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D7553811F23199A0010FE88 /* prefsGeneral.png */; };
@@ -92,7 +94,8 @@
 		7D564DE71F1855E900B8AAD6 /* UpdateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateWindowController.m; path = ../shared/UpdateWindowController.m; sourceTree = "<group>"; };
 		7D564DE81F1855E900B8AAD6 /* UpdateWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UpdateWindow.xib; path = ../shared/UpdateWindow.xib; sourceTree = "<group>"; };
 		7D564DE91F1855E900B8AAD6 /* UpdateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateWindowController.h; path = ../shared/UpdateWindowController.h; sourceTree = "<group>"; };
-		7D564DEC1F185A4F00B8AAD6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../../icon.png; sourceTree = "<group>"; };
+		7D704AB51F6C83BF0067224E /* importRules.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = importRules.png; sourceTree = "<group>"; };
+		7D704AB61F6C83BF0067224E /* exportRules.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exportRules.png; sourceTree = "<group>"; };
 		7D75537C1F22E40E0010FE88 /* PrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsWindowController.h; sourceTree = "<group>"; };
 		7D75537D1F22E40E0010FE88 /* PrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsWindowController.m; sourceTree = "<group>"; };
 		7D75537E1F22E40E0010FE88 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
@@ -217,6 +220,8 @@
 		7D564DD31F18441500B8AAD6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7D704AB51F6C83BF0067224E /* importRules.png */,
+				7D704AB61F6C83BF0067224E /* exportRules.png */,
 				7D7553871F2323790010FE88 /* luluIcon.png */,
 				7D7553881F2323790010FE88 /* luluText.png */,
 				7D7553811F23199A0010FE88 /* prefsGeneral.png */,
@@ -230,7 +235,6 @@
 				7DD2BF431F1C2B4200B33214 /* logo.png */,
 				7DD2BF441F1C2B4200B33214 /* logoBG.png */,
 				7DD2BF451F1C2B4200B33214 /* logoOver.png */,
-				7D564DEC1F185A4F00B8AAD6 /* icon.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -329,6 +333,7 @@
 				7DD2BF511F1C3F0500B33214 /* rulesAll.png in Resources */,
 				7D46FF041F5F496800FEB0F8 /* patrons.txt in Resources */,
 				7DD2BF481F1C2B4200B33214 /* logoOver.png in Resources */,
+				7D704AB81F6C83BF0067224E /* exportRules.png in Resources */,
 				7D7553801F22E40E0010FE88 /* Preferences.xib in Resources */,
 				7DD2BF531F1C3F0500B33214 /* rulesDefault.png in Resources */,
 				7D75538A1F2323790010FE88 /* luluText.png in Resources */,
@@ -339,6 +344,7 @@
 				7D564DB61F18434F00B8AAD6 /* MainMenu.xib in Resources */,
 				7DD2BF4B1F1C389600B33214 /* allow.png in Resources */,
 				7D7553891F2323790010FE88 /* luluIcon.png in Resources */,
+				7D704AB71F6C83BF0067224E /* importRules.png in Resources */,
 				7D564DDB1F18441500B8AAD6 /* MainMenu.xib in Resources */,
 				7D564DEB1F1855E900B8AAD6 /* UpdateWindow.xib in Resources */,
 				7DD2BF471F1C2B4200B33214 /* logoBG.png in Resources */,

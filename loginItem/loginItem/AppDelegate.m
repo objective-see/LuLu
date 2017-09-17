@@ -93,28 +93,6 @@
         });
     }
     
-    /*
-    //when logging is enabled
-    // ->open/create log file
-    if(YES == [preferences[PREF_LOG_ACTIVITY] boolValue])
-    {
-        //init
-        if(YES != initLogging())
-        {
-            //err msg
-            logMsg(LOG_ERR, @"failed to init logging");
-            
-            //bail
-            goto bail;
-        }
-        
-        //dbg msg
-        // ->and to file
-        logMsg(LOG_DEBUG|LOG_TO_FILE, @"logging intialized");
-        
-    }
-    */
-    
     //init alert monitor
     alertMonitor = [[AlertMonitor alloc] init];
     
@@ -208,23 +186,5 @@ bail:
     
     return;
 }
-
-/*
-//going bye-bye
-// ->close logging
--(void)applicationWillTerminate:(NSNotification *)notification
-{
-    //log msg
-    logMsg(LOG_DEBUG|LOG_TO_FILE, @"LuLu (client) ending");
-    
-    //log msg
-    logMsg(LOG_DEBUG|LOG_TO_FILE, @"logging deinitialized");
-    
-    //stop logz
-    deinitLogging();
-    
-    return;
-}
-*/
 
 @end

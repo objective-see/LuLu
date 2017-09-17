@@ -27,6 +27,7 @@
 @synthesize addRulePanel;
 @synthesize shouldFilter;
 @synthesize rulesFiltered;
+@synthesize rulesStatusMsg;
 
 //alloc/init
 // ->get rules and listen for new ones
@@ -43,6 +44,9 @@
     
     //init daemon comms obj
     daemonComms = [[DaemonComms alloc] init];
+    
+    //unset message
+    self.rulesStatusMsg.stringValue = @"";
     
     //get rules from daemon via XPC
     [self.daemonComms getRules:NO reply:^(NSDictionary* daemonRules)
@@ -108,6 +112,152 @@
     
     //select first row
     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+    
+    return;
+}
+
+//import rules
+-(IBAction)importRules:(id)sender
+{
+    //'open' panel
+    NSOpenPanel *panel = nil;
+    
+    //set status message
+    self.rulesStatusMsg.stringValue = @"importing rules...";
+    
+    //init panel
+    panel = [NSOpenPanel openPanel];
+    
+    //allow files
+    panel.canChooseFiles = YES;
+    
+    //no directories
+    panel.canChooseDirectories = NO;
+
+    //disable multiple selections
+    panel.allowsMultipleSelection = NO;
+    
+    //show panel
+    [panel beginWithCompletionHandler:^(NSInteger result)
+    {
+        //only need to handle 'ok'
+        if(NSFileHandlingPanelOKButton == result)
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"importing rules from %@", panel.URL.path]);
+            
+            //send msg to daemon to XPC
+            // TODO: check that this succeeded!
+            [self.daemonComms importRules:panel.URL.path];
+            
+            //update msg
+            self.rulesStatusMsg.stringValue = @"imported rules";
+            
+        }//clicked 'ok' (to save)
+        
+        //remove msg shortly thereafter
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            
+            //update msg
+            self.rulesStatusMsg.stringValue = @"";
+            
+        });
+        
+    }]; //panel completion handler
+  
+    return;
+}
+
+//serialize all rules
+// and save them to disk
+-(IBAction)exportRules:(id)sender
+{
+    //save panel
+    NSSavePanel *panel = nil;
+    
+    //serialized rules
+    __block NSMutableDictionary* serializedRules = nil;
+    
+    //alert
+    __block NSAlert* alert = nil;
+    
+    //set status message
+    self.rulesStatusMsg.stringValue = @"exporting rules...";
+
+    //create panel
+    panel = [NSSavePanel savePanel];
+    
+    //suggest file name
+    [panel setNameFieldStringValue:[RULES_FILE lastPathComponent]];
+    
+    //show panel
+    // ->completion handler will invoked user click ok/cancel
+    [panel beginWithCompletionHandler:^(NSInteger result)
+    {
+         //only need to handle 'ok'
+         if(NSFileHandlingPanelOKButton == result)
+         {
+             //alloc
+             serializedRules = [NSMutableDictionary dictionary];
+    
+             //sync to access
+             @synchronized(self.rules)
+             {
+                 //iterate over all rules
+                 // ->serialize & add each
+                 for(Rule* rule in self.rules)
+                 {
+                     //covert/add
+                     serializedRules[rule.path] = [rule serialize];
+                 }
+             }
+            
+             //save serialized rules to disk
+             // on error will show err msg in popup
+             if(YES != [serializedRules writeToURL:[panel URL] atomically:YES])
+             {
+                 //err msg
+                 logMsg(LOG_DEBUG, [NSString stringWithFormat:@"failed to export rules to %@", panel.URL.path]);
+                 
+                 //init alert
+                 alert = [[NSAlert alloc] init];
+                 
+                 //set style
+                 alert.alertStyle = NSAlertStyleWarning;
+                 
+                 //main text
+                 [alert setMessageText:@"ERROR: failed to save rules"];
+                 
+                 //details
+                 [alert setInformativeText:[NSString stringWithFormat:@"path: %@", panel.URL.path]];
+                 
+                 //add button
+                 [alert addButtonWithTitle:@"Ok"];
+                 
+                 //show
+                 [alert runModal];
+                 
+             }
+             
+             //happy
+             // update status message
+             else
+             {
+                 //update msg
+                 self.rulesStatusMsg.stringValue = @"exported rules";
+            }
+             
+         }//clicked 'ok' (to save)
+        
+        //remove msg shortly thereafter
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            
+            //update msg
+            self.rulesStatusMsg.stringValue = @"";
+            
+        });
+        
+     }]; //panel callback
     
     return;
 }
@@ -432,7 +582,7 @@
             
             //not all
             // ->gotta match filter, and if search, that too
-            else if(selectedItem.tag == rule.type.integerValue)
+            else if(selectedItem.tag == rule.type.intValue)
             {
                 //no search?
                 // just add rule
@@ -592,7 +742,7 @@ bail:
             goto bail;
         }
         
-        switch(rule.type.integerValue)
+        switch(rule.type.intValue)
         {
             //rule type: 'default'
             case RULE_TYPE_DEFAULT:
