@@ -68,6 +68,9 @@ extern KextComms* kextComms;
         rule = [[Rule alloc] init:key rule:serializedRules[key]];
         if(nil == rule)
         {
+            //err msg
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to load rule for %@", key]);
+            
             //skip
             continue;
         }
@@ -181,6 +184,14 @@ bail:
         //skip app store
         // it's a default/system rule already
         if(YES == [currentApp isEqualToString:@"/Applications/App Store.app"])
+        {
+            //skip
+            return;
+        }
+        
+        //skip lulu
+        // it's already baselined via rules.plist file
+        if(NSNotFound != [currentApp rangeOfString:@"LuLu"].location)
         {
             //skip
             return;

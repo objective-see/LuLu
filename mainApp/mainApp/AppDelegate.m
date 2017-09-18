@@ -90,9 +90,21 @@
         [self startLoginItem:NO];
     });
     
+    //register for notifications from login item
+    // if user clicks 'rules' or 'prefs' make sure we show that window
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationHandler:) name:NOTIFICATION_SHOW_WINDOW object:nil];
+
     return;
 }
 
+//unregister notification handler
+-(void)applicationWillTerminate:(NSApplication *)application
+{
+    //unregister notification
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_SHOW_WINDOW object:nil];
+    
+    return;
+}
 //start the (helper) login item
 -(BOOL)startLoginItem:(BOOL)shouldRestart
 {
@@ -195,11 +207,43 @@ bail:
     return YES;
 }
 
+//notification handler
+-(void)notificationHandler:(NSNotification *)notification
+{
+    //dbg msg
+    #ifdef DEBUG
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"handling notification from login item %@", notification.userInfo]);
+    #endif
+
+    //what window to show?
+    switch ([notification.userInfo[@"window"] intValue]) {
+        
+        //show rules window
+        case WINDOW_RULES:
+            
+            //show
+            [self showRules:nil];
+            break;
+            
+        //show preferences window
+        case WINDOW_PREFERENCES:
+            
+            //show
+            [self showPreferences:nil];
+            break;
+            
+        default:
+            break;
+    }
+
+    return;
+}
+
 #pragma mark -
 #pragma mark Menu Items
 
 //'rules' menu item handler
-// ->alloc/show rules window
+// alloc andshow rules window
 -(IBAction)showRules:(id)sender
 {
     //alloc rules window controller
@@ -209,6 +253,9 @@ bail:
         rulesWindowController = [[RulesWindowController alloc] initWithWindowNibName:@"Rules"];
     }
 
+    //center
+    [self.rulesWindowController.window center];
+    
     //show it
     [self.rulesWindowController showWindow:self];
     
@@ -219,7 +266,7 @@ bail:
 }
 
 //'preferences' menu item handler
-// ->alloc/show preferences window
+// alloc and show preferences window
 -(IBAction)showPreferences:(id)sender
 {
     //alloc prefs window controller
@@ -229,6 +276,9 @@ bail:
         prefsWindowController = [[PrefsWindowController alloc] initWithWindowNibName:@"Preferences"];
     }
     
+    //center
+    [self.prefsWindowController.window center];
+
     //show it
     [self.prefsWindowController showWindow:self];
     
@@ -265,4 +315,7 @@ bail:
     
     return;
 }
+
+
+
 @end

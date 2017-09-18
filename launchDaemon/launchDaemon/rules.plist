@@ -119,5 +119,23 @@
 		<key>user</key>
 		<integer>0</integer>
 	</dict>
+	<key>/Applications/LuLu.app/Contents/MacOS/LuLu</key>
+	<dict>
+		<key>action</key>
+		<integer>1</integer>
+		<key>type</key>
+		<integer>1</integer>
+		<key>user</key>
+		<integer>0</integer>
+	</dict>
+	<key>/Applications/LuLu.app/Contents/Library/LoginItems/Lulu Helper.app/Contents/MacOS/LuLu Helper</key>
+	<dict>
+		<key>action</key>
+		<integer>1</integer>
+		<key>type</key>
+		<integer>1</integer>
+		<key>user</key>
+		<integer>0</integer>
+	</dict>
 </dict>
 </plist>

@@ -7,7 +7,6 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-
 #import "const.h"
 #import "Logging.h"
 #import "Utilities.h"
@@ -15,8 +14,7 @@
 #import "UserCommsInterface.h"
 #import "StatusBarMenu.h"
 
-
-//menu item
+//menu items
 enum menuItems
 {
     status = 100,
@@ -26,7 +24,6 @@ enum menuItems
     end
 };
 
-
 @implementation StatusBarMenu
 
 @synthesize isEnabled;
@@ -34,7 +31,7 @@ enum menuItems
 @synthesize daemonComms;
 
 //init method
-// set some intial flags, etc.
+// set some intial flags, init daemon comms, etc.
 -(id)init:(NSMenu*)menu;
 {
     //load from nib
@@ -94,6 +91,9 @@ enum menuItems
     //config app's pid
     NSNumber* mainAppID = nil;
     
+    //window notification
+    NSNumber* windowNotification = nil;
+    
     //dbg msg
     #ifdef DEBUG
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"user clicked %ld", (long)((NSMenuItem*)sender).tag]);
@@ -108,21 +108,43 @@ enum menuItems
     }
 
     //get pid of config app for user
-    // kill running instance to make sure correct window is shown
-    // TODO: do this better (send msg to running instance so don't have to kill/restart?)
+    // if it's already running, sent it a notifcation to show the window (rules, prefs, etc)
     mainAppID = [getProcessIDs([[NSBundle bundleWithPath:mainApp] executablePath], getuid()) firstObject];
     if(nil != mainAppID)
     {
-        //kill
-        kill(mainAppID.unsignedShortValue, SIGTERM);
+        //which window to show?
+        switch ((long)((NSMenuItem*)sender).tag)
+        {
+            //rules window
+            case rules:
+                
+                //rules
+                windowNotification = [NSNumber numberWithInt:WINDOW_RULES];
         
-        //dbg msg
-        #ifdef DEBUG
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"killed %@ (%@)", mainApp, mainAppID]);
-        #endif
+                break;
+            
+            //prefs window
+            case prefs:
+                
+                //prefs
+                windowNotification = [NSNumber numberWithInt:WINDOW_PREFERENCES];
+                
+                break;
+            
+            default:
+                break;
+                
+        }
         
-        //nap
-        [NSThread sleepForTimeInterval:0.5];
+        //send notification
+        if(nil != windowNotification)
+        {
+            //send
+            [[NSDistributedNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SHOW_WINDOW object:nil userInfo:@{@"window":windowNotification} deliverImmediately:YES];
+        }
+    
+        //all done
+        goto bail;
     }
     
     //handle action
@@ -164,7 +186,6 @@ enum menuItems
             }
             
             break;
-         
             
         //launch main app to show rules
         case rules:

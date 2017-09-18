@@ -126,6 +126,9 @@
 //app name
 #define APP_NAME @"LuLu.app"
 
+//show window notification
+#define NOTIFICATION_SHOW_WINDOW @"com.objective-see.lulu.showWindow"
+
 #define CMDLINE_FLAG_PREFS @"-prefs"
 #define CMDLINE_FLAG_RULES @"-rules"
 #define CMDLINE_FLAG_INSTALL @"-install"
@@ -137,7 +140,7 @@
 #define RULE_TYPE @"type"
 #define RULE_USER @"user"
 
-
+//rules types
 #define RULE_TYPE_ALL     -1
 #define RULE_TYPE_DEFAULT  0
 #define RULE_TYPE_BASELINE 1
@@ -154,7 +157,6 @@
 #define ALERT_ACTION @"action"
 #define ALERT_SIGNINGINFO @"signingInfo"
 
-
 //signature status
 #define KEY_SIGNATURE_STATUS @"signatureStatus"
 
@@ -170,5 +172,11 @@
 //from app store
 #define KEY_SIGNING_IS_APP_STORE @"fromAppStore"
 
+//rules window
+#define WINDOW_RULES 0
 
-#endif /* Const_h */
+//preferences window
+#define WINDOW_PREFERENCES 1
+
+
+#endif /* const_h */

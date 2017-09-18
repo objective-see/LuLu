@@ -17,7 +17,6 @@
 #import "RulesWindowController.h"
 #import "AddRuleWindowController.h"
 
-
 @implementation RulesWindowController
 
 @synthesize rules;
