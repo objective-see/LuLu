@@ -285,7 +285,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 0.9.0;
+				CURRENT_PROJECT_VERSION = 0.9.1;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				INFOPLIST_FILE = kernelExtension/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -303,7 +303,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 0.9.0;
+				CURRENT_PROJECT_VERSION = 0.9.1;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				INFOPLIST_FILE = kernelExtension/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
