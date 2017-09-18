@@ -29,7 +29,7 @@ then
     echo "installing"
 
     #move to unzipped directory
-    cd `dirname "$0"`
+    cd "`dirname "$0"`"
 
     #remove all xattrs
     /usr/bin/xattr -rc *
