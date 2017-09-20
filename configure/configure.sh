@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #
 #  file: configure.sh
@@ -10,29 +10,29 @@
 #
 
 #for now, gotta be macOS 10.12+
-OSVers=`sw_vers -productVersion`
-if [[ ${OSVers:3:2} -lt 12 ]]; then
-echo "\nERROR:" $OSVers "is currently unsupported"
-echo "LuLu requires macOS 10.12+\n"
-exit -1
+OSVers="$(sw_vers -productVersion)"
+if [ "${OSVers:3:2}" -lt 12 ]; then
+    echo "\nERROR: ${OSVers} is currently unsupported"
+    echo "LuLu requires macOS 10.12+\n"
+    exit -1
 fi
 
 #gotta be root
-if [ "$EUID" -ne 0 ]; then
-echo "\nERROR: must be run as root\n"
-exit -1
+if [ "${EUID}" -ne 0 ]; then
+    echo "\nERROR: must be run as root\n"
+    exit -1
 fi
 
 
-if [ "$1" == "-install" ]
+if [ "${1}" == "-install" ]
 then
     echo "installing"
 
     #move to unzipped directory
-    cd "`dirname "$0"`"
+    cd "$(dirname "${0}")" || exit -2
 
     #remove all xattrs
-    /usr/bin/xattr -rc *
+    /usr/bin/xattr -rc ./*
 
     #main LuLu directory
     mkdir -p /Library/Objective-See/LuLu
@@ -65,11 +65,10 @@ then
 
     echo "install complete"
 
-exit 1
+    exit 0
 
-elif [ "$1" == "-uninstall" ]
+elif [ "${1}" == "-uninstall" ]
 then
-
     echo "uninstalling"
 
     #unload launch daemon & remove plist
@@ -87,8 +86,8 @@ then
     rm -rf /Library/Objective-See/LuLu/
 
     #kill
-    killall "LuLu" 2> /dev/null
-    killall "com.objective-see.luluHelper" 2> /dev/null
+    killall LuLu 2> /dev/null
+    killall com.objective-see.luluHelper 2> /dev/null
     killall "LuLu Helper" 2> /dev/null
 
     #unload & remove kext
@@ -96,11 +95,9 @@ then
     rm -rf /Library/Extensions/LuLu.kext
 
     echo "kext unloaded and removed"
-
     echo "uninstall complete"
 
-    exit 1
-
+    exit 0
 fi
 
 #invalid args
