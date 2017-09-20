@@ -17,7 +17,7 @@ LuLu is the free open-source macOS firewall that aims to block unauthorized (out
 Full details and usage instructions can be found [here](https://objective-see.com/products/lulu.html). 
 
 **To Build**<br>
-LuLu should build cleanly in Xcode (though you will have remove code signing constrains, or replace with you own Apple developer/kernel code signing certificate).
+LuLu should build cleanly in Xcode (though you will have to remove code signing constraints, or replace with your own Apple developer/kernel code signing certificate).
 
 **To Install**<br>
 For now, LuLu must be installed via the command-line. Build LuLu or download the pre-built binaries/components from the [Releases page](https://github.com/objective-see/LuLu/releases), then execute the configuration script (`configure.sh`) with the `-install` flag, as root:
