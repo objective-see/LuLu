@@ -44,7 +44,6 @@
 -(BOOL)add:(NSString*)path action:(NSUInteger)action type:(NSUInteger)type user:(NSUInteger)user;
 
 //add to kernel
-// TOOD: check hash, etc
 -(void)addToKernel:(Rule*)rule;
 
 //delete rule

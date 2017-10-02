@@ -14,6 +14,9 @@
 #import <sys/socket.h>
 #import <sys/kern_event.h>
 
+#import "procInfo.h"
+#import "UserClientShared.h"
+
 //custom struct for network events
 // format of data that's broadcast from kext
 struct connectionEvent
@@ -60,5 +63,8 @@ struct connectionEvent
 
 //remove process from list of alerts
 -(void)resetAlert:(pid_t)pid;
+
+//create an alert object
+-(NSMutableDictionary*)createAlert:(struct networkOutEvent_s*)event process:(Process*)process;
 
 @end

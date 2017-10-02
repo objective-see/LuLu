@@ -7,8 +7,8 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "const.h"
-#import "logging.h"
+#import "Const.h"
+#import "Logging.h"
 #import "Utilities.h"
 
 #import <signal.h>
@@ -503,7 +503,7 @@ NSImage* getIconForProcess(NSString* path)
     NSImage* icon = nil;
     
     //system's document icon
-    //static NSData* documentIcon = nil;
+    static NSData* documentIcon = nil;
     
     //bundle
     NSBundle* appBundle = nil;
@@ -541,6 +541,24 @@ NSImage* getIconForProcess(NSString* path)
     {
         //extract icon
         icon = [[NSWorkspace sharedWorkspace] iconForFile:path];
+        
+        //load system document icon
+        // ->static var, so only load once
+        if(nil == documentIcon)
+        {
+            //load
+            documentIcon = [[[NSWorkspace sharedWorkspace] iconForFileType:
+                             NSFileTypeForHFSTypeCode(kGenericDocumentIcon)] TIFFRepresentation];
+        }
+        
+        //if 'iconForFile' method doesn't find and icon, it returns the system 'document' icon
+        // ->the system 'application' icon seems more applicable, so use that here...
+        if(YES == [[icon TIFFRepresentation] isEqual:documentIcon])
+        {
+            //set icon to system 'applicaiton' icon
+            icon = [[NSWorkspace sharedWorkspace]
+                    iconForFileType: NSFileTypeForHFSTypeCode(kGenericApplicationIcon)];
+        }
         
         //'iconForFileType' returns small icons
         // ->so set size to 64
@@ -859,7 +877,7 @@ pid_t getParentID(int pid)
     
     return parentID;
 }
-
+//TODO: use proc info lib!
 //build an array of processes ancestry
 // ->start with process and go 'back' till initial ancestor
 NSMutableArray* generateProcessHierarchy(pid_t pid)

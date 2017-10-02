@@ -29,7 +29,7 @@
 -(void)deleteRule:(NSString*)path;
 
 //import rules
--(void)importRules:(NSString*)rulesFile;
+-(void)importRules:(NSString*)rulesFile reply:(void (^)(BOOL))reply;
 
 //process alert request from client
 -(void)alertRequest:(void (^)(NSDictionary* alert))reply;

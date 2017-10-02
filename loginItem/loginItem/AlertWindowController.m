@@ -7,6 +7,8 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
+//TODO: don't show popover if ancestors are nil?
+
 #import <sys/socket.h>
 
 #import "const.h"
@@ -16,20 +18,16 @@
 #import "DaemonComms.h"
 #import "AlertWindowController.h"
 
-//TODO:
-// maybe disable VT button if LuLu helper is not approved for network connections (as we only show one connection at a time)
-
 @implementation AlertWindowController
 
 @synthesize alert;
 @synthesize signedIcon;
 @synthesize processIcon;
 @synthesize processName;
+@synthesize ancestryButton;
 @synthesize ancestryPopover;
 @synthesize virusTotalButton;
 @synthesize virusTotalPopover;
-
-@synthesize ancestryButton;
 
 //center window
 // ->also, transparency
@@ -51,7 +49,7 @@
 }
 
 //update alert window
-- (void)windowDidChangeOcclusionState:(NSNotification *)notification
+-(void)windowDidChangeOcclusionState:(NSNotification *)notification
 {
     //remote addr
     NSString* remoteAddress = nil;
@@ -81,10 +79,26 @@
         //unset port & proto
         self.portProto.stringValue = @"";
         
+        //alert window maximized?
+        // unzoom to bring it back to its default size
+        if(YES == self.window.zoomed)
+        {
+            //reset width (horizontal)
+            [self.window.contentView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[window(0@745)]|"
+                                                     options:0 metrics:nil views:NSDictionaryOfVariableBindings(self.window)]];
+        }
+        
+        //make un-modal
+        //[[NSApplication sharedApplication] stopModal];
+            
         //bail
         goto bail;
     }
     
+    //lulu allowed/blocked from talking to internet?
+    // will fact, will determine state of virus total button
+    [self setVTButtonState];
+
     //host name?
     if(nil != self.alert[ALERT_HOSTNAME])
     {
@@ -136,11 +150,26 @@
     
     //make window front
     [NSApp activateIgnoringOtherApps:YES];
-
+    
+    //make modal
+    [[NSApplication sharedApplication] runModalForWindow:self.window];
+    
 bail:
     
     return;
 }
+
+
+//window closing
+// make sure we're unmodal
+- (void)windowWillClose:(NSNotification *)notification
+{
+    //stop modal
+    [[NSApplication sharedApplication] stopModal];
+    
+    return;
+}
+
 
 //covert number protocol to name
 -(NSString*)convertProtocol
@@ -177,6 +206,49 @@ bail:
     return protocol;
 }
 
+//lulu allowed/blocked from talking to internet?
+// will fact, will determine state of virus total button
+-(void)setVTButtonState
+{
+    //flag
+    __block BOOL shouldDisable = YES;
+    
+    //daemon comms object
+    DaemonComms* daemonComms = nil;
+    
+    //init daemom comms
+    daemonComms = [[DaemonComms alloc] init];
+    
+    //get rules from daemon via XPC
+    [daemonComms getRules:NO reply:^(NSDictionary* daemonRules)
+     {
+         //look for an allow rule for lulu
+         for(NSString* processPath in daemonRules.allKeys)
+         {
+             //is allow rule, match us?
+             if( (YES == [processPath isEqualToString:NSProcessInfo.processInfo.arguments[0]]) &&
+                (RULE_STATE_ALLOW == [[daemonRules[processPath] objectForKey:RULE_ACTION] intValue]) )
+             {
+                 
+                 //dbg msg
+                 logMsg(LOG_DEBUG, @"lulu/helper is allowed to access the network");
+                 
+                 //ok there is a rule for lulu, allowing it
+                 // thus, virus total can be queried (i.e. it won't be blocked)
+                 shouldDisable = NO;
+                 
+                 //done
+                 break;
+             }
+         }
+         
+         //set button state
+         self.virusTotalButton.enabled = !shouldDisable;
+         
+     }];
+    
+    return;
+}
 
 //set signing icon
 // TODO: maybe make this clickable/more info? (signing auths, etc)
@@ -313,7 +385,6 @@ bail:
         self.ancestryViewController.processHierarchy = processHierarchy;
         
         //dynamically (re)size popover
-        // TODO: this needs some TLC
         [self setPopoverSize];
         
         //reload it
@@ -381,7 +452,7 @@ bail:
         
         //calculate width
         // ->first w/ indentation
-        currentRowWidth = [self.ancestryOutline indentationPerLevel] * i;
+        currentRowWidth = [self.ancestryOutline indentationPerLevel] * (i+1);
         
         //calculate width
         // ->then size of string in row
@@ -453,7 +524,7 @@ bail:
     response = [NSMutableDictionary dictionaryWithDictionary:self.alert];
     
     //init daemon
-    // use local var here, as we need to block
+    // use local var here, as iVar blocks
     daemonComms = [[DaemonComms alloc] init];
     
     //block

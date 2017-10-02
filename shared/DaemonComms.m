@@ -7,8 +7,8 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "const.h"
-#import "logging.h"
+#import "Const.h"
+#import "Logging.h"
 #import "DaemonComms.h"
 
 @implementation DaemonComms
@@ -61,7 +61,7 @@
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"sending request, via XPC, to get rules (wait: %d)", wait4Change]);
     
-    
+    //make XPC request to get rules
     [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
         //err msg
@@ -86,7 +86,7 @@
     //dbg msg
     logMsg(LOG_DEBUG, @"sending request, via XPC, to add rule");
     
-    //add rule
+    //make XPC request to add rule
     [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
         //err msg
@@ -115,20 +115,36 @@
 }
 
 //import rules
--(void)importRules:(NSString*)rulesFile
+-(BOOL)importRules:(NSString*)rulesFile
 {
+    //flag
+    __block BOOL importedRules = NO;
+    
+    //init wait sema
+    __block dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
     //dbg msg
     logMsg(LOG_DEBUG, @"sending request, via XPC, to import rules");
     
     //import rules
     [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
-          //err msg
-          logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute 'importRules' method on launch daemon (error: %@)", proxyError]);
-          
-    }] importRules:rulesFile];
+        //err msg
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute 'importRules' method on launch daemon (error: %@)", proxyError]);
+        
+    }] importRules:rulesFile reply:^(BOOL result)
+    {
+        //set flag
+        importedRules = YES;
+        
+        //signal response was received
+        dispatch_semaphore_signal(semaphore);
+    }];
     
-    return;
+    //wait for response to be received
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
+    return importedRules;
 }
 
 //ask (and then block) for an alert

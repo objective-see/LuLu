@@ -16,12 +16,6 @@
 
 #include <libkern/OSMalloc.h>
 
-/* TODOs:
-
- a) add IPV6 support
- 
-*/
-
 /* socket events called by OS */
 static void detach(void *cookie, socket_t so);
 static errno_t attach(void **cookie, socket_t so);
@@ -90,6 +84,50 @@ static struct sflt_filter udpFilterIPV4 = {
     NULL
 };
 
+//socket filter, TCP IPV6
+static struct sflt_filter tcpFilterIPV6 = {
+    FLT_TCPIPV6_HANDLE,
+    SFLT_GLOBAL,
+    (char*)BUNDLE_ID,
+    unregistered,
+    attach,
+    detach,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    connect_out,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+};
+
+//socket filter, UDP IPV4
+static struct sflt_filter udpFilterIPV6 = {
+    FLT_UDPIPV6_HANDLE,
+    SFLT_GLOBAL,
+    (char*)BUNDLE_ID,
+    unregistered,
+    attach,
+    detach,
+    NULL,
+    NULL,
+    NULL,
+    data_in,
+    data_out,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+};
+
 
 //register socket filters
 kern_return_t registerSocketFilters()
@@ -104,12 +142,13 @@ kern_return_t registerSocketFilters()
     IOLog("LULU: in %s\n", __FUNCTION__);
     
     //sanity check
-    // TODO: when IPV6 support added, add here too
     if( (true == gRegisteredTCPIPV4) ||
-        (true == gRegisteredUDPIPV4) )
+        (true == gRegisteredUDPIPV4) ||
+        (true == gRegisteredTCPIPV6) ||
+        (true == gRegisteredUDPIPV6) )
     {
         //err msg
-        IOLog("LULU ERROR: socket filters already registered (%d/%d)\n", gRegisteredTCPIPV4, gRegisteredUDPIPV4);
+        IOLog("LULU ERROR: socket filters already registered (%d/%d/%d/%d)\n", gRegisteredTCPIPV4, gRegisteredUDPIPV4, gRegisteredTCPIPV6, gRegisteredUDPIPV6);
         
         //bail
         goto bail;
@@ -117,11 +156,11 @@ kern_return_t registerSocketFilters()
     
     //register socket filter
     // ->AF_INET domain, SOCK_STREAM type, TCP protocol
-    status = sflt_register(&tcpFilterIPV4, PF_INET, SOCK_STREAM, IPPROTO_TCP);
+    status = sflt_register(&tcpFilterIPV4, AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if(kIOReturnSuccess != status)
     {
         //err msg
-        IOLog("LULU ERROR: sflt_register failed with %d\n", status);
+        IOLog("LULU ERROR: sflt_register('tcpFilterIPV4') failed with %d\n", status);
         
         //bail
         goto bail;
@@ -135,11 +174,11 @@ kern_return_t registerSocketFilters()
     
     //register socket filter
     // ->AF_INET domain, SOCK_DGRAM type, UDP protocol
-    status = sflt_register(&udpFilterIPV4, PF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    status = sflt_register(&udpFilterIPV4, AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     if(kIOReturnSuccess != status)
     {
         //err msg
-        IOLog("LULU ERROR: sflt_register failed with %d\n", status);
+        IOLog("LULU ERROR: sflt_register('udpFilterIPV4') failed with %d\n", status);
         
         //bail
         goto bail;
@@ -150,6 +189,42 @@ kern_return_t registerSocketFilters()
     
     //dbg msg
     IOLog("LULU: registerd socker filter for udp ipv4\n");
+
+    //register socket filter
+    // ->AF_INET6 domain, SOCK_STREAM type, TCP protocol
+    status = sflt_register(&tcpFilterIPV6, AF_INET6, SOCK_STREAM, IPPROTO_TCP);
+    if(kIOReturnSuccess != status)
+    {
+        //err msg
+        IOLog("LULU ERROR: sflt_register('tcpFilterIPV6') failed with %d\n", status);
+        
+        //bail
+        goto bail;
+    }
+    
+    //set global flag
+    gRegisteredTCPIPV6 = true;
+    
+    //dbg msg
+    IOLog("LULU: registerd socker filter for tcp ipv6\n");
+    
+    //register socket filter
+    // ->AF_INET6 domain, SOCK_DGRAM type, UDP protocol
+    status = sflt_register(&udpFilterIPV6, AF_INET6, SOCK_DGRAM, IPPROTO_UDP);
+    if(kIOReturnSuccess != status)
+    {
+        //err msg
+        IOLog("LULU ERROR: sflt_register('udpFilterIPV6') failed with %d\n", status);
+        
+        //bail
+        goto bail;
+    }
+    
+    //set global flag
+    gRegisteredUDPIPV6 = true;
+    
+    //dbg msg
+    IOLog("LULU: registerd socker filter for udp ipv6\n");
     
     //happy
     result = kIOReturnSuccess;
@@ -169,12 +244,13 @@ kern_return_t unregisterSocketFilters()
     IOLog("LULU: in %s\n", __FUNCTION__);
     
     //sanity check
-    // TODO: when IPV6 support added, add here too
     if( (false == gRegisteredTCPIPV4) ||
-        (false == gRegisteredUDPIPV4) )
+        (false == gRegisteredUDPIPV4) ||
+        (false == gRegisteredTCPIPV6) ||
+        (false == gRegisteredUDPIPV6) )
     {
         //err msg
-        IOLog("LULU ERROR: socket filters already unregistered (%d/%d)\n", gRegisteredTCPIPV4, gRegisteredUDPIPV4);
+        IOLog("LULU ERROR: socket filters already unregistered (%d/%d/%d/%d)\n", gRegisteredTCPIPV4, gRegisteredUDPIPV4, gRegisteredTCPIPV6, gRegisteredUDPIPV6);
         
         //bail
         goto bail;
@@ -206,12 +282,40 @@ kern_return_t unregisterSocketFilters()
         gUnregisteringUDPIPV4 = true;
     }
     
+    //TCP IPV6
+    // when filter's been registered & not currently unregistering
+    // ->invoke sflt_unregister to unregister, and set global flag
+    if( (true == gRegisteredTCPIPV6) &&
+        (true != gUnregisteringTCPIPV6))
+    {
+        //unregister
+        sflt_unregister(FLT_TCPIPV6_HANDLE);
+        
+        //set global flag
+        gUnregisteringTCPIPV6 = true;
+    }
+    
+    //UDP IPV6
+    // when filter's been registered & not currently unregistering
+    // ->invoke sflt_unregister to unregister, and set global flag
+    if( (true == gRegisteredUDPIPV6) &&
+        (true != gUnregisteringUDPIPV6))
+    {
+        //unregister
+        sflt_unregister(FLT_UDPIPV6_HANDLE);
+        
+        //set global flag
+        gUnregisteringUDPIPV6 = true;
+    }
+
     //filter still registered?
     if( (true == gRegisteredTCPIPV4) ||
-        (true == gRegisteredUDPIPV4) )
+        (true == gRegisteredUDPIPV4) ||
+        (true == gRegisteredTCPIPV6) ||
+        (true == gRegisteredUDPIPV6) )
     {
         //err msg
-        IOLog("LULU ERROR: socket filter(s) still registered %d/%d\n", gRegisteredTCPIPV4, gRegisteredUDPIPV4);
+        IOLog("LULU ERROR: socket filter(s) still registered %d/%d/%d/%d\n", gRegisteredTCPIPV4, gRegisteredUDPIPV4, gRegisteredTCPIPV6, gRegisteredUDPIPV6);
         
         //set error
         status = EBUSY;
@@ -235,20 +339,39 @@ static void unregistered(sflt_handle handle)
     //dbg msg
     IOLog("LULU: in %s\n", __FUNCTION__);
     
-    //tcp ipv4
-    // ->set flag
-    if(FLT_TCPIPV4_HANDLE == handle)
-    {
-        //set
-        gRegisteredTCPIPV4 = false;
-    }
-    
-    //tcp ipv4
-    // ->set flag
-    else if(FLT_UDPIPV4_HANDLE == handle)
-    {
-        //set
-        gRegisteredUDPIPV4 = false;
+    //set appropriate handle
+    switch (handle) {
+        
+        //tcp ipv4
+        case FLT_TCPIPV4_HANDLE:
+            
+            //set
+            gRegisteredTCPIPV4 = false;
+            break;
+            
+        //udp ipv4
+        case FLT_UDPIPV4_HANDLE:
+            
+            //set
+            gRegisteredUDPIPV4 = false;
+            break;
+            
+        //tcp ipv6
+        case FLT_TCPIPV6_HANDLE:
+            
+            //set
+            gRegisteredTCPIPV6 = false;
+            break;
+            
+        //udp ipv6
+        case FLT_UDPIPV6_HANDLE:
+            
+            //set
+            gRegisteredUDPIPV6 = false;
+            break;
+            
+        default:
+            break;
     }
     
     return;
@@ -280,7 +403,7 @@ static kern_return_t attach(void **cookie, socket_t so)
     }
     
     //set rule action
-    // ->not found, block, allow, etc
+    // not found, block, allow, etc
     ((struct cookieStruct*)(*cookie))->ruleAction = queryRule(proc_selfpid());
     
     //dbg msg
@@ -314,7 +437,6 @@ static void detach(void *cookie, socket_t so)
     return;
 }
 
-
 //callback for incoming data
 // only interested in DNS responses for IP:URL mappings
 // code inspired by: https://github.com/williamluke/peerguardian-linux/blob/master/pgosx/kern/ppfilter.c
@@ -332,8 +454,14 @@ static errno_t data_in(void *cookie, socket_t so, const struct sockaddr *from, m
     //mem buffer
     mbuf_t memBuffer = NULL;
     
+    //response size
+    size_t responseSize = 0;
+    
     //dns header
     dnsHeader* dnsHeader = NULL;
+    
+    //firewall event
+    firewallEvent event = {0};
     
     //destination socket ('from') might be null?
     // if so, grab it via 'getpeername' from the socket
@@ -431,126 +559,25 @@ static errno_t data_in(void *cookie, socket_t so, const struct sockaddr *from, m
         goto bail;
     }
     
-    //ok, likely candidate
-    // let's broadcast to user mode for parsing
-    if(true != broadcastDNSReponse(EVENT_DNS_RESPONSE, mbuf_data(memBuffer), mbuf_len(memBuffer)))
-    {
-        //err msg
-        IOLog("LULU ERROR: failed to broadcast DNS response to user mode\n");
-        
-        //bail
-        goto bail;
-
-    }
+    //zero out event struct
+    bzero(&event, sizeof(firewallEvent));
     
-
-    /*
-        
+    //set type
+    event.dnsResponseEvent.type = EVENT_DNS_RESPONSE;
     
-    mbuf_t mdata = *data;
-    while (mdata && MBUF_TYPE_DATA != mbuf_type(mdata)) {
-        mdata = mbuf_next(mdata);
-    }
-    if (!mdata)
-        return (0);
+    //set size
+    // max, 512
+    responseSize = MIN(sizeof(event.dnsResponseEvent.response), mbuf_len(memBuffer));
     
-    char *pkt = (char*)mbuf_data(mdata);
-    if (!pkt)
-        return (0);
-    size_t len = mbuf_len(mdata);
+    //copy response
+    memcpy(event.dnsResponseEvent.response, mbuf_data(memBuffer), responseSize);
     
-    char* dnsData = pkt+sizeof(struct dns_header);
-    
-    //dbg msg
-    printf("LULUX: port (dns): %d\n", port);
-    printf("LULUX: length: %d\n", len);
-    
-    
-    dns_header* header = (struct dns_header*)pkt;
-    
-    printf("LULUX DNS HEADER\n");
-    printf("LULUX id:%x\n", ntohs(header->id));
-    printf("LULUX flags:%x\n", ntohs(header->flags));
-    
-    if((ntohs(header->flags)) & (1<<(15)))
-    {
-        printf("LULUX top bit set: Response (%d)\n", (ntohs(header->flags)) & (1<<(15)));
-    }
-    else
-    {
-        printf("LULUX ignoring, as not response\n");
-        
-        //ignore
-        return kIOReturnSuccess;
-    }
-    
-    
-    //log show --style syslog | grep LULUX
-    
-    if(0 == ((ntohs(header->flags)) & (1<<(0))))
-    {
-        printf("LULUX bottom bit set yah: no errors\n");
-    }
-    
-    
-    if(0 == ntohs(header->ancount))
-    {
-        printf("LULUX ignoring, as no answers\n");
-        //ignore
-        return kIOReturnSuccess;
-        
-    }
-    
-    printf("LULUX # questions:%d\n", ntohs(header->qdcount));
-    printf("LULUX # answers:%d\n", ntohs(header->ancount));
-    printf("LULUX # ns:%d\n", ntohs(header->nscount));
-    printf("LULUX # ar:%d\n", ntohs(header->arcount));
-    
-    */
-    //broadcast to user more for parsing
-    
-    //printf("LULUX # would broadcast to user mode\n");
-    
-    //return kIOReturnSuccess;
-    
-    /*
-    
-    int numRRs = ntohs(header->qdcount) + ntohs(header->ancount) + ntohs(header->nscount) + ntohs(header->arcount);
-    int i;
-    
-    printf("LULUX:  (%d)", numRRs);
-    
-    //numRRs = 0;
-    for(i=0; i<numRRs; i++){
-        //	printf("%sRR(%d)\n", tab, i);
-        printf("LULUX:  (%d)", sizeofUrl(dnsData)-2);
-        print_url(dnsData);
-        printf("\n");
-        
-        // extract variables
-        static_RR* RRd = (static_RR*)((char*)dnsData + sizeofUrl(dnsData));
-        int type = ntohs(RRd->type);
-        int clas = ntohs(RRd->clas);
-        int ttl = (uint32_t)ntohl(RRd->ttl);
-        int rdlength = ntohs(RRd->rdlength);
-        uint8_t* rd = (uint8_t*)(char*)(&RRd->rdlength + sizeof(uint16_t));
-        
-        printf("LULUX type(%d):",type); printRRType( ntohs(RRd->type) ); printf("\n");
-        printf("LULUX class:%d TTL:%d RDlength:%d\n", clas, ttl, rdlength);
-        if( rdlength != 0 ){
-            printf("LULUX data:");
-            printf("LULUX %d.%d.%d.%d",rd[0], rd[1], rd[2], rd[3]  );
-            printf("\n");
-        }
-        
-    }
-    */
-    
+    //queue it up
+    sharedDataQueue->enqueue_tail(&event, sizeof(firewallEvent));
     
 bail:
     
     return kIOReturnSuccess;
-    
 }
 
 
@@ -615,7 +642,7 @@ bail:
 }
 
 //process
-// ->block/allow, or ask user and put thread to sleep
+// block/allow, or ask user and put thread to sleep
 kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
 {
     //result
@@ -640,9 +667,12 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
     char processName[PATH_MAX] = {0};
 
     //what does rule say?
-    // ->loop until we have an answer
+    // loop until we have an answer
     while(true)
     {
+        //reset
+        bzero(&event, sizeof(event));
+        
         //extract action
         action = ((struct cookieStruct*)cookie)->ruleAction;
         
@@ -685,8 +715,11 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
             //zero out
             bzero(&event, sizeof(firewallEvent));
             
+            //set type
+            event.networkOutEvent.type = EVENT_NETWORK_OUT;
+            
             //add pid
-            event.pid = proc_selfpid();
+            event.networkOutEvent.pid = proc_selfpid();
             
             //init length
             socketTypeLength = sizeof(socketType);
@@ -695,14 +728,14 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
             sock_getsockopt(so, SOL_SOCKET, SO_TYPE, &socketType, &socketTypeLength);
             
             //save type
-            event.socketType = socketType;
+            event.networkOutEvent.socketType = socketType;
             
             //UDP sockets destination socket might be null
-            // ->so grab via 'getpeername' and save as 'remote addr'
+            // so grab via 'getpeername' and save as 'remote addr'
             if(NULL == to)
             {
                 //copy into 'remote addr' for user mode
-                if(0 != sock_getpeername(so, (struct sockaddr*)&(event.remoteAddress), sizeof(struct sockaddr_in)))
+                if(0 != sock_getpeername(so, (struct sockaddr*)&(event.networkOutEvent.remoteAddress), sizeof(event.networkOutEvent.remoteAddress)))
                 {
                     //err msg
                     IOLog("LULU ERROR: sock_getpeername() failed");
@@ -716,7 +749,7 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
             else
             {
                 //add remote (destination) socket addr
-                memcpy(&(event.remoteAddress), to, sizeof(struct sockaddr));
+                memcpy(&(event.networkOutEvent.remoteAddress), to, sizeof(event.networkOutEvent.remoteAddress));
             }
             
             //queue it up
@@ -731,7 +764,7 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
             //sleep
             reason = IOLockSleep(ruleEventLock, &ruleEventLock, THREAD_ABORTSAFE);
             
-            //TODO: fix panic
+            //TODO: fix panic, think if kext is unloaded (sets ruleEventLock to NULL) this can still wake up?
             // "Preemption level underflow, possible cause unlocking an unlocked mutex or spinlock"
             //  seems to happen when process is killed or kext unloaded while in the IOLockSleep!?
             

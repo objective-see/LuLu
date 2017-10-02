@@ -43,7 +43,6 @@ bail:
 }
 
 //broadcast an event to user mode
-//TODO: when IPV6 is supported; sockaddr/vs sockaddr_in/sockaddr_in6 for size
 bool broadcastEvent(int type, socket_t so, const struct sockaddr *to)
 {
     //return var
@@ -56,10 +55,10 @@ bool broadcastEvent(int type, socket_t so, const struct sockaddr *to)
     int processID = 0;
     
     //local socket address
-    struct sockaddr_in localAddress = {0};
+    struct sockaddr_in6 localAddress = {0};
     
     //remote socket address
-    struct sockaddr_in remoteAddress = {0};
+    struct sockaddr_in6 remoteAddress = {0};
     
     //socket type
     int socketType = 0;
@@ -166,6 +165,7 @@ bail:
     return result;
 }
 
+/*
 //broadcast an DNS reponse to user mode
 bool broadcastDNSReponse(int type, void* packet, size_t length)
 {
@@ -228,4 +228,5 @@ bail:
     
     return result;
 }
+*/
 

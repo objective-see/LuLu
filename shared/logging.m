@@ -7,8 +7,8 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "const.h"
-#import "logging.h"
+#import "Const.h"
+#import "Logging.h"
 
 //global log file handle
 NSFileHandle* logFileHandle = nil;
@@ -104,17 +104,10 @@ void deinitLogging()
 }
 
 //prep/open log file
-BOOL initLogging()
+BOOL initLogging(NSString* logPath)
 {
     //ret var
     BOOL bRet = NO;
-    
-    //log file path
-    NSString* logPath = nil;
-    
-    //init log path
-    // '/Library/Logs/Lulu.log'
-    logPath = [@"/Library/Logs/" stringByAppendingPathComponent:LOG_FILE_NAME];
     
     //first time
     //  create file

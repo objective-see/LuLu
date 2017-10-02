@@ -153,7 +153,7 @@ bool com_objectivesee_driver_LuLu::initWithTask (task_t owningTask, void* securi
     }
     
     //call super
-    if(true != super::initWithTask(owningTask, securityToken , type, properties))
+    if(true != super::initWithTask(owningTask, securityToken, type, properties))
     {
         //bail
         goto bail;

@@ -35,26 +35,62 @@ enum dispatchSelectors {
 	kTestUserClientMethodCount
 };
 
+//type
+struct genericEvent_s
+{
+    //type
+    UInt32 type;
+};
 
-//firewall event struct
-typedef struct {
+//network out event struct
+struct networkOutEvent_s {
+    
+    //type
+    UInt32 type;
     
     //process pid
-    UInt32        pid;
+    UInt32 pid;
     
     //socket type
     int socketType;
     
     //local socket address
-    struct sockaddr_in localAddress;
+    struct sockaddr_in6 localAddress;
     
     //remote socket address
-    struct sockaddr_in remoteAddress;
+    struct sockaddr_in6 remoteAddress;
+};
+
+//dns response out event struct
+struct dnsResponseEvent_s {
+    
+    //type
+    UInt32 type;
+    
+    //response
+    unsigned char response[512];
+};
+
+//firewall event union
+// holds various structs, but max size will be 'padding'
+typedef union
+{
+    //generic event
+    struct genericEvent_s genericEvent;
+    
+    //network out event
+    struct networkOutEvent_s networkOutEvent;
+    
+    //dns response event
+    struct dnsResponseEvent_s dnsResponseEvent;
+    
+    //padding
+    unsigned char padding[sizeof(UInt32) + 512];
     
 } firewallEvent;
 
-//dns header
-//http://www.nersc.gov/~scottc/software/snort/dns_head.html
+//dns header struct
+// from: http://www.nersc.gov/~scottc/software/snort/dns_head.html
 #pragma pack(push,1)
 struct dnsHeader {
     unsigned short id;
@@ -64,16 +100,6 @@ struct dnsHeader {
     unsigned short nscount;
     unsigned short arcount;
 };
-#pragma pack(pop)
-
-//TODO
-#pragma pack(push,1)
-typedef struct {
-    uint16_t type;
-    uint16_t clas;
-    uint32_t ttl;
-    uint16_t rdlength;
-} static_RR;
 #pragma pack(pop)
 
 #endif

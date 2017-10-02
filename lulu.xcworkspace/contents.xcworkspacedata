@@ -9,13 +9,6 @@
       </FileRef>
    </Group>
    <Group
-      location = "group:mainApp"
-      name = "mainApp">
-      <FileRef
-         location = "group:mainApp.xcodeproj">
-      </FileRef>
-   </Group>
-   <Group
       location = "group:kernelExtension"
       name = "kernelExtension">
       <FileRef
@@ -27,6 +20,13 @@
       name = "launchDaemon">
       <FileRef
          location = "group:launchDaemon.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:mainApp"
+      name = "mainApp">
+      <FileRef
+         location = "group:mainApp.xcodeproj">
       </FileRef>
    </Group>
    <Group

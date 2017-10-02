@@ -27,4 +27,11 @@
 // ->wait for & display alerts
 -(void)monitor;
 
+//when client is in passive mode: allow
+-(void)passivelyAllow:(DaemonComms*)daemonComms alert:(NSDictionary*)alert;
+
+//callback handler
+// ->invoked when window closes
+-(void)alertWindowClosed:(id)object;
+
 @end

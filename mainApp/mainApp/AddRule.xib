@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,16 +19,87 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Add Rule" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="439" height="230"/>
+            <rect key="contentRect" x="196" y="240" width="439" height="216"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <value key="minSize" type="size" width="439" height="216"/>
+            <value key="maxSize" type="size" width="800" height="216"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="439" height="230"/>
+                <rect key="frame" x="0.0" y="0.0" width="439" height="216"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rer-xE-vmi">
-                        <rect key="frame" x="246" y="27" width="83" height="32"/>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FGP-wa-tQy">
+                        <rect key="frame" x="102" y="85" width="84" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="radio" title=" block" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="JJl-Lz-apr">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" size="13" name="Menlo-Bold"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="radioButtonsHandler:" target="-2" id="yN0-n8-8lJ"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZX5-FR-Ua8">
+                        <rect key="frame" x="338" y="103" width="87" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="2tj-XI-LkF"/>
+                            <constraint firstAttribute="width" constant="75" id="kBa-5d-iLO"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OoX-aE-Hgf">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="13" name="Menlo-Regular"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="browseButtonHandler:" target="-2" id="PT1-Ty-Np7"/>
+                        </connections>
+                    </button>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TMj-aG-iTU">
+                        <rect key="frame" x="103" y="139" width="316" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="mOR-Su-gK2"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Bon-iR-8FO">
+                            <font key="font" size="13" name="Menlo-Regular"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="LyI-TV-Syi">
+                        <rect key="frame" x="102" y="58" width="84" height="27"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="radio" title=" allow" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="oCK-aR-Ek4">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" size="13" name="Menlo-Bold"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="radioButtonsHandler:" target="-2" id="3vs-3M-SsZ"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lP5-by-JA2">
+                        <rect key="frame" x="101" y="168" width="125" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="FPl-4Y-c6j"/>
+                            <constraint firstAttribute="width" constant="121" id="XgJ-Ba-s1A"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="process path" id="tc1-pS-Wns">
+                            <font key="font" size="13" name="Menlo-Regular"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z5k-JM-ou9">
+                        <rect key="frame" x="20" y="119" width="66" height="64"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="64" id="4sh-vk-SxP"/>
+                            <constraint firstAttribute="width" constant="66" id="Swd-b7-aKa"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="h8l-JG-MHD"/>
+                    </imageView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rer-xE-vmi">
+                        <rect key="frame" x="257" y="13" width="83" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="71" id="4xU-ew-nvK"/>
+                            <constraint firstAttribute="height" constant="21" id="ret-kW-s6x"/>
+                        </constraints>
                         <buttonCell key="cell" type="push" title="cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fX0-Jq-Okq">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="13" name="Menlo-Regular"/>
@@ -40,9 +111,12 @@ Gw
                             <action selector="cancelButtonHandler:" target="-2" id="Fws-JZ-RMQ"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XX0-l9-AZe">
-                        <rect key="frame" x="350" y="27" width="64" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XX0-l9-AZe">
+                        <rect key="frame" x="361" y="13" width="64" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="52" id="L0j-xG-Jk9"/>
+                            <constraint firstAttribute="height" constant="21" id="Pno-Yh-Pt3"/>
+                        </constraints>
                         <buttonCell key="cell" type="push" title="add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V5P-DF-wCP">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="13" name="Menlo-Bold"/>
@@ -54,68 +128,27 @@ Gw
                             <action selector="addButtonHandler:" target="-2" id="aca-Io-ckN"/>
                         </connections>
                     </button>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FGP-wa-tQy">
-                        <rect key="frame" x="107" y="99" width="84" height="27"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="radio" title=" block" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="JJl-Lz-apr">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" size="13" name="Menlo-Bold"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="radioButtonsHandler:" target="-2" id="yN0-n8-8lJ"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZX5-FR-Ua8">
-                        <rect key="frame" x="325" y="117" width="84" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OoX-aE-Hgf">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="13" name="Menlo-Regular"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="browseButtonHandler:" target="-2" id="PT1-Ty-Np7"/>
-                        </connections>
-                    </button>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMj-aG-iTU">
-                        <rect key="frame" x="108" y="153" width="295" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Bon-iR-8FO">
-                            <font key="font" size="13" name="Menlo-Regular"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="LyI-TV-Syi">
-                        <rect key="frame" x="107" y="72" width="84" height="27"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="radio" title=" allow" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="oCK-aR-Ek4">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" size="13" name="Menlo-Bold"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="radioButtonsHandler:" target="-2" id="3vs-3M-SsZ"/>
-                        </connections>
-                    </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lP5-by-JA2">
-                        <rect key="frame" x="106" y="182" width="125" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="process path" id="tc1-pS-Wns">
-                            <font key="font" size="13" name="Menlo-Regular"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z5k-JM-ou9">
-                        <rect key="frame" x="32" y="116" width="66" height="64"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="h8l-JG-MHD"/>
-                    </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Z5k-JM-ou9" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Bsm-eQ-WBT"/>
+                    <constraint firstItem="Z5k-JM-ou9" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="33" id="DDj-SN-vYJ"/>
+                    <constraint firstItem="ZX5-FR-Ua8" firstAttribute="top" secondItem="TMj-aG-iTU" secondAttribute="bottom" constant="8" id="G0s-dZ-cD4"/>
+                    <constraint firstAttribute="trailing" secondItem="TMj-aG-iTU" secondAttribute="trailing" constant="20" id="GRZ-S9-nJ5"/>
+                    <constraint firstItem="TMj-aG-iTU" firstAttribute="leading" secondItem="Z5k-JM-ou9" secondAttribute="trailing" constant="17" id="cFA-dk-4v5"/>
+                    <constraint firstItem="lP5-by-JA2" firstAttribute="leading" secondItem="Z5k-JM-ou9" secondAttribute="trailing" constant="17" id="e9P-Va-2jR"/>
+                    <constraint firstItem="TMj-aG-iTU" firstAttribute="top" secondItem="lP5-by-JA2" secondAttribute="bottom" constant="5" id="hS0-ei-rsR"/>
+                    <constraint firstAttribute="bottom" secondItem="Rer-xE-vmi" secondAttribute="bottom" constant="20" id="jnx-vr-7F5"/>
+                    <constraint firstAttribute="bottom" secondItem="XX0-l9-AZe" secondAttribute="bottom" constant="20" id="laB-iV-gzu"/>
+                    <constraint firstAttribute="trailing" secondItem="ZX5-FR-Ua8" secondAttribute="trailing" constant="20" id="o1Z-5c-UnM"/>
+                    <constraint firstItem="lP5-by-JA2" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="31" id="qv3-Nt-0qN"/>
+                    <constraint firstAttribute="trailing" secondItem="XX0-l9-AZe" secondAttribute="trailing" constant="20" id="qzI-8A-AIe"/>
+                    <constraint firstItem="XX0-l9-AZe" firstAttribute="leading" secondItem="Rer-xE-vmi" secondAttribute="trailing" constant="33" id="xjF-Lb-cnT"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="119.5" y="141"/>
+            <point key="canvasLocation" x="119.5" y="134"/>
         </window>
     </objects>
 </document>

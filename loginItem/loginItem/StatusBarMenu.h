@@ -29,5 +29,4 @@
 //init
 -(id)init:(NSMenu*)menu;
 
-
 @end

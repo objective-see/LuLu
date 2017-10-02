@@ -32,7 +32,7 @@
 /* TYPEDEFS */
 
 //block for library
-typedef void (^ProcessCallbackBlock)(Process*);
+typedef void (^ProcessCallbackBlock)(Process* _Nonnull);
 
 
 /* OBJECT: PROCESS INFO */
@@ -40,13 +40,13 @@ typedef void (^ProcessCallbackBlock)(Process*);
 @interface ProcInfo : NSObject
 
 //start monitoring
--(BOOL)start:(ProcessCallbackBlock)callback;
+-(BOOL)start:(ProcessCallbackBlock _Nonnull )callback;
 
 //stop monitoring
 -(void)stop;
 
 //get list of running processes
--(NSMutableArray*)currentProcesses;
+-(NSMutableArray* _Nonnull)currentProcesses;
 
 @end
 
@@ -63,7 +63,7 @@ typedef void (^ProcessCallbackBlock)(Process*);
 @property pid_t ppid;
 
 //user id
-@property uid_t user;
+@property uid_t uid;
 
 //type
 // used by process mon
@@ -73,26 +73,26 @@ typedef void (^ProcessCallbackBlock)(Process*);
 @property u_int32_t exit;
 
 //path
-@property (nonatomic, retain) NSString* path;
+@property (nonatomic, retain) NSString* _Nullable path;
 
 //args
-@property (nonatomic, retain) NSMutableArray* arguments;
+@property (nonatomic, retain) NSMutableArray* _Nonnull arguments;
 
 //ancestors
-@property (nonatomic, retain) NSMutableArray* ancestors;
+@property (nonatomic, retain) NSMutableArray* _Nonnull ancestors;
 
 //Binary object
-// ->has path, hash, etc
-@property (nonatomic, retain) Binary* binary;
+// has path, hash, etc
+@property (nonatomic, retain) Binary* _Nonnull binary;
 
 //timestamp
-@property (nonatomic, retain) NSDate* timestamp;
+@property (nonatomic, retain) NSDate* _Nonnull timestamp;
 
 /* METHODS */
 
 //init with a pid
-// ->method will then (try) fill out rest of object
--(id)init:(pid_t)processID;
+// method will then (try) fill out rest of object
+-(id _Nullable )init:(pid_t)processID;
 
 //set process's path
 -(void)pathFromPid;
@@ -115,16 +115,23 @@ typedef void (^ProcessCallbackBlock)(Process*);
 /* PROPERTIES */
 
 //path
-@property (nonatomic, retain)NSString* path;
+@property (nonatomic, retain)NSString* _Nonnull path;
 
 //name
-@property (nonatomic, retain)NSString* name;
+@property (nonatomic, retain)NSString* _Nonnull name;
+
+//icon
+@property (nonatomic, retain)NSImage* _Nonnull icon;
 
 //file attributes
-@property (nonatomic, retain)NSDictionary* attributes;
+@property (nonatomic, retain)NSDictionary* _Nullable attributes;
+
+//bundle
+// nil for non-apps
+@property (nonatomic, retain)NSBundle* _Nullable bundle;
 
 //signing info
-@property (nonatomic, retain)NSDictionary* signingInfo;
+@property (nonatomic, retain)NSDictionary* _Nonnull signingInfo;
 
 //flag indicating binary belongs to Apple OS
 @property BOOL isApple;
@@ -135,7 +142,7 @@ typedef void (^ProcessCallbackBlock)(Process*);
 /* METHODS */
 
 //init w/ an info dictionary
--(id)init:(NSString*)path;
+-(id _Nonnull )init:(NSString* _Nonnull)path;
 
 @end
 

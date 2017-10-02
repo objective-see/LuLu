@@ -58,55 +58,38 @@
 }
 
 //automatically called when text changes
-// ensure 'add' button state is correct
-//  enabled when there is text
-//  disabled when there is no test
+// invoke helper to set icon, and enable/select 'add' button
 -(void)controlTextDidChange:(NSNotification *)notification
 {
-    //not text field?
-    if([notification object] != self.processPath)
+    //text field?
+    // update the UI
+    if([notification object] == self.processPath)
     {
-        //bail
-        goto bail;
+        //update
+        [self updateUI];
     }
-    
-    //set state
-    self.addButton.enabled = (BOOL)self.processPath.stringValue.length;
-    
+
+
 bail:
     
     return;
 }
 
 //automatically called when 'enter' is hit
-// set icon, and enable/select 'add' button
+// invoke helper to set icon, and enable/select 'add' button
 -(void)controlTextDidEndEditing:(NSNotification *)notification
 {
-    //icon
-    NSImage* processIcon = nil;
-    
-    //not text field?
-    if([notification object] != self.processPath)
+    //text field?
+    // update the UI
+    if([notification object] == self.processPath)
     {
-        //bail
-        goto bail;
+        //update
+        [self updateUI];
+        
+        //make 'add' selected
+        [self.window makeFirstResponder:self.addButton];
+
     }
-    
-    //get icon
-    processIcon = getIconForProcess(self.processPath.stringValue);
-    if(nil != processIcon)
-    {
-        //add
-        self.icon.image = processIcon;
-    }
-    
-    //enable 'add' button
-    self.addButton.enabled = YES;
-    
-    //make 'add' selected
-    [self.window makeFirstResponder:self.addButton];
-    
-bail:
     
     return;
 }
@@ -151,6 +134,9 @@ bail:
     //allow directories (app bundles)
     panel.canChooseDirectories = YES;
     
+    //can open app bundles
+    panel.treatsFilePackagesAsDirectories = YES;
+    
     //start in /Apps
     panel.directoryURL = [NSURL fileURLWithPath:@"/Applications"];
     
@@ -170,9 +156,12 @@ bail:
     //set text
     self.processPath.stringValue = panel.URL.path;
     
+    //update UI
+    [self updateUI];
+    
     //make 'add' selected
-    // will also trigger 'end editing' for text field
     [self.window makeFirstResponder:self.addButton];
+
     
 bail:
     
@@ -195,6 +184,40 @@ bail:
 {
     //close & return NSModalResponseCancel
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
+    
+    return;
+}
+
+//update the UI
+// set icon, and enable/select 'add' button
+-(void)updateUI
+{
+    //icon
+    NSImage* processIcon = nil;
+    
+    //blank
+    // disable 'add' button
+    if(0 == self.processPath.stringValue.length)
+    {
+        //set state
+        self.addButton.enabled = NO;
+        
+        //bail
+        goto bail;
+    }
+    
+    //get icon
+    processIcon = getIconForProcess(self.processPath.stringValue);
+    if(nil != processIcon)
+    {
+        //add
+        self.icon.image = processIcon;
+    }
+    
+    //enable 'add' button
+    self.addButton.enabled = YES;
+    
+bail:
     
     return;
 }

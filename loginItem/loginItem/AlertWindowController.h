@@ -19,12 +19,6 @@
 //alert info
 @property(nonatomic, retain)NSDictionary* alert;
 
-
-//@property(nonatomic, retain)VirusTotalViewController* popoverVC;
-
-//view controller for ancestry view/popover
-@property (weak) IBOutlet ParentsWindowController *ancestryViewController;
-
 /* TOP */
 
 //process icon
@@ -44,6 +38,9 @@
 
 //popover for virus total
 @property (strong) IBOutlet NSPopover *virusTotalPopover;
+
+//view controller for ancestry view/popover
+@property (weak) IBOutlet ParentsWindowController *ancestryViewController;
 
 //ancestry button
 @property (weak) IBOutlet NSButton *ancestryButton;
@@ -71,9 +68,15 @@
 
 //outline view in ancestry popover
 @property (weak) IBOutlet NSOutlineView *ancestryOutline;
+
+//text cell for ancestry popover
 @property (weak) IBOutlet NSTextFieldCell *ancestryTextCell;
 
 /* METHODS */
+
+//lulu allowed/blocked from talking to internet?
+// will fact, will determine state of virus total button
+-(void)setVTButtonState;
 
 //automatically invoked when user clicks process ancestry button
 // ->depending on state, show/populate the popup, or close it

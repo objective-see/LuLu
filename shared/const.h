@@ -7,8 +7,8 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#ifndef Const_h
-#define Const_h
+#ifndef const_h
+#define const_h
 
 //vendor id string
 #define OBJECTIVE_SEE_VENDOR "com.objectiveSee"
@@ -23,14 +23,17 @@
 # define DEBUG_PRINT(x) do {} while (0)
 #endif
 
+//firewall event: network out
+#define EVENT_NETWORK_OUT 0x0
+
+//firewall event: dns response
+#define EVENT_DNS_RESPONSE 0x1
+
 //connect out (TCP)
 #define EVENT_CONNECT_OUT 0x1
 
 //data out (UDP)
 #define EVENT_DATA_OUT 0x2
-
-//dns response
-#define EVENT_DNS_RESPONSE 0x3
 
 //log to file flag
 #define LOG_TO_FILE 0x10
@@ -39,7 +42,7 @@
 #define MAX_KEV_MSG 254
 
 //max Q items
-#define MAX_FIREWALL_EVENT 512
+#define MAX_FIREWALL_EVENTS 512
 
 #define LULU_SERVICE_NAME "com_objective_see_firewall"
 
@@ -156,6 +159,7 @@
 #define ALERT_PROTOCOL @"protocol"
 #define ALERT_ACTION @"action"
 #define ALERT_SIGNINGINFO @"signingInfo"
+#define ALERT_PASSIVELY_ALLOWED @"passivelyAllowed"
 
 //signature status
 #define KEY_SIGNATURE_STATUS @"signatureStatus"
@@ -177,6 +181,5 @@
 
 //preferences window
 #define WINDOW_PREFERENCES 1
-
 
 #endif /* const_h */

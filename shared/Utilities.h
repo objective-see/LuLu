@@ -25,7 +25,7 @@ NSString* getAppBinary(NSString* appPath);
 
 //get app's version
 // ->extracted from Info.plist
-NSString* getAppVersion();
+NSString* getAppVersion(void);
 
 //check if process is alive
 BOOL isProcessAlive(pid_t processID);

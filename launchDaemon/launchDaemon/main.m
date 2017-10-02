@@ -44,7 +44,7 @@ dispatch_semaphore_t rulesChanged = 0;
 
 //init a handler for SIGTERM
 // can perform actions such as disabling firewall and closing logging
-void register4Shutdown();
+void register4Shutdown(void);
 
 //main
 // init & kickoff stuffz
@@ -52,11 +52,29 @@ int main(int argc, const char * argv[])
 {
     @autoreleasepool
     {
+        //flag for first time running
+        BOOL firstRun = NO;
+        
+        //log file path
+        NSString* logPath = nil;
+        
         //user comms listener (XPC) obj
         UserCommsListener* userCommsListener = nil;
         
         //dbg msg
         logMsg(LOG_DEBUG, @"launch daemon started");
+        
+        //init log path
+        // '/Library/Logs/Lulu.log'
+        logPath = [@"/Library/Logs/" stringByAppendingPathComponent:LOG_FILE_NAME];
+
+        //set 'first run' flag
+        // log file not present is the indicator for this
+        if(YES != [[NSFileManager defaultManager] fileExistsAtPath:logPath])
+        {
+            //set flag
+            firstRun = YES;
+        }
         
         //alloc/init kernel comms object
         kextComms = [[KextComms alloc] init];
@@ -65,7 +83,7 @@ int main(int argc, const char * argv[])
         processListener = [[ProcessListener alloc] init];
         
         //init logging
-        if(YES != initLogging())
+        if(YES != initLogging(logPath))
         {
             //err msg
             logMsg(LOG_ERR, @"failed to init logging");
@@ -105,11 +123,15 @@ int main(int argc, const char * argv[])
         
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded rules from %@", RULES_FILE]);
-        
-        //add default/pre-existing apps
-        // has logic to only do this first time
-        [rules startBaselining];
-
+    
+        //first run?
+        // add default/pre-existing apps
+        if(YES == firstRun)
+        {
+            //baseline
+            [rules startBaselining];
+        }
+    
         //init rule changed semaphore
         rulesChanged = dispatch_semaphore_create(0);
         

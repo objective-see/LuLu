@@ -38,11 +38,11 @@
     //alloc filtered rules array
     rulesFiltered = [NSMutableArray array];
     
-    //start by no filtering
-    self.shouldFilter = NO;
-    
     //init daemon comms obj
     daemonComms = [[DaemonComms alloc] init];
+    
+    //start by no filtering
+    self.shouldFilter = NO;
     
     //unset message
     self.rulesStatusMsg.stringValue = @"";
@@ -71,7 +71,7 @@
      }];
     
     //in background
-    // ->monitor / process new rules
+    // monitor & process new rules
     [self performSelectorInBackground:@selector(listenForRuleChanges) withObject:nil];
 }
 
@@ -146,11 +146,20 @@
             logMsg(LOG_DEBUG, [NSString stringWithFormat:@"importing rules from %@", panel.URL.path]);
             
             //send msg to daemon to XPC
-            // TODO: check that this succeeded!
-            [self.daemonComms importRules:panel.URL.path];
-            
-            //update msg
-            self.rulesStatusMsg.stringValue = @"imported rules";
+            if(YES != [self.daemonComms importRules:panel.URL.path])
+            {
+                //err msg
+                logMsg(LOG_ERR, @"failed to import rules");
+                
+                //update msg
+                self.rulesStatusMsg.stringValue = @"failed to import rules";
+            }
+            //happy
+            else
+            {
+                //update msg
+                self.rulesStatusMsg.stringValue = @"imported rules";
+            }
             
         }//clicked 'ok' (to save)
         
@@ -429,6 +438,10 @@
     // call daemon and block, then display, and repeat!
     while(YES)
     {
+        //pool
+        @autoreleasepool
+        {
+        
         //dbg msg
         logMsg(LOG_DEBUG, @"requesting rules from daemon, will block");
         
@@ -462,12 +475,15 @@
         
         //wait for resposne, before to asking again
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            
+        }//pool
     }
     
     return;
 }
 
 //process rules dictionary received from daemon
+// convert each rule dictionary into a Rule object
 -(void)processRulesDictionary:(NSDictionary*)daemonRules
 {
     //rule obj

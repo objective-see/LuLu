@@ -97,13 +97,8 @@
     // ->also check for error (offline, etc)
     if(YES == [vtObj queryVT:item])
     {
-        //update UI on main thread
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            
-            //update UI
-            [self displayResults:item];
-            
-        });
+        //modal window, so use 'performSelectorOnMainThread' to update
+        [self performSelectorOnMainThread:@selector(displayResults:) withObject:item waitUntilDone:YES];
     }
     
     //error
@@ -112,13 +107,8 @@
         //err msg
         logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to query virus total: %@", item]);
         
-        //show error on main thread
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            
-            //show error
-            [self showError];
-            
-        });
+        //modal window, so use 'performSelectorOnMainThread' to update
+        [self performSelectorOnMainThread:@selector(showError) withObject:nil waitUntilDone:YES];
     }
 
 bail:
@@ -140,7 +130,7 @@ bail:
     //hide spinner
     self.vtSpinner.hidden = YES;
     
-    
+    //
     [self.message setAllowsEditingTextAttributes: YES];
     [self.message setSelectable: YES];
     

@@ -99,7 +99,7 @@ bool com_objective_see_firewall::start(IOService *provider)
     }
     
     //init shared data queue
-    sharedDataQueue = IOSharedDataQueue::withCapacity(sizeof(firewallEvent) * (MAX_FIREWALL_EVENT + DATA_QUEUE_ENTRY_HEADER_SIZE));
+    sharedDataQueue = IOSharedDataQueue::withCapacity(sizeof(firewallEvent) * (MAX_FIREWALL_EVENTS + DATA_QUEUE_ENTRY_HEADER_SIZE));
     if(NULL == sharedDataQueue)
     {
         //bail

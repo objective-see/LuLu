@@ -10,7 +10,6 @@
 #ifndef socketEvents_h
 #define socketEvents_h
 
-
 extern "C"
 {
     
@@ -23,18 +22,26 @@ extern "C"
 
 }
 
+#define LULU_FLT_HANDLE_BASE 0x4c754c75
+
 //socket filter handles
-#define FLT_TCPIPV4_HANDLE  'tcp4'
-#define FLT_UDPIPV4_HANDLE  'udp4'
+// inspired by 'peerguardian' ppfilter.c
+#define FLT_TCPIPV4_HANDLE  (LULU_FLT_HANDLE_BASE - (AF_INET + IPPROTO_TCP))
+#define FLT_UDPIPV4_HANDLE  (LULU_FLT_HANDLE_BASE - (AF_INET + IPPROTO_UDP))
+#define FLT_TCPIPV6_HANDLE  (LULU_FLT_HANDLE_BASE - (AF_INET6 + IPPROTO_TCP))
+#define FLT_UDPIPV6_HANDLE  (LULU_FLT_HANDLE_BASE - (AF_INET6 + IPPROTO_UDP))
 
 //flag for socket filter registration
 static boolean_t gRegisteredTCPIPV4 = FALSE;
 static boolean_t gRegisteredUDPIPV4 = FALSE;
+static boolean_t gRegisteredTCPIPV6 = FALSE;
+static boolean_t gRegisteredUDPIPV6 = FALSE;
 
 //flag for socket filter unregistration
 static boolean_t gUnregisteringTCPIPV4 = FALSE;
 static boolean_t gUnregisteringUDPIPV4 = FALSE;
-
+static boolean_t gUnregisteringTCPIPV6 = FALSE;
+static boolean_t gUnregisteringUDPIPV6 = FALSE;
 
 /* FUNCTIONS */
 
@@ -46,6 +53,5 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to);
 
 //unregister socket filters
 kern_return_t unregisterSocketFilters();
-
 
 #endif /* socketEvents_h */

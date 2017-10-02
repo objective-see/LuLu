@@ -33,7 +33,7 @@
 -(void)deleteRule:(NSString*)processPath;
 
 //import rules
--(void)importRules:(NSString*)rulesFile;
+-(BOOL)importRules:(NSString*)rulesFile;
 
 //ask for alert
 -(void)alertRequest:(void (^)(NSDictionary* alert))reply;

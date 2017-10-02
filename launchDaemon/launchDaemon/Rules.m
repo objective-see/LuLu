@@ -125,18 +125,6 @@ bail:
 // TODO: note: in the future, the installer will control this more, like whether to skip, baseline only apple apps, etc
 -(void)startBaselining
 {
-    //check if baselining was already done
-    // this is done by seeing if there are any rules w/ type 'baseline'
-    for(NSString* path in self.rules.allKeys)
-    {
-        //baseline rule?
-        if(RULE_TYPE_BASELINE == ((Rule*)self.rules[path]).type.intValue)
-        {
-            //bail
-            goto bail;
-        }
-    }
-
     //dbg msg
     logMsg(LOG_DEBUG, @"generating 'allow' rules for all existing applications");
     
@@ -257,9 +245,9 @@ bail:
         }
     }
     
-    //TOOD: validate binary still matches hash
+    //TODO: validate binary still matches hash
     
-    //TOOD: check that rule is for this user!
+    //TODO: check that rule is for this user!
 
 bail:
     
@@ -299,7 +287,8 @@ bail:
         [self save];
     }
     
-    //tell kernel to add
+    //for any other process
+    // tell kernel to add rule
     [self addToKernel:rule];
 
     //happy
@@ -311,7 +300,7 @@ bail:
 }
 
 //add to kernel
-// TOOD: check hash, etc
+// TODO: check hash, etc
 -(void)addToKernel:(Rule*)rule
 {
     //find processes and add

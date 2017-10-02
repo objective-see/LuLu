@@ -98,7 +98,7 @@ extern NSInteger clientStatus;
 
 //get rules
 // optionally wait (blocks) for change
--(void)getRules:(BOOL)wait4Change reply:(void (^)(NSDictionary*))reply;
+-(void)getRules:(BOOL)wait4Change reply:(void (^)(NSDictionary*))reply
 {
     //dbg msg
     logMsg(LOG_DEBUG, @"XPC request: GET RULES");
@@ -171,10 +171,13 @@ bail:
 }
 
 //import rules
--(void)importRules:(NSString*)rulesFile
+-(void)importRules:(NSString*)rulesFile reply:(void (^)(BOOL))reply
 {
     //error
     NSError* error = nil;
+    
+    //flag
+    BOOL importedRules = NO;
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: IMPORT RULES (%@)", rulesFile]);
@@ -220,10 +223,16 @@ bail:
         }
     }
     
+    //happy
+    importedRules = YES;
+    
     //signal all threads that rules changed
     while(0 != dispatch_semaphore_signal(rulesChanged));
     
 bail:
+    
+    //return rules
+    reply(importedRules);
     
     return;
 }
@@ -305,9 +314,14 @@ bail:
     // TODO: add support for 'user'
     [kextComms addRule:pid action:action];
     
-    //update rules
-    // ->type is 'user'
-    [rules add:path action:action type:RULE_TYPE_USER user:user];
+    //don't add a permanent rule if it was passively allowed
+    if( (nil == alert[ALERT_PASSIVELY_ALLOWED]) ||
+        (YES != [alert[ALERT_PASSIVELY_ALLOWED] boolValue]) )
+    {
+        //update rules
+        // ->type is 'user'
+        [rules add:path action:action type:RULE_TYPE_USER user:user];
+    }
     
     //signal all threads that rules changed
     while(0 != dispatch_semaphore_signal(rulesChanged));

@@ -92,6 +92,9 @@
         //bail
         goto bail;
     }
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"posting request (%@) to %@", queryURL, postData]);
 
     //make query to VT
     response = [self postRequest:queryURL postData:postData];
@@ -160,6 +163,9 @@ bail:
     //send request
     [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData* data, NSURLResponse* response, NSError* error)
     {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"got response %lu", (long)((NSHTTPURLResponse *)response).statusCode]);
+        
         //sanity check(s)
         if( (nil != data) &&
             (nil == error) &&
