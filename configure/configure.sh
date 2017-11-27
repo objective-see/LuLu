@@ -50,10 +50,10 @@ then
     echo "kext installed and loaded"
 
     #install & load launch daemon
-    chown -R root:wheel LuluDaemon
+    chown -R root:wheel LuLuDaemon
     chown -R root:wheel com.objective-see.lulu.plist
 
-    mv LuluDaemon /Library/Objective-See/LuLu/
+    mv LuLuDaemon /Library/Objective-See/LuLu/
     mv com.objective-see.lulu.plist /Library/LaunchDaemons/
     launchctl load /Library/LaunchDaemons/com.objective-see.lulu.plist
 
