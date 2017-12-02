@@ -10,6 +10,7 @@
 //TODO: don't show popover if ancestors are nil?
 
 #import <sys/socket.h>
+#include <netdb.h>
 
 #import "const.h"
 #import "logging.h"
@@ -94,10 +95,6 @@
         //bail
         goto bail;
     }
-    
-    //lulu allowed/blocked from talking to internet?
-    // will fact, will determine state of virus total button
-    [self setVTButtonState];
 
     //host name?
     if(nil != self.alert[ALERT_HOSTNAME])
@@ -133,10 +130,15 @@
     self.processPath.stringValue = self.alert[ALERT_PATH];
     
     //ip address
-    self.ipAddress.stringValue = self.alert[ALERT_IPADDR];
+    [self setIPAddress:self.alert[ALERT_IPADDR] withHostname:self.alert[ALERT_HOSTNAME]];
     
     //port & proto
     self.portProto.stringValue = [NSString stringWithFormat:@"%@ (%@)", [self.alert[ALERT_PORT] stringValue], [self convertProtocol]];
+
+    //virus total button
+    self.virusTotalButton.enabled = NO;
+
+    [self updateIfLuLuHelperIsAllowed];
     
     /* BOTH */
     
@@ -206,13 +208,8 @@ bail:
     return protocol;
 }
 
-//lulu allowed/blocked from talking to internet?
-// will fact, will determine state of virus total button
--(void)setVTButtonState
+-(void)performBlockIfLuLuHelperIsAllowd:(void (^)(void))block
 {
-    //flag
-    __block BOOL shouldDisable = YES;
-    
     //daemon comms object
     DaemonComms* daemonComms = nil;
     
@@ -222,11 +219,13 @@ bail:
     //get rules from daemon via XPC
     [daemonComms getRules:NO reply:^(NSDictionary* daemonRules)
      {
+         NSString* luluHelperPath = NSProcessInfo.processInfo.arguments[0];
+
          //look for an allow rule for lulu
          for(NSString* processPath in daemonRules.allKeys)
          {
              //is allow rule, match us?
-             if( (YES == [processPath isEqualToString:NSProcessInfo.processInfo.arguments[0]]) &&
+             if( (YES == [processPath isEqualToString:luluHelperPath]) &&
                 (RULE_STATE_ALLOW == [[daemonRules[processPath] objectForKey:RULE_ACTION] intValue]) )
              {
                  
@@ -235,19 +234,80 @@ bail:
                  
                  //ok there is a rule for lulu, allowing it
                  // thus, virus total can be queried (i.e. it won't be blocked)
-                 shouldDisable = NO;
+                 block();
                  
                  //done
                  break;
              }
          }
-         
-         //set button state
-         self.virusTotalButton.enabled = !shouldDisable;
-         
      }];
-    
-    return;
+
+}
+
+-(void)setIPAddress:(NSString*)ipAddress withHostname:(NSString*)hostname
+{
+    if (hostname) {
+        self.ipAddress.stringValue = [NSString stringWithFormat:@"%@ (%@)", ipAddress, hostname, NULL];
+    } else {
+        self.ipAddress.stringValue = ipAddress;
+    }
+}
+
+-(void)updateIfLuLuHelperIsAllowed
+{
+    [self performBlockIfLuLuHelperIsAllowd:^(void) {
+            //lulu allowed/blocked from talking to internet?
+            // will fact, will determine state of virus total button
+            self.virusTotalButton.enabled = YES;
+
+            if (self.alert[ALERT_HOSTNAME]) {
+                return;
+            }
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    NSString* ipAddress = self.alert[ALERT_IPADDR];
+                    NSString* hostname = [self hostnameForIPAddress:ipAddress
+                                                               port:[self.alert[ALERT_PORT] stringValue]
+                                                         socketType:[self.alert[ALERT_PROTOCOL] intValue]];
+                    [[NSRunLoop mainRunLoop] performInModes:@[NSDefaultRunLoopMode, NSModalPanelRunLoopMode]
+                                                      block:^{
+                            [self setIPAddress:ipAddress withHostname:hostname];
+                        }];
+                });
+        }];
+}
+
+-(NSString*)hostnameForIPAddress:(NSString*)ipAddress port:(NSString*)port socketType:(int)socketType
+{
+    struct addrinfo hints = { 0 };
+    struct addrinfo* addrinfo = NULL;
+    char hostname[NI_MAXHOST];
+    int flags = NI_NAMEREQD;
+    NSString* result = nil;
+
+    hints.ai_family = PF_UNSPEC;
+    hints.ai_socktype = socketType;
+
+    if (getaddrinfo([ipAddress UTF8String], [port UTF8String], &hints, &addrinfo) != 0) {
+        goto bail;
+    }
+
+    if (hints.ai_protocol == IPPROTO_UDP) {
+        flags |= NI_DGRAM;
+    }
+
+    if (getnameinfo(addrinfo->ai_addr, addrinfo->ai_addrlen,
+                    hostname, sizeof(hostname),
+                    NULL, 0,
+                    flags) != 0) {
+        goto bail;
+    }
+
+    result = [NSString stringWithUTF8String:hostname];
+bail:
+    if (addrinfo) {
+        freeaddrinfo(addrinfo);
+    }
+    return result;
 }
 
 //set signing icon
