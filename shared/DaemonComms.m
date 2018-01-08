@@ -70,11 +70,11 @@
     }] getRules:wait4Change reply:^(NSDictionary* rules)
     {
          //respond with rules
-         dispatch_async(dispatch_get_main_queue(), ^
+         [[NSRunLoop mainRunLoop] performInModes:@[NSDefaultRunLoopMode, NSModalPanelRunLoopMode] block:^
          {
                 //respond
                 reply(rules);
-         });
+         }];
     }];
     
     return;
