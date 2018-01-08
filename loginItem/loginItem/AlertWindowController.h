@@ -74,10 +74,6 @@
 
 /* METHODS */
 
-//lulu allowed/blocked from talking to internet?
-// will fact, will determine state of virus total button
--(void)setVTButtonState;
-
 //automatically invoked when user clicks process ancestry button
 // ->depending on state, show/populate the popup, or close it
 -(IBAction)vtButtonHandler:(id)sender;
