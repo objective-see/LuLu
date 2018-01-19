@@ -12,14 +12,14 @@
 #for now, gotta be macOS 10.12+
 OSVers="$(sw_vers -productVersion)"
 if [ "${OSVers:3:2}" -lt 12 ]; then
-    echo "\nERROR: ${OSVers} is currently unsupported"
-    echo "LuLu requires macOS 10.12+\n"
+    echo "ERROR: ${OSVers} is currently unsupported"
+    echo "LuLu requires macOS 10.12+"
     exit -1
 fi
 
 #gotta be root
 if [ "${EUID}" -ne 0 ]; then
-    echo "\nERROR: must be run as root\n"
+    echo "ERROR: must be run as root"
     exit -1
 fi
 
@@ -101,5 +101,5 @@ then
 fi
 
 #invalid args
-echo "\nERROR: run w/ '-install' or '-uninstall'\n"
+echo "ERROR: run w/ '-install' or '-uninstall'"
 exit -1
