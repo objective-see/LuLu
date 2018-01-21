@@ -22,7 +22,7 @@
 		7D564DDE1F18441500B8AAD6 /* RuleRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DCA1F18441500B8AAD6 /* RuleRowCell.m */; };
 		7D564DDF1F18441500B8AAD6 /* HyperlinkTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DCE1F18441500B8AAD6 /* HyperlinkTextField.m */; };
 		7D564DE01F18441500B8AAD6 /* RuleRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DD11F18441500B8AAD6 /* RuleRow.m */; };
-		7D564DE61F18446200B8AAD6 /* Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DE41F18446200B8AAD6 /* Logging.m */; };
+		7D564DE61F18446200B8AAD6 /* logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DE41F18446200B8AAD6 /* logging.m */; };
 		7D564DEA1F1855E900B8AAD6 /* UpdateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DE71F1855E900B8AAD6 /* UpdateWindowController.m */; };
 		7D564DEB1F1855E900B8AAD6 /* UpdateWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D564DE81F1855E900B8AAD6 /* UpdateWindow.xib */; };
 		7D704AB71F6C83BF0067224E /* importRules.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D704AB51F6C83BF0067224E /* importRules.png */; };
@@ -88,9 +88,9 @@
 		7D564DD01F18441500B8AAD6 /* RuleRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleRow.h; sourceTree = "<group>"; };
 		7D564DD11F18441500B8AAD6 /* RuleRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleRow.m; sourceTree = "<group>"; };
 		7D564DD21F18441500B8AAD6 /* RuleRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleRowCell.h; sourceTree = "<group>"; };
-		7D564DE31F18446200B8AAD6 /* Const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Const.h; path = ../shared/Const.h; sourceTree = "<group>"; };
-		7D564DE41F18446200B8AAD6 /* Logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Logging.m; path = ../shared/Logging.m; sourceTree = "<group>"; };
-		7D564DE51F18446200B8AAD6 /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Logging.h; path = ../shared/Logging.h; sourceTree = "<group>"; };
+		7D564DE31F18446200B8AAD6 /* const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = const.h; path = ../shared/const.h; sourceTree = "<group>"; };
+		7D564DE41F18446200B8AAD6 /* logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = logging.m; path = ../shared/logging.m; sourceTree = "<group>"; };
+		7D564DE51F18446200B8AAD6 /* logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = logging.h; path = ../shared/logging.h; sourceTree = "<group>"; };
 		7D564DE71F1855E900B8AAD6 /* UpdateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateWindowController.m; path = ../shared/UpdateWindowController.m; sourceTree = "<group>"; };
 		7D564DE81F1855E900B8AAD6 /* UpdateWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UpdateWindow.xib; path = ../shared/UpdateWindow.xib; sourceTree = "<group>"; };
 		7D564DE91F1855E900B8AAD6 /* UpdateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateWindowController.h; path = ../shared/UpdateWindowController.h; sourceTree = "<group>"; };
@@ -242,11 +242,11 @@
 		7D564DE21F18445400B8AAD6 /* shared */ = {
 			isa = PBXGroup;
 			children = (
-				7D564DE31F18446200B8AAD6 /* Const.h */,
+				7D564DE31F18446200B8AAD6 /* const.h */,
 				7D2582551F19FAD700D28B95 /* DaemonComms.h */,
 				7D2582561F19FAD700D28B95 /* DaemonComms.m */,
-				7D564DE51F18446200B8AAD6 /* Logging.h */,
-				7D564DE41F18446200B8AAD6 /* Logging.m */,
+				7D564DE51F18446200B8AAD6 /* logging.h */,
+				7D564DE41F18446200B8AAD6 /* logging.m */,
 				7DD2BF601F1DAFE100B33214 /* Rule.h */,
 				7DD2BF5D1F1DAF0C00B33214 /* Rule.m */,
 				7D2582581F19FB6000D28B95 /* UserCommsInterface.h */,
@@ -367,7 +367,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#for normal builds\n# ->just copy into app\nmkdir -p $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\ncp -R -f \"$BUILT_PRODUCTS_DIR/Lulu Helper.app\" $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems";
+			shellScript = "#for normal builds\n# ->just copy into app\nmkdir -p $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\ncp -R -f \"$BUILT_PRODUCTS_DIR/LuLu Helper.app\" $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -380,7 +380,7 @@
 				7D564DE01F18441500B8AAD6 /* RuleRow.m in Sources */,
 				7D2582571F19FAD700D28B95 /* DaemonComms.m in Sources */,
 				7DD2BF581F1C59E900B33214 /* AddRuleWindowController.m in Sources */,
-				7D564DE61F18446200B8AAD6 /* Logging.m in Sources */,
+				7D564DE61F18446200B8AAD6 /* logging.m in Sources */,
 				7D16D69A1F65EF9900DB3161 /* Update.m in Sources */,
 				7D564DB11F18434F00B8AAD6 /* main.m in Sources */,
 				7D564DD91F18441500B8AAD6 /* RulesWindowController.m in Sources */,

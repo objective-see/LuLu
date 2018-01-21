@@ -14,7 +14,7 @@
 		7D3B75151F13354900568828 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D3B75011F13354900568828 /* MainMenu.xib */; };
 		7D3B751A1F13354900568828 /* statusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3B750B1F13354900568828 /* statusIcon.png */; };
 		7D3B751B1F13354900568828 /* statusIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3B750C1F13354900568828 /* statusIcon@2x.png */; };
-		7D3B75251F13357D00568828 /* Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B75231F13357D00568828 /* Logging.m */; };
+		7D3B75251F13357D00568828 /* logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B75231F13357D00568828 /* logging.m */; };
 		7D46FF111F60EBAE00FEB0F8 /* luluText.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D46FF0F1F60EBAE00FEB0F8 /* luluText.png */; };
 		7D46FF121F60EBAE00FEB0F8 /* luluIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D46FF101F60EBAE00FEB0F8 /* luluIcon.png */; };
 		7D5C5F521F200B9200C0E94A /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5C5F511F200B9200C0E94A /* Utilities.m */; };
@@ -53,10 +53,10 @@
 		7D3B75021F13354900568828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = MainMenu.xib; sourceTree = "<group>"; };
 		7D3B750B1F13354900568828 /* statusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusIcon.png; sourceTree = "<group>"; };
 		7D3B750C1F13354900568828 /* statusIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusIcon@2x.png"; sourceTree = "<group>"; };
-		7D3B75211F13357D00568828 /* userCommsInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = userCommsInterface.h; path = ../shared/userCommsInterface.h; sourceTree = "<group>"; };
-		7D3B75221F13357D00568828 /* Const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Const.h; path = ../shared/Const.h; sourceTree = "<group>"; };
-		7D3B75231F13357D00568828 /* Logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Logging.m; path = ../shared/Logging.m; sourceTree = "<group>"; };
-		7D3B75241F13357D00568828 /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Logging.h; path = ../shared/Logging.h; sourceTree = "<group>"; };
+		7D3B75211F13357D00568828 /* UserCommsInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserCommsInterface.h; path = ../shared/UserCommsInterface.h; sourceTree = "<group>"; };
+		7D3B75221F13357D00568828 /* const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = const.h; path = ../shared/const.h; sourceTree = "<group>"; };
+		7D3B75231F13357D00568828 /* logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = logging.m; path = ../shared/logging.m; sourceTree = "<group>"; };
+		7D3B75241F13357D00568828 /* logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = logging.h; path = ../shared/logging.h; sourceTree = "<group>"; };
 		7D46FF061F5F6CAB00FEB0F8 /* LuLu Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "LuLu Helper.entitlements"; path = "loginItem/LuLu Helper.entitlements"; sourceTree = "<group>"; };
 		7D46FF0F1F60EBAE00FEB0F8 /* luluText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = luluText.png; sourceTree = "<group>"; };
 		7D46FF101F60EBAE00FEB0F8 /* luluIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = luluIcon.png; sourceTree = "<group>"; };
@@ -148,10 +148,10 @@
 				7D5C5F511F200B9200C0E94A /* Utilities.m */,
 				7DD2BF781F1EAC9C00B33214 /* DaemonComms.h */,
 				7DD2BF791F1EAC9C00B33214 /* DaemonComms.m */,
-				7D3B75211F13357D00568828 /* userCommsInterface.h */,
-				7D3B75221F13357D00568828 /* Const.h */,
-				7D3B75231F13357D00568828 /* Logging.m */,
-				7D3B75241F13357D00568828 /* Logging.h */,
+				7D3B75211F13357D00568828 /* UserCommsInterface.h */,
+				7D3B75221F13357D00568828 /* const.h */,
+				7D3B75231F13357D00568828 /* logging.m */,
+				7D3B75241F13357D00568828 /* logging.h */,
 			);
 			name = shared;
 			sourceTree = "<group>";
@@ -318,7 +318,7 @@
 				7D3B75141F13354900568828 /* StatusBarMenu.m in Sources */,
 				7D7755EB1F02E05B00D0017D /* main.m in Sources */,
 				7DD260131F25307B00277EC4 /* HyperlinkTextField.m in Sources */,
-				7D3B75251F13357D00568828 /* Logging.m in Sources */,
+				7D3B75251F13357D00568828 /* logging.m in Sources */,
 				7DD2600F1F252E8C00277EC4 /* VirusTotalViewController.m in Sources */,
 				7D5C5F521F200B9200C0E94A /* Utilities.m in Sources */,
 				7D7755E81F02E05B00D0017D /* AppDelegate.m in Sources */,
