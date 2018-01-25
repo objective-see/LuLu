@@ -600,7 +600,7 @@ static kern_return_t data_out(void *cookie, socket_t so, const struct sockaddr *
     }
     
     //broadcast to user mode
-    broadcastEvent(EVENT_DATA_OUT, so, to);
+    //broadcastEvent(EVENT_DATA_OUT, so, to);
     
     //process
     // ->block/allow/ask user
@@ -630,7 +630,7 @@ static kern_return_t connect_out(void *cookie, socket_t so, const struct sockadd
     }
     
     //broadcast to user mode
-    broadcastEvent(EVENT_CONNECT_OUT, so, to);
+    //broadcastEvent(EVENT_CONNECT_OUT, so, to);
     
     //process
     // ->block/allow/ask user
