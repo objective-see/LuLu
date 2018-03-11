@@ -23,7 +23,7 @@ LuLu should build cleanly in Xcode (though you will have to remove code signing 
 For now, LuLu must be installed via the command-line. Build LuLu or download the pre-built binaries/components from the [Releases page](https://github.com/objective-see/LuLu/releases), then execute the configuration script (`configure.sh`) with the `-install` flag, as root:
 ```
 //install
-$ sudo configure.sh -install
+$ sudo ./configure.sh -install
 ```
 
 &#x2764;&nbsp; Love this product or want to support it? Check out my [patreon page](https://www.patreon.com/objective_see) :)
