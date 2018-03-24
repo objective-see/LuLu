@@ -35,5 +35,4 @@
 // if there is an 'undelivered' alert, (re)enqueue it
 -(void)connectionInvalidated:(NSXPCConnection *)connection;
 
-
 @end

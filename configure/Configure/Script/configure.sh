@@ -1,0 +1,130 @@
+#!/bin/bash
+
+#
+#  file: configure.sh
+#  project: lulu (configure)
+#  description: install/uninstall
+#
+#  created by Patrick Wardle
+#  copyright (c) 2017 Objective-See. All rights reserved.
+#
+
+#where LuLu goes
+INSTALL_DIRECTORY="/Library/Objective-See/LuLu"
+
+#OS version check
+# only support 10.10+
+OSVers="$(sw_vers -productVersion)"
+if [ "${OSVers:3:2}" -lt 10 ]; then
+    echo "\nERROR: ${OSVers} is currently unsupported"
+    echo "LuLu requires macOS 10.10+\n"
+    exit -1
+fi
+
+#auth check
+# gotta be root
+if [ "${EUID}" -ne 0 ]; then
+    echo "\nERROR: must be run as root\n"
+    exit -1
+fi
+
+#install logic
+if [ "${1}" == "-install" ]; then
+
+    echo "installing"
+
+    #change into dir
+    cd "$(dirname "${0}")"
+
+    #remove all xattrs
+    /usr/bin/xattr -rc ./*
+
+    #create main LuLu directory
+    mkdir -p $INSTALL_DIRECTORY
+
+    #rules
+    chown root:wheel "rules.plist"
+    chmod 700 "rules.plist"
+    cp "rules.plist" $INSTALL_DIRECTORY
+
+    #install kext
+    chown -R root:wheel "LuLu.kext"
+    cp -R "LuLu.kext" /Library/Extensions/
+
+    echo "kext installed"
+
+    #install launch daemon
+    chown -R root:wheel "LuLu"
+    chown -R root:wheel "com.objective-see.lulu.plist"
+
+    cp "LuLu" $INSTALL_DIRECTORY
+    cp "com.objective-see.lulu.plist" /Library/LaunchDaemons/
+
+    echo "launch daemon installed "
+
+    #install app(s)
+    cp -R "LuLu.app" /Applications
+
+    #kick of main app w/ -install flag
+    open -g -j "/Applications/LuLu.app/" "--args" "-install"
+
+    echo "install complete"
+    exit 0
+
+#uninstall logic
+elif [ "${1}" == "-uninstall" ]; then
+
+    echo "uninstalling"
+
+    #change into dir
+    cd "$(dirname "${0}")"
+
+    #kill main app
+    # ...it might be open
+    killall "LuLu" 2> /dev/null
+
+    #unload launch daemon & remove its plist
+    launchctl unload "/Library/LaunchDaemons/com.objective-see.lulu.plist"
+    rm "/Library/LaunchDaemons/com.objective-see.lulu.plist"
+
+    echo "unloaded launch daemon"
+
+    #kick off main app w/ uninstall flag
+    open -g -j "/Applications/LuLu.app" "--args" "-uninstall"
+
+    #give it a second
+    # time to remove login item, etc
+    sleep 1.0
+
+    #remove main app/helper app
+    rm -rf "/Applications/LuLu.app"
+
+    #full uninstall?
+    # delete LuLu's folder w/ everything
+    if [[ "${2}" -eq "1" ]]; then
+        rm -rf $INSTALL_DIRECTORY
+
+    #partial
+    # just delete daemon, leaving rules, etc
+    else
+        rm -rf "$INSTALL_DIRECTORY/LuLu"
+    fi
+
+    #kill
+    killall LuLu 2> /dev/null
+    killall com.objective-see.lulu.helper 2> /dev/null
+    killall "LuLu Helper" 2> /dev/null
+
+    #remove kext
+    # note: will be unloaded on reboot
+    rm -rf /Library/Extensions/LuLu.kext
+
+    echo "kext removed"
+
+    echo "uninstall complete"
+    exit 0
+fi
+
+#invalid args
+echo "\nERROR: run w/ '-install' or '-uninstall'
+exit -1

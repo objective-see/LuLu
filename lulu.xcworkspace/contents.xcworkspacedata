@@ -5,7 +5,7 @@
       location = "container:"
       name = "configure">
       <FileRef
-         location = "group:configure/configure.sh">
+         location = "group:configure/configure.xcodeproj">
       </FileRef>
    </Group>
    <Group

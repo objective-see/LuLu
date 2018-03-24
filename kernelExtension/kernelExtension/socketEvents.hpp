@@ -51,6 +51,10 @@ kern_return_t registerSocketFilters();
 //process a socket
 kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to);
 
+//queue event
+// basically, send to user mode for alert/response, etc
+void queueEvent(socket_t so, const struct sockaddr *to);
+
 //unregister socket filters
 kern_return_t unregisterSocketFilters();
 

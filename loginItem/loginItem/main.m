@@ -10,18 +10,22 @@
 @import Cocoa;
 
 #import "logging.h"
-#import "Utilities.h"
+#import "exception.h"
+#import "utilities.h"
 
 int main(int argc, const char * argv[])
 {
     //return var
     int iReturn = -1;
     
+    //install exception handlers
+    installExceptionHandlers();
+    
     //already running?
     if(YES == isAppRunning([[NSBundle mainBundle] bundleIdentifier]))
     {
         //err msg
-        logMsg(LOG_DEBUG, @"an instance of LuLu (helper app) is already running");
+        logMsg(LOG_DEBUG, @"an instance of LuLu (helper app) is already running...exiting");
         
         //bail
         goto bail;

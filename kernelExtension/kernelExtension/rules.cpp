@@ -7,7 +7,7 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#include "const.h"
+#include "consts.h"
 #include "rules.hpp"
 
 #include <sys/systm.h>
@@ -82,7 +82,7 @@ void uninitRules()
         //unset
         rules = NULL;
     }
-
+    
     //free rule event lock
     if(NULL != ruleEventLock)
     {

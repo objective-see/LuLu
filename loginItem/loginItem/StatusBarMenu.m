@@ -7,12 +7,13 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "const.h"
-#import "Logging.h"
-#import "Utilities.h"
+#import "consts.h"
+#import "logging.h"
+#import "utilities.h"
 #import "AppDelegate.h"
-#import "UserCommsInterface.h"
 #import "StatusBarMenu.h"
+#import "StatusBarPopoverController.h"
+#import "UserCommsInterface.h"
 
 //menu items
 enum menuItems
@@ -26,13 +27,11 @@ enum menuItems
 
 @implementation StatusBarMenu
 
-@synthesize isEnabled;
+@synthesize isDisabled;
 @synthesize statusItem;
-@synthesize daemonComms;
 
 //init method
-// set some intial flags, init daemon comms, etc.
--(id)init:(NSMenu*)menu;
+-(id)init:(NSMenu*)menu preferences:(NSDictionary*)preferences firstTime:(BOOL)firstTime
 {
     //load from nib
     self = [super init];
@@ -63,25 +62,90 @@ enum menuItems
             [self.statusItem.menu itemWithTag:i].target = self;
         }
         
-        //set flag
-        self.isEnabled = YES;
+        //first time?
+        // show popover
+        if(YES == firstTime)
+        {
+            //show
+            [self showPopover];
+        }
         
-        //init daemon comms obj
-        daemonComms = [[DaemonComms alloc] init];
-        
-        //tell daemon, client is enabled
-        [self.daemonComms setClientStatus:STATUS_CLIENT_ENABLED];
+        //set state based on (existing) preferences
+        self.isDisabled = [preferences[PREF_IS_DISABLED] boolValue];
     }
     
     return self;
 }
 
+//show popver
+-(void)showPopover
+{
+    //alloc popover
+    self.popover = [[NSPopover alloc] init];
+    
+    //don't want highlight for popover
+    self.statusItem.highlightMode = NO;
+    
+    //set action
+    // can close popover with click
+    self.statusItem.action = @selector(closePopover:);
+    
+    //set target
+    self.statusItem.target = self;
+    
+    //set view controller
+    self.popover.contentViewController = [[StatusBarPopoverController alloc] initWithNibName:@"StatusBarPopover" bundle:nil];
+    
+    //set behavior
+    // auto-close if user clicks button in status bar
+    self.popover.behavior = NSPopoverBehaviorTransient;
+    
+    //set delegate
+    self.popover.delegate = self;
+    
+    //show popover
+    // have to wait cuz...
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(),
+    ^{
+       //show
+       [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
+    });
+    
+    //wait a bit
+    // then automatically hide popup if user has not closed it
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(),
+    ^{
+       //close
+       [self closePopover:nil];
+    });
+    
+    return;
+}
+
+//close popover
+// also unsets action handler, resets, highlighting, etc
+-(void)closePopover:(id)sender
+{
+    //still visible?
+    // close it then...
+    if(YES == self.popover.shown)
+    {
+        //close
+        [self.popover performClose:nil];
+    }
+    
+    //remove action handler
+    self.statusItem.action = nil;
+    
+    //reset highlight mode
+    self.statusItem.highlightMode = YES;
+    
+    return;
+}
+
 //menu handler
 -(void)handler:(id)sender
 {
-    //path components
-    NSArray *pathComponents = nil;
-    
     //path to config (main) app
     NSString* mainApp = nil;
     
@@ -94,18 +158,8 @@ enum menuItems
     //window notification
     NSNumber* windowNotification = nil;
     
-    //dbg msg
-    #ifdef DEBUG
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"user clicked %ld", (long)((NSMenuItem*)sender).tag]);
-    #endif
-    
-    //get path components
-    pathComponents = [[[NSBundle mainBundle] bundlePath] pathComponents];
-    if(pathComponents.count > 4)
-    {
-        //init path to full (main) app
-        mainApp = [NSString pathWithComponents:[pathComponents subarrayWithRange:NSMakeRange(0, pathComponents.count - 4)]];
-    }
+    //get path to main app
+    mainApp = getMainAppPath();
 
     //get pid of config app for user
     // if it's already running, sent it a notifcation to show the window (rules, prefs, etc)
@@ -148,29 +202,16 @@ enum menuItems
     }
     
     //handle action
-    switch ((long)((NSMenuItem*)sender).tag)
+    switch(((NSMenuItem*)sender).tag)
     {
         //toggle on/off
         case toggle:
             
-            //going from on to off?
-            if(YES == self.isEnabled)
-            {
-                //update status
-                [self.statusItem.menu itemWithTag:status].title = @"LULU: disabled";
-
-                //change text
-                ((NSMenuItem*)sender).title = @"Enable";
-                
-                //tell daemon, client is disabled
-                [self.daemonComms setClientStatus:STATUS_CLIENT_DISABLED];
-                
-                //toggle flag
-                self.isEnabled = NO;
-            }
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"toggling (%d)", self.isDisabled]);
             
-            //going from off to on?
-            else
+            //going from off to on
+            if(YES == self.isDisabled)
             {
                 //update status
                 [self.statusItem.menu itemWithTag:status].title = @"LULU: enabled";
@@ -178,12 +219,25 @@ enum menuItems
                 //change text
                 ((NSMenuItem*)sender).title = @"Disable";
                 
-                //tell daemon, client is enabled
-                [self.daemonComms setClientStatus:STATUS_CLIENT_ENABLED];
+                //toggle flag
+                self.isDisabled = NO;
+            }
+            
+            //going from on to off?
+            else
+            {
+                //update status
+                [self.statusItem.menu itemWithTag:status].title = @"LULU: disabled";
+                
+                //change text
+                ((NSMenuItem*)sender).title = @"Enable";
                 
                 //toggle flag
-                self.isEnabled = YES;
+                self.isDisabled = YES;
             }
+            
+            //update prefs
+            [[[DaemonComms alloc] init] updatePreferences:@{PREF_IS_DISABLED:[NSNumber numberWithBool:self.isDisabled]}];
             
             break;
             

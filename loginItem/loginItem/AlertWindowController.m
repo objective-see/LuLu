@@ -7,13 +7,11 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-//TODO: don't show popover if ancestors are nil?
-
 #import <sys/socket.h>
 
-#import "const.h"
+#import "consts.h"
 #import "logging.h"
-#import "Utilities.h"
+#import "utilities.h"
 #import "AppDelegate.h"
 #import "DaemonComms.h"
 #import "AlertWindowController.h"
@@ -26,6 +24,7 @@
 @synthesize processName;
 @synthesize ancestryButton;
 @synthesize ancestryPopover;
+@synthesize processHierarchy;
 @synthesize virusTotalButton;
 @synthesize virusTotalPopover;
 
@@ -48,51 +47,24 @@
     return;
 }
 
-//update alert window
--(void)windowDidChangeOcclusionState:(NSNotification *)notification
+//delegate method
+// populate/configure alert window
+-(void)windowDidLoad
 {
     //remote addr
     NSString* remoteAddress = nil;
     
-    //check occlusion binary flag
-    // window going invisble, unset everything
-    if(0 == (self.window.occlusionState & NSWindowOcclusionStateVisible))
+    //timestamp formatter
+    NSDateFormatter *timeFormat = nil;
+    
+    //init process hierarchy
+    [self generateProcessAncestry:[self.alert[ALERT_PID] unsignedShortValue]];
+    
+    //disable ancestory button if no ancestors
+    if(0 == self.processHierarchy.count)
     {
-        //unset icon
-        self.processIcon.image = nil;
-        
-        //unset name
-        self.processName.stringValue = @"";
-        
-        //unset alert msg
-        self.alertMessage.stringValue = @"";
-        
-        //unset process id
-        self.processID.stringValue = @"";
-        
-        //unset process path
-        self.processPath.stringValue = @"";
-        
-        //unset ip address
-        self.ipAddress.stringValue = @"";
-        
-        //unset port & proto
-        self.portProto.stringValue = @"";
-        
-        //alert window maximized?
-        // unzoom to bring it back to its default size
-        if(YES == self.window.zoomed)
-        {
-            //reset width (horizontal)
-            [self.window.contentView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[window(0@745)]|"
-                                                     options:0 metrics:nil views:NSDictionaryOfVariableBindings(self.window)]];
-        }
-        
-        //make un-modal
-        //[[NSApplication sharedApplication] stopModal];
-            
-        //bail
-        goto bail;
+        //disable
+        self.ancestryButton.enabled = NO;
     }
     
     //lulu allowed/blocked from talking to internet?
@@ -118,6 +90,9 @@
     //set process icon
     self.processIcon.image = getIconForProcess(self.alert[ALERT_PATH]);
     
+    //process signing info
+    [self processSigningInfo];
+    
     //set name
     self.processName.stringValue = getProcessName(self.alert[ALERT_PATH]);
     
@@ -138,38 +113,22 @@
     //port & proto
     self.portProto.stringValue = [NSString stringWithFormat:@"%@ (%@)", [self.alert[ALERT_PORT] stringValue], [self convertProtocol]];
     
-    /* BOTH */
+    //alloc time formatter
+    timeFormat = [[NSDateFormatter alloc] init];
     
-    //process signing info
-    // for now, just sets icon
-    if(nil != self.alert[ALERT_SIGNINGINFO])
-    {
-        //process
-        [self processSigningInfo];
-    }
+    //set format
+    timeFormat.dateFormat = @"HH:mm:ss";
     
-    //make window front
-    [NSApp activateIgnoringOtherApps:YES];
+    //add timestamp
+    self.timeStamp.stringValue = [NSString stringWithFormat:@"time: %@", [timeFormat stringFromDate:[[NSDate alloc] init]]];
     
-    //make modal
-    [[NSApplication sharedApplication] runModalForWindow:self.window];
+    //show touch bar
+    [self initTouchBar];
     
 bail:
     
     return;
 }
-
-
-//window closing
-// make sure we're unmodal
-- (void)windowWillClose:(NSNotification *)notification
-{
-    //stop modal
-    [[NSApplication sharedApplication] stopModal];
-    
-    return;
-}
-
 
 //covert number protocol to name
 -(NSString*)convertProtocol
@@ -221,15 +180,14 @@ bail:
     
     //get rules from daemon via XPC
     [daemonComms getRules:NO reply:^(NSDictionary* daemonRules)
-     {
+    {
          //look for an allow rule for lulu
          for(NSString* processPath in daemonRules.allKeys)
          {
              //is allow rule, match us?
              if( (YES == [processPath isEqualToString:NSProcessInfo.processInfo.arguments[0]]) &&
-                (RULE_STATE_ALLOW == [[daemonRules[processPath] objectForKey:RULE_ACTION] intValue]) )
+                 (RULE_STATE_ALLOW == [[daemonRules[processPath] objectForKey:RULE_ACTION] intValue]) )
              {
-                 
                  //dbg msg
                  logMsg(LOG_DEBUG, @"lulu/helper is allowed to access the network");
                  
@@ -241,17 +199,22 @@ bail:
                  break;
              }
          }
+        
+        //set button state on main thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            //set state
+            self.virusTotalButton.enabled = !shouldDisable;
+            
+        });
          
-         //set button state
-         self.virusTotalButton.enabled = !shouldDisable;
-         
-     }];
+    }];
     
     return;
 }
 
 //set signing icon
-// TODO: maybe make this clickable/more info? (signing auths, etc)
+// TODO: maybe make this popover w/ clickable/more info? (signing auths, etc)
 -(void)processSigningInfo
 {
     //signing info
@@ -262,6 +225,17 @@ bail:
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"signing info: %@", signingInfo]);
+    
+    //none?
+    // just set to unknown
+    if(nil == signingInfo)
+    {
+        //set icon
+        signedIcon.image = [NSImage imageNamed:@"unknown"];
+        
+        //bail
+        goto bail;
+    }
     
     switch([signingInfo[KEY_SIGNATURE_STATUS] intValue])
     {
@@ -322,6 +296,8 @@ bail:
             //alertInfo[@"processSigning"] = [NSString stringWithFormat:@"unknown (status/error: %ld)", (long)[signingInfo[KEY_SIGNATURE_STATUS] integerValue]];
     }
     
+bail:
+    
     return;
 }
 
@@ -332,8 +308,7 @@ bail:
     //view controller
     VirusTotalViewController* popoverVC = nil;
     
-    //when button is clicked
-    // ->open popover
+    //open popover
     if(NSOnState == self.virusTotalButton.state)
     {
         //grab
@@ -348,11 +323,11 @@ bail:
         //show popover
         [self.virusTotalPopover showRelativeToRect:[self.virusTotalButton bounds] ofView:self.virusTotalButton preferredEdge:NSMaxYEdge];
     }
-    //otherwise
-    // ->close popover
+    
+    //close popover
     else
     {
-        //hide popover
+        //close
         [self.virusTotalPopover close];
     }
     
@@ -360,21 +335,14 @@ bail:
 }
 
 //invoked when user clicks process ancestry button
-// ->depending on state, show/populate the popup, or close it
+// depending on state, show/populate the popup, or close it
 -(IBAction)ancestryButtonHandler:(id)sender
 {
-    //process ancestry
-    NSMutableArray* processHierarchy = nil;
-    
-    //when button is clicked
-    // ->open popover
+    //open popover
     if(NSOnState == self.ancestryButton.state)
     {
-        //get process ancestry
-        processHierarchy = generateProcessHierarchy([self.alert[ALERT_PID] unsignedShortValue]);
-        
         //add the index value to each process in the hierarchy
-        // ->used to populate outline/table
+        // used to populate outline/table
         for(NSUInteger i = 0; i<processHierarchy.count; i++)
         {
             //set index
@@ -396,15 +364,58 @@ bail:
         //show popover
         [self.ancestryPopover showRelativeToRect:[self.ancestryButton bounds] ofView:self.ancestryButton preferredEdge:NSMaxYEdge];
     }
-    //otherwise
-    // ->close popover
+    
+    //close popover
     else
     {
-        //hide popover
+        //close
         [self.ancestryPopover close];
     }
     
     return;
+}
+
+//build an array of processes ancestry
+// start with process and go 'back' till initial ancestor
+-(void)generateProcessAncestry:(pid_t)pid
+{
+    //process obj
+    Process* process = nil;
+    
+    //init
+    self.processHierarchy = [NSMutableArray array];
+    
+    //init (child) process
+    process = [[Process alloc] init:pid];
+    if(nil == process)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //add process to hierarchy
+    [self.processHierarchy insertObject:[@{@"pid":[NSNumber numberWithUnsignedInt:process.pid], @"name":process.binary.name} mutableCopy] atIndex:0];
+    
+    //now should have ancestors' pids
+    // iterate over all ancestors, getting pid/name for each
+    for(NSNumber* ancestorPID in process.ancestors)
+    {
+        //init process
+        process = [[Process alloc] init:ancestorPID.unsignedIntValue];
+        if(nil == process)
+        {
+            //bail
+            goto bail;
+        }
+        
+        //add process to hierarchy
+        [self.processHierarchy insertObject:[@{@"pid":[NSNumber numberWithUnsignedInt:process.pid], @"name":process.binary.name} mutableCopy] atIndex:0];
+    }
+    
+bail:
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"process ancestory: %@", self.processHierarchy]);
 }
 
 //set the popover window size
@@ -511,59 +522,139 @@ bail:
 }
 
 //button handler
-// ->block/allow, and then close
+// close popups and stop modal with resposne
 -(IBAction)handleUserResponse:(id)sender
 {
-    //alert response
-    NSMutableDictionary* response = nil;
-    
-    //daemon comms object
-    DaemonComms* daemonComms = nil;
-    
-    //init response with initial alert
-    response = [NSMutableDictionary dictionaryWithDictionary:self.alert];
-    
-    //init daemon
-    // use local var here, as iVar blocks
-    daemonComms = [[DaemonComms alloc] init];
-    
-    //block
-    if(RULE_STATE_BLOCK == ((NSButton*)sender).tag)
-    {
-        //dbg msg
-        logMsg(LOG_DEBUG, @"user clicked 'block'");
-        
-        //add action, block
-        response[ALERT_ACTION] = [NSNumber numberWithInt:RULE_STATE_BLOCK];
-    }
-    
-    //allow
-    else
-    {
-        //dbg msg
-        logMsg(LOG_DEBUG, @"user clicked 'allow'");
-        
-        //add action, allow
-        response[ALERT_ACTION] = [NSNumber numberWithInt:RULE_STATE_ALLOW];
-    }
-    
-    //add current user
-    response[ALERT_USER] = [NSNumber numberWithUnsignedInteger:getuid()];
-    
-    //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"responding to deamon with: %@", response]);
-    
-    //send response to daemon
-    [daemonComms alertResponse:response];
-    
     //ensure popups are closed
     [self deInitPopup];
     
     //close window
     [self.window close];
     
+    //stop modal
+    [[NSApplication sharedApplication] stopModalWithCode:((NSButton*)sender).tag];
+    
     return;
 }
 
+//init/show touch bar
+-(void)initTouchBar
+{
+    //touch bar items
+    NSArray *touchBarItems = nil;
+    
+    //touch bar API is only 10.12.2+
+    if(@available(macOS 10.12.2, *))
+    {
+        //alloc/init
+        self.touchBar = [[NSTouchBar alloc] init];
+        if(nil == self.touchBar)
+        {
+            //no touch bar?
+            goto bail;
+        }
+        
+        //set delegate
+        self.touchBar.delegate = self;
+        
+        //set id
+        self.touchBar.customizationIdentifier = @"com.objective-see.lulu";
+        
+        //init items
+        touchBarItems = @[@".icon", @".label", @".block", @".allow"];
+        
+        //set items
+        self.touchBar.defaultItemIdentifiers = touchBarItems;
+        
+        //set customization items
+        self.touchBar.customizationAllowedItemIdentifiers = touchBarItems;
+        
+        //activate so touchbar shows up
+        [NSApp activateIgnoringOtherApps:YES];
+    }
+    
+bail:
+    
+    return;
+}
+
+//delegate method
+// init item for touch bar
+-(NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier
+{
+    //icon view
+    NSImageView *iconView = nil;
+    
+    //icon
+    NSImage* icon = nil;
+    
+    //item
+    NSCustomTouchBarItem *touchBarItem = nil;
+    
+    //init item
+    touchBarItem = [[NSCustomTouchBarItem alloc] initWithIdentifier:identifier];
+    
+    //icon
+    if(YES == [identifier isEqualToString: @".icon" ])
+    {
+        //init icon view
+        iconView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 30.0, 30.0)];
+        
+        //enable layer
+        [iconView setWantsLayer:YES];
+        
+        //set color
+        [iconView.layer setBackgroundColor:[[NSColor whiteColor] CGColor]];
+        
+        //mask
+        iconView.layer.masksToBounds = YES;
+        
+        //round corners
+        iconView.layer.cornerRadius = 3.0;
+        
+        //load icon image
+        icon = [NSImage imageNamed:@"luluIcon"];
+        
+        //set size
+        icon.size = CGSizeMake(32, 32);
+        
+        //add image
+        iconView.image = icon;
+        
+        //set view
+        touchBarItem.view = iconView;
+    }
+    
+    //label
+    else if(YES == [identifier isEqualToString:@".label"])
+    {
+        //item label
+        touchBarItem.view = [NSTextField labelWithString:[NSString stringWithFormat:@"%@ %@", self.processName.stringValue,self.alertMessage.stringValue]];
+    }
+    
+    //block button
+    else if(YES == [identifier isEqualToString:@".block"])
+    {
+        //init button
+        touchBarItem.view = [NSButton buttonWithTitle: @"Block" target:self action: @selector(handleUserResponse:)];
+        
+        //set tag
+        // 0: block
+        ((NSButton*)touchBarItem.view).tag = 0;
+    }
+    
+    //allow button
+    else if(YES == [identifier isEqualToString:@".allow"])
+    {
+        //init button
+        touchBarItem.view = [NSButton buttonWithTitle: @"Allow" target:self action: @selector(handleUserResponse:)];
+        
+        //set tag
+        // 1: allow
+        ((NSButton*)touchBarItem.view).tag = 1;
+    }
+    
+    return touchBarItem;
+}
 
 @end

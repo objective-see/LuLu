@@ -9,14 +9,15 @@
 
 
 
-#import "const.h"
+#import "consts.h"
 #import "logging.h"
 
 #import "Rule.h"
 #import "Rules.h"
 #import "Queue.h"
-#import "UserComms.h"
 #import "KextComms.h"
+#import "UserComms.h"
+#import "utilities.h"
 #import "UserClientShared.h"
 #import "UserCommsListener.h"
 #import "UserCommsInterface.h"
@@ -60,10 +61,9 @@ extern Rules* rules;
 extern Queue* eventQueue;
 
 //global client status
-extern NSInteger clientStatus;
+extern NSInteger clientConnected;
 
 @implementation UserCommsListener
-
 
 @synthesize listener;
 
@@ -158,9 +158,6 @@ bail:
         // see: https://stackoverflow.com/a/23628986/3854841
         __strong typeof(NSXPCConnection*)strongConnection = weakConnection;
         
-        //dbg msg
-        logMsg(LOG_DEBUG, @"connection interrupted/invalidated");
-        
         //handle invalidation
         [self connectionInvalidated:strongConnection];
     };
@@ -219,15 +216,32 @@ bail:
 // if there is an 'undelivered' alert, (re)enqueue it
 -(void)connectionInvalidated:(NSXPCConnection *)connection
 {
+    //client path
+    NSString* clientPath = nil;
+    
     //user comms obj
     UserComms* userComms = nil;
     
     //dbg msg
     logMsg(LOG_DEBUG, @"XPC connection interrupted/invalidated");
-
+    
     //sanity check
     if(nil == connection)
     {
+        //bail
+        goto bail;
+    }
+    
+    //get client path
+    clientPath = getProcessPath(connection.processIdentifier);
+    
+    //ignore if not login item
+    // main app might be the one invalidating the connection
+    if(YES == [clientPath hasSuffix:LOGIN_ITEM_NAME])
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"leaving 'client connected' flag set, as its %@ that's invalidating", clientPath]);
+        
         //bail
         goto bail;
     }
@@ -248,21 +262,20 @@ bail:
     //have alert
     // ->requeue it up
     [eventQueue enqueue:userComms.dequeuedAlert];
+    
+    //TODO: move this into a disconnect call?
+    // only want when login items goes away/is exiting...
+    
+    //client (i.e. login item) should always be running
+    // unset client connection status to prevent delivery of alerts
+    // TODO: will have to change this when supporting multiple users
+    clientConnected = NO;
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, @"unset 'clientConnected'");
 
 bail:
     
-    //for client (i.e. login item) that should always be running
-    // set client status to 'disabled' to prevent delivery of alerts
-    // TODO: will have to change this when supporting multiple users
-    if(STATUS_CLIENT_UNKNOWN != userComms.currentStatus)
-    {
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"client status is %ld, so set global disable flag", (long)userComms.currentStatus]);
-        
-        //set global status
-        clientStatus = STATUS_CLIENT_DISABLED;
-    }
-
     //unset export obj
     connection.exportedObject = nil;
     
@@ -271,6 +284,5 @@ bail:
     
     return;
 }
-
 
 @end

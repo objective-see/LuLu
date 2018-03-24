@@ -7,17 +7,21 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-
+#import "procInfo.h"
 #import "ParentsWindowController.h"
 #import "VirusTotalViewController.h"
 
 #import <Cocoa/Cocoa.h>
 
-@interface AlertWindowController : NSWindowController
+@interface AlertWindowController : NSWindowController <NSTouchBarProvider, NSTouchBarDelegate>
 
+/* PROPERTIES */
 
 //alert info
 @property(nonatomic, retain)NSDictionary* alert;
+
+//touch bar
+@property(nonatomic, retain)NSTouchBar* touchBar;
 
 /* TOP */
 
@@ -48,6 +52,9 @@
 //popover for ancestry
 @property (strong) IBOutlet NSPopover *ancestryPopover;
 
+//process ancestry
+@property (nonatomic, retain)NSMutableArray* processHierarchy;
+
 
 /* BOTTOM */
 
@@ -72,7 +79,15 @@
 //text cell for ancestry popover
 @property (weak) IBOutlet NSTextFieldCell *ancestryTextCell;
 
+//time stamp
+@property (weak) IBOutlet NSTextField *timeStamp;
+
 /* METHODS */
+
+
+//build an array of processes ancestry
+// start with process and go 'back' till initial ancestor
+-(void)generateProcessAncestry:(pid_t)pid;
 
 //lulu allowed/blocked from talking to internet?
 // will fact, will determine state of virus total button

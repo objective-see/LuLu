@@ -10,41 +10,91 @@
 @import Cocoa;
 #import <ServiceManagement/ServiceManagement.h>
 
-#import "const.h"
+#import "consts.h"
 #import "logging.h"
-#import "Utilities.h"
+#import "utilities.h"
+#import "exception.h"
 
 int main(int argc, const char * argv[])
 {
     //return var
     int iReturn = -1;
     
-    //when in/uninstalling
-    // toggle login item (need to do from here, in main app)
-    if(2 == argc)
+    //path to login item
+    NSString* loginItem = nil;
+    
+    //TODO: use sentry.io?
+    //first thing...
+    // install exception handlers
+    installExceptionHandlers();
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"starting config/pref's app (args: %@)", [[NSProcessInfo processInfo] arguments]]);
+    
+    //init path to login item app
+    loginItem = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"/Contents/Library/LoginItems/%@.app", LOGIN_ITEM_NAME]];
+    
+    //install
+    // enable login item
+    if(YES == [[[NSProcessInfo processInfo] arguments] containsObject:CMDLINE_FLAG_INSTALL])
     {
-        //'-install' or '-uninstall'
-        // toggle login item
-        if( (0 == strcmp(argv[1], CMDLINE_FLAG_INSTALL.UTF8String)) ||
-            (0 == strcmp(argv[1], CMDLINE_FLAG_UNINSTALL.UTF8String)) )
+        //enable
+        if(YES != toggleLoginItem([NSURL fileURLWithPath:loginItem], ACTION_INSTALL_FLAG))
         {
-            //toggle login item
-            if(YES != SMLoginItemSetEnabled((__bridge CFStringRef)@"com.objective-see.luluHelper", !!strcmp(argv[1], CMDLINE_FLAG_UNINSTALL.UTF8String)))
-            {
-                //err msg
-                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"failed to toggle login item (%@)", [[NSBundle mainBundle] bundleIdentifier]]);
-                
-                //bail
-                goto bail;
-            }
+            //err msg
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to enable login item (%@)", loginItem]);
             
+            //bail
+            goto bail;
+        }
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"enabled login item (%@)", loginItem]);
+        
+        //not showing 'welcome' screen(s)?
+        // bail here so UI, etc isn't shown to user
+        if(YES != [[[NSProcessInfo processInfo] arguments] containsObject:CMDLINE_FLAG_WELCOME])
+        {
             //happy
             iReturn = 0;
             
-            //bail here
-            // don't want to show UI or do anything else
+            //bail
             goto bail;
         }
+    }
+    
+    //uninstall
+    // disable login item and bail
+    else if(YES == [[[NSProcessInfo processInfo] arguments] containsObject:CMDLINE_FLAG_UNINSTALL])
+    {
+        //disable
+        if(YES != toggleLoginItem([NSURL fileURLWithPath:loginItem], ACTION_UNINSTALL_FLAG))
+        {
+            //err msg
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to disable login item (%@)", loginItem]);
+            
+            //bail
+            goto bail;
+        }
+        
+        //happy
+        iReturn = 0;
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"disabled login item (%@)", [[NSBundle mainBundle] bundleIdentifier]]);
+        
+        //don't want to show UI or do anything else, so bail
+        goto bail;
+    }
+    
+    //already running?
+    if(YES == isAppRunning([[NSBundle mainBundle] bundleIdentifier]))
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, @"an instance of DND (main app) is already running");
+        
+        //bail
+        goto bail;
     }
     
     //already running?

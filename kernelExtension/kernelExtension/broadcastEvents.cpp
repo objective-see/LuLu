@@ -7,7 +7,7 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#include "const.h"
+#include "consts.h"
 #include "broadcastEvents.hpp"
 
 //kext's/objective-see's vendor id

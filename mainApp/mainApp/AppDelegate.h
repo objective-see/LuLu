@@ -14,11 +14,18 @@
 #import "PrefsWindowController.h"
 #import "RulesWindowController.h"
 #import "UpdateWindowController.h"
+#import "WelcomeWindowController.h"
 #import "3rdParty/HyperlinkTextField.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 /* PROPERTIES */
+
+//main window
+@property (weak) IBOutlet NSWindow *window;
+
+//welcome view controller
+@property(nonatomic, retain)WelcomeWindowController* welcomeWindowController;
 
 //about window controller
 @property(nonatomic, retain)AboutWindowController* aboutWindowController;

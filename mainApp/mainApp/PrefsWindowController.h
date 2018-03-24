@@ -9,28 +9,47 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "DaemonComms.h"
 #import "UpdateWindowController.h"
 
 /* CONSTS */
 
-//general view
-#define TOOLBAR_GENERAL 101
+//rules view
+#define TOOLBAR_RULES 0
+
+//visuals view
+#define TOOLBAR_VISUALS 1
 
 //update view
-#define TOOLBAR_UPDATE 102
+#define TOOLBAR_UPDATE 2
 
 //to select, need string ID
-#define TOOLBAR_GENERAL_ID @"general"
+#define TOOLBAR_RULES_ID @"rules"
 
 @interface PrefsWindowController : NSWindowController
 
 /* PROPERTIES */
 
+//daemon comms obj
+@property(nonatomic, retain)DaemonComms* daemonComms;
+
+//preferences
+@property(nonatomic, retain)NSDictionary* preferences;
+
 //toolbar
 @property (weak) IBOutlet NSToolbar *toolbar;
 
-//general prefs view
-@property (weak) IBOutlet NSView *generalView;
+//rules prefs view
+@property (weak) IBOutlet NSView *rulesView;
+
+//allow apple programs
+@property (weak) IBOutlet NSButton *allowAppleButton;
+
+//allowed installed apps
+@property (weak) IBOutlet NSButton *allowInstalledButton;
+
+//visuals view
+@property (strong) IBOutlet NSView *visualsView;
 
 //passive mode button
 @property (weak) IBOutlet NSButton *passiveModeButton;
@@ -60,10 +79,6 @@
 
 //toolbar button handler
 -(IBAction)toolbarButtonHandler:(id)sender;
-
-//set button states
-// based on preferences
--(void)setButtonStates;
 
 //button handler for all preference buttons
 -(IBAction)togglePreference:(id)sender;

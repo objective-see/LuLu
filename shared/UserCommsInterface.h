@@ -14,9 +14,14 @@
 
 @protocol UserProtocol
 
-//set status
-// ->enabled/disabled
--(void)setClientStatus:(NSInteger)status;
+//checkin
+-(void)clientCheckin;
+
+//get preferences
+-(void)getPreferences:(void (^)(NSDictionary* preferences))reply;
+
+//update preferences
+-(void)updatePreferences:(NSDictionary*)preferences;
 
 //get rules
 // ->optionally waits (blocks) for change

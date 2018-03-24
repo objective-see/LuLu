@@ -8,9 +8,9 @@
 //
 
 #import "Rule.h"
-#import "Const.h"
-#import "Utilities.h"
-#import "Logging.h"
+#import "consts.h"
+#import "utilities.h"
+#import "logging.h"
 
 @implementation Rule
 

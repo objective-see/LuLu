@@ -49,6 +49,9 @@ struct connectionEvent
 //DNS 'cache'
 // mappings of IP:URL
 @property(nonatomic, retain)NSMutableDictionary* dnsCache;
+    
+//pre-installed 3rd-party apps
+@property(nonatomic, retain)NSDictionary* installedApps;
 
 /* METHODS */
 

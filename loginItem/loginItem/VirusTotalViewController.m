@@ -8,8 +8,8 @@
 //
 
 
-#import "Logging.h"
-#import "Utilities.h"
+#import "logging.h"
+#import "utilities.h"
 #import "VirusTotal.h"
 #import "HyperlinkTextField.h"
 #import "VirusTotalViewController.h"
@@ -80,9 +80,7 @@
     }
     
     //dbg msg
-    #ifdef DEBUG
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"querying VT with %@", self.itemPath]);
-    #endif
     
     //add name
     item[@"name"] = self.itemName;
@@ -120,9 +118,7 @@ bail:
 -(void)displayResults:(NSMutableDictionary*)item
 {
     //dbg msg
-    #ifdef DEBUG
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"VT response: %@", item]);
-    #endif
     
     //stop spinner
     [self.vtSpinner stopAnimation:nil];

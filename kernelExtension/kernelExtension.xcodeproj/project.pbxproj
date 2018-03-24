@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		7D5208F51E41C23900832F57 /* driver.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7D5208F41E41C23900832F57 /* driver.hpp */; };
 		7D5208F71E41C23900832F57 /* driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D5208F61E41C23900832F57 /* driver.cpp */; };
-		7D7755FF1F02ECAB00D0017D /* const.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D7755FE1F02ECAB00D0017D /* const.h */; };
+		7D7755FF1F02ECAB00D0017D /* consts.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D7755FE1F02ECAB00D0017D /* consts.h */; };
 		7D7756021F05844800D0017D /* userInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D7756001F05844800D0017D /* userInterface.cpp */; };
 		7D7756031F05844800D0017D /* userInterface.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7D7756011F05844800D0017D /* userInterface.hpp */; };
 		7D7756051F05845200D0017D /* UserClientShared.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D7756041F05845200D0017D /* UserClientShared.h */; };
@@ -26,7 +26,7 @@
 		7D5208F41E41C23900832F57 /* driver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = driver.hpp; sourceTree = "<group>"; };
 		7D5208F61E41C23900832F57 /* driver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = driver.cpp; sourceTree = "<group>"; };
 		7D5208F81E41C23900832F57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D7755FE1F02ECAB00D0017D /* const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = const.h; path = ../../shared/const.h; sourceTree = "<group>"; };
+		7D7755FE1F02ECAB00D0017D /* consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = consts.h; path = ../../shared/consts.h; sourceTree = "<group>"; };
 		7D7756001F05844800D0017D /* userInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = userInterface.cpp; sourceTree = "<group>"; };
 		7D7756011F05844800D0017D /* userInterface.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = userInterface.hpp; sourceTree = "<group>"; };
 		7D7756041F05845200D0017D /* UserClientShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserClientShared.h; path = ../../shared/UserClientShared.h; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		7D5208F31E41C23900832F57 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				7D7756061F05845600D0017D /* shared */,
+				7D7756061F05845600D0017D /* Shared */,
 				7D77560E1F05EDC600D0017D /* broadcastEvents.hpp */,
 				7D77560D1F05EDC600D0017D /* broadcastEvents.cpp */,
 				7D5208F41E41C23900832F57 /* driver.hpp */,
@@ -85,13 +85,13 @@
 			path = kernelExtension;
 			sourceTree = "<group>";
 		};
-		7D7756061F05845600D0017D /* shared */ = {
+		7D7756061F05845600D0017D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				7D7756041F05845200D0017D /* UserClientShared.h */,
-				7D7755FE1F02ECAB00D0017D /* const.h */,
+				7D7755FE1F02ECAB00D0017D /* consts.h */,
 			);
-			name = shared;
+			name = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -103,7 +103,7 @@
 			files = (
 				7D7756051F05845200D0017D /* UserClientShared.h in Headers */,
 				7D7756101F05EDC700D0017D /* broadcastEvents.hpp in Headers */,
-				7D7755FF1F02ECAB00D0017D /* const.h in Headers */,
+				7D7755FF1F02ECAB00D0017D /* consts.h in Headers */,
 				7D77560C1F05EACE00D0017D /* socketEvents.hpp in Headers */,
 				7D7756031F05844800D0017D /* userInterface.hpp in Headers */,
 				7DBEB5071E4C54A900BEA37C /* rules.hpp in Headers */,
@@ -297,12 +297,12 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 0.9.1;
+				CURRENT_PROJECT_VERSION = 0.9.3;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				INFOPLIST_FILE = kernelExtension/Info.plist;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULE_NAME = "com.objective-see.lulu";
-				MODULE_VERSION = 1.0.0d1;
+				MODULE_VERSION = 0.9.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
 				PRODUCT_MODULE_NAME = LuLu;
 				PRODUCT_NAME = LuLu;
@@ -315,12 +315,12 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 0.9.1;
+				CURRENT_PROJECT_VERSION = 0.9.3;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				INFOPLIST_FILE = kernelExtension/Info.plist;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULE_NAME = "com.objective-see.lulu";
-				MODULE_VERSION = 1.0.0d1;
+				MODULE_VERSION = 0.9.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
 				PRODUCT_MODULE_NAME = LuLu;
 				PRODUCT_NAME = LuLu;

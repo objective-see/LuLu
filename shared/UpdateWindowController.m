@@ -7,9 +7,9 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "Const.h"
-#import "Logging.h"
-#import "Utilities.h"
+#import "consts.h"
+#import "logging.h"
+#import "utilities.h"
 #import "AppDelegate.h"
 #import "UpdateWindowController.h"
 

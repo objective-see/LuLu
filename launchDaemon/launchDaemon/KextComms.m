@@ -7,11 +7,11 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "const.h"
+#import "consts.h"
 #import "logging.h"
 #import "KextComms.h"
 #import "KextListener.h"
-#include "UserClientShared.h"
+#import "UserClientShared.h"
 
 #include <IOKit/IOKitLib.h>
 #include <CoreFoundation/CoreFoundation.h>
@@ -106,14 +106,20 @@ bail:
 }
 
 //disable socket filtering in kernel
--(kern_return_t)disable
+-(kern_return_t)disable:(BOOL)shouldUnregister
 {
+    //input
+    uint64_t scalarIn[1] = {0};
+    
+    //add pid
+    scalarIn[0] = shouldUnregister;
+    
     //dbg msg
     logMsg(LOG_DEBUG, @"sending msg to kext: 'disable'");
     
     //talk to kext
     // ->disable firewall
-    return IOConnectCallScalarMethod(self.connection, kTestUserClientDisable, NULL, 0, NULL, NULL);
+    return IOConnectCallScalarMethod(self.connection, kTestUserClientDisable, scalarIn, 1, NULL, NULL);
 }
 
 //add a rule by pid/action
@@ -154,7 +160,6 @@ bail:
 
     //remove rule by pid
     return IOConnectCallScalarMethod(self.connection, kTestUserClientRemoveRule, scalarIn, 1, NULL, NULL);
-
 }
 
 @end

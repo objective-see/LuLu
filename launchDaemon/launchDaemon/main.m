@@ -7,16 +7,23 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "const.h"
-#import "logging.h"
 #import "Rules.h"
 #import "Queue.h"
+#import "consts.h"
+#import "logging.h"
+#import "Baseline.h"
 #import "KextComms.h"
+#import "utilities.h"
+#import "exception.h"
+#import "Preferences.h"
 #import "KextListener.h"
 #import "ProcListener.h"
 #import "UserCommsListener.h"
 
 //GLOBALS
+
+//prefs obj
+Preferences* preferences = nil;
 
 //kext comms obj
 KextComms* kextComms = nil;
@@ -35,10 +42,13 @@ ProcessListener* processListener = nil;
 KextListener* kextListener = nil;
 
 //(a) client status
-NSInteger clientStatus = STATUS_CLIENT_DISABLED;
+NSInteger clientConnected;
 
 //'rule changed' semaphore
 dispatch_semaphore_t rulesChanged = 0;
+
+//dispatch source for SIGTERM
+dispatch_source_t dispatchSource = nil;
 
 /* FUNCTIONS */
 
@@ -46,34 +56,69 @@ dispatch_semaphore_t rulesChanged = 0;
 // can perform actions such as disabling firewall and closing logging
 void register4Shutdown(void);
 
+//launch daemon should only be unloaded if box is shutting down
+// so handle things like telling kext to disable & unregister, de-init logging, etc
+void goodbye(void);
+
 //main
 // init & kickoff stuffz
 int main(int argc, const char * argv[])
 {
     @autoreleasepool
     {
-        //flag for first time running
-        BOOL firstRun = NO;
-        
-        //log file path
-        NSString* logPath = nil;
+        //baseline object
+        Baseline* baseline = nil;
         
         //user comms listener (XPC) obj
         UserCommsListener* userCommsListener = nil;
         
-        //dbg msg
-        logMsg(LOG_DEBUG, @"launch daemon started");
+        //high sierra version struct
+        NSOperatingSystemVersion highSierra = {10,13,0};
         
-        //init log path
-        // '/Library/Logs/Lulu.log'
-        logPath = [@"/Library/Logs/" stringByAppendingPathComponent:LOG_FILE_NAME];
-
-        //set 'first run' flag
-        // log file not present is the indicator for this
-        if(YES != [[NSFileManager defaultManager] fileExistsAtPath:logPath])
+        //dbg msg
+        logMsg(LOG_DEBUG, @"LuLu launch daemon started");
+        
+        //install exception handlers
+        installExceptionHandlers();
+        
+        //init logging
+        if(YES != initLogging(logFilePath()))
         {
-            //set flag
-            firstRun = YES;
+            //err msg
+            logMsg(LOG_ERR, @"failed to init logging");
+            
+            //bail
+            goto bail;
+        }
+        
+        //alloc/init/load prefs
+        preferences = [[Preferences alloc] init];
+        if(nil == preferences)
+        {
+            //err msg
+            logMsg(LOG_ERR, @"failed to initialize preferences");
+            
+            //bail
+            goto bail;
+        }
+        
+        //enumerate installed 3rd-party apps?
+        // once need to do once, hence the file check...
+        if(YES != [[NSFileManager defaultManager] fileExistsAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:INSTALLED_APPS]])
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"%@ not found, so kicking off baselining", INSTALLED_APPS]);
+            
+            //init
+            baseline = [[Baseline alloc] init];
+            
+            //baselining
+            // this can be slow, so do in background
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^
+            {
+               //baseline
+               [baseline baseline];
+            });
         }
         
         //alloc/init kernel comms object
@@ -82,19 +127,12 @@ int main(int argc, const char * argv[])
         //alloc/init process listener obj
         processListener = [[ProcessListener alloc] init];
         
-        //init logging
-        if(YES != initLogging(logPath))
-        {
-            //err msg
-            logMsg(LOG_ERR, @"failed to init logging");
-
-            //bail
-            goto bail;
-        }
-        
         //register for shutdown
         // so, can disable firewall and close logging
         register4Shutdown();
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, @"registered for shutdown events");
         
         //start listening for process events
         [processListener monitor];
@@ -124,14 +162,6 @@ int main(int argc, const char * argv[])
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded rules from %@", RULES_FILE]);
     
-        //first run?
-        // add default/pre-existing apps
-        if(YES == firstRun)
-        {
-            //baseline
-            [rules startBaselining];
-        }
-    
         //init rule changed semaphore
         rulesChanged = dispatch_semaphore_create(0);
         
@@ -140,7 +170,7 @@ int main(int argc, const char * argv[])
         if(nil == userCommsListener)
         {
             //err msg
-            logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to initialize user comms XPC listener"]);
+            logMsg(LOG_ERR, @"failed to initialize user comms XPC listener");
             
             //bail
             goto bail;
@@ -149,41 +179,26 @@ int main(int argc, const char * argv[])
         //dbg msg
         logMsg(LOG_DEBUG, @"listening for client XPC connections");
         
+        //10.13+ and kext not yet loaded?
+        // likely 1st time, and have to wait for user to allow
+        if( (YES == [[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:highSierra]) &&
+            (YES != kextIsLoaded([NSString stringWithUTF8String:LULU_SERVICE_NAME])) )
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, @"waiting for kext to load (high sierra)");
+            
+            //wait
+            wait4kext([NSString stringWithUTF8String:LULU_SERVICE_NAME]);
+        }
+ 
         //connect to kext
         if(YES != [kextComms connect])
         {
-            //high sierra, users have to approve kext
-            // so, just wait for that the kext to load....
-            if(YES == NSProcessInfo.processInfo.operatingSystemVersion.minorVersion >= 13)
-            {
-                //dbg msg
-                logMsg(LOG_DEBUG, @"waiting for kext to load (high sierra)");
+            //err msg
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to connect to kext, %s", LULU_SERVICE_NAME]);
                 
-                //nap & try again
-                while(YES)
-                {
-                    //nap
-                    [NSThread sleepForTimeInterval:5.0];
-                    
-                    //try load
-                    if(YES == [kextComms connect])
-                    {
-                        //horray
-                        break;
-                    }
-                }
-            }
-            
-            //older verions of macOS
-            // kext should be automatically loaded
-            else
-            {
-                //err msg
-                logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to connect to kext, %s", LULU_SERVICE_NAME]);
-                
-                //bail
-                goto bail;
-            }
+            //bail
+            goto bail;
         }
         
         //dbg msg
@@ -215,6 +230,9 @@ int main(int argc, const char * argv[])
                 [rules addToKernel:rules.rules[path]];
             }
         }
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, @"added all rules, now run-loop'ing");
 
         //run loop
         [[NSRunLoop currentRunLoop] run];
@@ -223,22 +241,31 @@ int main(int argc, const char * argv[])
 bail:
     
     //dbg msg
-    // should never happen unless box is shutting down
-    logMsg(LOG_DEBUG, @"LULU launch daemon exiting");
+    logMsg(LOG_DEBUG, @"LuLu launch daemon exiting");
     
-    //tell kext to disable
-    [kextComms disable];
+    //bye!
+    // tell kext to disable/unregister, etc
+    goodbye();
     
     return 0;
+}
+
+//launch daemon should only be unloaded if box is shutting down
+// so handle things like telling kext to disable & unregister, de-init logging, etc
+void goodbye()
+{
+    //tell kext to disable
+    // and also to unregister as we're going away
+    [kextComms disable:YES];
+    
+    //close logging
+    deinitLogging();
 }
 
 //init a handler for SIGTERM
 // can perform actions such as disabling firewall and closing logging
 void register4Shutdown()
 {
-    //dispatch source for SIGTERM
-    dispatch_source_t dispatchSource = nil;
-    
     //ignore sigterm
     // handling it via GCD dispatch
     signal(SIGTERM, SIG_IGN);
@@ -250,18 +277,19 @@ void register4Shutdown()
     // disable kext & close logging
     dispatch_source_set_event_handler(dispatchSource, ^{
         
-        //tell kext to disable
-        [kextComms disable];
-        
-        //close logging
-        deinitLogging();
+        //dbg msg
+        logMsg(LOG_DEBUG, @"caught 'SIGTERM' message....shutting down");
         
         //bye!
+        // tell kext to disable/unregister, etc
+        goodbye();
+        
+        //bye bye!
         exit(SIGTERM);
     });
     
     //resume
     dispatch_resume(dispatchSource);
-    
+
     return;
 }

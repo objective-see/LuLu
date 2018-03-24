@@ -21,7 +21,14 @@
 @property (atomic, strong, readwrite) NSXPCConnection* xpcServiceConnection;
 
 //set client status
--(void)setClientStatus:(NSInteger)status;
+-(void)clientCheckin;
+
+//get preferences
+// note: synchronous
+-(NSDictionary*)getPreferences;
+
+//update (save) preferences
+-(void)updatePreferences:(NSDictionary*)preferences;
 
 //ask daemon for rules
 -(void)getRules:(BOOL)wait4Change reply:(void (^)(NSDictionary*))reply;

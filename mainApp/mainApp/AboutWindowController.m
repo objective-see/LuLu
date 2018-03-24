@@ -7,8 +7,8 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "const.h"
-#import "Utilities.h"
+#import "consts.h"
+#import "utilities.h"
 #import "AboutWindowController.h"
 
 @implementation AboutWindowController

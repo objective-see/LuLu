@@ -7,7 +7,7 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#include "const.h"
+#include "consts.h"
 #include "rules.hpp"
 #include "driver.hpp"
 #include "socketEvents.hpp"
@@ -16,12 +16,23 @@
 #include "broadcastEvents.hpp"
 
 #include <IOKit/IOLib.h>
+
+
+#include <libkern/OSKextLib.h>
+
+
 #include <libkern/OSMalloc.h>
 
 //super
 #define super IOService
 
 /* GLOBALS */
+
+//registered flag
+bool wasRegistered = false;
+
+//enabled flag
+bool isEnabled = false;
 
 //malloc tag
 OSMallocTag allocTag = NULL;
@@ -31,6 +42,9 @@ IOSharedDataQueue *sharedDataQueue = NULL;
 
 //shared memory
 IOMemoryDescriptor *sharedMemoryDescriptor = NULL;
+
+//unloading flag
+bool isUnloading = false;
 
 //define class's constructors, destructors, etc
 OSDefineMetaClassAndStructors(com_objective_see_firewall, IOService)
@@ -76,6 +90,31 @@ bool com_objective_see_firewall::start(IOService *provider)
         goto bail;
     }
     
+    if(kIOReturnSuccess != OSKextRetainKextWithLoadTag(OSKextGetCurrentLoadTag()))
+    {
+        //err msg
+        IOLog("LULU ERROR: OSKextRetainKextWithLoadTag() failed\n");
+        
+        //bail
+        goto bail;
+    }
+    
+    /*
+    self = OSDynamicCast(com_objective_see_firewall, provider);
+    if(NULL == self)
+    {
+        //err msg
+        IOLog("LULU ERROR: OSDynamicCast() failed\n");
+        
+        //bail
+        goto bail;
+    }
+    
+    //increase our ref count
+    // ensure's we aren't unloaded prematurely
+    self->retain();
+    */
+
     //alloc memory tag
     allocTag = OSMalloc_Tagalloc(BUNDLE_ID, OSMT_DEFAULT);
     if(NULL == allocTag)
@@ -143,12 +182,46 @@ bail:
 }
 
 //stop
+// should only be called on system shutdown!
 void com_objective_see_firewall::stop(IOService *provider)
 {
+    //result
+    kern_return_t result = kIOReturnError;
+    
     //dbg msg
     IOLog("LULU: in %s\n", __FUNCTION__);
     
-    //free rule locks, dictionary, etc
+    //set flag
+    isUnloading = true;
+    
+    //unregister socket filters
+    result = unregisterSocketFilters();
+    if(kIOReturnSuccess != result)
+    {
+        //error msg
+        IOLog("LULU ERROR: failed to unregister socket filters (status: %d)\n", result);
+        
+        //keep going though...
+    }
+    
+    //dbg msg
+    IOLog("LULU: waking up threads, as kext is shutting down\n");
+    
+    //wake up any waiting threads
+    // prev. put to sleep until response from daemon
+    IOLockWakeup(ruleEventLock, &ruleEventLock, false);
+    
+    //dbg msg
+    IOLog("LULU: woke up threads as we are shutting down\n");
+    
+    //try get lock
+    // should only succeed once the all other threads have awoken and relinquished it
+    IOLockLock(ruleEventLock);
+    
+    //unlock
+    IOLockUnlock(ruleEventLock);
+    
+    //now, can free rule locks, dictionary, etc
     uninitRules();
     
     //free shared memory descriptor

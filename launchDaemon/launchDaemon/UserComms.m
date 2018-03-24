@@ -7,21 +7,19 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "const.h"
+#import "consts.h"
 #import "Rule.h"
 #import "Rules.h"
 #import "Queue.h"
 #import "logging.h"
 #import "KextComms.h"
 #import "UserComms.h"
+#import "Preferences.h"
 #import "UserClientShared.h"
 #import "UserCommsInterface.h"
 
 //signing auth
 #define SIGNING_AUTH @"Developer ID Application: Objective-See, LLC (VBG97UB4TA)"
-
-//global kext comms obj
-extern KextComms* kextComms;
 
 //global rules obj
 extern Rules* rules;
@@ -29,15 +27,21 @@ extern Rules* rules;
 //global queue object
 extern Queue* eventQueue;
 
+//global kext comms obj
+extern KextComms* kextComms;
+
+//global prefs obj
+extern Preferences* preferences;
+
 //global 'rules changed' semaphore
 extern dispatch_semaphore_t rulesChanged;
 
 //global client status
-extern NSInteger clientStatus;
+extern NSInteger clientConnected;
 
 @implementation UserComms
 
-@synthesize currentStatus;
+//@synthesize currentStatus;
 @synthesize dequeuedAlert;
 
 //init
@@ -49,48 +53,51 @@ extern NSInteger clientStatus;
     if(nil != self)
     {
         //set status
-        self.currentStatus = STATUS_CLIENT_UNKNOWN;
+        //self.currentStatus = STATUS_CLIENT_UNKNOWN;
     }
     
     return self;
 }
 
-//set status
-// enabled/disabled
+
+//client connected
 // TODO: assumes single client/user
--(void)setClientStatus:(NSInteger)status
+-(void)clientCheckin
 {
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: set client status (%ld)", (long)status]);
-    
-    //save into iVar
-    self.currentStatus = status;
+    logMsg(LOG_DEBUG, @"XPC request: client connected");
     
     //save into global
     // TODO: change, if multiple clients
-    clientStatus = status;
+    clientConnected = YES;
     
-    //enable?
-    // tell kext to enable firewall
-    if(STATUS_CLIENT_ENABLED == status)
+    return;
+}
+
+
+//load preferences and send them back to client
+-(void)getPreferences:(void (^)(NSDictionary* alert))reply
+{
+    //dbg msg
+    logMsg(LOG_DEBUG, @"XPC request: get preferences");
+    
+    //preference obj has em
+    reply(preferences.preferences);
+    
+    return;
+}
+
+//update preferences
+-(void)updatePreferences:(NSDictionary *)prefs
+{
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: update preferences (%@)", preferences]);
+    
+    //call into prefs obj
+    if(YES != [preferences update:prefs])
     {
-        //dbg msg
-        // and log to file
-        logMsg(LOG_DEBUG|LOG_TO_FILE, @"enabling firewall");
-        
-        //enable firewall
-        [kextComms enable];
-    }
-    //disable?
-    // tell kext to disable firewall
-    else if(STATUS_CLIENT_DISABLED == status)
-    {
-        //dbg msg
-        // and log to file
-        logMsg(LOG_DEBUG|LOG_TO_FILE, @"disabling firewall");
-        
-        //disable firewall
-        [kextComms disable];
+        //err msg
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to save preferences to %@", PREFS_FILE]);
     }
     
     return;
@@ -193,7 +200,7 @@ bail:
     }
 
     //save new rules
-    if(YES != [[NSFileManager defaultManager] copyItemAtPath:rulesFile toPath:RULES_FILE error:&error])
+    if(YES != [[NSFileManager defaultManager] copyItemAtPath:rulesFile toPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE] error:&error])
     {
         //err msg
         logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to save imported rules file %@ (error: %@)", RULES_FILE, error]);
@@ -314,14 +321,9 @@ bail:
     // TODO: add support for 'user'
     [kextComms addRule:pid action:action];
     
-    //don't add a permanent rule if it was passively allowed
-    if( (nil == alert[ALERT_PASSIVELY_ALLOWED]) ||
-        (YES != [alert[ALERT_PASSIVELY_ALLOWED] boolValue]) )
-    {
-        //update rules
-        // ->type is 'user'
-        [rules add:path action:action type:RULE_TYPE_USER user:user];
-    }
+    //update rules
+    // type is 'user'
+    [rules add:path action:action type:RULE_TYPE_USER user:user];
     
     //signal all threads that rules changed
     while(0 != dispatch_semaphore_signal(rulesChanged));
@@ -330,6 +332,5 @@ bail:
     
     return;
 }
-
 
 @end

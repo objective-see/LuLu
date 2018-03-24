@@ -21,7 +21,7 @@
 /* PROPERTIES */
 
 //client status
-@property NSInteger currentStatus;
+//@property NSInteger currentStatus;
 
 //last alert
 @property(nonatomic,retain)NSDictionary* dequeuedAlert;

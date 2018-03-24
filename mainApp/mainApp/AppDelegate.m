@@ -7,10 +7,10 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "const.h"
+#import "consts.h"
 #import "Update.h"
-#import "Logging.h"
-#import "Utilities.h"
+#import "logging.h"
+#import "utilities.h"
 #import "AppDelegate.h"
 
 @implementation AppDelegate
@@ -18,38 +18,66 @@
 @synthesize aboutWindowController;
 @synthesize prefsWindowController;
 @synthesize rulesWindowController;
+@synthesize welcomeWindowController;
 
 //center window
 // also make front, init title bar, etc
 -(void)awakeFromNib
 {
-    //args
-    NSArray *arguments = nil;
+    //show welcome screen?
+    if(YES == [[[NSProcessInfo processInfo] arguments] containsObject:CMDLINE_FLAG_WELCOME])
+    {
+        //disable all menu items except 'About ...'
+        for(NSMenuItem* menuItem in NSApplication.sharedApplication.mainMenu.itemArray.firstObject.submenu.itemArray)
+        {
+            //not 'About ...'
+            // disable menu item
+            if(YES != [menuItem.title containsString:@"About"])
+            {
+                //disable
+                menuItem.action = nil;
+            }
+        }
+        
+        //alloc
+        welcomeWindowController = [[WelcomeWindowController alloc] initWithWindowNibName:@"Welcome"];
+        
+        //center
+        [self.welcomeWindowController.window center];
+        
+        //make key and front
+        [self.welcomeWindowController.window makeKeyAndOrderFront:self];
+    }
     
-    //grab args
-    arguments = [[NSProcessInfo processInfo] arguments];
-    
-    //handle case for '-prefs'
-    if( (2 == arguments.count) &&
-        (YES == [CMDLINE_FLAG_PREFS isEqualToString:arguments[1]]) )
+    //show preferences?
+    else if(YES == [[[NSProcessInfo processInfo] arguments] containsObject:CMDLINE_FLAG_PREFS])
     {
         //show preferences window
         [self showPreferences:nil];
         
         //center
-        [[self.prefsWindowController window] center];
+        [self.prefsWindowController.window center];
+        
+        //make key and front
+        [self.prefsWindowController.window makeKeyAndOrderFront:self];
     }
     
-    //display default window
-    // this is the rules window
+    //display rules
+    // this is the default
     else
     {
         //show rules window
         [self showRules:nil];
         
         //center window
-        [[self.rulesWindowController window] center];
+        [self.rulesWindowController.window center];
+        
+        //make key and front
+        [self.rulesWindowController.window makeKeyAndOrderFront:self];
     }
+
+    //make app active
+    [NSApp activateIgnoringOtherApps:YES];
     
     return;
 }
@@ -58,53 +86,42 @@
 // init user interface
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    //app prefs
-    NSUserDefaults* appPreferences = nil;
-    
     //dbg msg
-    #ifdef DEBUG
-    logMsg(LOG_DEBUG, @"main (config) app launched");
-    #endif
-
-    //alloc/init preferences
-    appPreferences = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.objective-see.lulu"];
+    logMsg(LOG_DEBUG, @"main (rules/pref) app launched");
     
-    //no preferences?
-    // set some default ones
-    if( (nil == [appPreferences objectForKey:PREF_PASSIVE_MODE]) ||
-        (nil == [appPreferences objectForKey:PREF_ICONLESS_MODE]) ||
-        (nil == [appPreferences objectForKey:PREF_NOUPDATES_MODE]) )
+    //for rules/pref view
+    // make sure login item is running and register for notifications
+    if(YES != [[[NSProcessInfo processInfo] arguments] containsObject:CMDLINE_FLAG_WELCOME])
     {
-        //set defaults
-        [appPreferences registerDefaults:@{PREF_PASSIVE_MODE:@NO, PREF_ICONLESS_MODE:@NO, PREF_NOUPDATES_MODE:@NO}];
+        //start login item in background
+        // method checks first to make sure only one instance is running
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+        ^{
+               //start
+               [self startLoginItem:NO];
+        });
         
-        //sync
-        [appPreferences synchronize];
+        //register for notifications from login item
+        // if user clicks 'rules' or 'prefs' make sure we show that window
+        [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationHandler:) name:NOTIFICATION_SHOW_WINDOW object:nil];
     }
     
-    //start login item in background
-    // method checks first to make sure only 1 instance is running
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-    ^{
-        //start
-        [self startLoginItem:NO];
-    });
-    
-    //register for notifications from login item
-    // if user clicks 'rules' or 'prefs' make sure we show that window
-    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationHandler:) name:NOTIFICATION_SHOW_WINDOW object:nil];
-
     return;
 }
 
 //unregister notification handler
 -(void)applicationWillTerminate:(NSApplication *)application
 {
-    //unregister notification
-    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_SHOW_WINDOW object:nil];
-    
+    //for rules/pref view
+    // unregister notification
+    if(YES != [[[NSProcessInfo processInfo] arguments] containsObject:CMDLINE_FLAG_WELCOME])
+    {
+        //unregister
+        [[NSDistributedNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_SHOW_WINDOW object:nil];
+    }
     return;
 }
+
 //start the (helper) login item
 -(BOOL)startLoginItem:(BOOL)shouldRestart
 {
@@ -120,38 +137,27 @@
     //login item's pid
     NSNumber* loginItemPID = nil;
     
-    //error
-    NSError* error = nil;
-    
-    //config (args, etc)
-    // ->can't be nil, so init to blank here
-    NSDictionary* configuration = @{};
+    //results from 'open'
+    NSDictionary* taskResults = nil;
     
     //init path to login item app
     loginItem = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"/Contents/Library/LoginItems/%@.app", LOGIN_ITEM_NAME]];
-                 
+
     //init path to binary
     loginItemBinary = [NSString pathWithComponents:@[loginItem, @"Contents", @"MacOS", LOGIN_ITEM_NAME]];
     
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"looking for login item %@", loginItemBinary]);
+    
     //get pid(s) of login item for user
     loginItemPID = [getProcessIDs(loginItemBinary, getuid()) firstObject];
-    
-    //didn't find it?
-    // ->try lookup bundle as login items sometimes show up as that
-    if(nil == loginItemPID)
-    {
-        //lookup via bundle
-        loginItemPID = [getProcessIDs(@"com.objective-see.luluHelper", getuid()) firstObject];
-    }
     
     //already running and no restart?
     if( (nil != loginItemPID) &&
         (YES != shouldRestart) )
     {
         //dbg msg
-        #ifdef DEBUG
         logMsg(LOG_DEBUG, @"login item already running and 'shouldRestart' not set, so no need to start it");
-        #endif
         
         //happy
         result = YES;
@@ -161,33 +167,28 @@
     }
     
     //running?
-    // ->kill, as restart flag set
+    // kill, as restart flag set
     else if(nil != loginItemPID)
     {
         //kill it
-        kill(loginItemPID.unsignedShortValue, SIGTERM);
+        kill(loginItemPID.intValue, SIGTERM);
         
         //dbg msg
-        #ifdef DEBUG
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"killed login item (%@)", loginItemPID]);
-        #endif
-        
-        //nap
+    
+        //nap to allow 'kill' sometime...
         [NSThread sleepForTimeInterval:0.5];
     }
 
     //dbg msg
-    #ifdef DEBUG
     logMsg(LOG_DEBUG, @"starting (helper) login item\n");
-    #endif
-    
-    //launch it
-    [[NSWorkspace sharedWorkspace] launchApplicationAtURL:[NSURL fileURLWithPath:loginItem] options:NSWorkspaceLaunchWithoutActivation configuration:configuration error:&error];
-    if(nil != error)
+
+    //start via 'open'
+    // allows launch without losing focus
+    taskResults = execTask(OPEN, @[@"-g", loginItem], NO);
+    if( (nil == taskResults) ||
+        (0 != [taskResults[EXIT_CODE] intValue]) )
     {
-        //err msg
-        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to start login item, %@/%@", loginItem, error]);
-        
         //bail
         goto bail;
     }
@@ -211,10 +212,8 @@ bail:
 -(void)notificationHandler:(NSNotification *)notification
 {
     //dbg msg
-    #ifdef DEBUG
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"handling notification from login item %@", notification.userInfo]);
-    #endif
-
+    
     //what window to show?
     switch ([notification.userInfo[@"window"] intValue]) {
         
@@ -235,6 +234,12 @@ bail:
         default:
             break;
     }
+    
+    //make it key window
+    [self.window makeKeyAndOrderFront:self];
+    
+    //make window front
+    [NSApp activateIgnoringOtherApps:YES];
 
     return;
 }

@@ -14,7 +14,7 @@
 
 */
 
-#include "const.h"
+#include "consts.h"
 #include "rules.hpp"
 #include "socketEvents.hpp"
 #include "userInterface.hpp"
@@ -28,14 +28,15 @@ const IOExternalMethodDispatch com_objectivesee_driver_LuLu::sMethods[kTestUserC
     {sEnable, 0, 0, 0, 0},
     
     //disable
-    {sDisable, 0, 0, 0, 0},
+    // takes 1 scalar
+    {sDisable, 1, 0, 0, 0},
     
     //add rule
-    // ->takes 2 scalars
+    // takes 2 scalars
     {sAddRule,  2, 0, 0, 0},
     
     //add rule
-    // ->takes 1 scalar
+    // takes 1 scalar
     {sRemoveRule,  1, 0, 0, 0},
 };
 
@@ -71,14 +72,20 @@ bail:
 }
 
 //stop
-// unregister all socket filters
 void com_objectivesee_driver_LuLu::stop (IOService* provider)
 {
+    //status
+    //kern_return_t status = kIOReturnError;
+    
     //dbg msg
     IOLog("LULU: in (IOUserClient) %s\n", __FUNCTION__);
     
-    //always try unregister socket filters
-    unregisterSocketFilters();
+    //so set flag
+    // tells kext to all everything
+    isEnabled = false;
+    
+    //dbg msg
+    IOLog("LULU: set 'enabled flag' to false\n");
     
     //invoke super
 	super::stop(provider);
@@ -137,7 +144,7 @@ IOReturn com_objectivesee_driver_LuLu::clientDied (void)
 //init with task
 // invoked when client connects
 // TODO: validate what client is connecting
-bool com_objectivesee_driver_LuLu::initWithTask (task_t owningTask, void* securityToken, UInt32 type, OSDictionary* properties)
+bool com_objectivesee_driver_LuLu::initWithTask(task_t owningTask, void* securityToken, UInt32 type, OSDictionary* properties)
 {
     //result
     bool result = false;
@@ -167,6 +174,7 @@ bool com_objectivesee_driver_LuLu::initWithTask (task_t owningTask, void* securi
     }
     
     //TODO: validate client here
+    // only signed by obj-see!?
     
     //dbg msg
     IOLog("LULU: allowed client to connect\n");
@@ -181,7 +189,7 @@ bail:
 
 //dispatcher for external methods
 // ->validate selector, then invoke super which re-routes to appropriate method
-IOReturn com_objectivesee_driver_LuLu::externalMethod (uint32_t selector, IOExternalMethodArguments* arguments, IOExternalMethodDispatch* dispatch, OSObject* target, void* reference)
+IOReturn com_objectivesee_driver_LuLu::externalMethod(uint32_t selector, IOExternalMethodArguments* arguments, IOExternalMethodDispatch* dispatch, OSObject* target, void* reference)
 {
     //result
     IOReturn result = kIOReturnError;
@@ -298,25 +306,97 @@ bail:
 /* IOKIT USER ACCESSIBLE METHODS */
 
 //user method: enable
-// ->register socket filters
+// ->register socket filters and set (global) flag
 IOReturn com_objectivesee_driver_LuLu::sEnable(OSObject* target, void* reference, IOExternalMethodArguments* arguments)
 {
+    //result
+    IOReturn result = kIOReturnError;
+    
     //dbg msg
     IOLog("LULU: in %s\n", __FUNCTION__);
     
-    //register all socket filters
-    return registerSocketFilters();
+    //already registered?
+    if(true == wasRegistered)
+    {
+        //dbg msg
+        IOLog("LULU: socket filters already registered\n");
+        
+        //no errors
+        result = kIOReturnSuccess;
+        
+        //bail
+        goto bail;
+    }
+    
+    //socket filters need to be registered
+    result = registerSocketFilters();
+    if(kIOReturnSuccess != result)
+    {
+        //err msg
+        IOLog("LULU ERROR: failed to register socket filters (status: %d)\n", result);
+        
+        //bail
+        goto bail;
+    }
+    
+    //happy
+    result = kIOReturnSuccess;
+    
+bail:
+    
+    //happy?
+    // set enabled flag
+    if(result == kIOReturnSuccess)
+    {
+        //set enabled flag
+        isEnabled = true;
+        
+        //dbg msg
+        IOLog("LULU: set 'enabled flag' to true\n");
+    }
+    
+    return result;
 }
 
 //user method: disable
-// ->unregister all socket filters
+// unsets flags, and if specified by args, unregisters all socket filters
 IOReturn com_objectivesee_driver_LuLu::sDisable(OSObject* target, void* reference, IOExternalMethodArguments* arguments)
 {
+    //result
+    IOReturn result = kIOReturnError;
+    
     //dbg msg
     IOLog("LULU: in %s\n", __FUNCTION__);
     
-    //unregister all socket filters
-    return unregisterSocketFilters();
+    //set flag
+    // tells kext to allow everything
+    isEnabled = false;
+    
+    //dbg msg
+    IOLog("LULU: set 'enabled flag' to false\n");
+    
+    //also unregister?
+    if(1 == (uint32_t)arguments->scalarInput[0])
+    {
+        //unregister socket filters
+        // this might
+        result = unregisterSocketFilters();
+        if(kIOReturnSuccess != result)
+        {
+            //error msg
+            IOLog("LULU ERROR: failed to unregister socket filters (status: %#x)\n", result);
+            
+            //bail
+            goto bail;
+        }
+    }
+    
+    //happy
+    result = kIOReturnSuccess;
+    
+bail:
+    
+    return result;
 }
 
 //user method: add rule

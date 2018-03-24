@@ -7,7 +7,7 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "Logging.h"
+#import "logging.h"
 #import "VirusTotal.h"
 #import "AppDelegate.h"
 

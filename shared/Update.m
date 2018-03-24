@@ -7,10 +7,10 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "Const.h"
+#import "consts.h"
 #import "Update.h"
-#import "Logging.h"
-#import "Utilities.h"
+#import "logging.h"
+#import "utilities.h"
 #import "AppDelegate.h"
 
 
@@ -97,9 +97,7 @@
     latestVersion = [[productsVersionDictionary objectForKey:@"LuLu"] objectForKey:@"version"];
     
     //dbg msg
-    #ifdef DEBUG
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"latest version: %@", latestVersion]);
-    #endif
     
 bail:
     

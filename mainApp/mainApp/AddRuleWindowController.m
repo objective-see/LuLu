@@ -7,9 +7,9 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "const.h"
+#import "consts.h"
 #import "logging.h"
-#import "Utilities.h"
+#import "utilities.h"
 #import "AddRuleWindowController.h"
 
 @implementation AddRuleWindowController
@@ -95,7 +95,7 @@ bail:
 }
 
 //'block'/'allow' button handler
-// ->set state into iVar, so can accessed when sheet closes
+// set state into iVar, so can accessed when sheet closes
 -(IBAction)radioButtonsHandler:(id)sender
 {
     //block button clicked

@@ -8,13 +8,14 @@
 //
 
 
-#import "const.h"
+#import "consts.h"
 
 #import "Rule.h"
 #import "Rules.h"
 #import "logging.h"
 #import "KextComms.h"
-#import "Utilities.h"
+#import "utilities.h"
+
 
 //global kext comms object
 extern KextComms* kextComms;
@@ -22,7 +23,7 @@ extern KextComms* kextComms;
 @implementation Rules
 
 @synthesize rules;
-@synthesize appQuery;
+//@synthesize appQuery;
 
 //init method
 -(id)init
@@ -51,7 +52,7 @@ extern KextComms* kextComms;
     Rule* rule = nil;
     
     //load serialized rules from disk
-    serializedRules = [NSMutableDictionary dictionaryWithContentsOfFile:RULES_FILE];
+    serializedRules = [NSMutableDictionary dictionaryWithContentsOfFile:[INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE]];
     if(nil == serializedRules)
     {
         //err msg
@@ -103,7 +104,7 @@ bail:
     serializedRules = [self serialize];
     
     //write out
-    if(YES != [serializedRules writeToFile:RULES_FILE atomically:YES])
+    if(YES != [serializedRules writeToFile:[INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE] atomically:YES])
     {
         //err msg
         logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to save rules to: %@", RULES_FILE]);
@@ -118,88 +119,6 @@ bail:
 bail:
     
     return result;
-}
-
-//start query for all installed apps
-// each will be allowed, as a 'baselined' application
-// TODO: note: in the future, the installer will control this more, like whether to skip, baseline only apple apps, etc
--(void)startBaselining
-{
-    //dbg msg
-    logMsg(LOG_DEBUG, @"generating 'allow' rules for all existing applications");
-    
-    //alloc
-    appQuery = [[NSMetadataQuery alloc] init];
-    
-    //register for query completion
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endBaselining:) name:NSMetadataQueryDidFinishGatheringNotification object:nil];
-    
-    //set predicate
-    [self.appQuery setPredicate:[NSPredicate predicateWithFormat:@"kMDItemKind == 'Application'"]];
-    
-    //start query
-    // ->will generate notification when done
-    [self.appQuery startQuery];
-    
-bail:
-    
-    return;
-}
-
-//invoked when spotlight query is done
-// process each installed app by adding 'allow' rule
-// TODO: note: in the future, the installer will control this more, like whether to skip, baseline only apple apps, etc
--(void)endBaselining:(NSNotification *)notification
-{
-    //app url
-    __block NSString* currentApp = nil;
-    
-    //full path to binary
-    __block NSString* currentAppBinary = nil;
-    
-    //iterate over all
-    // create/add default/baseline rule for each
-    [self.appQuery enumerateResultsUsingBlock:^(id result, NSUInteger idx, BOOL *stop)
-    {
-        //grab current app
-        currentApp = [result valueForAttribute:NSMetadataItemPathKey];
-        if(nil == currentApp)
-        {
-            //skip
-            return;
-        }
-        
-        //skip app store
-        // it's a default/system rule already
-        if(YES == [currentApp isEqualToString:@"/Applications/App Store.app"])
-        {
-            //skip
-            return;
-        }
-        
-        //skip lulu
-        // it's already baselined via rules.plist file
-        if(NSNotFound != [currentApp rangeOfString:@"LuLu"].location)
-        {
-            //skip
-            return;
-        }
-        
-        //get full binary path
-        currentAppBinary = getAppBinary(currentApp);
-        if(nil == currentAppBinary)
-        {
-            //skip
-            return;    
-        }
-        
-        //add
-        // allow, type: 'baseline'
-        [self add:currentAppBinary action:RULE_STATE_ALLOW type:RULE_TYPE_BASELINE user:0];
-        
-    }];
-    
-    return;
 }
 
 //convert list of rule objects to dictionary
@@ -226,9 +145,9 @@ bail:
     return serializedRules;
 }
 
-//find
-// for now, just by path
--(Rule*)find:(NSString*)path
+//find rule
+// TODO: validate signature too!
+-(Rule*)find:(Process*)process
 {
     //matching rule
     Rule* matchingRule = nil;
@@ -237,7 +156,7 @@ bail:
     @synchronized(self.rules)
     {
         //extract rule
-        matchingRule = [self.rules objectForKey:path];
+        matchingRule = [self.rules objectForKey:process.path];
         if(nil == matchingRule)
         {
             //not found, bail
@@ -377,10 +296,10 @@ bail:
         }
         
         //remove old rules file
-        if(YES == [[NSFileManager defaultManager] fileExistsAtPath:RULES_FILE])
+        if(YES == [[NSFileManager defaultManager] fileExistsAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE]])
         {
             //remove
-            if(YES != [[NSFileManager defaultManager] removeItemAtPath:RULES_FILE error:&error])
+            if(YES != [[NSFileManager defaultManager] removeItemAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE] error:&error])
             {
                 //err msg
                 logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to delete existing rules file %@ (error: %@)", RULES_FILE, error]);

@@ -7,10 +7,10 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "const.h"
+#import "consts.h"
 #import "Update.h"
-#import "Logging.h"
-#import "Utilities.h"
+#import "logging.h"
+#import "utilities.h"
 #import "AppDelegate.h"
 #import "AlertMonitor.h"
 
@@ -20,93 +20,145 @@
 
 @implementation AppDelegate
 
+@synthesize daemonComms;
 @synthesize updateWindowController;
 @synthesize statusBarMenuController;
+
+@synthesize observer;
 
 //app's main interface
 // ->load status bar and kick off monitor
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    //app preferences
-    NSUserDefaults* appPreferences = nil;
+    //preferences
+    __block NSDictionary* preferences;
     
-    //alert monitor obj
-    AlertMonitor* alertMonitor = nil;
+    //path to main app
+    NSURL* mainApp = nil;
     
     //dbg msg
-    #ifdef DEBUG
-    logMsg(LOG_DEBUG, @"starting login item app logic");
-    #endif
+    logMsg(LOG_DEBUG, @"starting login item");
     
-    //alloc/init preferences
-    appPreferences = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.objective-see.lulu"];
+    //init deamon comms
+    daemonComms = [[DaemonComms alloc] init];
     
-    //no preferences?
-    // set some default ones
-    if( (nil == [appPreferences objectForKey:PREF_PASSIVE_MODE]) ||
-        (nil == [appPreferences objectForKey:PREF_ICONLESS_MODE]) ||
-        (nil == [appPreferences objectForKey:PREF_NOUPDATES_MODE]) )
+    //get preferences
+    // sends XPC message to daemon
+    preferences = [self.daemonComms getPreferences];
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded preferences: %@", preferences]);
+    
+    //no preferences yet? ... first run
+    // kick off main app with 'welcome' flag
+    if(0 == preferences.count)
     {
-        //set defaults
-        [appPreferences registerDefaults:@{PREF_PASSIVE_MODE:@NO, PREF_ICONLESS_MODE:@NO, PREF_NOUPDATES_MODE:@NO}];
-        
-        //sync
-        [appPreferences synchronize];
-    }
-    
-    //init/load status bar
-    // ->but only if user didn't say: 'run in headless mode'
-    if(YES != [appPreferences boolForKey:PREF_ICONLESS_MODE])
-    {
-        //alloc/load nib
-        statusBarMenuController = [[StatusBarMenu alloc] init:self.statusMenu];
-        
         //dbg msg
-        #ifdef DEBUG
-        logMsg(LOG_DEBUG, @"initialized/loaded status bar (icon/menu)");
-        #endif
+        logMsg(LOG_DEBUG, @"no preferences found, so kicking off main application w/ '-welcome' flag");
+    
+        //get path to main app
+        mainApp = [NSURL fileURLWithPath:getMainAppPath()];
+        
+        //launch main app
+        // passing in '-welcome'
+        [[NSWorkspace sharedWorkspace] launchApplicationAtURL:mainApp options:0 configuration:@{NSWorkspaceLaunchConfigurationArguments: @[CMDLINE_FLAG_WELCOME]} error:nil];
+        
+        //set up notification for app exit
+        // wait until it's exited to complete initializations
+        self.observer = [[[NSWorkspace sharedWorkspace] notificationCenter] addObserverForName:NSWorkspaceDidTerminateApplicationNotification object:nil queue:nil usingBlock:^(NSNotification *notification)
+        {
+            //ignore others
+            if(YES != [MAIN_APP_ID isEqualToString:[((NSRunningApplication*)notification.userInfo[NSWorkspaceApplicationKey]) bundleIdentifier]])
+            {
+                return;
+            }
+            
+            //dbg msg
+            logMsg(LOG_DEBUG, @"main application completed");
+            
+            //remove observer
+            [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:observer];
+            
+            //unset
+            self.observer = nil;
+            
+            //(re)load prefs
+            // main app should have set em all now
+            preferences = [self.daemonComms getPreferences];
+            
+            //complete initializations
+            [self completeInitialization:preferences firstTime:YES];
+        }];
     }
-    #ifdef DEBUG
+    
+    //found prefs
+    // main app already ran, so just complete init's
     else
     {
-        //dbg msg
-        logMsg(LOG_DEBUG, @"running in headless mode");
+        //complete initializations
+        [self completeInitialization:preferences firstTime:NO];
     }
-    #endif
-    
-    //check for updates
-    // but only when user has not disabled that feature
-    if(YES != [appPreferences boolForKey:PREF_NOUPDATES_MODE])
-    {
-        //after a 30 seconds
-        // check for updates in background
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
-        {
-            //dbg msg
-            #ifdef DEBUG
-            logMsg(LOG_DEBUG, @"checking for update");
-            #endif
-           
-            //check
-            [self check4Update];
-            
-        });
-    }
-    
-    //init alert monitor
-    alertMonitor = [[AlertMonitor alloc] init];
-    
-    //in background
-    // ->monitor / process alerts
-    [alertMonitor performSelectorInBackground:@selector(monitor) withObject:nil];
     
 bail:
     
     return;
 }
 
+//finish up initializations
+// based on prefs, show status bar, check for updates, etc...
+-(void)completeInitialization:(NSDictionary*)preferences firstTime:(BOOL)firstTime
+{
+    //run with status bar icon?
+    if(YES != [preferences[PREF_NO_ICON_MODE] boolValue])
+    {
+        //alloc/load nib
+        statusBarMenuController = [[StatusBarMenu alloc] init:self.statusMenu preferences:preferences firstTime:firstTime];
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, @"initialized/loaded status bar (icon/menu)");
+    }
+    else
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, @"running in headless mode");
+    }
+    
+    //automatically check for updates?
+    if(YES != [preferences[PREF_NO_UPDATE_MODE] boolValue])
+    {
+        //after a 30 seconds
+        // check for updates in background
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, @"checking for update");
+           
+            //check
+            [self check4Update];
+       });
+    }
+    
+    //wait to checkin
+    // first time, need a bit to show the popover
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, firstTime * 5 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+    {
+        //check in w/ daemon
+        [self.daemonComms clientCheckin];
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, @"checked in with daemon");
+        
+        //init alert monitor
+        // in background will monitor / process alerts
+        [[[AlertMonitor alloc] init] performSelectorInBackground:@selector(monitor) withObject:nil];
+    
+    });
+    
+    return;
+}
 
-//is there an update?
+//call into Update obj
+// check to see if there an update?
 -(void)check4Update
 {
     //update obj
@@ -146,21 +198,15 @@ bail:
         case 0:
             
             //dbg msg
-            #ifdef DEBUG
             logMsg(LOG_DEBUG, @"no updates available");
-            #endif
-            
             break;
-            
             
         //new version
         case 1:
             
             //dbg msg
-            #ifdef DEBUG
             logMsg(LOG_DEBUG, [NSString stringWithFormat:@"a new version (%@) is available", newVersion]);
-            #endif
-     
+
             //alloc update window
             updateWindowController = [[UpdateWindowController alloc] initWithWindowNibName:@"UpdateWindow"];
             

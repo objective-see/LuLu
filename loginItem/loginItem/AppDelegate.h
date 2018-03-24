@@ -9,10 +9,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "DaemonComms.h"
 #import "StatusBarMenu.h"
 #import "UpdateWindowController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
+
 
 /* PROPERTIES */
 
@@ -24,6 +26,15 @@
 
 //update window controller
 @property(nonatomic, retain)UpdateWindowController* updateWindowController;
+
+//daemon comms
+@property(nonatomic, retain)DaemonComms* daemonComms;
+
+//observer
+@property(nonatomic, retain)NSObject* observer;
+
+/* METHODS */
+
 
 @end
 

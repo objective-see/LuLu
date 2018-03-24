@@ -14,24 +14,13 @@
 
 /* PROPERTIES */
 
-//window controller
-@property(strong)AlertWindowController* alertWindow;
-
 //wait semaphore
 @property dispatch_semaphore_t semaphore;
-
 
 /* METHODS */
 
 //forever,
 // ->wait for & display alerts
 -(void)monitor;
-
-//when client is in passive mode: allow
--(void)passivelyAllow:(DaemonComms*)daemonComms alert:(NSDictionary*)alert;
-
-//callback handler
-// ->invoked when window closes
--(void)alertWindowClosed:(id)object;
 
 @end

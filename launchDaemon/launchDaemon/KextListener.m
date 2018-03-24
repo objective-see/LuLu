@@ -10,18 +10,19 @@
 @import Foundation;
 
 #import "Rule.h"
-#import "const.h"
+#import "consts.h"
 #import "Rules.h"
 #import "Queue.h"
 #import "logging.h"
 #import "procInfo.h"
 #import "KextComms.h"
-#import "Utilities.h"
+#import "utilities.h"
+#import "Preferences.h"
 #import "KextListener.h"
 #import "ProcListener.h"
 #import "UserClientShared.h"
 
-/* GlOBALS */
+/* GLOBALS */
 
 //rules obj
 extern Rules* rules;
@@ -35,8 +36,11 @@ extern Queue* eventQueue;
 //process monitor
 extern ProcessListener* processListener;
 
-//client status
-extern NSInteger clientStatus;
+//prefs obj
+extern Preferences* preferences;
+
+//client connected
+extern NSInteger clientConnected;
 
 @implementation KextListener
 
@@ -157,10 +161,8 @@ extern NSInteger clientStatus;
     }
     
     //dbg msg
-    #ifdef DEBUG
     logMsg(LOG_DEBUG, @"created system socket & set options, now entering recv() loop");
-    #endif
-    
+ 
     //foreverz
     // ->listen/parse network events from kext
     while(YES)
@@ -178,11 +180,6 @@ extern NSInteger clientStatus;
         if( (bytesReceived < KEV_MSG_HEADER_SIZE) ||
             (bytesReceived != kernEventMsg->total_size))
         {
-            //dbg msg
-            #ifdef DEBUG
-            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"recv count: %d, wanted: %d", (int)bytesReceived, kernEventMsg->total_size]);
-            #endif
-            
             //ignore
             continue;
         }
@@ -406,11 +403,15 @@ bail:
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"couldn't find process (%d) in process monitor", event->pid]);
         
         //couldn't find proc
-        // ->did it die already?
+        // did it die already?
         if(YES != isProcessAlive(event->pid))
         {
             //dbg msg
-            logMsg(LOG_DEBUG, @"process is dead, so ignoring");
+            logMsg(LOG_DEBUG, @"process is dead (exited?), so ignoring");
+            
+            //fail 'close'
+            // tell kernel to block
+            [kextComms addRule:event->pid action:RULE_STATE_BLOCK];
             
             //bail
             goto bail;
@@ -421,63 +422,124 @@ bail:
     }
     
     //check again
-    // ->should have a process obj now
+    // should have a process obj now
     if(nil == process)
     {
         //err msg
         logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to find and/or create process object for %d", event->pid]);
+        
+        //fail 'close'
+        // tell kernel to block
+        [kextComms addRule:event->pid action:RULE_STATE_BLOCK];
         
         //bail
         // not sure what else to do
         goto bail;
     }
     
-    //existing rule for process (path)?
-    // TODO: pass in process obj to also validate signature & user
-    matchingRule = [rules find:process.path];
+    //proc monitor invoked in 'go easy' mode
+    // so generate signing info for process here
+    if(nil == process.binary.signingInfo)
+    {
+        //signing info
+        [process.binary generateSigningInfo];
+    }
+    
+    //existing rule for process
+    matchingRule = [rules find:process];
     if(nil != matchingRule)
     {
         //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"found matching rule: %@\n", matchingRule]);
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"found matching rule for %@ (%d): %@\n", process.binary.name, process.pid, matchingRule]);
         
         //tell kernel to add rule for this process
         [kextComms addRule:event->pid action:matchingRule.action.unsignedIntValue];
+        
+        //all set
+        goto bail;
     }
     
-    //process doesn't (yet) have a rule
-    // if there is an active/enable client, send alert to display/ask user
+    /* no matching rule found */
+    
+    //if it's an apple process and that preference is set; allow!
+    if( (YES == [preferences.preferences[PREF_ALLOW_APPLE] boolValue]) &&
+        (YES == process.binary.isApple))
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing apple process @%@", process.path]);
+        
+        //tell kernel to add 'allow' rule
+        [kextComms addRule:event->pid action:RULE_STATE_ALLOW];
+        
+        //create 'apple' rule
+        [rules add:process.path action:RULE_STATE_ALLOW type:RULE_TYPE_APPLE user:0];
+        
+        //all set
+        goto bail;
+    }
+    
+    //if it's a prev installed 3rd-party process and that preference is set; allow!
+    if( (YES == [preferences.preferences[PREF_ALLOW_INSTALLED] boolValue]) &&
+        (YES != process.binary.isApple) &&
+        (YES == [self wasPreInstalled:process.binary]) )
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing 3rd-party pre-installed process @%@", process.path]);
+        
+        //tell kernel to add 'allow' rule
+        [kextComms addRule:event->pid action:RULE_STATE_ALLOW];
+        
+        //create 'installed' rule
+        [rules add:process.path action:RULE_STATE_ALLOW type:RULE_TYPE_BASELINE user:0];
+        
+        //all set
+        goto bail;
+    }
+    
+    //no connected client
+    // can't deliver alert, so just allow, but log this fact
+    if(YES != clientConnected)
+    {
+        //dbg msg
+        // also log to file
+        logMsg(LOG_DEBUG|LOG_TO_FILE, @"no active (enabled) client, so telling kernel to 'allow'");
+        
+        //allow
+        [kextComms addRule:event->pid action:RULE_STATE_ALLOW];
+        
+        //all set
+        goto bail;
+    }
+    
+    //ignore if client is in passive mode
+    if(YES == [preferences.preferences[PREF_PASSIVE_MODE] boolValue])
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"client in passive mode, so allowing @%@", process.path]);
+        
+        //allow
+        [kextComms addRule:event->pid action:RULE_STATE_ALLOW];
+        
+        //all set
+        goto bail;
+    }
+    
+    //ok, have an new process, and an active/enabled client!
+    // queue up alert to trigger delivery to client, so user can allow/block
     else
     {
-        //no clients || client disabled
-        // default to allow process out...
-        if( (STATUS_CLIENT_DISABLED == clientStatus) ||
-            (STATUS_CLIENT_UNKNOWN == clientStatus) )
-        {
-            //dbg msg
-            // also log to file
-            logMsg(LOG_DEBUG|LOG_TO_FILE, @"no active (enabled) client, so telling kernel to 'allow'");
-            
-            //allow
-            [kextComms addRule:event->pid action:RULE_STATE_ALLOW];
-        }
+        //create alert
+        alert = [self createAlert:event process:process];
         
-        //client is active/enabled
-        // queue up alert to trigger delivery to client
-        else
-        {
-            //create alert
-            alert = [self createAlert:event process:process];
-            
-            //dbg msg
-            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"no rule found, adding alert to queue: %@", alert]);
-            
-            //add to global queue
-            // ->this will trigger processing of alert
-            [eventQueue enqueue:alert];
-            
-            //note the fact that an alert was shown for this process
-            [self.alerts addObject:[NSNumber numberWithUnsignedShort:event->pid]];
-        }
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"no rule found, adding alert to queue: %@", alert]);
+        
+        //add to global queue
+        // ->this will trigger processing of alert
+        [eventQueue enqueue:alert];
+        
+        //note the fact that an alert was shown for this process
+        [self.alerts addObject:[NSNumber numberWithUnsignedShort:event->pid]];
     }
     
 bail:
@@ -693,6 +755,65 @@ bail:
     return process;
 }
 
+//determine if a binary was installed before lulu
+// for now, just check if path is in list (maybe hash/signing info)
+-(BOOL)wasPreInstalled:(Binary*)binary
+{
+    //flag
+    BOOL preInstalled = NO;
+    
+    //preinstalled binary
+    NSDictionary* preInstalledBinary = nil;
+    
+    //baselinining takes some time...
+    // so check if it's (now) done and load results
+    if( (nil == self.installedApps) &&
+        (YES == [[NSFileManager defaultManager] fileExistsAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:INSTALLED_APPS]]) )
+    {
+        //load
+        self.installedApps = [NSDictionary dictionaryWithContentsOfFile:[INSTALL_DIRECTORY stringByAppendingPathComponent:INSTALLED_APPS]];
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded list %lu (pre)installed applications", (unsigned long)self.installedApps.count]);
+    }
+    
+    //lookup preinstalled binary
+    preInstalledBinary = self.installedApps[binary.path];
+    if(nil == preInstalledBinary)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //check signing info
+    if( (nil != preInstalledBinary[KEY_SIGNING_INFO]) &&
+        (nil != binary.signingInfo) )
+    {
+        //TODO:
+        //check KEY_SIGNING_INFO/array in binary.signingInfo[KEY_SIGNING_AUTHORITIES]
+    }
+    
+    //check hash
+    else if(nil != preInstalledBinary[KEY_HASH])
+    {
+        //match?
+        if(YES != [preInstalledBinary[KEY_HASH] isEqualToString:hashFile(binary.path)])
+        {
+            //bail
+            goto bail;
+        }
+    }
+    
+    //happy
+    // sig or hash match
+    // or if neither available, path matches
+    preInstalled = YES;
+    
+bail:
+    
+    return preInstalled;
+}
+
 //create an alert object
 // note: can treat sockaddr_in and sockaddr_in6 as 'same same' for family, port, etc
 -(NSMutableDictionary*)createAlert:(struct networkOutEvent_s*)event process:(Process*)process
@@ -722,7 +843,7 @@ bail:
     alertInfo[ALERT_IPADDR] = convertSocketAddr((struct sockaddr*)&(event->remoteAddress));
     
     //try get host name from DNS cache
-    // since it's based on recv'ing data from kernel, try a bit...
+    // since it's based on recv'ing data from kernel, try for a bit...
     for(int i=0; i<5; i++)
     {
         //nap

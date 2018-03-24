@@ -7,8 +7,8 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "Const.h"
-#import "Logging.h"
+#import "consts.h"
+#import "logging.h"
 #import "DaemonComms.h"
 
 @implementation DaemonComms
@@ -37,19 +37,81 @@
     return self;
 }
 
-//set client status
--(void)setClientStatus:(NSInteger)status
+//checkin with daemon client status
+-(void)clientCheckin
 {
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"sending request, via XPC, to set client status (status: %lu)", (unsigned long)status]);
+    logMsg(LOG_DEBUG, @"sending request, via XPC, to check in with daemon");
     
     //set status
     [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
         //err msg
-        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute 'setClientStatus' method on launch daemon (error: %@)", proxyError]);
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute 'clientCheckin' method on launch daemon (error: %@)", proxyError]);
           
-    }] setClientStatus:status];
+    }] clientCheckin];
+    
+    return;
+}
+
+//get preferences
+// note: synchronous, will block until daemon responds
+-(NSDictionary*)getPreferences
+{
+    //preferences
+    __block NSDictionary* preferences = nil;
+    
+    //wait sema
+    dispatch_semaphore_t semaphore = NULL;
+    
+    //init sema
+    semaphore = dispatch_semaphore_create(0);
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, @"sending request, via XPC, for preferences");
+    
+    //request preferences
+    [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
+      {
+          //err msg
+          logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute 'getPreferences' method on launch daemon (error: %@)", proxyError]);
+          
+          //signal sema
+          dispatch_semaphore_signal(semaphore);
+          
+      }] getPreferences:^(NSDictionary* preferencesFromDaemon)
+     {
+         //dbg msg
+         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"got preferences: %@", preferencesFromDaemon]);
+         
+         //save
+         preferences = preferencesFromDaemon;
+         
+         //signal sema
+         dispatch_semaphore_signal(semaphore);
+         
+     }];
+    
+    //XPC is async
+    // wait for preferences from daemon
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    return preferences;
+}
+
+//update (save) preferences
+-(void)updatePreferences:(NSDictionary*)preferences
+{
+    //dbg msg
+    logMsg(LOG_DEBUG, @"sending request, via XPC, to update preferences");
+    
+    //update prefs
+    [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
+    {
+          //err msg
+          logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute 'updatePreferences' method on launch daemon (error: %@)", proxyError]);
+          
+    }] updatePreferences:preferences];
     
     return;
 }
@@ -161,7 +223,7 @@
         
     }] alertRequest:^(NSDictionary* alert)
     {
-        //respond with alert
+        //respond
         reply(alert);
     }];
     
@@ -176,11 +238,11 @@
     
     //respond to alert
     [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
-      {
+    {
           //err msg
           logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute 'alertResponse' method on launch daemon (error: %@)", proxyError]);
           
-      }] alertResponse:alert];
+    }] alertResponse:alert];
     
     return;
 }

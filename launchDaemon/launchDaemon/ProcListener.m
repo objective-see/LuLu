@@ -9,7 +9,7 @@
 
 
 #import "ProcListener.h"
-#import "const.h"
+#import "consts.h"
 #import "logging.h"
 
 #import "Rule.h"
@@ -39,7 +39,8 @@ extern Rules* rules;
         self.processes = [NSMutableDictionary dictionary];
         
         //init proc info (monitor)
-        procMon = [[ProcInfo alloc] init];
+        // invoke with 'YES' for less CPU
+        procMon = [[ProcInfo alloc] init:YES];
         
         //start thread enumerate existing processes
         [NSThread detachNewThreadSelector:@selector(enumerateCurrent) toTarget:self withObject:nil];
@@ -64,7 +65,7 @@ extern Rules* rules;
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"enumerated %lu current processes\n", (unsigned long)currentProcesses.count]);
     
     //get signing info for each
-    // ->then add to list of proceses
+    // then add to list of proceses
     for(Process* currentProcess in currentProcesses)
     {
         //sync to add
@@ -74,9 +75,9 @@ extern Rules* rules;
             self.processes[[NSNumber numberWithUnsignedShort:currentProcess.pid]] = currentProcess;
         }
         
-        //existing rule for process (path)?
-        // ->tell kernel to add them already
-        matchingRule = [rules find:currentProcess.path];
+        //existing rule for process
+        // tell kernel to add them already
+        matchingRule = [rules find:currentProcess];
         if(nil != matchingRule)
         {
             //dbg msg
@@ -129,14 +130,14 @@ extern Rules* rules;
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"process start: %@ (%d)\n", process.path, process.pid]);
     
     //sync to add
-    @synchronized (self.processes)
+    @synchronized(self.processes)
     {
         //add
         self.processes[[NSNumber numberWithUnsignedShort:process.pid]] = process;
     }
     
     //existing rule for process (path)
-    matchingRule = [rules find:process.path];
+    matchingRule = [rules find:process];
     if(nil != matchingRule)
     {
         //dbg msg

@@ -7,14 +7,21 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "Const.h"
-#import "Logging.h"
+#import "consts.h"
+#import "logging.h"
 
 //global log file handle
 NSFileHandle* logFileHandle = nil;
 
+//get path to log file
+NSString* logFilePath()
+{
+    return [INSTALL_DIRECTORY stringByAppendingPathComponent:LOG_FILE_NAME];
+}
+
+
 //log a msg
-// ->default to syslog, and if an err msg, to disk
+// default to syslog, and if an err msg, to disk
 void logMsg(int level, NSString* msg)
 {
     //flag for logging
@@ -27,12 +34,12 @@ void logMsg(int level, NSString* msg)
     shouldLog = (LOG_TO_FILE == (level & LOG_TO_FILE));
     
     //then remove it
-    // ->make sure syslog is happy
+    // make sure syslog is happy
     level &= ~LOG_TO_FILE;
     
     //alloc/init
-    // ->always start w/ 'LULU' + pid
-    logPrefix = [NSMutableString stringWithFormat:@"LULU(%d)", getpid()];
+    // always start w/ name + pid
+    logPrefix = [NSMutableString stringWithFormat:@"LuLu(%d)", getpid()];
     
     //if its error, add error to prefix
     if(LOG_ERR == level)
@@ -45,7 +52,7 @@ void logMsg(int level, NSString* msg)
     #ifdef DEBUG
     
     //in debug mode promote debug msgs to LOG_NOTICE
-    // OSX/macOS only shows LOG_NOTICE and above
+    // OS X only shows LOG_NOTICE and above
     if(LOG_DEBUG == level)
     {
         //promote
@@ -54,16 +61,16 @@ void logMsg(int level, NSString* msg)
     
     #endif
     
-    //log to syslog if a level was specified
-    // as code doesn't use LOG_EMERG (0), this check is ok
+    //dump to syslog?
+    // function can be invoked just to log to file...
     if(0 != level)
     {
-        //log to syslog
+        //syslog
         syslog(level, "%s: %s", [logPrefix UTF8String], [msg UTF8String]);
     }
     
     //when a message is to be logged to file
-    // ->log it, when logging is enabled
+    // log it, when logging is enabled
     if(YES == shouldLog)
     {
         //but only when logging is enable
@@ -136,9 +143,7 @@ BOOL initLogging(NSString* logPath)
     }
     
     //dbg msg
-    #ifdef DEBUG
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"opened log file; %@", logPath]);
-    #endif
     
     //seek to end
     [logFileHandle seekToEndOfFile];

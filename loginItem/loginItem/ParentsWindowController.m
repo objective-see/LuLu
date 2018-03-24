@@ -11,8 +11,8 @@
 
 @implementation ParentsWindowController
 
-//automatically invoked to return number of children
-// ->simply either 1, or 0 (for last item)
+//automatically invoked
+// return number of children, simply either 1, or 0 (for last item)
 -(NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
 {
     //# of kids
@@ -20,7 +20,7 @@
     NSInteger kidCount = 1;
     
     //for last item
-    // ->no more kids (e.g. 0)
+    // no more kids (e.g. 0)
     if( (0x1 != self.processHierarchy.count) &&
         ([((NSDictionary*)item)[@"index"] integerValue] == self.processHierarchy.count-1) )
     {

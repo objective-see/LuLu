@@ -16,11 +16,14 @@
 		7D6E87701F3AE6FA00D6BD7C /* libprocInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D6E876F1F3AE6FA00D6BD7C /* libprocInfo.a */; };
 		7D7755D41F02DF9500D0017D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7755D31F02DF9500D0017D /* main.m */; };
 		7D7755F91F02E1F400D0017D /* KextListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7755F71F02E1F400D0017D /* KextListener.m */; };
-		7D7755FC1F02EBBE00D0017D /* Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7755FA1F02EBBE00D0017D /* Logging.m */; };
+		7D7755FC1F02EBBE00D0017D /* logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7755FA1F02EBBE00D0017D /* logging.m */; };
 		7DD2BF5C1F1DAEFD00B33214 /* Rule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF5A1F1DAEFD00B33214 /* Rule.m */; };
-		7DD2BF681F1DC42700B33214 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF671F1DC42700B33214 /* Utilities.m */; };
+		7DD2BF681F1DC42700B33214 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF671F1DC42700B33214 /* utilities.m */; };
 		7DD2BF761F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF731F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m */; };
 		7DD2BF771F1E9CE700B33214 /* Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF751F1E9CE700B33214 /* Queue.m */; };
+		CD2B610E2065E17100BF72E9 /* exception.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2B610C2065E17100BF72E9 /* exception.m */; };
+		CD4DB5122055AD7000C53410 /* Baseline.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4DB5112055AD7000C53410 /* Baseline.m */; };
+		CDAFF457203FB23800F27635 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAFF456203FB23800F27635 /* Preferences.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,7 +39,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7D2582591F1A872400D28B95 /* com.objective-see.lulu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "com.objective-see.lulu.plist"; path = "launchDaemon/com.objective-see.lulu.plist"; sourceTree = "<group>"; };
 		7D46FEFD1F5E41F000FEB0F8 /* UserCommsListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCommsListener.m; sourceTree = "<group>"; };
 		7D46FEFE1F5E41F000FEB0F8 /* UserCommsListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommsListener.h; sourceTree = "<group>"; };
 		7D4FF3701F0B6D3100A59A05 /* KextComms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KextComms.m; sourceTree = "<group>"; };
@@ -45,29 +47,34 @@
 		7D4FF8C31F0E1402001A4A68 /* libbsm.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbsm.tbd; path = usr/lib/libbsm.tbd; sourceTree = SDKROOT; };
 		7D4FF8C51F0E14E8001A4A68 /* ProcListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcListener.h; sourceTree = "<group>"; };
 		7D4FF8C81F0E1770001A4A68 /* ProcListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcListener.m; sourceTree = "<group>"; };
-		7D4FF8CA1F0EDD4F001A4A68 /* rules.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = rules.plist; sourceTree = "<group>"; };
 		7D4FF8CB1F0EF2F9001A4A68 /* UserComms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserComms.h; sourceTree = "<group>"; };
 		7D4FF8CC1F0EF2F9001A4A68 /* UserComms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserComms.m; sourceTree = "<group>"; };
 		7D4FF8CE1F0EF360001A4A68 /* UserCommsInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UserCommsInterface.h; path = ../../shared/UserCommsInterface.h; sourceTree = "<group>"; };
-		7D6E876E1F3AE5E900D6BD7C /* procInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = procInfo.h; sourceTree = "<group>"; };
-		7D6E876F1F3AE6FA00D6BD7C /* libprocInfo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprocInfo.a; path = launchDaemon/libs/libprocInfo.a; sourceTree = "<group>"; };
-		7D7755D01F02DF9500D0017D /* LuLuDaemon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LuLuDaemon; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D6E876F1F3AE6FA00D6BD7C /* libprocInfo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprocInfo.a; path = ../shared/libs/libprocInfo.a; sourceTree = "<group>"; };
+		7D7755D01F02DF9500D0017D /* LuLu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LuLu; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7755D31F02DF9500D0017D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7D7755F71F02E1F400D0017D /* KextListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KextListener.m; sourceTree = "<group>"; };
 		7D7755F81F02E1F400D0017D /* KextListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KextListener.h; sourceTree = "<group>"; };
-		7D7755FA1F02EBBE00D0017D /* Logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Logging.m; path = ../../shared/Logging.m; sourceTree = "<group>"; };
-		7D7755FB1F02EBBE00D0017D /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Logging.h; path = ../../shared/Logging.h; sourceTree = "<group>"; };
-		7D7755FD1F02EC1800D0017D /* Const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Const.h; path = ../../shared/Const.h; sourceTree = "<group>"; };
+		7D7755FA1F02EBBE00D0017D /* logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = logging.m; path = ../../shared/logging.m; sourceTree = "<group>"; };
+		7D7755FB1F02EBBE00D0017D /* logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = logging.h; path = ../../shared/logging.h; sourceTree = "<group>"; };
+		7D7755FD1F02EC1800D0017D /* consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = consts.h; path = ../../shared/consts.h; sourceTree = "<group>"; };
 		7D7756081F05D63E00D0017D /* UserClientShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserClientShared.h; path = ../../shared/UserClientShared.h; sourceTree = "<group>"; };
 		7DD2BF5A1F1DAEFD00B33214 /* Rule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rule.m; path = ../../shared/Rule.m; sourceTree = "<group>"; };
 		7DD2BF611F1DAFF800B33214 /* Rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rule.h; path = ../../shared/Rule.h; sourceTree = "<group>"; };
 		7DD2BF621F1DC30600B33214 /* Rules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rules.h; sourceTree = "<group>"; };
-		7DD2BF661F1DC42700B33214 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = ../../shared/Utilities.h; sourceTree = "<group>"; };
-		7DD2BF671F1DC42700B33214 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utilities.m; path = ../../shared/Utilities.m; sourceTree = "<group>"; };
+		7DD2BF661F1DC42700B33214 /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = ../../shared/utilities.h; sourceTree = "<group>"; };
+		7DD2BF671F1DC42700B33214 /* utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = utilities.m; path = ../../shared/utilities.m; sourceTree = "<group>"; };
 		7DD2BF721F1E9CE700B33214 /* NSMutableArray+QueueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+QueueAdditions.h"; sourceTree = "<group>"; };
 		7DD2BF731F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
 		7DD2BF741F1E9CE700B33214 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
 		7DD2BF751F1E9CE700B33214 /* Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Queue.m; sourceTree = "<group>"; };
+		CD2B610C2065E17100BF72E9 /* exception.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = exception.m; path = ../../shared/exception.m; sourceTree = "<group>"; };
+		CD2B610D2065E17100BF72E9 /* exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = exception.h; path = ../../shared/exception.h; sourceTree = "<group>"; };
+		CD4DB5102055AD7000C53410 /* Baseline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Baseline.h; sourceTree = "<group>"; };
+		CD4DB5112055AD7000C53410 /* Baseline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Baseline.m; sourceTree = "<group>"; };
+		CDAFF432203E55C600F27635 /* procInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = procInfo.h; path = ../../shared/libs/procInfo.h; sourceTree = "<group>"; };
+		CDAFF455203FB23800F27635 /* Preferences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
+		CDAFF456203FB23800F27635 /* Preferences.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +102,7 @@
 		7D7755C71F02DF9400D0017D = {
 			isa = PBXGroup;
 			children = (
-				7D2582591F1A872400D28B95 /* com.objective-see.lulu.plist */,
-				7D7755D21F02DF9500D0017D /* src */,
+				7D7755D21F02DF9500D0017D /* Src */,
 				7D4FF8BF1F0E12F1001A4A68 /* Frameworks */,
 				7D7755D11F02DF9500D0017D /* Products */,
 			);
@@ -105,12 +111,12 @@
 		7D7755D11F02DF9500D0017D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7D7755D01F02DF9500D0017D /* LuLuDaemon */,
+				7D7755D01F02DF9500D0017D /* LuLu */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7D7755D21F02DF9500D0017D /* src */ = {
+		7D7755D21F02DF9500D0017D /* Src */ = {
 			isa = PBXGroup;
 			children = (
 				7D7756071F05D62E00D0017D /* shared */,
@@ -118,6 +124,8 @@
 				7DD2BF731F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m */,
 				7DD2BF741F1E9CE700B33214 /* Queue.h */,
 				7DD2BF751F1E9CE700B33214 /* Queue.m */,
+				CD4DB5102055AD7000C53410 /* Baseline.h */,
+				CD4DB5112055AD7000C53410 /* Baseline.m */,
 				7D7755D31F02DF9500D0017D /* main.m */,
 				7D4FF3711F0B6D3100A59A05 /* KextComms.h */,
 				7D4FF3701F0B6D3100A59A05 /* KextComms.m */,
@@ -125,30 +133,33 @@
 				7D7755F71F02E1F400D0017D /* KextListener.m */,
 				7D4FF8C51F0E14E8001A4A68 /* ProcListener.h */,
 				7D4FF8C81F0E1770001A4A68 /* ProcListener.m */,
+				CDAFF455203FB23800F27635 /* Preferences.h */,
+				CDAFF456203FB23800F27635 /* Preferences.m */,
 				7DD2BF621F1DC30600B33214 /* Rules.h */,
 				7D4FF37A1F0C2DB300A59A05 /* Rules.m */,
 				7D4FF8CB1F0EF2F9001A4A68 /* UserComms.h */,
 				7D4FF8CC1F0EF2F9001A4A68 /* UserComms.m */,
 				7D46FEFE1F5E41F000FEB0F8 /* UserCommsListener.h */,
 				7D46FEFD1F5E41F000FEB0F8 /* UserCommsListener.m */,
-				7D4FF8CA1F0EDD4F001A4A68 /* rules.plist */,
 			);
-			name = src;
+			name = Src;
 			path = launchDaemon;
 			sourceTree = "<group>";
 		};
 		7D7756071F05D62E00D0017D /* shared */ = {
 			isa = PBXGroup;
 			children = (
-				7D6E876E1F3AE5E900D6BD7C /* procInfo.h */,
-				7DD2BF661F1DC42700B33214 /* Utilities.h */,
-				7DD2BF671F1DC42700B33214 /* Utilities.m */,
+				CD2B610D2065E17100BF72E9 /* exception.h */,
+				CD2B610C2065E17100BF72E9 /* exception.m */,
+				CDAFF432203E55C600F27635 /* procInfo.h */,
+				7DD2BF661F1DC42700B33214 /* utilities.h */,
+				7DD2BF671F1DC42700B33214 /* utilities.m */,
 				7DD2BF611F1DAFF800B33214 /* Rule.h */,
 				7DD2BF5A1F1DAEFD00B33214 /* Rule.m */,
 				7D7756081F05D63E00D0017D /* UserClientShared.h */,
-				7D7755FD1F02EC1800D0017D /* Const.h */,
-				7D7755FA1F02EBBE00D0017D /* Logging.m */,
-				7D7755FB1F02EBBE00D0017D /* Logging.h */,
+				7D7755FD1F02EC1800D0017D /* consts.h */,
+				7D7755FA1F02EBBE00D0017D /* logging.m */,
+				7D7755FB1F02EBBE00D0017D /* logging.h */,
 				7D4FF8CE1F0EF360001A4A68 /* UserCommsInterface.h */,
 			);
 			name = shared;
@@ -171,7 +182,7 @@
 			);
 			name = launchDaemon;
 			productName = launchDaemon;
-			productReference = 7D7755D01F02DF9500D0017D /* LuLuDaemon */;
+			productReference = 7D7755D01F02DF9500D0017D /* LuLu */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -214,15 +225,18 @@
 			files = (
 				7D46FEFF1F5E41F000FEB0F8 /* UserCommsListener.m in Sources */,
 				7D7755F91F02E1F400D0017D /* KextListener.m in Sources */,
+				CD2B610E2065E17100BF72E9 /* exception.m in Sources */,
 				7DD2BF761F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m in Sources */,
 				7DD2BF5C1F1DAEFD00B33214 /* Rule.m in Sources */,
 				7D4FF37B1F0C2DB300A59A05 /* Rules.m in Sources */,
-				7DD2BF681F1DC42700B33214 /* Utilities.m in Sources */,
+				7DD2BF681F1DC42700B33214 /* utilities.m in Sources */,
+				CD4DB5122055AD7000C53410 /* Baseline.m in Sources */,
 				7DD2BF771F1E9CE700B33214 /* Queue.m in Sources */,
 				7D4FF8C91F0E1770001A4A68 /* ProcListener.m in Sources */,
 				7D7755D41F02DF9500D0017D /* main.m in Sources */,
+				CDAFF457203FB23800F27635 /* Preferences.m in Sources */,
 				7D4FF8CD1F0EF2F9001A4A68 /* UserComms.m in Sources */,
-				7D7755FC1F02EBBE00D0017D /* Logging.m in Sources */,
+				7D7755FC1F02EBBE00D0017D /* logging.m in Sources */,
 				7D4FF3721F0B6D3100A59A05 /* KextComms.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,11 +349,11 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Objective-See, LLC (VBG97UB4TA)";
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../shared/libs",
 					"$(inherited)",
-					"$(PROJECT_DIR)/launchDaemon/libs",
 				);
 				OTHER_CODE_SIGN_FLAGS = "";
-				PRODUCT_NAME = LuLuDaemon;
+				PRODUCT_NAME = LuLu;
 			};
 			name = Debug;
 		};
@@ -349,12 +363,12 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Objective-See, LLC (VBG97UB4TA)";
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../shared/libs",
 					"$(inherited)",
-					"$(PROJECT_DIR)/launchDaemon/libs",
 				);
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
-				PRODUCT_NAME = LuLuDaemon;
+				PRODUCT_NAME = LuLu;
 			};
 			name = Release;
 		};

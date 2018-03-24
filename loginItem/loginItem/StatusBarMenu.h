@@ -10,7 +10,7 @@
 #import "DaemonComms.h"
 #import <Cocoa/Cocoa.h>
 
-@interface StatusBarMenu : NSObject
+@interface StatusBarMenu : NSObject <NSPopoverDelegate>
 {
 
 }
@@ -18,15 +18,15 @@
 //status item
 @property (nonatomic, strong, readwrite) NSStatusItem *statusItem;
 
-//daemom comms object
-@property (nonatomic, retain)DaemonComms* daemonComms;
+//popover
+@property (retain, nonatomic)NSPopover *popover;
 
-//enabled flag
-@property BOOL isEnabled;
+//disabled flag
+@property BOOL isDisabled;
 
 /* METHODS */
 
 //init
--(id)init:(NSMenu*)menu;
+-(id)init:(NSMenu*)menu preferences:(NSDictionary*)preferences firstTime:(BOOL)firstTime;
 
 @end

@@ -11,9 +11,12 @@
 #ifndef Rules_h
 #define Rules_h
 
+#import "procInfo.h"
+
 @import Foundation;
 
 @class Rule;
+
 
 @interface Rules : NSObject
 {
@@ -26,7 +29,7 @@
 @property(nonatomic, retain)NSMutableDictionary* rules;
 
 //query for baselining rules
-@property(nonatomic, retain)NSMetadataQuery* appQuery;
+//@property(nonatomic, retain)NSMetadataQuery* appQuery;
 
 /* METHODS */
 
@@ -34,11 +37,10 @@
 -(BOOL)load;
 
 //start query for all installed apps
--(void)startBaselining;
+//-(void)startBaselining;
 
 //find
-// for now, just by path
--(Rule*)find:(NSString*)path;
+-(Rule*)find:(Process*)process;
 
 //add rule
 -(BOOL)add:(NSString*)path action:(NSUInteger)action type:(NSUInteger)type user:(NSUInteger)user;

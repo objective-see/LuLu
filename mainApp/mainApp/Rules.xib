@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -253,7 +252,7 @@
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="luluText" id="bFa-B6-5Ck"/>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUD-fD-sWd">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eUD-fD-sWd">
                         <rect key="frame" x="774" y="10" width="78" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="74" id="ATm-ZU-Qd6"/>
@@ -293,7 +292,7 @@
                             <action selector="exportRules:" target="-2" id="hdg-8h-q1M"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1C-d0-irl">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N1C-d0-irl">
                         <rect key="frame" x="102" y="11" width="106" height="19"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="import/export" id="fjk-ev-N5X">
                             <font key="font" size="13" name="Menlo-Regular"/>
@@ -344,12 +343,12 @@
                             <action selector="toolbarHandler:" target="-2" id="qTF-1F-7cS"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="F277D773-ED53-4D39-A773-4AD19A56CECD" label="baseline" paletteLabel="baseline" tag="1" image="rulesBaseline" selectable="YES" id="IhL-Bt-OuB">
+                    <toolbarItem implicitItemIdentifier="F277D773-ED53-4D39-A773-4AD19A56CECD" label="baseline" paletteLabel="baseline" tag="2" image="rulesBaseline" selectable="YES" id="IhL-Bt-OuB">
                         <connections>
                             <action selector="toolbarHandler:" target="-2" id="NWO-Br-baO"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="27153586-AB2F-46C4-8DD4-2A015973C4B5" explicitItemIdentifier="user" label="user" paletteLabel="user" tag="2" image="rulesUser" selectable="YES" id="8lN-Ti-cWt">
+                    <toolbarItem implicitItemIdentifier="27153586-AB2F-46C4-8DD4-2A015973C4B5" explicitItemIdentifier="user" label="user" paletteLabel="user" tag="3" image="rulesUser" selectable="YES" id="8lN-Ti-cWt">
                         <connections>
                             <action selector="toolbarHandler:" target="-2" id="rRC-E1-zCg"/>
                         </connections>
@@ -358,7 +357,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="96" height="22"/>
                         <size key="maxSize" width="96" height="22"/>
-                        <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="6hG-3v-G35">
+                        <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" id="6hG-3v-G35">
                             <rect key="frame" x="0.0" y="14" width="96" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="DWG-ck-lDk">
@@ -371,11 +370,18 @@
                             </connections>
                         </searchField>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="E8F6F4D2-B7D0-47AB-9045-F7524F2A6E23" label="apple" paletteLabel="apple" tag="1" image="rulesApple" selectable="YES" id="B1u-bW-fb1">
+                        <connections>
+                            <action selector="toolbarHandler:" target="-2" id="ZfS-Ds-cYK"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Nav-wg-Vxe"/>
                     <toolbarItem reference="1EK-dM-lw3"/>
                     <toolbarItem reference="gc6-AZ-l8V"/>
+                    <toolbarItem reference="1EK-dM-lw3"/>
+                    <toolbarItem reference="B1u-bW-fb1"/>
                     <toolbarItem reference="1EK-dM-lw3"/>
                     <toolbarItem reference="IhL-Bt-OuB"/>
                     <toolbarItem reference="1EK-dM-lw3"/>
@@ -389,7 +395,7 @@
             </connections>
             <point key="canvasLocation" x="40" y="332"/>
         </window>
-        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="8rY-Kl-bJs">
+        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="8rY-Kl-bJs">
             <rect key="frame" x="0.0" y="0.0" width="38" height="17"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="AAC-Kf-Jrf">
@@ -414,12 +420,13 @@
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSColorPanel" width="32" height="32"/>
-        <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
+        <image name="NSStopProgressFreestandingTemplate" width="11" height="11"/>
         <image name="allow" width="24" height="24"/>
         <image name="exportRules" width="24" height="24"/>
         <image name="importRules" width="24" height="24"/>
         <image name="luluText" width="169" height="51"/>
         <image name="rulesAll" width="32" height="32"/>
+        <image name="rulesApple" width="24" height="24"/>
         <image name="rulesBaseline" width="32" height="32"/>
         <image name="rulesDefault" width="32" height="32"/>
         <image name="rulesUser" width="32" height="32"/>

@@ -16,6 +16,12 @@
 
 /* GLOBALS */
 
+//registered flag
+extern bool wasRegistered;
+
+//enabled flag
+extern bool isEnabled;
+
 //shared data queue
 extern IOSharedDataQueue *sharedDataQueue;
 

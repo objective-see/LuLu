@@ -10,7 +10,6 @@
 #ifndef KextComms_h
 #define KextComms_h
 
-
 @interface KextComms : NSObject
 {
     
@@ -30,7 +29,7 @@
 -(kern_return_t)enable;
 
 //disable socket filtering in kernel
--(kern_return_t)disable;
+-(kern_return_t)disable:(BOOL)shouldUnregister;
 
 //add a rule by pid/action
 -(kern_return_t)addRule:(uint32_t)pid action:(uint32_t)action;
@@ -39,6 +38,5 @@
 -(kern_return_t)removeRule:(uint32_t)pid;
 
 @end
-
 
 #endif /* KextComms_h */

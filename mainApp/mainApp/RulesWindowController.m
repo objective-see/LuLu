@@ -7,11 +7,11 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "const.h"
+#import "consts.h"
 #import "Rule.h"
 #import "RuleRow.h"
 #import "logging.h"
-#import "Utilities.h"
+#import "utilities.h"
 #import "AppDelegate.h"
 #import "DaemonComms.h"
 #import "RulesWindowController.h"
@@ -65,8 +65,8 @@
          //reload table
          [self.tableView reloadData];
         
-        //select first row
-        [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+         //select first row
+         [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
         
      }];
     
@@ -99,7 +99,7 @@
         //enable button
         self.addRuleButton.enabled = YES;
     }
-    //'add rule' not allowed for 'default'/'baseline'
+    //'add rule' not allowed for 'default'/'apple'/'baseline'
     else
     {
         //change label color to gray
@@ -196,7 +196,7 @@
     panel = [NSSavePanel savePanel];
     
     //suggest file name
-    [panel setNameFieldStringValue:[RULES_FILE lastPathComponent]];
+    [panel setNameFieldStringValue:RULES_FILE];
     
     //show panel
     // ->completion handler will invoked user click ok/cancel
@@ -564,7 +564,7 @@
         //remove any previous
         [self.rulesFiltered removeAllObjects];
         
-        //don't need to filter when user clicks 'all'
+        //don't need to filter when user clicks 'all' & no search
         if( (-1 == selectedItem.tag) &&
             (0 == self.searchBox.stringValue.length) )
         {
@@ -581,22 +581,22 @@
         //add any rule that matches
         for(Rule* rule in self.rules)
         {
-            //all rules
-            // ->must match search
+            //'show all' rules
+            // must match search
             if(-1 == selectedItem.tag)
             {
                 //search
                 // rule has to match
-                if( (NSNotFound != [rule.name rangeOfString:self.searchBox.stringValue].location) ||
-                    (NSNotFound != [rule.path rangeOfString:self.searchBox.stringValue].location) )
+                if( (YES != [rule.name containsString:self.searchBox.stringValue]) ||
+                    (YES != [rule.path containsString:self.searchBox.stringValue]) )
                 {
                     //add
                     [self.rulesFiltered addObject:rule];
                 }
             }
             
-            //not all
-            // ->gotta match filter, and if search, that too
+            //not 'show all'
+            // gotta match filter, and if search, that too
             else if(selectedItem.tag == rule.type.intValue)
             {
                 //no search?
@@ -609,8 +609,8 @@
                 
                 //search
                 // rule has to match
-                if( (NSNotFound != [rule.name rangeOfString:self.searchBox.stringValue].location) ||
-                    (NSNotFound != [rule.path rangeOfString:self.searchBox.stringValue].location) )
+                else if( (YES != [rule.name containsString:self.searchBox.stringValue]) ||
+                         (YES != [rule.path containsString:self.searchBox.stringValue]) )
                 {
                     //add
                     [self.rulesFiltered addObject:rule];
@@ -764,6 +764,14 @@ bail:
                 
                 //set text
                 tableCell.textField.stringValue = @"default";
+                
+                break;
+                
+            //rule type: 'apple'
+            case RULE_TYPE_APPLE:
+                
+                //set text
+                tableCell.textField.stringValue = @"apple";
                 
                 break;
                 
