@@ -466,7 +466,7 @@ bail:
         (YES == process.binary.isApple))
     {
         //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing apple process @%@", process.path]);
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing apple process @%d/%@", process.pid, process.path]);
         
         //tell kernel to add 'allow' rule
         [kextComms addRule:event->pid action:RULE_STATE_ALLOW];

@@ -208,6 +208,39 @@
     {
         //set flag
         status = YES;
+        
+        //for install
+        // wait until kext cache rebuild is done
+        if(ACTION_INSTALL_FLAG == event)
+        {
+            //update status msg
+            dispatch_async(dispatch_get_main_queue(),
+            ^{
+                //set status msg
+                [self.statusMsg setStringValue:@"Rebuilding kernel cache..."];
+            });
+            
+            //nap
+            // give time for kext cache to start....
+            [NSThread sleepForTimeInterval:5.0];
+            
+            //wait until kextcache has exited
+            while(YES)
+            {
+                //dbg msg
+                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"waiting for '%@' to complete", KEXT_CACHE]);
+                
+                //nap
+                [NSThread sleepForTimeInterval:1.0];
+                
+                //exit'd?
+                if(0 == [getProcessIDs(KEXT_CACHE, -1) count])
+                {
+                    //bye
+                    break;
+                }
+            }
+        }
     }
     
     //error occurred
@@ -216,6 +249,7 @@
         //set flag
         status = NO;
     }
+    
     //complete event
     // updates ui on main thread
     dispatch_async(dispatch_get_main_queue(),

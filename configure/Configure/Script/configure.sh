@@ -37,7 +37,7 @@ if [ "${1}" == "-install" ]; then
     cd "$(dirname "${0}")"
 
     #remove all xattrs
-    /usr/bin/xattr -rc ./*
+    xattr -rc ./*
 
     #create main LuLu directory
     mkdir -p $INSTALL_DIRECTORY
@@ -67,6 +67,10 @@ if [ "${1}" == "-install" ]; then
 
     #kick of main app w/ -install flag
     open -g -j "/Applications/LuLu.app/" "--args" "-install"
+
+    #rebuild cache
+    # run in background, (ui) installer will wait on it...
+    "/usr/sbin/kextcache -u /" &
 
     echo "install complete"
     exit 0

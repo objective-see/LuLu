@@ -28,16 +28,10 @@
 //rules
 @property(nonatomic, retain)NSMutableDictionary* rules;
 
-//query for baselining rules
-//@property(nonatomic, retain)NSMetadataQuery* appQuery;
-
 /* METHODS */
 
 //load from disk
 -(BOOL)load;
-
-//start query for all installed apps
-//-(void)startBaselining;
 
 //find
 -(Rule*)find:(Process*)process;

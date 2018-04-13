@@ -223,6 +223,9 @@ int main(int argc, const char * argv[])
         // finally add all rules to kernel
         @synchronized(rules.rules)
         {
+            //dbg msg
+            logMsg(LOG_DEBUG, @"loading (saved) rules into kernel");
+            
             //iterate & add all
             for(NSString* path in rules.rules)
             {

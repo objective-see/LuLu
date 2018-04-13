@@ -425,8 +425,7 @@ static void unregistered(sflt_handle handle)
 }
 
 //called for new socket
-//  find rule, and attach entry (so know to allow/deny for later actions)
-//  if no rule is found, that's ok (new proc), request user input in connect_out or sf_data_out, etc
+//  find rule, and attach entry (so know to ask/allow/deny for later actions)
 static kern_return_t attach(void **cookie, socket_t so)
 {
     //result
@@ -476,7 +475,7 @@ bail:
 }
 
 //call back for detach
-// ->just free socket's cookie
+// just free socket's cookie
 static void detach(void *cookie, socket_t so)
 {
     //dbg msg
@@ -496,13 +495,10 @@ static void detach(void *cookie, socket_t so)
 }
 
 //callback for incoming data
-// only interested in DNS responses for IP:URL mappings
+// only interested in DNS responses for IP:URL mappings, so always return 'ok'
 // code inspired by: https://github.com/williamluke/peerguardian-linux/blob/master/pgosx/kern/ppfilter.c
 static errno_t data_in(void *cookie, socket_t so, const struct sockaddr *from, mbuf_t *data, mbuf_t *control, sflt_data_flag_t flags)
 {
-    //result
-    kern_return_t result = kIOReturnError;
-    
     //port
     in_port_t port = 0;
     
@@ -527,10 +523,6 @@ static errno_t data_in(void *cookie, socket_t so, const struct sockaddr *from, m
     //ignore if not enabled
     if(true != isEnabled)
     {
-        //ignore
-        // but no errors
-        result = kIOReturnSuccess;
-        
         //bail
         goto bail;
     }
@@ -647,12 +639,9 @@ static errno_t data_in(void *cookie, socket_t so, const struct sockaddr *from, m
     //queue it up
     sharedDataQueue->enqueue_tail(&event, sizeof(firewallEvent));
     
-    //happy
-    result = kIOReturnSuccess;
-    
 bail:
     
-    return result;
+    return kIOReturnSuccess;
 }
 
 //callback for outgoing (UDP) connections
@@ -706,7 +695,7 @@ static kern_return_t connect_out(void *cookie, socket_t so, const struct sockadd
     kern_return_t result = kIOReturnError;
     
     //dbg msg
-    IOLog("LULU: in %s\n", __FUNCTION__);
+    //IOLog("LULU: in %s\n", __FUNCTION__);
     
     //ignore if not enabled
     if(true != isEnabled)
@@ -731,7 +720,7 @@ static kern_return_t connect_out(void *cookie, socket_t so, const struct sockadd
     broadcastEvent(EVENT_CONNECT_OUT, so, to);
     
     //process
-    // ->block/allow/ask user
+    // block/allow/ask user
     result = process(cookie, so, to);
     
 bail:
@@ -764,6 +753,9 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
         
         //get process name
         proc_selfname(processName, PATH_MAX);
+        
+        //dbg msg
+        IOLog("LULU: processing outgoing network event for %s (pid: %d / action: %d)\n", processName, proc_selfpid(), action);
 
         //block?
         if(RULE_STATE_BLOCK == action)
@@ -791,7 +783,7 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
             goto bail;
         }
         
-        //not found
+        //not found?
         // ask daemon and sleep for response
         else if(RULE_STATE_NOT_FOUND == action)
         {
@@ -804,13 +796,10 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
             {
                 //send
                 queueEvent(so, to);
-                
-                //dbg msg
-                IOLog("LULU: queued response to user mode\n");
             }
             
             //dbg msg
-            IOLog("LULU: thread for %s (pid: %d), going (back) to sleep\n", processName, proc_selfpid());
+            IOLog("LULU: thread for %s (pid: %d) going (back) to sleep\n", processName, proc_selfpid());
             
             //lock
             IOLockLock(ruleEventLock);
@@ -820,6 +809,9 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
             
             //unlock
             IOLockUnlock(ruleEventLock);
+            
+            //dbg msg
+            IOLog("LULU: process %d's thread awoke with reason %d\n", proc_selfpid(), reason);
             
             //woke becuase kext is unloading?
             if(true == isUnloading)

@@ -186,10 +186,8 @@ bail:
     //sync to access
     @synchronized(self.rules)
     {
-        //init rule
-        rule = [[Rule alloc] init:path rule:@{RULE_ACTION:[NSNumber numberWithUnsignedInteger:action], RULE_TYPE:[NSNumber numberWithUnsignedInteger:type], RULE_USER:[NSNumber numberWithUnsignedInteger:user]}];
-        
-        //ignore
+        //ignore existing rule
+        // TODO: maybe call 'find' to also check signing info/hash?
         if(nil != self.rules[path])
         {
             //err msg
@@ -198,6 +196,9 @@ bail:
             //bail
             goto bail;
         }
+        
+        //init rule
+        rule = [[Rule alloc] init:path rule:@{RULE_ACTION:[NSNumber numberWithUnsignedInteger:action], RULE_TYPE:[NSNumber numberWithUnsignedInteger:type], RULE_USER:[NSNumber numberWithUnsignedInteger:user]}];
         
         //add
         self.rules[path] = rule;
@@ -228,7 +229,7 @@ bail:
         //TODO: hash/sig matches?
         
         //add rule
-        [kextComms addRule:[processID unsignedShortValue] action:(unsigned int)rule.action];
+        [kextComms addRule:[processID unsignedShortValue] action:rule.action.intValue];
     }
     
     return;

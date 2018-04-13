@@ -13,6 +13,9 @@
 #import "exception.h"
 #import "utilities.h"
 
+//TODO: disable icon - 25%
+//TODO: sentry.io
+
 int main(int argc, const char * argv[])
 {
     //return var

@@ -171,7 +171,7 @@ int queryRule(int processID)
     ruleState = OSDynamicCast(OSNumber, rules->getObject(key));
 
     //found
-    // ->set state
+    // set state
     if(NULL != ruleState)
     {
         //set state

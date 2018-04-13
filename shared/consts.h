@@ -208,6 +208,9 @@
 //path to system profiler
 #define SYSTEM_PROFILER @"/usr/sbin/system_profiler"
 
+//path to kext cache
+#define KEXT_CACHE @"/usr/sbin/kextcache"
+
 /* LOGIN ITEM */
 
 //path to osascript
@@ -215,6 +218,7 @@
 
 //path to open
 #define OPEN @"/usr/bin/open"
+
 
 //log activity button
 #define PREF_LOG_ACTIVITY @"logActivity"
