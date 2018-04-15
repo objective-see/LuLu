@@ -142,10 +142,37 @@ extern NSInteger clientConnected;
     {
         //err msg
         logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to add rule for %@", path]);
+        
+        //bail
+        goto bail;
     }
 
-    //signal all threads that rules changed
-    while(0 != dispatch_semaphore_signal(rulesChanged));
+bail:
+    
+    return;
+}
+
+//update rule
+-(void)updateRule:(NSString*)path action:(NSUInteger)action user:(NSUInteger)user
+{
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: UPDATE RULE (%@/%lu)", path, action]);
+    
+    //log to file
+    logMsg(LOG_TO_FILE, [NSString stringWithFormat:@"updating rule (path: %@ / action: %lu)", path, action]);
+    
+    //add
+    // ->type is 'user'
+    if(YES != [rules update:path action:action type:RULE_TYPE_USER user:user])
+    {
+        //err msg
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to update rule for %@", path]);
+        
+        //bail
+        goto bail;
+    }
+    
+bail:
     
     return;
 }
@@ -168,9 +195,6 @@ extern NSInteger clientConnected;
         //bail
         goto bail;
     }
-    
-    //signal all threads that rules changed
-    while(0 != dispatch_semaphore_signal(rulesChanged));
     
 bail:
     

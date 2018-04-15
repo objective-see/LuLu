@@ -23,9 +23,18 @@
 //id (tag) for delete button
 #define TABLE_ROW_DELETE_TAG 110
 
+//menu item for block
+#define MENU_ITEM_BLOCK 0
+
+//menu item for allow
+#define MENU_ITEM_ALLOW 1
+
+//menu item for delete
+#define MENU_ITEM_DELETE 2
+
 /* INTERFACE */
 
-@interface RulesWindowController : NSWindowController <NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate>
+@interface RulesWindowController : NSWindowController <NSWindowDelegate, NSTableViewDataSource, NSTableViewDelegate, NSMenuDelegate>
 {
     
 }

@@ -468,9 +468,6 @@ bail:
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing apple process @%d/%@", process.pid, process.path]);
         
-        //tell kernel to add 'allow' rule
-        [kextComms addRule:event->pid action:RULE_STATE_ALLOW];
-        
         //create 'apple' rule
         [rules add:process.path action:RULE_STATE_ALLOW type:RULE_TYPE_APPLE user:0];
         
@@ -485,9 +482,6 @@ bail:
     {
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing 3rd-party pre-installed process @%@", process.path]);
-        
-        //tell kernel to add 'allow' rule
-        [kextComms addRule:event->pid action:RULE_STATE_ALLOW];
         
         //create 'installed' rule
         [rules add:process.path action:RULE_STATE_ALLOW type:RULE_TYPE_BASELINE user:0];

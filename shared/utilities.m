@@ -597,6 +597,23 @@ bail:
     return processIDs;
 }
 
+//enable/disable a menu
+void toggleMenu(NSMenu* menu, BOOL shouldEnable)
+{
+    //disable autoenable
+    menu.autoenablesItems = NO;
+    
+    //iterate over
+    // set state of each item
+    for(NSMenuItem* item in menu.itemArray)
+    {
+        //set state
+        item.enabled = shouldEnable;
+    }
+    
+    return;
+}
+
 //get an icon for a process
 // ->for apps, this will be app's icon, otherwise just a standard system one
 NSImage* getIconForProcess(NSString* path)

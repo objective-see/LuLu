@@ -112,7 +112,7 @@ bail:
     if(YES != [preferences[PREF_NO_ICON_MODE] boolValue])
     {
         //alloc/load nib
-        statusBarMenuController = [[StatusBarMenu alloc] init:self.statusMenu preferences:preferences firstTime:firstTime];
+        statusBarMenuController = [[StatusBarMenu alloc] init:self.statusMenu firstTime:firstTime];
         
         //dbg msg
         logMsg(LOG_DEBUG, @"initialized/loaded status bar (icon/menu)");

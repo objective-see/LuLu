@@ -40,6 +40,12 @@
 		7DD2BF7A1F1EAC9C00B33214 /* DaemonComms.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF791F1EAC9C00B33214 /* DaemonComms.m */; };
 		7DD2BF971F1FF64300B33214 /* AlertWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DD2BF941F1FF64300B33214 /* AlertWindow.xib */; };
 		7DD2BF981F1FF64300B33214 /* AlertWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF961F1FF64300B33214 /* AlertWindowController.m */; };
+		CD223E3920830AFF0049A76B /* statusIconDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = CD223E3320830AFE0049A76B /* statusIconDisabled.png */; };
+		CD223E3A20830AFF0049A76B /* statusIconDisabledWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = CD223E3420830AFE0049A76B /* statusIconDisabledWhite.png */; };
+		CD223E3B20830AFF0049A76B /* statusIconWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = CD223E3520830AFE0049A76B /* statusIconWhite.png */; };
+		CD223E3C20830AFF0049A76B /* statusIconDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD223E3620830AFE0049A76B /* statusIconDisabled@2x.png */; };
+		CD223E3D20830AFF0049A76B /* statusIconDisabledWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD223E3720830AFE0049A76B /* statusIconDisabledWhite@2x.png */; };
+		CD223E3E20830AFF0049A76B /* statusIconWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD223E3820830AFF0049A76B /* statusIconWhite@2x.png */; };
 		CD22785E20434CAC00C72C76 /* StatusBarPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD22785B20434CAB00C72C76 /* StatusBarPopover.xib */; };
 		CD22785F20434CAC00C72C76 /* StatusBarPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD22785D20434CAB00C72C76 /* StatusBarPopoverController.m */; };
 		CD227862204366A400C72C76 /* upArrowSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = CD227860204366A400C72C76 /* upArrowSmall.png */; };
@@ -99,6 +105,12 @@
 		7DD2BF941F1FF64300B33214 /* AlertWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertWindow.xib; sourceTree = "<group>"; };
 		7DD2BF951F1FF64300B33214 /* AlertWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertWindowController.h; sourceTree = "<group>"; };
 		7DD2BF961F1FF64300B33214 /* AlertWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertWindowController.m; sourceTree = "<group>"; };
+		CD223E3320830AFE0049A76B /* statusIconDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusIconDisabled.png; sourceTree = "<group>"; };
+		CD223E3420830AFE0049A76B /* statusIconDisabledWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusIconDisabledWhite.png; sourceTree = "<group>"; };
+		CD223E3520830AFE0049A76B /* statusIconWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusIconWhite.png; sourceTree = "<group>"; };
+		CD223E3620830AFE0049A76B /* statusIconDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusIconDisabled@2x.png"; sourceTree = "<group>"; };
+		CD223E3720830AFE0049A76B /* statusIconDisabledWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusIconDisabledWhite@2x.png"; sourceTree = "<group>"; };
+		CD223E3820830AFF0049A76B /* statusIconWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statusIconWhite@2x.png"; sourceTree = "<group>"; };
 		CD22785B20434CAB00C72C76 /* StatusBarPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusBarPopover.xib; sourceTree = "<group>"; };
 		CD22785C20434CAB00C72C76 /* StatusBarPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarPopoverController.h; sourceTree = "<group>"; };
 		CD22785D20434CAB00C72C76 /* StatusBarPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarPopoverController.m; sourceTree = "<group>"; };
@@ -133,6 +145,7 @@
 		7D3B75091F13354900568828 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CD223E3220830AE80049A76B /* statusBar */,
 				7D46FF0F1F60EBAE00FEB0F8 /* luluText.png */,
 				7D46FF101F60EBAE00FEB0F8 /* luluIcon.png */,
 				7DD2601D1F25621400277EC4 /* parentsIcon.png */,
@@ -145,8 +158,6 @@
 				7DD25FFD1F2442BB00277EC4 /* signedApple.png */,
 				7DD25FFE1F2442BB00277EC4 /* unknown.png */,
 				7DD25FFF1F2442BB00277EC4 /* unsigned.png */,
-				7D3B750B1F13354900568828 /* statusIcon.png */,
-				7D3B750C1F13354900568828 /* statusIcon@2x.png */,
 				CD227860204366A400C72C76 /* upArrowSmall.png */,
 				CD227861204366A400C72C76 /* upArrowSmall@2x.png */,
 			);
@@ -244,6 +255,21 @@
 			name = 3rdParty;
 			sourceTree = "<group>";
 		};
+		CD223E3220830AE80049A76B /* statusBar */ = {
+			isa = PBXGroup;
+			children = (
+				CD223E3320830AFE0049A76B /* statusIconDisabled.png */,
+				CD223E3620830AFE0049A76B /* statusIconDisabled@2x.png */,
+				CD223E3420830AFE0049A76B /* statusIconDisabledWhite.png */,
+				CD223E3720830AFE0049A76B /* statusIconDisabledWhite@2x.png */,
+				CD223E3520830AFE0049A76B /* statusIconWhite.png */,
+				CD223E3820830AFF0049A76B /* statusIconWhite@2x.png */,
+				7D3B750B1F13354900568828 /* statusIcon.png */,
+				7D3B750C1F13354900568828 /* statusIcon@2x.png */,
+			);
+			name = statusBar;
+			sourceTree = "<group>";
+		};
 		CDAFF434203E55F300F27635 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,15 +343,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DD260211F25621400277EC4 /* parentsIconBG.png in Resources */,
+				CD223E3E20830AFF0049A76B /* statusIconWhite@2x.png in Resources */,
 				7DD260011F2442BB00277EC4 /* signedApple.png in Resources */,
 				7DD2BF971F1FF64300B33214 /* AlertWindow.xib in Resources */,
 				7D3B751A1F13354900568828 /* statusIcon.png in Resources */,
+				CD223E3A20830AFF0049A76B /* statusIconDisabledWhite.png in Resources */,
+				CD223E3C20830AFF0049A76B /* statusIconDisabled@2x.png in Resources */,
 				7D16D6951F64E43300DB3161 /* UpdateWindow.xib in Resources */,
+				CD223E3920830AFF0049A76B /* statusIconDisabled.png in Resources */,
 				CD22785E20434CAC00C72C76 /* StatusBarPopover.xib in Resources */,
 				7DD260001F2442BB00277EC4 /* signed.png in Resources */,
 				7DD260171F2537CC00277EC4 /* virusTotal.png in Resources */,
 				7DD260021F2442BB00277EC4 /* unknown.png in Resources */,
 				7DD260201F25621400277EC4 /* parentsIcon.png in Resources */,
+				CD223E3D20830AFF0049A76B /* statusIconDisabledWhite@2x.png in Resources */,
 				7D46FF111F60EBAE00FEB0F8 /* luluText.png in Resources */,
 				CD227863204366A400C72C76 /* upArrowSmall@2x.png in Resources */,
 				7D3B751B1F13354900568828 /* statusIcon@2x.png in Resources */,
@@ -337,6 +368,7 @@
 				7D3B75151F13354900568828 /* MainMenu.xib in Resources */,
 				7DD260221F25621400277EC4 /* parentsIconOver.png in Resources */,
 				7DD25FF01F23B73C00277EC4 /* Assets.xcassets in Resources */,
+				CD223E3B20830AFF0049A76B /* statusIconWhite.png in Resources */,
 				7DD260191F2537CC00277EC4 /* virusTotalOver.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

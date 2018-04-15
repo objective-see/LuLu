@@ -11,7 +11,6 @@
 
 #import "UserCommsInterface.h"
 
-
 @interface DaemonComms : NSObject
 
 //remote deamon proxy object
@@ -36,6 +35,9 @@
 //add rule
 -(void)addRule:(NSString*)processPath action:(NSUInteger)action;
 
+//update rule
+-(void)updateRule:(NSString*)processPath action:(NSUInteger)action;
+
 //delete rule
 -(void)deleteRule:(NSString*)processPath;
 
@@ -47,6 +49,5 @@
 
 //respond to alert
 -(void)alertResponse:(NSDictionary*)alert;
-
 
 @end

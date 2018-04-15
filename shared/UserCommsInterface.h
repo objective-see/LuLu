@@ -30,6 +30,9 @@
 //add rule
 -(void)addRule:(NSString*)path action:(NSUInteger)action user:(NSUInteger)user;
 
+//update
+-(void)updateRule:(NSString*)processPath action:(NSUInteger)action user:(NSUInteger)user;
+
 //delete rule
 -(void)deleteRule:(NSString*)path;
 

@@ -37,7 +37,7 @@
                             <rect key="frame" x="1" y="0.0" width="900" height="559"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="54" rowSizeStyle="automatic" headerView="MjO-gV-r1W" viewBased="YES" id="rpa-sZ-jQp">
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="54" rowSizeStyle="automatic" headerView="MjO-gV-r1W" viewBased="YES" id="rpa-sZ-jQp" customClass="RulesTable">
                                     <rect key="frame" x="0.0" y="0.0" width="900" height="536"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -230,6 +230,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="900" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
+                        <connections>
+                            <outlet property="menu" destination="ciC-dE-FtL" id="2R0-TX-gq7"/>
+                        </connections>
                     </scrollView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XnJ-SV-lDg">
                         <rect key="frame" x="865" y="9" width="21" height="21"/>
@@ -416,6 +419,26 @@
             </view>
             <point key="canvasLocation" x="-301" y="950"/>
         </window>
+        <menu id="ciC-dE-FtL">
+            <items>
+                <menuItem title="toggle" tag="1" id="ZQt-1f-YtA">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="rowMenuHandler:" target="-2" id="OIy-Vs-DYR"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="delete rule" tag="2" id="XZ6-gy-IWB">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="rowMenuHandler:" target="-2" id="LPf-7Y-H8j"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="-2" id="V8b-UQ-TR6"/>
+            </connections>
+            <point key="canvasLocation" x="595" y="-7"/>
+        </menu>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>

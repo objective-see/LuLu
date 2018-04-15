@@ -76,22 +76,75 @@
 }
 
 //toolbar button handle
-// ->generate filtered rules and reload table
+// generate filtered rules and reload table
 -(IBAction)toolbarHandler:(id)sender
 {
+    //toolbar item tag
+    NSInteger tag = -1;
+    
+    //grab tag
+    tag = ((NSToolbarItem*)sender).tag;
+    
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"user clicked %@", ((NSToolbarItem*)sender).label]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"user clicked %@ (tag: %ld)", ((NSToolbarItem*)sender).label, (long)tag]);
     
     //filter rules
-    // ->based on selected toolbar item
+    // based on selected toolbar item
     [self filterRules];
+    
+    //set column title
+    switch (tag)
+    {
+        //all
+        case RULE_TYPE_ALL:
+            
+            //set title
+            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"process";
+            
+            break;
+            
+        //default
+        case RULE_TYPE_DEFAULT:
+            
+            //set title
+            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"process (os binaries, required for system functionality)";
+            
+            break;
+            
+        //apple
+        case RULE_TYPE_APPLE:
+            
+            //set title
+            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"process (apple binaries, automatically approved)";
+            
+            break;
+            
+        //baseline
+        case RULE_TYPE_BASELINE:
+            
+            //set title
+            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"process (pre-installed 3rd-party applications, automatically approved)";
+            
+            break;
+            
+        //all
+        case RULE_TYPE_USER:
+            
+            //set title
+            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"process (binaries/applications added by the user)";
+            
+            break;
+        
+        default:
+            break;
+    }
     
     //reload table
     [self.tableView reloadData];
     
     //'add rules' only allowed for 'all' and 'user' views
-    if( (((NSToolbarItem*)sender).tag == -1) ||
-        (((NSToolbarItem*)sender).tag == RULE_TYPE_USER) )
+    if( (tag == RULE_TYPE_ALL) ||
+        (tag == RULE_TYPE_USER) )
     {
         //change label color to black
         self.addRuleLabel.textColor = [NSColor blackColor];
@@ -274,27 +327,34 @@
 // grab rule, then invoke daemon to delete
 -(IBAction)deleteRule:(id)sender
 {
-    //index of selected row
-    NSInteger selectedRow = 0;
+    //index of row
+    // either clicked or selected row
+    NSInteger row = 0;
     
     //rule
     __block Rule* rule = nil;
     
-    //grab selected row
-    selectedRow = [self.tableView rowForView:sender];
-    
-    //get rule from filtered
-    if(YES == self.shouldFilter)
+    //sender nil?
+    // invoked manually due to context menu
+    if(nil == sender)
     {
-        //get rule
-        rule = self.rulesFiltered[selectedRow];
+        //get clicked row
+        row = self.tableView.clickedRow;
     }
-    
-    //get rule from all
+    //invoked via button click
+    // grab selected row to get index
     else
     {
-        //get rule
-        rule = self.rules[selectedRow];
+        //get selected row
+        row = [self.tableView rowForView:sender];
+    }
+
+    //get rule
+    rule = [self ruleForRow:row];
+    if(nil == rule)
+    {
+        //bail
+        goto bail;
     }
     
     //dbg msg
@@ -302,6 +362,8 @@
     
     //remove rule via XPC
     [self.daemonComms deleteRule:rule.path];
+    
+bail:
     
     return;
 }
@@ -314,7 +376,7 @@
     __block NSString* processPath = nil;
     
     //binary path
-    // ->when user specified app
+    // when user specified app
     __block NSString* binaryPath = nil;
     
     //action
@@ -330,7 +392,7 @@
     self.addRuleWindowController = [[AddRuleWindowController alloc] initWithWindowNibName:@"AddRule"];
     
     //show it
-    // ->on close/OK, invoke XPC to add rule, then reload
+    // on close/OK, invoke XPC to add rule, then reload
     [self.window beginSheet:self.addRuleWindowController.window completionHandler:^(NSModalResponse returnCode) {
         
         //on OK, add rule via XPC
@@ -510,7 +572,7 @@
         }
         
         //sort
-        // ->case insensitive, by name
+        // case insensitive, by name
         [self.rules sortUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]]];
     }
     
@@ -578,6 +640,9 @@
         //set flag
         self.shouldFilter = YES;
         
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"filtering on '%@'", self.searchBox.stringValue]);
+        
         //add any rule that matches
         for(Rule* rule in self.rules)
         {
@@ -587,8 +652,8 @@
             {
                 //search
                 // rule has to match
-                if( (YES != [rule.name containsString:self.searchBox.stringValue]) ||
-                    (YES != [rule.path containsString:self.searchBox.stringValue]) )
+                if( (YES == [rule.name containsString:self.searchBox.stringValue]) ||
+                    (YES == [rule.path containsString:self.searchBox.stringValue]) )
                 {
                     //add
                     [self.rulesFiltered addObject:rule];
@@ -609,8 +674,8 @@
                 
                 //search
                 // rule has to match
-                else if( (YES != [rule.name containsString:self.searchBox.stringValue]) ||
-                         (YES != [rule.path containsString:self.searchBox.stringValue]) )
+                else if( (YES == [rule.name containsString:self.searchBox.stringValue]) ||
+                         (YES == [rule.path containsString:self.searchBox.stringValue]) )
                 {
                     //add
                     [self.rulesFiltered addObject:rule];
@@ -678,40 +743,16 @@ bail:
     //process icon
     NSImage* processIcon = nil;
     
-    //sync
-    @synchronized(self.rules)
+    //get rule
+    rule = [self ruleForRow:row];
+    if(nil == rule)
     {
-        //extract filtered rule
-        if(YES == self.shouldFilter)
-        {
-            //sanity check
-            if(row >= self.rulesFiltered.count)
-            {
-                //bail
-                goto bail;
-            }
-            
-            //extract filtered rule
-            rule = [self.rulesFiltered objectAtIndex:row];
-        }
-        
-        //extract rule
-        else
-        {
-            //sanity check
-            if(row >= self.rules.count)
-            {
-                //bail
-                goto bail;
-            }
-            
-            //extract filtered rule
-            rule = [self.rules objectAtIndex:row];
-        }
+        //bail
+        goto bail;
     }
     
     //column: 'process'
-    // ->set process icon, name and path
+    // set process icon, name and path
     if(tableColumn == tableView.tableColumns[0])
     {
         //set process path
@@ -746,7 +787,7 @@ bail:
     }
     
     //column: 'type'
-    // ->set rule type
+    // set rule type
     else if(tableColumn == tableView.tableColumns[1])
     {
         //init table cell
@@ -798,7 +839,7 @@ bail:
     }//column: 'type'
     
     //column: 'rule'
-    // ->set icon and rule action
+    // set icon and rule action
     else
     {
         //init table cell
@@ -837,7 +878,7 @@ bail:
         }
         
         //otherwise
-        // ->enable delete button
+        // enable delete button
         else
         {
             //enable
@@ -876,4 +917,177 @@ bail:
     return rowView;
 }
 
+//given a table row
+// find/return the corresponding rule
+-(Rule*)ruleForRow:(NSInteger)row
+{
+    //rule
+    Rule* rule = nil;
+    
+    //sanity check
+    if(-1 == row)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //sync
+    @synchronized(self.rules)
+    {
+    
+    //get rule from filtered
+    if(YES == self.shouldFilter)
+    {
+        //sanity check
+        if(row >= self.rulesFiltered.count)
+        {
+            //bail
+            goto bail;
+        }
+        
+        //get rule
+        rule = self.rulesFiltered[row];
+    }
+    
+    //get rule from all
+    else
+    {
+        //sanity check
+        if(row >= self.rules.count)
+        {
+            //bail
+            goto bail;
+        }
+        
+        //get rule
+        rule = self.rules[row];
+    }
+        
+    }//sync
+    
+bail:
+    
+    return rule;
+}
+
+//invoke before showing menu
+// customize with toggle action
+-(void)menuNeedsUpdate:(NSMenu *)menu
+{
+    //rule
+    Rule* rule = nil;
+    
+    //get rule
+    rule = [self ruleForRow:self.tableView.selectedRow];
+    if(nil == rule)
+    {
+        //error
+        // disable menu
+        toggleMenu(menu, NO);
+        
+        //bail
+        goto bail;
+    }
+    
+    //disable menu for default (system) rules
+    // these should not be edited via normal users!
+    if(RULE_TYPE_DEFAULT == rule.type)
+    {
+        //disable menu
+        toggleMenu(menu, NO);
+        
+        //bail
+        goto bail;
+    }
+    
+    //allow?
+    // show 'block' to toggle
+    if(RULE_STATE_ALLOW == rule.action.integerValue)
+    {
+        //set title
+        menu.itemArray.firstObject.title = @"toggle (block)";
+        
+        //set tag
+        menu.itemArray.firstObject.tag = MENU_ITEM_BLOCK;
+    }
+    
+    //block
+    // show 'allow' to toggle
+    else
+    {
+        //set title
+        menu.itemArray.firstObject.title = @"toggle (allow)";
+        
+        //set tag
+        menu.itemArray.firstObject.tag = MENU_ITEM_ALLOW;
+    }
+    
+    //enable
+    toggleMenu(menu, YES);
+    
+bail:
+ 
+    return;
+}
+
+
+//menu handler for row context menu
+-(IBAction)rowMenuHandler:(id)sender
+{
+    //rule
+    Rule* rule = nil;
+    
+    //get rule
+    rule = [self ruleForRow:self.tableView.selectedRow];
+    if(nil == rule)
+    {
+        //err msg
+        logMsg(LOG_ERR, @"failed to find rule for row");
+        
+        //bail
+        goto bail;
+    }
+    
+    //handle click
+    switch(((NSMenuItem*)sender).tag)
+    {
+        //block rule
+        case MENU_ITEM_BLOCK:
+            
+            //dbg msg
+            logMsg(LOG_DEBUG, @"updating rule: block");
+            
+            //update with 'block'
+            [self.daemonComms updateRule:rule.path action:RULE_STATE_BLOCK];
+            
+            break;
+            
+        //allow rule
+        case MENU_ITEM_ALLOW:
+            
+            //dbg msg
+            logMsg(LOG_DEBUG, @"updating rule: allow");
+            
+            //update with 'allow'
+            [self.daemonComms updateRule:rule.path action:RULE_STATE_ALLOW];
+            
+            break;
+        
+        //delete rule
+        case MENU_ITEM_DELETE:
+            
+            //delete
+            [self deleteRule:nil];
+            
+            break;
+            
+        default:
+            
+            break;
+    }
+    
+bail:
+    
+    return;
+}
 @end

@@ -217,7 +217,7 @@
             dispatch_async(dispatch_get_main_queue(),
             ^{
                 //set status msg
-                [self.statusMsg setStringValue:@"Rebuilding kernel cache..."];
+                [self.statusMsg setStringValue:@"Rebuilding kernel cache\n\t\t ...please wait!"];
             });
             
             //nap
@@ -342,7 +342,7 @@
     if(YES == success)
     {
         //set result msg
-        resultMsg = [NSMutableString stringWithFormat:@"LuLu %@ed!\n...please restart to complete", action];
+        resultMsg = [NSMutableString stringWithFormat:@"LuLu %@ed!\nRestart required to complete.", action];
         
         //set font to black
         resultMsgColor = [NSColor blackColor];

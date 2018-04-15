@@ -16,9 +16,11 @@
 #import "KextComms.h"
 #import "utilities.h"
 
-
 //global kext comms object
 extern KextComms* kextComms;
+
+//global 'rules changed' semaphore
+extern dispatch_semaphore_t rulesChanged;
 
 @implementation Rules
 
@@ -210,7 +212,55 @@ bail:
     //for any other process
     // tell kernel to add rule
     [self addToKernel:rule];
+    
+    //signal all threads that rules changed
+    while(0 != dispatch_semaphore_signal(rulesChanged));
 
+    //happy
+    result = YES;
+    
+bail:
+    
+    return result;
+}
+
+//update rule
+-(BOOL)update:(NSString*)path action:(NSUInteger)action type:(NSUInteger)type user:(NSUInteger)user
+{
+    //result
+    BOOL result = NO;
+    
+    //rule
+    Rule* rule = nil;
+    
+    //sync to access
+    @synchronized(self.rules)
+    {
+        //find rule
+        rule = self.rules[path];
+        if(nil == rule)
+        {
+            //err msg
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"ignoring update request for rule, as it doesn't exists: %@", path]);
+            
+            //bail
+            goto bail;
+        }
+        
+        //update
+        rule.action = [NSNumber numberWithUnsignedInteger:action];
+        
+        //save to disk
+        [self save];
+    }
+    
+    //for any other process
+    // tell kernel to update (add/overwrite) rule
+    [self addToKernel:rule];
+    
+    //signal all threads that rules changed
+    while(0 != dispatch_semaphore_signal(rulesChanged));
+    
     //happy
     result = YES;
     
@@ -252,12 +302,16 @@ bail:
     }
     
     //find any running processes that match
-    // ->then for each, tell the kernel to delete any rules it has
+    // then for each, tell the kernel to delete any rules it has
     for(NSNumber* processID in getProcessIDs(path, -1))
     {
         //remove rule
         [kextComms removeRule:[processID unsignedShortValue]];
     }
+    
+    //signal all threads that rules changed
+    while(0 != dispatch_semaphore_signal(rulesChanged));
+    
 
     //happy
     result = YES;

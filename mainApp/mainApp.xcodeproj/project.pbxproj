@@ -44,6 +44,7 @@
 		7DD2BF591F1C59E900B33214 /* AddRule.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DD2BF571F1C59E900B33214 /* AddRule.xib */; };
 		7DD2BF5F1F1DAF0C00B33214 /* Rule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF5D1F1DAF0C00B33214 /* Rule.m */; };
 		7DD2BF651F1DC41600B33214 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF641F1DC41600B33214 /* utilities.m */; };
+		CD223E442083361A0049A76B /* RulesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD223E432083361A0049A76B /* RulesTable.m */; };
 		CD22785A2042977300C72C76 /* kext.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2278592042977300C72C76 /* kext.png */; };
 		CD2B610B2065E0F500BF72E9 /* exception.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2B61092065E0F500BF72E9 /* exception.m */; };
 		CDA6E644203B9DA800C78F91 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E63B203B9DA700C78F91 /* Welcome.xib */; };
@@ -123,6 +124,8 @@
 		7DD2BF601F1DAFE100B33214 /* Rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rule.h; path = ../shared/Rule.h; sourceTree = "<group>"; };
 		7DD2BF631F1DC41600B33214 /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = ../shared/utilities.h; sourceTree = "<group>"; };
 		7DD2BF641F1DC41600B33214 /* utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = utilities.m; path = ../shared/utilities.m; sourceTree = "<group>"; };
+		CD223E422083361A0049A76B /* RulesTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RulesTable.h; sourceTree = "<group>"; };
+		CD223E432083361A0049A76B /* RulesTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RulesTable.m; sourceTree = "<group>"; };
 		CD2278592042977300C72C76 /* kext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kext.png; sourceTree = "<group>"; };
 		CD2B61092065E0F500BF72E9 /* exception.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = exception.m; path = ../shared/exception.m; sourceTree = "<group>"; };
 		CD2B610A2065E0F500BF72E9 /* exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = exception.h; path = ../shared/exception.h; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 				7D564DCA1F18441500B8AAD6 /* RuleRowCell.m */,
 				7D564DCB1F18441500B8AAD6 /* RulesWindowController.h */,
 				7D564DC21F18441500B8AAD6 /* RulesWindowController.m */,
+				CD223E422083361A0049A76B /* RulesTable.h */,
+				CD223E432083361A0049A76B /* RulesTable.m */,
 				7D564DBF1F18441500B8AAD6 /* Assets.xcassets */,
 				7D564DCC1F18441500B8AAD6 /* 3rdParty */,
 				7D564DC41F18441500B8AAD6 /* Base.lproj */,
@@ -420,6 +425,7 @@
 				7D16D69A1F65EF9900DB3161 /* Update.m in Sources */,
 				7D564DB11F18434F00B8AAD6 /* main.m in Sources */,
 				7D564DD91F18441500B8AAD6 /* RulesWindowController.m in Sources */,
+				CD223E442083361A0049A76B /* RulesTable.m in Sources */,
 				7D564DAE1F18434F00B8AAD6 /* AppDelegate.m in Sources */,
 				CD2B610B2065E0F500BF72E9 /* exception.m in Sources */,
 				7D564DDE1F18441500B8AAD6 /* RuleRowCell.m in Sources */,

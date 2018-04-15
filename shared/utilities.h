@@ -62,6 +62,9 @@ pid_t getParentID(int pid);
 //generate list of all installed applications
 NSArray* enumerateInstalledApplications(void);
 
+//enable/disable a menu
+void toggleMenu(NSMenu* menu, BOOL shouldEnable);
+
 //toggle login item
 // either add (install) or remove (uninstall)
 BOOL toggleLoginItem(NSURL* loginItem, int toggleFlag);

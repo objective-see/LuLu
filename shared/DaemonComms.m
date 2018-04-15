@@ -159,6 +159,24 @@
     return;
 }
 
+//update rule
+// for now, just action (block/allow)
+-(void)updateRule:(NSString*)processPath action:(NSUInteger)action
+{
+    //dbg msg
+    logMsg(LOG_DEBUG, @"sending request, via XPC, to update rule");
+    
+    //make XPC request to add rule
+    [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
+    {
+          //err msg
+          logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute 'updateRule' method on launch daemon (error: %@)", proxyError]);
+          
+    }] updateRule:processPath action:action user:getuid()];
+    
+    return;
+}
+
 //delete rule
 -(void)deleteRule:(NSString*)processPath
 {

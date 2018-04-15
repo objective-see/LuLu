@@ -21,12 +21,15 @@
 //popover
 @property (retain, nonatomic)NSPopover *popover;
 
+//daemom comms object
+@property (nonatomic, retain)DaemonComms* daemonComms;
+
 //disabled flag
 @property BOOL isDisabled;
 
 /* METHODS */
 
 //init
--(id)init:(NSMenu*)menu preferences:(NSDictionary*)preferences firstTime:(BOOL)firstTime;
+-(id)init:(NSMenu*)menu firstTime:(BOOL)firstTime;
 
 @end
