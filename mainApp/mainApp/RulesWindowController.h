@@ -7,6 +7,7 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
+#import "Rule.h"
 #import "DaemonComms.h"
 #import <Cocoa/Cocoa.h>
 
@@ -107,5 +108,9 @@
 
 //init array of filtered rules
 -(void)filterRules;
+
+//given a table row
+// find/return the corresponding rule
+-(Rule*)ruleForRow:(NSInteger)row;
 
 @end

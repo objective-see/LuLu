@@ -8,9 +8,8 @@
 //
 
 #import "consts.h"
-#import "Rule.h"
-#import "RuleRow.h"
 #import "logging.h"
+#import "RuleRow.h"
 #import "utilities.h"
 #import "AppDelegate.h"
 #import "DaemonComms.h"
@@ -334,12 +333,15 @@
     //rule
     __block Rule* rule = nil;
     
+    //dbg msg
+    logMsg(LOG_DEBUG, @"deleting rule");
+    
     //sender nil?
     // invoked manually due to context menu
     if(nil == sender)
     {
-        //get clicked row
-        row = self.tableView.clickedRow;
+        //get selected row
+        row = self.tableView.selectedRow;
     }
     //invoked via button click
     // grab selected row to get index
@@ -969,67 +971,6 @@ bail:
     
     return rule;
 }
-
-//invoke before showing menu
-// customize with toggle action
--(void)menuNeedsUpdate:(NSMenu *)menu
-{
-    //rule
-    Rule* rule = nil;
-    
-    //get rule
-    rule = [self ruleForRow:self.tableView.selectedRow];
-    if(nil == rule)
-    {
-        //error
-        // disable menu
-        toggleMenu(menu, NO);
-        
-        //bail
-        goto bail;
-    }
-    
-    //disable menu for default (system) rules
-    // these should not be edited via normal users!
-    if(RULE_TYPE_DEFAULT == rule.type)
-    {
-        //disable menu
-        toggleMenu(menu, NO);
-        
-        //bail
-        goto bail;
-    }
-    
-    //allow?
-    // show 'block' to toggle
-    if(RULE_STATE_ALLOW == rule.action.integerValue)
-    {
-        //set title
-        menu.itemArray.firstObject.title = @"toggle (block)";
-        
-        //set tag
-        menu.itemArray.firstObject.tag = MENU_ITEM_BLOCK;
-    }
-    
-    //block
-    // show 'allow' to toggle
-    else
-    {
-        //set title
-        menu.itemArray.firstObject.title = @"toggle (allow)";
-        
-        //set tag
-        menu.itemArray.firstObject.tag = MENU_ITEM_ALLOW;
-    }
-    
-    //enable
-    toggleMenu(menu, YES);
-    
-bail:
- 
-    return;
-}
-
 
 //menu handler for row context menu
 -(IBAction)rowMenuHandler:(id)sender
