@@ -53,6 +53,10 @@ struct connectionEvent
 //pre-installed 3rd-party apps
 @property(nonatomic, retain)NSDictionary* installedApps;
 
+//processes allowed due to 'passive' mode
+// save and reset these if user toggles off this mode
+@property(nonatomic, retain)NSMutableArray* passiveProcesses;
+
 /* METHODS */
 
 //init

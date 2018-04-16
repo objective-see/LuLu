@@ -12,12 +12,15 @@
 #import "logging.h"
 #import "KextComms.h"
 #import "Preferences.h"
+#import "KextListener.h"
 
 /* GLOBALS */
 
-//kext comms
+//kext comms obj
 extern KextComms* kextComms;
 
+//kext listener object
+extern KextListener* kextListener;
 
 @implementation Preferences
 
@@ -131,6 +134,25 @@ bail:
     
     //add in (new) prefs
     [self.preferences addEntriesFromDictionary:updates];
+    
+    //now, did user turn off passive mode?
+    // remove all 'allow' rules for procs passively allowed
+    if( (nil != updates[PREF_PASSIVE_MODE]) &&
+        (YES != [updates[PREF_PASSIVE_MODE] boolValue]) )
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"removing (kernel) rules for passively allowed procs: %@", kextListener.self.passiveProcesses]);
+        
+        //reset
+        for(NSNumber* allowedProcess in kextListener.self.passiveProcesses)
+        {
+            //delete rule
+            [kextComms removeRule:allowedProcess.unsignedShortValue];
+        }
+        
+        //remove all
+        [kextListener.self.passiveProcesses removeAllObjects];
+    }
         
     //save
     if(YES != [self save])

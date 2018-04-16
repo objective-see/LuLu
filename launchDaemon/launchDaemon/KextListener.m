@@ -46,6 +46,7 @@ extern NSInteger clientConnected;
 
 @synthesize alerts;
 @synthesize dnsCache;
+@synthesize passiveProcesses;
 
 //init
 -(id)init
@@ -59,6 +60,9 @@ extern NSInteger clientConnected;
         
         //init DNS 'cache'
         dnsCache = [NSMutableDictionary dictionary];
+        
+        //init list for passively allowed procs
+        passiveProcesses = [NSMutableArray array];
     }
     
     return self;
@@ -376,11 +380,14 @@ bail:
     //matching rule obj
     Rule* matchingRule = nil;
     
+    //thread priority
+    double threadPriority = 0.0f;
+    
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"processing 'network out' event from kernel queue: %d /  %@", event->pid, convertSocketAddr((struct sockaddr*)&(event->remoteAddress))]);
     
     //ignore if alert has already been shown for this process
-    // if rule is deleted or process ends, this will be reset
+    // if rule is deleted or process ends, this will be reset...
     if(YES == [self.alerts containsObject:[NSNumber numberWithUnsignedShort:event->pid]])
     {
         //dbg msg
@@ -437,12 +444,30 @@ bail:
         goto bail;
     }
     
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"process object for 'network out' event :%@'", process]);
+    
     //proc monitor invoked in 'go easy' mode
     // so generate signing info for process here
     if(nil == process.binary.signingInfo)
     {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ (%d)", process.binary.name, process.pid]);
+        
+        //save thread priority
+        threadPriority = [NSThread threadPriority];
+        
+        //reduce CPU
+        [NSThread setThreadPriority:0.25];
+        
         //signing info
         [process.binary generateSigningInfo];
+        
+        //reset thread priority
+        [NSThread setThreadPriority:threadPriority];
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, @"done generating code signing info");
     }
     
     //existing rule for process
@@ -460,6 +485,9 @@ bail:
     }
     
     /* no matching rule found */
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"no (saved) rule found for %@ (%d)", process.binary.name, process.pid]);
     
     //if it's an apple process and that preference is set; allow!
     if( (YES == [preferences.preferences[PREF_ALLOW_APPLE] boolValue]) &&
@@ -513,6 +541,10 @@ bail:
         
         //allow
         [kextComms addRule:event->pid action:RULE_STATE_ALLOW];
+        
+        //save
+        // will remove rules if user toggles off this mode
+        [self.passiveProcesses addObject:[NSNumber numberWithInt:event->pid]];
         
         //all set
         goto bail;
@@ -748,6 +780,8 @@ bail:
     
     return process;
 }
+
+//TODO: if pre-installed rule is deleted or toggled, update!!
 
 //determine if a binary was installed before lulu
 // for now, just check if path is in list (maybe hash/signing info)

@@ -530,6 +530,9 @@ bail:
                  //select first row
                  [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
                  
+                 //scroll to top
+                 [self.tableView scrollRowToVisible:0];
+                 
              });
              
              //signal sema
