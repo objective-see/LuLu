@@ -406,12 +406,16 @@ bail:
         //err msg
         logMsg(LOG_ERR, @"failed to uninstall login item");
         
-        //bail
-        goto bail;
+        //keep going though...
     }
     
-    //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"uninstalled login item (%@)", loginItem]);
+    #ifdef DEBUG
+    else
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"uninstalled login item (%@)", loginItem]);
+    }
+    #endif
     
     //uninstall
     // also sets return/var flag
@@ -419,8 +423,6 @@ bail:
     
     //wait for install to be completed by XPC
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    
-bail:
     
     return wasUninstalled;
 }

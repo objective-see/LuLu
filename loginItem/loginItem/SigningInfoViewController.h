@@ -9,6 +9,10 @@
 
 @import Cocoa;
 
+/* DEFINES */
+
+//signing auths view
+#define SIGNING_AUTH_1 1
 
 @interface SigningInfoViewController : NSViewController <NSPopoverDelegate>
 {
@@ -32,7 +36,5 @@
 //details
 @property (weak) IBOutlet NSTextField *details;
 
-//signing auths
-@property (weak) IBOutlet NSTextField *authorities;
 
 @end

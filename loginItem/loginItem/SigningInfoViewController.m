@@ -26,15 +26,9 @@
     //summary
     NSMutableString* summary = nil;
     
-    //signing auth
-    NSMutableString* signingAuths = nil;
-    
     //alloc string for summary
     summary = [NSMutableString string];
 
-    //alloc string for signing auths
-    signingAuths = [NSMutableString string];
-    
     //extract signing info
     signingInfo = alert[ALERT_SIGNINGINFO];
     
@@ -88,19 +82,28 @@
                 //set details
                 self.details.stringValue = @"signed, but no signing authorities (adhoc?)";
                 
-                //set signing auths
-                signingAuths = [@"none" mutableCopy];
+                //set signing auth field
+                ((NSTextField*)[self.view viewWithTag:SIGNING_AUTH_1]).stringValue = @"› no signing authorities";
             }
             
             //add each signing auth
+            // should one be max of three
             else
             {
                 //add signing auth
-                for(NSString* signingAuthority in signingInfo[KEY_SIGNING_AUTHORITIES])
+                for(NSUInteger i=0; i<[signingInfo[KEY_SIGNING_AUTHORITIES] count]; i++)
                 {
-                    //append to details
-                    [signingAuths appendString:[NSString stringWithFormat:@"› %@ \n", signingAuthority]];
+                    //exit loop at three
+                    if(i == 3)
+                    {
+                        //pau
+                        break;
+                    }
+                        
+                    //add
+                    ((NSTextField*)[self.view viewWithTag:SIGNING_AUTH_1+i]).stringValue = [NSString stringWithFormat:@"› %@ \n", signingInfo[KEY_SIGNING_AUTHORITIES][i]];
                 }
+                
             }
             
             break;
@@ -114,8 +117,8 @@
             //set details
             self.details.stringValue = [@"n/a" mutableCopy];
             
-            //set signing auths
-            signingAuths = [@"n/a" mutableCopy];
+            //set signing auth field
+            ((NSTextField*)[self.view viewWithTag:SIGNING_AUTH_1]).stringValue = @"n/a";
             
             break;
             
@@ -129,17 +132,14 @@
             //set details
             self.details.stringValue = [NSMutableString stringWithFormat:@"signing error: %ld", (long)[signingInfo[KEY_SIGNATURE_STATUS] integerValue]];
             
-            //set signing auths
-            signingAuths = [@"n/a" mutableCopy];
+            //set signing auth field
+            ((NSTextField*)[self.view viewWithTag:SIGNING_AUTH_1]).stringValue = @"n/a";
             
             break;
     }
     
     //assign summary to outlet
     self.message.stringValue = summary;
-    
-    //set details to outlet
-    self.authorities.stringValue = signingAuths;
     
     return;
 }

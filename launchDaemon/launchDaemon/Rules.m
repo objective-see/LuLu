@@ -147,12 +147,14 @@ bail:
     //number of default rules
     NSUInteger defaultRulesCount = 0;
     
+    //default binary
+    NSString* defaultBinary = nil;
+    
     //binary
     Binary* binary = nil;
     
     //cs flag
     SecCSFlags csFlags = kSecCSDefaultFlags;
-    
     
     //calculate number of rules
     defaultRulesCount = sizeof(DEFAULT_RULES)/sizeof(DEFAULT_RULES[0]);
@@ -164,6 +166,20 @@ bail:
     // generate binary obj/signing info
     for(NSUInteger i=0; i<defaultRulesCount; i++)
     {
+        //extract binary
+        defaultBinary = DEFAULT_RULES[i];
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"processing default binary, %@", defaultBinary]);
+        
+        //skip if binary doesn't exist
+        // some don't on newer versions of macOS
+        if(YES != [[NSFileManager defaultManager] fileExistsAtPath:defaultBinary])
+        {
+            //skip
+            continue;
+        }
+        
         //init binary
         binary = [[Binary alloc] init:DEFAULT_RULES[i]];
         if(nil == binary)
@@ -171,8 +187,8 @@ bail:
             //err msg
             logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to generate binary for default rule: %@", DEFAULT_RULES[i]]);
             
-            //bail
-            goto bail;
+            //skip
+            continue;
         }
         
         //determine appropriate flags
@@ -188,8 +204,8 @@ bail:
             //err msg
             logMsg(LOG_ERR, @"failed to add rule rules");
             
-            //bail
-            goto bail;
+            //skip
+            continue;
         }
     }
     

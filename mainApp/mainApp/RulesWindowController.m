@@ -106,7 +106,7 @@
         case RULE_TYPE_DEFAULT:
             
             //set title
-            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"Operating System Binaries (required for system functionality)";
+            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"Operating System Programs (required for system functionality)";
             
             break;
             
@@ -114,7 +114,7 @@
         case RULE_TYPE_APPLE:
             
             //set title
-            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"Apple Binaries (automatically allowed & added here if 'allow apple programs' is set)";
+            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"Apple Programs (automatically allowed & added here if 'allow apple programs' is set)";
             
             break;
             
@@ -122,7 +122,7 @@
         case RULE_TYPE_BASELINE:
             
             //set title
-            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"Pre-installed 3rd-party Apps (automatically allowed & added here if 'allow installed applications' is set)";
+            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"Pre-installed 3rd-party Programs (automatically allowed & added here if 'allow installed applications' is set)";
             
             break;
             
@@ -130,7 +130,7 @@
         case RULE_TYPE_USER:
             
             //set title
-            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"process (binaries/applications added by the user)";
+            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"User-specified Programs (manually added, or in response to an alert)";
             
             break;
         
@@ -491,6 +491,9 @@ bail:
     //wait semaphore
     dispatch_semaphore_t semaphore = 0;
     
+    //currently selected row
+    __block NSUInteger selectedRow = -1;
+    
     //init daemon
     // use local var here, as we need to block
     daemon = [[DaemonComms alloc] init];
@@ -524,9 +527,20 @@ bail:
                  //(re)filter rules
                  [self filterRules];
                  
+                 //grab currently selected row
+                 selectedRow = self.tableView.selectedRow;
+                 
                  //reload table
                  [self.tableView reloadData];
                  
+                 //re-select row
+                 if(-1 != selectedRow)
+                 {
+                     //make it selected
+                     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow] byExtendingSelection:NO];
+                 }
+                 
+                 //TODO: select...?
                  //select first row
                  //[self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
                  
