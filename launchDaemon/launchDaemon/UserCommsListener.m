@@ -263,9 +263,6 @@ bail:
     // ->requeue it up
     [eventQueue enqueue:userComms.dequeuedAlert];
     
-    //TODO: move this into a disconnect call?
-    // only want when login items goes away/is exiting...
-    
     //client (i.e. login item) should always be running
     // unset client connection status to prevent delivery of alerts
     // TODO: will have to change this when supporting multiple users

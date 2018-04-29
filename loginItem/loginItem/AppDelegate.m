@@ -50,7 +50,7 @@
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded preferences: %@", preferences]);
     
     //no preferences yet? ... first run
-    // kick off main app with 'welcome' flag
+    // kick off main app with '-welcome' flag
     if(0 == preferences.count)
     {
         //dbg msg
@@ -70,6 +70,7 @@
             //ignore others
             if(YES != [MAIN_APP_ID isEqualToString:[((NSRunningApplication*)notification.userInfo[NSWorkspaceApplicationKey]) bundleIdentifier]])
             {
+                //ignore
                 return;
             }
             

@@ -27,6 +27,10 @@ NSString* getMainAppPath(void);
 // ->extracted from Info.plist
 NSString* getAppVersion(void);
 
+//find 'top-level' app of binary
+// useful to determine if binary (or other app) is embedded in a 'parent' app bundle
+NSString* topLevelApp(NSString* binaryPath);
+
 //verify that an app bundle is
 // a) signed
 // b) signed with signing auth
@@ -58,9 +62,6 @@ NSMutableArray* getProcessIDs(NSString* processPath, int userID);
 
 //given a pid, get its parent (ppid)
 pid_t getParentID(int pid);
-
-//generate list of all installed applications
-NSArray* enumerateInstalledApplications(void);
 
 //enable/disable a menu
 void toggleMenu(NSMenu* menu, BOOL shouldEnable);
@@ -100,11 +101,15 @@ BOOL isAppRunning(NSString* bundleID);
 
 //exec a process with args
 // if 'shouldWait' is set, wait and return stdout/in and termination status
-NSMutableDictionary* execTask(NSString* binaryPath, NSArray* arguments, BOOL shouldWait);
+NSMutableDictionary* execTask(NSString* binaryPath, NSArray* arguments, BOOL shouldWait, BOOL grabOutput);
 
 //extract a DNS url
 // per spec, format is: [len]bytes[len][bytes]0x0
 NSMutableString* extractDNSURL(unsigned char* dnsData, unsigned char* dnsDataEnd);
+
+//determine what CS flags to use
+// for massive bundles, won't validate resources, etc...
+SecCSFlags determineCSFlags(NSString* path, NSBundle* bundle);
 
 //restart
 void restart(void);

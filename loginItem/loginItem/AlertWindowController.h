@@ -10,6 +10,7 @@
 #import "procInfo.h"
 #import "ParentsWindowController.h"
 #import "VirusTotalViewController.h"
+#import "SigningInfoViewController.h"
 
 #import <Cocoa/Cocoa.h>
 
@@ -28,19 +29,23 @@
 //process icon
 @property (weak) IBOutlet NSImageView *processIcon;
 
-//icon/image for signing info
-@property (weak) IBOutlet NSImageView *signedIcon;
-
 //process name
 @property (weak) IBOutlet NSTextField *processName;
 
 //general alert message
 @property (weak) IBOutlet NSTextField *alertMessage;
 
-//vt button
+//signing info button
+@property (weak) IBOutlet NSButton *signingInfoButton;
+
+//signing info: popover
+@property (strong) IBOutlet NSPopover *signingInfoPopover;
+
+
+//virus total: button
 @property (weak) IBOutlet NSButton *virusTotalButton;
 
-//popover for virus total
+//virus total: popover
 @property (strong) IBOutlet NSPopover *virusTotalPopover;
 
 //view controller for ancestry view/popover
@@ -84,14 +89,9 @@
 
 /* METHODS */
 
-
 //build an array of processes ancestry
 // start with process and go 'back' till initial ancestor
 -(void)generateProcessAncestry:(pid_t)pid;
-
-//lulu allowed/blocked from talking to internet?
-// will fact, will determine state of virus total button
--(void)setVTButtonState;
 
 //automatically invoked when user clicks process ancestry button
 // ->depending on state, show/populate the popup, or close it

@@ -213,6 +213,37 @@
         // wait until kext cache rebuild is done
         if(ACTION_INSTALL_FLAG == event)
         {
+            //nap
+            // give time for 'system_profiler' to start....
+            [NSThread sleepForTimeInterval:1.0];
+            
+            //update status msg
+            dispatch_async(dispatch_get_main_queue(),
+            ^{
+               //set status msg
+               [self.statusMsg setStringValue:@"Enum'ing installed apps\n\t\t ...please wait!"];
+            });
+            
+            //wait until 'system_profiler' has exited
+            while(YES)
+            {
+                //dbg msg
+                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"waiting for '%@' to complete", SYSTEM_PROFILER]);
+                
+                //nap
+                [NSThread sleepForTimeInterval:1.0];
+                
+                //exit'd?
+                if(0 == [getProcessIDs(SYSTEM_PROFILER, -1) count])
+                {
+                    //bye
+                    break;
+                }
+            }
+            
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"'%@' completed", SYSTEM_PROFILER]);
+            
             //update status msg
             dispatch_async(dispatch_get_main_queue(),
             ^{
@@ -220,11 +251,7 @@
                 [self.statusMsg setStringValue:@"Rebuilding kernel cache\n\t\t ...please wait!"];
             });
             
-            //nap
-            // give time for kext cache to start....
-            [NSThread sleepForTimeInterval:5.0];
-            
-            //wait until kextcache has exited
+            //wait until 'kextcache' has exited
             while(YES)
             {
                 //dbg msg
@@ -240,6 +267,9 @@
                     break;
                 }
             }
+            
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"'%@' completed", KEXT_CACHE]);
         }
     }
     

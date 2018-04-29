@@ -137,7 +137,6 @@ static struct sflt_filter udpFilterIPV6 = {
     NULL
 };
 
-
 //register socket filters
 kern_return_t registerSocketFilters()
 {

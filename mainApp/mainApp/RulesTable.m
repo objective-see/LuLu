@@ -54,7 +54,7 @@
     // 'RulesWindowController'
     menu.delegate = (id<NSMenuDelegate>)self.delegate;
     
-    //don't autoenable
+    //don't auto enable
     menu.autoenablesItems = NO;
     
     //allow?
@@ -94,13 +94,9 @@
         //bail
         goto bail;
     }
-    //otherwise
-    // make sure menu is enabled
-    else
-    {
-        //enable
-        toggleMenu(menu, YES);
-    }
+
+    //enable
+    toggleMenu(menu, YES);
     
 bail:
     

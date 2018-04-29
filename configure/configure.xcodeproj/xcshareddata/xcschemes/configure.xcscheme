@@ -42,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7D7755CF1F02DF9500D0017D"
-               BuildableName = "LuLu"
-               BlueprintName = "launchDaemon"
+               BlueprintIdentifier = "CD32C21C20900D36009CADF6"
+               BuildableName = "LuLu.bundle"
+               BlueprintName = "launchDaemonBundle"
                ReferencedContainer = "container:../launchDaemon/launchDaemon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -45,7 +45,7 @@
 -(void)install:(void (^)(NSNumber*))reply
 {
     //dbg msg
-    logMsg(LOG_DEBUG, @"installing");
+    logMsg(LOG_DEBUG, @"invoking 'install' XPC method");
     
     //install
     [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
@@ -70,7 +70,7 @@
 -(void)uninstall:(BOOL)full reply:(void (^)(NSNumber*))reply
 {
     //dbg msg
-    logMsg(LOG_DEBUG, @"uninstalling");
+    logMsg(LOG_DEBUG, @"invoking 'uninstall' XPC method");
     
     //uninstall
     [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)

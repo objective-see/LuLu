@@ -46,7 +46,8 @@
 		7DD2BF651F1DC41600B33214 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF641F1DC41600B33214 /* utilities.m */; };
 		CD223E442083361A0049A76B /* RulesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD223E432083361A0049A76B /* RulesTable.m */; };
 		CD22785A2042977300C72C76 /* kext.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2278592042977300C72C76 /* kext.png */; };
-		CD2B610B2065E0F500BF72E9 /* exception.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2B61092065E0F500BF72E9 /* exception.m */; };
+		CD32C216208FFF14009CADF6 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD32C215208FFF14009CADF6 /* Sentry.framework */; };
+		CD32C230209015F1009CADF6 /* Sentry.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD32C215208FFF14009CADF6 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDA6E644203B9DA800C78F91 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E63B203B9DA700C78F91 /* Welcome.xib */; };
 		CDA6E648203B9DA800C78F91 /* WelcomeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA6E642203B9DA700C78F91 /* WelcomeWindowController.m */; };
 		CDA6E64C203BA44E00C78F91 /* luluIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E64A203BA44D00C78F91 /* luluIcon.png */; };
@@ -63,6 +64,16 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD32C22F209015E3009CADF6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CD32C230209015F1009CADF6 /* Sentry.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,8 +138,7 @@
 		CD223E422083361A0049A76B /* RulesTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RulesTable.h; sourceTree = "<group>"; };
 		CD223E432083361A0049A76B /* RulesTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RulesTable.m; sourceTree = "<group>"; };
 		CD2278592042977300C72C76 /* kext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kext.png; sourceTree = "<group>"; };
-		CD2B61092065E0F500BF72E9 /* exception.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = exception.m; path = ../shared/exception.m; sourceTree = "<group>"; };
-		CD2B610A2065E0F500BF72E9 /* exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = exception.h; path = ../shared/exception.h; sourceTree = "<group>"; };
+		CD32C215208FFF14009CADF6 /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
 		CDA6E63B203B9DA700C78F91 /* Welcome.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Welcome.xib; sourceTree = "<group>"; };
 		CDA6E641203B9DA700C78F91 /* WelcomeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeWindowController.h; sourceTree = "<group>"; };
 		CDA6E642203B9DA700C78F91 /* WelcomeWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeWindowController.m; sourceTree = "<group>"; };
@@ -144,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD32C216208FFF14009CADF6 /* Sentry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +180,7 @@
 				7D564DE21F18445400B8AAD6 /* Shared */,
 				7D564DAB1F18434F00B8AAD6 /* Src */,
 				7D564DAA1F18434F00B8AAD6 /* Products */,
+				CD32C214208FFF14009CADF6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -268,8 +280,6 @@
 			children = (
 				CDA6E649203BA41E00C78F91 /* Images */,
 				7D564DE31F18446200B8AAD6 /* consts.h */,
-				CD2B610A2065E0F500BF72E9 /* exception.h */,
-				CD2B61092065E0F500BF72E9 /* exception.m */,
 				7D2582551F19FAD700D28B95 /* DaemonComms.h */,
 				7D2582561F19FAD700D28B95 /* DaemonComms.m */,
 				7D564DE51F18446200B8AAD6 /* logging.h */,
@@ -286,6 +296,14 @@
 				7D564DE81F1855E900B8AAD6 /* UpdateWindow.xib */,
 			);
 			name = Shared;
+			sourceTree = "<group>";
+		};
+		CD32C214208FFF14009CADF6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD32C215208FFF14009CADF6 /* Sentry.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CDA6E649203BA41E00C78F91 /* Images */ = {
@@ -309,6 +327,7 @@
 				7D564DA71F18434F00B8AAD6 /* Resources */,
 				7DD25FEE1F23B5AE00277EC4 /* CopyFiles */,
 				7D16D6971F650FF400DB3161 /* ShellScript */,
+				CD32C22F209015E3009CADF6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -408,7 +427,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#for normal builds\n# ->just copy into app\nmkdir -p $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\ncp -R -f \"$BUILT_PRODUCTS_DIR/LuLu Helper.app\" $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems";
+			shellScript = "#for normal builds\n# just copy into app\nrm -rf   $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\nmkdir -p $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\ncp -R -f \"$BUILT_PRODUCTS_DIR/LuLu Helper.app\" $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -427,7 +446,6 @@
 				7D564DD91F18441500B8AAD6 /* RulesWindowController.m in Sources */,
 				CD223E442083361A0049A76B /* RulesTable.m in Sources */,
 				7D564DAE1F18434F00B8AAD6 /* AppDelegate.m in Sources */,
-				CD2B610B2065E0F500BF72E9 /* exception.m in Sources */,
 				7D564DDE1F18441500B8AAD6 /* RuleRowCell.m in Sources */,
 				7D564DDF1F18441500B8AAD6 /* HyperlinkTextField.m in Sources */,
 				CDA6E648203B9DA800C78F91 /* WelcomeWindowController.m in Sources */,
@@ -567,6 +585,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Objective-See, LLC (VBG97UB4TA)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = mainApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "";
@@ -583,10 +602,11 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Objective-See, LLC (VBG97UB4TA)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = mainApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
-				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
 				PRODUCT_NAME = LuLu;
 			};

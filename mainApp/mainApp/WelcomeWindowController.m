@@ -1,9 +1,10 @@
 //
-//  LinkWindowController.m
-//  mainApp
+//  file: WelcomeWindowController.m
+//  project: lulu (main app)
+//  description: menu handler for status bar icon
 //
-//  Created by Patrick Wardle on 1/25/18.
-//  Copyright © 2018 Objective-See. All rights reserved.
+//  created by Patrick Wardle
+//  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
 #import "consts.h"

@@ -9,7 +9,7 @@
 	<key>CFBundleName</key>
 	<string>helper</string>
 	<key>CFBundleVersion</key>
-	<string>0.9.3</string>
+	<string>0.9.4</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright (c) 2018 Objective-See</string>
 	<key>SMAuthorizedClients</key>

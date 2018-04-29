@@ -54,23 +54,22 @@ if [ "${1}" == "-install" ]; then
     echo "kext installed"
 
     #install launch daemon
-    chown -R root:wheel "LuLu"
+    chown -R root:wheel "LuLu.bundle"
     chown -R root:wheel "com.objective-see.lulu.plist"
 
-    cp "LuLu" $INSTALL_DIRECTORY
+    cp -R "LuLu.bundle" $INSTALL_DIRECTORY
     cp "com.objective-see.lulu.plist" /Library/LaunchDaemons/
 
-    echo "launch daemon installed "
+    echo "launch daemon installed"
 
     #install app(s)
     cp -R "LuLu.app" /Applications
 
-    #kick of main app w/ -install flag
-    open -g -j "/Applications/LuLu.app/" "--args" "-install"
+    #enumerate installed apps, full path
+    /usr/sbin/system_profiler SPApplicationsDataType -xml > $INSTALL_DIRECTORY/installedApps.xml &
 
-    #rebuild cache
-    # run in background, (ui) installer will wait on it...
-    "/usr/sbin/kextcache -u /" &
+    #rebuild cache, full path
+    /usr/sbin/kextcache -invalidate / &
 
     echo "install complete"
     exit 0
@@ -93,13 +92,6 @@ elif [ "${1}" == "-uninstall" ]; then
 
     echo "unloaded launch daemon"
 
-    #kick off main app w/ uninstall flag
-    open -g -j "/Applications/LuLu.app" "--args" "-uninstall"
-
-    #give it a second
-    # time to remove login item, etc
-    sleep 1.0
-
     #remove main app/helper app
     rm -rf "/Applications/LuLu.app"
 
@@ -108,10 +100,18 @@ elif [ "${1}" == "-uninstall" ]; then
     if [[ "${2}" -eq "1" ]]; then
         rm -rf $INSTALL_DIRECTORY
 
+        #no other objective-see tools?
+        # then delete that directory too
+        baseDir=$(dirname $INSTALL_DIRECTORY)
+
+        if [ ! "$(ls -A $baseDir)" ]; then
+            rm -rf $baseDir
+        fi
+
     #partial
     # just delete daemon, leaving rules, etc
     else
-        rm -rf "$INSTALL_DIRECTORY/LuLu"
+        rm -rf "$INSTALL_DIRECTORY/LuLu.bundle"
     fi
 
     #kill
@@ -130,5 +130,5 @@ elif [ "${1}" == "-uninstall" ]; then
 fi
 
 #invalid args
-echo "\nERROR: run w/ '-install' or '-uninstall'
+echo "\nERROR: run w/ '-install' or '-uninstall'"
 exit -1

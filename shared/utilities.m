@@ -31,7 +31,7 @@ NSString* getAppVersion()
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
 
-//get path to (main) app
+//get path to (main) app of a login item
 // login item is in app bundle, so parse up to get main app
 NSString* getMainAppPath()
 {
@@ -62,7 +62,7 @@ NSString* getMainAppPath()
 }
 
 //give path to app
-// ->get full path to its binary
+// get full path to its binary
 NSString* getAppBinary(NSString* appPath)
 {
     //binary path
@@ -88,6 +88,33 @@ NSString* getAppBinary(NSString* appPath)
 bail:
     
     return binaryPath;
+}
+
+//find 'top-level' app of binary
+// useful to determine if binary (or other app) is embedded in a 'parent' app bundle
+NSString* topLevelApp(NSString* binaryPath)
+{
+    //app path
+    NSString* appPath = nil;
+    
+    //offset of (first) '.app'
+    NSRange offset = {0,0};
+    
+    //find first instance of '.app' in path
+    offset = [binaryPath rangeOfString:@".app/" options:NSCaseInsensitiveSearch];
+    if(NSNotFound == offset.location)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //extact app path
+    // from start, to & including '.app'
+    appPath = [binaryPath substringWithRange:NSMakeRange(0, offset.location+4)];
+
+bail:
+    
+    return appPath;
 }
 
 //verify that an app bundle is
@@ -855,47 +882,6 @@ bail:
     return processID;
 }
 
-//generate list of all installed applications
-NSArray* enumerateInstalledApplications()
-{
-    //installed apps
-    NSArray* installedApplications = nil;
-    
-    //results from system profiler
-    NSDictionary* taskResults = nil;
-    
-    //serialized task output
-    NSArray* serializedOutput = nil;
-    
-    //alloc array for installed apps
-    installedApplications = [NSMutableArray array];
-    
-    //exec system profiler
-    taskResults = execTask(SYSTEM_PROFILER, @[@"SPApplicationsDataType", @"-xml"], YES);
-    if( (nil == taskResults) ||
-        (0 != [taskResults[EXIT_CODE] intValue]) )
-    {
-        //bail
-        goto bail;
-    }
-    
-    //serialize output to array
-    serializedOutput = [NSPropertyListSerialization propertyListWithData:taskResults[STDOUT] options:kNilOptions format:NULL error:NULL];
-    if( (nil == serializedOutput) ||
-        (YES != [serializedOutput[0] isKindOfClass:[NSDictionary class]]))
-    {
-        //bail
-        goto bail;
-    }
-    
-    //extract installed apps
-    installedApplications = serializedOutput[0][@"_items"];
-    
-bail:
-    
-    return installedApplications;
-}
-
 //for login item enable/disable
 // we use the launch services APIs, since replacements don't always work :(
 #pragma clang diagnostic push
@@ -1201,7 +1187,6 @@ NSMutableString* hashFile(NSString* filePath)
         [sha1 appendFormat:@"%02lX", (unsigned long)digestSHA1[index]];
     }
     
-    
 bail:
     
     return sha1;
@@ -1272,10 +1257,9 @@ BOOL isAppRunning(NSString* bundleID)
     return alreadyRunning;
 }
 
-
 //exec a process with args
 // if 'shouldWait' is set, wait and return stdout/in and termination status
-NSMutableDictionary* execTask(NSString* binaryPath, NSArray* arguments, BOOL shouldWait)
+NSMutableDictionary* execTask(NSString* binaryPath, NSArray* arguments, BOOL shouldWait, BOOL grabOutput)
 {
     //task
     NSTask* task = nil;
@@ -1305,10 +1289,10 @@ NSMutableDictionary* execTask(NSString* binaryPath, NSArray* arguments, BOOL sho
     results = [NSMutableDictionary dictionary];
     
     //init task
-    task = [NSTask new];
+    task = [[NSTask alloc] init];
     
     //only setup pipes if wait flag is set
-    if(YES == shouldWait)
+    if(YES == grabOutput)
     {
         //init stdout pipe
         stdOutPipe = [NSPipe pipe];
@@ -1365,45 +1349,67 @@ NSMutableDictionary* execTask(NSString* binaryPath, NSArray* arguments, BOOL sho
     
     //no need to wait
     // can just bail w/ no output
-    if(YES != shouldWait)
+    if( (YES != shouldWait) &&
+        (YES != grabOutput) )
     {
         //bail
         goto bail;
     }
     
-    //read in stdout/stderr
-    while(YES == [task isRunning])
+    
+    //wait
+    // ...but no output
+    else if( (YES == shouldWait) &&
+             (YES != grabOutput) )
     {
-        //accumulate stdout
+        //wait
+        [task waitUntilExit];
+        
+        //add exit code
+        results[EXIT_CODE] = [NSNumber numberWithInteger:task.terminationStatus];
+        
+        //bail
+        goto bail;
+    }
+    
+    //grab output?
+    // even if wait not set, still will wait!
+    else
+    {
+        //read in stdout/stderr
+        while(YES == [task isRunning])
+        {
+            //accumulate stdout
+            [stdOutData appendData:[stdOutReadHandle readDataToEndOfFile]];
+            
+            //accumulate stderr
+            [stdErrData appendData:[stdErrReadHandle readDataToEndOfFile]];
+        }
+        
+        //grab any leftover stdout
         [stdOutData appendData:[stdOutReadHandle readDataToEndOfFile]];
         
-        //accumulate stderr
+        //grab any leftover stderr
         [stdErrData appendData:[stdErrReadHandle readDataToEndOfFile]];
+        
+        //add stdout
+        if(0 != stdOutData.length)
+        {
+            //add
+            results[STDOUT] = stdOutData;
+        }
+        
+        //add stderr
+        if(0 != stdErrData.length)
+        {
+            //add
+            results[STDERR] = stdErrData;
+        }
+        
+        //add exit code
+        results[EXIT_CODE] = [NSNumber numberWithInteger:task.terminationStatus];
     }
-    
-    //grab any leftover stdout
-    [stdOutData appendData:[stdOutReadHandle readDataToEndOfFile]];
-    
-    //grab any leftover stderr
-    [stdErrData appendData:[stdErrReadHandle readDataToEndOfFile]];
-    
-    //add stdout
-    if(0 != stdOutData.length)
-    {
-        //add
-        results[STDOUT] = stdOutData;
-    }
-    
-    //add stderr
-    if(0 != stdErrData.length)
-    {
-        //add
-        results[STDERR] = stdErrData;
-    }
-    
-    //add exit code
-    results[EXIT_CODE] = [NSNumber numberWithInteger:task.terminationStatus];
-    
+
 bail:
     
     return results;
@@ -1465,12 +1471,59 @@ bail:
     return url;
 }
 
+//determine what CS flags to use
+// for massive bundles, won't validate resources, etc...
+SecCSFlags determineCSFlags(NSString* path, NSBundle* bundle)
+{
+    //default code signing flags
+    SecCSFlags codeSigningFlags = kSecCSDefaultFlags | kSecCSCheckNestedCode | kSecCSCheckAllArchitectures;
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"determing code signing flags for %@/%@", path, bundle]);
+    
+    //don't validate resources
+    // a lot of apple bins would fail otherwise
+    codeSigningFlags |= kSecCSDoNotValidateResources;
+    
+    //note:
+    // for now skipping this logic, as many legit signed apple binaries have invalid resource, etc... wtf apple
+    
+    /*
+     
+    //for xcode don't validate resources
+    // ...it's massive, and otherwise takes +5min to verify
+    if(YES == [path isEqualToString:@"/Applications/Xcode.app/Contents/MacOS/Xcode"])
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, @"process is 'Xcode', so skipping resource validation");
+        
+        //set flags; no resource validation
+        codeSigningFlags |= kSecCSDoNotValidateResources;
+    }
+    
+    //other large application bundles
+    // also don't validate resources as too slow
+    if( (nil != bundle) &&
+        ([[[NSFileManager defaultManager] subpathsAtPath:bundle.bundlePath] count] > 10000) )
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, @"app bundle has > 10000 files, so skipping resource validation");
+        
+        //set flags; no resource validation
+        codeSigningFlags |= kSecCSDoNotValidateResources;
+    }
+     
+    */
+    
+    return codeSigningFlags;
+}
+
 //restart
 void restart()
 {
     //first quit self
     // then reboot the box...nicely!
-    execTask(OSASCRIPT, @[@"-e", @"tell application \"LuLu Installer\" to quit", @"-e", @"delay 0.1", @"-e", @"tell application \"Finder\" to restart"], NO);
+    execTask(OSASCRIPT, @[@"-e", @"tell application \"LuLu Installer\" to quit", @"-e", @"delay 0.1", @"-e", @"tell application \"Finder\" to restart"], NO, NO);
 
     return;
 }

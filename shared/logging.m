@@ -87,9 +87,13 @@ void logMsg(int level, NSString* msg)
 //log to file
 void log2File(NSString* msg)
 {
-    //append timestamp
-    // write msg out to disk
-    [logFileHandle writeData:[[NSString stringWithFormat:@"%@: %@\n", [NSDate date], msg] dataUsingEncoding:NSUTF8StringEncoding]];
+    //sync
+    @synchronized(logFileHandle)
+    {
+        //append timestamp
+        // write msg out to disk
+        [logFileHandle writeData:[[NSString stringWithFormat:@"%@: %@\n", [NSDate date], msg] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
     
     return;
 }
@@ -101,11 +105,15 @@ void deinitLogging()
     // ->and to file
     logMsg(LOG_DEBUG|LOG_TO_FILE, @"logging ending");
     
-    //close file handle
-    [logFileHandle closeFile];
-    
-    //nil out
-    logFileHandle = nil;
+    //sync
+    @synchronized(logFileHandle)
+    {
+        //close file handle
+        [logFileHandle closeFile];
+        
+        //unset
+        logFileHandle = nil;
+    }
     
     return;
 }

@@ -14,7 +14,7 @@
 
 //'close' button handler
 // simply dismiss/close popover
--(IBAction)interactionHandler:(NSControl *)sender
+-(IBAction)closePopover:(NSControl *)sender
 {
     //close
     [[[self view] window] close];

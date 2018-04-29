@@ -14,11 +14,12 @@
 #import "Baseline.h"
 #import "KextComms.h"
 #import "utilities.h"
-#import "exception.h"
 #import "Preferences.h"
 #import "KextListener.h"
 #import "ProcListener.h"
 #import "UserCommsListener.h"
+
+@import Sentry;
 
 //GLOBALS
 
@@ -32,7 +33,7 @@ KextComms* kextComms = nil;
 Rules* rules = nil;
 
 //queue object
-// ->contains watch items that should be processed
+// contains watch items that should be processed
 Queue* eventQueue = nil;
 
 //process listener obj
@@ -40,6 +41,9 @@ ProcessListener* processListener = nil;
 
 //kext listener obj
 KextListener* kextListener = nil;
+
+//base line object
+Baseline* baseline;
 
 //(a) client status
 NSInteger clientConnected;
@@ -64,10 +68,14 @@ void goodbye(void);
 // init & kickoff stuffz
 int main(int argc, const char * argv[])
 {
+    //pool
     @autoreleasepool
     {
-        //baseline object
-        Baseline* baseline = nil;
+        //path to installed apps
+        NSString* appDataPath = nil;
+        
+        //error
+        NSError* error = nil;
         
         //user comms listener (XPC) obj
         UserCommsListener* userCommsListener = nil;
@@ -78,8 +86,13 @@ int main(int argc, const char * argv[])
         //dbg msg
         logMsg(LOG_DEBUG, @"LuLu launch daemon started");
         
-        //install exception handlers
-        installExceptionHandlers();
+        //init crash reporting client
+        SentryClient.sharedClient = [[SentryClient alloc] initWithDsn:CRASH_REPORTING_URL didFailWithError:&error];
+        if(nil == error)
+        {
+            //start crash handler
+            [SentryClient.sharedClient startCrashHandlerWithError:&error];
+        }
         
         //init logging
         if(YES != initLogging(logFilePath()))
@@ -96,29 +109,53 @@ int main(int argc, const char * argv[])
         if(nil == preferences)
         {
             //err msg
-            logMsg(LOG_ERR, @"failed to initialize preferences");
+            logMsg(LOG_ERR, @"failed to init/load preferences");
             
             //bail
             goto bail;
         }
         
-        //enumerate installed 3rd-party apps?
-        // once need to do once, hence the file check...
-        if(YES != [[NSFileManager defaultManager] fileExistsAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:INSTALLED_APPS]])
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded preferences: %@", preferences.preferences]);
+        
+        //init path to xml file of installed apps
+        appDataPath = [INSTALL_DIRECTORY stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.xml", INSTALLED_APPS]];
+        
+        //init
+        baseline = [[Baseline alloc] init];
+        
+        //installer creates an xml file of installed apps
+        // this file needs to be processed and converted to .plist
+        if(YES == [[NSFileManager defaultManager] fileExistsAtPath:appDataPath])
         {
             //dbg msg
-            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"%@ not found, so kicking off baselining", INSTALLED_APPS]);
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"%@ found, so kicking off baselining logic to process", appDataPath]);
             
-            //init
-            baseline = [[Baseline alloc] init];
+            //process app data
+            [baseline processAppData:appDataPath];
             
-            //baselining
-            // this can be slow, so do in background
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^
+            //delete xml file
+            if(YES != [[NSFileManager defaultManager] removeItemAtPath:appDataPath error:&error])
             {
-               //baseline
-               [baseline baseline];
-            });
+                //err msg
+                logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to delete %@ (%@)", appDataPath, error.description]);
+                
+                //bail
+                goto bail;
+            }
+            
+            //dbg msg
+            logMsg(LOG_DEBUG, @"baselining complete");
+        }
+        
+        //always load baselined apps
+        if(YES != [baseline load])
+        {
+            //err msg
+            logMsg(LOG_ERR, @"failed to load (pre)installed apps");
+            
+            //bail
+            goto bail;
         }
         
         //alloc/init kernel comms object
@@ -146,25 +183,9 @@ int main(int argc, const char * argv[])
         //dbg msg
         logMsg(LOG_DEBUG, @"initialized global queue");
         
-        //alloc/init rules object
-        rules = [[Rules alloc] init];
-        
-        //load rules
-        if(YES != [rules load])
-        {
-            //err msg
-            logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to load rules from %@", RULES_FILE]);
-            
-            //bail
-            goto bail;
-        }
-        
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded rules from %@", RULES_FILE]);
     
-        //init rule changed semaphore
-        rulesChanged = dispatch_semaphore_create(0);
-        
         //alloc/init user comms XPC obj
         userCommsListener = [[UserCommsListener alloc] init];
         if(nil == userCommsListener)
@@ -204,23 +225,23 @@ int main(int argc, const char * argv[])
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"connected to kext, %s", LULU_SERVICE_NAME]);
         
-        //enable
-        [kextComms enable];
+        //init rule changed semaphore
+        rulesChanged = dispatch_semaphore_create(0);
         
-        //dbg msg
-        logMsg(LOG_DEBUG, @"enabled firewall");
+        //alloc/init rules object
+        rules = [[Rules alloc] init];
         
-        //alloc/init kernel listener obj
-        kextListener = [[KextListener alloc] init];
+        //load rules
+        if(YES != [rules load])
+        {
+            //err msg
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to load rules from %@", RULES_FILE]);
+            
+            //bail
+            goto bail;
+        }
         
-        //start listening for events
-        [kextListener monitor];
-        
-        //dbg msg
-        logMsg(LOG_DEBUG, @"listening for kernel events");
-        
-        //now kext is loaded
-        // finally add all rules to kernel
+        //add all rules to kernel
         @synchronized(rules.rules)
         {
             //dbg msg
@@ -235,8 +256,50 @@ int main(int argc, const char * argv[])
         }
         
         //dbg msg
-        logMsg(LOG_DEBUG, @"added all rules, now run-loop'ing");
-
+        logMsg(LOG_DEBUG, @"added all rules to kernel");
+    
+        //no prefs?
+        // only happens when user hasn't gone thru 'welcome'
+        // so wait until that happens, cuz don't want to being much before anyways...
+        while(0 == preferences.preferences.count)
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, @"waiting for user to complete install");
+            
+            //nap
+            [NSThread sleepForTimeInterval:1.0f];
+        }
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"user completed install, preferences: %@", preferences.preferences]);
+        
+        //firewall enabled?
+        if(YES != [preferences.preferences[PREF_IS_DISABLED] boolValue])
+        {
+            //enable
+            [kextComms enable];
+            
+            //dbg msg
+            logMsg(LOG_DEBUG, @"enabled firewall");
+        }
+        //user (prev) disabled firewall
+        // just log this fact, and don't start it
+        else
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, @"user has disabled firewall, so, not enabling");
+        }
+        
+        //alloc/init kernel listener obj
+        kextListener = [[KextListener alloc] init];
+        
+        //start listening for events
+        // though won't be any if firewall is disabled...
+        [kextListener monitor];
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, @"listening for kernel events...");
+    
         //run loop
         [[NSRunLoop currentRunLoop] run];
     }

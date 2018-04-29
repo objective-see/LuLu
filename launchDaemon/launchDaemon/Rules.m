@@ -7,25 +7,46 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-
 #import "consts.h"
 
 #import "Rule.h"
 #import "Rules.h"
 #import "logging.h"
+#import "Baseline.h"
 #import "KextComms.h"
 #import "utilities.h"
 
-//global kext comms object
+//default systems 'allow' rules
+NSString* const DEFAULT_RULES[] =
+{
+    @"/System/Library/PrivateFrameworks/ApplePushService.framework/apsd",
+    @"/System/Library/CoreServices/AppleIDAuthAgent",
+    @"/System/Library/PrivateFrameworks/AssistantServices.framework/assistantd",
+    @"/usr/sbin/automount",
+    @"/System/Library/PrivateFrameworks/HelpData.framework/Versions/A/Resources/helpd",
+    @"/usr/sbin/mDNSResponder",
+    @"/sbin/mount_nfs",
+    @"/usr/libexec/mount_url",
+    @"/usr/sbin/ntpd",
+    @"/usr/sbin/ocspd",
+    @"/usr/bin/sntp",
+    @"/usr/libexec/trustd"
+};
+
+/* GLOBALS */
+
+//kext comms object
 extern KextComms* kextComms;
 
-//global 'rules changed' semaphore
+//baseline obj
+extern Baseline* baseline;
+
+//'rules changed' semaphore
 extern dispatch_semaphore_t rulesChanged;
 
 @implementation Rules
 
 @synthesize rules;
-//@synthesize appQuery;
 
 //init method
 -(id)init
@@ -47,11 +68,35 @@ extern dispatch_semaphore_t rulesChanged;
     //result
     BOOL result = NO;
     
+    //rule's file
+    NSString* rulesFile = nil;
+    
     //serialized rules
     NSDictionary* serializedRules = nil;
     
     //rules obj
     Rule* rule = nil;
+    
+    //init path to rule's file
+    rulesFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE];
+    
+    //don't exist?
+    // likely first time, so generate default rules
+    if(YES != [[NSFileManager defaultManager] fileExistsAtPath:rulesFile])
+    {
+        //generate
+        if(YES != [self generateDefaultRules])
+        {
+            //err msg
+            logMsg(LOG_ERR, @"failed to generate default rules");
+            
+            //bail
+            goto bail;
+        }
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, @"generated default rules");
+    }
     
     //load serialized rules from disk
     serializedRules = [NSMutableDictionary dictionaryWithContentsOfFile:[INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE]];
@@ -68,7 +113,7 @@ extern dispatch_semaphore_t rulesChanged;
     for(NSString* key in serializedRules)
     {
         //init
-        rule = [[Rule alloc] init:key rule:serializedRules[key]];
+        rule = [[Rule alloc] init:key info:serializedRules[key]];
         if(nil == rule)
         {
             //err msg
@@ -91,6 +136,72 @@ extern dispatch_semaphore_t rulesChanged;
 bail:
     
     return result;
+}
+
+//generate default rules
+-(BOOL)generateDefaultRules
+{
+    //flag
+    BOOL generated = NO;
+    
+    //number of default rules
+    NSUInteger defaultRulesCount = 0;
+    
+    //binary
+    Binary* binary = nil;
+    
+    //cs flag
+    SecCSFlags csFlags = kSecCSDefaultFlags;
+    
+    
+    //calculate number of rules
+    defaultRulesCount = sizeof(DEFAULT_RULES)/sizeof(DEFAULT_RULES[0]);
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, @"generating default rules");
+    
+    //iterate overall default rule paths
+    // generate binary obj/signing info
+    for(NSUInteger i=0; i<defaultRulesCount; i++)
+    {
+        //init binary
+        binary = [[Binary alloc] init:DEFAULT_RULES[i]];
+        if(nil == binary)
+        {
+            //err msg
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to generate binary for default rule: %@", DEFAULT_RULES[i]]);
+            
+            //bail
+            goto bail;
+        }
+        
+        //determine appropriate flags
+        // 'tis ok if the path bundle is nil
+        csFlags = determineCSFlags(binary.path, [NSBundle bundleWithPath:binary.path]);
+        
+        //generate signing info
+        [binary generateSigningInfo:csFlags];
+        
+        //add
+        if(YES != [self add:binary.path signingInfo:binary.signingInfo action:RULE_STATE_ALLOW type:RULE_TYPE_DEFAULT user:0])
+        {
+            //err msg
+            logMsg(LOG_ERR, @"failed to add rule rules");
+            
+            //bail
+            goto bail;
+        }
+    }
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generated %lu default rules", defaultRulesCount]);
+    
+    //happy
+    generated = YES;
+    
+bail:
+    
+    return generated;
 }
 
 //save to disk
@@ -135,8 +246,8 @@ bail:
     //sync to access
     @synchronized(self.rules)
     {
-        //iterate over all rules
-        // ->serialize & add each
+        //iterate over all
+        // serialize & add each rule
         for(NSString* path in self.rules)
         {
             //covert/add
@@ -148,16 +259,26 @@ bail:
 }
 
 //find rule
-// TODO: validate signature too!
+// look up by path, then verify that signing info/hash (still) matches
 -(Rule*)find:(Process*)process
 {
     //matching rule
     Rule* matchingRule = nil;
     
+    //thread priority
+    double threadPriority = 0.0f;
+    
+    //code signing flags
+    SecCSFlags codeSigningFlags = kSecCSDefaultFlags;
+    
+    //hash
+    NSString* hash = nil;
+    
     //sync to access
     @synchronized(self.rules)
     {
         //extract rule
+        // key: path of process
         matchingRule = [self.rules objectForKey:process.path];
         if(nil == matchingRule)
         {
@@ -165,48 +286,168 @@ bail:
             goto bail;
         }
     }
-    
-    //TODO: validate binary still matches hash
-    
-    //TODO: check that rule is for this user!
 
-bail:
-    
-    return matchingRule;
-}
-
-//add rule
-// note: ignore if rule matches existing rule
--(BOOL)add:(NSString*)path action:(NSUInteger)action type:(NSUInteger)type user:(NSUInteger)user
-{
-    //result
-    BOOL result = NO;
-    
-    //rule
-    Rule* rule = nil;
-    
-    //sync to access
-    @synchronized(self.rules)
+    //found a matching rule, based on path
+    // first, if needed, generate signing info for process
+    if(nil == process.binary.signingInfo)
     {
-        //ignore existing rule
-        // TODO: maybe call 'find' to also check signing info/hash?
-        if(nil != self.rules[path])
+        //save thread priority
+        threadPriority = [NSThread threadPriority];
+        
+        //reduce CPU
+        [NSThread setThreadPriority:0.25];
+        
+        //determine appropriate code signing flags
+        codeSigningFlags = determineCSFlags(process.binary.path, process.binary.bundle);
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ (%d) with flags: %d", process.binary.name, process.pid, codeSigningFlags]);
+        
+        //generate signing info
+        [process.binary generateSigningInfo:codeSigningFlags];
+        
+        //reset thread priority
+        [NSThread setThreadPriority:threadPriority];
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, @"done generating code signing info");
+    }
+    
+    //if there's a hash
+    // check this first for match
+    if(nil != matchingRule.sha1)
+    {
+        //generate hash
+        hash = hashFile(process.binary.path);
+        if(YES != [matchingRule.sha1 isEqualToString:hash])
         {
             //err msg
-            logMsg(LOG_ERR, [NSString stringWithFormat:@"ignoring add request for rule, as it already exists: %@", path]);
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"binary is unsigned, but hash comparision failed: %@ vs. %@", matchingRule.sha1, hash]);
+            
+            //unset
+            matchingRule = nil;
+        }
+        
+        //either way, bail
+        goto bail;
+    }
+        
+    //binary validly signed w/ auths?
+    // make sure it (still) matches rule
+    if( (nil != process.binary.signingInfo[KEY_SIGNATURE_STATUS]) &&
+        (0 != [process.binary.signingInfo[KEY_SIGNING_AUTHORITIES] count]) )
+    {
+        //validly signed?
+        if(noErr != [process.binary.signingInfo[KEY_SIGNATURE_STATUS] intValue])
+        {
+            //err msg
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"%@ has a signing error (%@)", process.binary.path, process.binary.signingInfo[KEY_SIGNATURE_STATUS]]);
+            
+            //unset
+            matchingRule = nil;
             
             //bail
             goto bail;
         }
         
+        //compare all signing auths
+        if(YES != [[NSCountedSet setWithArray:matchingRule.signingInfo[KEY_SIGNING_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:process.binary.signingInfo[KEY_SIGNING_AUTHORITIES]]] )
+        {
+            //err msg
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"signing authority mismatch between %@/%@", matchingRule.signingInfo[KEY_SIGNING_AUTHORITIES], process.binary.signingInfo[KEY_SIGNING_AUTHORITIES]]);
+            
+            //unset
+            matchingRule = nil;
+            
+            //bail
+            goto bail;
+        }
+    }
+    
+bail:
+    
+    return matchingRule;
+}
+
+//add a rule
+// will generate a hash of binary, if signing info not found...
+-(BOOL)add:(NSString*)path signingInfo:(NSDictionary*)signingInfo action:(NSUInteger)action type:(NSUInteger)type user:(NSUInteger)user
+{
+    //result
+    BOOL added = NO;
+    
+    //rule info
+    NSMutableDictionary* ruleInfo = nil;
+    
+    //hash
+    NSString* hash = nil;
+    
+    //rule
+    Rule* rule = nil;
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding rule for %@ (%@): action %lu / type: %lu", path, signingInfo, (unsigned long)action, (unsigned long)type]);
+    
+    //alloc dictionary
+    ruleInfo = [NSMutableDictionary dictionary];
+    
+    //add signing info
+    if(nil != signingInfo)
+    {
+        //add signing info
+        ruleInfo[RULE_SIGNING_INFO] = signingInfo;
+    }
+    
+    //item not signed?
+    // generate hash (sha1)
+    if( (nil == signingInfo) ||
+        (noErr != [signingInfo[KEY_SIGNATURE_STATUS] intValue]) )
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"signing info not found for %@, will hash", path]);
+        
+        //generate hash
+        hash = hashFile(path);
+        if(0 == hash.length)
+        {
+            //err msg
+            logMsg(LOG_ERR, @"failed to hash file");
+            
+            //bail
+            goto bail;
+        }
+        
+        //add hash
+        ruleInfo[RULE_HASH] = hash;
+    }
+    
+    //add rule action
+    ruleInfo[RULE_ACTION] = [NSNumber numberWithUnsignedInteger:action];
+    
+    //add rule type
+    ruleInfo[RULE_TYPE] = [NSNumber numberWithUnsignedInteger:type];
+    
+    //add rule user
+    ruleInfo[RULE_USER] = [NSNumber numberWithUnsignedInteger:user];
+    
+    //sync to access
+    @synchronized(self.rules)
+    {
         //init rule
-        rule = [[Rule alloc] init:path rule:@{RULE_ACTION:[NSNumber numberWithUnsignedInteger:action], RULE_TYPE:[NSNumber numberWithUnsignedInteger:type], RULE_USER:[NSNumber numberWithUnsignedInteger:user]}];
+        rule = [[Rule alloc] init:path info:ruleInfo];
         
         //add
         self.rules[path] = rule;
         
         //save to disk
-        [self save];
+        if(YES != [self save])
+        {
+            //err msg
+            logMsg(LOG_ERR, @"failed to save rules");
+            
+            //bail
+            goto bail;
+        }
     }
     
     //for any other process
@@ -217,15 +458,15 @@ bail:
     while(0 != dispatch_semaphore_signal(rulesChanged));
 
     //happy
-    result = YES;
+    added = YES;
     
 bail:
     
-    return result;
+    return added;
 }
 
-//update rule
--(BOOL)update:(NSString*)path action:(NSUInteger)action type:(NSUInteger)type user:(NSUInteger)user
+//update (toggle) existing rule
+-(BOOL)update:(NSString*)path action:(NSUInteger)action user:(NSUInteger)user
 {
     //result
     BOOL result = NO;
@@ -270,14 +511,11 @@ bail:
 }
 
 //add to kernel
-// TODO: check hash, etc
 -(void)addToKernel:(Rule*)rule
 {
     //find processes and add
     for(NSNumber* processID in getProcessIDs(rule.path, -1))
     {
-        //TODO: hash/sig matches?
-        
         //add rule
         [kextComms addRule:[processID unsignedShortValue] action:rule.action.intValue];
     }
@@ -298,7 +536,14 @@ bail:
         [self.rules removeObjectForKey:path];
         
         //save to disk
-        [self save];
+        if(YES != [self save])
+        {
+            //err msg
+            logMsg(LOG_ERR, @"failed to save rules");
+            
+            //bail
+            goto bail;
+        }
     }
     
     //find any running processes that match
@@ -311,7 +556,6 @@ bail:
     
     //signal all threads that rules changed
     while(0 != dispatch_semaphore_signal(rulesChanged));
-    
 
     //happy
     result = YES;
@@ -340,7 +584,7 @@ bail:
             [self.rules removeObjectForKey:path];
             
             //find any running processes that match
-            // ->then for each, tell the kernel to delete any rules it has
+            // then for each, tell the kernel to delete any rules it has
             for(NSNumber* processID in getProcessIDs(path, -1))
             {
                 logMsg(LOG_DEBUG, [NSString stringWithFormat:@"pid (%@)", processID]);

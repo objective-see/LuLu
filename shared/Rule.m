@@ -15,14 +15,14 @@
 @implementation Rule
 
 //init method
--(id)init:(NSString*)path rule:(NSDictionary*)rule
+-(id)init:(NSString*)path info:(NSDictionary*)info
 {
     //init super
     self = [super init];
     if(nil != self)
     {
         //sanity check
-        if(YES != [self validate:path rule:rule])
+        if(YES != [self validate:path rule:info])
         {
             //unset
             self = nil;
@@ -38,13 +38,19 @@
         self.name = getProcessName(path);
 
         //init action
-        self.action = rule[RULE_ACTION];
+        self.action = info[RULE_ACTION];
         
         //init type
-        self.type = rule[RULE_TYPE];
+        self.type = info[RULE_TYPE];
         
         //init user
-        self.user = rule[RULE_USER];
+        self.user = info[RULE_USER];
+        
+        //save hash
+        self.sha1 = info[RULE_HASH];
+        
+        //save signing info
+        self.signingInfo = info[RULE_SIGNING_INFO];
     }
     
 bail:
@@ -62,7 +68,8 @@ bail:
     if( (nil == path) ||
         (nil == rule[RULE_TYPE]) ||
         (nil == rule[RULE_USER]) ||
-        (nil == rule[RULE_ACTION]) )
+        (nil == rule[RULE_ACTION]) ||
+        ( (nil == rule[RULE_SIGNING_INFO] && (nil == rule[RULE_HASH])) ) )
     {
         //err msg
         logMsg(LOG_ERR, [NSString stringWithFormat:@"invalid rule dictionary: %@", rule]);
@@ -77,7 +84,6 @@ bail:
 bail:
     
     return result;
-
 }
 
 //covert rule obj to dictionary
@@ -97,6 +103,20 @@ bail:
     
     //add user
     serializedRule[RULE_USER] = self.user;
+    
+    //add signing info
+    if(nil != self.signingInfo)
+    {
+        //add
+        serializedRule[RULE_SIGNING_INFO] = self.signingInfo;
+    }
+    
+    //add hash
+    if(nil != self.sha1)
+    {
+        //add
+        serializedRule[RULE_HASH] = self.sha1;
+    }
     
     return serializedRule;
 }

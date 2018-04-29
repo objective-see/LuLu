@@ -11,7 +11,7 @@
 	<string>com.objective-see.lulu</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/Library/Objective-See/LuLu/LuLu</string>
+		<string>/Library/Objective-See/LuLu/LuLu.bundle/Contents/MacOS/LuLu</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>

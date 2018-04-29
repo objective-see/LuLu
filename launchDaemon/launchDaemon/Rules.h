@@ -37,13 +37,13 @@
 -(Rule*)find:(Process*)process;
 
 //add rule
--(BOOL)add:(NSString*)path action:(NSUInteger)action type:(NSUInteger)type user:(NSUInteger)user;
+-(BOOL)add:(NSString*)path signingInfo:(NSDictionary *)signingInfo action:(NSUInteger)action type:(NSUInteger)type user:(NSUInteger)user;
 
 //add to kernel
 -(void)addToKernel:(Rule*)rule;
 
 //update rule
--(BOOL)update:(NSString*)path action:(NSUInteger)action type:(NSUInteger)type user:(NSUInteger)user;
+-(BOOL)update:(NSString*)path action:(NSUInteger)action user:(NSUInteger)user;
 
 //delete rule
 -(BOOL)delete:(NSString*)path;

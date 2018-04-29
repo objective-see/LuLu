@@ -8,20 +8,35 @@
 //
 
 @import Cocoa;
+@import Sentry;
 
+#import "consts.h"
 #import "logging.h"
-#import "exception.h"
 #import "utilities.h"
-
-//TODO: sentry.io
 
 int main(int argc, const char * argv[])
 {
     //return var
     int iReturn = -1;
     
-    //install exception handlers
-    installExceptionHandlers();
+    //error
+    NSError* error = nil;
+    
+    //init crash reporting client
+    SentryClient.sharedClient = [[SentryClient alloc] initWithDsn:CRASH_REPORTING_URL didFailWithError:&error];
+    if(nil == error)
+    {
+        //start crash handler
+        [SentryClient.sharedClient startCrashHandlerWithError:&error];
+    }
+    
+    //any errors?
+    // just log, but keep going...
+    if(nil != error)
+    {
+        //log error
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"initializing 'Sentry' failed with %@", error]);
+    }
     
     //already running?
     if(YES == isAppRunning([[NSBundle mainBundle] bundleIdentifier]))
@@ -40,4 +55,3 @@ bail:
     
     return iReturn;
 }
-

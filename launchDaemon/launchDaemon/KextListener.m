@@ -14,6 +14,7 @@
 #import "Rules.h"
 #import "Queue.h"
 #import "logging.h"
+#import "Baseline.h"
 #import "procInfo.h"
 #import "KextComms.h"
 #import "utilities.h"
@@ -38,6 +39,9 @@ extern ProcessListener* processListener;
 
 //prefs obj
 extern Preferences* preferences;
+
+//baseline obj
+extern Baseline* baseline;
 
 //client connected
 extern NSInteger clientConnected;
@@ -308,22 +312,57 @@ bail:
             //dbg msg
             logMsg(LOG_DEBUG, [NSString stringWithFormat:@"dequeued new firewall event from kernel (type: %d)", event.genericEvent.type]);
             
+            //should ignore?
+            if(YES == [preferences.preferences[PREF_IS_DISABLED] boolValue])
+            {
+                //dbg msg
+                logMsg(LOG_DEBUG, @"firewall 'disabled', so ignoring event");
+                
+                //next
+                continue;
+            }
+            
             //parse/handle event
             switch(event.genericEvent.type)
             {
                 //network out events
                 case EVENT_NETWORK_OUT:
+                {
+                    //ignore if prev. an alert has been processed for this process
+                    // if rule is deleted or process ends, will be removed from list
+                    if(YES == [self.alerts containsObject:[NSNumber numberWithUnsignedShort:((struct networkOutEvent_s*)&event.networkOutEvent)->pid]])
+                    {
+                        //dbg msg
+                        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"alert already processed for this process (%d), so ignoring", ((struct networkOutEvent_s*)&event.networkOutEvent)->pid]);
+                        
+                        //skip
+                        break;
+                    }
                     
-                    //process
-                    [self processNetworkOut:&event.networkOutEvent];
+                    //save pid
+                    // ...only process rule once per process
+                    [self.alerts addObject:[NSNumber numberWithUnsignedShort:((struct networkOutEvent_s*)&event.networkOutEvent)->pid]];
+                    
+                    //dispatch to handle/process rule
+                    // code signing computations, slow for big apps, don't want those to slow everything down
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        
+                        //process
+                        [self processNetworkOut:((struct networkOutEvent_s*)&event.networkOutEvent)];
+                        
+                    });
+                    
                     break;
-                    
+                }
+               
                 //dns response events
                 case EVENT_DNS_RESPONSE:
-                    
+                {
                     //process
-                    [self processDNSResponse:&event.dnsResponseEvent];
+                    [self processDNSResponse:(struct dnsResponseEvent_s*)&event.dnsResponseEvent];
+                    
                     break;
+                }
                     
                 default:
                     break;
@@ -383,19 +422,11 @@ bail:
     //thread priority
     double threadPriority = 0.0f;
     
+    //default code signing flags
+    SecCSFlags codeSigningFlags = kSecCSDefaultFlags;
+    
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"processing 'network out' event from kernel queue: %d /  %@", event->pid, convertSocketAddr((struct sockaddr*)&(event->remoteAddress))]);
-    
-    //ignore if alert has already been shown for this process
-    // if rule is deleted or process ends, this will be reset...
-    if(YES == [self.alerts containsObject:[NSNumber numberWithUnsignedShort:event->pid]])
-    {
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"alert already shown for this process (%d), so ignoring", event->pid]);
-        
-        //bail
-        goto bail;
-    }
     
     //nap a bit
     // ->for a processes fork/exec, this should process monitor time to register exec event
@@ -451,17 +482,20 @@ bail:
     // so generate signing info for process here
     if(nil == process.binary.signingInfo)
     {
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ (%d)", process.binary.name, process.pid]);
-        
         //save thread priority
         threadPriority = [NSThread threadPriority];
         
         //reduce CPU
         [NSThread setThreadPriority:0.25];
         
-        //signing info
-        [process.binary generateSigningInfo];
+        //determine appropriate code signing flags
+        codeSigningFlags = determineCSFlags(process.binary.path, process.binary.bundle);
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ (%d) with flags: %d", process.binary.name, process.pid, codeSigningFlags]);
+        
+        //generate signing info
+        [process.binary generateSigningInfo:codeSigningFlags];
         
         //reset thread priority
         [NSThread setThreadPriority:threadPriority];
@@ -484,7 +518,7 @@ bail:
         goto bail;
     }
     
-    /* no matching rule found */
+    /* NO MATCHING RULE FOUND */
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"no (saved) rule found for %@ (%d)", process.binary.name, process.pid]);
@@ -494,10 +528,10 @@ bail:
         (YES == process.binary.isApple))
     {
         //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing apple process @%d/%@", process.pid, process.path]);
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing apple process %d/%@", process.pid, process.path]);
         
         //create 'apple' rule
-        [rules add:process.path action:RULE_STATE_ALLOW type:RULE_TYPE_APPLE user:0];
+        [rules add:process.path signingInfo:process.binary.signingInfo action:RULE_STATE_ALLOW type:RULE_TYPE_APPLE user:0];
         
         //all set
         goto bail;
@@ -505,17 +539,36 @@ bail:
     
     //if it's a prev installed 3rd-party process and that preference is set; allow!
     if( (YES == [preferences.preferences[PREF_ALLOW_INSTALLED] boolValue]) &&
-        (YES != process.binary.isApple) &&
-        (YES == [self wasPreInstalled:process.binary]) )
+        (YES != process.binary.isApple) )
     {
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing 3rd-party pre-installed process @%@", process.path]);
+        //pre-installed?
+        if(YES == [baseline wasInstalled:process.binary])
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing 3rd-party pre-installed process %@", process.path]);
         
-        //create 'installed' rule
-        [rules add:process.path action:RULE_STATE_ALLOW type:RULE_TYPE_BASELINE user:0];
+            //create 'installed' rule
+            [rules add:process.path signingInfo:process.binary.signingInfo action:RULE_STATE_ALLOW type:RULE_TYPE_BASELINE user:0];
         
-        //all set
-        goto bail;
+            //all set
+            goto bail;
+        }
+        
+        //if binary is validly signed
+        // check for a parent (pre)installed app
+        if( (nil != process.binary.signingInfo) &&
+            (noErr == [process.binary.signingInfo[KEY_SIGNATURE_STATUS] intValue]) &&
+            (YES == [baseline wasParentInstalled:process.binary]) )
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing 3rd-party pre-installed process child %@", process.path]);
+            
+            //create 'installed' rule
+            [rules add:process.path signingInfo:process.binary.signingInfo action:RULE_STATE_ALLOW type:RULE_TYPE_BASELINE user:0];
+            
+            //all set
+            goto bail;
+        }
     }
     
     //no connected client
@@ -563,9 +616,6 @@ bail:
         //add to global queue
         // ->this will trigger processing of alert
         [eventQueue enqueue:alert];
-        
-        //note the fact that an alert was shown for this process
-        [self.alerts addObject:[NSNumber numberWithUnsignedShort:event->pid]];
     }
     
 bail:
@@ -661,9 +711,6 @@ bail:
             //bail
             goto bail;
         }
-        
-        //dbg msg
-        //logMsg(LOG_DEBUG, [NSString stringWithFormat:@"extracted url: %@", url]);
         
         //extract address type
         addressType = ntohs(*(unsigned short*)dnsData);
@@ -781,67 +828,6 @@ bail:
     return process;
 }
 
-//TODO: if pre-installed rule is deleted or toggled, update!!
-
-//determine if a binary was installed before lulu
-// for now, just check if path is in list (maybe hash/signing info)
--(BOOL)wasPreInstalled:(Binary*)binary
-{
-    //flag
-    BOOL preInstalled = NO;
-    
-    //preinstalled binary
-    NSDictionary* preInstalledBinary = nil;
-    
-    //baselinining takes some time...
-    // so check if it's (now) done and load results
-    if( (nil == self.installedApps) &&
-        (YES == [[NSFileManager defaultManager] fileExistsAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:INSTALLED_APPS]]) )
-    {
-        //load
-        self.installedApps = [NSDictionary dictionaryWithContentsOfFile:[INSTALL_DIRECTORY stringByAppendingPathComponent:INSTALLED_APPS]];
-        
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded list %lu (pre)installed applications", (unsigned long)self.installedApps.count]);
-    }
-    
-    //lookup preinstalled binary
-    preInstalledBinary = self.installedApps[binary.path];
-    if(nil == preInstalledBinary)
-    {
-        //bail
-        goto bail;
-    }
-    
-    //check signing info
-    if( (nil != preInstalledBinary[KEY_SIGNING_INFO]) &&
-        (nil != binary.signingInfo) )
-    {
-        //TODO:
-        //check KEY_SIGNING_INFO/array in binary.signingInfo[KEY_SIGNING_AUTHORITIES]
-    }
-    
-    //check hash
-    else if(nil != preInstalledBinary[KEY_HASH])
-    {
-        //match?
-        if(YES != [preInstalledBinary[KEY_HASH] isEqualToString:hashFile(binary.path)])
-        {
-            //bail
-            goto bail;
-        }
-    }
-    
-    //happy
-    // sig or hash match
-    // or if neither available, path matches
-    preInstalled = YES;
-    
-bail:
-    
-    return preInstalled;
-}
-
 //create an alert object
 // note: can treat sockaddr_in and sockaddr_in6 as 'same same' for family, port, etc
 -(NSMutableDictionary*)createAlert:(struct networkOutEvent_s*)event process:(Process*)process
@@ -874,16 +860,19 @@ bail:
     // since it's based on recv'ing data from kernel, try for a bit...
     for(int i=0; i<5; i++)
     {
-        //nap
-        [NSThread sleepForTimeInterval:0.10f];
-        
         //try grab host name
         remoteHost = self.dnsCache[alertInfo[ALERT_IPADDR]];
         if(nil != remoteHost)
         {
             //add
             alertInfo[ALERT_HOSTNAME] = remoteHost;
+            
+            //done
+            break;
         }
+        
+        //nap
+        [NSThread sleepForTimeInterval:0.10f];
     }
     
     //add (remote) port

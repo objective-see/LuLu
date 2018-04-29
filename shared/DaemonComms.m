@@ -131,12 +131,8 @@
         
     }] getRules:wait4Change reply:^(NSDictionary* rules)
     {
-         //respond with rules
-         [[NSRunLoop mainRunLoop] performInModes:@[NSDefaultRunLoopMode, NSModalPanelRunLoopMode] block:^
-         {
-                //respond
-                reply(rules);
-         }];
+         //respond
+         reply(rules);
     }];
     
     return;

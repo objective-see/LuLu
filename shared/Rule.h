@@ -25,7 +25,10 @@
 @property(nonatomic, retain)NSString* path;
 
 //signing info
-@property(nonatomic, retain)NSMutableDictionary* signingInfo;
+@property(nonatomic, retain)NSDictionary* signingInfo;
+
+//hash
+@property(nonatomic, retain)NSString* sha1;
 
 //name
 @property(nonatomic, retain)NSString* name;
@@ -46,7 +49,7 @@
 /* METHODS */
 
 //init method
--(id)init:(NSString*)path rule:(NSDictionary*)rule;
+-(id)init:(NSString*)path info:(NSDictionary*)info;
 
 //make sure rule dictionary has all the required memebers
 -(BOOL)validate:(NSString*)path rule:(NSDictionary*)rule;

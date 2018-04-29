@@ -19,13 +19,13 @@
 @implementation AlertWindowController
 
 @synthesize alert;
-@synthesize signedIcon;
 @synthesize processIcon;
 @synthesize processName;
 @synthesize ancestryButton;
 @synthesize ancestryPopover;
 @synthesize processHierarchy;
 @synthesize virusTotalButton;
+@synthesize signingInfoButton;
 @synthesize virusTotalPopover;
 
 //center window
@@ -67,10 +67,6 @@
         self.ancestryButton.enabled = NO;
     }
     
-    //lulu allowed/blocked from talking to internet?
-    // will fact, will determine state of virus total button
-    [self setVTButtonState];
-
     //host name?
     if(nil != self.alert[ALERT_HOSTNAME])
     {
@@ -165,56 +161,8 @@ bail:
     return protocol;
 }
 
-//lulu allowed/blocked from talking to internet?
-// will fact, will determine state of virus total button
--(void)setVTButtonState
-{
-    //flag
-    __block BOOL shouldDisable = YES;
-    
-    //daemon comms object
-    DaemonComms* daemonComms = nil;
-    
-    //init daemom comms
-    daemonComms = [[DaemonComms alloc] init];
-    
-    //get rules from daemon via XPC
-    [daemonComms getRules:NO reply:^(NSDictionary* daemonRules)
-    {
-         //look for an allow rule for lulu
-         for(NSString* processPath in daemonRules.allKeys)
-         {
-             //is allow rule, match us?
-             if( (YES == [processPath isEqualToString:NSProcessInfo.processInfo.arguments[0]]) &&
-                 (RULE_STATE_ALLOW == [[daemonRules[processPath] objectForKey:RULE_ACTION] intValue]) )
-             {
-                 //dbg msg
-                 logMsg(LOG_DEBUG, @"lulu/helper is allowed to access the network");
-                 
-                 //ok there is a rule for lulu, allowing it
-                 // thus, virus total can be queried (i.e. it won't be blocked)
-                 shouldDisable = NO;
-                 
-                 //done
-                 break;
-             }
-         }
-        
-        //set button state on main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            //set state
-            self.virusTotalButton.enabled = !shouldDisable;
-            
-        });
-         
-    }];
-    
-    return;
-}
 
 //set signing icon
-// TODO: maybe make this popover w/ clickable/more info? (signing auths, etc)
 -(void)processSigningInfo
 {
     //signing info
@@ -231,12 +179,13 @@ bail:
     if(nil == signingInfo)
     {
         //set icon
-        signedIcon.image = [NSImage imageNamed:@"unknown"];
+        signingInfoButton.image = [NSImage imageNamed:@"unknown"];
         
         //bail
         goto bail;
     }
     
+    //parse signing info
     switch([signingInfo[KEY_SIGNATURE_STATUS] intValue])
     {
         //happily signed
@@ -246,32 +195,13 @@ bail:
             if(YES == [signingInfo[KEY_SIGNING_IS_APPLE] boolValue])
             {
                 //set icon
-                signedIcon.image = [NSImage imageNamed:@"signedApple"];
-                
-                //set details
-                //alertInfo[@"processSigning"] = @"Apple Code Signing Cert Auth";
+                signingInfoButton.image = [NSImage imageNamed:@"signedApple"];
             }
             //signed by dev id/ad hoc, etc
             else
             {
                 //set icon
-                signedIcon.image = [NSImage imageNamed:@"signed"];
-                
-                /*
-                 
-                //set signing auth
-                if(0 != [signingInfo[KEY_SIGNING_AUTHORITIES] count])
-                {
-                    //add code-signing auth
-                    alertInfo[@"processSigning"] = [signingInfo[KEY_SIGNING_AUTHORITIES] firstObject];
-                }
-                //no auths
-                else
-                {
-                    //no auths
-                    alertInfo[@"processSigning"] = @"no signing authorities (ad hoc?)";
-                }
-                */
+                signingInfoButton.image = [NSImage imageNamed:@"signed"];
             }
             
             break;
@@ -280,23 +210,50 @@ bail:
         case errSecCSUnsigned:
             
             //set icon
-            signedIcon.image = [NSImage imageNamed:@"unsigned"];
-            
-            //set details
-            //alertInfo[@"processSigning"] = @"unsigned";
+            signingInfoButton.image = [NSImage imageNamed:@"unsigned"];
             
             break;
             
         default:
             
             //set icon
-            signedIcon.image = [NSImage imageNamed:@"unknown"];
-            
-            //set details
-            //alertInfo[@"processSigning"] = [NSString stringWithFormat:@"unknown (status/error: %ld)", (long)[signingInfo[KEY_SIGNATURE_STATUS] integerValue]];
+            signingInfoButton.image = [NSImage imageNamed:@"unknown"];
     }
     
 bail:
+    
+    return;
+}
+
+//automatically invoked when user clicks signing icon
+// depending on state, show/populate the popup, or close it
+-(IBAction)signingInfoButtonHandler:(id)sender
+{
+    //view controller
+    SigningInfoViewController* popover = nil;
+    
+    //open popover
+    if(NSOnState == self.signingInfoButton.state)
+    {
+        //grab delegate
+        popover = (SigningInfoViewController*)self.signingInfoPopover.delegate;
+        
+        //set icon image
+        popover.icon.image = self.signingInfoButton.image;
+        
+        //set alert info
+        popover.alert = self.alert;
+        
+        //show popover
+        [self.signingInfoPopover showRelativeToRect:[self.signingInfoButton bounds] ofView:self.signingInfoButton preferredEdge:NSMaxYEdge];
+    }
+    
+    //close popover
+    else
+    {
+        //close
+        [self.signingInfoPopover close];
+    }
     
     return;
 }

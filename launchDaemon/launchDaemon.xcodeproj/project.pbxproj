@@ -21,10 +21,23 @@
 		7DD2BF681F1DC42700B33214 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF671F1DC42700B33214 /* utilities.m */; };
 		7DD2BF761F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF731F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m */; };
 		7DD2BF771F1E9CE700B33214 /* Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF751F1E9CE700B33214 /* Queue.m */; };
-		CD2B610E2065E17100BF72E9 /* exception.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2B610C2065E17100BF72E9 /* exception.m */; };
-		CD4DB5122055AD7000C53410 /* Baseline.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4DB5112055AD7000C53410 /* Baseline.m */; };
+		CD2E667C208D7D09001B5435 /* Baseline.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E667B208D7D09001B5435 /* Baseline.m */; };
+		CD32C22620900F34009CADF6 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD32C22520900F34009CADF6 /* Sentry.framework */; };
+		CD32C22820900F50009CADF6 /* LuLu in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D7755D01F02DF9500D0017D /* LuLu */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CD32C22C20900F9D009CADF6 /* Sentry.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD32C22520900F34009CADF6 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CD32C23620940887009CADF6 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD32C22520900F34009CADF6 /* Sentry.framework */; };
 		CDAFF457203FB23800F27635 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAFF456203FB23800F27635 /* Preferences.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD32C22320900F24009CADF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D7755C81F02DF9400D0017D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7D7755CF1F02DF9500D0017D;
+			remoteInfo = launchDaemon;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		7D7755CE1F02DF9500D0017D /* CopyFiles */ = {
@@ -35,6 +48,26 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
+		};
+		CD32C22720900F40009CADF6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				CD32C22820900F50009CADF6 /* LuLu in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD32C22920900F67009CADF6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CD32C22C20900F9D009CADF6 /* Sentry.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -68,10 +101,11 @@
 		7DD2BF731F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
 		7DD2BF741F1E9CE700B33214 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
 		7DD2BF751F1E9CE700B33214 /* Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Queue.m; sourceTree = "<group>"; };
-		CD2B610C2065E17100BF72E9 /* exception.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = exception.m; path = ../../shared/exception.m; sourceTree = "<group>"; };
-		CD2B610D2065E17100BF72E9 /* exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = exception.h; path = ../../shared/exception.h; sourceTree = "<group>"; };
-		CD4DB5102055AD7000C53410 /* Baseline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Baseline.h; sourceTree = "<group>"; };
-		CD4DB5112055AD7000C53410 /* Baseline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Baseline.m; sourceTree = "<group>"; };
+		CD2E667A208D7D09001B5435 /* Baseline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Baseline.h; sourceTree = "<group>"; };
+		CD2E667B208D7D09001B5435 /* Baseline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Baseline.m; sourceTree = "<group>"; };
+		CD32C21D20900D36009CADF6 /* LuLu.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LuLu.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD32C21F20900D36009CADF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD32C22520900F34009CADF6 /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
 		CDAFF432203E55C600F27635 /* procInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = procInfo.h; path = ../../shared/libs/procInfo.h; sourceTree = "<group>"; };
 		CDAFF455203FB23800F27635 /* Preferences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		CDAFF456203FB23800F27635 /* Preferences.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
@@ -84,6 +118,15 @@
 			files = (
 				7D4FF8C41F0E1402001A4A68 /* libbsm.tbd in Frameworks */,
 				7D6E87701F3AE6FA00D6BD7C /* libprocInfo.a in Frameworks */,
+				CD32C23620940887009CADF6 /* Sentry.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD32C21A20900D36009CADF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD32C22620900F34009CADF6 /* Sentry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +136,7 @@
 		7D4FF8BF1F0E12F1001A4A68 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD32C22520900F34009CADF6 /* Sentry.framework */,
 				7D4FF8C31F0E1402001A4A68 /* libbsm.tbd */,
 				7D6E876F1F3AE6FA00D6BD7C /* libprocInfo.a */,
 			);
@@ -103,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				7D7755D21F02DF9500D0017D /* Src */,
+				CD32C21E20900D36009CADF6 /* launchDaemonBundle */,
 				7D4FF8BF1F0E12F1001A4A68 /* Frameworks */,
 				7D7755D11F02DF9500D0017D /* Products */,
 			);
@@ -112,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				7D7755D01F02DF9500D0017D /* LuLu */,
+				CD32C21D20900D36009CADF6 /* LuLu.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,15 +165,15 @@
 		7D7755D21F02DF9500D0017D /* Src */ = {
 			isa = PBXGroup;
 			children = (
-				7D7756071F05D62E00D0017D /* shared */,
+				7D7756071F05D62E00D0017D /* Shared */,
 				7DD2BF721F1E9CE700B33214 /* NSMutableArray+QueueAdditions.h */,
 				7DD2BF731F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m */,
 				7DD2BF741F1E9CE700B33214 /* Queue.h */,
 				7DD2BF751F1E9CE700B33214 /* Queue.m */,
-				CD4DB5102055AD7000C53410 /* Baseline.h */,
-				CD4DB5112055AD7000C53410 /* Baseline.m */,
 				7D7755D31F02DF9500D0017D /* main.m */,
 				7D4FF3711F0B6D3100A59A05 /* KextComms.h */,
+				CD2E667A208D7D09001B5435 /* Baseline.h */,
+				CD2E667B208D7D09001B5435 /* Baseline.m */,
 				7D4FF3701F0B6D3100A59A05 /* KextComms.m */,
 				7D7755F81F02E1F400D0017D /* KextListener.h */,
 				7D7755F71F02E1F400D0017D /* KextListener.m */,
@@ -146,11 +192,9 @@
 			path = launchDaemon;
 			sourceTree = "<group>";
 		};
-		7D7756071F05D62E00D0017D /* shared */ = {
+		7D7756071F05D62E00D0017D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				CD2B610D2065E17100BF72E9 /* exception.h */,
-				CD2B610C2065E17100BF72E9 /* exception.m */,
 				CDAFF432203E55C600F27635 /* procInfo.h */,
 				7DD2BF661F1DC42700B33214 /* utilities.h */,
 				7DD2BF671F1DC42700B33214 /* utilities.m */,
@@ -162,7 +206,15 @@
 				7D7755FB1F02EBBE00D0017D /* logging.h */,
 				7D4FF8CE1F0EF360001A4A68 /* UserCommsInterface.h */,
 			);
-			name = shared;
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		CD32C21E20900D36009CADF6 /* launchDaemonBundle */ = {
+			isa = PBXGroup;
+			children = (
+				CD32C21F20900D36009CADF6 /* Info.plist */,
+			);
+			path = launchDaemonBundle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +237,26 @@
 			productReference = 7D7755D01F02DF9500D0017D /* LuLu */;
 			productType = "com.apple.product-type.tool";
 		};
+		CD32C21C20900D36009CADF6 /* launchDaemonBundle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD32C22220900D36009CADF6 /* Build configuration list for PBXNativeTarget "launchDaemonBundle" */;
+			buildPhases = (
+				CD32C21920900D36009CADF6 /* Sources */,
+				CD32C21A20900D36009CADF6 /* Frameworks */,
+				CD32C21B20900D36009CADF6 /* Resources */,
+				CD32C22720900F40009CADF6 /* CopyFiles */,
+				CD32C22920900F67009CADF6 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD32C22420900F24009CADF6 /* PBXTargetDependency */,
+			);
+			name = launchDaemonBundle;
+			productName = launchDaemonBundle;
+			productReference = CD32C21D20900D36009CADF6 /* LuLu.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -198,6 +270,10 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = VBG97UB4TA;
 						ProvisioningStyle = Manual;
+					};
+					CD32C21C20900D36009CADF6 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -214,9 +290,20 @@
 			projectRoot = "";
 			targets = (
 				7D7755CF1F02DF9500D0017D /* launchDaemon */,
+				CD32C21C20900D36009CADF6 /* launchDaemonBundle */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD32C21B20900D36009CADF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7D7755CC1F02DF9500D0017D /* Sources */ = {
@@ -225,23 +312,37 @@
 			files = (
 				7D46FEFF1F5E41F000FEB0F8 /* UserCommsListener.m in Sources */,
 				7D7755F91F02E1F400D0017D /* KextListener.m in Sources */,
-				CD2B610E2065E17100BF72E9 /* exception.m in Sources */,
 				7DD2BF761F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m in Sources */,
 				7DD2BF5C1F1DAEFD00B33214 /* Rule.m in Sources */,
 				7D4FF37B1F0C2DB300A59A05 /* Rules.m in Sources */,
 				7DD2BF681F1DC42700B33214 /* utilities.m in Sources */,
-				CD4DB5122055AD7000C53410 /* Baseline.m in Sources */,
 				7DD2BF771F1E9CE700B33214 /* Queue.m in Sources */,
 				7D4FF8C91F0E1770001A4A68 /* ProcListener.m in Sources */,
 				7D7755D41F02DF9500D0017D /* main.m in Sources */,
 				CDAFF457203FB23800F27635 /* Preferences.m in Sources */,
 				7D4FF8CD1F0EF2F9001A4A68 /* UserComms.m in Sources */,
+				CD2E667C208D7D09001B5435 /* Baseline.m in Sources */,
 				7D7755FC1F02EBBE00D0017D /* logging.m in Sources */,
 				7D4FF3721F0B6D3100A59A05 /* KextComms.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CD32C21920900D36009CADF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CD32C22420900F24009CADF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7D7755CF1F02DF9500D0017D /* launchDaemon */;
+			targetProxy = CD32C22320900F24009CADF6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7D7755D51F02DF9500D0017D /* Debug */ = {
@@ -348,6 +449,8 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Developer ID Application: Objective-See, LLC (VBG97UB4TA)";
 				DEVELOPMENT_TEAM = VBG97UB4TA;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../shared/libs",
 					"$(inherited)",
@@ -362,13 +465,53 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Developer ID Application: Objective-See, LLC (VBG97UB4TA)";
 				DEVELOPMENT_TEAM = VBG97UB4TA;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../shared/libs",
 					"$(inherited)",
 				);
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
-				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = LuLu;
+			};
+			name = Release;
+		};
+		CD32C22020900D36009CADF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = launchDaemonBundle/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.bundle";
+				PRODUCT_NAME = LuLu;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		CD32C22120900D36009CADF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = launchDaemonBundle/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.bundle";
+				PRODUCT_NAME = LuLu;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -389,6 +532,15 @@
 			buildConfigurations = (
 				7D7755D81F02DF9500D0017D /* Debug */,
 				7D7755D91F02DF9500D0017D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD32C22220900D36009CADF6 /* Build configuration list for PBXNativeTarget "launchDaemonBundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD32C22020900D36009CADF6 /* Debug */,
+				CD32C22120900D36009CADF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

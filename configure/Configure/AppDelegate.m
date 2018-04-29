@@ -12,7 +12,6 @@
 #import "AppDelegate.h"
 
 #import "Configure.h"
-#import "Exception.h"
 #import "utilities.h"
 #import "AppDelegate.h"
 
@@ -36,10 +35,6 @@
 -(void)applicationDidFinishLaunching:(NSNotification *)notification
 {
     #pragma unused(notification)
-    
-    //first thing...
-    // install exception handlers
-    installExceptionHandlers();
     
     //alloc/init Config obj
     configureObj = [[Configure alloc] init];

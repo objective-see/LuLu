@@ -12,23 +12,26 @@
 
 /* PROPERTIES */
 
-//query for baselining rules
-//@property(nonatomic, retain)NSMetadataQuery* appQuery;
-    
-//operation queue
-//@property(nonatomic, retain)NSOperationQueue *operationQueue;
-    
-//list of installed (3rd-party) app
-//@property(nonatomic, retain)NSMutableArray* installedApps;
-
-/* METHODS */
-
-//start query for all installed apps
-// save, and if user selects 'allow (already) installed apps, we'll have this reference list
-//-(void)startBaselining;
+//pre-installed 3rd-party apps
+@property(nonatomic, retain)NSMutableDictionary* preInstalledApps;
 
 //invoke system profiler to get installed apps
 // then process each, saving info about 3rd-party ones
--(void)baseline;
+-(BOOL)processAppData:(NSString*)path;
+
+//load (pre)installed apps from file
+-(BOOL)load;
+
+//determine if a binary was installed before lulu
+// checks if path is in list and hash/signing ID matches
+-(BOOL)wasInstalled:(Binary*)binary;
+
+//determine if a binary has parent installed before lulu
+// checks if path is in list and hash/signing ID matches
+-(BOOL)wasParentInstalled:(Binary*)childBinary;
+
+//remove preinstalled app
+// when user deletes rule, also should delete from saved plist
+//-(BOOL)removeItem:(NSString*)path;
 
 @end

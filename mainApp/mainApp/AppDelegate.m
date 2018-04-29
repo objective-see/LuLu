@@ -185,7 +185,7 @@
 
     //start via 'open'
     // allows launch without losing focus
-    taskResults = execTask(OPEN, @[@"-g", loginItem], NO);
+    taskResults = execTask(OPEN, @[@"-g", loginItem], NO, NO);
     if( (nil == taskResults) ||
         (0 != [taskResults[EXIT_CODE] intValue]) )
     {

@@ -106,7 +106,7 @@
         case RULE_TYPE_DEFAULT:
             
             //set title
-            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"process (os binaries, required for system functionality)";
+            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"Operating System Binaries (required for system functionality)";
             
             break;
             
@@ -114,7 +114,7 @@
         case RULE_TYPE_APPLE:
             
             //set title
-            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"process (apple binaries, automatically approved)";
+            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"Apple Binaries (automatically allowed & added here if 'allow apple programs' is set)";
             
             break;
             
@@ -122,7 +122,7 @@
         case RULE_TYPE_BASELINE:
             
             //set title
-            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"process (pre-installed 3rd-party applications, automatically approved)";
+            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"Pre-installed 3rd-party Apps (automatically allowed & added here if 'allow installed applications' is set)";
             
             break;
             
@@ -528,10 +528,10 @@ bail:
                  [self.tableView reloadData];
                  
                  //select first row
-                 [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+                 //[self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
                  
                  //scroll to top
-                 [self.tableView scrollRowToVisible:0];
+                 //[self.tableView scrollRowToVisible:0];
                  
              });
              
@@ -566,11 +566,11 @@ bail:
         [self.rulesFiltered removeAllObjects];
         
         //create rule objects
-        // ->then add to array of rules
+        // then add to array of rules
         for(NSString* processPath in daemonRules.allKeys)
         {
             //create rule
-            rule = [[Rule alloc] init:processPath rule:daemonRules[processPath]];
+            rule = [[Rule alloc] init:processPath info:daemonRules[processPath]];
             
             //add
             [self.rules addObject:rule];

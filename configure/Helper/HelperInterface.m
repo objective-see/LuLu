@@ -37,7 +37,7 @@ dispatch_source_t dispatchSource = nil;
     
     //configure
     // pass in 'install' flag
-    result = [NSNumber numberWithInt:[self configure:app arguements:@[@"-install"]]];
+    result = [NSNumber numberWithInt:[self configure:app arguements:@[CMD_INSTALL]]];
 
     //reply to client
     reply(result);
@@ -57,7 +57,7 @@ dispatch_source_t dispatchSource = nil;
 
     //configure
     // pass in 'uninstall' flag
-    result = [NSNumber numberWithInt:[self configure:app arguements:@[@"-uninstall", [NSNumber numberWithBool:full].stringValue]]];
+    result = [NSNumber numberWithInt:[self configure:app arguements:@[CMD_UNINSTALL, [NSNumber numberWithBool:full].stringValue]]];
     
     //reply to client
     reply(result);
@@ -196,7 +196,7 @@ bail:
     helperPlist = [@"/Library/LaunchDaemons" stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", CONFIG_HELPER_ID]];
     
     //unload
-    execTask(@"/bin/launchctl", @[@"unload", helperPlist], YES);
+    execTask(@"/bin/launchctl", @[@"unload", helperPlist], YES, NO);
     
     return;
 }
@@ -330,20 +330,14 @@ bail:
     [fileManager changeCurrentDirectoryPath:[NSString stringWithFormat:@"%@/Contents/Resources/", validatedApp]];
     
     //exec script
-    results = execTask(script, arguments, YES);
+    // wait, but don't grab output
+    results = execTask(script, arguments, YES, NO);
     
-    //grab result
-    if(nil != results)
+    //exit code?
+    if(nil != results[EXIT_CODE])
     {
         //grab
         result = [results[EXIT_CODE] intValue];
-    }
-    
-    //no output means error
-    // i.e. task exception, etc
-    else
-    {
-        result = -1;
     }
     
     //(re)set current working directory

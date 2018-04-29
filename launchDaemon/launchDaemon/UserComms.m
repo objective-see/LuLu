@@ -7,13 +7,14 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "consts.h"
 #import "Rule.h"
 #import "Rules.h"
 #import "Queue.h"
+#import "consts.h"
 #import "logging.h"
 #import "KextComms.h"
 #import "UserComms.h"
+#import "utilities.h"
 #import "Preferences.h"
 #import "UserClientShared.h"
 #import "UserCommsInterface.h"
@@ -130,15 +131,39 @@ extern NSInteger clientConnected;
 //add rule
 -(void)addRule:(NSString*)path action:(NSUInteger)action user:(NSUInteger)user
 {
+    //binary obj
+    Binary* binary = nil;
+    
+    //cs flag
+    SecCSFlags csFlags = kSecCSDefaultFlags;
+    
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: ADD RULE (%@/%lu)", path, action]);
     
+    //init binary obj w/ path
+    binary = [[Binary alloc] init:path];
+    if(nil == binary)
+    {
+        //err msg
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed init binary object for %@", path]);
+        
+        //bail
+        goto bail;
+    }
+    
+    //determine appropriate flags
+    // 'tis ok if the path bundle is nil
+    csFlags = determineCSFlags(path, [NSBundle bundleWithPath:path]);
+    
+    //generate signing info
+    [binary generateSigningInfo:csFlags];
+    
     //log to file
     logMsg(LOG_TO_FILE, [NSString stringWithFormat:@"adding rule (path: %@ / action: %lu)", path, action]);
-
+    
     //add
-    // ->type is 'user'
-    if(YES != [rules add:path action:action type:RULE_TYPE_USER user:user])
+    // type is 'user'
+    if(YES != [rules add:path signingInfo:binary.signingInfo action:action type:RULE_TYPE_USER user:user])
     {
         //err msg
         logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to add rule for %@", path]);
@@ -161,9 +186,8 @@ bail:
     //log to file
     logMsg(LOG_TO_FILE, [NSString stringWithFormat:@"updating rule (path: %@ / action: %lu)", path, action]);
     
-    //add
-    // ->type is 'user'
-    if(YES != [rules update:path action:action type:RULE_TYPE_USER user:user])
+    //update
+    if(YES != [rules update:path action:action user:user])
     {
         //err msg
         logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to update rule for %@", path]);
@@ -342,12 +366,11 @@ bail:
     logMsg(LOG_TO_FILE, [NSString stringWithFormat:@"alert response: %@", alert]);
     
     //tell kext
-    // TODO: add support for 'user'
     [kextComms addRule:pid action:action];
     
     //update rules
-    // type is 'user'
-    [rules add:path action:action type:RULE_TYPE_USER user:user];
+    // type of rule is 'user'
+    [rules add:path signingInfo:alert[ALERT_SIGNINGINFO] action:action type:RULE_TYPE_USER user:user];
     
     //signal all threads that rules changed
     while(0 != dispatch_semaphore_signal(rulesChanged));

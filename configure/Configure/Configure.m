@@ -297,11 +297,14 @@ bail:
     //wait semaphore
     dispatch_semaphore_t semaphore = 0;
     
+    //path to login item
+    NSString* loginItem = nil;
+    
     //init sema
     semaphore = dispatch_semaphore_create(0);
     
     //define block
-    void (^block)(NSNumber *) = ^(NSNumber *result)
+    void(^block)(NSNumber *) = ^(NSNumber *result)
     {
         //callback from XPC will be a bg thread
         // so since we're updating UI, invoke on main thread
@@ -317,11 +320,48 @@ bail:
     };
     
     //install
+    // note this is async
     [xpcComms install:block];
     
-    //wait for install to be completed by XPC
+    //wait for installer logic to be completed by XPC
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"privileged helper item install logic completed (%d)", wasInstalled]);
+    
+    //sanity check
+    // make sure xpc install logic succeeded
+    if(YES != wasInstalled)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //init path to login item
+    loginItem = [NSString pathWithComponents:@[@"/", @"Applications", APP_NAME, @"Contents", @"Library", @"LoginItems", [NSString stringWithFormat:@"%@.app", LOGIN_ITEM_NAME]]];
+    
+    //install login item
+    // can't do this in script since it needs to be executed as logged in user (not r00t)
+    if(YES != toggleLoginItem([NSURL fileURLWithPath:loginItem], ACTION_INSTALL_FLAG))
+    {
+        //err msg
+        logMsg(LOG_ERR, @"failed to install login item");
+        
+        //set error
+        wasInstalled = NO;
+        
+        //bail
+        goto bail;
+    }
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"installed login item (%@)", loginItem]);
+    
+    //happy
+    wasInstalled = YES;
+    
+bail:
+    
     return wasInstalled;
 }
 
@@ -333,6 +373,9 @@ bail:
     
     //wait semaphore
     dispatch_semaphore_t semaphore = 0;
+    
+    //path to login item
+    NSString* loginItem = nil;
     
     //init sema
     semaphore = dispatch_semaphore_create(0);
@@ -353,11 +396,31 @@ bail:
         });
     };
     
-    //install
+    //init path to login item
+    loginItem = [NSString pathWithComponents:@[@"/", @"Applications", APP_NAME, @"Contents", @"Library", @"LoginItems", [NSString stringWithFormat:@"%@.app", LOGIN_ITEM_NAME]]];
+    
+    //uninstall login item, first
+    // can't do this in script since it needs to be executed as logged in user (not r00t)
+    if(YES != toggleLoginItem([NSURL fileURLWithPath:loginItem], ACTION_UNINSTALL_FLAG))
+    {
+        //err msg
+        logMsg(LOG_ERR, @"failed to uninstall login item");
+        
+        //bail
+        goto bail;
+    }
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"uninstalled login item (%@)", loginItem]);
+    
+    //uninstall
+    // also sets return/var flag
     [xpcComms uninstall:full reply:block];
     
     //wait for install to be completed by XPC
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+bail:
     
     return wasUninstalled;
 }

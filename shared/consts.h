@@ -13,6 +13,9 @@
 //patreon url
 #define PATREON_URL @"https://www.patreon.com/bePatron?c=701171"
 
+//sentry crash reporting URL
+#define CRASH_REPORTING_URL @"https://639e824c5bc14eaca06c55f52aee1946:77fa2885950642288a52b1773e5375b3@sentry.io/1195655"
+
 //vendor id string
 #define OBJECTIVE_SEE_VENDOR "com.objectiveSee"
 
@@ -102,6 +105,12 @@
 //product version url
 #define PRODUCT_VERSIONS_URL @"https://objective-see.com/products.json"
 
+//install cmd
+#define CMD_INSTALL @"-install"
+
+//uninstall cmd
+#define CMD_UNINSTALL @"-uninstall"
+
 //flag to uninstall
 #define ACTION_UNINSTALL_FLAG 0
 
@@ -178,8 +187,8 @@
 //launch daemon plist
 #define LAUNCH_DAEMON_PLIST @"com.objective-see.lulu.plist"
 
-//installed apps
-#define INSTALLED_APPS @"installedApps.plist"
+//installed apps file
+#define INSTALLED_APPS @"installedApps"
 
 //frame shift
 // for status msg to avoid activity indicator
@@ -232,14 +241,14 @@
 #define CMDLINE_FLAG_WELCOME @"-welcome"
 #define CMDLINE_FLAG_PREFS @"-prefs"
 #define CMDLINE_FLAG_RULES @"-rules"
-#define CMDLINE_FLAG_INSTALL @"-install"
-#define CMDLINE_FLAG_UNINSTALL @"-uninstall"
 
 //keys for rule dictionary
 #define RULE_PATH @"path"
-#define RULE_ACTION @"action"
+#define RULE_HASH @"hash"
 #define RULE_TYPE @"type"
 #define RULE_USER @"user"
+#define RULE_ACTION @"action"
+#define RULE_SIGNING_INFO @"signingInfo"
 
 //rules types
 #define RULE_TYPE_ALL     -1
@@ -260,7 +269,6 @@
 #define ALERT_SIGNINGINFO @"signingInfo"
 
 //keys for (pre)install apps
-#define KEY_SIGNING_INFO @"signed"
 #define KEY_NAME @"name"
 #define KEY_HASH @"hash"
 

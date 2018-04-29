@@ -48,11 +48,26 @@
 		CD223E3E20830AFF0049A76B /* statusIconWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD223E3820830AFF0049A76B /* statusIconWhite@2x.png */; };
 		CD22785E20434CAC00C72C76 /* StatusBarPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD22785B20434CAB00C72C76 /* StatusBarPopover.xib */; };
 		CD22785F20434CAC00C72C76 /* StatusBarPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD22785D20434CAB00C72C76 /* StatusBarPopoverController.m */; };
-		CD227862204366A400C72C76 /* upArrowSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = CD227860204366A400C72C76 /* upArrowSmall.png */; };
-		CD227863204366A400C72C76 /* upArrowSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD227861204366A400C72C76 /* upArrowSmall@2x.png */; };
-		CD2B61112065E1AF00BF72E9 /* exception.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2B610F2065E1AF00BF72E9 /* exception.m */; };
+		CD32C213208FFD50009CADF6 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD32C212208FFD50009CADF6 /* Sentry.framework */; };
+		CD32C23220901608009CADF6 /* Sentry.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD32C212208FFD50009CADF6 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CD32C2352094062D009CADF6 /* SigningInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C2332094062C009CADF6 /* SigningInfoViewController.m */; };
+		CD962AEF208C65A2000D247E /* popoverCloseAlt.png in Resources */ = {isa = PBXBuildFile; fileRef = CD962AED208C65A2000D247E /* popoverCloseAlt.png */; };
+		CD962AF0208C65A2000D247E /* popoverClose.png in Resources */ = {isa = PBXBuildFile; fileRef = CD962AEE208C65A2000D247E /* popoverClose.png */; };
 		CDAFF438203E563600F27635 /* libprocInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDAFF437203E563600F27635 /* libprocInfo.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CD32C231209015FB009CADF6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CD32C23220901608009CADF6 /* Sentry.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7D16D68F1F64E43300DB3161 /* Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Update.h; path = ../shared/Update.h; sourceTree = "<group>"; };
@@ -114,10 +129,11 @@
 		CD22785B20434CAB00C72C76 /* StatusBarPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusBarPopover.xib; sourceTree = "<group>"; };
 		CD22785C20434CAB00C72C76 /* StatusBarPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarPopoverController.h; sourceTree = "<group>"; };
 		CD22785D20434CAB00C72C76 /* StatusBarPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarPopoverController.m; sourceTree = "<group>"; };
-		CD227860204366A400C72C76 /* upArrowSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upArrowSmall.png; sourceTree = "<group>"; };
-		CD227861204366A400C72C76 /* upArrowSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upArrowSmall@2x.png"; sourceTree = "<group>"; };
-		CD2B610F2065E1AF00BF72E9 /* exception.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = exception.m; path = ../shared/exception.m; sourceTree = "<group>"; };
-		CD2B61102065E1AF00BF72E9 /* exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = exception.h; path = ../shared/exception.h; sourceTree = "<group>"; };
+		CD32C212208FFD50009CADF6 /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
+		CD32C2332094062C009CADF6 /* SigningInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigningInfoViewController.m; sourceTree = "<group>"; };
+		CD32C2342094062C009CADF6 /* SigningInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigningInfoViewController.h; sourceTree = "<group>"; };
+		CD962AED208C65A2000D247E /* popoverCloseAlt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverCloseAlt.png; sourceTree = "<group>"; };
+		CD962AEE208C65A2000D247E /* popoverClose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverClose.png; sourceTree = "<group>"; };
 		CDAFF433203E55D500F27635 /* procInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = procInfo.h; path = ../shared/libs/procInfo.h; sourceTree = "<group>"; };
 		CDAFF437203E563600F27635 /* libprocInfo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprocInfo.a; path = ../shared/libs/libprocInfo.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDAFF438203E563600F27635 /* libprocInfo.a in Frameworks */,
+				CD32C213208FFD50009CADF6 /* Sentry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +162,8 @@
 		7D3B75091F13354900568828 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CD962AEE208C65A2000D247E /* popoverClose.png */,
+				CD962AED208C65A2000D247E /* popoverCloseAlt.png */,
 				CD223E3220830AE80049A76B /* statusBar */,
 				7D46FF0F1F60EBAE00FEB0F8 /* luluText.png */,
 				7D46FF101F60EBAE00FEB0F8 /* luluIcon.png */,
@@ -158,8 +177,6 @@
 				7DD25FFD1F2442BB00277EC4 /* signedApple.png */,
 				7DD25FFE1F2442BB00277EC4 /* unknown.png */,
 				7DD25FFF1F2442BB00277EC4 /* unsigned.png */,
-				CD227860204366A400C72C76 /* upArrowSmall.png */,
-				CD227861204366A400C72C76 /* upArrowSmall@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -167,8 +184,6 @@
 		7D3B75201F13356900568828 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				CD2B61102065E1AF00BF72E9 /* exception.h */,
-				CD2B610F2065E1AF00BF72E9 /* exception.m */,
 				CDAFF433203E55D500F27635 /* procInfo.h */,
 				7D16D68F1F64E43300DB3161 /* Update.h */,
 				7D16D6901F64E43300DB3161 /* Update.m */,
@@ -226,6 +241,8 @@
 				7DD2600B1F252E0C00277EC4 /* VirusTotal.m */,
 				7DD2600D1F252E8C00277EC4 /* VirusTotalViewController.h */,
 				7DD2600E1F252E8C00277EC4 /* VirusTotalViewController.m */,
+				CD32C2342094062C009CADF6 /* SigningInfoViewController.h */,
+				CD32C2332094062C009CADF6 /* SigningInfoViewController.m */,
 				7DD25FEF1F23B73C00277EC4 /* Assets.xcassets */,
 				7DD2BF941F1FF64300B33214 /* AlertWindow.xib */,
 				7D3B75001F13354900568828 /* Base.lproj */,
@@ -273,6 +290,7 @@
 		CDAFF434203E55F300F27635 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD32C212208FFD50009CADF6 /* Sentry.framework */,
 				CDAFF437203E563600F27635 /* libprocInfo.a */,
 			);
 			name = Frameworks;
@@ -288,6 +306,7 @@
 				7D7755DF1F02E05B00D0017D /* Sources */,
 				7D7755E01F02E05B00D0017D /* Frameworks */,
 				7D7755E11F02E05B00D0017D /* Resources */,
+				CD32C231209015FB009CADF6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -342,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD962AF0208C65A2000D247E /* popoverClose.png in Resources */,
 				7DD260211F25621400277EC4 /* parentsIconBG.png in Resources */,
 				CD223E3E20830AFF0049A76B /* statusIconWhite@2x.png in Resources */,
 				7DD260011F2442BB00277EC4 /* signedApple.png in Resources */,
@@ -350,6 +370,7 @@
 				CD223E3A20830AFF0049A76B /* statusIconDisabledWhite.png in Resources */,
 				CD223E3C20830AFF0049A76B /* statusIconDisabled@2x.png in Resources */,
 				7D16D6951F64E43300DB3161 /* UpdateWindow.xib in Resources */,
+				CD962AEF208C65A2000D247E /* popoverCloseAlt.png in Resources */,
 				CD223E3920830AFF0049A76B /* statusIconDisabled.png in Resources */,
 				CD22785E20434CAC00C72C76 /* StatusBarPopover.xib in Resources */,
 				7DD260001F2442BB00277EC4 /* signed.png in Resources */,
@@ -358,13 +379,11 @@
 				7DD260201F25621400277EC4 /* parentsIcon.png in Resources */,
 				CD223E3D20830AFF0049A76B /* statusIconDisabledWhite@2x.png in Resources */,
 				7D46FF111F60EBAE00FEB0F8 /* luluText.png in Resources */,
-				CD227863204366A400C72C76 /* upArrowSmall@2x.png in Resources */,
 				7D3B751B1F13354900568828 /* statusIcon@2x.png in Resources */,
 				7DD260181F2537CC00277EC4 /* virusTotalBG.png in Resources */,
 				7D46FF121F60EBAE00FEB0F8 /* luluIcon.png in Resources */,
 				7D7755F01F02E05B00D0017D /* MainMenu.xib in Resources */,
 				7DD260031F2442BB00277EC4 /* unsigned.png in Resources */,
-				CD227862204366A400C72C76 /* upArrowSmall.png in Resources */,
 				7D3B75151F13354900568828 /* MainMenu.xib in Resources */,
 				7DD260221F25621400277EC4 /* parentsIconOver.png in Resources */,
 				7DD25FF01F23B73C00277EC4 /* Assets.xcassets in Resources */,
@@ -385,8 +404,8 @@
 				7D7755EB1F02E05B00D0017D /* main.m in Sources */,
 				7DD260131F25307B00277EC4 /* HyperlinkTextField.m in Sources */,
 				7D3B75251F13357D00568828 /* logging.m in Sources */,
-				CD2B61112065E1AF00BF72E9 /* exception.m in Sources */,
 				7DD2600F1F252E8C00277EC4 /* VirusTotalViewController.m in Sources */,
+				CD32C2352094062D009CADF6 /* SigningInfoViewController.m in Sources */,
 				7D5C5F521F200B9200C0E94A /* utilities.m in Sources */,
 				7D7755E81F02E05B00D0017D /* AppDelegate.m in Sources */,
 				7DD2601C1F25600900277EC4 /* ParentsWindowController.m in Sources */,
@@ -528,7 +547,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Objective-See, LLC (VBG97UB4TA)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = loginItem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../shared/libs";
@@ -546,12 +565,12 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Objective-See, LLC (VBG97UB4TA)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = loginItem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../shared/libs";
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
-				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.helper";
 				PRODUCT_NAME = "LuLu Helper";
 			};

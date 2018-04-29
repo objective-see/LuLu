@@ -101,7 +101,7 @@ bail:
     logMsg(LOG_DEBUG, @"sending msg to kext: 'enable'");
     
     //talk to kext
-    // ->enable firewall
+    // enable firewall
     return IOConnectCallScalarMethod(self.connection, kTestUserClientEnable, NULL, 0, NULL, NULL);
 }
 
@@ -118,7 +118,7 @@ bail:
     logMsg(LOG_DEBUG, @"sending msg to kext: 'disable'");
     
     //talk to kext
-    // ->disable firewall
+    // disable firewall
     return IOConnectCallScalarMethod(self.connection, kTestUserClientDisable, scalarIn, 1, NULL, NULL);
 }
 
@@ -138,7 +138,7 @@ bail:
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"sending msg to kext: 'add rule' (pid: %d, action: %d)", pid, action]);
     
     //talk to kext
-    // ->add rule by pid/action
+    // add rule by pid/action
     return IOConnectCallScalarMethod(self.connection, kTestUserClientAddRule, scalarIn, 2, NULL, NULL);
 }
 
@@ -154,8 +154,8 @@ bail:
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"sending msg to kext: 'removeRule' (pid: %d)", pid]);
     
-    ///tell kext listener to reset
-    // ->will ensure alerts are now (re)shown for process
+    //tell kext listener to reset
+    // will ensure alerts are now (re)shown for process
     [kextListener resetAlert:pid];
 
     //remove rule by pid
