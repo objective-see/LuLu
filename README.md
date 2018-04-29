@@ -24,6 +24,12 @@ Simply run the installer application: `LuLu Installer.app`
 
 &#x2764;&nbsp; Love this product or want to support it? Check out my [patreon page](https://www.patreon.com/objective_see) :)
 
+<p align="center">
+<a class="inlineLink" href="https://www.patreon.com/objective_see">
+		<img src="https://objective-see.com/patreon/images/patreon.jpg" width="700" style="display:block; margin:auto;"/>
+</a>
+</p>    
+
 **Mahalo!**<br>
 This product is supported by the following patrons:
 + Lance Gaines
