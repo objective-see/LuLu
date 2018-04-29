@@ -57,7 +57,11 @@
          
          //dbg msg
          logMsg(LOG_DEBUG, [NSString stringWithFormat:@"processed rules: %@", self.rules]);
-         
+        
+         //show rules in UI
+         // ...gotta do this on the main thread
+         dispatch_async(dispatch_get_main_queue(), ^{
+        
          //set 'all' as default selected
          self.toolbar.selectedItemIdentifier = @"all";
         
@@ -66,6 +70,8 @@
         
          //select first row
          [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+             
+         });
         
      }];
     
@@ -533,19 +539,18 @@ bail:
                  //reload table
                  [self.tableView reloadData];
                  
+                 //TODO: for rule add
+                 // select the row with newly added rule
+                 
                  //re-select row
                  if(-1 != selectedRow)
                  {
                      //make it selected
                      [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow] byExtendingSelection:NO];
+                     
+                     //scroll
+                     [self.tableView scrollRowToVisible:0];
                  }
-                 
-                 //TODO: select...?
-                 //select first row
-                 //[self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
-                 
-                 //scroll to top
-                 //[self.tableView scrollRowToVisible:0];
                  
              });
              
