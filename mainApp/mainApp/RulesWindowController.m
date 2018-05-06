@@ -23,9 +23,11 @@
 @synthesize searchBox;
 @synthesize daemonComms;
 @synthesize addRulePanel;
+@synthesize loadingRules;
 @synthesize shouldFilter;
 @synthesize rulesFiltered;
 @synthesize rulesStatusMsg;
+@synthesize loadingRulesSpinner;
 
 //alloc/init
 // ->get rules and listen for new ones
@@ -46,6 +48,21 @@
     //unset message
     self.rulesStatusMsg.stringValue = @"";
     
+    //pre-req for color of overlay
+    self.loadingRules.wantsLayer = YES;
+    
+    //round overlay's corners
+    self.loadingRules.layer.cornerRadius = 20.0;
+    
+    //mask overlay
+    self.loadingRules.layer.masksToBounds = YES;
+    
+    //set overlay's view color to gray
+    self.loadingRules.layer.backgroundColor = [[NSColor colorWithRed:217.0f/255.0f green:217.0f/255.0f blue:217.0f/255.0f alpha:1.0] CGColor];
+    
+    //start spinner
+    [self.loadingRulesSpinner startAnimation:nil];
+    
     //get rules from daemon via XPC
     [self.daemonComms getRules:NO reply:^(NSDictionary* daemonRules)
     {
@@ -58,9 +75,15 @@
          //dbg msg
          logMsg(LOG_DEBUG, [NSString stringWithFormat:@"processed rules: %@", self.rules]);
         
+         //wait a bit (more) to allow 'loading rules' msg to show
+         [NSThread sleepForTimeInterval:0.5f];
+        
          //show rules in UI
          // ...gotta do this on the main thread
          dispatch_async(dispatch_get_main_queue(), ^{
+             
+         //hide overlay
+         self.loadingRules.hidden = YES;
         
          //set 'all' as default selected
          self.toolbar.selectedItemIdentifier = @"all";
@@ -71,13 +94,15 @@
          //select first row
          [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
              
+         //then, in background
+         // monitor & process new rules
+         [self performSelectorInBackground:@selector(listenForRuleChanges) withObject:nil];
+             
          });
         
      }];
-    
-    //in background
-    // monitor & process new rules
-    [self performSelectorInBackground:@selector(listenForRuleChanges) withObject:nil];
+
+    return;
 }
 
 //toolbar button handle
@@ -257,7 +282,7 @@
     [panel setNameFieldStringValue:RULES_FILE];
     
     //show panel
-    // ->completion handler will invoked user click ok/cancel
+    // completion handler will invoked user click ok/cancel
     [panel beginWithCompletionHandler:^(NSInteger result)
     {
          //only need to handle 'ok'
@@ -311,7 +336,7 @@
              {
                  //update msg
                  self.rulesStatusMsg.stringValue = @"exported rules";
-            }
+             }
              
          }//clicked 'ok' (to save)
         
@@ -511,10 +536,6 @@ bail:
     // call daemon and block, then display, and repeat!
     while(YES)
     {
-        //pool
-        @autoreleasepool
-        {
-        
         //dbg msg
         logMsg(LOG_DEBUG, @"requesting rules from daemon, will block");
         
@@ -523,12 +544,12 @@ bail:
         {
              //dbg msg
              logMsg(LOG_DEBUG, [NSString stringWithFormat:@"got updated rules from daemon: %@", daemonRules]);
+            
+             //process rules
+             [self processRulesDictionary:daemonRules];
              
              //process new rules and refresh table
              dispatch_async(dispatch_get_main_queue(), ^{
-                 
-                 //process rules
-                 [self processRulesDictionary:daemonRules];
                  
                  //(re)filter rules
                  [self filterRules];
@@ -559,10 +580,8 @@ bail:
              
          }];
         
-        //wait for resposne, before to asking again
+        //wait for response, before to asking again
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-            
-        }//pool
     }
     
     return;

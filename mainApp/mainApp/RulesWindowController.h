@@ -48,6 +48,12 @@
 //flag
 @property BOOL shouldFilter;
 
+//loading rules overlay
+@property (weak) IBOutlet NSView *loadingRules;
+
+//loading rules spinner
+@property (weak) IBOutlet NSProgressIndicator *loadingRulesSpinner;
+
 //table items
 // ->all rules
 @property(nonatomic, retain)NSMutableArray* rules;
@@ -67,9 +73,6 @@
 
 //table view
 @property (weak) IBOutlet NSTableView *tableView;
-
-//overlay
-@property (strong) IBOutlet NSView *overlay;
 
 //panel for 'add rule'
 @property (weak) IBOutlet NSView *addRulePanel;

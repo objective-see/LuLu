@@ -52,7 +52,7 @@
 		7D5208E71E41C23900832F57 = {
 			isa = PBXGroup;
 			children = (
-				7D5208F31E41C23900832F57 /* src */,
+				7D5208F31E41C23900832F57 /* Src */,
 				7D5208F21E41C23900832F57 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,7 +65,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7D5208F31E41C23900832F57 /* src */ = {
+		7D5208F31E41C23900832F57 /* Src */ = {
 			isa = PBXGroup;
 			children = (
 				7D7756061F05845600D0017D /* Shared */,
@@ -81,7 +81,7 @@
 				7D7756011F05844800D0017D /* userInterface.hpp */,
 				7D7756001F05844800D0017D /* userInterface.cpp */,
 			);
-			name = src;
+			name = Src;
 			path = kernelExtension;
 			sourceTree = "<group>";
 		};
@@ -297,12 +297,12 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 0.9.4;
+				CURRENT_PROJECT_VERSION = 0.9.5;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				INFOPLIST_FILE = kernelExtension/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULE_NAME = "com.objective-see.lulu";
-				MODULE_VERSION = 0.9.4;
+				MODULE_VERSION = 0.9.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
 				PRODUCT_MODULE_NAME = LuLu;
 				PRODUCT_NAME = LuLu;
@@ -315,12 +315,12 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 0.9.4;
+				CURRENT_PROJECT_VERSION = 0.9.5;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				INFOPLIST_FILE = kernelExtension/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULE_NAME = "com.objective-see.lulu";
-				MODULE_VERSION = 0.9.4;
+				MODULE_VERSION = 0.9.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
 				PRODUCT_MODULE_NAME = LuLu;
 				PRODUCT_NAME = LuLu;

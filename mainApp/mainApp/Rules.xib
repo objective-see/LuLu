@@ -12,6 +12,8 @@
                 <outlet property="addRuleButton" destination="XnJ-SV-lDg" id="YqK-bz-bc0"/>
                 <outlet property="addRuleLabel" destination="eUD-fD-sWd" id="BHL-mp-mNT"/>
                 <outlet property="addRulePanel" destination="cna-Y1-PEc" id="a7H-3I-8qq"/>
+                <outlet property="loadingRules" destination="VUa-5Z-QAG" id="aLz-sm-xVQ"/>
+                <outlet property="loadingRulesSpinner" destination="XFi-AG-WZ4" id="aaT-3y-LEG"/>
                 <outlet property="rulesStatusMsg" destination="N1C-d0-irl" id="bbR-QD-deN"/>
                 <outlet property="searchBox" destination="6hG-3v-G35" id="fzu-Bv-orq"/>
                 <outlet property="tableView" destination="rpa-sZ-jQp" id="SvF-Yi-OKB"/>
@@ -300,6 +302,28 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="VUa-5Z-QAG" userLabel="Overlay">
+                        <rect key="frame" x="200" y="200" width="500" height="200"/>
+                        <subviews>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="XFi-AG-WZ4">
+                                <rect key="frame" x="234" y="84" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FKP-Dh-JqV" userLabel="loading data">
+                                <rect key="frame" x="195" y="48" width="110" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="loading rules" id="vD6-Bk-elz">
+                                    <font key="font" size="13" name="Menlo-Bold"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="0r1-z8-dGu"/>
+                            <constraint firstAttribute="width" constant="500" id="QOs-yK-FnG"/>
+                        </constraints>
+                    </customView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="gth-To-Lf2" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="-1" id="0Jc-HW-sRY"/>
@@ -309,7 +333,9 @@
                     <constraint firstItem="17j-c5-vs7" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="8la-8n-39d"/>
                     <constraint firstAttribute="trailing" secondItem="gth-To-Lf2" secondAttribute="trailing" constant="-1" id="GjA-Ta-LSr"/>
                     <constraint firstItem="MHk-d5-Sde" firstAttribute="leading" secondItem="wLD-v3-0h8" secondAttribute="trailing" constant="24" id="HDh-sh-Jxz"/>
+                    <constraint firstItem="VUa-5Z-QAG" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="Muu-cd-H1G"/>
                     <constraint firstItem="N1C-d0-irl" firstAttribute="top" secondItem="gth-To-Lf2" secondAttribute="bottom" constant="11" id="QTx-6y-q4F"/>
+                    <constraint firstItem="VUa-5Z-QAG" firstAttribute="centerY" secondItem="se5-gp-TjO" secondAttribute="centerY" id="SxS-6x-v32"/>
                     <constraint firstItem="XnJ-SV-lDg" firstAttribute="leading" secondItem="eUD-fD-sWd" secondAttribute="trailing" constant="15" id="ZNv-12-r52"/>
                     <constraint firstAttribute="bottom" secondItem="N1C-d0-irl" secondAttribute="bottom" constant="11" id="acZ-Hd-g0q"/>
                     <constraint firstAttribute="bottom" secondItem="eUD-fD-sWd" secondAttribute="bottom" constant="10" id="edr-zK-zzy"/>

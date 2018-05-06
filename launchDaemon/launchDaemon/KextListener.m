@@ -429,7 +429,7 @@ bail:
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"processing 'network out' event from kernel queue: %d /  %@", event->pid, convertSocketAddr((struct sockaddr*)&(event->remoteAddress))]);
     
     //nap a bit
-    // ->for a processes fork/exec, this should process monitor time to register exec event
+    // for a processes fork/exec, this should process monitor time to register exec event
     [NSThread sleepForTimeInterval:0.5f];
     
     //try find process via process monitor
@@ -575,6 +575,8 @@ bail:
     // can't deliver alert, so just allow, but log this fact
     if(YES != clientConnected)
     {
+        //TODO: save? or? 
+        
         //dbg msg
         // also log to file
         logMsg(LOG_DEBUG|LOG_TO_FILE, @"no active (enabled) client, so telling kernel to 'allow'");

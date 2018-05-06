@@ -212,6 +212,9 @@
 //button title: close
 #define ACTION_CLOSE @"Close"
 
+//button title: uprade
+#define ACTION_UPGRADE @"Upgrade"
+
 /* LAUNCH DAEMON */
 
 //path to system profiler
