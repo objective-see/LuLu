@@ -19,20 +19,30 @@
 @synthesize vtSpinner;
 
 //automatically invoked
-// ->configure popover and kick off VT queries
+// configure popover and kick off VT queries
 -(void)popoverWillShow:(NSNotification *)notification;
 {
     //set message
     self.message.stringValue = @"querying virus total...";
     
+    //bg thread for VT
+    [self performSelectorInBackground:@selector(queryVT) withObject:nil];
+    
+    return;
+}
+
+//automatically invoked
+// finishg configuring popover
+-(void)popoverDidShow:(NSNotification *)notification
+{
     //show spinner
     self.vtSpinner.hidden = NO;
     
-    //start spinner
+    //start
     [self.vtSpinner startAnimation:nil];
     
-    //bg thread for VT
-    [self performSelectorInBackground:@selector(queryVT) withObject:nil];
+    //make the animation show...
+    [[NSRunLoop mainRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.01]];
     
     return;
 }

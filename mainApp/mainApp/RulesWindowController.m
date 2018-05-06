@@ -570,7 +570,7 @@ bail:
                      [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow] byExtendingSelection:NO];
                      
                      //scroll
-                     [self.tableView scrollRowToVisible:0];
+                     [self.tableView scrollRowToVisible:selectedRow];
                  }
                  
              });

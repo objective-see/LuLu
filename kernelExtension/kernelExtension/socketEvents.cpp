@@ -742,6 +742,16 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
     
     //process name
     char processName[PATH_MAX] = {0};
+    
+    //always allow kernel traffic
+    if(0 == proc_selfpid())
+    {
+        //ok
+        result = kIOReturnSuccess;
+        
+        //all done
+        goto bail;
+    }
 
     //what does rule say?
     // loop until we have an answer

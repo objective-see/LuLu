@@ -475,6 +475,16 @@ bail:
         self.ancestryButton.state = NSOffState;
     }
     
+    //signing info popup
+    if(NSOnState == self.signingInfoButton.state)
+    {
+        //close
+        [self.signingInfoPopover close];
+        
+        //set button state to off
+        self.signingInfoButton.state = NSOffState;
+    }
+    
     return;
 }
 
