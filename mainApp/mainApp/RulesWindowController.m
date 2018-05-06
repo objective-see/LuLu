@@ -20,6 +20,7 @@
 
 @synthesize rules;
 @synthesize toolbar;
+@synthesize addedRule;
 @synthesize searchBox;
 @synthesize daemonComms;
 @synthesize addRulePanel;
@@ -129,7 +130,7 @@
         case RULE_TYPE_ALL:
             
             //set title
-            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"process";
+            self.tableView.tableColumns.firstObject.headerCell.stringValue = @"All Rules";
             
             break;
             
@@ -489,11 +490,15 @@ bail:
             }
             
             //add rule
-            // but only if there were no conflicts
+            // will trigger a 'rules change' event, to reload
             if(YES != conflictingRule)
             {
                 //dbg msg
                 logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding rule for %@, action: %lu", processPath, action]);
+                
+                //save into iVar
+                // allows table to select/scroll to this new rule
+                self.addedRule = processPath;
                 
                 //add rule via XPC
                 [self.daemonComms addRule:processPath action:action];
@@ -525,6 +530,9 @@ bail:
     //currently selected row
     __block NSUInteger selectedRow = -1;
     
+    //currently selected rule
+    __block Rule* selectedRule = nil;
+    
     //init daemon
     // use local var here, as we need to block
     daemon = [[DaemonComms alloc] init];
@@ -545,25 +553,61 @@ bail:
              //dbg msg
              logMsg(LOG_DEBUG, [NSString stringWithFormat:@"got updated rules from daemon: %@", daemonRules]);
             
+             //get currently selected row and rule
+             dispatch_sync(dispatch_get_main_queue(), ^{
+                 
+                 //get currently selected row
+                 selectedRow = self.tableView.selectedRow;
+                 
+                 //get currently selected rule
+                 selectedRule = [self ruleForRow:selectedRow];
+                 
+             });
+            
              //process rules
              [self processRulesDictionary:daemonRules];
              
-             //process new rules and refresh table
+             //refresh table
              dispatch_async(dispatch_get_main_queue(), ^{
                  
                  //(re)filter rules
                  [self filterRules];
                  
-                 //grab currently selected row
-                 selectedRow = self.tableView.selectedRow;
+                 //find row for new rule
+                 if(nil != self.addedRule)
+                 {
+                     //find row
+                     selectedRow = [self findRowForRule:self.addedRule];
+                     
+                     //unset
+                     self.addedRule = nil;
+                 }
+                 //otherwise
+                 // just get currently selected row
+                 else
+                 {
+                     //find (new) row index for prev. selected rule
+                     selectedRow = [self findRowForRule:selectedRule.path];
+                 }
                  
+                 //default to prev selected row
+                 if(-1 == selectedRow)
+                 {
+                     //get currently selected row
+                     selectedRow = self.tableView.selectedRow;
+                 }
+
+                 //special case when last row was deleted
+                 if(selectedRow == [self numberOfRowsInTableView:self.tableView])
+                 {
+                     //dec
+                     selectedRow--;
+                 }
+            
                  //reload table
                  [self.tableView reloadData];
                  
-                 //TODO: for rule add
-                 // select the row with newly added rule
-                 
-                 //re-select row
+                 //re-select & scroll to row
                  if(-1 != selectedRow)
                  {
                      //make it selected
@@ -635,6 +679,7 @@ bail:
     return;
 }
 
+//TODO: case insensitve!!
 //init array of filtered rules
 // determines what toolbar item is selected, then sort based on that and also what's in search box!
 -(void)filterRules
@@ -695,8 +740,8 @@ bail:
             {
                 //search
                 // rule has to match
-                if( (YES == [rule.name containsString:self.searchBox.stringValue]) ||
-                    (YES == [rule.path containsString:self.searchBox.stringValue]) )
+                if( (YES == [rule.name localizedCaseInsensitiveContainsString:self.searchBox.stringValue]) ||
+                    (YES == [rule.path localizedCaseInsensitiveContainsString:self.searchBox.stringValue]) )
                 {
                     //add
                     [self.rulesFiltered addObject:rule];
@@ -717,8 +762,8 @@ bail:
                 
                 //search
                 // rule has to match
-                else if( (YES == [rule.name containsString:self.searchBox.stringValue]) ||
-                         (YES == [rule.path containsString:self.searchBox.stringValue]) )
+                else if( (YES == [rule.name localizedCaseInsensitiveContainsString:self.searchBox.stringValue]) ||
+                         (YES == [rule.path localizedCaseInsensitiveContainsString:self.searchBox.stringValue]) )
                 {
                     //add
                     [self.rulesFiltered addObject:rule];
@@ -736,6 +781,35 @@ bail:
     return;
 }
 
+//given a path
+// find the row/index of rule
+-(NSInteger)findRowForRule:(NSString*)path
+{
+    //row
+    NSInteger row = -1;
+    
+    //rule obj
+    Rule* rule = nil;
+    
+    //scan all rules looking for match
+    for(NSUInteger i = 0; i<[self numberOfRowsInTableView:self.tableView]; i++)
+    {
+        //get rule
+        rule = [self ruleForRow:i];
+        
+        //check for match
+        if(YES == [rule.path isEqualToString:path])
+        {
+            //save index
+            row = i;
+            
+            //all done
+            break;
+        }
+    }
+    
+    return row;
+}
 
 #pragma mark -
 #pragma mark table delegate methods

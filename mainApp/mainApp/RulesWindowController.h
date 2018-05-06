@@ -86,6 +86,9 @@
 //add rules popup controller
 @property (strong) AddRuleWindowController *addRuleWindowController;
 
+//(last) added rule
+@property(nonatomic,retain)NSString* addedRule;
+
 //status message for import/export rules
 @property (weak) IBOutlet NSTextField *rulesStatusMsg;
 
@@ -111,6 +114,10 @@
 
 //init array of filtered rules
 -(void)filterRules;
+
+//given a path
+// find the row/index of rule
+-(NSInteger)findRowForRule:(NSString*)path;
 
 //given a table row
 // find/return the corresponding rule

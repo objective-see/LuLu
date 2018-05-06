@@ -32,7 +32,7 @@
 }
 
 //automatically invoked
-// finishg configuring popover
+// finish configuring popover
 -(void)popoverDidShow:(NSNotification *)notification
 {
     //show spinner

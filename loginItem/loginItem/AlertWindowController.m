@@ -583,7 +583,7 @@ bail:
         icon = [NSImage imageNamed:@"luluIcon"];
         
         //set size
-        icon.size = CGSizeMake(32, 32);
+        icon.size = CGSizeMake(30, 30);
         
         //add image
         iconView.image = icon;
