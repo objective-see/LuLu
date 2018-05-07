@@ -477,7 +477,7 @@
 					"$(PROJECT_DIR)/../shared/libs",
 					"$(inherited)",
 				);
-				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
+				OTHER_CODE_SIGN_FLAGS = "-o hard,kill -o library";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = LuLu;
 			};
