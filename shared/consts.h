@@ -271,6 +271,9 @@
 #define ALERT_ACTION @"action"
 #define ALERT_SIGNINGINFO @"signingInfo"
 
+#define ALERT_PIDS @"pids"
+#define ALERT_HASH @"hash"
+
 //keys for (pre)install apps
 #define KEY_NAME @"name"
 #define KEY_HASH @"hash"

@@ -118,10 +118,13 @@ bail:
     return result;
 }
 
-//remove self
+//cleanup by removing self
 // since system install/launches us as root, client can't directly remove us
--(void)remove
+-(void)cleanup:(void (^)(NSNumber*))reply
 {
+    //results
+    __block NSNumber* result = nil;
+    
     //flag
     __block BOOL noErrors = YES;
     
@@ -135,7 +138,10 @@ bail:
     __block NSError* error = nil;
     
     //dbg msg
-    logMsg(LOG_DEBUG, @"XPC-request: remove (self!)");
+    logMsg(LOG_DEBUG, @"XPC-request: cleanup (removing self)");
+    
+    //init
+    result = @-1;
     
     //ignore sigterm
     // handling it via GCD dispatch
@@ -175,15 +181,22 @@ bail:
             
             //set error
             noErrors = NO;
+            
         }
         
         //no errors?
         // display dbg msg
         if(YES == noErrors)
         {
+            //happy
+            result = @0;
+            
             //dbg msg
             logMsg(LOG_DEBUG, [NSString stringWithFormat:@"removed %@ and %@", helperPlist, helperBinary]);
         }
+        
+        //reply to client
+        reply(result);
         
         //bye!
         exit(SIGTERM);

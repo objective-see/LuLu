@@ -132,15 +132,24 @@
     //restart?
     if(action == ACTION_RESTART_FLAG)
     {
+        //disable button
+        self.installButton.enabled = NO;
+        
         //bye!
         restart();
+        
+        //bail
+        goto bail;
     }
     
     //close?
     else if(action == ACTION_CLOSE_FLAG)
     {
-        //exit
-        [NSApp terminate:self];
+        //close window to trigger cleanup logic
+        [self.window close];
+        
+        //bail
+        goto bail;
     }
     
     //install || uninstall
@@ -165,6 +174,8 @@
             [self lifeCycleEvent:action];
         });
     }
+    
+bail:
     
     return;
 }
@@ -461,15 +472,51 @@
     return;
 }
 
+//perform any cleanup/termination
+// for now, just call into Config obj to remove helper
+-(BOOL)cleanup
+{
+    //flag
+    BOOL cleanedUp = NO;
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, @"cleaning up...");
+    
+    //remove helper
+    if(YES != [((AppDelegate*)[[NSApplication sharedApplication] delegate]).configureObj removeHelper])
+    {
+        //err msg
+        logMsg(LOG_ERR, @"failed to remove config helper");
+        
+        //bail
+        goto bail;
+    }
+    
+    //happy
+    cleanedUp = YES;
+    
+bail:
+
+    return cleanedUp;
+}
+
 //automatically invoked when window is closing
-// just exit application
+// perform cleanup logic, then manually terminate app
 -(void)windowWillClose:(NSNotification *)notification
 {
     #pragma unused(notification)
     
-    //exit
-    [NSApp terminate:self];
-    
+    //cleanup in background
+    // then exit application
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+    ^{
+        //install/uninstall
+        [self cleanup];
+        
+        //exit
+        [NSApp terminate:self];
+    });
+
     return;
 }
 

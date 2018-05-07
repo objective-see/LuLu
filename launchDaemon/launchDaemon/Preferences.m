@@ -143,15 +143,19 @@ bail:
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"removing (kernel) rules for passively allowed procs: %@", kextListener.self.passiveProcesses]);
         
-        //reset
-        for(NSNumber* allowedProcess in kextListener.self.passiveProcesses)
+        //sync
+        @synchronized(kextListener.self.passiveProcesses)
         {
-            //delete rule
-            [kextComms removeRule:allowedProcess.unsignedShortValue];
+            //reset
+            for(NSNumber* allowedProcess in kextListener.self.passiveProcesses)
+            {
+                //delete rule
+                [kextComms removeRule:allowedProcess.unsignedShortValue];
+            }
+            
+            //remove all
+            [kextListener.self.passiveProcesses removeAllObjects];
         }
-        
-        //remove all
-        [kextListener.self.passiveProcesses removeAllObjects];
     }
         
     //save

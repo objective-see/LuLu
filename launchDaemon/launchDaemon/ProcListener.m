@@ -15,10 +15,14 @@
 #import "Rule.h"
 #import "Rules.h"
 #import "KextComms.h"
+#import "KextListener.h"
 #import "UserClientShared.h"
 
 //global kext comms obj
 extern KextComms* kextComms;
+
+//global kext listen obj
+extern KextListener* kextListener
 
 //global rules obj
 extern Rules* rules;
@@ -151,23 +155,26 @@ extern Rules* rules;
 }
 
 //process end
-//  remove from list of procs
-//  ...also tell kernel to invalidate rule for that pid
+// remove from list of procs
+// ...also tell kernel to invalidate rule for that pid
 -(void)processEnd:(Process*)process
 {
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"process exit: %d\n", process.pid]);
     
     //sync to remove
-    @synchronized (self.processes)
+    @synchronized(self.processes)
     {
         //remove
         [self.processes removeObjectForKey:[NSNumber numberWithUnsignedShort:process.pid]];
     }
     
+    //remove from list of passive process
+    [kextListener.passiveProcesses removeObject:[NSNumber numberWithInt:process.pid]];
+    
     //tell kernel to remove rule for this process
     [kextComms removeRule:process.pid];
-        
+    
     return;
 }
 

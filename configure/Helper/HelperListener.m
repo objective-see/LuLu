@@ -76,7 +76,7 @@ bail:
     if(nil == self.listener)
     {
         //err msg
-        syslog(LOG_ERR, "failed to create mach service %s", CONFIG_HELPER_ID.UTF8String);
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to create mach service %@", CONFIG_HELPER_ID]);
         
         //bail
         goto bail;

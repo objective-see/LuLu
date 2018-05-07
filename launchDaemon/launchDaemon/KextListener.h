@@ -42,9 +42,9 @@ struct connectionEvent
 
 /* PROPERTIES */
 
-//list of alerts, by pid
-// ensures that only one alert for process is shown to user
-@property(nonatomic, retain)NSMutableSet* alerts;
+//list of alerts
+// ensures that only one per process/path is shown
+//@property(nonatomic, retain)NSMutableDictionary* alerts;
 
 //DNS 'cache'
 // mappings of IP:URL
@@ -67,11 +67,5 @@ struct connectionEvent
 
 //process events from the kernel (queue)
 -(void)processEvents;
-
-//remove process from list of alerts
--(void)resetAlert:(pid_t)pid;
-
-//create an alert object
--(NSMutableDictionary*)createAlert:(struct networkOutEvent_s*)event process:(Process*)process;
 
 @end

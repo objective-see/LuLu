@@ -15,7 +15,6 @@
 #import "utilities.h"
 #import "AppDelegate.h"
 
-#import <syslog.h>
 #import <Security/Authorization.h>
 #import <ServiceManagement/ServiceManagement.h>
 

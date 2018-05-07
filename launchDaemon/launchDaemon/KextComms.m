@@ -10,14 +10,10 @@
 #import "consts.h"
 #import "logging.h"
 #import "KextComms.h"
-#import "KextListener.h"
 #import "UserClientShared.h"
 
 #include <IOKit/IOKitLib.h>
 #include <CoreFoundation/CoreFoundation.h>
-
-//global kext listener object
-extern KextListener* kextListener;
 
 @implementation KextComms
 
@@ -154,10 +150,6 @@ bail:
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"sending msg to kext: 'removeRule' (pid: %d)", pid]);
     
-    //tell kext listener to reset
-    // will ensure alerts are now (re)shown for process
-    [kextListener resetAlert:pid];
-
     //remove rule by pid
     return IOConnectCallScalarMethod(self.connection, kTestUserClientRemoveRule, scalarIn, 1, NULL, NULL);
 }

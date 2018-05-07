@@ -41,7 +41,7 @@
 -(BOOL)uninstall:(BOOL)full;
 
 //remove helper (daemon)
--(void)removeHelper;
+-(BOOL)removeHelper;
 
 @end
 

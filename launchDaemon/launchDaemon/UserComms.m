@@ -10,12 +10,14 @@
 #import "Rule.h"
 #import "Rules.h"
 #import "Queue.h"
+#import "Alerts.h"
 #import "consts.h"
 #import "logging.h"
 #import "KextComms.h"
 #import "UserComms.h"
 #import "utilities.h"
 #import "Preferences.h"
+#import "KextListener.h"
 #import "UserClientShared.h"
 #import "UserCommsInterface.h"
 
@@ -31,8 +33,14 @@ extern Queue* eventQueue;
 //global kext comms obj
 extern KextComms* kextComms;
 
+//global alerts obj
+extern Alerts* alerts;
+
 //global prefs obj
 extern Preferences* preferences;
+
+//global kext listener object
+extern KextListener* kextListener;
 
 //global 'rules changed' semaphore
 extern dispatch_semaphore_t rulesChanged;
@@ -71,6 +79,9 @@ extern NSInteger clientConnected;
     //save into global
     // TODO: change, if multiple clients
     clientConnected = YES;
+    
+    //process any undelivered alerts
+    [alerts processUndelivered];
     
     return;
 }
@@ -371,6 +382,13 @@ bail:
     //update rules
     // type of rule is 'user'
     [rules add:path signingInfo:alert[ALERT_SIGNINGINFO] action:action type:RULE_TYPE_USER user:user];
+    
+    //process (any) related alerts
+    // add to kext, etc...
+    [alerts processRelated:alert];
+    
+    //remove 'shown'
+    [alerts removeShown:alert];
     
     //signal all threads that rules changed
     while(0 != dispatch_semaphore_signal(rulesChanged));

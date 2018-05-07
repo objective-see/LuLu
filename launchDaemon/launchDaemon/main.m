@@ -9,6 +9,7 @@
 
 #import "Rules.h"
 #import "Queue.h"
+#import "Alerts.h"
 #import "consts.h"
 #import "logging.h"
 #import "Baseline.h"
@@ -31,6 +32,9 @@ KextComms* kextComms = nil;
 
 //rules obj
 Rules* rules = nil;
+
+//alerts obj
+Alerts* alerts = nil;
 
 //queue object
 // contains watch items that should be processed
@@ -163,6 +167,9 @@ int main(int argc, const char * argv[])
         
         //alloc/init process listener obj
         processListener = [[ProcessListener alloc] init];
+        
+        //alloc/init alerts object
+        alerts = [[Alerts alloc] init];
         
         //register for shutdown
         // so, can disable firewall and close logging

@@ -10,9 +10,10 @@
 @import Foundation;
 
 #import "Rule.h"
-#import "consts.h"
 #import "Rules.h"
 #import "Queue.h"
+#import "Alerts.h"
+#import "consts.h"
 #import "logging.h"
 #import "Baseline.h"
 #import "procInfo.h"
@@ -31,6 +32,9 @@ extern Rules* rules;
 //kext comms obj
 extern KextComms* kextComms;
 
+//alerts obj
+extern Alerts* alerts;
+
 //queue object
 extern Queue* eventQueue;
 
@@ -48,7 +52,7 @@ extern NSInteger clientConnected;
 
 @implementation KextListener
 
-@synthesize alerts;
+//@synthesize alerts;
 @synthesize dnsCache;
 @synthesize passiveProcesses;
 
@@ -59,9 +63,6 @@ extern NSInteger clientConnected;
     self = [super init];
     if(nil != self)
     {
-        //init alerts list
-        alerts = [NSMutableSet set];
-        
         //init DNS 'cache'
         dnsCache = [NSMutableDictionary dictionary];
         
@@ -328,21 +329,6 @@ bail:
                 //network out events
                 case EVENT_NETWORK_OUT:
                 {
-                    //ignore if prev. an alert has been processed for this process
-                    // if rule is deleted or process ends, will be removed from list
-                    if(YES == [self.alerts containsObject:[NSNumber numberWithUnsignedShort:((struct networkOutEvent_s*)&event.networkOutEvent)->pid]])
-                    {
-                        //dbg msg
-                        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"alert already processed for this process (%d), so ignoring", ((struct networkOutEvent_s*)&event.networkOutEvent)->pid]);
-                        
-                        //skip
-                        break;
-                    }
-                    
-                    //save pid
-                    // ...only process rule once per process
-                    [self.alerts addObject:[NSNumber numberWithUnsignedShort:((struct networkOutEvent_s*)&event.networkOutEvent)->pid]];
-                    
                     //dispatch to handle/process rule
                     // code signing computations, slow for big apps, don't want those to slow everything down
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -419,14 +405,21 @@ bail:
     //matching rule obj
     Rule* matchingRule = nil;
     
-    //thread priority
-    double threadPriority = 0.0f;
-    
     //default code signing flags
     SecCSFlags codeSigningFlags = kSecCSDefaultFlags;
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"processing 'network out' event from kernel queue: %d /  %@", event->pid, convertSocketAddr((struct sockaddr*)&(event->remoteAddress))]);
+    
+    //check if alert was already processed for this pid
+    if(YES == [alerts isRelated:event->pid process:nil])
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"an alert already shown for this process (%d), so ignoring", event->pid]);
+        
+        //bail
+        goto bail;
+    }
     
     //nap a bit
     // for a processes fork/exec, this should process monitor time to register exec event
@@ -464,30 +457,24 @@ bail:
     if(nil == process)
     {
         //err msg
-        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to find and/or create process object for %d", event->pid]);
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to find and/or create process object for %d, will allow", event->pid]);
         
-        //fail 'close'
-        // tell kernel to block
-        [kextComms addRule:event->pid action:RULE_STATE_BLOCK];
+        //fail 'open'
+        // tell kernel to allow...
+        [kextComms addRule:event->pid action:RULE_STATE_ALLOW];
         
         //bail
-        // not sure what else to do
+        // not sure what else to do...
         goto bail;
     }
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"process object for 'network out' event :%@'", process]);
-    
+
     //proc monitor invoked in 'go easy' mode
     // so generate signing info for process here
     if(nil == process.binary.signingInfo)
     {
-        //save thread priority
-        threadPriority = [NSThread threadPriority];
-        
-        //reduce CPU
-        [NSThread setThreadPriority:0.25];
-        
         //determine appropriate code signing flags
         codeSigningFlags = determineCSFlags(process.binary.path, process.binary.bundle);
         
@@ -497,11 +484,23 @@ bail:
         //generate signing info
         [process.binary generateSigningInfo:codeSigningFlags];
         
-        //reset thread priority
-        [NSThread setThreadPriority:threadPriority];
-        
         //dbg msg
         logMsg(LOG_DEBUG, @"done generating code signing info");
+    }
+    
+    //not signed, or err?
+    // generate hash (sha256)
+    if( (nil == process.binary.signingInfo) ||
+        (noErr != [process.binary.signingInfo[KEY_SIGNATURE_STATUS] intValue]) )
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating hash for %@ (%d)", process.binary.name, process.pid]);
+        
+        //generate hash
+        [process.binary generateHash];
+    
+        //dbg msg
+        logMsg(LOG_DEBUG, @"done generating hash");
     }
     
     //existing rule for process
@@ -575,14 +574,16 @@ bail:
     // can't deliver alert, so just allow, but log this fact
     if(YES != clientConnected)
     {
-        //TODO: save? or? 
-        
         //dbg msg
         // also log to file
         logMsg(LOG_DEBUG|LOG_TO_FILE, @"no active (enabled) client, so telling kernel to 'allow'");
         
         //allow
         [kextComms addRule:event->pid action:RULE_STATE_ALLOW];
+        
+        //save
+        // only 1 per path...
+        [alerts addUndeliverted:event process:process];
         
         //all set
         goto bail;
@@ -592,7 +593,7 @@ bail:
     if(YES == [preferences.preferences[PREF_PASSIVE_MODE] boolValue])
     {
         //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"client in passive mode, so allowing @%@", process.path]);
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"client in passive mode, so allowing %@", process.path]);
         
         //allow
         [kextComms addRule:event->pid action:RULE_STATE_ALLOW];
@@ -609,15 +610,32 @@ bail:
     // queue up alert to trigger delivery to client, so user can allow/block
     else
     {
+        //check if alert was already shown for same path
+        // ...and is just awaiting a response from the user
+        if(YES == [alerts isRelated:event->pid process:process])
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"alert already shown for this path (%@), so ignoring", process.path]);
+            
+            //add related rule
+            [alerts addRelated:event->pid process:process];
+            
+            //bail
+            goto bail;
+        }
+        
         //create alert
-        alert = [self createAlert:event process:process];
+        alert = [alerts create:event process:process];
         
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"no rule found, adding alert to queue: %@", alert]);
         
         //add to global queue
-        // ->this will trigger processing of alert
+        // will trigger processing of alert
         [eventQueue enqueue:alert];
+        
+        //save it
+        [alerts addShown:alert];
     }
     
 bail:
@@ -654,7 +672,7 @@ bail:
     //type cast
     dnsHeader = (struct dnsHeader*)event->response;
     
-    //print out dns response
+    //print out DNS response
     /*
     for(int i = 0; i<sizeof(event->response); i++)
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"%d/%02x", i, event->response[i] & 0xFF]);
@@ -789,15 +807,6 @@ bail:
     }//parse answers
     
 bail:
-    
-    return;
-}
-
-//remove process from list of alerts
--(void)resetAlert:(pid_t)pid
-{
-    //remove
-    [self.alerts removeObject:[NSNumber numberWithUnsignedShort:pid]];
     
     return;
 }

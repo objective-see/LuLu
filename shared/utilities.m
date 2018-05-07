@@ -1141,55 +1141,45 @@ BOOL isProcessAlive(pid_t processID)
 }
 
 
-//hash a file (sha1)
+//hash a file
 NSMutableString* hashFile(NSString* filePath)
 {
     //file's contents
     NSData* fileContents = nil;
     
-    //hash digest (sha1)
-    uint8_t digestSHA1[CC_SHA1_DIGEST_LENGTH] = {0};
+    //hash digest
+    uint8_t digestSHA256[CC_SHA256_DIGEST_LENGTH] = {0};
     
-    //sha1 hash as string
-    NSMutableString* sha1 = nil;
+    //hash as string
+    NSMutableString* sha256 = nil;
     
     //index var
     NSUInteger index = 0;
     
-    //init sha1 hash string
-    sha1 = [NSMutableString string];
-    
-    //sanity check
-    if(nil == filePath)
-    {
-        //bail
-        goto bail;
-    }
+    //init
+    sha256 = [NSMutableString string];
     
     //load file
     if(nil == (fileContents = [NSData dataWithContentsOfFile:filePath]))
     {
-        //err msg
-        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to load %@ to hash", filePath]);
-        
         //bail
         goto bail;
     }
     
     //sha1 it
-    CC_SHA1(fileContents.bytes, (unsigned int)fileContents.length, digestSHA1);
+    CC_SHA256(fileContents.bytes, (unsigned int)fileContents.length, digestSHA256);
     
     //convert to NSString
-    // ->iterate over each bytes in computed digest and format
-    for(index=0; index < CC_SHA1_DIGEST_LENGTH; index++)
+    // iterate over each bytes in computed digest and format
+    for(index=0; index < CC_SHA256_DIGEST_LENGTH; index++)
     {
         //format/append
-        [sha1 appendFormat:@"%02lX", (unsigned long)digestSHA1[index]];
+        [sha256 appendFormat:@"%02lX", (unsigned long)digestSHA256[index]];
     }
     
 bail:
     
-    return sha1;
+    return sha256;
 }
 
 //given a pid, get its parent (ppid)
@@ -1523,7 +1513,7 @@ void restart()
 {
     //first quit self
     // then reboot the box...nicely!
-    execTask(OSASCRIPT, @[@"-e", @"tell application \"LuLu Installer\" to quit", @"-e", @"delay 0.1", @"-e", @"tell application \"Finder\" to restart"], NO, NO);
+    execTask(OSASCRIPT, @[@"-e", @"tell application \"LuLu Installer\" to quit", @"-e", @"delay 0.25", @"-e", @"tell application \"Finder\" to restart"], NO, NO);
 
     return;
 }

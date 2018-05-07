@@ -287,9 +287,6 @@ bail:
     //code signing flags
     SecCSFlags codeSigningFlags = kSecCSDefaultFlags;
     
-    //hash
-    NSString* hash = nil;
-    
     //sync to access
     @synchronized(self.rules)
     {
@@ -331,14 +328,16 @@ bail:
     
     //if there's a hash
     // check this first for match
-    if(nil != matchingRule.sha1)
+    if(nil != matchingRule.sha256)
     {
         //generate hash
-        hash = hashFile(process.binary.path);
-        if(YES != [matchingRule.sha1 isEqualToString:hash])
+        [process.binary generateHash];
+        
+        //check for match
+        if(YES != [matchingRule.sha256 isEqualToString:process.binary.sha256])
         {
             //err msg
-            logMsg(LOG_ERR, [NSString stringWithFormat:@"binary is unsigned, but hash comparision failed: %@ vs. %@", matchingRule.sha1, hash]);
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"binary is unsigned, but hash comparision failed: %@ vs. %@", matchingRule.sha256, process.binary.sha256]);
             
             //unset
             matchingRule = nil;

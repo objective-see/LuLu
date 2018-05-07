@@ -47,7 +47,7 @@
         self.user = info[RULE_USER];
         
         //save hash
-        self.sha1 = info[RULE_HASH];
+        self.sha256 = info[RULE_HASH];
         
         //save signing info
         self.signingInfo = info[RULE_SIGNING_INFO];
@@ -112,10 +112,10 @@ bail:
     }
     
     //add hash
-    if(nil != self.sha1)
+    if(nil != self.sha256)
     {
         //add
-        serializedRule[RULE_HASH] = self.sha1;
+        serializedRule[RULE_HASH] = self.sha256;
     }
     
     return serializedRule;

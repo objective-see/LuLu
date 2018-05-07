@@ -9,8 +9,6 @@
 
 @import Foundation;
 
-#import <syslog.h>
-
 #import "XPCProtocol.h"
 #import "HelperInterface.h"
 

@@ -272,20 +272,50 @@ bail:
 }
 
 //remove helper (daemon)
--(void)removeHelper
+-(BOOL)removeHelper
 {
+    //return/status var
+    __block BOOL wasRemoved = NO;
+    
+    //wait semaphore
+    dispatch_semaphore_t semaphore = 0;
+    
+    //init sema
+    semaphore = dispatch_semaphore_create(0);
+    
     //if needed
     // tell helper to remove itself
     if(YES == self.gotHelp)
     {
-        //dbg msg
-        syslog(LOG_NOTICE, "invoking XPC method: remove");
+        //cleanup
+        [self.xpcComms cleanup:^(NSNumber *result)
+        {
+            //signal sema
+            dispatch_semaphore_signal(semaphore);
+            
+            //save result
+            wasRemoved = (BOOL)(result.intValue == 0);
+            
+            //unset var
+            if(YES == wasRemoved)
+            {
+                //unset
+                self.gotHelp = NO;
+            }
+        }];
         
-        //remove
-        [self.xpcComms remove];
+        //wait for installer logic to be completed by XPC
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    }
+    //didn't need to remove
+    // just set ret var to 'ok'
+    else
+    {
+        //set
+        wasRemoved = YES;
     }
     
-    return;
+    return wasRemoved;
 }
 
 //install

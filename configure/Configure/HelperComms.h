@@ -29,7 +29,8 @@
 // takes flag to indicate full/partial
 -(void)uninstall:(BOOL)full reply:(void (^)(NSNumber*))reply;
 
-//remove
--(void)remove;
+//cleanup
+// remove self
+-(void)cleanup:(void (^)(NSNumber*))reply;
 
 @end

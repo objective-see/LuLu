@@ -91,20 +91,23 @@
     return;
 }
 
-//remove
--(void)remove
+//cleanup
+-(void)cleanup:(void (^)(NSNumber*))reply
 {
     //dbg msg
-    logMsg(LOG_DEBUG, @"removing");
+    logMsg(LOG_DEBUG, @"invoking 'cleanup' XPC method");
     
     //remove
-    [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
+    [[(NSXPCConnection*)self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
-          //err msg
         //err msg
         logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute 'remove' method on helper tool (error: %@)", proxyError]);
           
-    }] remove];
+    }] cleanup:^(NSNumber* result)
+    {
+        //invoke block
+        reply(result);
+    }];
     
     return;
 }

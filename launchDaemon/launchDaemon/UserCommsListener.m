@@ -260,7 +260,7 @@ bail:
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"found undelivered alert, will (re)enqueue"]);
     
     //have alert
-    // ->requeue it up
+    // requeue it up
     [eventQueue enqueue:userComms.dequeuedAlert];
     
     //client (i.e. login item) should always be running

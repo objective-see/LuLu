@@ -447,6 +447,17 @@ static kern_return_t attach(void **cookie, socket_t so)
         goto bail;
     }
     
+    //don't mess w/ kernel sockets
+    if(0 == proc_selfpid())
+    {
+        //ignore
+        // but no errors
+        result = kIOReturnSuccess;
+        
+        //bail
+        goto bail;
+    }
+    
     //set cookie
     *cookie = (void*)OSMalloc(sizeof(struct cookieStruct), allocTag);
     if(NULL == *cookie)
@@ -666,7 +677,7 @@ static kern_return_t data_out(void *cookie, socket_t so, const struct sockaddr *
     }
     
     //sanity check
-    // cookie should never be NULL
+    // socket we're watching?
     if(NULL == cookie)
     {
         //bail
@@ -708,7 +719,7 @@ static kern_return_t connect_out(void *cookie, socket_t so, const struct sockadd
     }
     
     //sanity check
-    // cookie should never be NULL
+    // socket we're watching?
     if(NULL == cookie)
     {
         //bail
@@ -743,16 +754,6 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
     //process name
     char processName[PATH_MAX] = {0};
     
-    //always allow kernel traffic
-    if(0 == proc_selfpid())
-    {
-        //ok
-        result = kIOReturnSuccess;
-        
-        //all done
-        goto bail;
-    }
-
     //what does rule say?
     // loop until we have an answer
     while(true)

@@ -20,8 +20,9 @@
 //uninstall
 -(void)uninstall:(NSString*)app full:(BOOL)full reply:(void (^)(NSNumber*))reply;
 
-//remove (self)
--(void)remove;
+//cleanup
+// remove self
+-(void)cleanup:(void (^)(NSNumber*))reply;
 
 @end
 

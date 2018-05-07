@@ -26,6 +26,7 @@
 		CD32C22820900F50009CADF6 /* LuLu in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D7755D01F02DF9500D0017D /* LuLu */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CD32C22C20900F9D009CADF6 /* Sentry.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD32C22520900F34009CADF6 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD32C23620940887009CADF6 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD32C22520900F34009CADF6 /* Sentry.framework */; };
+		CD6CAC70209FB29700188B0A /* Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6CAC6F209FB29600188B0A /* Alerts.m */; };
 		CDAFF457203FB23800F27635 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAFF456203FB23800F27635 /* Preferences.m */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,8 @@
 		CD32C21D20900D36009CADF6 /* LuLu.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LuLu.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD32C21F20900D36009CADF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD32C22520900F34009CADF6 /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
+		CD6CAC6E209FB29500188B0A /* Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts.h; sourceTree = "<group>"; };
+		CD6CAC6F209FB29600188B0A /* Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts.m; sourceTree = "<group>"; };
 		CDAFF432203E55C600F27635 /* procInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = procInfo.h; path = ../../shared/libs/procInfo.h; sourceTree = "<group>"; };
 		CDAFF455203FB23800F27635 /* Preferences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		CDAFF456203FB23800F27635 /* Preferences.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
@@ -167,6 +170,8 @@
 			children = (
 				7D7756071F05D62E00D0017D /* Shared */,
 				7DD2BF721F1E9CE700B33214 /* NSMutableArray+QueueAdditions.h */,
+				CD6CAC6E209FB29500188B0A /* Alerts.h */,
+				CD6CAC6F209FB29600188B0A /* Alerts.m */,
 				7DD2BF731F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m */,
 				7DD2BF741F1E9CE700B33214 /* Queue.h */,
 				7DD2BF751F1E9CE700B33214 /* Queue.m */,
@@ -322,6 +327,7 @@
 				CDAFF457203FB23800F27635 /* Preferences.m in Sources */,
 				7D4FF8CD1F0EF2F9001A4A68 /* UserComms.m in Sources */,
 				CD2E667C208D7D09001B5435 /* Baseline.m in Sources */,
+				CD6CAC70209FB29700188B0A /* Alerts.m in Sources */,
 				7D7755FC1F02EBBE00D0017D /* logging.m in Sources */,
 				7D4FF3721F0B6D3100A59A05 /* KextComms.m in Sources */,
 			);

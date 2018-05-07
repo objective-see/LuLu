@@ -28,7 +28,7 @@
 @property(nonatomic, retain)NSDictionary* signingInfo;
 
 //hash
-@property(nonatomic, retain)NSString* sha1;
+@property(nonatomic, retain)NSString* sha256;
 
 //name
 @property(nonatomic, retain)NSString* name;

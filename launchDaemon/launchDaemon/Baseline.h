@@ -1,9 +1,10 @@
 //
-//  Baseline.h
-//  launchDaemon
+//  file: Baseline.h
+//  project: lulu (launch daemon)
+//  description: enumeration/processing of (pre)installed applications (header)
 //
-//  Created by Patrick Wardle on 2/21/18.
-//  Copyright © 2018 Objective-See. All rights reserved.
+//  created by Patrick Wardle
+//  copyright (c) 2018 Objective-See. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,6 +15,8 @@
 
 //pre-installed 3rd-party apps
 @property(nonatomic, retain)NSMutableDictionary* preInstalledApps;
+
+/* METHODS */
 
 //invoke system profiler to get installed apps
 // then process each, saving info about 3rd-party ones

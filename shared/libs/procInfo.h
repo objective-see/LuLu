@@ -140,6 +140,9 @@ typedef void (^ProcessCallbackBlock)(Process* _Nonnull);
 //signing info
 @property(nonatomic, retain)NSDictionary* _Nonnull signingInfo;
 
+//hash
+@property(nonatomic, retain)NSString* _Nonnull sha256;
+
 //identifier
 // either signing id or sha256 hash
 @property(nonatomic, retain)NSString* _Nonnull identifier;
@@ -152,7 +155,7 @@ typedef void (^ProcessCallbackBlock)(Process* _Nonnull);
 
 /* METHODS */
 
-//init w/ an path
+//init w/ a path
 -(id _Nonnull)init:(NSString* _Nonnull)path;
 
 /* the following methods are rather CPU-intensive
@@ -167,8 +170,11 @@ typedef void (^ProcessCallbackBlock)(Process* _Nonnull);
 // also classifies if Apple/from App Store/etc.
 -(void)generateSigningInfo:(SecCSFlags)flags;
 
+//generate hash
+-(void)generateHash;
+
 //generate id
-// either signing id, or sha256 hash
+// eithersigning id, or sha256 hash
 // note: will generate signing info if needed
 -(void)generateIdentifier;
 

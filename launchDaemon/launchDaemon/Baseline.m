@@ -1,9 +1,10 @@
 //
-//  Baseline.m
-//  launchDaemon
+//  file: Baseline.m
+//  project: lulu (launch daemon)
+//  description: enumeration/processing of (pre)installed applications (header)
 //
-//  Created by Patrick Wardle on 2/21/18.
-//  Copyright © 2018 Objective-See. All rights reserved.
+//  created by Patrick Wardle
+//  copyright (c) 2018 Objective-See. All rights reserved.
 //
 
 #import "consts.h"
@@ -256,7 +257,7 @@ bail:
     else if(nil != preInstalledBinary[KEY_HASH])
     {
         //match?
-        if(YES != [preInstalledBinary[KEY_HASH] isEqualToString:hashFile(binary.path)])
+        if(YES != [preInstalledBinary[KEY_HASH] isEqualToString:binary.sha256])
         {
             //err msg
             logMsg(LOG_ERR, @"unsigned app binary, hash does not match");
@@ -367,6 +368,14 @@ bail:
     //generate signing info
     [parentBinary generateSigningInfo:codeSigningFlags];
     
+    //generate hash
+    if( (nil == parentBinary.signingInfo) ||
+        (noErr != [parentBinary.signingInfo[KEY_SIGNATURE_STATUS] intValue]) )
+    {
+        //generate hash
+        [parentBinary generateHash];
+    }
+
     //reset thread priority
     [NSThread setThreadPriority:threadPriority];
     
