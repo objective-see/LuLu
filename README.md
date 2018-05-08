@@ -66,4 +66,4 @@ This product is supported by the following patrons:
 + Allen Hancock
 + Stuart Ashenbrenner
 
-+ Gamer Bot
++ Gamer_Bot
