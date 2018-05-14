@@ -569,7 +569,7 @@
 				INFOPLIST_FILE = loginItem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../shared/libs";
-				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
+				OTHER_CODE_SIGN_FLAGS = "-o hard,kill -o library";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.helper";
 				PRODUCT_NAME = "LuLu Helper";
