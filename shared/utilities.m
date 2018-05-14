@@ -542,7 +542,7 @@ NSMutableArray* getProcessIDs(NSString* processPath, int userID)
     int mib[4] = {CTL_KERN, KERN_PROC, KERN_PROC_PID, -1};
     
     //get # of procs
-    numberOfProcesses = proc_listpids(PROC_ALL_PIDS, 0, NULL, 0);
+    numberOfProcesses = proc_listallpids(NULL, 0);
     if(-1 == numberOfProcesses)
     {
         //bail
@@ -556,7 +556,7 @@ NSMutableArray* getProcessIDs(NSString* processPath, int userID)
     processIDs = [NSMutableArray array];
     
     //get list of pids
-    status = proc_listpids(PROC_ALL_PIDS, 0, pids, numberOfProcesses * (int)sizeof(pid_t));
+    status = proc_listallpids(pids, numberOfProcesses * (int)sizeof(pid_t));
     if(status < 0)
     {
         //bail
@@ -1346,7 +1346,6 @@ NSMutableDictionary* execTask(NSString* binaryPath, NSArray* arguments, BOOL sho
         goto bail;
     }
     
-    
     //wait
     // ...but no output
     else if( (YES == shouldWait) &&
@@ -1401,6 +1400,9 @@ NSMutableDictionary* execTask(NSString* binaryPath, NSArray* arguments, BOOL sho
     }
 
 bail:
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"task completed with %@", results]);
     
     return results;
 }

@@ -20,6 +20,12 @@
 //connection to kext
 @property io_connect_t connection;
 
+//observer for process start events
+@property(nonatomic, retain)id processStartObvserver;
+
+//observer for process end events
+@property(nonatomic, retain)id processEndObvserver;
+
 /* METHODS */
 
 //connect to the firewall kext

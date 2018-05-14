@@ -97,9 +97,6 @@
     
 bail:
     
-    //dbg msg
-    logMsg(LOG_DEBUG, @"removing blessed helper");
-    
     return wasConfigured;
 }
 
@@ -336,17 +333,12 @@ bail:
     //define block
     void(^block)(NSNumber *) = ^(NSNumber *result)
     {
-        //callback from XPC will be a bg thread
-        // so since we're updating UI, invoke on main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
+        //signal sema
+        dispatch_semaphore_signal(semaphore);
             
-            //signal sema
-            dispatch_semaphore_signal(semaphore);
-            
-            //save result
-            wasInstalled = (BOOL)(result.intValue == 0);
-            
-        });
+        //save result
+        wasInstalled = (BOOL)(result.intValue == 0);
+        
     };
     
     //install
@@ -413,17 +405,12 @@ bail:
     //define block
     void (^block)(NSNumber *) = ^(NSNumber *result)
     {
-        //callback from XPC will be a bg thread
-        // so since we're updating UI, invoke on main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
+        //signal sema
+        dispatch_semaphore_signal(semaphore);
             
-            //signal sema
-            dispatch_semaphore_signal(semaphore);
-            
-            //save result
-            wasUninstalled = (BOOL)(result.intValue == 0);
-            
-        });
+        //save result
+        wasUninstalled = (BOOL)(result.intValue == 0);
+        
     };
     
     //init path to login item

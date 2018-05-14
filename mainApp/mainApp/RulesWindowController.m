@@ -679,7 +679,6 @@ bail:
     return;
 }
 
-//TODO: case insensitve!!
 //init array of filtered rules
 // determines what toolbar item is selected, then sort based on that and also what's in search box!
 -(void)filterRules

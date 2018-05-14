@@ -42,14 +42,9 @@ if [ "${1}" == "-install" ]; then
     #create main LuLu directory
     mkdir -p $INSTALL_DIRECTORY
 
-    #rules
-    chown root:wheel "rules.plist"
-    chmod 700 "rules.plist"
-    cp "rules.plist" $INSTALL_DIRECTORY
-
     #install kext
     chown -R root:wheel "LuLu.kext"
-    cp -R "LuLu.kext" /Library/Extensions/
+    cp -R -f "LuLu.kext" /Library/Extensions/
 
     echo "kext installed"
 
@@ -57,13 +52,13 @@ if [ "${1}" == "-install" ]; then
     chown -R root:wheel "LuLu.bundle"
     chown -R root:wheel "com.objective-see.lulu.plist"
 
-    cp -R "LuLu.bundle" $INSTALL_DIRECTORY
+    cp -R -f "LuLu.bundle" $INSTALL_DIRECTORY
     cp "com.objective-see.lulu.plist" /Library/LaunchDaemons/
 
     echo "launch daemon installed"
 
     #install app(s)
-    cp -R "LuLu.app" /Applications
+    cp -R -f "LuLu.app" /Applications
 
     #enumerate installed apps, full path
     /usr/sbin/system_profiler SPApplicationsDataType -xml > $INSTALL_DIRECTORY/installedApps.xml &

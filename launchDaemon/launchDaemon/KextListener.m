@@ -76,11 +76,29 @@ extern NSInteger clientConnected;
 //kick off threads to monitor for kext events
 -(void)monitor
 {
+    //process
+    __block Process* process = nil;
+    
     //start thread to get connection notifications from kext
     //[NSThread detachNewThreadSelector:@selector(recvNotifications) toTarget:self withObject:nil];
     
     //start thread to listen for queue events from kext
     [NSThread detachNewThreadSelector:@selector(processEvents) toTarget:self withObject:nil];
+    
+    //start process end observer
+    self.processEndObvserver =  [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_PROCESS_END object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
+    {
+        //extract process
+        process = notification.userInfo[NOTIFICATION_PROCESS_START];
+        if(nil == process)
+        {
+            //bail
+            return;
+        }
+        
+        //remove from list of passive process
+        [self.passiveProcesses removeObject:[NSNumber numberWithInt:process.pid]];
+    }];
 
     return;
 }

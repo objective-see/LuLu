@@ -229,15 +229,15 @@ bail:
     //error
     NSError* error = nil;
     
-    //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"validating %@", app]);
-    
     //grab default file manager
     defaultManager = [NSFileManager defaultManager];
     
     //init path to app copy
     // *root-owned* tmp directory
     appCopy = [NSTemporaryDirectory() stringByAppendingPathComponent:app.lastPathComponent];
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"validating %@", appCopy]);
     
     //delete if old copy is there
     if(YES == [defaultManager fileExistsAtPath:appCopy])

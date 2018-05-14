@@ -21,9 +21,6 @@
 //global kext comms obj
 extern KextComms* kextComms;
 
-//global kext listen obj
-extern KextListener* kextListener
-
 //global rules obj
 extern Rules* rules;
 
@@ -127,9 +124,6 @@ extern Rules* rules;
 //  ...and if rule exists, tell kernel
 -(void)processStart:(Process*)process
 {
-    //matching rule
-    Rule* matchingRule = nil;
-    
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"process start: %@ (%d)\n", process.path, process.pid]);
     
@@ -140,16 +134,8 @@ extern Rules* rules;
         self.processes[[NSNumber numberWithUnsignedShort:process.pid]] = process;
     }
     
-    //existing rule for process (path)
-    matchingRule = [rules find:process];
-    if(nil != matchingRule)
-    {
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"found matching rule: %@\n", matchingRule]);
-        
-        //tell kernel to add rule for this process
-        [kextComms addRule:process.pid action:matchingRule.action.unsignedIntValue];
-    }
+    //broadcast event
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PROCESS_START object:nil userInfo:@{NOTIFICATION_PROCESS_START:process}];
 
     return;
 }
@@ -169,11 +155,8 @@ extern Rules* rules;
         [self.processes removeObjectForKey:[NSNumber numberWithUnsignedShort:process.pid]];
     }
     
-    //remove from list of passive process
-    [kextListener.passiveProcesses removeObject:[NSNumber numberWithInt:process.pid]];
-    
-    //tell kernel to remove rule for this process
-    [kextComms removeRule:process.pid];
+    //broadcast event
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PROCESS_END object:nil userInfo:@{NOTIFICATION_PROCESS_START:process}];
     
     return;
 }

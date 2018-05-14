@@ -42,10 +42,6 @@ struct connectionEvent
 
 /* PROPERTIES */
 
-//list of alerts
-// ensures that only one per process/path is shown
-//@property(nonatomic, retain)NSMutableDictionary* alerts;
-
 //DNS 'cache'
 // mappings of IP:URL
 @property(nonatomic, retain)NSMutableDictionary* dnsCache;
@@ -56,6 +52,9 @@ struct connectionEvent
 //processes allowed due to 'passive' mode
 // save and reset these if user toggles off this mode
 @property(nonatomic, retain)NSMutableArray* passiveProcesses;
+
+//observer for process end events
+@property(nonatomic, retain)id processEndObvserver;
 
 /* METHODS */
 

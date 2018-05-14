@@ -197,8 +197,14 @@
 //flag to reboot
 #define ACTION_RESTART_FLAG -1
 
+//cmdline flag to uninstall
+#define ACTION_UNINSTALL @"-uninstall"
+
 //flag to uninstall
 #define ACTION_UNINSTALL_FLAG 0
+
+//cmdline flag to uninstall
+#define ACTION_INSTALL @"-install"
 
 //flag to install
 #define ACTION_INSTALL_FLAG 1
@@ -222,6 +228,12 @@
 
 //path to kext cache
 #define KEXT_CACHE @"/usr/sbin/kextcache"
+
+//process start notification
+#define NOTIFICATION_PROCESS_START @"com.objective-see.lulu.notificationProcessStart"
+
+//process end notification
+#define NOTIFICATION_PROCESS_END @"com.objective-see.lulu.notificationProcessEnd"
 
 /* LOGIN ITEM */
 
