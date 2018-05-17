@@ -85,7 +85,8 @@
                 //dbg msg
                 logMsg(LOG_DEBUG, [NSString stringWithFormat:@"user responded to alert: %ld", (long)userResponse]);
                 
-                //init alert response dictionary
+                //init alert response
+                // start w/ copy of received alert
                 alertResponse = [alert mutableCopy];
                 
                 //add current user
@@ -93,6 +94,9 @@
                 
                 //add user response
                 alertResponse[ALERT_ACTION] = [NSNumber numberWithLong:userResponse];
+                
+                //add button state for 'temp rule'
+                alertResponse[ALERT_TEMPORARY] = [NSNumber numberWithBool:alertWindow.isTempRule];
                 
                 //send response to daemon
                 [daemonComms alertResponse:alertResponse];

@@ -87,6 +87,15 @@
 //time stamp
 @property (weak) IBOutlet NSTextField *timeStamp;
 
+//check box for temp rule
+@property (weak) IBOutlet NSButton *tempRule;
+
+//temp rule label
+@property (weak) IBOutlet NSTextField *tempRuleLabel;
+
+//flag for temp rule
+@property BOOL isTempRule;
+
 /* METHODS */
 
 //build an array of processes ancestry

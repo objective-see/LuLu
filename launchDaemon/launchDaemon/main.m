@@ -20,7 +20,6 @@
 #import "ProcListener.h"
 #import "UserCommsListener.h"
 
-@import Sentry;
 
 //GLOBALS
 
@@ -90,13 +89,8 @@ int main(int argc, const char * argv[])
         //dbg msg
         logMsg(LOG_DEBUG, @"LuLu launch daemon started");
         
-        //init crash reporting client
-        SentryClient.sharedClient = [[SentryClient alloc] initWithDsn:CRASH_REPORTING_URL didFailWithError:&error];
-        if(nil == error)
-        {
-            //start crash handler
-            [SentryClient.sharedClient startCrashHandlerWithError:&error];
-        }
+        //init crash reporting
+        initCrashReporting();
         
         //init logging
         if(YES != initLogging(logFilePath()))

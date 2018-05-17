@@ -282,6 +282,7 @@
 #define ALERT_PROTOCOL @"protocol"
 #define ALERT_ACTION @"action"
 #define ALERT_SIGNINGINFO @"signingInfo"
+#define ALERT_TEMPORARY @"tempRule"
 
 #define ALERT_PIDS @"pids"
 #define ALERT_HASH @"hash"
@@ -289,6 +290,8 @@
 //keys for (pre)install apps
 #define KEY_NAME @"name"
 #define KEY_HASH @"hash"
+
+//TODO: move these into procInfo.h?
 
 //signature status
 #define KEY_SIGNATURE_STATUS @"signatureStatus"
@@ -301,6 +304,9 @@
 
 //file signed with apple dev id
 #define KEY_SIGNING_IS_APPLE_DEV_ID @"signedWithDevID"
+
+//code signing id
+#define KEY_SIGNATURE_IDENTIFIER @"signingIdentifier"
 
 //from app store
 #define KEY_SIGNING_IS_APP_STORE @"fromAppStore"

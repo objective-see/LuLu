@@ -7,9 +7,12 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
+// TODO: restrict/cs-kill
+//       might require dynamic loading of framework? (@rpath)
+
 @import Cocoa;
-@import Sentry;
-#import <ServiceManagement/ServiceManagement.h>
+
+//#import <ServiceManagement/ServiceManagement.h>
 
 #import "consts.h"
 #import "logging.h"
@@ -23,24 +26,9 @@ int main(int argc, const char * argv[])
     //return var
     int iReturn = -1;
     
-    //error
-    NSError* error = nil;
-    
-    //init crash reporting client
-    SentryClient.sharedClient = [[SentryClient alloc] initWithDsn:CRASH_REPORTING_URL didFailWithError:&error];
-    if(nil == error)
-    {
-        //start crash handler
-        [SentryClient.sharedClient startCrashHandlerWithError:&error];
-    }
-    
-    //any errors?
-    // just log, but keep going...
-    if(nil != error)
-    {
-        //log error
-        logMsg(LOG_ERR, [NSString stringWithFormat:@"initializing 'Sentry' failed with %@", error]);
-    }
+    //init crash reporting
+    // kicks off sentry.io
+    initCrashReporting();
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"starting config/pref's app (args: %@)", [[NSProcessInfo processInfo] arguments]]);

@@ -167,7 +167,7 @@ extern NSInteger clientConnected;
     csFlags = determineCSFlags(path, [NSBundle bundleWithPath:path]);
     
     //generate signing info
-    [binary generateSigningInfo:csFlags];
+    [binary generateSigningInfo:csFlags entitlements:NO];
     
     //log to file
     logMsg(LOG_TO_FILE, [NSString stringWithFormat:@"adding rule (path: %@ / action: %lu)", path, action]);
@@ -379,15 +379,20 @@ bail:
     //tell kext
     [kextComms addRule:pid action:action];
     
-    //update rules
-    // type of rule is 'user'
-    [rules add:path signingInfo:alert[ALERT_SIGNINGINFO] action:action type:RULE_TYPE_USER user:user];
+    //not temp?
+    // save rule and process related
+    if(YES != [alert[ALERT_TEMPORARY] boolValue])
+    {
+        //update rules
+        // type of rule is 'user'
+        [rules add:path signingInfo:alert[ALERT_SIGNINGINFO] action:action type:RULE_TYPE_USER user:user];
+    }
     
     //process (any) related alerts
     // add to kext, etc...
     [alerts processRelated:alert];
     
-    //remove 'shown'
+    //remove from 'shown'
     [alerts removeShown:alert];
     
     //signal all threads that rules changed

@@ -52,8 +52,8 @@ extern NSInteger clientConnected;
 
 @implementation KextListener
 
-//@synthesize alerts;
 @synthesize dnsCache;
+@synthesize grayList;
 @synthesize passiveProcesses;
 
 //init
@@ -68,6 +68,9 @@ extern NSInteger clientConnected;
         
         //init list for passively allowed procs
         passiveProcesses = [NSMutableArray array];
+        
+        //init gray list obj
+        grayList = [[GrayList alloc] init];
     }
     
     return self;
@@ -500,7 +503,7 @@ bail:
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ (%d) with flags: %d", process.binary.name, process.pid, codeSigningFlags]);
         
         //generate signing info
-        [process.binary generateSigningInfo:codeSigningFlags];
+        [process.binary generateSigningInfo:codeSigningFlags entitlements:NO];
         
         //dbg msg
         logMsg(LOG_DEBUG, @"done generating code signing info");
@@ -541,17 +544,30 @@ bail:
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"no (saved) rule found for %@ (%d)", process.binary.name, process.pid]);
     
     //if it's an apple process and that preference is set; allow!
+    // unless the binary is something like `curl` which malware could abuse (still alert!)
     if( (YES == [preferences.preferences[PREF_ALLOW_APPLE] boolValue]) &&
         (YES == process.binary.isApple))
     {
+        //though make sure isn't a graylisted binary
+        // such binaries, even if signed by apple, should alert user
+        if(YES != [grayList isGrayListed:process])
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing (non-graylisted) apple process %d/%@", process.pid, process.path]);
+            
+            //create 'apple' rule
+            [rules add:process.path signingInfo:process.binary.signingInfo action:RULE_STATE_ALLOW type:RULE_TYPE_APPLE user:0];
+            
+            //all set
+            goto bail;
+        }
+        
         //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing apple process %d/%@", process.pid, process.path]);
-        
-        //create 'apple' rule
-        [rules add:process.path signingInfo:process.binary.signingInfo action:RULE_STATE_ALLOW type:RULE_TYPE_APPLE user:0];
-        
-        //all set
-        goto bail;
+        else
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"while signed by apple, %@ is gray listed, so will alert", process.binary.name]);
+        }
     }
     
     //if it's a prev installed 3rd-party process and that preference is set; allow!

@@ -19,6 +19,7 @@
 @implementation AlertWindowController
 
 @synthesize alert;
+@synthesize isTempRule;
 @synthesize processIcon;
 @synthesize processName;
 @synthesize ancestryButton;
@@ -118,6 +119,9 @@
     //add timestamp
     self.timeStamp.stringValue = [NSString stringWithFormat:@"time: %@", [timeFormat stringFromDate:[[NSDate alloc] init]]];
     
+    //temp rule label
+    self.tempRuleLabel.stringValue = [NSString stringWithFormat:@"temporarily (pid: %@)", [self.alert[ALERT_PID] stringValue]];
+    
     //show touch bar
     [self initTouchBar];
     
@@ -125,6 +129,7 @@ bail:
     
     return;
 }
+
 
 //covert number protocol to name
 -(NSString*)convertProtocol
@@ -489,9 +494,12 @@ bail:
 }
 
 //button handler
-// close popups and stop modal with resposne
+// close popups and stop modal with response
 -(IBAction)handleUserResponse:(id)sender
 {
+    //save state of 'temp rule' button
+    self.isTempRule = (BOOL)self.tempRule.state;
+    
     //ensure popups are closed
     [self deInitPopup];
     

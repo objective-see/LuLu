@@ -129,7 +129,7 @@
     if(nil != lulu)
     {
         //generate signing info
-        [lulu generateSigningInfo:kSecCSDefaultFlags];
+        [lulu generateSigningInfo:kSecCSDefaultFlags entitlements:NO];
         
         //add LuLu
         self.preInstalledApps[lulu.path] = @{KEY_NAME:lulu.name, KEY_SIGNING_AUTHORITIES:lulu.signingInfo[KEY_SIGNING_AUTHORITIES]};
@@ -366,7 +366,7 @@ bail:
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ with flags: %d", parentBinary.name, codeSigningFlags]);
         
     //generate signing info
-    [parentBinary generateSigningInfo:codeSigningFlags];
+    [parentBinary generateSigningInfo:codeSigningFlags entitlements:NO];
     
     //generate hash
     if( (nil == parentBinary.signingInfo) ||

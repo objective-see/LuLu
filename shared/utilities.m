@@ -7,10 +7,13 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
+@import Sentry;
+
 #import "consts.h"
 #import "logging.h"
 #import "utilities.h"
 
+#import <dlfcn.h>
 #import <signal.h>
 #import <unistd.h>
 #import <libproc.h>
@@ -22,6 +25,64 @@
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonDigest.h>
 #import <SystemConfiguration/SystemConfiguration.h>
+
+//init crash reporting
+void initCrashReporting()
+{
+    //sentry
+    NSBundle *sentry = nil;
+    
+    //error
+    NSError* error = nil;
+    
+    //class
+    Class SentryClient = nil;
+    
+    //load senty
+    sentry = loadFramework(@"Sentry.framework");
+    if(nil == sentry)
+    {
+        //err msg
+        logMsg(LOG_ERR, @"failed to load 'Sentry' framework");
+        
+        //bail
+        goto bail;
+    }
+   
+    //get client class
+    SentryClient = NSClassFromString(@"SentryClient");
+    if(nil == SentryClient)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //set shared client
+    [SentryClient setSharedClient:[[SentryClient alloc] initWithDsn:CRASH_REPORTING_URL didFailWithError:&error]];
+    if(nil != error)
+    {
+        //log error
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"initializing 'Sentry' failed with %@", error]);
+        
+        //bail
+        goto bail;
+    }
+    
+    //start crash handler
+    [[SentryClient sharedClient] startCrashHandlerWithError:&error];
+    if(nil != error)
+    {
+        //log error
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"starting 'Sentry' crash handler failed with %@", error]);
+        
+        //bail
+        goto bail;
+    }
+    
+bail:
+    
+    return;
+}
 
 //get app's version
 // ->extracted from Info.plist
@@ -1478,7 +1539,7 @@ SecCSFlags determineCSFlags(NSString* path, NSBundle* bundle)
     codeSigningFlags |= kSecCSDoNotValidateResources;
     
     //note:
-    // for now skipping this logic, as many legit signed apple binaries have invalid resource, etc... wtf apple
+    // for now skipping this logic, as many legit signed apple binaries have invalid resource, etc...
     
     /*
      
@@ -1508,6 +1569,42 @@ SecCSFlags determineCSFlags(NSString* path, NSBundle* bundle)
     */
     
     return codeSigningFlags;
+}
+
+//loads a framework
+// note: assumes it is in 'Framework' dir
+NSBundle* loadFramework(NSString* name)
+{
+    //handle
+    NSBundle* framework = nil;
+    
+    //framework path
+    NSString* path = nil;
+    
+    //init path
+    path = [NSString stringWithFormat:@"%@/../Frameworks/%@", [NSProcessInfo.processInfo.arguments[0] stringByDeletingLastPathComponent], name];
+    
+    //standardize path
+    path = [path stringByStandardizingPath];
+    
+    //init framework (bundle)
+    framework = [NSBundle bundleWithPath:path];
+    if(NULL == framework)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //load framework
+    if(YES != [framework loadAndReturnError:nil])
+    {
+        //bail
+        goto bail;
+    }
+    
+bail:
+    
+    return framework;
 }
 
 //restart

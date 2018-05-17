@@ -140,6 +140,9 @@ typedef void (^ProcessCallbackBlock)(Process* _Nonnull);
 //signing info
 @property(nonatomic, retain)NSDictionary* _Nonnull signingInfo;
 
+//entitlements
+@property(nonatomic, retain)NSDictionary* _Nonnull entitlements;
+
 //hash
 @property(nonatomic, retain)NSString* _Nonnull sha256;
 
@@ -168,7 +171,11 @@ typedef void (^ProcessCallbackBlock)(Process* _Nonnull);
 
 //generate signing info
 // also classifies if Apple/from App Store/etc.
--(void)generateSigningInfo:(SecCSFlags)flags;
+-(void)generateSigningInfo:(SecCSFlags)flags entitlements:(BOOL)entitlements;
+
+//generate entitlements
+// note: can also call 'generateSigningInfo' w/ 'entitlements:YES'
+-(void)generateEntitlements;
 
 //generate hash
 -(void)generateHash;

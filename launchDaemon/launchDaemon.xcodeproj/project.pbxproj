@@ -21,11 +21,10 @@
 		7DD2BF681F1DC42700B33214 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF671F1DC42700B33214 /* utilities.m */; };
 		7DD2BF761F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF731F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m */; };
 		7DD2BF771F1E9CE700B33214 /* Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF751F1E9CE700B33214 /* Queue.m */; };
+		CD214FF720ABC53A00CEF17B /* GrayList.m in Sources */ = {isa = PBXBuildFile; fileRef = CD214FF620ABC53A00CEF17B /* GrayList.m */; };
 		CD2E667C208D7D09001B5435 /* Baseline.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E667B208D7D09001B5435 /* Baseline.m */; };
-		CD32C22620900F34009CADF6 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD32C22520900F34009CADF6 /* Sentry.framework */; };
 		CD32C22820900F50009CADF6 /* LuLu in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D7755D01F02DF9500D0017D /* LuLu */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		CD32C22C20900F9D009CADF6 /* Sentry.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD32C22520900F34009CADF6 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CD32C23620940887009CADF6 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD32C22520900F34009CADF6 /* Sentry.framework */; };
+		CD6B484820AD33DE00A9BE71 /* Sentry.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CD6B484720AD33DD00A9BE71 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD6CAC70209FB29700188B0A /* Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6CAC6F209FB29600188B0A /* Alerts.m */; };
 		CDAFF457203FB23800F27635 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAFF456203FB23800F27635 /* Preferences.m */; };
 /* End PBXBuildFile section */
@@ -60,14 +59,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD32C22920900F67009CADF6 /* CopyFiles */ = {
+		CD32C22920900F67009CADF6 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CD32C22C20900F9D009CADF6 /* Sentry.framework in CopyFiles */,
+				CD6B484820AD33DE00A9BE71 /* Sentry.framework in Copy Frameworks */,
 			);
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -102,11 +102,13 @@
 		7DD2BF731F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
 		7DD2BF741F1E9CE700B33214 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
 		7DD2BF751F1E9CE700B33214 /* Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Queue.m; sourceTree = "<group>"; };
+		CD214FF520ABC53A00CEF17B /* GrayList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrayList.h; sourceTree = "<group>"; };
+		CD214FF620ABC53A00CEF17B /* GrayList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrayList.m; sourceTree = "<group>"; };
 		CD2E667A208D7D09001B5435 /* Baseline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Baseline.h; sourceTree = "<group>"; };
 		CD2E667B208D7D09001B5435 /* Baseline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Baseline.m; sourceTree = "<group>"; };
 		CD32C21D20900D36009CADF6 /* LuLu.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LuLu.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD32C21F20900D36009CADF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD32C22520900F34009CADF6 /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
+		CD6B484720AD33DD00A9BE71 /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
 		CD6CAC6E209FB29500188B0A /* Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts.h; sourceTree = "<group>"; };
 		CD6CAC6F209FB29600188B0A /* Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts.m; sourceTree = "<group>"; };
 		CDAFF432203E55C600F27635 /* procInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = procInfo.h; path = ../../shared/libs/procInfo.h; sourceTree = "<group>"; };
@@ -121,7 +123,6 @@
 			files = (
 				7D4FF8C41F0E1402001A4A68 /* libbsm.tbd in Frameworks */,
 				7D6E87701F3AE6FA00D6BD7C /* libprocInfo.a in Frameworks */,
-				CD32C23620940887009CADF6 /* Sentry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +130,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD32C22620900F34009CADF6 /* Sentry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +139,6 @@
 		7D4FF8BF1F0E12F1001A4A68 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CD32C22520900F34009CADF6 /* Sentry.framework */,
 				7D4FF8C31F0E1402001A4A68 /* libbsm.tbd */,
 				7D6E876F1F3AE6FA00D6BD7C /* libprocInfo.a */,
 			);
@@ -149,6 +148,7 @@
 		7D7755C71F02DF9400D0017D = {
 			isa = PBXGroup;
 			children = (
+				CD6B484720AD33DD00A9BE71 /* Sentry.framework */,
 				7D7755D21F02DF9500D0017D /* Src */,
 				CD32C21E20900D36009CADF6 /* launchDaemonBundle */,
 				7D4FF8BF1F0E12F1001A4A68 /* Frameworks */,
@@ -170,6 +170,8 @@
 			children = (
 				7D7756071F05D62E00D0017D /* Shared */,
 				7DD2BF721F1E9CE700B33214 /* NSMutableArray+QueueAdditions.h */,
+				CD214FF520ABC53A00CEF17B /* GrayList.h */,
+				CD214FF620ABC53A00CEF17B /* GrayList.m */,
 				CD6CAC6E209FB29500188B0A /* Alerts.h */,
 				CD6CAC6F209FB29600188B0A /* Alerts.m */,
 				7DD2BF731F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m */,
@@ -250,7 +252,7 @@
 				CD32C21A20900D36009CADF6 /* Frameworks */,
 				CD32C21B20900D36009CADF6 /* Resources */,
 				CD32C22720900F40009CADF6 /* CopyFiles */,
-				CD32C22920900F67009CADF6 /* CopyFiles */,
+				CD32C22920900F67009CADF6 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -319,6 +321,7 @@
 				7D7755F91F02E1F400D0017D /* KextListener.m in Sources */,
 				7DD2BF761F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m in Sources */,
 				7DD2BF5C1F1DAEFD00B33214 /* Rule.m in Sources */,
+				CD214FF720ABC53A00CEF17B /* GrayList.m in Sources */,
 				7D4FF37B1F0C2DB300A59A05 /* Rules.m in Sources */,
 				7DD2BF681F1DC42700B33214 /* utilities.m in Sources */,
 				7DD2BF771F1E9CE700B33214 /* Queue.m in Sources */,
@@ -456,12 +459,12 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Objective-See, LLC (VBG97UB4TA)";
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../shared/libs",
 					"$(inherited)",
 				);
-				OTHER_CODE_SIGN_FLAGS = "";
+				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
+				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_NAME = LuLu;
 			};
 			name = Debug;
@@ -472,13 +475,12 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application: Objective-See, LLC (VBG97UB4TA)";
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../shared/libs",
 					"$(inherited)",
 				);
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_NAME = LuLu;
 			};
 			name = Release;
@@ -495,6 +497,7 @@
 				INFOPLIST_FILE = launchDaemonBundle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.bundle";
 				PRODUCT_NAME = LuLu;
 				SKIP_INSTALL = YES;
@@ -514,6 +517,7 @@
 				INFOPLIST_FILE = launchDaemonBundle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.bundle";
 				PRODUCT_NAME = LuLu;
 				SKIP_INSTALL = YES;

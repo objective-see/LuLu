@@ -144,9 +144,6 @@ bail:
     //flag
     BOOL generated = NO;
     
-    //number of default rules
-    NSUInteger defaultRulesCount = 0;
-    
     //default binary
     NSString* defaultBinary = nil;
     
@@ -156,15 +153,12 @@ bail:
     //cs flag
     SecCSFlags csFlags = kSecCSDefaultFlags;
     
-    //calculate number of rules
-    defaultRulesCount = sizeof(DEFAULT_RULES)/sizeof(DEFAULT_RULES[0]);
-    
     //dbg msg
     logMsg(LOG_DEBUG, @"generating default rules");
     
     //iterate overall default rule paths
-    // generate binary obj/signing info
-    for(NSUInteger i=0; i<defaultRulesCount; i++)
+    // generate binary obj/signing info for each
+    for(NSUInteger i=0; i<sizeof(DEFAULT_RULES)/sizeof(DEFAULT_RULES[0]); i++)
     {
         //extract binary
         defaultBinary = DEFAULT_RULES[i];
@@ -196,7 +190,7 @@ bail:
         csFlags = determineCSFlags(binary.path, [NSBundle bundleWithPath:binary.path]);
         
         //generate signing info
-        [binary generateSigningInfo:csFlags];
+        [binary generateSigningInfo:csFlags entitlements:NO];
         
         //add
         if(YES != [self add:binary.path signingInfo:binary.signingInfo action:RULE_STATE_ALLOW type:RULE_TYPE_DEFAULT user:0])
@@ -210,7 +204,7 @@ bail:
     }
     
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generated %lu default rules", defaultRulesCount]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generated (added) %lu default rules", sizeof(DEFAULT_RULES)/sizeof(DEFAULT_RULES[0])]);
     
     //happy
     generated = YES;
@@ -317,7 +311,7 @@ bail:
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ (%d) with flags: %d", process.binary.name, process.pid, codeSigningFlags]);
         
         //generate signing info
-        [process.binary generateSigningInfo:codeSigningFlags];
+        [process.binary generateSigningInfo:codeSigningFlags entitlements:NO];
         
         //reset thread priority
         [NSThread setThreadPriority:threadPriority];

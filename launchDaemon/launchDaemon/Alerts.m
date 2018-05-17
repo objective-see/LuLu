@@ -241,8 +241,9 @@ bail:
 }
 
 //process related alerts
-// adds each to kext, and removes
--(void)processRelated:(NSDictionary*)alert
+// for persistent rules: adds each to kext
+// for temporary rules: queues up related rule
+-(void)processRelated:(NSDictionary*)alert 
 {
     //path
     NSString* path = nil;
@@ -250,25 +251,79 @@ bail:
     //process ids
     NSMutableSet* pids = nil;
     
+    //related alert
+    NSMutableDictionary* relatedAlert = nil;
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, @"processing related alert");
+    
     //grab path
     path = alert[ALERT_PATH];
     
+    //sync
+    @synchronized(self.relatedAlerts)
+    {
+    
     //grab pids
     pids = self.relatedAlerts[path];
-    
-    //process all pids
-    // send response to kernel
-    for(NSNumber* pid in pids)
+    if(0 == pids.count)
     {
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding rule for related alert (process: %@)", alert[ALERT_PATH]]);
+        //bail
+        goto bail;
+    }
+
+    //rule not temporary?
+    // process all pids, sending response to kernel
+    if(YES != [alert[ALERT_TEMPORARY] boolValue])
+    {
+        //process all pids
+        // send response to kernel
+        for(NSNumber* pid in pids)
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding rule for related alert (process: %@)", alert[ALERT_PATH]]);
+            
+            //tell kext
+            [kextComms addRule:pid.unsignedIntValue action:[alert[ALERT_ACTION] unsignedIntValue]];
+        }
         
-        //tell kext
-        [kextComms addRule:pid.unsignedIntValue action:[alert[ALERT_ACTION] unsignedIntValue]];
+        //remove all
+        [self removeRelated:path];
     }
     
-    //remove
-    [self removeRelated:path];
+    //rule is temporary
+    // queue up next related rule
+    else
+    {
+        //make copy of alert
+        relatedAlert = [alert copy];
+        
+        //update pid
+        // everything else should be the same!
+        relatedAlert[ALERT_PID] = [pids anyObject];
+        
+        //now remove (just this) pid from list of related alerts
+        [self.relatedAlerts[path] removeObject:relatedAlert[ALERT_PID]];
+        if(0 == [self.relatedAlerts[path] count])
+        {
+            //remove list, as pid was last item
+            [self.relatedAlerts removeObjectForKey:path];
+        }
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, @"rule was temporary, so enqueuing up (next) related alert");
+        
+        //add to alert queue
+        // this will trigger processing of alert
+        [eventQueue enqueue:relatedAlert];
+        
+        //save to 'shown'
+        [self addShown:relatedAlert];
+    }
+        
+    }//sync
+
+bail:
     
     return;
 }
@@ -277,7 +332,7 @@ bail:
 -(void)removeRelated:(NSString*)path
 {
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"removing alert to 'related': %@", path]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"removing alert from 'related': %@", path]);
     
     //sync
     @synchronized(self.relatedAlerts)

@@ -15,6 +15,7 @@
 #import <sys/kern_event.h>
 
 #import "procInfo.h"
+#import "GrayList.h"
 #import "UserClientShared.h"
 
 //custom struct for network events
@@ -42,12 +43,12 @@ struct connectionEvent
 
 /* PROPERTIES */
 
+//graylist obj
+@property(nonatomic, retain)GrayList* grayList;
+
 //DNS 'cache'
 // mappings of IP:URL
 @property(nonatomic, retain)NSMutableDictionary* dnsCache;
-    
-//pre-installed 3rd-party apps
-@property(nonatomic, retain)NSDictionary* installedApps;
 
 //processes allowed due to 'passive' mode
 // save and reset these if user toggles off this mode

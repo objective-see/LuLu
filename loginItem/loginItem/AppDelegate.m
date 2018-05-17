@@ -181,7 +181,7 @@ bail:
 }
 
 //process update response
-// ->error, no update, update/new version
+// error, no update, update/new version
 -(void)updateResponse:(NSInteger)result newVersion:(NSString*)newVersion
 {
     //handle response

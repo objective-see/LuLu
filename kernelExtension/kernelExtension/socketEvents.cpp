@@ -163,7 +163,7 @@ kern_return_t registerSocketFilters()
     }
     
     //register socket filter
-    // ->AF_INET domain, SOCK_STREAM type, TCP protocol
+    // AF_INET domain, SOCK_STREAM type, TCP protocol
     status = sflt_register(&tcpFilterIPV4, AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if(kIOReturnSuccess != status)
     {
@@ -181,7 +181,7 @@ kern_return_t registerSocketFilters()
     IOLog("LULU: registered socker filter for tcp ipv4\n");
     
     //register socket filter
-    // ->AF_INET domain, SOCK_DGRAM type, UDP protocol
+    // AF_INET domain, SOCK_DGRAM type, UDP protocol
     status = sflt_register(&udpFilterIPV4, AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     if(kIOReturnSuccess != status)
     {
@@ -217,7 +217,7 @@ kern_return_t registerSocketFilters()
     IOLog("LULU: registered socker filter for tcp ipv6\n");
     
     //register socket filter
-    // ->AF_INET6 domain, SOCK_DGRAM type, UDP protocol
+    // AF_INET6 domain, SOCK_DGRAM type, UDP protocol
     status = sflt_register(&udpFilterIPV6, AF_INET6, SOCK_DGRAM, IPPROTO_UDP);
     if(kIOReturnSuccess != status)
     {
@@ -269,7 +269,7 @@ kern_return_t unregisterSocketFilters()
     
     //TCP IPV4
     // when filter's been registered & not currently unregistering
-    // ->invoke sflt_unregister to unregister, and set global flag
+    // invoke sflt_unregister to unregister, and set global flag
     if( (true == gRegisteredTCPIPV4) &&
         (true != gUnregisteringTCPIPV4))
     {
@@ -290,7 +290,7 @@ kern_return_t unregisterSocketFilters()
     
     //UDP IPV4
     // when filter's been registered & not currently unregistering
-    // ->invoke sflt_unregister to unregister, and set global flag
+    // invoke sflt_unregister to unregister, and set global flag
     if( (true == gRegisteredUDPIPV4) &&
         (true != gUnregisteringUDPIPV4))
     {
@@ -311,7 +311,7 @@ kern_return_t unregisterSocketFilters()
     
     //TCP IPV6
     // when filter's been registered & not currently unregistering
-    // ->invoke sflt_unregister to unregister, and set global flag
+    // invoke sflt_unregister to unregister, and set global flag
     if( (true == gRegisteredTCPIPV6) &&
         (true != gUnregisteringTCPIPV6))
     {
@@ -332,7 +332,7 @@ kern_return_t unregisterSocketFilters()
     
     //UDP IPV6
     // when filter's been registered & not currently unregistering
-    // ->invoke sflt_unregister to unregister, and set global flag
+    // invoke sflt_unregister to unregister, and set global flag
     if( (true == gRegisteredUDPIPV6) &&
         (true != gUnregisteringUDPIPV6))
     {
@@ -424,7 +424,7 @@ static void unregistered(sflt_handle handle)
 }
 
 //called for new socket
-//  find rule, and attach entry (so know to ask/allow/deny for later actions)
+// find rule, and attach entry (so know to ask/allow/deny for later actions)
 static kern_return_t attach(void **cookie, socket_t so)
 {
     //result

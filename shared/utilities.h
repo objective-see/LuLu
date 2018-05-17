@@ -15,6 +15,9 @@
 
 /* FUNCTIONS */
 
+//init crash reporting
+void initCrashReporting(void);
+
 //give path to app
 // ->get full path to its binary
 NSString* getAppBinary(NSString* appPath);
@@ -71,7 +74,7 @@ void toggleMenu(NSMenu* menu, BOOL shouldEnable);
 BOOL toggleLoginItem(NSURL* loginItem, int toggleFlag);
 
 //get an icon for a process
-// ->for apps, this will be app's icon, otherwise just a standard system one
+// for apps, this will be app's icon, otherwise just a standard system one
 NSImage* getIconForProcess(NSString* path);
 
 //check if a kext is loaded
@@ -81,7 +84,7 @@ BOOL kextIsLoaded(NSString* kext);
 void wait4kext(NSString* kext);
 
 //wait until a window is non nil
-// ->then make it modal
+// then make it modal
 void makeModal(NSWindowController* windowController);
 
 //find a process by name
@@ -110,6 +113,10 @@ NSMutableString* extractDNSURL(unsigned char* dnsData, unsigned char* dnsDataEnd
 //determine what CS flags to use
 // for massive bundles, won't validate resources, etc...
 SecCSFlags determineCSFlags(NSString* path, NSBundle* bundle);
+
+//loads a framework
+// note: assumes is in 'Framework' dir
+NSBundle* loadFramework(NSString* name);
 
 //restart
 void restart(void);

@@ -44,10 +44,9 @@
 		7DD2BF591F1C59E900B33214 /* AddRule.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DD2BF571F1C59E900B33214 /* AddRule.xib */; };
 		7DD2BF5F1F1DAF0C00B33214 /* Rule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF5D1F1DAF0C00B33214 /* Rule.m */; };
 		7DD2BF651F1DC41600B33214 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF641F1DC41600B33214 /* utilities.m */; };
+		CD21501820AD222800CEF17B /* Sentry.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CD21501720AD222800CEF17B /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD223E442083361A0049A76B /* RulesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD223E432083361A0049A76B /* RulesTable.m */; };
 		CD22785A2042977300C72C76 /* kext.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2278592042977300C72C76 /* kext.png */; };
-		CD32C216208FFF14009CADF6 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD32C215208FFF14009CADF6 /* Sentry.framework */; };
-		CD32C230209015F1009CADF6 /* Sentry.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD32C215208FFF14009CADF6 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDA6E644203B9DA800C78F91 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E63B203B9DA700C78F91 /* Welcome.xib */; };
 		CDA6E648203B9DA800C78F91 /* WelcomeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA6E642203B9DA700C78F91 /* WelcomeWindowController.m */; };
 		CDA6E64C203BA44E00C78F91 /* luluIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E64A203BA44D00C78F91 /* luluIcon.png */; };
@@ -67,14 +66,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD32C22F209015E3009CADF6 /* CopyFiles */ = {
+		CD32C22F209015E3009CADF6 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CD32C230209015F1009CADF6 /* Sentry.framework in CopyFiles */,
+				CD21501820AD222800CEF17B /* Sentry.framework in Copy Frameworks */,
 			);
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -135,10 +135,10 @@
 		7DD2BF601F1DAFE100B33214 /* Rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rule.h; path = ../shared/Rule.h; sourceTree = "<group>"; };
 		7DD2BF631F1DC41600B33214 /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = ../shared/utilities.h; sourceTree = "<group>"; };
 		7DD2BF641F1DC41600B33214 /* utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = utilities.m; path = ../shared/utilities.m; sourceTree = "<group>"; };
+		CD21501720AD222800CEF17B /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
 		CD223E422083361A0049A76B /* RulesTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RulesTable.h; sourceTree = "<group>"; };
 		CD223E432083361A0049A76B /* RulesTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RulesTable.m; sourceTree = "<group>"; };
 		CD2278592042977300C72C76 /* kext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kext.png; sourceTree = "<group>"; };
-		CD32C215208FFF14009CADF6 /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
 		CDA6E63B203B9DA700C78F91 /* Welcome.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Welcome.xib; sourceTree = "<group>"; };
 		CDA6E641203B9DA700C78F91 /* WelcomeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeWindowController.h; sourceTree = "<group>"; };
 		CDA6E642203B9DA700C78F91 /* WelcomeWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeWindowController.m; sourceTree = "<group>"; };
@@ -148,17 +148,6 @@
 		CDA6E659203CF9D500C78F91 /* prefsVisuals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prefsVisuals.png; sourceTree = "<group>"; };
 		CDA6E65B203CFA7100C78F91 /* rulesApple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rulesApple.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		7D564DA61F18434F00B8AAD6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD32C216208FFF14009CADF6 /* Sentry.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		7D46FEFC1F5E129700FEB0F8 /* XIBs */ = {
@@ -179,8 +168,8 @@
 			children = (
 				7D564DE21F18445400B8AAD6 /* Shared */,
 				7D564DAB1F18434F00B8AAD6 /* Src */,
+				CD21501920AD224A00CEF17B /* Frameworks */,
 				7D564DAA1F18434F00B8AAD6 /* Products */,
-				CD32C214208FFF14009CADF6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -298,10 +287,10 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
-		CD32C214208FFF14009CADF6 /* Frameworks */ = {
+		CD21501920AD224A00CEF17B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CD32C215208FFF14009CADF6 /* Sentry.framework */,
+				CD21501720AD222800CEF17B /* Sentry.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -323,11 +312,10 @@
 			buildConfigurationList = 7D564DBA1F18434F00B8AAD6 /* Build configuration list for PBXNativeTarget "mainApp" */;
 			buildPhases = (
 				7D564DA51F18434F00B8AAD6 /* Sources */,
-				7D564DA61F18434F00B8AAD6 /* Frameworks */,
 				7D564DA71F18434F00B8AAD6 /* Resources */,
 				7DD25FEE1F23B5AE00277EC4 /* CopyFiles */,
 				7D16D6971F650FF400DB3161 /* ShellScript */,
-				CD32C22F209015E3009CADF6 /* CopyFiles */,
+				CD32C22F209015E3009CADF6 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -587,8 +575,8 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = mainApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				OTHER_CODE_SIGN_FLAGS = "";
+				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
+				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
 				PRODUCT_NAME = LuLu;
 			};
@@ -604,9 +592,8 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = mainApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
 				PRODUCT_NAME = LuLu;
 			};
