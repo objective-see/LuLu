@@ -7,9 +7,9 @@
 //  copyright (c) 2018 Objective-See. All rights reserved.
 //
 
-
 #import "consts.h"
 #import "logging.h"
+#import "procInfo.h"
 #import "utilities.h"
 #import "SigningInfoViewController.h"
 

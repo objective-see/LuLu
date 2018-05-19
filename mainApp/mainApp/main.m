@@ -7,12 +7,8 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-// TODO: restrict/cs-kill
-//       might require dynamic loading of framework? (@rpath)
 
 @import Cocoa;
-
-//#import <ServiceManagement/ServiceManagement.h>
 
 #import "consts.h"
 #import "logging.h"

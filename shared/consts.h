@@ -291,26 +291,6 @@
 #define KEY_NAME @"name"
 #define KEY_HASH @"hash"
 
-//TODO: move these into procInfo.h?
-
-//signature status
-#define KEY_SIGNATURE_STATUS @"signatureStatus"
-
-//signing auths
-#define KEY_SIGNING_AUTHORITIES @"signingAuthorities"
-
-//file belongs to apple?
-#define KEY_SIGNING_IS_APPLE @"signedByApple"
-
-//file signed with apple dev id
-#define KEY_SIGNING_IS_APPLE_DEV_ID @"signedWithDevID"
-
-//code signing id
-#define KEY_SIGNATURE_IDENTIFIER @"signingIdentifier"
-
-//from app store
-#define KEY_SIGNING_IS_APP_STORE @"fromAppStore"
-
 //rules window
 #define WINDOW_RULES 0
 

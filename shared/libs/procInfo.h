@@ -29,6 +29,24 @@
 #define EVENT_EXEC      27
 #define EVENT_SPAWN     43190
 
+//signature status
+#define KEY_SIGNATURE_STATUS @"signatureStatus"
+
+//signing auths
+#define KEY_SIGNING_AUTHORITIES @"signingAuthorities"
+
+//code signing id
+#define KEY_SIGNATURE_IDENTIFIER @"signingIdentifier"
+
+//file belongs to apple?
+#define KEY_SIGNING_IS_APPLE @"signedByApple"
+
+//file signed with apple dev id
+#define KEY_SIGNING_IS_APPLE_DEV_ID @"signedWithDevID"
+
+//from app store
+#define KEY_SIGNING_IS_APP_STORE @"fromAppStore"
+
 /* TYPEDEFS */
 
 //block for library
