@@ -455,7 +455,6 @@ bail:
     return;
 }
 
-
 //logic to close/remove popups from view
 // ->needed, otherwise random memory issues occur :/
 -(void)deInitPopup

@@ -165,18 +165,15 @@ int main(int argc, const char * argv[])
         //alloc/init alerts object
         alerts = [[Alerts alloc] init];
         
+        //alloc/init rules object
+        rules = [[Rules alloc] init];
+        
         //register for shutdown
         // so, can disable firewall and close logging
         register4Shutdown();
         
         //dbg msg
         logMsg(LOG_DEBUG, @"registered for shutdown events");
-        
-        //start listening for process events
-        [processListener monitor];
-        
-        //dbg msg
-        logMsg(LOG_DEBUG, @"listening for process events");
         
         //init global queue
         eventQueue = [[Queue alloc] init];
@@ -229,9 +226,6 @@ int main(int argc, const char * argv[])
         //init rule changed semaphore
         rulesChanged = dispatch_semaphore_create(0);
         
-        //alloc/init rules object
-        rules = [[Rules alloc] init];
-        
         //load rules
         if(YES != [rules load])
         {
@@ -273,6 +267,12 @@ int main(int argc, const char * argv[])
         
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"user completed install, preferences: %@", preferences.preferences]);
+        
+        //start listening for process events
+        [processListener monitor];
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, @"listening for process events");
         
         //firewall enabled?
         if(YES != [preferences.preferences[PREF_IS_DISABLED] boolValue])

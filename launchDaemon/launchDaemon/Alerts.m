@@ -249,13 +249,13 @@ bail:
     NSString* path = nil;
     
     //process ids
-    NSMutableSet* pids = nil;
+    NSMutableArray* pids = nil;
     
     //related alert
     NSMutableDictionary* relatedAlert = nil;
     
     //dbg msg
-    logMsg(LOG_DEBUG, @"processing related alert");
+    logMsg(LOG_DEBUG, @"processing any related alerts");
     
     //grab path
     path = alert[ALERT_PATH];
@@ -276,6 +276,9 @@ bail:
     // process all pids, sending response to kernel
     if(YES != [alert[ALERT_TEMPORARY] boolValue])
     {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"rule is not temporary, so applying same user action to all %lu related alerts", (unsigned long)pids.count]);
+        
         //process all pids
         // send response to kernel
         for(NSNumber* pid in pids)
@@ -295,12 +298,15 @@ bail:
     // queue up next related rule
     else
     {
+        //dbg msg
+        logMsg(LOG_DEBUG, @"rule was temporary, so enqueuing up (next) related alert");
+        
         //make copy of alert
-        relatedAlert = [alert copy];
+        relatedAlert = [alert mutableCopy];
         
         //update pid
         // everything else should be the same!
-        relatedAlert[ALERT_PID] = [pids anyObject];
+        relatedAlert[ALERT_PID] = [pids firstObject];
         
         //now remove (just this) pid from list of related alerts
         [self.relatedAlerts[path] removeObject:relatedAlert[ALERT_PID]];
@@ -310,15 +316,15 @@ bail:
             [self.relatedAlerts removeObjectForKey:path];
         }
         
-        //dbg msg
-        logMsg(LOG_DEBUG, @"rule was temporary, so enqueuing up (next) related alert");
-        
         //add to alert queue
         // this will trigger processing of alert
         [eventQueue enqueue:relatedAlert];
         
         //save to 'shown'
         [self addShown:relatedAlert];
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"related alert: %@", relatedAlert]);
     }
         
     }//sync

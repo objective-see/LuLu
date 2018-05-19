@@ -103,7 +103,6 @@
                     //add
                     ((NSTextField*)[self.view viewWithTag:SIGNING_AUTH_1+i]).stringValue = [NSString stringWithFormat:@"› %@ \n", signingInfo[KEY_SIGNING_AUTHORITIES][i]];
                 }
-                
             }
             
             break;

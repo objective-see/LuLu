@@ -262,7 +262,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T6r-Lc-cqm">
-                        <rect key="frame" x="509" y="8" width="22" height="18"/>
+                        <rect key="frame" x="510" y="8" width="22" height="18"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="18" id="BYE-f6-85S"/>
                         </constraints>
@@ -272,7 +272,7 @@
                         </buttonCell>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QCK-3b-3zi">
-                        <rect key="frame" x="530" y="9" width="197" height="19"/>
+                        <rect key="frame" x="531" y="9" width="196" height="19"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="temporarily (pid: 12345)" id="jMT-bB-bbI">
                             <font key="font" size="13" name="Menlo-Regular"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -299,7 +299,7 @@
                     <constraint firstItem="i43-b2-cU0" firstAttribute="leading" secondItem="fJv-Iu-3gy" secondAttribute="trailing" constant="9" id="1ie-Km-ATX"/>
                     <constraint firstItem="32G-48-5jq" firstAttribute="leading" secondItem="PJQ-Iq-93l" secondAttribute="trailing" constant="60" id="2RB-oe-ncK"/>
                     <constraint firstItem="QCK-3b-3zi" firstAttribute="leading" secondItem="T6r-Lc-cqm" secondAttribute="trailing" constant="3" id="2ar-jd-XWt"/>
-                    <constraint firstAttribute="trailing" secondItem="T6r-Lc-cqm" secondAttribute="trailing" constant="216" id="38L-k8-5BX"/>
+                    <constraint firstAttribute="trailing" secondItem="T6r-Lc-cqm" secondAttribute="trailing" constant="215" id="38L-k8-5BX"/>
                     <constraint firstItem="i1i-s4-Q02" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="42" id="8zf-7S-usv"/>
                     <constraint firstItem="hI7-ev-MZU" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="168" id="9Fx-KQ-o7s"/>
                     <constraint firstAttribute="bottom" secondItem="T6r-Lc-cqm" secondAttribute="bottom" constant="10" id="A1o-be-Wcc"/>

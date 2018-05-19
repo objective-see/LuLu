@@ -137,12 +137,19 @@ enum menuItems
 // also unsets action handler, resets, highlighting, etc
 -(void)closePopover:(id)sender
 {
+    //sync
+    @synchronized(self.popover)
+    {
+        
     //still visible?
     // close it then...
     if(YES == self.popover.shown)
     {
         //close
         [self.popover performClose:nil];
+        
+        //unset
+        self.popover = nil;
     }
     
     //remove action handler
@@ -150,6 +157,8 @@ enum menuItems
     
     //reset highlight mode
     self.statusItem.highlightMode = YES;
+    
+    } //sync
     
     return;
 }
