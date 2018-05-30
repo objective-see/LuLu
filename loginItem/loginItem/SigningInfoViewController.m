@@ -35,6 +35,13 @@
     //start summary with item name
     [summary appendString:getProcessName(alert[ALERT_PATH])];
     
+    //unset signing auth field
+    for(NSUInteger i=0; i<3; i++)
+    {
+        //unset
+        ((NSTextField*)[self.view viewWithTag:SIGNING_AUTH_1+i]).stringValue = @"";
+    }
+
     //process
     switch([signingInfo[KEY_SIGNATURE_STATUS] integerValue])
     {
@@ -116,9 +123,6 @@
             //set details
             self.details.stringValue = [@"n/a" mutableCopy];
             
-            //set signing auth field
-            ((NSTextField*)[self.view viewWithTag:SIGNING_AUTH_1]).stringValue = @"n/a";
-            
             break;
             
         //everything else
@@ -131,10 +135,15 @@
             //set details
             self.details.stringValue = [NSMutableString stringWithFormat:@"signing error: %ld", (long)[signingInfo[KEY_SIGNATURE_STATUS] integerValue]];
             
-            //set signing auth field
-            ((NSTextField*)[self.view viewWithTag:SIGNING_AUTH_1]).stringValue = @"n/a";
-            
             break;
+    }
+    
+    //no (valid) signing auths?
+    // show 'not applicable' msg
+    if(0 == [((NSTextField*)[self.view viewWithTag:SIGNING_AUTH_1]).stringValue length])
+    {
+        //show
+        self.noSigningAuths.hidden = NO;
     }
     
     //assign summary to outlet

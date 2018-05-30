@@ -52,6 +52,9 @@
 // populate/configure alert window
 -(void)windowDidLoad
 {
+    //process args
+    NSMutableString* arguments = nil;
+    
     //remote addr
     NSString* remoteAddress = nil;
     
@@ -100,6 +103,39 @@
     
     //process pid
     self.processID.stringValue = [self.alert[ALERT_PID] stringValue];
+    
+    //process args
+    // ignore argv[0], as this is just proc name
+    if( (nil != self.alert[ALERT_ARGS]) &&
+        ([self.alert[ALERT_ARGS] count] > 1) )
+    {
+        //alloc
+        arguments = [NSMutableString string];
+        
+        //add each
+        // but skip argv[0]
+        for(NSUInteger i=0; i<[self.alert[ALERT_ARGS] count]; i++)
+        {
+            //skip first
+            if(0 == i)
+            {
+                //skip
+                continue;
+            }
+            
+            //add arg
+            [arguments appendFormat:@"%@ ", [self.alert[ALERT_ARGS] objectAtIndex:i]];
+        }
+        
+        //add to UI
+        self.processArgs.stringValue = arguments;
+    }
+    //no args
+    else
+    {
+        //none
+        self.processArgs.stringValue = @"none";
+    }
     
     //process path
     self.processPath.stringValue = self.alert[ALERT_PATH];

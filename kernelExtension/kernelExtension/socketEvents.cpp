@@ -680,6 +680,10 @@ static kern_return_t data_out(void *cookie, socket_t so, const struct sockaddr *
     // socket we're watching?
     if(NULL == cookie)
     {
+        //ignore
+        // but no errors
+        result = kIOReturnSuccess;
+        
         //bail
         goto bail;
     }
@@ -722,6 +726,10 @@ static kern_return_t connect_out(void *cookie, socket_t so, const struct sockadd
     // socket we're watching?
     if(NULL == cookie)
     {
+        //ignore
+        // but no errors
+        result = kIOReturnSuccess;
+        
         //bail
         goto bail;
     }

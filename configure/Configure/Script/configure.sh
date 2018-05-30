@@ -120,6 +120,9 @@ elif [ "${1}" == "-uninstall" ]; then
 
     echo "kext removed"
 
+    #rebuild cache, full path
+    /usr/sbin/kextcache -invalidate / &
+
     echo "uninstall complete"
     exit 0
 fi

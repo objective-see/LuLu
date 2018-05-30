@@ -226,7 +226,7 @@ bail:
         status = YES;
         
         //for install
-        // wait until kext cache rebuild is done
+        // wait until enum'ing of installed apps is done
         if(ACTION_INSTALL_FLAG == event)
         {
             //nap
@@ -259,34 +259,35 @@ bail:
             
             //dbg msg
             logMsg(LOG_DEBUG, [NSString stringWithFormat:@"'%@' completed", SYSTEM_PROFILER]);
-            
-            //update status msg
-            dispatch_async(dispatch_get_main_queue(),
-            ^{
-                //set status msg
-                [self.statusMsg setStringValue:@"Rebuilding kernel cache\n\t\t ...please wait!"];
-            });
-            
-            //wait until 'kextcache' has exited
-            while(YES)
-            {
-                //dbg msg
-                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"waiting for '%@' to complete", KEXT_CACHE]);
-                
-                //nap
-                [NSThread sleepForTimeInterval:1.0];
-                
-                //exit'd?
-                if(0 == [getProcessIDs(KEXT_CACHE, -1) count])
-                {
-                    //bye
-                    break;
-                }
-            }
-            
-            //dbg msg
-            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"'%@' completed", KEXT_CACHE]);
         }
+    
+        //update status msg
+        dispatch_async(dispatch_get_main_queue(),
+        ^{
+            //set status msg
+            [self.statusMsg setStringValue:@"Rebuilding kernel cache\n\t\t ...please wait!"];
+        });
+        
+        //for both install and uninstall
+        //wait until 'kextcache' has exited
+        while(YES)
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"waiting for '%@' to complete", KEXT_CACHE]);
+            
+            //nap
+            [NSThread sleepForTimeInterval:1.0];
+            
+            //exit'd?
+            if(0 == [getProcessIDs(KEXT_CACHE, -1) count])
+            {
+                //bye
+                break;
+            }
+        }
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"'%@' completed", KEXT_CACHE]);
     }
     
     //error occurred

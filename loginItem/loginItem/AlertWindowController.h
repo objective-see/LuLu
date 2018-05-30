@@ -66,6 +66,9 @@
 //process id
 @property (weak) IBOutlet NSTextField *processID;
 
+//process args
+@property (weak) IBOutlet NSTextField *processArgs;
+
 //process path
 @property (weak) IBOutlet NSTextField *processPath;
 

@@ -544,7 +544,7 @@ bail:
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"no (saved) rule found for %@ (%d)", process.binary.name, process.pid]);
     
     //if it's an apple process and that preference is set; allow!
-    // unless the binary is something like `curl` which malware could abuse (still alert!)
+    // unless the binary is something like 'curl' which malware could abuse (still alert!)
     if( (YES == [preferences.preferences[PREF_ALLOW_APPLE] boolValue]) &&
         (YES == process.binary.isApple))
     {
@@ -871,69 +871,6 @@ bail:
     }
     
     return process;
-}
-
-//create an alert object
-// note: can treat sockaddr_in and sockaddr_in6 as 'same same' for family, port, etc
--(NSMutableDictionary*)createAlert:(struct networkOutEvent_s*)event process:(Process*)process
-{
-    //event for alert
-    NSMutableDictionary* alertInfo = nil;
-    
-    //remote ip address
-    NSString* remoteAddress = nil;
-    
-    //remote host name
-    NSString* remoteHost = nil;
-    
-    //alloc
-    alertInfo = [NSMutableDictionary dictionary];
-    
-    //covert IP address to string
-    remoteAddress = convertSocketAddr((struct sockaddr*)&(event->remoteAddress));
-    
-    //add pid
-    alertInfo[ALERT_PID] = [NSNumber numberWithUnsignedInt:event->pid];
-    
-    //add path
-    alertInfo[ALERT_PATH] = process.path;
-    
-    //add (remote) ip
-    alertInfo[ALERT_IPADDR] = convertSocketAddr((struct sockaddr*)&(event->remoteAddress));
-    
-    //try get host name from DNS cache
-    // since it's based on recv'ing data from kernel, try for a bit...
-    for(int i=0; i<5; i++)
-    {
-        //try grab host name
-        remoteHost = self.dnsCache[alertInfo[ALERT_IPADDR]];
-        if(nil != remoteHost)
-        {
-            //add
-            alertInfo[ALERT_HOSTNAME] = remoteHost;
-            
-            //done
-            break;
-        }
-        
-        //nap
-        [NSThread sleepForTimeInterval:0.10f];
-    }
-    
-    //add (remote) port
-    alertInfo[ALERT_PORT] = [NSNumber numberWithUnsignedShort:ntohs(event->remoteAddress.sin6_port)];
-    
-    //add protocol (socket type)
-    alertInfo[ALERT_PROTOCOL] = [NSNumber numberWithInt:event->socketType];
-    
-    //add signing info
-    if(nil != process.binary.signingInfo)
-    {
-        //add
-        alertInfo[ALERT_SIGNINGINFO] = process.binary.signingInfo;
-    }
-    
-    return alertInfo;
 }
 
 @end

@@ -28,13 +28,15 @@
 @property(nonatomic, retain)NSDictionary* alert;
 
 //signing icon
-@property (weak) IBOutlet NSImageView *icon;
+@property (weak) IBOutlet NSImageView* icon;
 
 //main signing msg
-@property (weak) IBOutlet NSTextField *message;
+@property (weak) IBOutlet NSTextField* message;
 
 //details
-@property (weak) IBOutlet NSTextField *details;
+@property (weak) IBOutlet NSTextField* details;
 
+//no signing auths
+@property (weak) IBOutlet NSTextField *noSigningAuths;
 
 @end

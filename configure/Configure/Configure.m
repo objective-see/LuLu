@@ -338,7 +338,6 @@ bail:
             
         //save result
         wasInstalled = (BOOL)(result.intValue == 0);
-        
     };
     
     //install

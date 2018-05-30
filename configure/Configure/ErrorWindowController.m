@@ -88,7 +88,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 100 * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
         
         //make close button active
-        [self.window makeFirstResponder:closeButton];
+        [self.window makeFirstResponder:self.closeButton];
         
     });
     

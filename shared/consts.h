@@ -275,6 +275,7 @@
 //keys for alert dictionary
 #define ALERT_PATH @"path"
 #define ALERT_PID @"pid"
+#define ALERT_ARGS @"args"
 #define ALERT_USER @"user"
 #define ALERT_IPADDR @"ipAddr"
 #define ALERT_HOSTNAME @"hostName"

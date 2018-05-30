@@ -78,7 +78,7 @@
             logMsg(LOG_DEBUG, @"main application completed");
             
             //remove observer
-            [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:observer];
+            [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self.observer];
             
             //unset
             self.observer = nil;

@@ -77,7 +77,8 @@ int main(int argc, char *argv[])
         goto bail;
     }
     
-    //kick main app logic
+    //default run mode
+    // just kick off main app logic
     status = NSApplicationMain(argc,  (const char **) argv);
     
 bail:
@@ -150,8 +151,6 @@ BOOL cmdlineInterface(int action)
                 break;
             }
         }
-        
-        
     }
 
     //happy

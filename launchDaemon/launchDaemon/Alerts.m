@@ -75,6 +75,13 @@ extern Queue* eventQueue;
     //add pid
     alert[ALERT_PID] = [NSNumber numberWithUnsignedInt:event->pid];
     
+    //add args
+    if(0 != process.arguments.count)
+    {
+        //add
+        alert[ALERT_ARGS] = process.arguments;
+    }
+    
     //add path
     alert[ALERT_PATH] = process.path;
     

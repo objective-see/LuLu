@@ -20,7 +20,10 @@ NSString* const GRAYLISTED_BINARIES[] =
     @"com.apple.curl",
     @"com.apple.ruby",
     @"com.apple.perl",
+    @"com.apple.perl5",
     @"com.apple.python",
+    @"com.apple.python2",
+    @"com.apple.pythonw",
     @"com.apple.openssh",
     @"com.apple.osascript"
 };
@@ -63,6 +66,9 @@ NSString* const GRAYLISTED_BINARIES[] =
     
     //process signing info
     NSDictionary* signingInfo = nil;
+    
+    //dbg info
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"checking if %@ is graylisted (signing info: %@)", process.path, process.binary.signingInfo]);
     
     //has to be apple
     if(YES != process.binary.isApple)
