@@ -131,7 +131,9 @@
             break;
             
         default:
-            break;
+            
+            //bail
+            goto bail;
     }
     
     //set frame rect
@@ -139,6 +141,8 @@
     
     //add to window
     [self.window.contentView addSubview:view];
+    
+bail:
     
     return;
 }

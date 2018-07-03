@@ -559,7 +559,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = loginItem/Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../shared/libs";
-				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
+				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.helper";
 				PRODUCT_NAME = "LuLu Helper";
@@ -577,7 +577,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = loginItem/Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../shared/libs";
-				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
+				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.helper";
 				PRODUCT_NAME = "LuLu Helper";

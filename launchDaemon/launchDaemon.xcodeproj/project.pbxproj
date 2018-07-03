@@ -467,7 +467,7 @@
 					"$(PROJECT_DIR)/../shared/libs",
 					"$(inherited)",
 				);
-				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
+				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_NAME = LuLu;
 			};
@@ -483,7 +483,7 @@
 					"$(PROJECT_DIR)/../shared/libs",
 					"$(inherited)",
 				);
-				OTHER_CODE_SIGN_FLAGS = "-o hard,kill";
+				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_NAME = LuLu;
 			};

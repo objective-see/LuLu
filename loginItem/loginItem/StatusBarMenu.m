@@ -204,26 +204,26 @@ enum menuItems
     //get path to main app
     mainApp = getMainAppPath();
     
-    //rules
-    // set window/cmdline flags
-    if(rules == ((NSMenuItem*)sender).tag)
-    {
-        //set window notification
-        windowNotification = [NSNumber numberWithInt:WINDOW_RULES];
-        
-        //set cmdline args
-        cmdline = @[CMDLINE_FLAG_RULES];
-    }
-    
     //prefs
-    // set window/cmdline flags
-    else if(prefs == ((NSMenuItem*)sender).tag)
+    //set window/cmdline flags
+    if(prefs == ((NSMenuItem*)sender).tag)
     {
         //set window notification
         windowNotification = [NSNumber numberWithInt:WINDOW_PREFERENCES];
         
         //set cmdline args
         cmdline = @[CMDLINE_FLAG_PREFS];
+    }
+    
+    //default to rules
+    // set window/cmdline flags
+    else
+    {
+        //set window notification
+        windowNotification = [NSNumber numberWithInt:WINDOW_RULES];
+        
+        //set cmdline args
+        cmdline = @[CMDLINE_FLAG_RULES];
     }
     
     //when main app alread running

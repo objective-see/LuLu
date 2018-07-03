@@ -20,18 +20,12 @@
 // ->will invoke app delegate method to update UI when check completes
 -(void)checkForUpdate:(void (^)(NSUInteger result, NSString* latestVersion))completionHandler
 {
-    //version string
-    NSMutableString* versionString = nil;
-    
     //latest version
     __block NSString* latestVersion = nil;
     
     //result
     __block NSInteger result = -1;
 
-    //alloc string
-    versionString = [NSMutableString string];
-    
     //get latest version in background
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
