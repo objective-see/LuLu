@@ -31,6 +31,10 @@
 //init
 -(id)init;
 
+//enumerate existing processes
+// get signing info and add to kernel
+-(void)enumerateCurrent;
+
 //setup/start process monitoring
 -(void)monitor;
 

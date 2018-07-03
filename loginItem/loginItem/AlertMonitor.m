@@ -90,7 +90,7 @@
                 alertResponse = [alert mutableCopy];
                 
                 //add current user
-                alertResponse[ALERT_USER] = [NSNumber numberWithUnsignedInteger:getuid()];
+                alertResponse[ALERT_USER] = [NSNumber numberWithUnsignedInt:getuid()];
                 
                 //add user response
                 alertResponse[ALERT_ACTION] = [NSNumber numberWithLong:userResponse];

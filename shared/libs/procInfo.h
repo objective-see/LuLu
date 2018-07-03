@@ -199,7 +199,7 @@ typedef void (^ProcessCallbackBlock)(Process* _Nonnull);
 -(void)generateHash;
 
 //generate id
-// eithersigning id, or sha256 hash
+// either signing id, or sha256 hash
 // note: will generate signing info if needed
 -(void)generateIdentifier;
 

@@ -17,16 +17,16 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.9.5</string>
+	<string>0.9.6</string>
 	<key>CFBundleVersion</key>
-	<string>0.9.5</string>
+	<string>0.9.6</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2017 Objective-See. All rights reserved.</string>
+	<string>Copyright © 2018 Objective-See. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
+	<string>NSApplicationKeyEvents</string>
 </dict>
 </plist>

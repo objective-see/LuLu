@@ -90,7 +90,7 @@ void makeModal(NSWindowController* windowController);
 //find a process by name
 pid_t findProcess(NSString* processName);
 
-//hash a file (sha1)
+//hash a file (sha256)
 NSMutableString* hashFile(NSString* filePath);
 
 //convert IP addr to (ns)string

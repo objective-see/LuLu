@@ -34,6 +34,9 @@ bool wasRegistered = false;
 //enabled flag
 bool isEnabled = false;
 
+//locked down flag
+bool isLockedDown = false;
+
 //malloc tag
 OSMallocTag allocTag = NULL;
 
@@ -99,22 +102,6 @@ bool com_objective_see_firewall::start(IOService *provider)
         goto bail;
     }
     
-    /*
-    self = OSDynamicCast(com_objective_see_firewall, provider);
-    if(NULL == self)
-    {
-        //err msg
-        IOLog("LULU ERROR: OSDynamicCast() failed\n");
-        
-        //bail
-        goto bail;
-    }
-    
-    //increase our ref count
-    // ensure's we aren't unloaded prematurely
-    self->retain();
-    */
-
     //alloc memory tag
     allocTag = OSMalloc_Tagalloc(BUNDLE_ID, OSMT_DEFAULT);
     if(NULL == allocTag)
@@ -127,7 +114,7 @@ bool com_objective_see_firewall::start(IOService *provider)
     }
     
     //alloc
-    // ->rule locks, etc
+    // rule locks, etc
     if(true != initRules())
     {
         //err msg

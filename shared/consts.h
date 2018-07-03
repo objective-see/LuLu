@@ -142,6 +142,10 @@
 #define PREF_PASSIVE_MODE @"passiveMode"
 
 //prefs
+// lockdown mode
+#define PREF_LOCKDOWN_MODE @"lockdownMode"
+
+//prefs
 // icon mode
 #define PREF_NO_ICON_MODE @"noIconMode"
 
@@ -154,6 +158,9 @@
 
 //allow all installed
 #define PREF_ALLOW_INSTALLED @"allowInstalled"
+
+//allow globally (not just single location)
+#define PREF_ALLOW_GLOBALLY @"allowGlobally"
 
 //log file
 #define LOG_FILE_NAME @"LuLu.log"

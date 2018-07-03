@@ -31,6 +31,10 @@ const IOExternalMethodDispatch com_objectivesee_driver_LuLu::sMethods[kTestUserC
     // takes 1 scalar
     {sDisable, 1, 0, 0, 0},
     
+    //lockdown state
+    // takes 1 scalar
+    {sLockDown, 1, 0, 0, 0},
+    
     //add rule
     // takes 2 scalars
     {sAddRule,  2, 0, 0, 0},
@@ -306,7 +310,7 @@ bail:
 /* IOKIT USER ACCESSIBLE METHODS */
 
 //user method: enable
-// ->register socket filters and set (global) flag
+// register socket filters and set (global) flag
 IOReturn com_objectivesee_driver_LuLu::sEnable(OSObject* target, void* reference, IOExternalMethodArguments* arguments)
 {
     //result
@@ -399,8 +403,33 @@ bail:
     return result;
 }
 
+//user method: lockdown
+// sets lockdown flag, telling system to now block all connections
+IOReturn com_objectivesee_driver_LuLu::sLockDown(OSObject* target, void* reference, IOExternalMethodArguments* arguments)
+{
+    //result
+    IOReturn result = kIOReturnError;
+    
+    //dbg msg
+    IOLog("LULU: in %s\n", __FUNCTION__);
+    
+    //set flag
+    // tells kext to allow everything
+    isLockedDown = (uint32_t)arguments->scalarInput[0];
+    
+    //dbg msg
+    IOLog("LULU: set 'locked down flag' to %d\n", isLockedDown);
+    
+    //happy
+    result = kIOReturnSuccess;
+    
+bail:
+    
+    return result;
+}
+
 //user method: add rule
-// ->add rule, for pid/action
+// add rule, for pid/action
 IOReturn com_objectivesee_driver_LuLu::sAddRule(OSObject* target, void* reference, IOExternalMethodArguments* arguments)
 {
     //result

@@ -18,7 +18,6 @@
     
 }
 
-
 /* PROPERTIES */
 
 //path of binary

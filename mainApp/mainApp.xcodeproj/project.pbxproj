@@ -47,6 +47,7 @@
 		CD21501820AD222800CEF17B /* Sentry.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CD21501720AD222800CEF17B /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD223E442083361A0049A76B /* RulesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD223E432083361A0049A76B /* RulesTable.m */; };
 		CD22785A2042977300C72C76 /* kext.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2278592042977300C72C76 /* kext.png */; };
+		CD3FF8CB20DDE392007B39F1 /* NSApplicationKeyEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3FF8C920DDE392007B39F1 /* NSApplicationKeyEvents.m */; };
 		CDA6E644203B9DA800C78F91 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E63B203B9DA700C78F91 /* Welcome.xib */; };
 		CDA6E648203B9DA800C78F91 /* WelcomeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA6E642203B9DA700C78F91 /* WelcomeWindowController.m */; };
 		CDA6E64C203BA44E00C78F91 /* luluIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E64A203BA44D00C78F91 /* luluIcon.png */; };
@@ -139,6 +140,8 @@
 		CD223E422083361A0049A76B /* RulesTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RulesTable.h; sourceTree = "<group>"; };
 		CD223E432083361A0049A76B /* RulesTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RulesTable.m; sourceTree = "<group>"; };
 		CD2278592042977300C72C76 /* kext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kext.png; sourceTree = "<group>"; };
+		CD3FF8C920DDE392007B39F1 /* NSApplicationKeyEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSApplicationKeyEvents.m; path = ../shared/NSApplicationKeyEvents.m; sourceTree = "<group>"; };
+		CD3FF8CA20DDE392007B39F1 /* NSApplicationKeyEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSApplicationKeyEvents.h; path = ../shared/NSApplicationKeyEvents.h; sourceTree = "<group>"; };
 		CDA6E63B203B9DA700C78F91 /* Welcome.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Welcome.xib; sourceTree = "<group>"; };
 		CDA6E641203B9DA700C78F91 /* WelcomeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeWindowController.h; sourceTree = "<group>"; };
 		CDA6E642203B9DA700C78F91 /* WelcomeWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeWindowController.m; sourceTree = "<group>"; };
@@ -273,6 +276,8 @@
 				7D2582561F19FAD700D28B95 /* DaemonComms.m */,
 				7D564DE51F18446200B8AAD6 /* logging.h */,
 				7D564DE41F18446200B8AAD6 /* logging.m */,
+				CD3FF8CA20DDE392007B39F1 /* NSApplicationKeyEvents.h */,
+				CD3FF8C920DDE392007B39F1 /* NSApplicationKeyEvents.m */,
 				7DD2BF601F1DAFE100B33214 /* Rule.h */,
 				7DD2BF5D1F1DAF0C00B33214 /* Rule.m */,
 				7D2582581F19FB6000D28B95 /* UserCommsInterface.h */,
@@ -438,6 +443,7 @@
 				7D564DDF1F18441500B8AAD6 /* HyperlinkTextField.m in Sources */,
 				CDA6E648203B9DA800C78F91 /* WelcomeWindowController.m in Sources */,
 				7D564DDA1F18441500B8AAD6 /* AboutWindowController.m in Sources */,
+				CD3FF8CB20DDE392007B39F1 /* NSApplicationKeyEvents.m in Sources */,
 				7DD2BF651F1DC41600B33214 /* utilities.m in Sources */,
 				7DD2BF5F1F1DAF0C00B33214 /* Rule.m in Sources */,
 				7D75537F1F22E40E0010FE88 /* PrefsWindowController.m in Sources */,

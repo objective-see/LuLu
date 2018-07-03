@@ -23,6 +23,7 @@ NSString* const GRAYLISTED_BINARIES[] =
     @"com.apple.perl5",
     @"com.apple.python",
     @"com.apple.python2",
+    @"org.python.python",
     @"com.apple.pythonw",
     @"com.apple.openssh",
     @"com.apple.osascript"

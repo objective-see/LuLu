@@ -159,15 +159,15 @@ int main(int argc, const char * argv[])
         //alloc/init kernel comms object
         kextComms = [[KextComms alloc] init];
         
-        //alloc/init process listener obj
-        processListener = [[ProcessListener alloc] init];
-        
         //alloc/init alerts object
         alerts = [[Alerts alloc] init];
         
         //alloc/init rules object
         rules = [[Rules alloc] init];
         
+        //alloc/init process listener obj
+        processListener = [[ProcessListener alloc] init];
+    
         //register for shutdown
         // so, can disable firewall and close logging
         register4Shutdown();
@@ -268,6 +268,14 @@ int main(int argc, const char * argv[])
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"user completed install, preferences: %@", preferences.preferences]);
         
+        //start enumerating current processes
+        // if any have existing rules, tell the kernel about that
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+        ^{
+           //install/uninstall
+           [processListener enumerateCurrent];
+        });
+
         //start listening for process events
         [processListener monitor];
         

@@ -121,7 +121,7 @@ bail:
         logMsg(LOG_DEBUG, @"adding process 'start' observer");
         
         //(always)start process start observer
-        // block: add rule to kext
+        // code block: add rule to kext
         self.processStartObvserver =  [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_PROCESS_START object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
         {
             //extract process
@@ -152,7 +152,7 @@ bail:
             logMsg(LOG_DEBUG, @"adding process 'end' observer");
             
             //start process end observer
-            // block: remove rule from kext
+            // code block: remove rule from kext
             self.processEndObvserver =  [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_PROCESS_END object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
             {
                 //extract process
@@ -205,6 +205,26 @@ bail:
     //talk to kext
     // disable firewall
     return IOConnectCallScalarMethod(self.connection, kTestUserClientDisable, scalarIn, 1, NULL, NULL);
+}
+
+//set lockdown state
+-(kern_return_t)lockdown:(BOOL)shouldLockdown
+{
+    //input
+    uint64_t scalarIn[1] = {0};
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"setting lockdown state: %d", shouldLockdown]);
+    
+    //add pid
+    scalarIn[0] = shouldLockdown;
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, @"sending msg to kext: 'lockdown'");
+    
+    //talk to kext
+    // set lockdown state firewall
+    return IOConnectCallScalarMethod(self.connection, kTestUserClientLockdown, scalarIn, 1, NULL, NULL);
 }
 
 //add a rule by pid/action

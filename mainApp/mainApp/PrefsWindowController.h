@@ -17,8 +17,8 @@
 //rules view
 #define TOOLBAR_RULES 0
 
-//visuals view
-#define TOOLBAR_VISUALS 1
+//modes view
+#define TOOLBAR_MODES 1
 
 //update view
 #define TOOLBAR_UPDATE 2
@@ -42,26 +42,11 @@
 //rules prefs view
 @property (weak) IBOutlet NSView *rulesView;
 
-//allow apple programs
-@property (weak) IBOutlet NSButton *allowAppleButton;
-
-//allowed installed apps
-@property (weak) IBOutlet NSButton *allowInstalledButton;
-
-//visuals view
-@property (strong) IBOutlet NSView *visualsView;
-
-//passive mode button
-@property (weak) IBOutlet NSButton *passiveModeButton;
-
-//icon-less (headless) mode button
-@property (weak) IBOutlet NSButton *iconModeButton;
+//modes view
+@property (strong) IBOutlet NSView *modesView;
 
 //update view
 @property (weak) IBOutlet NSView *updateView;
-
-//disable update check button
-@property (weak) IBOutlet NSButton *updateModeButton;
 
 //update button
 @property (weak) IBOutlet NSButton *updateButton;

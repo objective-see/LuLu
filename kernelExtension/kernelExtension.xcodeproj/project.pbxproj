@@ -306,7 +306,7 @@
 				INFOPLIST_FILE = kernelExtension/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULE_NAME = "com.objective-see.lulu";
-				MODULE_VERSION = 0.9.5;
+				MODULE_VERSION = 0.9.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
 				PRODUCT_MODULE_NAME = LuLu;
 				PRODUCT_NAME = LuLu;
@@ -324,7 +324,7 @@
 				INFOPLIST_FILE = kernelExtension/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULE_NAME = "com.objective-see.lulu";
-				MODULE_VERSION = 0.9.5;
+				MODULE_VERSION = 0.9.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
 				PRODUCT_MODULE_NAME = LuLu;
 				PRODUCT_NAME = LuLu;

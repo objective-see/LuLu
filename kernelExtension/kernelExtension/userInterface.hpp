@@ -22,6 +22,9 @@ extern bool wasRegistered;
 //enabled flag
 extern bool isEnabled;
 
+//locked down flag
+extern bool isLockedDown;
+
 //shared data queue
 extern IOSharedDataQueue *sharedDataQueue;
 
@@ -48,6 +51,9 @@ private:
     
     //disable
     static IOReturn	sDisable(OSObject* target, void* reference, IOExternalMethodArguments* arguments);
+    
+    //lockdown
+    static IOReturn sLockDown(OSObject* target, void* reference, IOExternalMethodArguments* arguments);
     
     //add rule
     static IOReturn	sAddRule(OSObject* target, void* reference, IOExternalMethodArguments* arguments);

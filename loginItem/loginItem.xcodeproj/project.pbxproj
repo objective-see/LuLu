@@ -50,6 +50,7 @@
 		CD22785E20434CAC00C72C76 /* StatusBarPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD22785B20434CAB00C72C76 /* StatusBarPopover.xib */; };
 		CD22785F20434CAC00C72C76 /* StatusBarPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD22785D20434CAB00C72C76 /* StatusBarPopoverController.m */; };
 		CD32C2352094062D009CADF6 /* SigningInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C2332094062C009CADF6 /* SigningInfoViewController.m */; };
+		CD3FF8CE20DDE3EF007B39F1 /* NSApplicationKeyEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3FF8CC20DDE3EE007B39F1 /* NSApplicationKeyEvents.m */; };
 		CD962AEF208C65A2000D247E /* popoverCloseAlt.png in Resources */ = {isa = PBXBuildFile; fileRef = CD962AED208C65A2000D247E /* popoverCloseAlt.png */; };
 		CD962AF0208C65A2000D247E /* popoverClose.png in Resources */ = {isa = PBXBuildFile; fileRef = CD962AEE208C65A2000D247E /* popoverClose.png */; };
 		CDAFF438203E563600F27635 /* libprocInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDAFF437203E563600F27635 /* libprocInfo.a */; };
@@ -132,6 +133,8 @@
 		CD22785D20434CAB00C72C76 /* StatusBarPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarPopoverController.m; sourceTree = "<group>"; };
 		CD32C2332094062C009CADF6 /* SigningInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigningInfoViewController.m; sourceTree = "<group>"; };
 		CD32C2342094062C009CADF6 /* SigningInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigningInfoViewController.h; sourceTree = "<group>"; };
+		CD3FF8CC20DDE3EE007B39F1 /* NSApplicationKeyEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSApplicationKeyEvents.m; path = ../shared/NSApplicationKeyEvents.m; sourceTree = "<group>"; };
+		CD3FF8CD20DDE3EE007B39F1 /* NSApplicationKeyEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSApplicationKeyEvents.h; path = ../shared/NSApplicationKeyEvents.h; sourceTree = "<group>"; };
 		CD962AED208C65A2000D247E /* popoverCloseAlt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverCloseAlt.png; sourceTree = "<group>"; };
 		CD962AEE208C65A2000D247E /* popoverClose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverClose.png; sourceTree = "<group>"; };
 		CDAFF433203E55D500F27635 /* procInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = procInfo.h; path = ../shared/libs/procInfo.h; sourceTree = "<group>"; };
@@ -186,6 +189,8 @@
 				CDAFF433203E55D500F27635 /* procInfo.h */,
 				7D16D68F1F64E43300DB3161 /* Update.h */,
 				7D16D6901F64E43300DB3161 /* Update.m */,
+				CD3FF8CD20DDE3EE007B39F1 /* NSApplicationKeyEvents.h */,
+				CD3FF8CC20DDE3EE007B39F1 /* NSApplicationKeyEvents.m */,
 				7D16D6911F64E43300DB3161 /* UpdateWindow.xib */,
 				7D16D6921F64E43300DB3161 /* UpdateWindowController.h */,
 				7D16D6931F64E43300DB3161 /* UpdateWindowController.m */,
@@ -322,7 +327,7 @@
 		7D7755DB1F02E05B00D0017D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Objective-See";
 				TargetAttributes = {
 					7D7755E21F02E05B00D0017D = {
@@ -409,6 +414,7 @@
 				7D7755E81F02E05B00D0017D /* AppDelegate.m in Sources */,
 				7DD2601C1F25600900277EC4 /* ParentsWindowController.m in Sources */,
 				7DD2BF6E1F1DDF1F00B33214 /* AlertMonitor.m in Sources */,
+				CD3FF8CE20DDE3EF007B39F1 /* NSApplicationKeyEvents.m in Sources */,
 				7DD2BF7A1F1EAC9C00B33214 /* DaemonComms.m in Sources */,
 				7DD2BF981F1FF64300B33214 /* AlertWindowController.m in Sources */,
 				7DD2600C1F252E0C00277EC4 /* VirusTotal.m in Sources */,
@@ -452,6 +458,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -459,6 +466,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -505,6 +513,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -512,6 +521,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

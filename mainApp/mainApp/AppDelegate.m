@@ -248,7 +248,7 @@ bail:
 #pragma mark Menu Items
 
 //'rules' menu item handler
-// alloc andshow rules window
+// alloc and show rules window
 -(IBAction)showRules:(id)sender
 {
     //alloc rules window controller

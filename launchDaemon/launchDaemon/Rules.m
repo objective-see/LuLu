@@ -15,6 +15,7 @@
 #import "Baseline.h"
 #import "KextComms.h"
 #import "utilities.h"
+#import "Preferences.h"
 
 //default systems 'allow' rules
 NSString* const DEFAULT_RULES[] =
@@ -43,6 +44,9 @@ extern Baseline* baseline;
 
 //'rules changed' semaphore
 extern dispatch_semaphore_t rulesChanged;
+
+//prefs obj
+extern Preferences* preferences;
 
 @implementation Rules
 
@@ -284,17 +288,29 @@ bail:
     //sync to access
     @synchronized(self.rules)
     {
-        //extract rule
-        // key: path of process
+        //always look up rule by path
+        // key: full path of process/binary
         matchingRule = [self.rules objectForKey:process.path];
+        
+        //not found but 'global' set?
+        // check for match via identifier
+        if( (nil == matchingRule) &&
+            (YES == [preferences.preferences[PREF_ALLOW_GLOBALLY] boolValue]) )
+        {
+            //find by code signing identifier
+            matchingRule = [self findByIdentifier:process];
+        }
+        
+        //not found?
+        // just bail here
         if(nil == matchingRule)
         {
-            //not found, bail
+            //bail
             goto bail;
         }
     }
 
-    //found a matching rule, based on path
+    //found a matching rule
     // first, if needed, generate signing info for process
     if(nil == process.binary.signingInfo)
     {
@@ -370,6 +386,90 @@ bail:
             
             //bail
             goto bail;
+        }
+    }
+    
+bail:
+    
+    return matchingRule;
+}
+
+//find rule that matches process's code signing id
+-(Rule*)findByIdentifier:(Process*)process
+{
+    //current rule
+    Rule* currentRule = nil;
+    
+    //matching rule
+    Rule* matchingRule = nil;
+    
+    //thread priority
+    double threadPriority = 0.0f;
+    
+    //code signing flags
+    SecCSFlags codeSigningFlags = kSecCSDefaultFlags;
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"looking for rule that matches %@'s code signing ID", process.binary.name]);
+    
+    //if needed, generate signing info for process
+    if(nil == process.binary.signingInfo)
+    {
+        //save thread priority
+        threadPriority = [NSThread threadPriority];
+        
+        //reduce CPU
+        [NSThread setThreadPriority:0.25];
+        
+        //determine appropriate code signing flags
+        codeSigningFlags = determineCSFlags(process.binary.path, process.binary.bundle);
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ (%d) with flags: %d", process.binary.name, process.pid, codeSigningFlags]);
+        
+        //generate signing info
+        [process.binary generateSigningInfo:codeSigningFlags entitlements:NO];
+        
+        //reset thread priority
+        [NSThread setThreadPriority:threadPriority];
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, @"done generating code signing info");
+    }
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"code signing ID: %@", process.binary.signingInfo[KEY_SIGNATURE_IDENTIFIER]]);
+    
+    //process has to be validly signed
+    // and also have a binary identifier
+    if( (noErr != [process.binary.signingInfo[KEY_SIGNATURE_STATUS] intValue]) ||
+        (nil == process.binary.signingInfo[KEY_SIGNATURE_IDENTIFIER]) )
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"%@ is not validly signed or doesn't have a code signing identifier, so ignoring", process.binary.name]);
+        
+        //bail
+        goto bail;
+    }
+    
+    //scan all rules
+    // find same same code signing identifier
+    for(NSString* path in self.rules)
+    {
+        //get rule obj
+        currentRule = self.rules[path];
+    
+        //match
+        if(YES == [currentRule.signingInfo[KEY_SIGNATURE_IDENTIFIER] isEqualToString:process.binary.signingInfo[KEY_SIGNATURE_IDENTIFIER]] )
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"rule %@ matches %@", matchingRule.path, process.binary.signingInfo[KEY_SIGNATURE_IDENTIFIER]]);
+            
+            //save
+            matchingRule = currentRule;
+            
+            //done
+            break;
         }
     }
     

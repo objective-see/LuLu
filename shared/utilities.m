@@ -703,7 +703,7 @@ void toggleMenu(NSMenu* menu, BOOL shouldEnable)
 }
 
 //get an icon for a process
-// ->for apps, this will be app's icon, otherwise just a standard system one
+// for apps, this will be app's icon, otherwise just a standard system one
 NSImage* getIconForProcess(NSString* path)
 {
     //icon's file name
@@ -723,6 +723,13 @@ NSImage* getIconForProcess(NSString* path)
     
     //bundle
     NSBundle* appBundle = nil;
+    
+    //invalid path?
+    if(YES != [[NSFileManager defaultManager] fileExistsAtPath:path])
+    {
+        //bail
+        goto bail;
+    }
     
     //first try grab bundle
     // ->then extact icon from this
@@ -780,6 +787,8 @@ NSImage* getIconForProcess(NSString* path)
         // ->so set size to 64
         [icon setSize:NSMakeSize(128, 128)];
     }
+    
+bail:
     
     return icon;
 }

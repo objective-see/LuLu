@@ -7,15 +7,13 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-
-#import "ProcListener.h"
-#import "consts.h"
-#import "logging.h"
-
 #import "Rule.h"
 #import "Rules.h"
+#import "consts.h"
+#import "logging.h"
 #import "KextComms.h"
 #import "KextListener.h"
+#import "ProcListener.h"
 #import "UserClientShared.h"
 
 //global kext comms obj
@@ -42,15 +40,13 @@ extern Rules* rules;
         //init proc info (monitor)
         // invoke with 'YES' for less CPU
         procMon = [[ProcInfo alloc] init:YES];
-        
-        //start thread enumerate existing processes
-        [NSThread detachNewThreadSelector:@selector(enumerateCurrent) toTarget:self withObject:nil];
     }
     
     return self;
 }
 
 //enumerate existing processes
+// get signing info and add to kernel
 -(void)enumerateCurrent
 {
     //current procs
@@ -73,7 +69,7 @@ extern Rules* rules;
         @synchronized (self.processes)
         {
             //add
-            self.processes[[NSNumber numberWithUnsignedShort:currentProcess.pid]] = currentProcess;
+            self.processes[[NSNumber numberWithUnsignedInt:currentProcess.pid]] = currentProcess;
         }
         
         //existing rule for process
@@ -131,7 +127,7 @@ extern Rules* rules;
     @synchronized(self.processes)
     {
         //add
-        self.processes[[NSNumber numberWithUnsignedShort:process.pid]] = process;
+        self.processes[[NSNumber numberWithUnsignedInt:process.pid]] = process;
     }
     
     //broadcast event
@@ -152,7 +148,7 @@ extern Rules* rules;
     @synchronized(self.processes)
     {
         //remove
-        [self.processes removeObjectForKey:[NSNumber numberWithUnsignedShort:process.pid]];
+        [self.processes removeObjectForKey:[NSNumber numberWithUnsignedInt:process.pid]];
     }
     
     //broadcast event

@@ -18,13 +18,10 @@
 @implementation PrefsWindowController
 
 @synthesize toolbar;
+@synthesize modesView;
 @synthesize rulesView;
 @synthesize updateView;
 @synthesize daemonComms;
-@synthesize visualsView;
-@synthesize iconModeButton;
-@synthesize updateModeButton;
-@synthesize passiveModeButton;
 @synthesize updateWindowController;
 
 //'allow apple' button
@@ -33,22 +30,25 @@
 //'allow installed' button
 #define BUTTON_ALLOW_INSTALLED 2
 
+//'allow globally' button
+#define BUTTON_ALLOW_GLOBALLY 3
+
 //'passive mode' button
-#define BUTTON_PASSIVE_MODE 3
+#define BUTTON_PASSIVE_MODE 4
+
+//'lockdown mode' button
+#define BUTTON_LOCKDOWN_MODE 5
 
 //'no-icon mode' button
-#define BUTTON_NO_ICON_MODE 4
+#define BUTTON_NO_ICON_MODE 6
 
 //'update mode' button
-#define BUTTON_NO_UPDATE_MODE 5
+#define BUTTON_NO_UPDATE_MODE 7
 
 //init 'general' view
 // add it, and make it selected
 -(void)awakeFromNib
 {
-    //init w/ 'general' view
-    //[self.window.contentView addSubview:self.rulesView];
-    
     //set title
     self.window.title = [NSString stringWithFormat:@"LuLu (v. %@)", getAppVersion()];
     
@@ -68,14 +68,19 @@
 }
 
 //toolbar view handler
-// ->toggle view based on user selection
+// toggle view based on user selection
 -(IBAction)toolbarButtonHandler:(id)sender
 {
     //view
     NSView* view = nil;
     
-    //remove prev. subview
-    [[[self.window.contentView subviews] lastObject] removeFromSuperview];
+    //when we've prev added a view
+    // remove the prev view cuz adding a new one
+    if(nil != sender)
+    {
+        //remove
+        [[[self.window.contentView subviews] lastObject] removeFromSuperview];
+    }
     
     //assign view
     switch(((NSToolbarItem*)sender).tag)
@@ -92,18 +97,24 @@
             //set 'installed allowed' button state
             ((NSButton*)[view viewWithTag:BUTTON_ALLOW_INSTALLED]).state = [self.preferences[PREF_ALLOW_INSTALLED] boolValue];
             
+            //set 'allowed globally' button state
+            ((NSButton*)[view viewWithTag:BUTTON_ALLOW_GLOBALLY]).state = [self.preferences[PREF_ALLOW_GLOBALLY] boolValue];
+            
             break;
             
-        //visuals
-        case TOOLBAR_VISUALS:
+        //modes
+        case TOOLBAR_MODES:
             
             //set view
-            view = self.visualsView;
+            view = self.modesView;
             
             //set 'passive mode' button state
             ((NSButton*)[view viewWithTag:BUTTON_PASSIVE_MODE]).state = [self.preferences[PREF_PASSIVE_MODE] boolValue];
             
-            //set 'no idon' button state
+            //set 'lockdown mode' button state
+            ((NSButton*)[view viewWithTag:BUTTON_LOCKDOWN_MODE]).state = [self.preferences[PREF_LOCKDOWN_MODE] boolValue];
+            
+            //set 'no icon' button state
             ((NSButton*)[view viewWithTag:BUTTON_NO_ICON_MODE]).state = [self.preferences[PREF_NO_ICON_MODE] boolValue];
             
             break;
@@ -124,7 +135,7 @@
     }
     
     //set frame rect
-    view.frame = CGRectMake(0, 100, self.window.contentView.frame.size.width, self.window.contentView.frame.size.height-100);
+    view.frame = CGRectMake(0, 75, self.window.contentView.frame.size.width, self.window.contentView.frame.size.height-75);
     
     //add to window
     [self.window.contentView addSubview:view];
@@ -148,6 +159,24 @@
     //get button state
     state = [NSNumber numberWithBool:((NSButton*)sender).state];
     
+    //passive mode
+    // lockdown mode can't be on too...
+    if( (BUTTON_PASSIVE_MODE == ((NSButton*)sender).tag) &&
+        (NSOnState == state.intValue) )
+    {
+        //unset lockdown mode button
+        ((NSButton*)[self.modesView viewWithTag:BUTTON_LOCKDOWN_MODE]).state = NSOffState;
+    }
+    
+    //lockdown mode
+    // passive mode can't be on too...
+    else if( (BUTTON_LOCKDOWN_MODE == ((NSButton*)sender).tag) &&
+             (NSOnState == state.intValue) )
+    {
+        //unset passive mode button
+        ((NSButton*)[self.modesView viewWithTag:BUTTON_PASSIVE_MODE]).state = NSOffState;
+    }
+    
     //set appropriate preference
     switch(((NSButton*)sender).tag)
     {
@@ -161,10 +190,44 @@
             preferences[PREF_ALLOW_INSTALLED] = state;
             break;
             
-        //passive mode
-        case BUTTON_PASSIVE_MODE:
-            preferences[PREF_PASSIVE_MODE] = state;
+        //allow globally
+        case BUTTON_ALLOW_GLOBALLY:
+            preferences[PREF_ALLOW_GLOBALLY] = state;
             break;
+            
+        //passive mode
+        // when on, unset lockdown mode
+        case BUTTON_PASSIVE_MODE:
+        {
+            
+            //save mode
+            preferences[PREF_PASSIVE_MODE] = state;
+            
+            //unset lockdown mode
+            if(NSOnState == state.intValue)
+            {
+                //unset
+                preferences[PREF_LOCKDOWN_MODE] = [NSNumber numberWithBool:NSOffState];
+            }
+            
+            break;
+        }
+            
+        //lockdown mode
+        // when on, also unset passive mode
+        case BUTTON_LOCKDOWN_MODE:
+        {
+            
+            //save mode
+            preferences[PREF_LOCKDOWN_MODE] = state;
+            
+            //unset passive mode
+            if(NSOnState == state.intValue)
+            {
+                //unset
+                preferences[PREF_PASSIVE_MODE] = [NSNumber numberWithBool:NSOffState];
+            }
+        }
             
         //no icon mode
         case BUTTON_NO_ICON_MODE:
@@ -202,6 +265,16 @@
            }
         });
     }
+    
+    return;
+}
+
+//'view rules' button handler
+// call helper method to show rule's window
+-(IBAction)viewRules:(id)sender
+{
+    //call into app delegate to show app rules
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) showRules:nil];
     
     return;
 }

@@ -41,6 +41,10 @@
 //start the (helper) login item
 -(BOOL)startLoginItem:(BOOL)shouldRestart;
 
+//'rules' menu item handler
+// alloc and show rules window
+-(IBAction)showRules:(id)sender;
+
 
 @end
 

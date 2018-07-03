@@ -859,7 +859,7 @@ bail:
     for(i=0; i<10; i++)
     {
         //try find process
-        process = processListener.processes[[NSNumber numberWithUnsignedShort:pid]];
+        process = processListener.processes[[NSNumber numberWithUnsignedInt:pid]];
         if(nil != process)
         {
             //found  it

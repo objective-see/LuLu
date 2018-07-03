@@ -16,6 +16,8 @@
 
 #include <libkern/OSMalloc.h>
 
+#include <netinet/in.h>
+
 /* socket events called by OS */
 static void detach(void *cookie, socket_t so);
 static errno_t attach(void **cookie, socket_t so);
@@ -37,6 +39,9 @@ extern bool wasRegistered;
 
 //enabled flag
 extern bool isEnabled;
+
+//locked down flag
+extern bool isLockedDown;
 
 //cookie passed to each socket
 // ->just has rule action (allow/block)
@@ -199,7 +204,7 @@ kern_return_t registerSocketFilters()
     IOLog("LULU: registered socker filter for udp ipv4\n");
 
     //register socket filter
-    // ->AF_INET6 domain, SOCK_STREAM type, TCP protocol
+    // AF_INET6 domain, SOCK_STREAM type, TCP protocol
     status = sflt_register(&tcpFilterIPV6, AF_INET6, SOCK_STREAM, IPPROTO_TCP);
     if(kIOReturnSuccess != status)
     {
@@ -423,6 +428,139 @@ static void unregistered(sflt_handle handle)
     return;
 }
 
+//determine if socket should be ignored
+// i.e. firewall disabled, in lockdown mode, etc
+bool shouldIgnore(const struct sockaddr *to, kern_return_t* result)
+{
+    //flag
+    bool ingore = false;
+    
+    //check 0x1
+    // is firewall enabled?
+    if(true != isEnabled)
+    {
+        //dbg msg
+        IOLog("LULU: firewall is not enabled, so ignoring w/ 'allow'\n");
+        
+        //ignore
+        ingore = true;
+        
+        //allow socket
+        *result = kIOReturnSuccess;
+        
+        //bail
+        goto bail;
+    }
+    
+    //check 0x2:
+    // is socket local host?
+    if(true == isLocalHost(to))
+    {
+        //dbg msg
+        IOLog("LULU: socket destination is 'localhost' so ignoring w/ 'allow'\n");
+        
+        //ignore
+        ingore = true;
+        
+        //allow socket
+        *result = kIOReturnSuccess;
+        
+        //bail
+        goto bail;
+    }
+    
+    //check 0x3:
+    // is firewall in lockdown mode?
+    if(true == isLockedDown)
+    {
+        //dbg msg
+        IOLog("LULU: firewall is in 'lockdown' mode, so ignoring w/ 'block'\n");
+        
+        //ignore
+        ingore = true;
+        
+        //disallow socket
+        *result = kIOReturnError;
+        
+        //bail
+        goto bail;
+    }
+    
+    //check 0x4:
+    // is this a kernel socket?
+    if(0 == proc_selfpid())
+    {
+        //dbg msg
+        IOLog("LULU: socket belongs to kernel so ignoring w/ 'allow'\n");
+        
+        //ignore
+        ingore = true;
+        
+        //allow socket
+        *result = kIOReturnSuccess;
+        
+        //bail
+        goto bail;
+    }
+    
+    //dbg msg
+    IOLog("LULU: not ignoring socket/socket action\n");
+    
+bail:
+    
+    return ingore;
+}
+
+//check if socket is local host
+bool isLocalHost(const struct sockaddr *to)
+{
+    //flag
+    bool localHost = false;
+    
+    //sanity check
+    if(NULL == to)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //check socket addr
+    switch(to->sa_family)
+    {
+        //IPv4
+        case AF_INET:
+            localHost = (INADDR_LOOPBACK == htonl(((const struct sockaddr_in*)to)->sin_addr.s_addr));
+            break;
+            
+        //IPv6
+        case AF_INET6:
+            
+            //IPv4 addr mapped into IPv6?
+            if(true == IN6_IS_ADDR_V4MAPPED(&((const struct sockaddr_in6*)to)->sin6_addr))
+            {
+                //local host check
+                // only on IPv4 portion
+                localHost = (INADDR_LOOPBACK == htonl((*(const __uint32_t *)(const void *)(&(((const struct sockaddr_in6*)to)->sin6_addr).s6_addr[12]))));
+            }
+            
+            //'pure' IPv6 local host?
+            else
+            {
+                //local host check
+                localHost = IN6_IS_ADDR_LOOPBACK(&((const struct sockaddr_in6*)to)->sin6_addr);
+            }
+            
+            break;
+            
+        default:
+            break;
+    }
+
+bail:
+    
+    return localHost;
+}
+
 //called for new socket
 // find rule, and attach entry (so know to ask/allow/deny for later actions)
 static kern_return_t attach(void **cookie, socket_t so)
@@ -436,42 +574,33 @@ static kern_return_t attach(void **cookie, socket_t so)
     //dbg msg
     //IOLog("LULU: in %s\n", __FUNCTION__);
     
-    //ignore if not enabled
-    if(true != isEnabled)
-    {
-        //ignore
-        // but no errors
-        result = kIOReturnSuccess;
-        
-        //bail
-        goto bail;
-    }
-    
-    //don't mess w/ kernel sockets
-    if(0 == proc_selfpid())
-    {
-        //ignore
-        // but no errors
-        result = kIOReturnSuccess;
-        
-        //bail
-        goto bail;
-    }
-    
     //set cookie
     *cookie = (void*)OSMalloc(sizeof(struct cookieStruct), allocTag);
     if(NULL == *cookie)
     {
         //no memory
-        result = ENOMEM;
+        result = kIOReturnNoMemory;
         
         //bail
         goto bail;
     }
     
-    //set rule action
-    // not found, block, allow, etc
-    ((struct cookieStruct*)(*cookie))->ruleAction = queryRule(proc_selfpid());
+    //check should ignore?
+    // if disabled, in lockdown mode, etc
+    if(true == shouldIgnore(NULL, &result))
+    {
+        //set action to 'block'
+        ((struct cookieStruct*)(*cookie))->ruleAction = RULE_STATE_BLOCK;
+    }
+    
+    //otherwise
+    // dynamically set rule action
+    else
+    {
+        //dynamically set action
+        // not found, allow, or block
+        ((struct cookieStruct*)(*cookie))->ruleAction = queryRule(proc_selfpid());
+    }
     
     //dbg msg
     IOLog("LULU: rule action for %d: %d\n", proc_selfpid(), ((struct cookieStruct*)(*cookie))->ruleAction);
@@ -530,7 +659,8 @@ static errno_t data_in(void *cookie, socket_t so, const struct sockaddr *from, m
     //dbg msg
     //IOLog("LULU: in %s\n", __FUNCTION__);
     
-    //ignore if not enabled
+    //only ignore
+    // when firewall is not enabled
     if(true != isEnabled)
     {
         //bail
@@ -665,13 +795,10 @@ static kern_return_t data_out(void *cookie, socket_t so, const struct sockaddr *
     //dbg msg
     //IOLog("LULU: in %s\n", __FUNCTION__);
     
-    //ignore if not enabled
-    if(true != isEnabled)
+    //should ignore?
+    // if disabled, in lockdown mode, etc
+    if(true == shouldIgnore(to, &result))
     {
-        //ignore
-        // but no errors
-        result = kIOReturnSuccess;
-        
         //bail
         goto bail;
     }
@@ -711,16 +838,19 @@ static kern_return_t connect_out(void *cookie, socket_t so, const struct sockadd
     //dbg msg
     //IOLog("LULU: in %s\n", __FUNCTION__);
     
-    //ignore if not enabled
-    if(true != isEnabled)
+    //should ignore?
+    // if disabled, in lockdown mode, etc
+    if(true == shouldIgnore(to, &result))
     {
-        //ignore
-        // but no errors
-        result = kIOReturnSuccess;
+        //todo: rem
+        IOLog("LULU: 'shouldIgnore' returned 'true'/%d\n", result);
         
         //bail
         goto bail;
     }
+    
+    //todo: rem
+    IOLog("LULU: 'shouldIgnore' returned 'false'/%d\n", result);
     
     //sanity check
     // socket we're watching?
@@ -781,8 +911,8 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
             //dbg msg
             IOLog("LULU: rule says block for %s (pid: %d)\n", processName, proc_selfpid());
             
-            //gtfo!
-            result = EPERM;
+            //gtfo
+            result = kIOReturnError;
             
             //all done
             goto bail;

@@ -18,7 +18,7 @@
 @synthesize addButton;
 
 //automatically called when nib is loaded
-// ->center window
+// center window, set some defaults such as icon
 -(void)awakeFromNib
 {
     //set icon
@@ -61,15 +61,16 @@
 // invoke helper to set icon, and enable/select 'add' button
 -(void)controlTextDidChange:(NSNotification *)notification
 {
-    //text field?
-    // update the UI
-    if([notification object] == self.processPath)
+    //ignore everything but process path
+    if([notification object] != self.processPath)
     {
-        //update
-        [self updateUI];
+        //bail
+        goto bail;
     }
-
-
+    
+    //update
+    [self updateUI];
+    
 bail:
     
     return;
@@ -79,17 +80,20 @@ bail:
 // invoke helper to set icon, and enable/select 'add' button
 -(void)controlTextDidEndEditing:(NSNotification *)notification
 {
-    //text field?
-    // update the UI
-    if([notification object] == self.processPath)
+    //ignore everything but process path
+    if([notification object] != self.processPath)
     {
-        //update
-        [self updateUI];
-        
-        //make 'add' selected
-        [self.window makeFirstResponder:self.addButton];
-
+        //bail
+        goto bail;
     }
+    
+    //update
+    [self updateUI];
+    
+    //make 'add' selected
+    [self.window makeFirstResponder:self.addButton];
+    
+bail:
     
     return;
 }
@@ -162,7 +166,6 @@ bail:
     //make 'add' selected
     [self.window makeFirstResponder:self.addButton];
 
-    
 bail:
     
     return;
@@ -182,8 +185,38 @@ bail:
 // close sheet, returning NSModalResponseOK
 -(IBAction)addButtonHandler:(id)sender
 {
+    //alert
+    NSAlert* alert = nil;
+    
+    //invalid path?
+    if(YES != [[NSFileManager defaultManager] fileExistsAtPath:self.processPath.stringValue])
+    {
+        //init alert
+        alert = [[NSAlert alloc] init];
+        
+        //set style
+        alert.alertStyle = NSAlertStyleWarning;
+        
+        //main text
+        [alert setMessageText:@"ERROR: invalid path"];
+        
+        //details
+        [alert setInformativeText:[NSString stringWithFormat:@"%@ does not exist!", self.processPath.stringValue]];
+        
+        //add button
+        [alert addButtonWithTitle:@"Ok"];
+        
+        //show
+        [alert runModal];
+        
+        //bail
+        goto bail;
+    }
+    
     //close & return NSModalResponseCancel
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
+    
+bail:
     
     return;
 }
