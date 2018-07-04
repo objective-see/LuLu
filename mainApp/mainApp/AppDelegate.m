@@ -255,7 +255,7 @@ bail:
     if(nil == self.rulesWindowController)
     {
         //alloc
-        rulesWindowController = [[RulesWindowController alloc] initWithWindowNibName:@"Rules..."];
+        rulesWindowController = [[RulesWindowController alloc] initWithWindowNibName:@"Rules"];
     }
 
     //center
@@ -278,7 +278,7 @@ bail:
     if(nil == self.prefsWindowController)
     {
         //alloc
-        prefsWindowController = [[PrefsWindowController alloc] initWithWindowNibName:@"Preferences..."];
+        prefsWindowController = [[PrefsWindowController alloc] initWithWindowNibName:@"Preferences"];
     }
     
     //center
