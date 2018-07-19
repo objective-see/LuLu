@@ -17,16 +17,23 @@
 NSString* const GRAYLISTED_BINARIES[] =
 {
     @"com.apple.nc",
+    @"com.apple.ftp",
+    @"com.apple.ksh",
+    @"com.apple.php",
+    @"com.apple.scp",
     @"com.apple.curl",
-    @"com.apple.ruby",
     @"com.apple.perl",
+    @"com.apple.ruby",
+    @"com.apple.sftp",
     @"com.apple.perl5",
+    @"com.apple.whois",
     @"com.apple.python",
+    @"com.apple.telnet",
+    @"com.apple.openssh",
     @"com.apple.python2",
     @"org.python.python",
     @"com.apple.pythonw",
-    @"com.apple.openssh",
-    @"com.apple.osascript"
+    @"com.apple.osascript",
 };
 
 @implementation GrayList
