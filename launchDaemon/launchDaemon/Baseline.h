@@ -25,13 +25,13 @@
 //load (pre)installed apps from file
 -(BOOL)load;
 
-//determine if a binary was installed before lulu
+//determine if a proc's binary was installed before lulu
 // checks if path is in list and hash/signing ID matches
--(BOOL)wasInstalled:(Binary*)binary;
+-(BOOL)wasInstalled:(Binary*)binary signingInfo:(NSDictionary*)signingInfo;
 
-//determine if a binary has parent installed before lulu
-// checks if path is in list and hash/signing ID matches
--(BOOL)wasParentInstalled:(Binary*)childBinary;
+//determine if a child process has parent installed before lulu
+// finds parent, and validates signing info and signing auths is #samesame!
+-(BOOL)wasParentInstalled:(Process*)childProcess;
 
 //remove preinstalled app
 // when user deletes rule, also should delete from saved plist

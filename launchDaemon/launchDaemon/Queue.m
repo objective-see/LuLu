@@ -13,7 +13,7 @@
 
 @implementation Queue
 
-@synthesize eventQueue;
+@synthesize queue;
 @synthesize queueCondition;
 
 //init
@@ -24,7 +24,7 @@
     if(nil != self)
     {
         //init queue
-        eventQueue = [NSMutableArray array];
+        queue = [NSMutableArray array];
         
         //init empty condition
         queueCondition = [[NSCondition alloc] init];
@@ -40,7 +40,7 @@
     [self.queueCondition lock];
     
     //add to queue
-    [self.eventQueue enqueue:anObject];
+    [self.queue enqueue:anObject];
     
     //signal
     [self.queueCondition signal];
@@ -62,14 +62,14 @@
     [self.queueCondition lock];
     
     //wait while queue is empty
-    while(YES == [self.eventQueue isEmpty])
+    while(YES == [self.queue isEmpty])
     {
         //wait
         [self.queueCondition wait];
     }
     
     //get item off queue
-    item = [self.eventQueue dequeue];
+    item = [self.queue dequeue];
     
     //unlock
     [self.queueCondition unlock];

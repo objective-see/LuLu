@@ -52,7 +52,7 @@
             [summary appendFormat:@" is validly signed"];
             
             //item signed by apple
-            if(YES == [signingInfo[KEY_SIGNING_IS_APPLE] boolValue])
+            if(Apple == [signingInfo[KEY_SIGNATURE_SIGNER] intValue])
             {
                 //set details
                 self.details.stringValue = @"signed by Apple proper";
@@ -61,30 +61,34 @@
             else
             {
                 //from app store?
-                if(YES == [signingInfo[KEY_SIGNING_IS_APP_STORE] boolValue])
+                if(AppStore == [signingInfo[KEY_SIGNATURE_SIGNER] intValue])
                 {
                     //set details
                     self.details.stringValue = @"signed by Mac App Store";
                 }
                 //developer id?
-                // ->but not from app store
-                else if(YES == [signingInfo[KEY_SIGNING_IS_APPLE_DEV_ID] boolValue])
+                else if(DevID == [signingInfo[KEY_SIGNATURE_SIGNER] intValue])
                 {
                     //set details
                     self.details.stringValue = @"signed with an Apple Developer ID";
                 }
                 //something else
                 // ad hoc? 3rd-party?
-                else
+                else if(AdHoc == [signingInfo[KEY_SIGNATURE_SIGNER] intValue])
                 {
                     //set details
                     self.details.stringValue = @" signed by 3rd-party/ad hoc";
+                }
+                else
+                {
+                    //set details
+                    self.details.stringValue = @" unknown";
                 }
             }
             
             //no signing auths
             // usually (always?) adhoc
-            if(0 == [signingInfo[KEY_SIGNING_AUTHORITIES] count])
+            if(0 == [signingInfo[KEY_SIGNATURE_AUTHORITIES] count])
             {
                 //set details
                 self.details.stringValue = @"signed, but no signing authorities (adhoc?)";
@@ -98,7 +102,7 @@
             else
             {
                 //add signing auth
-                for(NSUInteger i=0; i<[signingInfo[KEY_SIGNING_AUTHORITIES] count]; i++)
+                for(NSUInteger i=0; i<[signingInfo[KEY_SIGNATURE_AUTHORITIES] count]; i++)
                 {
                     //exit loop at three
                     if(i == 3)
@@ -108,7 +112,7 @@
                     }
                         
                     //add
-                    ((NSTextField*)[self.view viewWithTag:SIGNING_AUTH_1+i]).stringValue = [NSString stringWithFormat:@"› %@ \n", signingInfo[KEY_SIGNING_AUTHORITIES][i]];
+                    ((NSTextField*)[self.view viewWithTag:SIGNING_AUTH_1+i]).stringValue = [NSString stringWithFormat:@"› %@ \n", signingInfo[KEY_SIGNATURE_AUTHORITIES][i]];
                 }
             }
             

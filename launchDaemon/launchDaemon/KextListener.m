@@ -82,9 +82,6 @@ extern NSInteger clientConnected;
     //process
     __block Process* process = nil;
     
-    //start thread to get connection notifications from kext
-    //[NSThread detachNewThreadSelector:@selector(recvNotifications) toTarget:self withObject:nil];
-    
     //start thread to listen for queue events from kext
     [NSThread detachNewThreadSelector:@selector(processEvents) toTarget:self withObject:nil];
     
@@ -426,8 +423,9 @@ bail:
     //matching rule obj
     Rule* matchingRule = nil;
     
-    //default code signing flags
-    SecCSFlags codeSigningFlags = kSecCSDefaultFlags;
+    //default cs flags
+    // note: since this is dynamic check, we don't need to check all architectures, skip resources, etf
+    SecCSFlags flags = kSecCSDefaultFlags;
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"processing 'network out' event from kernel queue: %d /  %@", event->pid, convertSocketAddr((struct sockaddr*)&(event->remoteAddress))]);
@@ -494,16 +492,13 @@ bail:
 
     //proc monitor invoked in 'go easy' mode
     // so generate signing info for process here
-    if(nil == process.binary.signingInfo)
+    if(nil == process.signingInfo)
     {
-        //determine appropriate code signing flags
-        codeSigningFlags = determineCSFlags(process.binary.path, process.binary.bundle);
-        
         //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ (%d) with flags: %d", process.binary.name, process.pid, codeSigningFlags]);
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ (%d) with flags: %d", process.binary.name, process.pid, flags]);
         
         //generate signing info
-        [process.binary generateSigningInfo:codeSigningFlags entitlements:NO];
+        [process generateSigningInfo:flags];
         
         //dbg msg
         logMsg(LOG_DEBUG, @"done generating code signing info");
@@ -511,8 +506,8 @@ bail:
     
     //not signed, or err?
     // generate hash (sha256)
-    if( (nil == process.binary.signingInfo) ||
-        (noErr != [process.binary.signingInfo[KEY_SIGNATURE_STATUS] intValue]) )
+    if( (nil == process.signingInfo) ||
+        (errSecSuccess != [process.signingInfo[KEY_SIGNATURE_STATUS] intValue]) )
     {
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating hash for %@ (%d)", process.binary.name, process.pid]);
@@ -546,7 +541,7 @@ bail:
     //if it's an apple process and that preference is set; allow!
     // unless the binary is something like 'curl' which malware could abuse (still alert!)
     if( (YES == [preferences.preferences[PREF_ALLOW_APPLE] boolValue]) &&
-        (YES == process.binary.isApple))
+        (Apple == [process.signingInfo[KEY_SIGNATURE_SIGNER] intValue]) )
     {
         //though make sure isn't a graylisted binary
         // such binaries, even if signed by apple, should alert user
@@ -556,7 +551,7 @@ bail:
             logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing (non-graylisted) apple process %d/%@", process.pid, process.path]);
             
             //create 'apple' rule
-            [rules add:process.path signingInfo:process.binary.signingInfo action:RULE_STATE_ALLOW type:RULE_TYPE_APPLE user:0];
+            [rules add:process.path signingInfo:process.signingInfo action:RULE_STATE_ALLOW type:RULE_TYPE_APPLE user:0];
             
             //all set
             goto bail;
@@ -572,16 +567,16 @@ bail:
     
     //if it's a prev installed 3rd-party process and that preference is set; allow!
     if( (YES == [preferences.preferences[PREF_ALLOW_INSTALLED] boolValue]) &&
-        (YES != process.binary.isApple) )
+        (Apple != [process.signingInfo[KEY_SIGNATURE_SIGNER] intValue]) )
     {
         //pre-installed?
-        if(YES == [baseline wasInstalled:process.binary])
+        if(YES == [baseline wasInstalled:process.binary signingInfo:process.signingInfo])
         {
             //dbg msg
             logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing 3rd-party pre-installed process %@", process.path]);
         
             //create 'installed' rule
-            [rules add:process.path signingInfo:process.binary.signingInfo action:RULE_STATE_ALLOW type:RULE_TYPE_BASELINE user:0];
+            [rules add:process.path signingInfo:process.signingInfo action:RULE_STATE_ALLOW type:RULE_TYPE_BASELINE user:0];
         
             //all set
             goto bail;
@@ -589,15 +584,15 @@ bail:
         
         //if binary is validly signed
         // check for a parent (pre)installed app
-        if( (nil != process.binary.signingInfo) &&
-            (noErr == [process.binary.signingInfo[KEY_SIGNATURE_STATUS] intValue]) &&
-            (YES == [baseline wasParentInstalled:process.binary]) )
+        if( (nil != process.signingInfo) &&
+            (noErr == [process.signingInfo[KEY_SIGNATURE_STATUS] intValue]) &&
+            (YES == [baseline wasParentInstalled:process]) )
         {
             //dbg msg
             logMsg(LOG_DEBUG, [NSString stringWithFormat:@"due to preferences, allowing 3rd-party pre-installed process child %@", process.path]);
             
             //create 'installed' rule
-            [rules add:process.path signingInfo:process.binary.signingInfo action:RULE_STATE_ALLOW type:RULE_TYPE_BASELINE user:0];
+            [rules add:process.path signingInfo:process.signingInfo action:RULE_STATE_ALLOW type:RULE_TYPE_BASELINE user:0];
             
             //all set
             goto bail;

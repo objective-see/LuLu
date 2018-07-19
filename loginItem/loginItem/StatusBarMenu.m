@@ -122,14 +122,6 @@ enum menuItems
        [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
     });
     
-    //wait a bit
-    // then automatically hide popup if user has not closed it
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(),
-    ^{
-       //close
-       [self closePopover:nil];
-    });
-    
     return;
 }
 
@@ -137,29 +129,18 @@ enum menuItems
 // also unsets action handler, resets, highlighting, etc
 -(void)closePopover:(id)sender
 {
-    //sync
-    @synchronized(self.popover)
-    {
+    //close
+    [self.popover performClose:nil];
         
-    //still visible?
-    // close it then...
-    if(YES == self.popover.shown)
-    {
-        //close
-        [self.popover performClose:nil];
-        
-        //unset
-        self.popover = nil;
-    }
+    //unset
+    self.popover = nil;
     
     //remove action handler
     self.statusItem.action = nil;
     
     //reset highlight mode
     self.statusItem.highlightMode = YES;
-    
-    } //sync
-    
+
     return;
 }
 

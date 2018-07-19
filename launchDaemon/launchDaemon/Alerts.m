@@ -114,10 +114,10 @@ extern Queue* eventQueue;
     alert[ALERT_PROTOCOL] = [NSNumber numberWithInt:event->socketType];
     
     //add signing info
-    if(nil != process.binary.signingInfo)
+    if(nil != process.signingInfo)
     {
         //add
-        alert[ALERT_SIGNINGINFO] = process.binary.signingInfo;
+        alert[ALERT_SIGNINGINFO] = process.signingInfo;
     }
     
     //add hash
@@ -194,17 +194,17 @@ extern Queue* eventQueue;
             }
             
             //check code signing info
-            else if(nil != process.binary.signingInfo)
+            else if(nil != process.signingInfo)
             {
                 //signing issue?
-                if(noErr != [process.binary.signingInfo[KEY_SIGNATURE_STATUS] intValue])
+                if(noErr != [process.signingInfo[KEY_SIGNATURE_STATUS] intValue])
                 {
                     //bail
                     goto bail;
                 }
                 
                 //signing auths match?
-                if(YES == [[NSCountedSet setWithArray:alert[RULE_SIGNING_INFO][KEY_SIGNING_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:process.binary.signingInfo[KEY_SIGNING_AUTHORITIES]]])
+                if(YES == [[NSCountedSet setWithArray:alert[RULE_SIGNING_INFO][KEY_SIGNATURE_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:process.signingInfo[KEY_SIGNATURE_AUTHORITIES]]])
                 {
                     //ok signing match
                     related = YES;

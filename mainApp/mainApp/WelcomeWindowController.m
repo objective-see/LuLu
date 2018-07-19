@@ -169,6 +169,7 @@
                 [scriptObject executeAndReturnError:nil];
                 
                 //wait for kext
+                // will block...
                 wait4kext([NSString stringWithUTF8String:LULU_SERVICE_NAME]);
                 
                 //init apple script
@@ -179,7 +180,7 @@
                 [scriptObject executeAndReturnError:nil];
                 
                 //ok loaded!
-                // show next view!
+                // show next view
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
                     //remove prev. subview

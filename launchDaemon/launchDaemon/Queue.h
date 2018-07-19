@@ -18,7 +18,7 @@
 /* PROPERTIES */
 
 //event queue
-@property(retain, atomic)NSMutableArray* eventQueue;
+@property(retain, atomic)NSMutableArray* queue;
 
 //queue condition
 @property (nonatomic, retain)NSCondition* queueCondition;

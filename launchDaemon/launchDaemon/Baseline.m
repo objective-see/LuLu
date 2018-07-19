@@ -104,7 +104,7 @@
         if(nil != signedBy)
         {
             //add
-            self.preInstalledApps[path][KEY_SIGNING_AUTHORITIES] = signedBy;
+            self.preInstalledApps[path][KEY_SIGNATURE_AUTHORITIES] = signedBy;
         }
         //unsigned
         // generate and save hash
@@ -129,10 +129,10 @@
     if(nil != lulu)
     {
         //generate signing info
-        [lulu generateSigningInfo:kSecCSDefaultFlags entitlements:NO];
+        [lulu generateSigningInfo:kSecCSDefaultFlags];
         
         //add LuLu
-        self.preInstalledApps[lulu.path] = @{KEY_NAME:lulu.name, KEY_SIGNING_AUTHORITIES:lulu.signingInfo[KEY_SIGNING_AUTHORITIES]};
+        self.preInstalledApps[lulu.path] = @{KEY_NAME:lulu.name, KEY_SIGNATURE_AUTHORITIES:lulu.signingInfo[KEY_SIGNATURE_AUTHORITIES]};
     }
     
     //dbg msg
@@ -193,15 +193,19 @@ bail:
     return loaded;
 }
 
-//determine if a binary was installed before lulu
+//determine if a proc's binary was installed before lulu
 // checks if path is in list and hash/signing ID matches
--(BOOL)wasInstalled:(Binary*)binary
+// note: pass in signing info, since can called for process or binary
+-(BOOL)wasInstalled:(Binary*)binary signingInfo:(NSDictionary*)signingInfo
 {
     //flag
     BOOL preInstalled = NO;
     
     //preinstalled binary
     NSDictionary* preInstalledBinary = nil;
+    
+    //thread priority
+    double threadPriority = 0.0f;
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"checking if %@ is in (pre)installed apps", binary.path]);
@@ -222,31 +226,31 @@ bail:
     
     //check signing info
     // all signing auths should match
-    if( (nil != preInstalledBinary[KEY_SIGNING_AUTHORITIES]) &&
-        (nil != binary.signingInfo) )
+    if( (nil != preInstalledBinary[KEY_SIGNATURE_AUTHORITIES]) &&
+        (nil != signingInfo) )
     {
         //signing error?
-        if(noErr != [binary.signingInfo[KEY_SIGNATURE_STATUS] intValue])
+        if(noErr != [signingInfo[KEY_SIGNATURE_STATUS] intValue])
         {
             //err msg
-            logMsg(LOG_ERR, [NSString stringWithFormat:@"%@ has a signing error (%@)", binary.path, binary.signingInfo[KEY_SIGNATURE_STATUS]]);
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"%@ has a signing error (%@)", binary.path, signingInfo[KEY_SIGNATURE_STATUS]]);
             
             //bail
             goto bail;
         }
         
         //compare all signing auths
-        if(YES != [[NSCountedSet setWithArray:preInstalledBinary[KEY_SIGNING_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:binary.signingInfo[KEY_SIGNING_AUTHORITIES]]] )
+        if(YES != [[NSCountedSet setWithArray:preInstalledBinary[KEY_SIGNATURE_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:signingInfo[KEY_SIGNATURE_AUTHORITIES]]] )
         {
             //err msg
-            logMsg(LOG_ERR, [NSString stringWithFormat:@"signing authority mismatch between %@/%@", preInstalledBinary[KEY_SIGNING_AUTHORITIES], binary.signingInfo[KEY_SIGNING_AUTHORITIES]]);
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"signing authority mismatch between %@/%@", preInstalledBinary[KEY_SIGNATURE_AUTHORITIES], signingInfo[KEY_SIGNATURE_AUTHORITIES]]);
             
             //bail
             goto bail;
         }
         
         //dbg msg
-        logMsg(LOG_DEBUG, @"binary's signing info matches with (pre)installed binary");
+        logMsg(LOG_DEBUG, @"signing info matches with (pre)installed binary");
         
         //happy
         preInstalled = YES;
@@ -256,6 +260,22 @@ bail:
     // any unsigned app should have this...
     else if(nil != preInstalledBinary[KEY_HASH])
     {
+        //need hash?
+        if(nil == binary.sha256)
+        {
+            //save thread priority
+            threadPriority = [NSThread threadPriority];
+            
+            //reduce CPU
+            [NSThread setThreadPriority:0.25];
+            
+            //hash binary
+            [binary generateHash];
+
+            //reset thread priority
+            [NSThread setThreadPriority:threadPriority];
+        }
+        
         //match?
         if(YES != [preInstalledBinary[KEY_HASH] isEqualToString:binary.sha256])
         {
@@ -278,9 +298,9 @@ bail:
     return preInstalled;
 }
 
-//determine if a binary has parent installed before lulu
-// finds parent, and validates signing info is #samesame!
--(BOOL)wasParentInstalled:(Binary*)childBinary
+//determine if a child process has parent installed before lulu
+// finds parent, and validates signing info and signing auths is #samesame!
+-(BOOL)wasParentInstalled:(Process*)childProcess
 {
     //flag
     BOOL preInstalled = NO;
@@ -297,14 +317,14 @@ bail:
     //thread priority
     double threadPriority = 0.0f;
     
-    //default code signing flags
-    SecCSFlags codeSigningFlags = kSecCSDefaultFlags;
+    //default cs flags
+    SecCSFlags flags = kSecCSDefaultFlags | kSecCSCheckNestedCode | kSecCSDoNotValidateResources | kSecCSCheckAllArchitectures;
     
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"checking if %@ has a (pre)installed parent app", childBinary.path]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"checking if %@ has a (pre)installed parent app", childProcess.binary.path]);
     
     //get parent
-    parentAppPath = topLevelApp(childBinary.path);
+    parentAppPath = topLevelApp(childProcess.binary.path);
     if(nil == parentAppPath)
     {
         //dbg msg
@@ -329,14 +349,14 @@ bail:
     }
     
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"top-level app's binary: %@", parentBinaryPath]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"parent (top-level app binary): %@", parentBinaryPath]);
 
     //make sure binary isn't top level
     // already checked that this *is not* (pre)installed
-    if(YES == [parentBinaryPath isEqualToString:childBinary.path])
+    if(YES == [parentBinaryPath isEqualToString:childProcess.binary.path])
     {
         //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"%@ has no parent", childBinary.path]);
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"%@ has no parent", childProcess.binary.path]);
         
         //bail
         goto bail;
@@ -359,31 +379,32 @@ bail:
     //reduce CPU
     [NSThread setThreadPriority:0.25];
         
-    //determine appropriate code signing flags
-    codeSigningFlags = determineCSFlags(parentBinary.path, parentBinary.bundle);
-        
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ with flags: %d", parentBinary.name, codeSigningFlags]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ with flags: %d", parentBinary.name, flags]);
         
     //generate signing info
-    [parentBinary generateSigningInfo:codeSigningFlags entitlements:NO];
+    [parentBinary generateSigningInfo:flags];
     
-    //generate hash
-    if( (nil == parentBinary.signingInfo) ||
-        (noErr != [parentBinary.signingInfo[KEY_SIGNATURE_STATUS] intValue]) )
-    {
-        //generate hash
-        [parentBinary generateHash];
-    }
-
     //reset thread priority
     [NSThread setThreadPriority:threadPriority];
     
+    //on error bail
+    // can only check if child was pre-installed based on signing auths...
+    if( (nil == parentBinary.signingInfo) ||
+        (errSecSuccess != [parentBinary.signingInfo[KEY_SIGNATURE_STATUS] intValue]) )
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"parent %@ isn't signed, or cannot be validated", parentBinary.path]);
+        
+        //bail
+        goto bail;
+    }
+
     //dbg msg
-    logMsg(LOG_DEBUG, @"done generating code signing info");
+    logMsg(LOG_DEBUG, @"done generating code signing info for parent");
 
     //now, check if parent is (pre)installed
-    if(YES != [self wasInstalled:parentBinary])
+    if(YES != [self wasInstalled:parentBinary signingInfo:parentBinary.signingInfo])
     {
         //dbg msg
         logMsg(LOG_DEBUG, @"parent not found in list of (pre)installed apps");
@@ -392,16 +413,22 @@ bail:
         goto bail;
     }
     
+    //dbg msg
+    logMsg(LOG_DEBUG, @"parent is a pre-installed application");
+
     //compare all signing auths
     // child has to match all of these to be allowed
-    if(YES != [[NSCountedSet setWithArray:childBinary.signingInfo[KEY_SIGNING_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:parentBinary.signingInfo[KEY_SIGNING_AUTHORITIES]]] )
+    if(YES != [[NSCountedSet setWithArray:childProcess.signingInfo[KEY_SIGNATURE_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:parentBinary.signingInfo[KEY_SIGNATURE_AUTHORITIES]]] )
     {
         //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"signing authority mismatch between %@/%@", childBinary.signingInfo[KEY_SIGNING_AUTHORITIES], parentBinary.signingInfo[KEY_SIGNING_AUTHORITIES]]);
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"signing authority mismatch between %@/%@", childProcess.signingInfo[KEY_SIGNATURE_AUTHORITIES], parentBinary.signingInfo[KEY_SIGNATURE_AUTHORITIES]]);
         
         //bail
         goto bail;
     }
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"signing info for child %@ matches with pre-installed parent %@", childProcess.binary.name, parentBinary.name]);
     
     //happy
     preInstalled = YES;

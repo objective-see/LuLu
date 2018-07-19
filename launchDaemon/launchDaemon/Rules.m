@@ -154,8 +154,8 @@ bail:
     //binary
     Binary* binary = nil;
     
-    //cs flag
-    SecCSFlags csFlags = kSecCSDefaultFlags;
+    //default cs flags
+    SecCSFlags flags = kSecCSDefaultFlags | kSecCSCheckNestedCode | kSecCSDoNotValidateResources | kSecCSCheckAllArchitectures;
     
     //dbg msg
     logMsg(LOG_DEBUG, @"generating default rules");
@@ -189,12 +189,8 @@ bail:
             continue;
         }
         
-        //determine appropriate flags
-        // 'tis ok if the path bundle is nil
-        csFlags = determineCSFlags(binary.path, [NSBundle bundleWithPath:binary.path]);
-        
         //generate signing info
-        [binary generateSigningInfo:csFlags entitlements:NO];
+        [binary generateSigningInfo:flags];
         
         //add
         if(YES != [self add:binary.path signingInfo:binary.signingInfo action:RULE_STATE_ALLOW type:RULE_TYPE_DEFAULT user:0])
@@ -282,8 +278,9 @@ bail:
     //thread priority
     double threadPriority = 0.0f;
     
-    //code signing flags
-    SecCSFlags codeSigningFlags = kSecCSDefaultFlags;
+    //default cs flags
+    // note: since this is dynamic check, we don't need to check all architectures
+    SecCSFlags flags = kSecCSDefaultFlags;
     
     //sync to access
     @synchronized(self.rules)
@@ -312,7 +309,7 @@ bail:
 
     //found a matching rule
     // first, if needed, generate signing info for process
-    if(nil == process.binary.signingInfo)
+    if(nil == process.signingInfo)
     {
         //save thread priority
         threadPriority = [NSThread threadPriority];
@@ -320,14 +317,11 @@ bail:
         //reduce CPU
         [NSThread setThreadPriority:0.25];
         
-        //determine appropriate code signing flags
-        codeSigningFlags = determineCSFlags(process.binary.path, process.binary.bundle);
-        
         //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ (%d) with flags: %d", process.binary.name, process.pid, codeSigningFlags]);
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ (%d) with flags: %d", process.binary.name, process.pid, flags]);
         
         //generate signing info
-        [process.binary generateSigningInfo:codeSigningFlags entitlements:NO];
+        [process generateSigningInfo:flags];
         
         //reset thread priority
         [NSThread setThreadPriority:threadPriority];
@@ -341,7 +335,11 @@ bail:
     if(nil != matchingRule.sha256)
     {
         //generate hash
-        [process.binary generateHash];
+        if(nil == process.binary.sha256)
+        {
+            //generate hash
+            [process.binary generateHash];
+        }
         
         //check for match
         if(YES != [matchingRule.sha256 isEqualToString:process.binary.sha256])
@@ -359,14 +357,14 @@ bail:
         
     //binary validly signed w/ auths?
     // make sure it (still) matches rule
-    if( (nil != process.binary.signingInfo[KEY_SIGNATURE_STATUS]) &&
-        (0 != [process.binary.signingInfo[KEY_SIGNING_AUTHORITIES] count]) )
+    if( (nil != process.signingInfo[KEY_SIGNATURE_STATUS]) &&
+        (0 != [process.signingInfo[KEY_SIGNATURE_AUTHORITIES] count]) )
     {
         //validly signed?
-        if(noErr != [process.binary.signingInfo[KEY_SIGNATURE_STATUS] intValue])
+        if(noErr != [process.signingInfo[KEY_SIGNATURE_STATUS] intValue])
         {
             //err msg
-            logMsg(LOG_ERR, [NSString stringWithFormat:@"%@ has a signing error (%@)", process.binary.path, process.binary.signingInfo[KEY_SIGNATURE_STATUS]]);
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"%@ has a signing error (%@)", process.binary.path, process.signingInfo[KEY_SIGNATURE_STATUS]]);
             
             //unset
             matchingRule = nil;
@@ -376,10 +374,10 @@ bail:
         }
         
         //compare all signing auths
-        if(YES != [[NSCountedSet setWithArray:matchingRule.signingInfo[KEY_SIGNING_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:process.binary.signingInfo[KEY_SIGNING_AUTHORITIES]]] )
+        if(YES != [[NSCountedSet setWithArray:matchingRule.signingInfo[KEY_SIGNATURE_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:process.signingInfo[KEY_SIGNATURE_AUTHORITIES]]] )
         {
             //err msg
-            logMsg(LOG_ERR, [NSString stringWithFormat:@"signing authority mismatch between %@/%@", matchingRule.signingInfo[KEY_SIGNING_AUTHORITIES], process.binary.signingInfo[KEY_SIGNING_AUTHORITIES]]);
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"signing authority mismatch between %@/%@", matchingRule.signingInfo[KEY_SIGNATURE_AUTHORITIES], process.signingInfo[KEY_SIGNATURE_AUTHORITIES]]);
             
             //unset
             matchingRule = nil;
@@ -406,14 +404,15 @@ bail:
     //thread priority
     double threadPriority = 0.0f;
     
-    //code signing flags
-    SecCSFlags codeSigningFlags = kSecCSDefaultFlags;
+    //default cs flags
+    // note: since this is dynamic check, we don't need to check all architectures
+    SecCSFlags flags = kSecCSDefaultFlags;
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"looking for rule that matches %@'s code signing ID", process.binary.name]);
     
     //if needed, generate signing info for process
-    if(nil == process.binary.signingInfo)
+    if(nil == process.signingInfo)
     {
         //save thread priority
         threadPriority = [NSThread threadPriority];
@@ -421,32 +420,39 @@ bail:
         //reduce CPU
         [NSThread setThreadPriority:0.25];
         
-        //determine appropriate code signing flags
-        codeSigningFlags = determineCSFlags(process.binary.path, process.binary.bundle);
-        
         //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ (%d) with flags: %d", process.binary.name, process.pid, codeSigningFlags]);
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating code signing info for %@ (%d) with flags: %d", process.binary.name, process.pid, flags]);
         
         //generate signing info
-        [process.binary generateSigningInfo:codeSigningFlags entitlements:NO];
+        [process generateSigningInfo:flags];
         
         //reset thread priority
         [NSThread setThreadPriority:threadPriority];
         
         //dbg msg
         logMsg(LOG_DEBUG, @"done generating code signing info");
+        
+        //error?
+        if(nil == process.signingInfo)
+        {
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"failed to generate code signing info for (%d): %@", process.pid, process.binary.name]);
+            
+            //bail
+            goto bail;
+        }
     }
     
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"code signing ID: %@", process.binary.signingInfo[KEY_SIGNATURE_IDENTIFIER]]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"code signing ID: %@", process.signingInfo[KEY_SIGNATURE_IDENTIFIER]]);
     
     //process has to be validly signed
     // and also have a binary identifier
-    if( (noErr != [process.binary.signingInfo[KEY_SIGNATURE_STATUS] intValue]) ||
-        (nil == process.binary.signingInfo[KEY_SIGNATURE_IDENTIFIER]) )
+    if( (noErr != [process.signingInfo[KEY_SIGNATURE_STATUS] intValue]) ||
+        (nil == process.signingInfo[KEY_SIGNATURE_IDENTIFIER]) )
     {
         //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"%@ is not validly signed or doesn't have a code signing identifier, so ignoring", process.binary.name]);
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"(%d): %@ is not validly signed or doesn't have a code signing identifier, so ignoring", process.pid, process.binary.name]);
         
         //bail
         goto bail;
@@ -460,10 +466,10 @@ bail:
         currentRule = self.rules[path];
     
         //match
-        if(YES == [currentRule.signingInfo[KEY_SIGNATURE_IDENTIFIER] isEqualToString:process.binary.signingInfo[KEY_SIGNATURE_IDENTIFIER]] )
+        if(YES == [currentRule.signingInfo[KEY_SIGNATURE_IDENTIFIER] isEqualToString:process.signingInfo[KEY_SIGNATURE_IDENTIFIER]] )
         {
             //dbg msg
-            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"rule %@ matches %@", matchingRule.path, process.binary.signingInfo[KEY_SIGNATURE_IDENTIFIER]]);
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"rule %@ matches %@", matchingRule.path, process.signingInfo[KEY_SIGNATURE_IDENTIFIER]]);
             
             //save
             matchingRule = currentRule;
@@ -508,9 +514,9 @@ bail:
     }
     
     //item not signed?
-    // generate hash (sha1)
+    // generate hash (sha256)
     if( (nil == signingInfo) ||
-        (noErr != [signingInfo[KEY_SIGNATURE_STATUS] intValue]) )
+        (errSecSuccess != [signingInfo[KEY_SIGNATURE_STATUS] intValue]) )
     {
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"signing info not found for %@, will hash", path]);

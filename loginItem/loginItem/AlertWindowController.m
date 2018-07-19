@@ -233,7 +233,7 @@ bail:
         case noErr:
             
             //item signed by apple
-            if(YES == [signingInfo[KEY_SIGNING_IS_APPLE] boolValue])
+            if(Apple == [signingInfo[KEY_SIGNATURE_SIGNER] intValue])
             {
                 //set icon
                 signingInfoButton.image = [NSImage imageNamed:@"signedApple"];

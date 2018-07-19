@@ -145,8 +145,8 @@ extern NSInteger clientConnected;
     //binary obj
     Binary* binary = nil;
     
-    //cs flag
-    SecCSFlags csFlags = kSecCSDefaultFlags;
+    //default cs flags
+    SecCSFlags flags = kSecCSDefaultFlags | kSecCSCheckNestedCode | kSecCSDoNotValidateResources | kSecCSCheckAllArchitectures;
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: ADD RULE (%@/%lu)", path, action]);
@@ -162,12 +162,8 @@ extern NSInteger clientConnected;
         goto bail;
     }
     
-    //determine appropriate flags
-    // 'tis ok if the path bundle is nil
-    csFlags = determineCSFlags(path, [NSBundle bundleWithPath:path]);
-    
     //generate signing info
-    [binary generateSigningInfo:csFlags entitlements:NO];
+    [binary generateSigningInfo:flags];
     
     //log to file
     logMsg(LOG_TO_FILE, [NSString stringWithFormat:@"adding rule (path: %@ / action: %lu)", path, action]);

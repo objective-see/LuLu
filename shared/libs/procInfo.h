@@ -19,7 +19,6 @@
 @class Binary;
 @class Process;
 
-
 /* DEFINES */
 
 //from audit_kevents.h
@@ -29,29 +28,28 @@
 #define EVENT_EXEC      27
 #define EVENT_SPAWN     43190
 
+//signers
+enum Signer{None, Apple, AppStore, DevID, AdHoc};
+
 //signature status
 #define KEY_SIGNATURE_STATUS @"signatureStatus"
 
+//signer
+#define KEY_SIGNATURE_SIGNER @"signatureSigner"
+
 //signing auths
-#define KEY_SIGNING_AUTHORITIES @"signingAuthorities"
+#define KEY_SIGNATURE_AUTHORITIES @"signatureAuthorities"
 
 //code signing id
-#define KEY_SIGNATURE_IDENTIFIER @"signingIdentifier"
+#define KEY_SIGNATURE_IDENTIFIER @"signatureIdentifier"
 
-//file belongs to apple?
-#define KEY_SIGNING_IS_APPLE @"signedByApple"
-
-//file signed with apple dev id
-#define KEY_SIGNING_IS_APPLE_DEV_ID @"signedWithDevID"
-
-//from app store
-#define KEY_SIGNING_IS_APP_STORE @"fromAppStore"
+//entitlements
+#define KEY_SIGNATURE_ENTITLEMENTS @"signatureEntitlements"
 
 /* TYPEDEFS */
 
 //block for library
 typedef void (^ProcessCallbackBlock)(Process* _Nonnull);
-
 
 /* OBJECT: PROCESS INFO */
 
@@ -103,6 +101,9 @@ typedef void (^ProcessCallbackBlock)(Process* _Nonnull);
 //ancestors
 @property(nonatomic, retain)NSMutableArray* _Nonnull ancestors;
 
+//signing info
+@property(nonatomic, retain)NSMutableDictionary* _Nonnull signingInfo;
+
 //Binary object
 // has path, hash, etc
 @property(nonatomic, retain)Binary* _Nonnull binary;
@@ -116,13 +117,18 @@ typedef void (^ProcessCallbackBlock)(Process* _Nonnull);
 // method will then (try) fill out rest of object
 -(id _Nullable)init:(pid_t)processID;
 
+//generate signing info
+// also classifies if Apple/from App Store/etc.
+-(void)generateSigningInfo:(SecCSFlags)flags;
+
 //set process's path
 -(void)pathFromPid;
 
 //generate list of ancestors
 -(void)enumerateAncestors;
 
-//class method to get parent of arbitrary process
+//class method
+// get's parent of arbitrary process
 +(pid_t)getParentID:(pid_t)child;
 
 @end
@@ -158,21 +164,12 @@ typedef void (^ProcessCallbackBlock)(Process* _Nonnull);
 //signing info
 @property(nonatomic, retain)NSDictionary* _Nonnull signingInfo;
 
-//entitlements
-@property(nonatomic, retain)NSDictionary* _Nonnull entitlements;
-
 //hash
-@property(nonatomic, retain)NSString* _Nonnull sha256;
+@property(nonatomic, retain)NSMutableString* _Nonnull sha256;
 
 //identifier
 // either signing id or sha256 hash
 @property(nonatomic, retain)NSString* _Nonnull identifier;
-
-//flag indicating binary belongs to Apple OS
-@property BOOL isApple;
-
-//flag indicating binary is from official App Store
-@property BOOL isAppStore;
 
 /* METHODS */
 
@@ -187,20 +184,19 @@ typedef void (^ProcessCallbackBlock)(Process* _Nonnull);
 // for apps, this will be app's icon, otherwise just a standard system one
 -(void)getIcon;
 
-//generate signing info
-// also classifies if Apple/from App Store/etc.
--(void)generateSigningInfo:(SecCSFlags)flags entitlements:(BOOL)entitlements;
+//generate signing info (statically)
+-(void)generateSigningInfo:(SecCSFlags)flags;
 
-//generate entitlements
-// note: can also call 'generateSigningInfo' w/ 'entitlements:YES'
--(void)generateEntitlements;
+/* the following methods are not invoked automatically
+   as such, if you code has to manually invoke them if you want this info
+ */
 
 //generate hash
+// algo: sha256
 -(void)generateHash;
 
 //generate id
 // either signing id, or sha256 hash
-// note: will generate signing info if needed
 -(void)generateIdentifier;
 
 @end

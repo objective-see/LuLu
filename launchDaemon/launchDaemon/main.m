@@ -207,6 +207,7 @@ int main(int argc, const char * argv[])
             logMsg(LOG_DEBUG, @"waiting for kext to load (high sierra)");
             
             //wait
+            // will block...
             wait4kext([NSString stringWithUTF8String:LULU_SERVICE_NAME]);
         }
  

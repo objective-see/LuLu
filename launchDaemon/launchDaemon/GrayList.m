@@ -65,31 +65,25 @@ NSString* const GRAYLISTED_BINARIES[] =
     //flag
     BOOL grayListed = NO;
     
-    //process signing info
-    NSDictionary* signingInfo = nil;
-    
     //dbg info
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"checking if %@ is graylisted (signing info: %@)", process.path, process.binary.signingInfo]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"checking if %@ is graylisted (signing info: %@)", process.path, process.signingInfo]);
     
     //has to be apple
-    if(YES != process.binary.isApple)
+    if(Apple != [process.signingInfo[KEY_SIGNATURE_SIGNER] intValue])
     {
         //bail
         goto bail;
     }
     
-    //extract signing info
-    signingInfo = process.binary.signingInfo;
-    
-    //no signing identifier?
-    if(nil == signingInfo[KEY_SIGNATURE_IDENTIFIER])
+    //no code signing identifier?
+    if(nil == process.signingInfo[KEY_SIGNATURE_IDENTIFIER])
     {
         //bail
         goto bail;
     }
     
     //not in list?
-    if(YES != [self.graylistedBinaries containsObject:signingInfo[KEY_SIGNATURE_IDENTIFIER]])
+    if(YES != [self.graylistedBinaries containsObject:process.signingInfo[KEY_SIGNATURE_IDENTIFIER]])
     {
         //bail
         goto bail;

@@ -18,7 +18,7 @@
 @synthesize semaphore;
 
 //forever,
-// ->display alerts
+// display alerts
 -(void)monitor
 {
     //daemon comms object
@@ -44,10 +44,6 @@
     // call daemon and block, then display, and repeat!
     while(YES)
     {
-        //pool
-        @autoreleasepool
-        {
-            
         //dbg msg
         logMsg(LOG_DEBUG, @"requesting alert from daemon, will block");
         
@@ -59,7 +55,11 @@
             
             //show alert window on main thread
             dispatch_async(dispatch_get_main_queue(), ^{
-                 
+                
+                //pool
+                @autoreleasepool
+                {
+                
                 //dbg msg
                 logMsg(LOG_DEBUG, [NSString stringWithFormat:@"showing window for alert: %@", alert]);
                  
@@ -106,16 +106,16 @@
                 
                 //signal sema
                 dispatch_semaphore_signal(self.semaphore);
+                    
+                }//pool
                 
-             });
-
+             }); //async
+            
          }];
         
         //wait for alert to be processed
         dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
-        
-        }//pool
-            
+    
     }//forevers
     
     return;

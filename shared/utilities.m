@@ -258,7 +258,7 @@ bail:
 
 
 //get process name
-// ->either via app bundle, or path
+// either via app bundle, or path
 NSString* getProcessName(NSString* path)
 {
     //process name
@@ -743,7 +743,7 @@ NSImage* getIconForProcess(NSString* path)
         iconExtension = [iconFile pathExtension];
         
         //if its blank (i.e. not specified)
-        // ->go with 'icns'
+        // go with 'icns'
         if(YES == [iconExtension isEqualTo:@""])
         {
             //set type
@@ -1236,7 +1236,7 @@ NSMutableString* hashFile(NSString* filePath)
         goto bail;
     }
     
-    //sha1 it
+    //sha256 it
     CC_SHA256(fileContents.bytes, (unsigned int)fileContents.length, digestSHA256);
     
     //convert to NSString
@@ -1531,53 +1531,6 @@ NSMutableString* extractDNSURL(unsigned char* dnsData, unsigned char* dnsDataEnd
 bail:
     
     return url;
-}
-
-//determine what CS flags to use
-// for massive bundles, won't validate resources, etc...
-SecCSFlags determineCSFlags(NSString* path, NSBundle* bundle)
-{
-    //default code signing flags
-    SecCSFlags codeSigningFlags = kSecCSDefaultFlags | kSecCSCheckNestedCode | kSecCSCheckAllArchitectures;
-    
-    //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"determing code signing flags for %@/%@", path, bundle]);
-    
-    //don't validate resources
-    // a lot of apple bins would fail otherwise
-    codeSigningFlags |= kSecCSDoNotValidateResources;
-    
-    //note:
-    // for now skipping this logic, as many legit signed apple binaries have invalid resource, etc...
-    
-    /*
-     
-    //for xcode don't validate resources
-    // ...it's massive, and otherwise takes +5min to verify
-    if(YES == [path isEqualToString:@"/Applications/Xcode.app/Contents/MacOS/Xcode"])
-    {
-        //dbg msg
-        logMsg(LOG_DEBUG, @"process is 'Xcode', so skipping resource validation");
-        
-        //set flags; no resource validation
-        codeSigningFlags |= kSecCSDoNotValidateResources;
-    }
-    
-    //other large application bundles
-    // also don't validate resources as too slow
-    if( (nil != bundle) &&
-        ([[[NSFileManager defaultManager] subpathsAtPath:bundle.bundlePath] count] > 10000) )
-    {
-        //dbg msg
-        logMsg(LOG_DEBUG, @"app bundle has > 10000 files, so skipping resource validation");
-        
-        //set flags; no resource validation
-        codeSigningFlags |= kSecCSDoNotValidateResources;
-    }
-     
-    */
-    
-    return codeSigningFlags;
 }
 
 //loads a framework

@@ -112,7 +112,7 @@ NSMutableString* extractDNSURL(unsigned char* dnsData, unsigned char* dnsDataEnd
 
 //determine what CS flags to use
 // for massive bundles, won't validate resources, etc...
-SecCSFlags determineCSFlags(NSString* path, NSBundle* bundle);
+//SecCSFlags determineCSFlags(NSString* path, NSBundle* bundle);
 
 //loads a framework
 // note: assumes is in 'Framework' dir
