@@ -89,7 +89,7 @@ extern NSInteger clientConnected;
     self.processEndObvserver =  [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_PROCESS_END object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
     {
         //extract process
-        process = notification.userInfo[NOTIFICATION_PROCESS_START];
+        process = notification.userInfo[NOTIFICATION_PROCESS_END];
         if(nil == process)
         {
             //bail

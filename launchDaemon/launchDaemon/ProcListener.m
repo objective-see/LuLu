@@ -152,7 +152,7 @@ extern Rules* rules;
     }
     
     //broadcast event
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PROCESS_END object:nil userInfo:@{NOTIFICATION_PROCESS_START:process}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PROCESS_END object:nil userInfo:@{NOTIFICATION_PROCESS_END:process}];
     
     return;
 }
