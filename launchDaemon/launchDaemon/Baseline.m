@@ -131,8 +131,14 @@
         //generate signing info
         [lulu generateSigningInfo:kSecCSDefaultFlags];
         
-        //add LuLu
-        self.preInstalledApps[lulu.path] = @{KEY_NAME:lulu.name, KEY_SIGNATURE_AUTHORITIES:lulu.signingInfo[KEY_SIGNATURE_AUTHORITIES]};
+        //add LuLu if signing info is ok
+        if( (nil != lulu.signingInfo) &&
+            (nil != lulu.signingInfo[KEY_SIGNATURE_AUTHORITIES]) &&
+            (errSecSuccess == [lulu.signingInfo[KEY_SIGNATURE_STATUS] intValue]) )
+        {
+            //add LuLu
+            self.preInstalledApps[lulu.path] = @{KEY_NAME:lulu.name, KEY_SIGNATURE_AUTHORITIES:lulu.signingInfo[KEY_SIGNATURE_AUTHORITIES]};
+        }
     }
     
     //dbg msg
@@ -240,7 +246,7 @@ bail:
         }
         
         //compare all signing auths
-        if(YES != [[NSCountedSet setWithArray:preInstalledBinary[KEY_SIGNATURE_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:signingInfo[KEY_SIGNATURE_AUTHORITIES]]] )
+        if(YES != [[NSCountedSet setWithArray:preInstalledBinary[KEY_SIGNATURE_AUTHORITIES]] isEqualToSet:[NSCountedSet setWithArray:signingInfo[KEY_SIGNATURE_AUTHORITIES]]] )
         {
             //err msg
             logMsg(LOG_ERR, [NSString stringWithFormat:@"signing authority mismatch between %@/%@", preInstalledBinary[KEY_SIGNATURE_AUTHORITIES], signingInfo[KEY_SIGNATURE_AUTHORITIES]]);

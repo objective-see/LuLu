@@ -486,23 +486,6 @@ bool shouldIgnore(const struct sockaddr *to, kern_return_t* result)
         goto bail;
     }
     
-    //check 0x4:
-    // is this a kernel socket?
-    if(0 == proc_selfpid())
-    {
-        //dbg msg
-        IOLog("LULU: socket belongs to kernel so ignoring w/ 'allow'\n");
-        
-        //ignore
-        ingore = true;
-        
-        //allow socket
-        *result = kIOReturnSuccess;
-        
-        //bail
-        goto bail;
-    }
-    
     //dbg msg
     IOLog("LULU: not ignoring socket/socket action\n");
     
@@ -568,13 +551,27 @@ static kern_return_t attach(void **cookie, socket_t so)
     //result
     kern_return_t result = kIOReturnError;
     
+    //dbg msg
+    //IOLog("LULU: in %s\n", __FUNCTION__);
+
     //unset
     *cookie = NULL;
     
-    //dbg msg
-    //IOLog("LULU: in %s\n", __FUNCTION__);
+    //firewall in lockdown mode?
+    // block socket operation here
+    if(true == isLockedDown)
+    {
+        //dbg msg
+        IOLog("LULU: firewall is in 'lockdown' mode, so blocking socket operation\n");
+        
+        //disallow socket
+        result = kIOReturnError;
+        
+        //bail
+        goto bail;
+    }
     
-    //set cookie
+    //alloc cookie
     *cookie = (void*)OSMalloc(sizeof(struct cookieStruct), allocTag);
     if(NULL == *cookie)
     {
@@ -584,15 +581,7 @@ static kern_return_t attach(void **cookie, socket_t so)
         //bail
         goto bail;
     }
-    
-    //check should ignore?
-    // if disabled, in lockdown mode, etc
-    if(true == shouldIgnore(NULL, &result))
-    {
-        //set action to 'block'
-        ((struct cookieStruct*)(*cookie))->ruleAction = RULE_STATE_BLOCK;
-    }
-    
+
     //otherwise
     // dynamically set rule action
     else

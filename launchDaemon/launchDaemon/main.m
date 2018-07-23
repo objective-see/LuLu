@@ -203,6 +203,10 @@ int main(int argc, const char * argv[])
         if( (YES == [[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:highSierra]) &&
             (YES != kextIsLoaded([NSString stringWithUTF8String:LULU_SERVICE_NAME])) )
         {
+            //trigger kext load again
+            // sometimes 'allow' button in system prefs times out?
+            execTask(KEXT_LOAD, @[[NSString pathWithComponents:@[@"/", @"Library", @"Extensions", @"LuLu.kext"]]], YES, NO);
+
             //dbg msg
             logMsg(LOG_DEBUG, @"waiting for kext to load (high sierra)");
             

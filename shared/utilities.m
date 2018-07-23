@@ -793,7 +793,6 @@ bail:
     return icon;
 }
 
-
 //check if a kext is loaded
 BOOL kextIsLoaded(NSString* kext)
 {

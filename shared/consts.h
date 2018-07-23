@@ -236,6 +236,9 @@
 //path to kext cache
 #define KEXT_CACHE @"/usr/sbin/kextcache"
 
+//path to kextload
+#define KEXT_LOAD @"/sbin/kextload"
+
 //process start notification
 #define NOTIFICATION_PROCESS_START @"com.objective-see.lulu.notificationProcessStart"
 

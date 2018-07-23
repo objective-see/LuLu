@@ -180,7 +180,7 @@ bail:
     uint64_t scalarIn[1] = {0};
     
     //dbg msg
-    logMsg(LOG_DEBUG, @"removing process start/end observers");
+    logMsg(LOG_DEBUG, @"removing 'process start' observer");
     
     //remove process start notification
     if(nil != self.processStartObvserver)
