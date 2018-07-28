@@ -108,6 +108,7 @@
 		CD2E667B208D7D09001B5435 /* Baseline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Baseline.m; sourceTree = "<group>"; };
 		CD32C21D20900D36009CADF6 /* LuLu.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LuLu.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD32C21F20900D36009CADF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD55171A210CD65700CE066C /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		CD6B484720AD33DD00A9BE71 /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
 		CD6CAC6E209FB29500188B0A /* Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts.h; sourceTree = "<group>"; };
 		CD6CAC6F209FB29600188B0A /* Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts.m; sourceTree = "<group>"; };
@@ -177,6 +178,7 @@
 				7DD2BF731F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m */,
 				7DD2BF741F1E9CE700B33214 /* Queue.h */,
 				7DD2BF751F1E9CE700B33214 /* Queue.m */,
+				CD55171A210CD65700CE066C /* main.h */,
 				7D7755D31F02DF9500D0017D /* main.m */,
 				CD2E667A208D7D09001B5435 /* Baseline.h */,
 				CD2E667B208D7D09001B5435 /* Baseline.m */,

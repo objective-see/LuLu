@@ -556,21 +556,7 @@ static kern_return_t attach(void **cookie, socket_t so)
 
     //unset
     *cookie = NULL;
-    
-    //firewall in lockdown mode?
-    // block socket operation here
-    if(true == isLockedDown)
-    {
-        //dbg msg
-        IOLog("LULU: firewall is in 'lockdown' mode, so blocking socket operation\n");
-        
-        //disallow socket
-        result = kIOReturnError;
-        
-        //bail
-        goto bail;
-    }
-    
+
     //alloc cookie
     *cookie = (void*)OSMalloc(sizeof(struct cookieStruct), allocTag);
     if(NULL == *cookie)
@@ -582,14 +568,9 @@ static kern_return_t attach(void **cookie, socket_t so)
         goto bail;
     }
 
-    //otherwise
-    // dynamically set rule action
-    else
-    {
-        //dynamically set action
-        // not found, allow, or block
-        ((struct cookieStruct*)(*cookie))->ruleAction = queryRule(proc_selfpid());
-    }
+    //dynamically set action
+    // not found, allow, or block
+    ((struct cookieStruct*)(*cookie))->ruleAction = queryRule(proc_selfpid());
     
     //dbg msg
     IOLog("LULU: rule action for %d: %d\n", proc_selfpid(), ((struct cookieStruct*)(*cookie))->ruleAction);
