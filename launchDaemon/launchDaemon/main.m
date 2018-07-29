@@ -127,9 +127,9 @@ int main(int argc, const char * argv[])
         //dbg msg
         logMsg(LOG_DEBUG, @"initialized global queue");
         
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded rules from %@", RULES_FILE]);
-    
+        //init rule changed semaphore
+        rulesChanged = dispatch_semaphore_create(0);
+        
         //alloc/init user comms XPC obj
         userCommsListener = [[UserCommsListener alloc] init];
         if(nil == userCommsListener)
@@ -173,9 +173,6 @@ int main(int argc, const char * argv[])
         
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"connected to kext, %s", LULU_SERVICE_NAME]);
-        
-        //init rule changed semaphore
-        rulesChanged = dispatch_semaphore_create(0);
         
         //load rules
         if(YES != [rules load])

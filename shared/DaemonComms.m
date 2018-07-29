@@ -72,14 +72,14 @@
     
     //request preferences
     [[self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
-      {
+    {
           //err msg
           logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute 'getPreferences' method on launch daemon (error: %@)", proxyError]);
           
           //signal sema
           dispatch_semaphore_signal(semaphore);
           
-      }] getPreferences:^(NSDictionary* preferencesFromDaemon)
+     }] getPreferences:^(NSDictionary* preferencesFromDaemon)
      {
          //dbg msg
          logMsg(LOG_DEBUG, [NSString stringWithFormat:@"got preferences: %@", preferencesFromDaemon]);

@@ -45,10 +45,7 @@
     //get preferences
     // sends XPC message to daemon
     preferences = [self.daemonComms getPreferences];
-    
-    //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded preferences: %@", preferences]);
-    
+
     //no preferences yet? ... first run
     // kick off main app with '-welcome' flag
     if(0 == preferences.count)
@@ -96,6 +93,9 @@
     // main app already ran, so just complete init's
     else
     {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded preferences: %@", preferences]);
+        
         //complete initializations
         [self completeInitialization:preferences firstTime:NO];
     }
