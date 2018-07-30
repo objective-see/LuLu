@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
         }
         
         //dbg msg
-        printf("LULU: install ok!\n");
+        printf("LULU: install ok!\n...reboot to complete\n\n");
         
         //happy
         status = 0;
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
         }
         
         //dbg msg
-        printf("LULU: uninstall ok!\n");
+        printf("LULU: uninstall ok!\n...reboot to complete\n\n");
         
         //happy
         status = 0;
