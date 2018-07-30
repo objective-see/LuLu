@@ -51,8 +51,8 @@
 		CD22785F20434CAC00C72C76 /* StatusBarPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD22785D20434CAB00C72C76 /* StatusBarPopoverController.m */; };
 		CD32C2352094062D009CADF6 /* SigningInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C2332094062C009CADF6 /* SigningInfoViewController.m */; };
 		CD3FF8CE20DDE3EF007B39F1 /* NSApplicationKeyEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3FF8CC20DDE3EE007B39F1 /* NSApplicationKeyEvents.m */; };
-		CD962AEF208C65A2000D247E /* popoverCloseAlt.png in Resources */ = {isa = PBXBuildFile; fileRef = CD962AED208C65A2000D247E /* popoverCloseAlt.png */; };
-		CD962AF0208C65A2000D247E /* popoverClose.png in Resources */ = {isa = PBXBuildFile; fileRef = CD962AEE208C65A2000D247E /* popoverClose.png */; };
+		CD962AEF208C65A2000D247E /* popoverCloseAlt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD962AED208C65A2000D247E /* popoverCloseAlt@2x.png */; };
+		CD962AF0208C65A2000D247E /* popoverClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD962AEE208C65A2000D247E /* popoverClose@2x.png */; };
 		CDAFF438203E563600F27635 /* libprocInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDAFF437203E563600F27635 /* libprocInfo.a */; };
 /* End PBXBuildFile section */
 
@@ -135,8 +135,8 @@
 		CD32C2342094062C009CADF6 /* SigningInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigningInfoViewController.h; sourceTree = "<group>"; };
 		CD3FF8CC20DDE3EE007B39F1 /* NSApplicationKeyEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSApplicationKeyEvents.m; path = ../shared/NSApplicationKeyEvents.m; sourceTree = "<group>"; };
 		CD3FF8CD20DDE3EE007B39F1 /* NSApplicationKeyEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSApplicationKeyEvents.h; path = ../shared/NSApplicationKeyEvents.h; sourceTree = "<group>"; };
-		CD962AED208C65A2000D247E /* popoverCloseAlt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverCloseAlt.png; sourceTree = "<group>"; };
-		CD962AEE208C65A2000D247E /* popoverClose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popoverClose.png; sourceTree = "<group>"; };
+		CD962AED208C65A2000D247E /* popoverCloseAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverCloseAlt@2x.png"; sourceTree = "<group>"; };
+		CD962AEE208C65A2000D247E /* popoverClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popoverClose@2x.png"; sourceTree = "<group>"; };
 		CDAFF433203E55D500F27635 /* procInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = procInfo.h; path = ../shared/libs/procInfo.h; sourceTree = "<group>"; };
 		CDAFF437203E563600F27635 /* libprocInfo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprocInfo.a; path = ../shared/libs/libprocInfo.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,14 +164,14 @@
 		7D3B75091F13354900568828 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				CD962AEE208C65A2000D247E /* popoverClose.png */,
-				CD962AED208C65A2000D247E /* popoverCloseAlt.png */,
 				CD223E3220830AE80049A76B /* statusBar */,
 				7D46FF0F1F60EBAE00FEB0F8 /* luluText.png */,
 				7D46FF101F60EBAE00FEB0F8 /* luluIcon.png */,
 				7DD2601D1F25621400277EC4 /* parentsIcon.png */,
 				7DD2601E1F25621400277EC4 /* parentsIconBG.png */,
 				7DD2601F1F25621400277EC4 /* parentsIconOver.png */,
+				CD962AEE208C65A2000D247E /* popoverClose@2x.png */,
+				CD962AED208C65A2000D247E /* popoverCloseAlt@2x.png */,
 				7DD260141F2537CC00277EC4 /* virusTotal.png */,
 				7DD260151F2537CC00277EC4 /* virusTotalBG.png */,
 				7DD260161F2537CC00277EC4 /* virusTotalOver.png */,
@@ -368,7 +368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD962AF0208C65A2000D247E /* popoverClose.png in Resources */,
+				CD962AF0208C65A2000D247E /* popoverClose@2x.png in Resources */,
 				7DD260211F25621400277EC4 /* parentsIconBG.png in Resources */,
 				CD223E3E20830AFF0049A76B /* statusIconWhite@2x.png in Resources */,
 				7DD260011F2442BB00277EC4 /* signedApple.png in Resources */,
@@ -377,7 +377,7 @@
 				CD223E3A20830AFF0049A76B /* statusIconDisabledWhite.png in Resources */,
 				CD223E3C20830AFF0049A76B /* statusIconDisabled@2x.png in Resources */,
 				7D16D6951F64E43300DB3161 /* UpdateWindow.xib in Resources */,
-				CD962AEF208C65A2000D247E /* popoverCloseAlt.png in Resources */,
+				CD962AEF208C65A2000D247E /* popoverCloseAlt@2x.png in Resources */,
 				CD223E3920830AFF0049A76B /* statusIconDisabled.png in Resources */,
 				CD22785E20434CAC00C72C76 /* StatusBarPopover.xib in Resources */,
 				7DD260001F2442BB00277EC4 /* signed.png in Resources */,

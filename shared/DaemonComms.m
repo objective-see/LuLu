@@ -208,6 +208,9 @@
         //err msg
         logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute 'importRules' method on launch daemon (error: %@)", proxyError]);
         
+        //signal sema
+        dispatch_semaphore_signal(semaphore);
+        
     }] importRules:rulesFile reply:^(BOOL result)
     {
         //set flag

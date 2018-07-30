@@ -97,10 +97,6 @@ enum menuItems
     //don't want highlight for popover
     self.statusItem.highlightMode = NO;
     
-    //set action
-    // can close popover with click
-    self.statusItem.action = @selector(closePopover:);
-    
     //set target
     self.statusItem.target = self;
     
@@ -125,22 +121,16 @@ enum menuItems
     return;
 }
 
-//close popover
-// also unsets action handler, resets, highlighting, etc
--(void)closePopover:(id)sender
+//cleanup
+// unsets action handler, resets, highlighting, etc
+-(void)popoverDidClose:(NSNotification *)notification
 {
-    //close
-    [self.popover performClose:nil];
-        
     //unset
     self.popover = nil;
     
-    //remove action handler
-    self.statusItem.action = nil;
-    
     //reset highlight mode
     self.statusItem.highlightMode = YES;
-
+    
     return;
 }
 

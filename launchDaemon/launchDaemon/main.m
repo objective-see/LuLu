@@ -9,10 +9,6 @@
 
 #import "main.h"
 
-//TODO: crashes (autorelease pool and status bar)
-// main.h
-// rules format of plist?
-
 //main
 // init & kickoff stuffz
 int main(int argc, const char * argv[])
@@ -259,7 +255,6 @@ int main(int argc, const char * argv[])
     
         //run loop
         [[NSRunLoop currentRunLoop] run];
-    }
     
 bail:
     
@@ -269,6 +264,8 @@ bail:
     //bye!
     // tell kext to disable/unregister, etc
     goodbye();
+        
+    }//autorelease pool
     
     return 0;
 }

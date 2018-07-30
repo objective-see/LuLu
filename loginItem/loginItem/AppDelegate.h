@@ -19,9 +19,9 @@
 /* PROPERTIES */
 
 //status bar menu
-@property (weak) IBOutlet NSMenu *statusMenu;
+@property(strong) IBOutlet NSMenu *statusMenu;
 
-//status bar menu
+//status bar menu controller
 @property(nonatomic, retain)StatusBarMenu* statusBarMenuController;
 
 //update window controller

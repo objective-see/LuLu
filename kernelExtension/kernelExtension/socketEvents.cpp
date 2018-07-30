@@ -812,14 +812,14 @@ static kern_return_t connect_out(void *cookie, socket_t so, const struct sockadd
     // if disabled, in lockdown mode, etc
     if(true == shouldIgnore(to, &result))
     {
-        //todo: rem
+        //TODO: rem
         IOLog("LULU: 'shouldIgnore' returned 'true'/%d\n", result);
         
         //bail
         goto bail;
     }
     
-    //todo: rem
+    //TODO: rem
     IOLog("LULU: 'shouldIgnore' returned 'false'/%d\n", result);
     
     //sanity check
