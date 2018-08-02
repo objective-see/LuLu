@@ -696,16 +696,15 @@ bail:
     NSString* ipAddress = nil;
     
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"LULU processing 'dns response' event from kernel"]);
+    logMsg(LOG_DEBUG, @"processing 'dns response' event from kernel");
     
     //type cast
     dnsHeader = (struct dnsHeader*)event->response;
     
     //print out DNS response
-    /*
-    for(int i = 0; i<sizeof(event->response); i++)
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"%d/%02x", i, event->response[i] & 0xFF]);
-    */
+    //for(int i = 0; i<sizeof(event->response); i++)
+    //    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"%d/%02x", i, event->response[i] & 0xFF]);
+
 
     //init pointer to DNS data
     // begins right after (fixed) DNS header
@@ -752,24 +751,33 @@ bail:
             goto bail;
         }
         
-        //extract URL
-        // pass in offset and end of packet
-        url = extractDNSURL((unsigned char*)dnsHeader + urlOffset, (unsigned char*)dnsHeader + sizeof(event->response));
-        if(0 == url.length)
-        {
-            //bail
-            goto bail;
-        }
-        
         //extract address type
         addressType = ntohs(*(unsigned short*)dnsData);
         
-        //only accept A and AAAA
+        //only process A (0x1), CNAME (0x5), and AAAA (0x1C)
         if( (0x1 != addressType) &&
+            (0x5 != addressType) &&
             (0x1C != addressType) )
         {
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"%d is not a supported dns answer type", addressType]);
+            
             //bail
             goto bail;
+        }
+
+        //extract URL
+        // skip though if already have a url (from CNAME)
+        if( (nil == url) ||
+            (0x5 == addressType) )
+        {
+            //extact
+            url = extractDNSURL((unsigned char*)dnsHeader + urlOffset, (unsigned char*)dnsHeader + sizeof(event->response));
+            if(0 == url.length)
+            {
+                //bail
+                goto bail;
+            }
         }
         
         //skip over type
@@ -781,11 +789,22 @@ bail:
         //skip ttl
         dnsData += sizeof(unsigned int);
         
+        //type 0x5 (cname)
+        // already extracted URL, so just skip over data
+        if(0x5 == addressType)
+        {
+            //skip over size + length of data
+            dnsData += sizeof(unsigned short) + ntohs(*(unsigned short*)dnsData);
+            
+            //next
+            continue;
+        }
+        
         //type A
-        if(0x1 == addressType)
+        else if(0x1 == addressType)
         {
             //length should be 4
-            if(0x4 !=  ntohs(*(unsigned short*)dnsData))
+            if(0x4 != ntohs(*(unsigned short*)dnsData))
             {
                 //bail
                 goto bail;
@@ -803,7 +822,7 @@ bail:
         }
         
         //type AAAA
-        if(0x1C == addressType)
+        else if(0x1C == addressType)
         {
             //length should be 0x10
             if(0x10 != ntohs(*(unsigned short*)dnsData))
