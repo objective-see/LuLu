@@ -125,6 +125,7 @@ BOOL cmdlineInterface(int action)
         printf("LULU: waiting for 'system_profiler' & 'kextcache' to complete\n");
         
         //wait for 'system_profiler'
+        // this isn't always exec'd, so we'll just exit loop quickly
         while(YES)
         {
             //nap

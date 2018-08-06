@@ -233,6 +233,9 @@
 //path to system profiler
 #define SYSTEM_PROFILER @"/usr/sbin/system_profiler"
 
+//path to kext
+#define KEXT @"/Library/Extensions/LuLu.kext"
+
 //path to kext cache
 #define KEXT_CACHE @"/usr/sbin/kextcache"
 

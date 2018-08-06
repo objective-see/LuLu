@@ -106,13 +106,8 @@ BOOL isAppRunning(NSString* bundleID);
 // if 'shouldWait' is set, wait and return stdout/in and termination status
 NSMutableDictionary* execTask(NSString* binaryPath, NSArray* arguments, BOOL shouldWait, BOOL grabOutput);
 
-//extract a DNS url
-// per spec, format is: [len]bytes[len][bytes]0x0
-NSMutableString* extractDNSURL(unsigned char* dnsData, unsigned char* dnsDataEnd);
-
-//determine what CS flags to use
-// for massive bundles, won't validate resources, etc...
-//SecCSFlags determineCSFlags(NSString* path, NSBundle* bundle);
+//extract a DNS name
+NSMutableString* extractDNSName(unsigned char* start, unsigned char* chunk, unsigned char* end);
 
 //loads a framework
 // note: assumes is in 'Framework' dir

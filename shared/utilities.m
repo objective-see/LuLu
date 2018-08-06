@@ -1478,58 +1478,71 @@ bail:
 
 //extract a DNS url
 // per spec, format is: [len]bytes[len][bytes]0x0
-NSMutableString* extractDNSURL(unsigned char* dnsData, unsigned char* dnsDataEnd)
+NSMutableString* extractDNSName(unsigned char* start, unsigned char* chunk, unsigned char* end)
 {
     //size of chunk
     NSUInteger chunkSize = 0;
     
-    //url
-    NSMutableString* url = nil;
+    //name
+    NSMutableString* name = nil;
     
     //alloc
-    url = [NSMutableString string];
+    name = [NSMutableString string];
     
-    //until we hit a NULL
-    while(0x0 != *dnsData)
+    //parse!
+    while(YES)
     {
         //grab size & check
-        chunkSize = *dnsData++ & 0xFF;
-        if(dnsData+chunkSize >= dnsDataEnd)
+        chunkSize = (*chunk & 0xFF);
+        if(start+chunkSize >= end)
         {
             //bail
             goto bail;
         }
         
+        //skip size
+        chunk++;
+        
         //append each byte of url chunk
         for(NSUInteger i = 0; i < chunkSize; i++)
         {
-            //sanity check
-            if(0 == (dnsData[i] & 0xFF))
-            {
-                //bail
-                goto bail;
-            }
-            
             //add byte
-            [url appendFormat:@"%c", dnsData[i]];
+            [name appendFormat:@"%c", chunk[i]];
         }
         
         //next chunk
-        dnsData += chunkSize;
-        
-        //not last chunk?
-        // add a '.' to url
-        if( (dnsData < dnsDataEnd) &&
-            (0x0 != *dnsData) )
+        chunk += chunkSize;
+        if(chunk >= end)
         {
-            //append dot
-            [url appendString:@"."];
+            //bail
+            goto bail;
+        }
+        
+        //done?
+        if(0x0 == *chunk)
+        {
+            //done
+            break;
+        }
+        
+        //append dot
+        [name appendString:@"."];
+        
+        //if value is 0xC
+        // go to that chunk offset
+        if(0xC0 == *chunk)
+        {
+            //skip ptr (0xCC)
+            chunk++;
+            
+            //go to next chunk
+            chunk = (unsigned char*)start + (*chunk & 0xFF);
         }
     }
     
 bail:
     
-    return url;
+    return name;
 }
 
 //loads a framework

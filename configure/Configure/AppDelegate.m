@@ -27,7 +27,6 @@
 @synthesize configureObj;
 
 @synthesize aboutWindowController;
-@synthesize errorWindowController;
 @synthesize configureWindowController;
 
 //main app interface
@@ -48,6 +47,7 @@
 -(BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
 {
     #pragma unused(sender)
+    
     return YES;
 }
 
@@ -67,61 +67,9 @@
     return;
 }
 
-//display error window
--(void)displayErrorWindow:(NSDictionary*)errorInfo
-{
-    //alloc error window
-    errorWindowController = [[ErrorWindowController alloc] initWithWindowNibName:@"ErrorWindowController"];
-    
-    //main thread
-    // just show UI alert, unless its fatal (then load URL)
-    if(YES == [NSThread isMainThread])
-    {
-        //non-fatal errors
-        // show error error popup
-        if(YES != [errorInfo[KEY_ERROR_URL] isEqualToString:FATAL_ERROR_URL])
-        {
-            //display it
-            // call this first to so that outlets are connected
-            [self.errorWindowController display];
-            
-            //configure it
-            [self.errorWindowController configure:errorInfo];
-        }
-        //fatal error
-        // launch browser to go to fatal error page, then exit
-        else
-        {
-            //launch browser
-            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:errorInfo[KEY_ERROR_URL]]];
-            
-            //then exit
-            [NSApp terminate:self];
-        }
-    }
-    //background thread
-    // have to show error window on main thread
-    else
-    {
-        //show alert
-        // in main UI thread
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            
-            //display it
-            // call this first to so that outlets are connected
-            [self.errorWindowController display];
-            
-            //configure it
-            [self.errorWindowController configure:errorInfo];
-            
-        });
-    }
-    
-    return;
-}
 
 //menu handler for 'about'
-- (IBAction)displayAboutWindow:(id)sender
+-(IBAction)displayAboutWindow:(id)sender
 {
     #pragma unused(sender)
     

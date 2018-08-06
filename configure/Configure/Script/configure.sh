@@ -60,10 +60,18 @@ if [ "${1}" == "-install" ]; then
     #install app(s)
     cp -R -f "LuLu.app" /Applications
 
-    #enumerate installed apps, full path
-    /usr/sbin/system_profiler SPApplicationsDataType -xml > $INSTALL_DIRECTORY/installedApps.xml &
+    #enumerate installed apps
+    # note: only do this on a fresh install
+    if [ ! -f $INSTALL_DIRECTORY/installedApps.plist ]; then
+
+        echo "enumerating (pre)installed applications"
+
+        /usr/sbin/system_profiler SPApplicationsDataType -xml > $INSTALL_DIRECTORY/installedApps.xml &
+    fi
 
     #rebuild cache, full path
+    echo "rebuilding kernel cache"
+
     /usr/sbin/kextcache -invalidate / &
 
     echo "install complete"
@@ -121,6 +129,8 @@ elif [ "${1}" == "-uninstall" ]; then
     echo "kext removed"
 
     #rebuild cache, full path
+    echo "rebuilding kernel cache"
+
     /usr/sbin/kextcache -invalidate / &
 
     echo "uninstall complete"

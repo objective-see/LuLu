@@ -72,7 +72,7 @@
     
     //app already installed?
     // enable 'uninstall' button
-    // change install button to say 'upgrade'
+    // change 'install' button to say 'upgrade'
     if(YES == isInstalled)
     {
         //enable 'uninstall'
@@ -123,6 +123,9 @@
     //action
     NSInteger action = 0;
     
+    //'beta installed' alert
+    NSAlert* betaInstalled = nil;
+    
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"handling action click: %@", ((NSButton*)sender).title]);
     
@@ -155,6 +158,30 @@
     //install || uninstall
     else
     {
+        //upgrade/uninstall
+        // warn if beta is installed
+        if( (action != ACTION_UNINSTALL_FLAG) &&
+            (YES == [((AppDelegate*)[[NSApplication sharedApplication] delegate]).configureObj isBetaInstalled]) )
+        {
+                //init alert
+                betaInstalled = [[NSAlert alloc] init];
+                
+                //set style
+                betaInstalled.alertStyle = NSAlertStyleInformational;
+                
+                //main text
+                betaInstalled.messageText = @"Beta Version Already Installed";
+                
+                //details
+                betaInstalled.informativeText = @"Please note, it will be fully uninstalled first!";
+                
+                //add button
+                [betaInstalled addButtonWithTitle:@"Ok"];
+                
+                //show
+                [betaInstalled runModal];
+        }
+
         //disable 'x' button
         // don't want user killing app during install/upgrade
         [[self.window standardWindowButton:NSWindowCloseButton] setEnabled:NO];
@@ -225,10 +252,14 @@ bail:
         //set flag
         status = YES;
         
-        //for install
+        //for fresh install
         // wait until enum'ing of installed apps is done
-        if(ACTION_INSTALL_FLAG == event)
+        if( (ACTION_INSTALL_FLAG == event) &&
+            (YES != [[NSFileManager defaultManager] fileExistsAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", INSTALLED_APPS]]]) )
         {
+            //dbg msg
+            logMsg(LOG_DEBUG, @"enumerating (pre)installed applications");
+            
             //nap
             // give time for 'system_profiler' to start....
             [NSThread sleepForTimeInterval:1.0];

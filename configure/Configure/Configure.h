@@ -31,6 +31,9 @@
 //determine if LuLu is installed
 -(BOOL)isInstalled;
 
+//determine if installed version is a beta
+-(BOOL)isBetaInstalled;
+
 //invokes appropriate install || uninstall logic
 -(BOOL)configure:(NSInteger)parameter;
 

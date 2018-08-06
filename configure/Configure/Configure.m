@@ -28,6 +28,9 @@
     //return var
     BOOL wasConfigured = NO;
     
+    //uninstall flag
+    BOOL uninstallFlag = UNINSTALL_FULL;
+    
     //get help
     if(YES != [self initHelper])
     {
@@ -38,22 +41,42 @@
         goto bail;
     }
     
-    //install extension
+    //install
     if(ACTION_INSTALL_FLAG == parameter)
     {
         //dbg msg
         logMsg(LOG_DEBUG, @"installing...");
         
         //already installed?
-        // uninstall everything first
+        // perform an uninstall
         if(YES == [self isInstalled])
         {
             //dbg msg
             logMsg(LOG_DEBUG, @"already installed, so uninstalling...");
             
+            //existing install, a beta?
+            // set flag to perform full uninstall
+            if(YES == [self isBetaInstalled])
+            {
+                //dbg msg
+                logMsg(LOG_DEBUG, @"previous version is a beta, so will fully uninstall");
+                
+                //set flag
+                uninstallFlag = UNINSTALL_FULL;
+            }
+            //non-beta
+            // set flag to perform partial uninstall
+            else
+            {
+                //dbg msg
+                logMsg(LOG_DEBUG, @"previous version is not beta, so only partially uninstall");
+                
+                //set flag
+                uninstallFlag = UNINSTALL_PARTIAL;
+            }
+            
             //uninstall
-            // but do partial
-            if(YES != [self uninstall:UNINSTALL_PARTIAL])
+            if(YES != [self uninstall:uninstallFlag])
             {
                 //bail
                 goto bail;
@@ -74,14 +97,13 @@
         logMsg(LOG_DEBUG, @"installed!");
         
     }
-    //uninstall extension
+    //uninstall
     else if(ACTION_UNINSTALL_FLAG == parameter)
     {
         //dbg msg
         logMsg(LOG_DEBUG, @"uninstalling...");
         
         //uninstall
-        // and relaunch Finder
         if(YES != [self uninstall:UNINSTALL_FULL])
         {
             //bail
@@ -101,7 +123,7 @@ bail:
 }
 
 //determine if installed
-// simply checks if extension binary exists
+// check if various firewall components are present
 -(BOOL)isInstalled
 {
     //flag
@@ -126,12 +148,56 @@ bail:
     appPath = [@"/Applications" stringByAppendingPathComponent:APP_NAME];
     
     //check for installed components
-    installed = ( (YES == [[NSFileManager defaultManager] fileExistsAtPath:appPath]) ||
+    installed = ( (YES == [[NSFileManager defaultManager] fileExistsAtPath:KEXT]) ||
+                  (YES == [[NSFileManager defaultManager] fileExistsAtPath:appPath]) ||
                   (YES == [[NSFileManager defaultManager] fileExistsAtPath:launchDaemon]) ||
                   (YES == [[NSFileManager defaultManager] fileExistsAtPath:launchDaemonPlist]) );
     
     return installed;
 }
+
+//determine if installed version is a beta
+// just checks app bundle version, to see if it's starts w/ "0."
+-(BOOL)isBetaInstalled
+{
+    //flag
+    BOOL betaInstalled = NO;
+    
+    //app bundle
+    NSBundle* appBundle = nil;
+    
+    //app version
+    NSString* appVersion = nil;
+    
+    //load app bundle
+    appBundle = [NSBundle bundleWithPath:[@"/Applications" stringByAppendingPathComponent:APP_NAME]];
+    if(nil == appBundle)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //extract version
+    appVersion = appBundle.infoDictionary[@"CFBundleVersion"];
+    if(nil == appVersion)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //check for beta
+    // version string that starts with 0
+    if(YES == [appVersion hasPrefix:@"0."])
+    {
+        //set flag
+        betaInstalled = YES;
+    }
+
+bail:
+    
+    return betaInstalled;
+}
+
 
 //init helper tool
 // install and establish XPC connection
@@ -341,7 +407,7 @@ bail:
     };
     
     //install
-    // note this is async
+    // note, this is async
     [xpcComms install:block];
     
     //wait for installer logic to be completed by XPC

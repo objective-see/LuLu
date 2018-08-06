@@ -679,14 +679,20 @@ bail:
     //dns header
     struct dnsHeader* dnsHeader = NULL;
     
+    //end of response
+    unsigned char* end = NULL;
+    
     //dns data
     unsigned char* dnsData = NULL;
     
-    //offset to URL
-    NSUInteger urlOffset = 0;
+    //offset to name
+    NSUInteger nameOffset = 0;
     
-    //URL
-    NSMutableString* url = nil;
+    //name from CNAME
+    NSString* cName = nil;
+    
+    //name from A/AAAA
+    NSString* aName = nil;
     
     //type
     // A, AAAA
@@ -700,6 +706,9 @@ bail:
     
     //type cast
     dnsHeader = (struct dnsHeader*)event->response;
+    
+    //init end
+    end = event->response+sizeof(event->response);
     
     //print out DNS response
     //for(int i = 0; i<sizeof(event->response); i++)
@@ -715,7 +724,7 @@ bail:
     for(NSUInteger i = 0; i < ntohs(dnsHeader->qdcount); i++)
     {
         //sanity check
-        if(dnsData >= event->response+sizeof(event->response))
+        if(dnsData >= end)
         {
             //bail
             goto bail;
@@ -727,13 +736,24 @@ bail:
         
         //skip question type
         dnsData += sizeof(unsigned short);
+        if(dnsData >= end)
+        {
+            //bail
+            goto bail;
+        }
         
         //skip question class
         dnsData += sizeof(unsigned short);
+        if(dnsData >= end)
+        {
+            //bail
+            goto bail;
+        }
+        
     }
     
     //now, parse answers
-    // this is all we really care about
+    // this is all we really care about...
     for(NSUInteger i = 0; i < ntohs(dnsHeader->ancount); i++)
     {
         //first byte indicates a pointer?
@@ -743,9 +763,9 @@ bail:
             goto bail;
         }
         
-        //extract URL offset
-        urlOffset = *dnsData++ & 0xFF;
-        if(urlOffset >= sizeof(event->response))
+        //extract name offset
+        nameOffset = *dnsData++ & 0xFF;
+        if(nameOffset >= sizeof(event->response))
         {
             //bail
             goto bail;
@@ -754,7 +774,8 @@ bail:
         //extract address type
         addressType = ntohs(*(unsigned short*)dnsData);
         
-        //only process A (0x1), CNAME (0x5), and AAAA (0x1C)
+        //only process certain addr types
+        // A (0x1), CNAME (0x5), and AAAA (0x1C)
         if( (0x1 != addressType) &&
             (0x5 != addressType) &&
             (0x1C != addressType) )
@@ -765,44 +786,71 @@ bail:
             //bail
             goto bail;
         }
-
-        //extract URL
-        // skip though if already have a url (from CNAME)
-        if( (nil == url) ||
-            (0x5 == addressType) )
+        
+        //skip over type
+        dnsData += sizeof(unsigned short);
+        if(dnsData >= end)
         {
-            //extact
-            url = extractDNSURL((unsigned char*)dnsHeader + urlOffset, (unsigned char*)dnsHeader + sizeof(event->response));
-            if(0 == url.length)
+            //bail
+            goto bail;
+        }
+        
+        //skip class
+        dnsData += sizeof(unsigned short);
+        if(dnsData >= end)
+        {
+            //bail
+            goto bail;
+        }
+        
+        //skip ttl
+        dnsData += sizeof(unsigned int);
+        if(dnsData >= end)
+        {
+            //bail
+            goto bail;
+        }
+        
+        //TODO: rem
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"name (offset: %lx): %@", (unsigned long)nameOffset, extractDNSName((unsigned char*)dnsHeader, (unsigned char*)dnsHeader + nameOffset, (unsigned char*)dnsHeader + sizeof(event->response))]);
+        
+        //address type: CNAME
+        // extact (first) instance of name
+        if(0x5 == addressType)
+        {
+            //only extract first
+            if(nil == cName)
+            {
+                //extact name
+                cName = extractDNSName((unsigned char*)dnsHeader, (unsigned char*)dnsHeader + nameOffset, (unsigned char*)dnsHeader + sizeof(event->response));
+                
+                //TODO: rem
+                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"address type: CNAME [%@]", cName]);
+            }
+            
+            //skip over size + length of data
+            dnsData += sizeof(unsigned short) + ntohs(*(unsigned short*)dnsData);
+            if(dnsData >= end)
             {
                 //bail
                 goto bail;
             }
         }
         
-        //skip over type
-        dnsData += sizeof(unsigned short);
-        
-        //skip class
-        dnsData += sizeof(unsigned short);
-        
-        //skip ttl
-        dnsData += sizeof(unsigned int);
-        
-        //type 0x5 (cname)
-        // already extracted URL, so just skip over data
-        if(0x5 == addressType)
-        {
-            //skip over size + length of data
-            dnsData += sizeof(unsigned short) + ntohs(*(unsigned short*)dnsData);
-            
-            //next
-            continue;
-        }
-        
         //type A
         else if(0x1 == addressType)
         {
+            //extact name
+            // but only if we don't have one from the first cname
+            if(nil == cName)
+            {
+                //extract
+                aName = extractDNSName((unsigned char*)dnsHeader, (unsigned char*)dnsHeader + nameOffset, (unsigned char*)dnsHeader + sizeof(event->response));
+                
+                //TODO: rem
+                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"address type: ANAME [%@]", aName]);
+            }
+            
             //length should be 4
             if(0x4 != ntohs(*(unsigned short*)dnsData))
             {
@@ -812,6 +860,11 @@ bail:
             
             //skip over length
             dnsData += sizeof(unsigned short);
+            if(dnsData >= end)
+            {
+                //bail
+                goto bail;
+            }
             
             //covert
             ipAddress = convertIPAddr(dnsData, AF_INET);
@@ -819,11 +872,27 @@ bail:
             //skip over IP address
             // for IPv4 addresses, this will always be 4
             dnsData += 0x4;
+            if(dnsData >= end)
+            {
+                //bail
+                goto bail;
+            }
         }
         
         //type AAAA
         else if(0x1C == addressType)
         {
+            //extact name
+            // but only if we don't have one from the first cname
+            if(nil == cName)
+            {
+                //extract
+                aName = extractDNSName((unsigned char*)dnsHeader, (unsigned char*)dnsHeader + nameOffset, (unsigned char*)dnsHeader + sizeof(event->response));
+                
+                //TODO: rem
+                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"address type: ANAME [%@]", aName]);
+            }
+            
             //length should be 0x10
             if(0x10 != ntohs(*(unsigned short*)dnsData))
             {
@@ -833,6 +902,11 @@ bail:
             
             //skip over length
             dnsData += sizeof(unsigned short);
+            if(dnsData >= end)
+            {
+                //bail
+                goto bail;
+            }
             
             //convert
             ipAddress = convertIPAddr(dnsData, AF_INET6);
@@ -840,16 +914,35 @@ bail:
             //skip over IP address
             // for IPv4 addresses, this will always be 0x10
             dnsData += 0x10;
+            if(dnsData >= end)
+            {
+                //bail
+                goto bail;
+            }
         }
         
         //add to DNS 'cache'
         if(0 != ipAddress.length)
         {
-            //dbg msg
-            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding %@ -> %@ to DNS 'cache'", url, ipAddress]);
-            
-            //add
-            self.dnsCache[ipAddress] = url;
+            //default to first cName
+            if(nil != cName)
+            {
+                //add to cache
+                self.dnsCache[ipAddress] = cName;
+                
+                //dbg msg
+                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding cName %@ -> %@ to DNS 'cache'", cName, ipAddress]);
+            }
+            //otherwise
+            // use aName
+            else if(nil != aName)
+            {
+                //add to cache
+                self.dnsCache[ipAddress] = aName;
+                
+                //dbg msg
+                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding aName %@ -> %@ to DNS 'cache'", aName, ipAddress]);
+            }
         }
         
     }//parse answers
@@ -860,7 +953,7 @@ bail:
 }
 
 //try/wait to get process
-// ->proc mon sometimes a bit slow...
+// process mon sometimes a bit slow...
 -(Process*)findProcess:(pid_t)pid
 {
     //process obj
