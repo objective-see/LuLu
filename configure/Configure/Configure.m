@@ -169,6 +169,9 @@ bail:
     //app version
     NSString* appVersion = nil;
     
+    //dbg msg
+    logMsg(LOG_DEBUG, @"checking if installed version is a beta...");
+    
     //load app bundle
     appBundle = [NSBundle bundleWithPath:[@"/Applications" stringByAppendingPathComponent:APP_NAME]];
     if(nil == appBundle)
@@ -185,8 +188,11 @@ bail:
         goto bail;
     }
     
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"existing (app) version: %@", appVersion]);
+    
     //check for beta
-    // version string that starts with 0
+    // version string that starts with "0."
     if(YES == [appVersion hasPrefix:@"0."])
     {
         //set flag

@@ -67,7 +67,7 @@
     else
     {
         //init status msg
-        [self.statusMsg setStringValue:@"monitor network connections 🔥🛡️"];
+        [self.statusMsg setStringValue:@"the free, open, firewall 🔥🛡️"];
     }
     
     //app already installed?
@@ -132,7 +132,7 @@
     //grab tag
     action = ((NSButton*)sender).tag;
     
-    //restart?
+    //action: restart
     if(action == ACTION_RESTART_FLAG)
     {
         //disable button
@@ -145,7 +145,7 @@
         goto bail;
     }
     
-    //close?
+    //action close
     else if(action == ACTION_CLOSE_FLAG)
     {
         //close window to trigger cleanup logic
@@ -155,7 +155,7 @@
         goto bail;
     }
     
-    //install || uninstall
+    //action: install || uninstall
     else
     {
         //upgrade/uninstall
@@ -163,23 +163,24 @@
         if( (action != ACTION_UNINSTALL_FLAG) &&
             (YES == [((AppDelegate*)[[NSApplication sharedApplication] delegate]).configureObj isBetaInstalled]) )
         {
-                //init alert
-                betaInstalled = [[NSAlert alloc] init];
-                
-                //set style
-                betaInstalled.alertStyle = NSAlertStyleInformational;
-                
-                //main text
-                betaInstalled.messageText = @"Beta Version Already Installed";
-                
-                //details
-                betaInstalled.informativeText = @"Please note, it will be fully uninstalled first!";
-                
-                //add button
-                [betaInstalled addButtonWithTitle:@"Ok"];
-                
-                //show
-                [betaInstalled runModal];
+            //init alert
+            betaInstalled = [[NSAlert alloc] init];
+            
+            //set style
+            betaInstalled.alertStyle = NSAlertStyleInformational;
+            
+            //set main text
+            betaInstalled.messageText = @"Beta Version Already Installed";
+            
+            //set detailed text
+            betaInstalled.informativeText = @"Please note, it will be fully uninstalled first!";
+            
+            //add button
+            [betaInstalled addButtonWithTitle:@"Ok"];
+            
+            //show
+            // will block until user
+            [betaInstalled runModal];
         }
 
         //disable 'x' button

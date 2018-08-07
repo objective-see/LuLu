@@ -437,14 +437,14 @@ bail:
     NSDictionary* alert = nil;
     
     //dbg msg
-    logMsg(LOG_DEBUG, @"processing undelivered alerts");
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"processing %lu undelivered alerts", self.undelivertedAlerts.count]);
     
     //sync
     @synchronized(self.undelivertedAlerts)
     {
         //process all undelivered alerts
         // add to queue, and to 'shown' alert
-        for(NSString* path in self.undelivertedAlerts)
+        for(NSString* path in self.undelivertedAlerts.allKeys)
         {
             //grab alert
             alert = self.undelivertedAlerts[path];
@@ -456,34 +456,13 @@ bail:
             // this will trigger processing of alert
             [eventQueue enqueue:alert];
             
+            //remove
+            [self.undelivertedAlerts removeObjectForKey:path];
+            
             //save to 'shown'
             [self addShown:alert];
         }
-    
     }
-    
-    return;
-}
-
-//remove an alert from 'undelivered'
--(void)removeUndeliverted:(NSDictionary*)alert
-{
-    //path (key)
-    NSString* path = nil;
-    
-    //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"removing alert from 'undelivered': %@", alert]);
-    
-    //remove alert
-    @synchronized(self.undelivertedAlerts)
-    {
-        //grab path
-        path = alert[ALERT_PATH];
-        
-        //remove
-        [self.undelivertedAlerts removeObjectForKey:path];
-    }
-    
     return;
 }
 

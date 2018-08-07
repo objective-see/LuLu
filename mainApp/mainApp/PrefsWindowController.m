@@ -302,7 +302,7 @@ bail:
     update = [[Update alloc] init];
     
     //check for update
-    // ->'updateResponse newVersion:' method will be called when check is done
+    // 'updateResponse newVersion:' method will be called when check is done
     [update checkForUpdate:^(NSUInteger result, NSString* newVersion) {
         
         //process response
@@ -314,7 +314,7 @@ bail:
 }
 
 //process update response
-// ->error, no update, update/new version
+// error, no update, update/new version
 -(void)updateResponse:(NSInteger)result newVersion:(NSString*)newVersion
 {
     //re-enable button
@@ -323,7 +323,7 @@ bail:
     //stop/hide spinner
     [self.updateIndicator stopAnimation:self];
     
-    switch (result)
+    switch(result)
     {
         //error
         case -1:
@@ -370,9 +370,6 @@ bail:
                 makeModal(self.updateWindowController);
                 
             });
-            
-            //set label
-            //self.updateLabel.stringValue = [NSString stringWithFormat:@"a new version (%@) is available", newVersion];
             
             break;
     }

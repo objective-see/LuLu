@@ -600,7 +600,8 @@ bail:
     }
     
     //no connected client
-    // can't deliver alert, so just allow, but log this fact
+    // a) allow
+    // b) save for delivery later...
     if(YES != clientConnected)
     {
         //dbg msg
@@ -672,8 +673,8 @@ bail:
     return;
 }
 
-//process a network out event from the kernel
-// if there is no matching rule, will tell client to show alert
+//process a dns packet from the kernel
+// just looking to extract name/ip address mappings
 -(void)processDNSResponse:(struct dnsResponseEvent_s*)event
 {
     //dns header
@@ -695,7 +696,7 @@ bail:
     NSString* aName = nil;
     
     //type
-    // A, AAAA
+    // A, AAAA, etc...
     unsigned short addressType = 0;
     
     //ip address
@@ -712,12 +713,16 @@ bail:
     
     //print out DNS response
     //for(int i = 0; i<sizeof(event->response); i++)
-    //    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"%d/%02x", i, event->response[i] & 0xFF]);
-
+    //  logMsg(LOG_DEBUG, [NSString stringWithFormat:@"%d/%02x", i, event->response[i] & 0xFF]);
 
     //init pointer to DNS data
     // begins right after (fixed) DNS header
     dnsData = (unsigned char*)((unsigned char*)dnsHeader + sizeof(struct dnsHeader));
+    if(dnsData >= end)
+    {
+        //bail
+        goto bail;
+    }
     
     //skip over any question entries
     // they should always come first, ya?
@@ -749,14 +754,21 @@ bail:
             //bail
             goto bail;
         }
-        
     }
     
     //now, parse answers
     // this is all we really care about...
     for(NSUInteger i = 0; i < ntohs(dnsHeader->ancount); i++)
     {
-        //first byte indicates a pointer?
+        //sanity check
+        // answers should be at least 0xC
+        if(dnsData+0xC >= end)
+        {
+            //bail
+            goto bail;
+        }
+        
+        //first byte should alway indicated 'offset'
         if(0xC0 != *dnsData++)
         {
             //bail
@@ -789,27 +801,12 @@ bail:
         
         //skip over type
         dnsData += sizeof(unsigned short);
-        if(dnsData >= end)
-        {
-            //bail
-            goto bail;
-        }
-        
+
         //skip class
         dnsData += sizeof(unsigned short);
-        if(dnsData >= end)
-        {
-            //bail
-            goto bail;
-        }
         
         //skip ttl
         dnsData += sizeof(unsigned int);
-        if(dnsData >= end)
-        {
-            //bail
-            goto bail;
-        }
         
         //TODO: rem
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"name (offset: %lx): %@", (unsigned long)nameOffset, extractDNSName((unsigned char*)dnsHeader, (unsigned char*)dnsHeader + nameOffset, (unsigned char*)dnsHeader + sizeof(event->response))]);
@@ -830,11 +827,6 @@ bail:
             
             //skip over size + length of data
             dnsData += sizeof(unsigned short) + ntohs(*(unsigned short*)dnsData);
-            if(dnsData >= end)
-            {
-                //bail
-                goto bail;
-            }
         }
         
         //type A
@@ -860,7 +852,9 @@ bail:
             
             //skip over length
             dnsData += sizeof(unsigned short);
-            if(dnsData >= end)
+            
+            //ipv4 addr is 0x4
+            if(dnsData+0x4 >= end)
             {
                 //bail
                 goto bail;
@@ -872,11 +866,6 @@ bail:
             //skip over IP address
             // for IPv4 addresses, this will always be 4
             dnsData += 0x4;
-            if(dnsData >= end)
-            {
-                //bail
-                goto bail;
-            }
         }
         
         //type AAAA
@@ -902,7 +891,9 @@ bail:
             
             //skip over length
             dnsData += sizeof(unsigned short);
-            if(dnsData >= end)
+            
+            //ipv6 addr is 0x10
+            if(dnsData+0x10 >= end)
             {
                 //bail
                 goto bail;
@@ -914,11 +905,6 @@ bail:
             //skip over IP address
             // for IPv4 addresses, this will always be 0x10
             dnsData += 0x10;
-            if(dnsData >= end)
-            {
-                //bail
-                goto bail;
-            }
         }
         
         //add to DNS 'cache'

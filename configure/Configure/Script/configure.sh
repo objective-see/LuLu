@@ -65,13 +65,11 @@ if [ "${1}" == "-install" ]; then
     if [ ! -f $INSTALL_DIRECTORY/installedApps.plist ]; then
 
         echo "enumerating (pre)installed applications"
-
         /usr/sbin/system_profiler SPApplicationsDataType -xml > $INSTALL_DIRECTORY/installedApps.xml &
     fi
 
     #rebuild cache, full path
     echo "rebuilding kernel cache"
-
     /usr/sbin/kextcache -invalidate / &
 
     echo "install complete"
@@ -103,7 +101,7 @@ elif [ "${1}" == "-uninstall" ]; then
     if [[ "${2}" -eq "1" ]]; then
         rm -rf $INSTALL_DIRECTORY
 
-        #no other objective-see tools?
+        #no other Objective-See tools?
         # then delete that directory too
         baseDir=$(dirname $INSTALL_DIRECTORY)
 

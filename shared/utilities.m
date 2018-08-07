@@ -578,7 +578,7 @@ bail:
 }
 
 //given a process path and user
-// ->return array of all matching pids
+// return array of all matching pids
 NSMutableArray* getProcessIDs(NSString* processPath, int userID)
 {
     //status
@@ -908,7 +908,7 @@ pid_t findProcess(NSString* processName)
     }
     
     //iterate over all pids
-    // ->get name for each via helper function
+    // get name for each via helper function
     for(int i = 0; i < numberOfProcesses; ++i)
     {
         //skip blank pids
@@ -1477,7 +1477,6 @@ bail:
 }
 
 //extract a DNS url
-// per spec, format is: [len]bytes[len][bytes]0x0
 NSMutableString* extractDNSName(unsigned char* start, unsigned char* chunk, unsigned char* end)
 {
     //size of chunk
@@ -1489,12 +1488,12 @@ NSMutableString* extractDNSName(unsigned char* start, unsigned char* chunk, unsi
     //alloc
     name = [NSMutableString string];
     
-    //parse!
+    //parse
     while(YES)
     {
         //grab size & check
         chunkSize = (*chunk & 0xFF);
-        if(start+chunkSize >= end)
+        if(chunk+chunkSize >= end)
         {
             //bail
             goto bail;
@@ -1502,6 +1501,11 @@ NSMutableString* extractDNSName(unsigned char* start, unsigned char* chunk, unsi
         
         //skip size
         chunk++;
+        if(chunk >= end)
+        {
+            //bail
+            goto bail;
+        }
         
         //append each byte of url chunk
         for(NSUInteger i = 0; i < chunkSize; i++)
@@ -1518,7 +1522,7 @@ NSMutableString* extractDNSName(unsigned char* start, unsigned char* chunk, unsi
             goto bail;
         }
         
-        //done?
+        //done when hit a NULL
         if(0x0 == *chunk)
         {
             //done
@@ -1529,14 +1533,24 @@ NSMutableString* extractDNSName(unsigned char* start, unsigned char* chunk, unsi
         [name appendString:@"."];
         
         //if value is 0xC
-        // go to that chunk offset
+        // go to that new chunk offset
         if(0xC0 == *chunk)
         {
             //skip ptr (0xCC)
             chunk++;
+            if(chunk >= end)
+            {
+                //bail
+                goto bail;
+            }
             
             //go to next chunk
             chunk = (unsigned char*)start + (*chunk & 0xFF);
+            if(chunk >= end)
+            {
+                //bail
+                goto bail;
+            }
         }
     }
     
