@@ -808,9 +808,6 @@ bail:
         //skip ttl
         dnsData += sizeof(unsigned int);
         
-        //TODO: rem
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"name (offset: %lx): %@", (unsigned long)nameOffset, extractDNSName((unsigned char*)dnsHeader, (unsigned char*)dnsHeader + nameOffset, (unsigned char*)dnsHeader + sizeof(event->response))]);
-        
         //address type: CNAME
         // extact (first) instance of name
         if(0x5 == addressType)
@@ -820,9 +817,6 @@ bail:
             {
                 //extact name
                 cName = extractDNSName((unsigned char*)dnsHeader, (unsigned char*)dnsHeader + nameOffset, (unsigned char*)dnsHeader + sizeof(event->response));
-                
-                //TODO: rem
-                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"address type: CNAME [%@]", cName]);
             }
             
             //skip over size + length of data
@@ -838,9 +832,6 @@ bail:
             {
                 //extract
                 aName = extractDNSName((unsigned char*)dnsHeader, (unsigned char*)dnsHeader + nameOffset, (unsigned char*)dnsHeader + sizeof(event->response));
-                
-                //TODO: rem
-                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"address type: ANAME [%@]", aName]);
             }
             
             //length should be 4
@@ -877,9 +868,6 @@ bail:
             {
                 //extract
                 aName = extractDNSName((unsigned char*)dnsHeader, (unsigned char*)dnsHeader + nameOffset, (unsigned char*)dnsHeader + sizeof(event->response));
-                
-                //TODO: rem
-                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"address type: ANAME [%@]", aName]);
             }
             
             //length should be 0x10
