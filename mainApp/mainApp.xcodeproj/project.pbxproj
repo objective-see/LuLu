@@ -16,7 +16,6 @@
 		7D564DD61F18441500B8AAD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D564DBF1F18441500B8AAD6 /* Assets.xcassets */; };
 		7D564DD91F18441500B8AAD6 /* RulesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DC21F18441500B8AAD6 /* RulesWindowController.m */; };
 		7D564DDA1F18441500B8AAD6 /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DC31F18441500B8AAD6 /* AboutWindowController.m */; };
-		7D564DDB1F18441500B8AAD6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D564DC51F18441500B8AAD6 /* MainMenu.xib */; };
 		7D564DDC1F18441500B8AAD6 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D564DC71F18441500B8AAD6 /* AboutWindow.xib */; };
 		7D564DDD1F18441500B8AAD6 /* Rules.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D564DC91F18441500B8AAD6 /* Rules.xib */; };
 		7D564DDE1F18441500B8AAD6 /* RuleRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DCA1F18441500B8AAD6 /* RuleRowCell.m */; };
@@ -397,7 +396,6 @@
 				7D564DB61F18434F00B8AAD6 /* MainMenu.xib in Resources */,
 				7DD2BF4B1F1C389600B33214 /* allow.png in Resources */,
 				7D704AB71F6C83BF0067224E /* importRules.png in Resources */,
-				7D564DDB1F18441500B8AAD6 /* MainMenu.xib in Resources */,
 				7D564DEB1F1855E900B8AAD6 /* UpdateWindow.xib in Resources */,
 				CDA6E644203B9DA800C78F91 /* Welcome.xib in Resources */,
 				7DD2BF471F1C2B4200B33214 /* logoBG.png in Resources */,

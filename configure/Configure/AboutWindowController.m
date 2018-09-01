@@ -32,8 +32,8 @@
     //super
     [super windowDidLoad];
     
-    //make white
-    [self.window setBackgroundColor: NSColor.whiteColor];
+    //set background color
+    [self.window setBackgroundColor: NSColor.windowBackgroundColor];
     
     //set version sting
     self.versionLabel.stringValue =  [NSString stringWithFormat:@"Version: %@", getAppVersion()];

@@ -35,7 +35,6 @@
 		CDA6E638203B6B7900C78F91 /* objectiveSeeLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E634203B6B7900C78F91 /* objectiveSeeLogo.png */; };
 		CDA6E639203B6F1000C78F91 /* logging.m in Sources */ = {isa = PBXBuildFile; fileRef = CD17D53820104DD700F798D7 /* logging.m */; };
 		CDAAC241202255580032F2E6 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAAC23F202255580032F2E6 /* utilities.m */; };
-		CDAAC242202257A10032F2E6 /* utilities.m in Resources */ = {isa = PBXBuildFile; fileRef = CDAAC23F202255580032F2E6 /* utilities.m */; };
 		CDAAC243202257D70032F2E6 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAAC23F202255580032F2E6 /* utilities.m */; };
 		CDAFF441203E971F00F27635 /* com.objective-see.lulu.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDAFF43F203E971F00F27635 /* com.objective-see.lulu.plist */; };
 /* End PBXBuildFile section */
@@ -340,7 +339,6 @@
 			files = (
 				CDA6E636203B6B7900C78F91 /* objectiveSeeText.png in Resources */,
 				CDA6E635203B6B7900C78F91 /* luluText.png in Resources */,
-				CDAAC242202257A10032F2E6 /* utilities.m in Resources */,
 				CDA6E638203B6B7900C78F91 /* objectiveSeeLogo.png in Resources */,
 				CDA6E62D203B674C00C78F91 /* configure.sh in Resources */,
 				BF65C19111B985C0007C20AB /* MainMenu.xib in Resources */,

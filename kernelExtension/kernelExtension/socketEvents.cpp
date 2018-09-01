@@ -747,7 +747,11 @@ static errno_t data_in(void *cookie, socket_t so, const struct sockaddr *from, m
     memcpy(event.dnsResponseEvent.response, mbuf_data(memBuffer), responseSize);
     
     //queue it up
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_14
+    sharedDataQueue->enqueue(&event, sizeof(firewallEvent));
+#else
     sharedDataQueue->enqueue_tail(&event, sizeof(firewallEvent));
+#endif
     
 bail:
     
@@ -1026,8 +1030,11 @@ void queueEvent(socket_t so, const struct sockaddr *to)
     }
     
     //queue it up
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_14
+    sharedDataQueue->enqueue(&event, sizeof(firewallEvent));
+#else
     sharedDataQueue->enqueue_tail(&event, sizeof(firewallEvent));
-    
+#endif
 bail:
     
     return;
