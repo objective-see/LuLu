@@ -15,7 +15,7 @@
 -(void)setBackgroundStyle:(NSBackgroundStyle)backgroundStyle
 {
     //light
-    [super setBackgroundStyle: NSBackgroundStyleLight];
+    [super setBackgroundStyle: NSBackgroundStyleRaised];
     
     return;
 }
