@@ -59,7 +59,11 @@
     self.loadingRules.layer.masksToBounds = YES;
     
     //set overlay's view material
-    self.loadingRules.material = NSVisualEffectMaterialHUDWindow;
+    if (@available(macOS 10.14, *)) {
+        self.loadingRules.material = NSVisualEffectMaterialHUDWindow;
+    } else {
+        self.loadingRules.material = NSVisualEffectMaterialPopover;
+    }
     
     //start spinner
     [self.loadingRulesSpinner startAnimation:nil];
