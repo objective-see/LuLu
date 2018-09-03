@@ -225,14 +225,14 @@ bail:
             (0 != [item[@"vtInfo"][@"positives"] intValue]) )
         {
             //red
-            attributes = @{NSFontAttributeName: [NSFont fontWithName:@"Menlo" size:13], NSForegroundColorAttributeName:[NSColor redColor]};
+            attributes = @{NSFontAttributeName: [NSFont fontWithName:@"Menlo" size:13], NSForegroundColorAttributeName:[NSColor systemRedColor]};
         }
         
         //add ratio
         [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ", item[@"vtInfo"][@"detection_ratio"]] attributes:attributes]];
         
         //set attributes to for html link for report
-        attributes = @{NSFontAttributeName: [NSFont fontWithName:@"Menlo" size:13], NSLinkAttributeName:[NSURL URLWithString:item[@"vtInfo"][@"permalink"]], NSForegroundColorAttributeName:[NSColor blueColor], NSUnderlineStyleAttributeName:[NSNumber numberWithInt:NSUnderlineStyleSingle]};
+        attributes = @{NSFontAttributeName: [NSFont fontWithName:@"Menlo" size:13], NSLinkAttributeName:[NSURL URLWithString:item[@"vtInfo"][@"permalink"]], NSForegroundColorAttributeName:[NSColor linkColor], NSUnderlineStyleAttributeName:[NSNumber numberWithInt:NSUnderlineStyleSingle]};
         
         //add link to full report
         [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"details" attributes:attributes]];
