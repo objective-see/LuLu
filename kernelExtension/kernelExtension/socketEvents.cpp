@@ -1026,7 +1026,12 @@ void queueEvent(socket_t so, const struct sockaddr *to)
     }
     
     //queue it up
+    // handle API changes in 10.14
+    #if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_14
     sharedDataQueue->enqueue(&event, sizeof(firewallEvent));
+    #else
+    sharedDataQueue->enqueue_tail(&event, sizeof(firewallEvent));
+    #endif
     
 bail:
     
