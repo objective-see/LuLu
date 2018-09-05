@@ -1,0 +1,35 @@
+{
+  "images" : [
+    {
+      "idiom" : "mac",
+      "filename" : "heart_light-1.pdf"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "heart_light.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "heart_dark.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

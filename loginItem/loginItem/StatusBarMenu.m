@@ -259,54 +259,16 @@ bail:
 //set status bar icon
 // takes into account dark mode
 -(void)setIcon
-{
-    //dark mode
-    BOOL darkMode = NO;
-    
-    //set dark mode
-    // !nil if dark mode is enabled
-    darkMode = (nil != [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"]);
-    
-    //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"setting icon (dark mode: %d)", darkMode]);
-    
+{    
     //enabled
     if(YES != self.isDisabled)
     {
-        //alternate is always white
-        self.statusItem.alternateImage = [NSImage imageNamed:@"statusIconWhite"];
-        
-        //normal (non) dark mode
-        if(YES != darkMode)
-        {
-            //set icon
-            self.statusItem.image = [NSImage imageNamed:@"statusIcon"];
-        }
-        //dark mode
-        else
-        {
-            //set icon
-            self.statusItem.image = [NSImage imageNamed:@"statusIconWhite"];
-        }
+        self.statusItem.button.image = [NSImage imageNamed:@"LoginItemStatusActive"];
     }
     //disabled
     else
     {
-        //alternate is always white
-        self.statusItem.alternateImage = [NSImage imageNamed:@"statusIconDisabledWhite"];
-        
-        //normal (non) dark mode
-        if(YES != darkMode)
-        {
-            //set icon
-            self.statusItem.image = [NSImage imageNamed:@"statusIconDisabled"];
-        }
-        //dark mode
-        else
-        {
-            //set icon
-            self.statusItem.image = [NSImage imageNamed:@"statusIconDisabledWhite"];
-        }
+        self.statusItem.button.image = [NSImage imageNamed:@"LoginItemStatusInactive"];
     }
     
     return;

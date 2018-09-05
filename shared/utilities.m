@@ -159,7 +159,7 @@ NSString* topLevelApp(NSString* binaryPath)
     NSString* appPath = nil;
     
     //offset of (first) '.app'
-    NSRange offset = {0,0};
+    NSRange offset;
     
     //find first instance of '.app' in path
     offset = [binaryPath rangeOfString:@".app/" options:NSCaseInsensitiveSearch];

@@ -151,7 +151,7 @@ bail:
     response = [panel runModal];
     
     //ignore cancel
-    if(NSFileHandlingPanelCancelButton == response)
+    if(NSModalResponseCancel == response)
     {
         //bail
         goto bail;

@@ -58,8 +58,12 @@
     //mask overlay
     self.loadingRules.layer.masksToBounds = YES;
     
-    //set overlay's view color to gray
-    self.loadingRules.layer.backgroundColor = [[NSColor colorWithRed:217.0f/255.0f green:217.0f/255.0f blue:217.0f/255.0f alpha:1.0] CGColor];
+    //set overlay's view material
+    if (@available(macOS 10.14, *)) {
+        self.loadingRules.material = NSVisualEffectMaterialHUDWindow;
+    } else {
+        self.loadingRules.material = NSVisualEffectMaterialPopover;
+    }
     
     //start spinner
     [self.loadingRulesSpinner startAnimation:nil];
@@ -122,7 +126,7 @@
     //filter rules
     // based on selected toolbar item
     [self filterRules];
-    
+
     //set column title
     switch (tag)
     {
@@ -178,7 +182,7 @@
         (tag == RULE_TYPE_USER) )
     {
         //change label color to black
-        self.addRuleLabel.textColor = [NSColor blackColor];
+        self.addRuleLabel.textColor = [NSColor labelColor];
         
         //enable button
         self.addRuleButton.enabled = YES;
@@ -187,7 +191,7 @@
     else
     {
         //change label color to gray
-        self.addRuleLabel.textColor = [NSColor lightGrayColor];
+        self.addRuleLabel.textColor = [NSColor controlBackgroundColor];
         
         //disable button
         self.addRuleButton.enabled = NO;
@@ -224,7 +228,7 @@
     [panel beginWithCompletionHandler:^(NSInteger result)
     {
         //only need to handle 'ok'
-        if(NSFileHandlingPanelOKButton == result)
+        if(NSModalResponseOK == result)
         {
             //dbg msg
             logMsg(LOG_DEBUG, [NSString stringWithFormat:@"importing rules from %@", panel.URL.path]);
@@ -287,7 +291,7 @@
     [panel beginWithCompletionHandler:^(NSInteger result)
     {
          //only need to handle 'ok'
-         if(NSFileHandlingPanelOKButton == result)
+        if(NSModalResponseOK == result)
          {
              //alloc
              serializedRules = [NSMutableDictionary dictionary];
@@ -899,7 +903,7 @@ bail:
         [[tableCell viewWithTag:TABLE_ROW_SUB_TEXT_TAG] setStringValue:processPath];
         
         //set detailed text color to gray
-        ((NSTextField*)[tableCell viewWithTag:TABLE_ROW_SUB_TEXT_TAG]).textColor = [NSColor grayColor];
+        ((NSTextField*)[tableCell viewWithTag:TABLE_ROW_SUB_TEXT_TAG]).textColor = [NSColor secondaryLabelColor];
     }
     
     //column: 'type'
@@ -970,7 +974,7 @@ bail:
         if(RULE_STATE_BLOCK == rule.action.integerValue)
         {
             //set image
-            tableCell.imageView.image = [NSImage imageNamed:@"block"];
+            tableCell.imageView.image = [NSImage imageNamed:@"MainAppRulesBlock"];
             
             //set text
             tableCell.textField.stringValue = @"block";
@@ -980,7 +984,7 @@ bail:
         else
         {
             //set image
-            tableCell.imageView.image = [NSImage imageNamed:@"allow"];
+            tableCell.imageView.image = [NSImage imageNamed:@"MainAppRulesAllow"];
             
             //set text
             tableCell.textField.stringValue = @"allow";

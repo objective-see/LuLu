@@ -218,7 +218,7 @@ bail:
     if(nil == signingInfo)
     {
         //set icon
-        signingInfoButton.image = [NSImage imageNamed:@"unknown"];
+        signingInfoButton.image = [NSImage imageNamed:@"LoginItemSignedUnknown"];
         
         //bail
         goto bail;
@@ -234,13 +234,13 @@ bail:
             if(Apple == [signingInfo[KEY_SIGNATURE_SIGNER] intValue])
             {
                 //set icon
-                signingInfoButton.image = [NSImage imageNamed:@"signedApple"];
+                signingInfoButton.image = [NSImage imageNamed:@"LoginItemSignedApple"];
             }
             //signed by dev id/ad hoc, etc
             else
             {
                 //set icon
-                signingInfoButton.image = [NSImage imageNamed:@"signed"];
+                signingInfoButton.image = [NSImage imageNamed:@"LoginItemSigned"];
             }
             
             break;
@@ -249,14 +249,14 @@ bail:
         case errSecCSUnsigned:
             
             //set icon
-            signingInfoButton.image = [NSImage imageNamed:@"unsigned"];
+            signingInfoButton.image = [NSImage imageNamed:@"LoginItemUnsigned"];
             
             break;
             
         default:
             
             //set icon
-            signingInfoButton.image = [NSImage imageNamed:@"unknown"];
+            signingInfoButton.image = [NSImage imageNamed:@"LoginItemSignedUnknown"];
     }
     
 bail:
@@ -611,7 +611,7 @@ bail:
         [iconView setWantsLayer:YES];
         
         //set color
-        [iconView.layer setBackgroundColor:[[NSColor whiteColor] CGColor]];
+        [iconView.layer setBackgroundColor:[[NSColor windowBackgroundColor] CGColor]];
         
         //mask
         iconView.layer.masksToBounds = YES;
@@ -620,7 +620,7 @@ bail:
         iconView.layer.cornerRadius = 3.0;
         
         //load icon image
-        icon = [NSImage imageNamed:@"luluIcon"];
+        icon = [NSImage imageNamed:@"LoginItemIcon"];
         
         //set size
         icon.size = CGSizeMake(30, 30);

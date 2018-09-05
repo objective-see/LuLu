@@ -26,11 +26,17 @@
         //make selection rect
         selectionRect = NSInsetRect(self.bounds, 2.5, 2.5);
         
+        NSColor *selectionColor = [NSColor systemGrayColor];
+        
+        if (@available(macOS 10.14, *)) {
+            selectionColor = [NSColor unemphasizedSelectedContentBackgroundColor];
+        }
+        
         //set stroke
-        [[NSColor colorWithCalibratedWhite:.65 alpha:1.0] setStroke];
+        [selectionColor setStroke];
         
         //set fill
-        [[NSColor colorWithCalibratedWhite:.82 alpha:1.0] setFill];
+        [selectionColor setFill];
         
         //create selection path
         // ->with rounded corners
