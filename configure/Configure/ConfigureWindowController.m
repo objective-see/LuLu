@@ -330,8 +330,11 @@ bail:
 // basically just update UI
 -(void)beginEvent:(NSInteger)event
 {
-    //grab exiting status msg frame
-    CGRect statusMsgFrame = self.statusMsg.frame;
+    //status msg frame
+    CGRect statusMsgFrame;
+    
+    //grab exiting frame
+    statusMsgFrame = self.statusMsg.frame;
     
     //avoid activity indicator
     // shift frame shift delta
@@ -374,7 +377,10 @@ bail:
 //complete event
 // update UI after background event has finished
 -(void)completeEvent:(BOOL)success event:(NSInteger)event
-{    
+{
+    //status msg frame
+    CGRect statusMsgFrame;
+    
     //action
     NSString* action = nil;
     
