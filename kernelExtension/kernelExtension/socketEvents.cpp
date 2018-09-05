@@ -747,7 +747,7 @@ static errno_t data_in(void *cookie, socket_t so, const struct sockaddr *from, m
     memcpy(event.dnsResponseEvent.response, mbuf_data(memBuffer), responseSize);
     
     //queue it up
-    sharedDataQueue->enqueue_tail(&event, sizeof(firewallEvent));
+    sharedDataQueue->enqueue(&event, sizeof(firewallEvent));
     
 bail:
     
@@ -1026,7 +1026,7 @@ void queueEvent(socket_t so, const struct sockaddr *to)
     }
     
     //queue it up
-    sharedDataQueue->enqueue_tail(&event, sizeof(firewallEvent));
+    sharedDataQueue->enqueue(&event, sizeof(firewallEvent));
     
 bail:
     

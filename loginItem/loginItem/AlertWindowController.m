@@ -30,7 +30,7 @@
 @synthesize virusTotalPopover;
 
 //center window
-// ->also, transparency
+// also, transparency
 -(void)awakeFromNib
 {
     //center
@@ -166,7 +166,6 @@ bail:
     return;
 }
 
-
 //covert number protocol to name
 -(NSString*)convertProtocol
 {
@@ -201,7 +200,6 @@ bail:
     
     return protocol;
 }
-
 
 //set signing icon
 -(void)processSigningInfo
@@ -491,9 +489,8 @@ bail:
     return;
 }
 
-//logic to close/remove popups from view
-// ->needed, otherwise random memory issues occur :/
--(void)deInitPopup
+//close any open popups
+-(void)closePopups
 {
     //virus total popup
     if(NSOnState == self.virusTotalButton.state)
@@ -536,7 +533,7 @@ bail:
     self.isTempRule = (BOOL)self.tempRule.state;
     
     //ensure popups are closed
-    [self deInitPopup];
+    [self closePopups];
     
     //close window
     [self.window close];

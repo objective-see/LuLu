@@ -121,8 +121,7 @@ enum menuItems
     return;
 }
 
-//cleanup
-// unsets action handler, resets, highlighting, etc
+//cleanup popover
 -(void)popoverDidClose:(NSNotification *)notification
 {
     //unset
