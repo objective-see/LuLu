@@ -11,7 +11,6 @@
 		7D16D6951F64E43300DB3161 /* UpdateWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D16D6911F64E43300DB3161 /* UpdateWindow.xib */; };
 		7D16D6961F64E43300DB3161 /* UpdateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D16D6931F64E43300DB3161 /* UpdateWindowController.m */; };
 		7D3B75141F13354900568828 /* StatusBarMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B74FD1F13354900568828 /* StatusBarMenu.m */; };
-		7D3B75151F13354900568828 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D3B75011F13354900568828 /* MainMenu.xib */; };
 		7D3B751A1F13354900568828 /* statusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3B750B1F13354900568828 /* statusIcon.png */; };
 		7D3B751B1F13354900568828 /* statusIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D3B750C1F13354900568828 /* statusIcon@2x.png */; };
 		7D3B75251F13357D00568828 /* logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B75231F13357D00568828 /* logging.m */; };
@@ -391,7 +390,6 @@
 				7D46FF121F60EBAE00FEB0F8 /* luluIcon.png in Resources */,
 				7D7755F01F02E05B00D0017D /* MainMenu.xib in Resources */,
 				7DD260031F2442BB00277EC4 /* unsigned.png in Resources */,
-				7D3B75151F13354900568828 /* MainMenu.xib in Resources */,
 				7DD260221F25621400277EC4 /* parentsIconOver.png in Resources */,
 				7DD25FF01F23B73C00277EC4 /* Assets.xcassets in Resources */,
 				CD223E3B20830AFF0049A76B /* statusIconWhite.png in Resources */,

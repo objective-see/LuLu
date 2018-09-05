@@ -345,7 +345,7 @@ bail:
 -(void)beginEvent:(NSInteger)event
 {
     //status msg frame
-    CGRect statusMsgFrame = {{0,0}, {0,0}};
+    CGRect statusMsgFrame;
     
     //grab exiting frame
     statusMsgFrame = self.statusMsg.frame;
@@ -393,7 +393,7 @@ bail:
 -(void)completeEvent:(BOOL)success event:(NSInteger)event
 {
     //status msg frame
-    CGRect statusMsgFrame = {{0,0}, {0,0}};
+    CGRect statusMsgFrame;
     
     //action
     NSString* action = nil;
