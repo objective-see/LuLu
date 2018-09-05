@@ -50,25 +50,11 @@
 // also brings window to front
 -(void)configure:(BOOL)isInstalled
 {
-    //yosemite
-    // 10.10.0
-    NSOperatingSystemVersion yosemite = {10,10,0};
-    
     //set window title
     [self window].title = [NSString stringWithFormat:@"version %@", getAppVersion()];
     
-    //yosemite doesn't support emojis :|
-    if(YES != [[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:yosemite])
-    {
-        //init status msg
-        [self.statusMsg setStringValue:@"signing info via the UI"];
-    }
-    //el capitan+ supports emojis
-    else
-    {
-        //init status msg
-        [self.statusMsg setStringValue:@"the free, open, firewall 🔥🛡️"];
-    }
+    //init status msg
+    [self.statusMsg setStringValue:@"the free, open, firewall 🔥🛡️"];
     
     //app already installed?
     // enable 'uninstall' button
@@ -111,8 +97,8 @@
     //make window front
     [NSApp activateIgnoringOtherApps:YES];
     
-    //make white
-    [self.window setBackgroundColor: NSColor.whiteColor];
+    //set background color
+    [self.window setBackgroundColor: NSColor.windowBackgroundColor];
 
     return;
 }
@@ -358,7 +344,7 @@ bail:
     self.statusMsg.frame = statusMsgFrame;
     
     //align text left
-    self.statusMsg.alignment = NSLeftTextAlignment;
+    self.statusMsg.alignment = NSTextAlignmentLeft;
     
     //install msg
     if(ACTION_INSTALL_FLAG == event)
@@ -424,7 +410,7 @@ bail:
         resultMsg = [NSMutableString stringWithFormat:@"LuLu %@ed!\nRestart required to complete.", action];
         
         //set font to black
-        resultMsgColor = [NSColor blackColor];
+        resultMsgColor = [NSColor labelColor];
     }
     //failure
     else
@@ -433,7 +419,7 @@ bail:
         resultMsg = [NSMutableString stringWithFormat:@"error: %@ failed", action];
         
         //set font to red
-        resultMsgColor = [NSColor redColor];
+        resultMsgColor = [NSColor systemRedColor];
         
         //show 'get more info' button
         self.moreInfoButton.hidden = NO;
@@ -446,7 +432,7 @@ bail:
     self.activityIndicator.hidden = YES;
     
     //grab exiting frame
-    statusMsgFrame = self.statusMsg.frame;
+    CGRect statusMsgFrame = self.statusMsg.frame;
     
     //shift back since activity indicator is gone
     statusMsgFrame.origin.x -= FRAME_SHIFT;

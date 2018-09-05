@@ -16,10 +16,10 @@
 -(void) sendEvent:(NSEvent *)event
 {
     //keydown?
-    if([event type] == NSKeyDown)
+    if([event type] == NSEventTypeKeyDown)
     {
         //command?
-        if(([event modifierFlags] & NSDeviceIndependentModifierFlagsMask) == NSCommandKeyMask)
+        if(([event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask) == NSEventModifierFlagCommand)
         {
             //+c
             // copy

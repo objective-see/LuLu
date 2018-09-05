@@ -24,36 +24,17 @@
 		7D564DE61F18446200B8AAD6 /* logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DE41F18446200B8AAD6 /* logging.m */; };
 		7D564DEA1F1855E900B8AAD6 /* UpdateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DE71F1855E900B8AAD6 /* UpdateWindowController.m */; };
 		7D564DEB1F1855E900B8AAD6 /* UpdateWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D564DE81F1855E900B8AAD6 /* UpdateWindow.xib */; };
-		7D704AB71F6C83BF0067224E /* importRules.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D704AB51F6C83BF0067224E /* importRules.png */; };
-		7D704AB81F6C83BF0067224E /* exportRules.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D704AB61F6C83BF0067224E /* exportRules.png */; };
 		7D75537F1F22E40E0010FE88 /* PrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D75537D1F22E40E0010FE88 /* PrefsWindowController.m */; };
 		7D7553801F22E40E0010FE88 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D75537E1F22E40E0010FE88 /* Preferences.xib */; };
-		7D7553831F23199A0010FE88 /* prefsRules.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D7553811F23199A0010FE88 /* prefsRules.png */; };
-		7D7553841F23199A0010FE88 /* prefsUpdate.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D7553821F23199A0010FE88 /* prefsUpdate.png */; };
-		7DD2BF461F1C2B4200B33214 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD2BF431F1C2B4200B33214 /* logo.png */; };
-		7DD2BF471F1C2B4200B33214 /* logoBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD2BF441F1C2B4200B33214 /* logoBG.png */; };
-		7DD2BF481F1C2B4200B33214 /* logoOver.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD2BF451F1C2B4200B33214 /* logoOver.png */; };
-		7DD2BF4B1F1C389600B33214 /* allow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD2BF491F1C389600B33214 /* allow.png */; };
-		7DD2BF4C1F1C389600B33214 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD2BF4A1F1C389600B33214 /* block.png */; };
-		7DD2BF511F1C3F0500B33214 /* rulesAll.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD2BF4D1F1C3F0500B33214 /* rulesAll.png */; };
-		7DD2BF521F1C3F0500B33214 /* rulesBaseline.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD2BF4E1F1C3F0500B33214 /* rulesBaseline.png */; };
-		7DD2BF531F1C3F0500B33214 /* rulesDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD2BF4F1F1C3F0500B33214 /* rulesDefault.png */; };
-		7DD2BF541F1C3F0500B33214 /* rulesUser.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD2BF501F1C3F0500B33214 /* rulesUser.png */; };
 		7DD2BF581F1C59E900B33214 /* AddRuleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF561F1C59E900B33214 /* AddRuleWindowController.m */; };
 		7DD2BF591F1C59E900B33214 /* AddRule.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DD2BF571F1C59E900B33214 /* AddRule.xib */; };
 		7DD2BF5F1F1DAF0C00B33214 /* Rule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF5D1F1DAF0C00B33214 /* Rule.m */; };
 		7DD2BF651F1DC41600B33214 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF641F1DC41600B33214 /* utilities.m */; };
 		CD21501820AD222800CEF17B /* Sentry.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CD21501720AD222800CEF17B /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD223E442083361A0049A76B /* RulesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD223E432083361A0049A76B /* RulesTable.m */; };
-		CD22785A2042977300C72C76 /* kext.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2278592042977300C72C76 /* kext.png */; };
 		CD3FF8CB20DDE392007B39F1 /* NSApplicationKeyEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3FF8C920DDE392007B39F1 /* NSApplicationKeyEvents.m */; };
 		CDA6E644203B9DA800C78F91 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E63B203B9DA700C78F91 /* Welcome.xib */; };
 		CDA6E648203B9DA800C78F91 /* WelcomeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA6E642203B9DA700C78F91 /* WelcomeWindowController.m */; };
-		CDA6E64C203BA44E00C78F91 /* luluIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E64A203BA44D00C78F91 /* luluIcon.png */; };
-		CDA6E64D203BA44E00C78F91 /* luluText.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E64B203BA44E00C78F91 /* luluText.png */; };
-		CDA6E654203BA76D00C78F91 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E653203BA76D00C78F91 /* heart.png */; };
-		CDA6E65A203CF9D500C78F91 /* prefsVisuals.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E659203CF9D500C78F91 /* prefsVisuals.png */; };
-		CDA6E65C203CFA7100C78F91 /* rulesApple.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E65B203CFA7100C78F91 /* rulesApple.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -112,22 +93,9 @@
 		7D564DE71F1855E900B8AAD6 /* UpdateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateWindowController.m; path = ../shared/UpdateWindowController.m; sourceTree = "<group>"; };
 		7D564DE81F1855E900B8AAD6 /* UpdateWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UpdateWindow.xib; path = ../shared/UpdateWindow.xib; sourceTree = "<group>"; };
 		7D564DE91F1855E900B8AAD6 /* UpdateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateWindowController.h; path = ../shared/UpdateWindowController.h; sourceTree = "<group>"; };
-		7D704AB51F6C83BF0067224E /* importRules.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = importRules.png; sourceTree = "<group>"; };
-		7D704AB61F6C83BF0067224E /* exportRules.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exportRules.png; sourceTree = "<group>"; };
 		7D75537C1F22E40E0010FE88 /* PrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsWindowController.h; sourceTree = "<group>"; };
 		7D75537D1F22E40E0010FE88 /* PrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsWindowController.m; sourceTree = "<group>"; };
 		7D75537E1F22E40E0010FE88 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
-		7D7553811F23199A0010FE88 /* prefsRules.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prefsRules.png; sourceTree = "<group>"; };
-		7D7553821F23199A0010FE88 /* prefsUpdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prefsUpdate.png; sourceTree = "<group>"; };
-		7DD2BF431F1C2B4200B33214 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		7DD2BF441F1C2B4200B33214 /* logoBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoBG.png; sourceTree = "<group>"; };
-		7DD2BF451F1C2B4200B33214 /* logoOver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoOver.png; sourceTree = "<group>"; };
-		7DD2BF491F1C389600B33214 /* allow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = allow.png; sourceTree = "<group>"; };
-		7DD2BF4A1F1C389600B33214 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
-		7DD2BF4D1F1C3F0500B33214 /* rulesAll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rulesAll.png; sourceTree = "<group>"; };
-		7DD2BF4E1F1C3F0500B33214 /* rulesBaseline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rulesBaseline.png; sourceTree = "<group>"; };
-		7DD2BF4F1F1C3F0500B33214 /* rulesDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rulesDefault.png; sourceTree = "<group>"; };
-		7DD2BF501F1C3F0500B33214 /* rulesUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rulesUser.png; sourceTree = "<group>"; };
 		7DD2BF551F1C59E900B33214 /* AddRuleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRuleWindowController.h; sourceTree = "<group>"; };
 		7DD2BF561F1C59E900B33214 /* AddRuleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRuleWindowController.m; sourceTree = "<group>"; };
 		7DD2BF571F1C59E900B33214 /* AddRule.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRule.xib; sourceTree = "<group>"; };
@@ -138,17 +106,11 @@
 		CD21501720AD222800CEF17B /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
 		CD223E422083361A0049A76B /* RulesTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RulesTable.h; sourceTree = "<group>"; };
 		CD223E432083361A0049A76B /* RulesTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RulesTable.m; sourceTree = "<group>"; };
-		CD2278592042977300C72C76 /* kext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kext.png; sourceTree = "<group>"; };
 		CD3FF8C920DDE392007B39F1 /* NSApplicationKeyEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSApplicationKeyEvents.m; path = ../shared/NSApplicationKeyEvents.m; sourceTree = "<group>"; };
 		CD3FF8CA20DDE392007B39F1 /* NSApplicationKeyEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSApplicationKeyEvents.h; path = ../shared/NSApplicationKeyEvents.h; sourceTree = "<group>"; };
 		CDA6E63B203B9DA700C78F91 /* Welcome.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Welcome.xib; sourceTree = "<group>"; };
 		CDA6E641203B9DA700C78F91 /* WelcomeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeWindowController.h; sourceTree = "<group>"; };
 		CDA6E642203B9DA700C78F91 /* WelcomeWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeWindowController.m; sourceTree = "<group>"; };
-		CDA6E64A203BA44D00C78F91 /* luluIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = luluIcon.png; path = ../shared/images/luluIcon.png; sourceTree = "<group>"; };
-		CDA6E64B203BA44E00C78F91 /* luluText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = luluText.png; path = ../shared/images/luluText.png; sourceTree = "<group>"; };
-		CDA6E653203BA76D00C78F91 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
-		CDA6E659203CF9D500C78F91 /* prefsVisuals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prefsVisuals.png; sourceTree = "<group>"; };
-		CDA6E65B203CFA7100C78F91 /* rulesApple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rulesApple.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -207,7 +169,6 @@
 				7D564DBF1F18441500B8AAD6 /* Assets.xcassets */,
 				7D564DCC1F18441500B8AAD6 /* 3rdParty */,
 				7D564DC41F18441500B8AAD6 /* Base.lproj */,
-				7D564DD31F18441500B8AAD6 /* Images */,
 				7D46FEFC1F5E129700FEB0F8 /* XIBs */,
 				7D564DAF1F18434F00B8AAD6 /* Supporting Files */,
 			);
@@ -242,34 +203,9 @@
 			path = 3rdParty;
 			sourceTree = "<group>";
 		};
-		7D564DD31F18441500B8AAD6 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				CD2278592042977300C72C76 /* kext.png */,
-				CDA6E65B203CFA7100C78F91 /* rulesApple.png */,
-				CDA6E659203CF9D500C78F91 /* prefsVisuals.png */,
-				CDA6E653203BA76D00C78F91 /* heart.png */,
-				7D704AB51F6C83BF0067224E /* importRules.png */,
-				7D704AB61F6C83BF0067224E /* exportRules.png */,
-				7D7553811F23199A0010FE88 /* prefsRules.png */,
-				7D7553821F23199A0010FE88 /* prefsUpdate.png */,
-				7DD2BF4D1F1C3F0500B33214 /* rulesAll.png */,
-				7DD2BF4E1F1C3F0500B33214 /* rulesBaseline.png */,
-				7DD2BF4F1F1C3F0500B33214 /* rulesDefault.png */,
-				7DD2BF501F1C3F0500B33214 /* rulesUser.png */,
-				7DD2BF491F1C389600B33214 /* allow.png */,
-				7DD2BF4A1F1C389600B33214 /* block.png */,
-				7DD2BF431F1C2B4200B33214 /* logo.png */,
-				7DD2BF441F1C2B4200B33214 /* logoBG.png */,
-				7DD2BF451F1C2B4200B33214 /* logoOver.png */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 		7D564DE21F18445400B8AAD6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				CDA6E649203BA41E00C78F91 /* Images */,
 				7D564DE31F18446200B8AAD6 /* consts.h */,
 				7D2582551F19FAD700D28B95 /* DaemonComms.h */,
 				7D2582561F19FAD700D28B95 /* DaemonComms.m */,
@@ -297,15 +233,6 @@
 				CD21501720AD222800CEF17B /* Sentry.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CDA6E649203BA41E00C78F91 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				CDA6E64A203BA44D00C78F91 /* luluIcon.png */,
-				CDA6E64B203BA44E00C78F91 /* luluText.png */,
-			);
-			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,7 +263,7 @@
 		7D564DA11F18434F00B8AAD6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Objective-See";
 				TargetAttributes = {
 					7D564DA81F18434F00B8AAD6 = {
@@ -373,34 +300,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD22785A2042977300C72C76 /* kext.png in Resources */,
 				7DD2BF591F1C59E900B33214 /* AddRule.xib in Resources */,
-				CDA6E65C203CFA7100C78F91 /* rulesApple.png in Resources */,
 				7D564DDD1F18441500B8AAD6 /* Rules.xib in Resources */,
-				7DD2BF541F1C3F0500B33214 /* rulesUser.png in Resources */,
-				7DD2BF461F1C2B4200B33214 /* logo.png in Resources */,
-				7DD2BF511F1C3F0500B33214 /* rulesAll.png in Resources */,
 				7D46FF041F5F496800FEB0F8 /* patrons.txt in Resources */,
-				CDA6E64C203BA44E00C78F91 /* luluIcon.png in Resources */,
-				7DD2BF481F1C2B4200B33214 /* logoOver.png in Resources */,
-				7D704AB81F6C83BF0067224E /* exportRules.png in Resources */,
-				CDA6E64D203BA44E00C78F91 /* luluText.png in Resources */,
 				7D7553801F22E40E0010FE88 /* Preferences.xib in Resources */,
-				7DD2BF531F1C3F0500B33214 /* rulesDefault.png in Resources */,
-				7D7553831F23199A0010FE88 /* prefsRules.png in Resources */,
 				7D564DD61F18441500B8AAD6 /* Assets.xcassets in Resources */,
-				CDA6E65A203CF9D500C78F91 /* prefsVisuals.png in Resources */,
-				7D7553841F23199A0010FE88 /* prefsUpdate.png in Resources */,
 				7D564DDC1F18441500B8AAD6 /* AboutWindow.xib in Resources */,
-				CDA6E654203BA76D00C78F91 /* heart.png in Resources */,
 				7D564DB61F18434F00B8AAD6 /* MainMenu.xib in Resources */,
-				7DD2BF4B1F1C389600B33214 /* allow.png in Resources */,
-				7D704AB71F6C83BF0067224E /* importRules.png in Resources */,
 				7D564DEB1F1855E900B8AAD6 /* UpdateWindow.xib in Resources */,
 				CDA6E644203B9DA800C78F91 /* Welcome.xib in Resources */,
-				7DD2BF471F1C2B4200B33214 /* logoBG.png in Resources */,
-				7DD2BF521F1C3F0500B33214 /* rulesBaseline.png in Resources */,
-				7DD2BF4C1F1C389600B33214 /* block.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,7 +426,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -567,7 +475,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -583,6 +491,7 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = mainApp/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
@@ -600,6 +509,7 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = mainApp/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";

@@ -29,10 +29,6 @@
 		CD73DA9620046548001FFC84 /* HelperListener.m in Sources */ = {isa = PBXBuildFile; fileRef = CD73DA9220046339001FFC84 /* HelperListener.m */; };
 		CD73DA99200490B4001FFC84 /* HelperComms.m in Sources */ = {isa = PBXBuildFile; fileRef = CD73DA97200490B4001FFC84 /* HelperComms.m */; };
 		CDA6E62D203B674C00C78F91 /* configure.sh in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E62C203B674C00C78F91 /* configure.sh */; };
-		CDA6E635203B6B7900C78F91 /* luluText.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E631203B6B7800C78F91 /* luluText.png */; };
-		CDA6E636203B6B7900C78F91 /* objectiveSeeText.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E632203B6B7800C78F91 /* objectiveSeeText.png */; };
-		CDA6E637203B6B7900C78F91 /* luluIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E633203B6B7900C78F91 /* luluIcon.png */; };
-		CDA6E638203B6B7900C78F91 /* objectiveSeeLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E634203B6B7900C78F91 /* objectiveSeeLogo.png */; };
 		CDA6E639203B6F1000C78F91 /* logging.m in Sources */ = {isa = PBXBuildFile; fileRef = CD17D53820104DD700F798D7 /* logging.m */; };
 		CDAAC241202255580032F2E6 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAAC23F202255580032F2E6 /* utilities.m */; };
 		CDAAC243202257D70032F2E6 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAAC23F202255580032F2E6 /* utilities.m */; };
@@ -303,7 +299,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1000;
 				TargetAttributes = {
 					4BE4905C10445E0A006BE471 = {
 						DevelopmentTeam = VBG97UB4TA;
@@ -337,13 +333,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDA6E636203B6B7900C78F91 /* objectiveSeeText.png in Resources */,
-				CDA6E635203B6B7900C78F91 /* luluText.png in Resources */,
-				CDA6E638203B6B7900C78F91 /* objectiveSeeLogo.png in Resources */,
 				CDA6E62D203B674C00C78F91 /* configure.sh in Resources */,
 				BF65C19111B985C0007C20AB /* MainMenu.xib in Resources */,
 				CD17D54E20104EE700F798D7 /* AboutWindow.xib in Resources */,
-				CDA6E637203B6B7900C78F91 /* luluIcon.png in Resources */,
 				CDAFF441203E971F00F27635 /* com.objective-see.lulu.plist in Resources */,
 				CD3307AE203567D500F10D71 /* Assets.xcassets in Resources */,
 				CD17D55120104EE700F798D7 /* ConfigureWindowController.xib in Resources */,
@@ -477,6 +469,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
@@ -484,7 +477,7 @@
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = NO;
 				INFOPLIST_FILE = configure/Info.plist;
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.installer";
 				PRODUCT_NAME = "LuLu Installer";
@@ -499,6 +492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
@@ -506,7 +500,7 @@
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = NO;
 				INFOPLIST_FILE = configure/Info.plist;
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.installer";
 				PRODUCT_NAME = "LuLu Installer";
@@ -559,7 +553,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -608,7 +602,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;

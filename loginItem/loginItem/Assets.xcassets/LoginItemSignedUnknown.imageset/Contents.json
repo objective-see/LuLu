@@ -1,0 +1,36 @@
+{
+  "images" : [
+    {
+      "idiom" : "mac",
+      "filename" : "Unknown any.pdf"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "Unknown light.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "Unknown dark.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "template",
+    "preserves-vector-representation" : true
+  }
+}

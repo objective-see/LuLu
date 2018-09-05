@@ -42,7 +42,7 @@
     [super windowDidLoad];
     
     //make white
-    [self.window setBackgroundColor: NSColor.whiteColor];
+    [self.window setBackgroundColor: NSColor.windowBackgroundColor];
     
     //indicated title bar is tranparent (too)
     self.window.titlebarAppearsTransparent = YES;

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,18 +24,18 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="196" y="240" width="600" height="365"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="600" height="365"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tx4-yW-fcJ">
                         <rect key="frame" x="138" y="8" width="325" height="65"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="luluText" id="m7R-HO-YMp"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="MainAppLuLuText" id="m7R-HO-YMp"/>
                     </imageView>
                 </subviews>
             </view>
@@ -44,17 +43,17 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="J66-tT-qAf"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="6nW-4K-zf4"/>
-                    <toolbarItem implicitItemIdentifier="99F00439-5E3B-4FBB-BC65-3E1F7EBDDBC6" explicitItemIdentifier="rules" label="rules" paletteLabel="rules" image="prefsRules" selectable="YES" id="Twx-TJ-y2Q">
+                    <toolbarItem implicitItemIdentifier="99F00439-5E3B-4FBB-BC65-3E1F7EBDDBC6" explicitItemIdentifier="rules" label="rules" paletteLabel="rules" image="MainAppPrefsRules" selectable="YES" id="Twx-TJ-y2Q">
                         <connections>
                             <action selector="toolbarButtonHandler:" target="-2" id="6sP-cE-opo"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="3F78D487-BA4D-4E1B-8FC6-A844D292C69B" explicitItemIdentifier="visuals" label="mode" paletteLabel="mode" tag="1" image="prefsVisuals" selectable="YES" id="k0w-Oi-kwd" userLabel="mode">
+                    <toolbarItem implicitItemIdentifier="3F78D487-BA4D-4E1B-8FC6-A844D292C69B" explicitItemIdentifier="visuals" label="mode" paletteLabel="mode" tag="1" image="MainAppPrefsMode" selectable="YES" id="k0w-Oi-kwd" userLabel="mode">
                         <connections>
                             <action selector="toolbarButtonHandler:" target="-2" id="5Bh-RO-nSN"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="384D69C6-2351-417E-9C93-B14039FE440F" explicitItemIdentifier="update" label="update" paletteLabel="update" tag="2" image="prefsUpdate" selectable="YES" id="rrF-xj-cXp">
+                    <toolbarItem implicitItemIdentifier="384D69C6-2351-417E-9C93-B14039FE440F" explicitItemIdentifier="update" label="update" paletteLabel="update" tag="2" image="MainAppPrefsUpdate" selectable="YES" id="rrF-xj-cXp">
                         <connections>
                             <action selector="toolbarButtonHandler:" target="-2" id="i0e-Tc-OaX"/>
                         </connections>
@@ -82,7 +81,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="qBl-9O-n2u">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" size="14" name="Consolas-Bold"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="togglePreference:" target="-2" id="hCf-ID-afp"/>
@@ -111,7 +110,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="8KA-Aq-zex">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" size="14" name="Consolas-Bold"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="togglePreference:" target="-2" id="9Kw-RG-KJy"/>
@@ -151,7 +150,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="R4B-fS-FAf">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" size="14" name="Consolas-Bold"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="togglePreference:" target="-2" id="wvx-fg-Xct"/>
@@ -187,7 +186,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="RwL-kA-7QL">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" size="14" name="Consolas-Bold"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="togglePreference:" target="-2" id="tpK-Y8-G90"/>
@@ -216,7 +215,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="rGr-cY-iDb">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" size="14" name="Consolas-Bold"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="togglePreference:" target="-2" id="UPr-do-6nW"/>
@@ -245,7 +244,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Aaw-XT-TEt">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" size="14" name="Consolas-Bold"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="togglePreference:" target="-2" id="aP4-WS-lmI"/>
@@ -281,7 +280,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="ljs-bE-JTP">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" size="14" name="Consolas-Bold"/>
+                        <font key="font" metaFont="system" size="14"/>
                     </buttonCell>
                     <connections>
                         <action selector="togglePreference:" target="-2" id="YQd-OG-Lhs"/>
@@ -334,9 +333,9 @@
         </customView>
     </objects>
     <resources>
-        <image name="luluText" width="169" height="51"/>
-        <image name="prefsRules" width="32" height="32"/>
-        <image name="prefsUpdate" width="32" height="32"/>
-        <image name="prefsVisuals" width="32" height="32"/>
+        <image name="MainAppLuLuText" width="1268" height="385"/>
+        <image name="MainAppPrefsMode" width="72" height="72"/>
+        <image name="MainAppPrefsRules" width="72" height="72"/>
+        <image name="MainAppPrefsUpdate" width="72" height="72"/>
     </resources>
 </document>

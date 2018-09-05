@@ -49,7 +49,7 @@
 @property BOOL shouldFilter;
 
 //loading rules overlay
-@property (weak) IBOutlet NSView *loadingRules;
+@property (weak) IBOutlet NSVisualEffectView *loadingRules;
 
 //loading rules spinner
 @property (weak) IBOutlet NSProgressIndicator *loadingRulesSpinner;

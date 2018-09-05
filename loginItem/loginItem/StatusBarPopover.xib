@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,9 +20,9 @@
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="14">
                     <rect key="frame" x="20" y="20" width="48" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="luluIcon" id="15"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LoginItemIcon" id="15"/>
                 </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="16">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="16">
                     <rect key="frame" x="78" y="46" width="169" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="LuLu installed &amp; enabled!" id="17">
@@ -40,10 +40,10 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button misplaced="YES" tag="2" id="hL7-ZY-bJK">
+                <button tag="2" id="hL7-ZY-bJK">
                     <rect key="frame" x="288" y="56" width="32" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="popoverClose" imagePosition="only" alignment="center" alternateImage="popoverCloseAlt" inset="2" id="2jG-uf-4XV">
+                    <buttonCell key="cell" type="bevel" title="⌃" bezelStyle="rounded" alignment="center" inset="2" id="2jG-uf-4XV">
                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -56,8 +56,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="luluIcon" width="256" height="256"/>
-        <image name="popoverClose" width="24" height="24"/>
-        <image name="popoverCloseAlt" width="24" height="24"/>
+        <image name="LoginItemIcon" width="144" height="144"/>
     </resources>
 </document>

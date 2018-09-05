@@ -33,7 +33,7 @@
     [self.window center];
     
     //make white
-    [self.window setBackgroundColor: NSColor.whiteColor];
+    [self.window setBackgroundColor: NSColor.windowBackgroundColor];
     
     //when supported
     // indicate title bar is transparent (too)
