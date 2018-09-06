@@ -494,7 +494,7 @@ NSString* getProcessPath(pid_t pid)
     size_t size = 0;
     
     //reset buffer
-    bzero(pathBuffer, PROC_PIDPATHINFO_MAXSIZE);
+    memset(pathBuffer, 0x0, PROC_PIDPATHINFO_MAXSIZE);
     
     //first attempt to get path via 'proc_pidpath()'
     status = proc_pidpath(pid, pathBuffer, sizeof(pathBuffer));
@@ -594,13 +594,16 @@ NSMutableArray* getProcessIDs(NSString* processPath, int userID)
     pid_t* pids = NULL;
     
     //process info struct
-    struct kinfo_proc procInfo = {0};
+    struct kinfo_proc procInfo;
     
     //size of struct
     size_t procInfoSize = sizeof(procInfo);
     
     //mib
     int mib[4] = {CTL_KERN, KERN_PROC, KERN_PROC_PID, -1};
+    
+    //clear buffer
+    memset(&procInfo, 0x0, procInfoSize);
     
     //get # of procs
     numberOfProcesses = proc_listallpids(NULL, 0);
@@ -1258,7 +1261,7 @@ pid_t getParentID(int pid)
     pid_t parentID = -1;
     
     //kinfo_proc struct
-    struct kinfo_proc processStruct = {0};
+    struct kinfo_proc processStruct;
     
     //size
     size_t procBufferSize = sizeof(processStruct);
@@ -1271,6 +1274,9 @@ pid_t getParentID(int pid)
     
     //init mib
     int mib[mibLength] = {CTL_KERN, KERN_PROC, KERN_PROC_PID, pid};
+    
+    //clear buffer
+    memset(&processStruct, 0x0, procBufferSize);
     
     //make syscall
     sysctlResult = sysctl(mib, mibLength, &processStruct, &procBufferSize, NULL, 0);

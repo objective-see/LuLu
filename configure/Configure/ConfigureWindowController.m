@@ -432,7 +432,7 @@ bail:
     self.activityIndicator.hidden = YES;
     
     //grab exiting frame
-    CGRect statusMsgFrame = self.statusMsg.frame;
+    statusMsgFrame = self.statusMsg.frame;
     
     //shift back since activity indicator is gone
     statusMsgFrame.origin.x -= FRAME_SHIFT;
