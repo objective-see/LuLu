@@ -722,7 +722,7 @@ NSImage* getIconForProcess(NSString* path)
     NSImage* icon = nil;
     
     //system's document icon
-    static NSData* documentIcon = nil;
+    static NSImage* documentIcon = nil;
     
     //bundle
     NSBundle* appBundle = nil;
@@ -773,13 +773,13 @@ NSImage* getIconForProcess(NSString* path)
         if(nil == documentIcon)
         {
             //load
-            documentIcon = [[[NSWorkspace sharedWorkspace] iconForFileType:
-                             NSFileTypeForHFSTypeCode(kGenericDocumentIcon)] TIFFRepresentation];
+            documentIcon = [[NSWorkspace sharedWorkspace] iconForFileType:
+                            NSFileTypeForHFSTypeCode(kGenericDocumentIcon)];
         }
         
         //if 'iconForFile' method doesn't find and icon, it returns the system 'document' icon
         // ->the system 'application' icon seems more applicable, so use that here...
-        if(YES == [[icon TIFFRepresentation] isEqual:documentIcon])
+        if(YES == [icon isEqual:documentIcon])
         {
             //set icon to system 'applicaiton' icon
             icon = [[NSWorkspace sharedWorkspace]
@@ -787,7 +787,7 @@ NSImage* getIconForProcess(NSString* path)
         }
         
         //'iconForFileType' returns small icons
-        // ->so set size to 64
+        // ->so set size to 64 @2x
         [icon setSize:NSMakeSize(128, 128)];
     }
     
