@@ -1,0 +1,35 @@
+{
+  "images" : [
+    {
+      "idiom" : "mac",
+      "filename" : "Digita.pdf"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "Digita-1.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "Digita-2.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

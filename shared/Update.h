@@ -11,15 +11,13 @@
 #ifndef Update_h
 #define Update_h
 
-#import <Cocoa/Cocoa.h>
-#import <Foundation/Foundation.h>
-
+@import Cocoa;
+@import Foundation;
 
 @interface Update : NSObject
 
-
 //check for an update
-// ->will invoke app delegate method to update UI when check completes
+// will invoke app delegate method to update UI when check completes
 -(void)checkForUpdate:(void (^)(NSUInteger result, NSString* latestVersion))completionHandler;
 
 @end

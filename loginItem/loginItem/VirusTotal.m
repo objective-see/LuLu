@@ -172,13 +172,13 @@ bail:
             (200 == (long)((NSHTTPURLResponse *)response).statusCode) )
         {
             //serialize response into NSData obj
-            // ->wrap since we are serializing JSON
+            // wrap since we are serializing JSON
             @try
             {
                 //serialized
                 results = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
             }
-            //bail on any exceptions
+            //error converting
             @catch (NSException *exception)
             {
                 //err msg

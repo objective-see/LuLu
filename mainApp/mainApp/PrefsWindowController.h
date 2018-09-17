@@ -7,9 +7,9 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
-#import "DaemonComms.h"
+#import "XPCDaemonClient.h"
 #import "UpdateWindowController.h"
 
 /* CONSTS */
@@ -29,9 +29,6 @@
 @interface PrefsWindowController : NSWindowController
 
 /* PROPERTIES */
-
-//daemon comms obj
-@property(nonatomic, retain)DaemonComms* daemonComms;
 
 //preferences
 @property(nonatomic, retain)NSDictionary* preferences;

@@ -7,9 +7,9 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
-#import "DaemonComms.h"
+#import "XPCDaemonClient.h"
 #import "AboutWindowController.h"
 #import "PrefsWindowController.h"
 #import "RulesWindowController.h"
@@ -22,7 +22,7 @@
 /* PROPERTIES */
 
 //main window
-@property (weak) IBOutlet NSWindow *window;
+@property(weak)IBOutlet NSWindow* window;
 
 //welcome view controller
 @property(nonatomic, retain)WelcomeWindowController* welcomeWindowController;
@@ -35,6 +35,9 @@
 
 //preferences window controller
 @property(nonatomic, retain)PrefsWindowController* prefsWindowController;
+
+//xpc for daemon comms
+@property(nonatomic, retain)XPCDaemonClient* xpcDaemonClient;
 
 /* METHODS */
 

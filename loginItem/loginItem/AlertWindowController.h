@@ -6,13 +6,12 @@
 //  created by Patrick Wardle
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
+@import Cocoa;
 
 #import "procInfo.h"
 #import "ParentsWindowController.h"
 #import "VirusTotalViewController.h"
 #import "SigningInfoViewController.h"
-
-#import <Cocoa/Cocoa.h>
 
 @interface AlertWindowController : NSWindowController <NSTouchBarProvider, NSTouchBarDelegate>
 
@@ -97,7 +96,7 @@
 @property (weak) IBOutlet NSTextField *tempRuleLabel;
 
 //flag for temp rule
-@property BOOL isTempRule;
+//@property BOOL isTempRule;
 
 /* METHODS */
 

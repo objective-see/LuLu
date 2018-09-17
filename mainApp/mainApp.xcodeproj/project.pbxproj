@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7D16D69A1F65EF9900DB3161 /* Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D16D6991F65EF9900DB3161 /* Update.m */; };
-		7D2582571F19FAD700D28B95 /* DaemonComms.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2582561F19FAD700D28B95 /* DaemonComms.m */; };
 		7D46FF041F5F496800FEB0F8 /* patrons.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D46FF031F5F496800FEB0F8 /* patrons.txt */; };
 		7D564DAE1F18434F00B8AAD6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DAD1F18434F00B8AAD6 /* AppDelegate.m */; };
 		7D564DB11F18434F00B8AAD6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D564DB01F18434F00B8AAD6 /* main.m */; };
@@ -35,6 +34,8 @@
 		CD3FF8CB20DDE392007B39F1 /* NSApplicationKeyEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3FF8C920DDE392007B39F1 /* NSApplicationKeyEvents.m */; };
 		CDA6E644203B9DA800C78F91 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E63B203B9DA700C78F91 /* Welcome.xib */; };
 		CDA6E648203B9DA800C78F91 /* WelcomeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA6E642203B9DA700C78F91 /* WelcomeWindowController.m */; };
+		CDFA08DE2147B0C80089758C /* XPCDaemonClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFA08DD2147B0C80089758C /* XPCDaemonClient.m */; };
+		CDFA08E4214900D00089758C /* XPCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFA08E2214900D00089758C /* XPCUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,9 +64,6 @@
 /* Begin PBXFileReference section */
 		7D16D6981F65EF9900DB3161 /* Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Update.h; path = ../shared/Update.h; sourceTree = "<group>"; };
 		7D16D6991F65EF9900DB3161 /* Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Update.m; path = ../shared/Update.m; sourceTree = "<group>"; };
-		7D2582551F19FAD700D28B95 /* DaemonComms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DaemonComms.h; path = ../shared/DaemonComms.h; sourceTree = "<group>"; };
-		7D2582561F19FAD700D28B95 /* DaemonComms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DaemonComms.m; path = ../shared/DaemonComms.m; sourceTree = "<group>"; };
-		7D2582581F19FB6000D28B95 /* UserCommsInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserCommsInterface.h; path = ../shared/UserCommsInterface.h; sourceTree = "<group>"; };
 		7D46FF031F5F496800FEB0F8 /* patrons.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = patrons.txt; sourceTree = "<group>"; };
 		7D564DA91F18434F00B8AAD6 /* LuLu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuLu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D564DAC1F18434F00B8AAD6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -111,6 +109,10 @@
 		CDA6E63B203B9DA700C78F91 /* Welcome.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Welcome.xib; sourceTree = "<group>"; };
 		CDA6E641203B9DA700C78F91 /* WelcomeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeWindowController.h; sourceTree = "<group>"; };
 		CDA6E642203B9DA700C78F91 /* WelcomeWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeWindowController.m; sourceTree = "<group>"; };
+		CDFA08DC2147B0B90089758C /* XPCDaemonClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPCDaemonClient.h; path = ../shared/XPCDaemonClient.h; sourceTree = "<group>"; };
+		CDFA08DD2147B0C80089758C /* XPCDaemonClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPCDaemonClient.m; path = ../shared/XPCDaemonClient.m; sourceTree = "<group>"; };
+		CDFA08E2214900D00089758C /* XPCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPCUser.m; path = ../shared/XPCUser.m; sourceTree = "<group>"; };
+		CDFA08E3214900D00089758C /* XPCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPCUser.h; path = ../shared/XPCUser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -206,16 +208,17 @@
 		7D564DE21F18445400B8AAD6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				CDFA08E3214900D00089758C /* XPCUser.h */,
+				CDFA08E2214900D00089758C /* XPCUser.m */,
+				CDFA08DC2147B0B90089758C /* XPCDaemonClient.h */,
+				CDFA08DD2147B0C80089758C /* XPCDaemonClient.m */,
 				7D564DE31F18446200B8AAD6 /* consts.h */,
-				7D2582551F19FAD700D28B95 /* DaemonComms.h */,
-				7D2582561F19FAD700D28B95 /* DaemonComms.m */,
 				7D564DE51F18446200B8AAD6 /* logging.h */,
 				7D564DE41F18446200B8AAD6 /* logging.m */,
 				CD3FF8CA20DDE392007B39F1 /* NSApplicationKeyEvents.h */,
 				CD3FF8C920DDE392007B39F1 /* NSApplicationKeyEvents.m */,
 				7DD2BF601F1DAFE100B33214 /* Rule.h */,
 				7DD2BF5D1F1DAF0C00B33214 /* Rule.m */,
-				7D2582581F19FB6000D28B95 /* UserCommsInterface.h */,
 				7D16D6981F65EF9900DB3161 /* Update.h */,
 				7D16D6991F65EF9900DB3161 /* Update.m */,
 				7D564DE91F1855E900B8AAD6 /* UpdateWindowController.h */,
@@ -326,7 +329,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#for normal builds\n# just copy into app\nrm -rf   $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\nmkdir -p $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\ncp -R -f \"$BUILT_PRODUCTS_DIR/LuLu Helper.app\" $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems";
+			shellScript = "#for normal builds\n# just copy into app\nrm -rf   $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\nmkdir -p $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\ncp -R -f \"$BUILT_PRODUCTS_DIR/LuLu Helper.app\" $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -335,9 +338,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDFA08DE2147B0C80089758C /* XPCDaemonClient.m in Sources */,
 				7D564DEA1F1855E900B8AAD6 /* UpdateWindowController.m in Sources */,
 				7D564DE01F18441500B8AAD6 /* RuleRow.m in Sources */,
-				7D2582571F19FAD700D28B95 /* DaemonComms.m in Sources */,
 				7DD2BF581F1C59E900B33214 /* AddRuleWindowController.m in Sources */,
 				7D564DE61F18446200B8AAD6 /* logging.m in Sources */,
 				7D16D69A1F65EF9900DB3161 /* Update.m in Sources */,
@@ -353,6 +356,7 @@
 				7DD2BF651F1DC41600B33214 /* utilities.m in Sources */,
 				7DD2BF5F1F1DAF0C00B33214 /* Rule.m in Sources */,
 				7D75537F1F22E40E0010FE88 /* PrefsWindowController.m in Sources */,
+				CDFA08E4214900D00089758C /* XPCUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +434,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-DMAIN_APP=1";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -479,6 +484,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "-DMAIN_APP=1";
 				SDKROOT = macosx;
 			};
 			name = Release;

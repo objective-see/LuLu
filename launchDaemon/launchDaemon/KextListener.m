@@ -11,7 +11,6 @@
 
 #import "Rule.h"
 #import "Rules.h"
-#import "Queue.h"
 #import "Alerts.h"
 #import "consts.h"
 #import "logging.h"
@@ -23,6 +22,7 @@
 #import "KextListener.h"
 #import "ProcListener.h"
 #import "UserClientShared.h"
+#import "XPCUserProto.h"
 
 /* GLOBALS */
 
@@ -35,9 +35,6 @@ extern KextComms* kextComms;
 //alerts obj
 extern Alerts* alerts;
 
-//queue object
-extern Queue* eventQueue;
-
 //process monitor
 extern ProcessListener* processListener;
 
@@ -48,7 +45,9 @@ extern Preferences* preferences;
 extern Baseline* baseline;
 
 //client connected
-extern NSInteger clientConnected;
+//extern NSInteger clientConnected;
+
+//
 
 @implementation KextListener
 
@@ -415,7 +414,7 @@ bail:
 -(void)processNetworkOut:(struct networkOutEvent_s*)event
 {
     //alert info
-    NSMutableDictionary* alert = nil;
+    //NSMutableDictionary* alert = nil;
     
     //process obj
     Process* process = nil;
@@ -598,27 +597,7 @@ bail:
             goto bail;
         }
     }
-    
-    //no connected client
-    // a) allow
-    // b) save for delivery later...
-    if(YES != clientConnected)
-    {
-        //dbg msg
-        // also log to file
-        logMsg(LOG_DEBUG|LOG_TO_FILE, @"no active (enabled) client, so telling kernel to 'allow'");
-        
-        //allow
-        [kextComms addRule:event->pid action:RULE_STATE_ALLOW];
-        
-        //save
-        // only 1 per path...
-        [alerts addUndeliverted:event process:process];
-        
-        //all set
-        goto bail;
-    }
-    
+
     //ignore if client is in passive mode
     if(YES == [preferences.preferences[PREF_PASSIVE_MODE] boolValue])
     {
@@ -632,7 +611,7 @@ bail:
         // will remove rules if user toggles off this mode
         [self.passiveProcesses addObject:[NSNumber numberWithInt:event->pid]];
         
-        //all set
+        //all set 
         goto bail;
     }
     
@@ -654,18 +633,8 @@ bail:
             goto bail;
         }
         
-        //create alert
-        alert = [alerts create:event process:process];
-        
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"no rule found, adding alert to queue: %@", alert]);
-        
-        //add to global queue
-        // will trigger processing of alert
-        [eventQueue enqueue:alert];
-        
-        //save it
-        [alerts addShown:alert];
+        //deliver alert
+        [alerts deliver:[alerts create:event process:process]];
     }
     
 bail:

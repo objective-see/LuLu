@@ -1,5 +1,5 @@
 //
-//  file: UserCommsListener.h
+//  file: XPCListener
 //  project: lulu (launch daemon)
 //  description: XPC listener for connections for user components (header)
 //
@@ -9,9 +9,9 @@
 
 
 @import Foundation;
-#import "UserCommsInterface.h"
+#import "XPCDaemonProto.h"
 
-@interface UserCommsListener : NSObject <NSXPCListenerDelegate>
+@interface XPCListener : NSObject <NSXPCListenerDelegate>
 {
     
 }
@@ -20,6 +20,12 @@
 
 //XPC listener
 @property(nonatomic, retain)NSXPCListener* listener;
+
+//XPC connection for login item
+@property(weak)NSXPCConnection* loginItem;
+
+//XPC connection for main app
+@property(weak)NSXPCConnection* mainApp;
 
 /* METHODS */
 
@@ -30,9 +36,5 @@
 // allows NSXPCListener to configure/accept/resume a new incoming NSXPCConnection
 // note: we only allow binaries signed by Objective-See to talk to this!
 -(BOOL)listener:(NSXPCListener *)listener shouldAcceptNewConnection:(NSXPCConnection *)newConnection;
-
-//connection invalidated
-// if there is an 'undelivered' alert, (re)enqueue it
--(void)connectionInvalidated:(NSXPCConnection *)connection;
 
 @end

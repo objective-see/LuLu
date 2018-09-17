@@ -6,10 +6,10 @@
 //  Copyright © 2018 Objective-See. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-#import <objc/message.h>
+@import Cocoa;
 
-#import "DaemonComms.h"
+#import <objc/message.h>
+#import "XPCDaemonClient.h"
 
 @interface WelcomeWindowController : NSWindowController
 

@@ -13,13 +13,13 @@
 #import "logging.h"
 #import "utilities.h"
 #import "AppDelegate.h"
-#import "DaemonComms.h"
+#import "XPCDaemonClient.h"
 #import "AlertWindowController.h"
 
 @implementation AlertWindowController
 
 @synthesize alert;
-@synthesize isTempRule;
+//@synthesize isTempRule;
 @synthesize processIcon;
 @synthesize processName;
 @synthesize ancestryButton;
@@ -62,7 +62,7 @@
     NSDateFormatter *timeFormat = nil;
     
     //init process hierarchy
-    [self generateProcessAncestry:[self.alert[ALERT_PID] unsignedShortValue]];
+    [self generateProcessAncestry:[self.alert[ALERT_PID] unsignedIntValue]];
     
     //disable ancestory button if no ancestors
     if(0 == self.processHierarchy.count)
@@ -529,17 +529,33 @@ bail:
 // close popups and stop modal with response
 -(IBAction)handleUserResponse:(id)sender
 {
-    //save state of 'temp rule' button
-    self.isTempRule = (BOOL)self.tempRule.state;
+    //response to daemon
+    NSMutableDictionary* alertResponse = nil;
     
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"user clicked: %d", (BOOL)self.tempRule.state]);
+
     //ensure popups are closed
     [self closePopups];
     
     //close window
     [self.window close];
     
-    //stop modal
-    [[NSApplication sharedApplication] stopModalWithCode:((NSButton*)sender).tag];
+    //init alert response
+    // start w/ copy of received alert
+    alertResponse = [self.alert mutableCopy];
+    
+    //add current user
+    alertResponse[ALERT_USER] = [NSNumber numberWithUnsignedInt:getuid()];
+    
+    //add user response
+    alertResponse[ALERT_ACTION] = [NSNumber numberWithLong:((NSButton*)sender).tag];
+    
+    //add button state for 'temp rule'
+    alertResponse[ALERT_TEMPORARY] = [NSNumber numberWithBool:(BOOL)self.tempRule.state];
+    
+    //send response to daemon
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient alertReply:alertResponse];
     
     return;
 }

@@ -22,14 +22,11 @@ int main(int argc, const char * argv[])
         //error
         NSError* error = nil;
         
-        //user comms listener (XPC) obj
-        UserCommsListener* userCommsListener = nil;
-        
         //high sierra version struct
         NSOperatingSystemVersion highSierra = {10,13,0};
         
         //dbg msg
-        logMsg(LOG_DEBUG, @"LuLu launch daemon started");
+        logMsg(LOG_DEBUG, @"launch daemon started");
         
         //init crash reporting
         initCrashReporting();
@@ -65,7 +62,7 @@ int main(int argc, const char * argv[])
         baseline = [[Baseline alloc] init];
         
         //installer creates an xml file of installed apps
-        // this file needs to be processed and converted to .plist
+        // one first run, this file needs to be processed and converted to .plist
         if(YES == [[NSFileManager defaultManager] fileExistsAtPath:appDataPath])
         {
             //dbg msg
@@ -117,26 +114,17 @@ int main(int argc, const char * argv[])
         //dbg msg
         logMsg(LOG_DEBUG, @"registered for shutdown events");
         
-        //init global queue
-        eventQueue = [[Queue alloc] init];
-
-        //dbg msg
-        logMsg(LOG_DEBUG, @"initialized global queue");
-        
-        //init rule changed semaphore
-        rulesChanged = dispatch_semaphore_create(0);
-        
-        //alloc/init user comms XPC obj
-        userCommsListener = [[UserCommsListener alloc] init];
-        if(nil == userCommsListener)
+        //alloc/init XPC comms object
+        xpcListener = [[XPCListener alloc] init];
+        if(nil == xpcListener)
         {
             //err msg
-            logMsg(LOG_ERR, @"failed to initialize user comms XPC listener");
+            logMsg(LOG_ERR, @"failed to initialize XPC listener for user connections");
             
             //bail
             goto bail;
         }
-        
+
         //dbg msg
         logMsg(LOG_DEBUG, @"listening for client XPC connections");
         
@@ -150,13 +138,13 @@ int main(int argc, const char * argv[])
             execTask(KEXT_LOAD, @[[NSString pathWithComponents:@[@"/", @"Library", @"Extensions", @"LuLu.kext"]]], YES, NO);
 
             //dbg msg
-            logMsg(LOG_DEBUG, @"waiting for kext to load (high sierra)");
+            logMsg(LOG_DEBUG, @"waiting for kext to load (High Sierra+)");
             
             //wait
             // will block...
             wait4kext([NSString stringWithUTF8String:LULU_SERVICE_NAME]);
         }
- 
+        
         //connect to kext
         if(YES != [kextComms connect])
         {
@@ -216,8 +204,8 @@ int main(int argc, const char * argv[])
         // if any have existing rules, tell the kernel about that
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
         ^{
-           //install/uninstall
-           [processListener enumerateCurrent];
+            //install/uninstall
+            [processListener enumerateCurrent];
         });
 
         //start listening for process events
@@ -226,7 +214,7 @@ int main(int argc, const char * argv[])
         //dbg msg
         logMsg(LOG_DEBUG, @"listening for process events");
         
-        //firewall enabled?
+        //prefs say, 'enabled'?
         if(YES != [preferences.preferences[PREF_IS_DISABLED] boolValue])
         {
             //enable
@@ -247,11 +235,10 @@ int main(int argc, const char * argv[])
         kextListener = [[KextListener alloc] init];
         
         //start listening for events
-        // though won't be any if firewall is disabled...
         [kextListener monitor];
         
         //dbg msg
-        logMsg(LOG_DEBUG, @"listening for kernel events...");
+        logMsg(LOG_DEBUG, @"listening for kernel (network) events...");
     
         //run loop
         [[NSRunLoop currentRunLoop] run];
@@ -259,7 +246,7 @@ int main(int argc, const char * argv[])
 bail:
     
     //dbg msg
-    logMsg(LOG_DEBUG, @"LuLu launch daemon exiting");
+    logMsg(LOG_DEBUG, @"launch daemon exiting");
     
     //bye!
     // tell kext to disable/unregister, etc
@@ -280,6 +267,8 @@ void goodbye()
     
     //close logging
     deinitLogging();
+    
+    return;
 }
 
 //init a handler for SIGTERM

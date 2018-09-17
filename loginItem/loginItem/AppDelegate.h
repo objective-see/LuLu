@@ -7,10 +7,10 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
-#import "DaemonComms.h"
 #import "StatusBarMenu.h"
+#import "XPCDaemonClient.h"
 #import "UpdateWindowController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
@@ -19,7 +19,7 @@
 /* PROPERTIES */
 
 //status bar menu
-@property(strong) IBOutlet NSMenu *statusMenu;
+@property(strong) IBOutlet NSMenu* statusMenu;
 
 //status bar menu controller
 @property(nonatomic, retain)StatusBarMenu* statusBarMenuController;
@@ -27,11 +27,14 @@
 //update window controller
 @property(nonatomic, retain)UpdateWindowController* updateWindowController;
 
-//daemon comms
-@property(nonatomic, retain)DaemonComms* daemonComms;
+//xpc for daemon comms
+@property(nonatomic, retain)XPCDaemonClient* xpcDaemonClient;
 
-//observer
-@property(nonatomic, retain)NSObject* observer;
+//(main) app observer
+@property(nonatomic, retain)NSObject* appObserver;
+
+//alert windows
+@property(nonatomic, retain)NSMutableDictionary* alerts;
 
 /* METHODS */
 

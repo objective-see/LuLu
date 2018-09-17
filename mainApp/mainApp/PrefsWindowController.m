@@ -21,7 +21,6 @@
 @synthesize modesView;
 @synthesize rulesView;
 @synthesize updateView;
-@synthesize daemonComms;
 @synthesize updateWindowController;
 
 //'allow apple' button
@@ -52,11 +51,8 @@
     //set title
     self.window.title = [NSString stringWithFormat:@"LuLu (v. %@)", getAppVersion()];
     
-    //init daemon comms
-    daemonComms = [[DaemonComms alloc] init];
-    
     //get prefs
-    self.preferences = [self.daemonComms getPreferences];
+    self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient getPreferences];
     
     //set rules prefs as default
     [self toolbarButtonHandler:nil];
@@ -152,13 +148,13 @@ bail:
 -(IBAction)togglePreference:(id)sender
 {
     //preferences
-    NSMutableDictionary* preferences = nil;
+    NSMutableDictionary* updatedPreferences = nil;
     
     //button state
     NSNumber* state = nil;
     
     //init
-    preferences = [NSMutableDictionary dictionary];
+    updatedPreferences = [NSMutableDictionary dictionary];
     
     //get button state
     state = [NSNumber numberWithBool:((NSButton*)sender).state];
@@ -186,32 +182,31 @@ bail:
     {
         //allow apple
         case BUTTON_ALLOW_APPLE:
-            preferences[PREF_ALLOW_APPLE] = state;
+            updatedPreferences[PREF_ALLOW_APPLE] = state;
             break;
             
         //allow installed
         case BUTTON_ALLOW_INSTALLED:
-            preferences[PREF_ALLOW_INSTALLED] = state;
+            updatedPreferences[PREF_ALLOW_INSTALLED] = state;
             break;
             
         //allow globally
         case BUTTON_ALLOW_GLOBALLY:
-            preferences[PREF_ALLOW_GLOBALLY] = state;
+            updatedPreferences[PREF_ALLOW_GLOBALLY] = state;
             break;
             
         //passive mode
         // when on, unset lockdown mode
         case BUTTON_PASSIVE_MODE:
         {
-            
             //save mode
-            preferences[PREF_PASSIVE_MODE] = state;
+            updatedPreferences[PREF_PASSIVE_MODE] = state;
             
             //unset lockdown mode
             if(NSOnState == state.intValue)
             {
                 //unset
-                preferences[PREF_LOCKDOWN_MODE] = [NSNumber numberWithBool:NSOffState];
+                updatedPreferences[PREF_LOCKDOWN_MODE] = [NSNumber numberWithBool:NSOffState];
             }
             
             break;
@@ -221,38 +216,37 @@ bail:
         // when on, also unset passive mode
         case BUTTON_LOCKDOWN_MODE:
         {
-            
             //save mode
-            preferences[PREF_LOCKDOWN_MODE] = state;
+            updatedPreferences[PREF_LOCKDOWN_MODE] = state;
             
             //unset passive mode
             if(NSOnState == state.intValue)
             {
                 //unset
-                preferences[PREF_PASSIVE_MODE] = [NSNumber numberWithBool:NSOffState];
+                updatedPreferences[PREF_PASSIVE_MODE] = [NSNumber numberWithBool:NSOffState];
             }
         }
             
         //no icon mode
         case BUTTON_NO_ICON_MODE:
-            preferences[PREF_NO_ICON_MODE] = state;
+            updatedPreferences[PREF_NO_ICON_MODE] = state;
             break;
             
         //no update mode
         case BUTTON_NO_UPDATE_MODE:
-            preferences[PREF_NO_UPDATE_MODE] = state;
+            updatedPreferences[PREF_NO_UPDATE_MODE] = state;
             break;
             
         default:
             break;
     }
+    
+    //send XPC msg to daemon to update prefs
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updatePreferences:updatedPreferences];
 
-    //update prefs
-    [self.daemonComms updatePreferences:preferences];
-
-    //get prefs
-    // these should obv. match...
-    self.preferences = [self.daemonComms getPreferences];
+    //get latest prefs
+    // note: this will include (all) prefs, which is what we want
+    self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient getPreferences];
     
     //restart login item if user toggle'd icon state
     // note: this has to be done after the prefs are written out by the daemon

@@ -12,11 +12,11 @@
 
 #import <syslog.h>
 
-#import <Cocoa/Cocoa.h>
-#import <Foundation/Foundation.h>
+@import Cocoa;
+@import Foundation;
 
 //log a msg to syslog
-// ->also disk, if error
+// also disk, if error
 void logMsg(int level, NSString* msg);
 
 //prep/open log file

@@ -183,6 +183,12 @@
 //key for error sub msg
 #define KEY_ERROR_SUB_MSG @"errorSubMsg"
 
+//new user/client notification
+#define USER_NOTIFICATION @"com.objective-see.lulu.userNotification"
+
+//rules changed
+#define RULES_CHANGED @"com.objective-see.lulu.rulesChanged"
+
 /* INSTALLER */
 
 //install directory
@@ -201,6 +207,9 @@
 // for status msg to avoid activity indicator
 #define FRAME_SHIFT 45
 
+//button title: restart
+#define ACTION_RESTART @"Restart"
+
 //flag to reboot
 #define ACTION_RESTART_FLAG -1
 
@@ -216,17 +225,20 @@
 //flag to install
 #define ACTION_INSTALL_FLAG 1
 
-//flag to close
-#define ACTION_CLOSE_FLAG 2
-
-//button title: restart
-#define ACTION_RESTART @"Restart"
+//button title: upgrade
+#define ACTION_UPGRADE @"Upgrade"
 
 //button title: close
 #define ACTION_CLOSE @"Close"
 
-//button title: uprade
-#define ACTION_UPGRADE @"Upgrade"
+//flag to close
+#define ACTION_CLOSE_FLAG 2
+
+//button title: next
+#define ACTION_NEXT @"Next »"
+
+//next
+#define ACTION_NEXT_FLAG 3
 
 /* LAUNCH DAEMON */
 

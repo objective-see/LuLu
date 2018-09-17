@@ -8,6 +8,9 @@
 //
 
 #import "procInfo.h"
+
+#import "XPCUserProto.h"
+#import "XPCUserClient.h"
 #import "UserClientShared.h"
 
 #import <Foundation/Foundation.h>
@@ -25,11 +28,20 @@
 //undeliveryed alerts
 @property(nonatomic, retain)NSMutableDictionary* undelivertedAlerts;
 
+//observer for new client/user (login item)
+@property(nonatomic, retain)id userObserver;
+
+//xpc client for talking to user (login item)
+@property(nonatomic, retain)XPCUserClient* xpcUserClient;
+
 /* METHODS */
 
 //create an alert object
 // note: can treat sockaddr_in and sockaddr_in6 as 'same same' for family, port, etc
 -(NSMutableDictionary*)create:(struct networkOutEvent_s*)event process:(Process*)process;
+
+//via XPC, send an alert
+-(void)deliver:(NSDictionary*)alert;
 
 //is related to a shown alert?
 // a) for a given pid
@@ -49,8 +61,8 @@
 //remove an alert from 'shown'
 -(void)removeShown:(NSDictionary*)alert;
 
-//add an alert 'undelivered'
--(void)addUndeliverted:(struct networkOutEvent_s*)event process:(Process*)process;
+//add an alert to 'undelivered'
+-(void)addUndeliverted:(NSDictionary*)alert;
 
 //process undelivered alerts
 -(void)processUndelivered;

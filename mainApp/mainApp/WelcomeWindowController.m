@@ -10,7 +10,8 @@
 #import "consts.h"
 #import "logging.h"
 #import "utilities.h"
-#import "DaemonComms.h"
+#import "AppDelegate.h"
+#import "XPCDaemonClient.h"
 #import "WelcomeWindowController.h"
 
 #define VIEW_WELCOME 0
@@ -24,6 +25,7 @@
 
 @synthesize welcomeViewController;
 
+//welcome!
 -(void)windowDidLoad {
     
     //super
@@ -32,8 +34,13 @@
     //center
     [self.window center];
     
-    //make white
-    [self.window setBackgroundColor: NSColor.windowBackgroundColor];
+    //not in dark mode?
+    // make window white
+    if(YES != [[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"] isEqualToString:@"Dark"])
+    {
+        //make white
+        self.window.backgroundColor = NSColor.whiteColor;
+    }
     
     //when supported
     // indicate title bar is transparent (too)
@@ -54,10 +61,7 @@
 
 //button handler for all views
 // show next view, sometimes, with view specific logic
-- (IBAction)buttonHandler:(id)sender {
-    
-    //daemon comms obj
-    DaemonComms* daemonComms = nil;
+-(IBAction)buttonHandler:(id)sender {
     
     //high sierra version struct
     NSOperatingSystemVersion highSierra = {10,13,0};
@@ -69,12 +73,9 @@
     // send prefs to daemon to save
     if( (VIEW_CONFIGURE+1) == ((NSToolbarItem*)sender).tag)
     {
-        //init daemon comms
-        daemonComms = [[DaemonComms alloc] init];
-        
         //update prefs
         // pass in values from UI, plus some defaults
-        [daemonComms updatePreferences:@{PREF_ALLOW_APPLE: [NSNumber numberWithBool:self.allowApple.state], PREF_ALLOW_INSTALLED: [NSNumber numberWithBool:self.allowInstalled.state], PREF_PASSIVE_MODE:@NO, PREF_NO_ICON_MODE:@NO, PREF_NO_UPDATE_MODE:@NO}];
+        [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updatePreferences:@{PREF_ALLOW_APPLE: [NSNumber numberWithBool:self.allowApple.state], PREF_ALLOW_INSTALLED: [NSNumber numberWithBool:self.allowInstalled.state], PREF_PASSIVE_MODE:@NO, PREF_NO_ICON_MODE:@NO, PREF_NO_UPDATE_MODE:@NO}];
     }
     
     //set next view

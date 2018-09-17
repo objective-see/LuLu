@@ -7,7 +7,7 @@
 //  copyright (c) 2018 Objective-See. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 @interface AboutWindowController : NSWindowController <NSWindowDelegate>
 {

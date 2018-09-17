@@ -1,7 +1,7 @@
 //
-//  file: UserComms.m
+//  file: XPCDaemon.m
 //  project: lulu (launch daemon)
-//  description: interface for user componets
+//  description: interface for XPC methods, invoked by user
 //
 //  created by Patrick Wardle
 //  copyright (c) 2017 Objective-See. All rights reserved.
@@ -9,26 +9,21 @@
 
 #import "Rule.h"
 #import "Rules.h"
-#import "Queue.h"
 #import "Alerts.h"
 #import "consts.h"
 #import "logging.h"
 #import "KextComms.h"
-#import "UserComms.h"
+#import "XPCDaemon.h"
 #import "utilities.h"
 #import "Preferences.h"
 #import "KextListener.h"
 #import "UserClientShared.h"
-#import "UserCommsInterface.h"
 
 //signing auth
 #define SIGNING_AUTH @"Developer ID Application: Objective-See, LLC (VBG97UB4TA)"
 
 //global rules obj
 extern Rules* rules;
-
-//global queue object
-extern Queue* eventQueue;
 
 //global kext comms obj
 extern KextComms* kextComms;
@@ -42,53 +37,10 @@ extern Preferences* preferences;
 //global kext listener object
 extern KextListener* kextListener;
 
-//global 'rules changed' semaphore
-extern dispatch_semaphore_t rulesChanged;
-
-//global client status
-extern NSInteger clientConnected;
-
-@implementation UserComms
-
-//@synthesize currentStatus;
-@synthesize dequeuedAlert;
-
-//init
-// set connection to unknown
--(id)init
-{
-    //super
-    self = [super init];
-    if(nil != self)
-    {
-        //set status
-        //self.currentStatus = STATUS_CLIENT_UNKNOWN;
-    }
-    
-    return self;
-}
-
-
-//client connected
-// TODO: assumes single client/user
--(void)clientCheckin
-{
-    //dbg msg
-    logMsg(LOG_DEBUG, @"XPC request: client connected");
-    
-    //save into global
-    // TODO: change, if multiple clients
-    clientConnected = YES;
-    
-    //process any undelivered alerts
-    [alerts processUndelivered];
-    
-    return;
-}
-
+@implementation XPCDaemon
 
 //load preferences and send them back to client
--(void)getPreferences:(void (^)(NSDictionary* alert))reply
+-(void)getPreferences:(void (^)(NSDictionary* preferences))reply
 {
     //dbg msg
     logMsg(LOG_DEBUG, @"XPC request: get preferences");
@@ -117,21 +69,10 @@ extern NSInteger clientConnected;
 
 //get rules
 // optionally wait (blocks) for change
--(void)getRules:(BOOL)wait4Change reply:(void (^)(NSDictionary*))reply
+-(void)getRules:(void (^)(NSDictionary*))reply
 {
     //dbg msg
     logMsg(LOG_DEBUG, @"XPC request: GET RULES");
-    
-    //block for change?
-    if(YES == wait4Change)
-    {
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"waiting (blocking) for rule change...%p\n", self]);
-        
-        //wait for rules change
-        // add/remove/alerts methods will trigger
-        dispatch_semaphore_wait(rulesChanged, DISPATCH_TIME_FOREVER);
-    }
     
     //return rules
     reply([rules serialize]);
@@ -273,7 +214,7 @@ bail:
         //bail
         goto bail;
     }
-
+    
     //add all rules to kernel
     @synchronized(rules.rules)
     {
@@ -287,10 +228,7 @@ bail:
     
     //happy
     importedRules = YES;
-    
-    //signal all threads that rules changed
-    while(0 != dispatch_semaphore_signal(rulesChanged));
-    
+
 bail:
     
     //return rules
@@ -299,35 +237,9 @@ bail:
     return;
 }
 
-//process alert request from client
-// blocks for queue item, then sends to client
--(void)alertRequest:(void (^)(NSDictionary* alert))reply
-{
-    //dbg msg
-    logMsg(LOG_DEBUG, @"XPC request: alert request");
-    
-    //reset
-    self.dequeuedAlert = nil;
-    
-    //read off queue
-    // will block until alert is ready
-    self.dequeuedAlert = [eventQueue dequeue];
-    
-    //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"dequeued alert: %@", self.dequeuedAlert]);
-    
-    //log to file
-    logMsg(LOG_TO_FILE, [NSString stringWithFormat:@"showing alert to user: %@", self.dequeuedAlert]);
-
-    //return alert
-    reply(self.dequeuedAlert);
-    
-    return;
-}
-
-//process client response to alert
+//handle client response to alert
 // tells kext/update rules/etc...
--(void)alertResponse:(NSMutableDictionary*)alert
+-(void)alertReply:(NSMutableDictionary*)alert
 {
     //path
     NSString* path = nil;
@@ -341,21 +253,8 @@ bail:
     //user
     uint32 user = 0;
     
-    //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: alert response: %@", alert]);
-
-    //sanity check
-    if( (nil == alert[ALERT_PID]) ||
-        (nil == alert[ALERT_PATH]) ||
-        (nil == alert[ALERT_USER]) ||
-        (nil == alert[ALERT_ACTION]) )
-    {
-        //err msg
-        logMsg(LOG_ERR, [NSString stringWithFormat:@"received invalid alert response: %@", alert]);
-        
-        //bail
-        goto bail;
-    }
+    //log to file
+    logMsg(LOG_DEBUG|LOG_TO_FILE, [NSString stringWithFormat:@"alert reply: %@", alert]);
     
     //extract path
     path = alert[ALERT_PATH];
@@ -368,9 +267,6 @@ bail:
     
     //extract action
     action = [alert[ALERT_ACTION] unsignedIntValue];
-    
-    //log to file
-    logMsg(LOG_TO_FILE, [NSString stringWithFormat:@"alert response: %@", alert]);
     
     //tell kext
     [kextComms addRule:pid action:action];
@@ -390,9 +286,6 @@ bail:
     
     //remove from 'shown'
     [alerts removeShown:alert];
-    
-    //signal all threads that rules changed
-    while(0 != dispatch_semaphore_signal(rulesChanged));
     
 bail:
     

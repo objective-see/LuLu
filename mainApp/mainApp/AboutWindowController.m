@@ -25,7 +25,7 @@
 }
 
 //automatically invoked when window is loaded
-// ->set to white
+// set to window to white, set app version, patrons, etc
 -(void)windowDidLoad
 {
     //version
@@ -34,8 +34,13 @@
     //super
     [super windowDidLoad];
     
-    //make white
-    [self.window setBackgroundColor: NSColor.windowBackgroundColor];
+    //not in dark mode?
+    // make window white
+    if(YES != [[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"] isEqualToString:@"Dark"])
+    {
+        //make white
+        self.window.backgroundColor = NSColor.whiteColor;
+    }
     
     //grab app version
     version = getAppVersion();

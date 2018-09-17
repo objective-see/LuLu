@@ -1,5 +1,5 @@
 //
-//  file: userCommsInterface.h
+//  file: XPCProtocol.h
 //  project: lulu (shared)
 //  description: protocol for talking to the daemon
 //

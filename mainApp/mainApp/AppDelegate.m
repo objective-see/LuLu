@@ -15,6 +15,7 @@
 
 @implementation AppDelegate
 
+@synthesize xpcDaemonClient;
 @synthesize aboutWindowController;
 @synthesize prefsWindowController;
 @synthesize rulesWindowController;
@@ -24,6 +25,10 @@
 // also make front, init title bar, etc
 -(void)awakeFromNib
 {
+    //init deamon comms
+    // establishes connection to daemon
+    xpcDaemonClient = [[XPCDaemonClient alloc] init];
+    
     //show welcome screen?
     if(YES == [[[NSProcessInfo processInfo] arguments] containsObject:CMDLINE_FLAG_WELCOME])
     {

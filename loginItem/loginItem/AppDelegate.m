@@ -12,7 +12,6 @@
 #import "logging.h"
 #import "utilities.h"
 #import "AppDelegate.h"
-#import "AlertMonitor.h"
 
 @interface AppDelegate ()
 
@@ -20,87 +19,97 @@
 
 @implementation AppDelegate
 
-@synthesize daemonComms;
+@synthesize alerts;
+@synthesize appObserver;
+@synthesize xpcDaemonClient;
 @synthesize updateWindowController;
 @synthesize statusBarMenuController;
 
-@synthesize observer;
-
 //app's main interface
-// ->load status bar and kick off monitor
+// load status bar
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     //preferences
-    __block NSDictionary* preferences;
-    
-    //path to main app
-    NSURL* mainApp = nil;
+    NSDictionary* preferences = nil;
     
     //dbg msg
     logMsg(LOG_DEBUG, @"starting login item");
     
+    //alloc array for alert (windows)
+    alerts = [NSMutableDictionary dictionary];
+    
     //init deamon comms
-    daemonComms = [[DaemonComms alloc] init];
+    // establishes connection to daemon
+    xpcDaemonClient = [[XPCDaemonClient alloc] init];
     
     //get preferences
     // sends XPC message to daemon
-    preferences = [self.daemonComms getPreferences];
+    preferences = [self.xpcDaemonClient getPreferences];
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded preferences: %@", preferences]);
 
     //no preferences yet? ... first run
-    // kick off main app with '-welcome' flag
+    // kick off main app to show welcome screen(s)
     if(0 == preferences.count)
     {
-        //dbg msg
-        logMsg(LOG_DEBUG, @"no preferences found, so kicking off main application w/ '-welcome' flag");
-    
-        //get path to main app
-        mainApp = [NSURL fileURLWithPath:getMainAppPath()];
-        
-        //launch main app
-        // passing in '-welcome'
-        [[NSWorkspace sharedWorkspace] launchApplicationAtURL:mainApp options:0 configuration:@{NSWorkspaceLaunchConfigurationArguments: @[CMDLINE_FLAG_WELCOME]} error:nil];
-        
-        //set up notification for app exit
-        // wait until it's exited to complete initializations
-        self.observer = [[[NSWorkspace sharedWorkspace] notificationCenter] addObserverForName:NSWorkspaceDidTerminateApplicationNotification object:nil queue:nil usingBlock:^(NSNotification *notification)
-        {
-            //ignore others
-            if(YES != [MAIN_APP_ID isEqualToString:[((NSRunningApplication*)notification.userInfo[NSWorkspaceApplicationKey]) bundleIdentifier]])
-            {
-                //ignore
-                return;
-            }
-            
-            //dbg msg
-            logMsg(LOG_DEBUG, @"main application completed");
-            
-            //remove observer
-            [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self.observer];
-            
-            //unset
-            self.observer = nil;
-            
-            //(re)load prefs
-            // main app should have set em all now
-            preferences = [self.daemonComms getPreferences];
-            
-            //complete initializations
-            [self completeInitialization:preferences firstTime:YES];
-        }];
+        //welcome
+        [self welcome];
     }
     
-    //found prefs
-    // main app already ran, so just complete init's
+    //all subsequent times
+    // load status bar icon, etc
     else
     {
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded preferences: %@", preferences]);
-        
         //complete initializations
         [self completeInitialization:preferences firstTime:NO];
     }
     
-bail:
+    return;
+}
+
+//show welcome/config window
+// wait till it's done, then complete (standard) initializations
+-(void)welcome
+{
+    //path to main app
+    NSURL* mainApp = nil;
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, @"first launch, so kicking off main application w/ '-welcome' flag");
+    
+    //get path to main app
+    mainApp = [NSURL fileURLWithPath:getMainAppPath()];
+    
+    //launch main app
+    // passing in '-welcome'
+    [[NSWorkspace sharedWorkspace] launchApplicationAtURL:mainApp options:0 configuration:@{NSWorkspaceLaunchConfigurationArguments: @[CMDLINE_FLAG_WELCOME]} error:nil];
+    
+    //set up notification for main app exit
+    // wait until it's exited to complete initializations
+    self.appObserver = [[[NSWorkspace sharedWorkspace] notificationCenter] addObserverForName:NSWorkspaceDidTerminateApplicationNotification object:nil queue:nil usingBlock:^(NSNotification *notification)
+    {
+         //ignore others
+         if(YES != [MAIN_APP_ID isEqualToString:[((NSRunningApplication*)notification.userInfo[NSWorkspaceApplicationKey]) bundleIdentifier]])
+         {
+             //ignore
+             return;
+         }
+         
+         //dbg msg
+         logMsg(LOG_DEBUG, @"main application completed");
+         
+         //remove observer
+         [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self.appObserver];
+         
+         //unset
+         self.appObserver = nil;
+        
+         //complete initializations
+         // requery daemon to get latest prefs (as main app will have updated them)
+         [self completeInitialization:[self.xpcDaemonClient getPreferences] firstTime:YES];
+        
+    }];
     
     return;
 }
@@ -113,7 +122,7 @@ bail:
     if(YES != [preferences[PREF_NO_ICON_MODE] boolValue])
     {
         //alloc/load nib
-        statusBarMenuController = [[StatusBarMenu alloc] init:self.statusMenu firstTime:firstTime];
+        statusBarMenuController = [[StatusBarMenu alloc] init:self.statusMenu preferences:(NSDictionary*)preferences firstTime:firstTime];
         
         //dbg msg
         logMsg(LOG_DEBUG, @"initialized/loaded status bar (icon/menu)");
@@ -138,22 +147,6 @@ bail:
             [self check4Update];
        });
     }
-    
-    //wait to checkin
-    // first time, need a bit to show the popover
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, firstTime * 5 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
-    {
-        //check in w/ daemon
-        [self.daemonComms clientCheckin];
-        
-        //dbg msg
-        logMsg(LOG_DEBUG, @"checked in with daemon");
-        
-        //init alert monitor
-        // in background will monitor / process alerts
-        [[[AlertMonitor alloc] init] performSelectorInBackground:@selector(monitor) withObject:nil];
-    
-    });
     
     return;
 }

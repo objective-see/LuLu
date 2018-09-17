@@ -42,15 +42,13 @@ extern KextComms* kextComms;
 //baseline obj
 extern Baseline* baseline;
 
-//'rules changed' semaphore
-extern dispatch_semaphore_t rulesChanged;
-
 //prefs obj
 extern Preferences* preferences;
 
 @implementation Rules
 
 @synthesize rules;
+@synthesize xpcUserClient;
 
 //init method
 -(id)init
@@ -59,8 +57,11 @@ extern Preferences* preferences;
     self = [super init];
     if(nil != self)
     {
-        //alloc
+        //alloc rules dictionary
         rules = [NSMutableDictionary dictionary];
+        
+        //init XPC client
+        xpcUserClient = [[XPCUserClient alloc] init];
     }
     
     return self;
@@ -133,6 +134,9 @@ extern Preferences* preferences;
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded %lu rules from: %@", (unsigned long)self.rules.count, RULES_FILE]);
+    
+    //tell user (via XPC) rules changed
+    [self.xpcUserClient rulesChanged:[self serialize]];
     
     //happy
     result = YES;
@@ -569,9 +573,9 @@ bail:
     // tell kernel to add rule
     [self addToKernel:rule];
     
-    //signal all threads that rules changed
-    while(0 != dispatch_semaphore_signal(rulesChanged));
-
+    //tell user (via XPC) rules changed
+    [self.xpcUserClient rulesChanged:[self serialize]];
+    
     //happy
     added = YES;
     
@@ -614,8 +618,8 @@ bail:
     // tell kernel to update (add/overwrite) rule
     [self addToKernel:rule];
     
-    //signal all threads that rules changed
-    while(0 != dispatch_semaphore_signal(rulesChanged));
+    //tell user (via XPC) rules changed
+    [self.xpcUserClient rulesChanged:[self serialize]];
     
     //happy
     result = YES;
@@ -669,9 +673,9 @@ bail:
         [kextComms removeRule:[processID unsignedShortValue]];
     }
     
-    //signal all threads that rules changed
-    while(0 != dispatch_semaphore_signal(rulesChanged));
-
+    //tell user (via XPC) rules changed
+    [self.xpcUserClient rulesChanged:[self serialize]];
+    
     //happy
     result = YES;
     
@@ -724,6 +728,9 @@ bail:
         }
         
     }//sync
+    
+    //tell user (via XPC) rules changed
+    [self.xpcUserClient rulesChanged:[self serialize]];
     
     //happy
     result = YES;

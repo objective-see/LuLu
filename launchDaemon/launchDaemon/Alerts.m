@@ -7,14 +7,12 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "Queue.h"
 #import "consts.h"
 #import "Alerts.h"
 #import "logging.h"
 #import "KextComms.h"
 #import "utilities.h"
 #import "KextListener.h"
-
 
 /* GLOBALS */
 
@@ -24,13 +22,12 @@ extern KextComms* kextComms;
 //kext listener obj
 extern KextListener* kextListener;
 
-//queue object
-extern Queue* eventQueue;
-
 @implementation Alerts
 
 @synthesize shownAlerts;
+@synthesize userObserver;
 @synthesize relatedAlerts;
+@synthesize xpcUserClient;
 @synthesize undelivertedAlerts;
 
 //init
@@ -48,6 +45,17 @@ extern Queue* eventQueue;
         
         //alloc undelivered
         undelivertedAlerts = [NSMutableDictionary dictionary];
+        
+        //init user xpc client
+        xpcUserClient = [[XPCUserClient alloc] init];
+        
+        //register listener for new client/user (login item)
+        // when it fires, deliver any alerts that occured when user wasn't logged in
+        self.userObserver = [[NSNotificationCenter defaultCenter] addObserverForName:USER_NOTIFICATION object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
+        {
+             //process alerts
+             [self processUndelivered];
+        }];
     }
     
     return self;
@@ -249,7 +257,7 @@ bail:
 
 //process related alerts
 // for persistent rules: adds each to kext
-// for temporary rules: queues up related rule
+// for temporary rules:  deliver to user (via XPC)
 -(void)processRelated:(NSDictionary*)alert 
 {
     //path
@@ -306,7 +314,7 @@ bail:
     else
     {
         //dbg msg
-        logMsg(LOG_DEBUG, @"rule was temporary, so enqueuing up (next) related alert");
+        logMsg(LOG_DEBUG, @"rule was temporary, so delivering...");
         
         //make copy of alert
         relatedAlert = [alert mutableCopy];
@@ -323,15 +331,8 @@ bail:
             [self.relatedAlerts removeObjectForKey:path];
         }
         
-        //add to alert queue
-        // this will trigger processing of alert
-        [eventQueue enqueue:relatedAlert];
-        
-        //save to 'shown'
-        [self addShown:relatedAlert];
-        
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"related alert: %@", relatedAlert]);
+        //deliver alert
+        [self deliver:relatedAlert];
     }
         
     }//sync
@@ -401,17 +402,39 @@ bail:
     return;
 }
 
-//add an alert 'undelivered'
--(void)addUndeliverted:(struct networkOutEvent_s*)event process:(Process*)process
+//via XPC, send an alert
+-(void)deliver:(NSDictionary*)alert
 {
-    //alert
-    NSDictionary* alert = nil;
+    //send via XPC to user (login item)
+    // failure likely means no client, so just allow, but save
+    if(YES != [self.xpcUserClient deliverAlert:alert])
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, @"failed to deliver alert to user (no client?)");
+        
+        //allow process
+        [kextComms addRule:[alert[ALERT_PID] unsignedIntValue] action:RULE_STATE_ALLOW];
+        
+        //save undelivered alert
+        [self addUndeliverted:alert];
+        
+        //bail
+        goto bail;
+    }
     
+    //save alert
+    [self addShown:alert];
+    
+bail:
+    
+    return;
+}
+
+//add an alert 'undelivered'
+-(void)addUndeliverted:(NSDictionary*)alert
+{
     //path
     NSString* path = nil;
-    
-    //create
-    alert = [self create:event process:process];
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding alert to 'undelivered': %@", alert]);
@@ -449,13 +472,9 @@ bail:
             //grab alert
             alert = self.undelivertedAlerts[path];
             
-            //dbg msg
-            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"enqueue'ing alert: %@", alert]);
-            
-            //add to global queue
-            // this will trigger processing of alert
-            [eventQueue enqueue:alert];
-            
+            //deliver alert
+            [self deliver:alert];
+    
             //remove
             [self.undelivertedAlerts removeObjectForKey:path];
             

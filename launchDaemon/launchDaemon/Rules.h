@@ -12,6 +12,8 @@
 #define Rules_h
 
 #import "procInfo.h"
+#import "XPCUserClient.h"
+
 
 @import Foundation;
 
@@ -27,6 +29,9 @@
 
 //rules
 @property(nonatomic, retain)NSMutableDictionary* rules;
+
+//xpc client for talking to user
+@property(nonatomic, retain)XPCUserClient* xpcUserClient;
 
 
 /* METHODS */

@@ -8,7 +8,6 @@
 //
 
 #import "Rules.h"
-#import "Queue.h"
 #import "Alerts.h"
 #import "consts.h"
 #import "logging.h"
@@ -18,7 +17,7 @@
 #import "Preferences.h"
 #import "KextListener.h"
 #import "ProcListener.h"
-#import "UserCommsListener.h"
+#import "XPCListener.h"
 
 #ifndef main_h
 #define main_h
@@ -37,10 +36,6 @@ Rules* rules = nil;
 //alerts obj
 Alerts* alerts = nil;
 
-//queue object
-// contains watch items that should be processed
-Queue* eventQueue = nil;
-
 //process listener obj
 ProcessListener* processListener = nil;
 
@@ -50,11 +45,8 @@ KextListener* kextListener = nil;
 //base line object
 Baseline* baseline;
 
-//(a) client status
-NSInteger clientConnected;
-
-//'rule changed' semaphore
-dispatch_semaphore_t rulesChanged = 0;
+//XPC listener obj
+XPCListener* xpcListener = nil;
 
 //dispatch source for SIGTERM
 dispatch_source_t dispatchSource = nil;

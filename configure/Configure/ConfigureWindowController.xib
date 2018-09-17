@@ -9,8 +9,10 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ConfigureWindowController">
             <connections>
                 <outlet property="activityIndicator" destination="b1w-5W-ayX" id="P5e-PO-Ozi"/>
+                <outlet property="friendsView" destination="8vS-7f-v27" id="m9t-Nb-TMj"/>
                 <outlet property="installButton" destination="553-2y-kvm" id="nxf-wO-EI3"/>
                 <outlet property="moreInfoButton" destination="QWu-qZ-Za2" id="8kC-Ga-5oJ"/>
+                <outlet property="restartButton" destination="Xfy-pO-bPJ" id="ErC-rb-h2G"/>
                 <outlet property="statusMsg" destination="SpB-Xc-WlB" id="jlm-ke-XfM"/>
                 <outlet property="uninstallButton" destination="XrB-7g-xya" id="0Hc-Xn-STu"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -22,7 +24,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="460" height="176"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="460" height="176"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -50,7 +52,7 @@
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" preferredMaxLayoutWidth="293" translatesAutoresizingMaskIntoConstraints="NO" id="SpB-Xc-WlB">
                         <rect key="frame" x="142" y="10" width="297" height="47"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" truncatesLastVisibleLine="YES" enabled="NO" sendsActionOnEndEditing="YES" alignment="center" id="Rib-WU-Syl">
+                        <textFieldCell key="cell" truncatesLastVisibleLine="YES" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" id="Rib-WU-Syl">
                             <font key="font" size="13" name="Menlo-Regular"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -79,7 +81,7 @@
                         </connections>
                     </button>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K52-9g-sjn">
-                        <rect key="frame" x="138" y="109" width="184" height="67"/>
+                        <rect key="frame" x="144" y="109" width="184" height="67"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="InstallerLuLuText" id="WRg-I2-vkK"/>
                     </imageView>
@@ -90,8 +92,65 @@
             </connections>
             <point key="canvasLocation" x="185" y="-256"/>
         </window>
+        <customView id="8vS-7f-v27" userLabel="Friends">
+            <rect key="frame" x="0.0" y="0.0" width="460" height="176"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qNV-KX-UQg">
+                    <rect key="frame" x="18" y="148" width="424" height="25"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="💕 Mahalo to the &quot;Friends of Objective-See&quot; 💕" id="7wy-Mn-dLg">
+                        <font key="font" size="13" name="Menlo-Bold"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5m-Bo-NlS">
+                    <rect key="frame" x="68" y="59" width="138" height="19"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Digita Security" id="MtN-NI-kav">
+                        <font key="font" size="13" name="Menlo-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C7S-GH-AYp">
+                    <rect key="frame" x="117" y="84" width="40" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsDigita" id="fwj-wn-r5b"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pqf-EC-ZHk">
+                    <rect key="frame" x="296" y="84" width="65" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsMalwarebytes" id="1ys-ig-b1N"/>
+                </imageView>
+                <button verticalHuggingPriority="750" fixedFrame="YES" tag="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Xfy-pO-bPJ">
+                    <rect key="frame" x="331" y="13" width="115" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Restart" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cZ4-lX-UNP">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name="Menlo-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="buttonHandler:" target="-2" id="3PB-dL-p78"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hrx-qN-4t2">
+                    <rect key="frame" x="259" y="59" width="138" height="19"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Malwarebytes" id="SJb-zK-MOr">
+                        <font key="font" size="13" name="Menlo-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="785" y="-256"/>
+        </customView>
     </objects>
     <resources>
+        <image name="FriendsDigita" width="450" height="460"/>
+        <image name="FriendsMalwarebytes" width="792" height="612"/>
         <image name="InstallerIcon" width="1276" height="1276"/>
         <image name="InstallerLuLuText" width="1268" height="385"/>
     </resources>

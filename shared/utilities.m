@@ -21,6 +21,7 @@
 #import <arpa/inet.h>
 #import <sys/socket.h>
 #import <sys/sysctl.h>
+#import <Carbon/Carbon.h>
 #import <Security/Security.h>
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonDigest.h>
@@ -242,7 +243,6 @@ bail:
         //free
         CFRelease(requirementRef);
         requirementRef = NULL;
-        
     }
     
     //free static code
@@ -829,11 +829,11 @@ void wait4kext(NSString* kext)
     while(YES)
     {
         //check
-       if(YES == kextIsLoaded(kext))
-       {
+        if(YES == kextIsLoaded(kext))
+        {
            //ok loaded
            break;
-       }
+        }
         
         //nap
         [NSThread sleepForTimeInterval:0.5];
@@ -1604,6 +1604,9 @@ bail:
 //restart
 void restart()
 {
+    //dbg msg
+    logMsg(LOG_DEBUG, @"exiting, and asking system to reboot via 'Finder'");
+    
     //first quit self
     // then reboot the box...nicely!
     execTask(OSASCRIPT, @[@"-e", @"tell application \"LuLu Installer\" to quit", @"-e", @"delay 0.25", @"-e", @"tell application \"Finder\" to restart"], NO, NO);
@@ -1611,3 +1614,49 @@ void restart()
     return;
 }
 
+//bring an app to foreground
+// based on: https://stackoverflow.com/questions/7596643/when-calling-transformprocesstype-the-app-menu-doesnt-show-up
+void foregroundApp()
+{
+    //dbg msg
+    logMsg(LOG_DEBUG, @"bringing login item to foreground");
+    
+    //transform
+    if(noErr != transformApp(kProcessTransformToForegroundApplication))
+    {
+        //bail
+        goto bail;
+    }
+    
+    //set ui mode
+    SetSystemUIMode(kUIModeNormal, 0);
+    
+    //bring to front
+    [NSApp activateIgnoringOtherApps:YES];
+    
+bail:
+    
+    return;
+}
+
+//send an app to the background
+void backgroundApp()
+{
+    //dbg msg
+    logMsg(LOG_DEBUG, @"sending login item to background");
+    
+    transformApp(kProcessTransformToBackgroundApplication);
+    
+    return;
+}
+
+//transform app state
+OSStatus transformApp(ProcessApplicationTransformState newState)
+{
+    //serial number
+    // init with current process
+    ProcessSerialNumber psn = { 0, kCurrentProcess };
+    
+    //transform and return
+    return TransformProcessType(&psn, newState);
+}

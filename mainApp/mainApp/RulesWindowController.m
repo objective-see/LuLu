@@ -12,7 +12,7 @@
 #import "RuleRow.h"
 #import "utilities.h"
 #import "AppDelegate.h"
-#import "DaemonComms.h"
+#import "XPCDaemonClient.h"
 #import "RulesWindowController.h"
 #import "AddRuleWindowController.h"
 
@@ -22,16 +22,16 @@
 @synthesize toolbar;
 @synthesize addedRule;
 @synthesize searchBox;
-@synthesize daemonComms;
 @synthesize addRulePanel;
 @synthesize loadingRules;
 @synthesize shouldFilter;
 @synthesize rulesFiltered;
+@synthesize rulesObserver;
 @synthesize rulesStatusMsg;
 @synthesize loadingRulesSpinner;
 
 //alloc/init
-// ->get rules and listen for new ones
+// get rules and listen for new ones
 -(void)windowDidLoad
 {
     //alloc rules array
@@ -39,9 +39,6 @@
     
     //alloc filtered rules array
     rulesFiltered = [NSMutableArray array];
-    
-    //init daemon comms obj
-    daemonComms = [[DaemonComms alloc] init];
     
     //start by no filtering
     self.shouldFilter = NO;
@@ -59,17 +56,34 @@
     self.loadingRules.layer.masksToBounds = YES;
     
     //set overlay's view material
-    if (@available(macOS 10.14, *)) {
+    // 10.14+ HUD Window
+    if(@available(macOS 10.14, *))
+    {
+        //HUD
         self.loadingRules.material = NSVisualEffectMaterialHUDWindow;
-    } else {
+    }
+    //set overlay's view material
+    // before 10.14, popover
+    else
+    {
+        //popover
         self.loadingRules.material = NSVisualEffectMaterialPopover;
     }
+    
+    //setup observer for new rules
+    // will be broadcast (via XPC) when daemon updates rules
+    self.rulesObserver = [[NSNotificationCenter defaultCenter] addObserverForName:RULES_CHANGED object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
+    {
+        //process
+        // pass in new/updated rules
+        [self processUpdatedRules:notification.userInfo[RULES_CHANGED]];
+    }];
     
     //start spinner
     [self.loadingRulesSpinner startAnimation:nil];
     
     //get rules from daemon via XPC
-    [self.daemonComms getRules:NO reply:^(NSDictionary* daemonRules)
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient getRules:^(NSDictionary* daemonRules)
     {
          //dbg msg
          logMsg(LOG_DEBUG, [NSString stringWithFormat:@"got rules from daemon: %@", daemonRules]);
@@ -98,11 +112,7 @@
         
          //select first row
          [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
-             
-         //then, in background
-         // monitor & process new rules
-         [self performSelectorInBackground:@selector(listenForRuleChanges) withObject:nil];
-             
+           
          });
         
      }];
@@ -234,7 +244,7 @@
             logMsg(LOG_DEBUG, [NSString stringWithFormat:@"importing rules from %@", panel.URL.path]);
             
             //send msg to daemon to XPC
-            if(YES != [self.daemonComms importRules:panel.URL.path])
+            if(YES != [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient importRules:panel.URL.path])
             {
                 //err msg
                 logMsg(LOG_ERR, @"failed to import rules");
@@ -399,7 +409,7 @@
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"deleting rule for %@", rule.path]);
     
     //remove rule via XPC
-    [self.daemonComms deleteRule:rule.path];
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient deleteRule:rule.path];
     
 bail:
     
@@ -505,7 +515,7 @@ bail:
                 self.addedRule = processPath;
                 
                 //add rule via XPC
-                [self.daemonComms addRule:processPath action:action];
+                [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient addRule:processPath action:action];
                 
                 //show new rule
                 self.toolbar.selectedItemIdentifier = @"user";
@@ -521,116 +531,77 @@ bail:
     return;
 }
 
-//listen for rule changes
-// invoke daemon method, then block
--(void)listenForRuleChanges
+//handle new/updated rules
+// serialize and then update relevant windows
+-(void)processUpdatedRules:(NSDictionary*)rules
 {
-    //daemon comms object
-    DaemonComms* daemon = nil;
-    
-    //wait semaphore
-    dispatch_semaphore_t semaphore = 0;
-    
     //currently selected row
     __block NSUInteger selectedRow = -1;
     
     //currently selected rule
     __block Rule* selectedRule = nil;
     
-    //init daemon
-    // use local var here, as we need to block
-    daemon = [[DaemonComms alloc] init];
-
-    //init sema
-    semaphore = dispatch_semaphore_create(0);
+    //dbg msg
+    logMsg(LOG_DEBUG, @"processing updated rules");
     
-    //ask for changes
-    // call daemon and block, then display, and repeat!
-    while(YES)
+    //get currently selected row
+    selectedRow = self.tableView.selectedRow;
+        
+    //get currently selected rule
+    selectedRule = [self ruleForRow:selectedRow];
+    
+    //process rules
+    [self processRulesDictionary:rules];
+    
+    //(re)filter rules
+    [self filterRules];
+    
+    //find row for new rule
+    if(nil != self.addedRule)
     {
-        //dbg msg
-        logMsg(LOG_DEBUG, @"requesting rules from daemon, will block");
+        //find row
+        selectedRow = [self findRowForRule:self.addedRule];
         
-        //wait for response from daemon via XPC
-        [daemon getRules:YES reply:^(NSDictionary* daemonRules)
-        {
-             //dbg msg
-             logMsg(LOG_DEBUG, [NSString stringWithFormat:@"got updated rules from daemon: %@", daemonRules]);
-            
-             //get currently selected row and rule
-             dispatch_sync(dispatch_get_main_queue(), ^{
-                 
-                 //get currently selected row
-                 selectedRow = self.tableView.selectedRow;
-                 
-                 //get currently selected rule
-                 selectedRule = [self ruleForRow:selectedRow];
-                 
-             });
-            
-             //process rules
-             [self processRulesDictionary:daemonRules];
-             
-             //refresh table
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 
-                 //(re)filter rules
-                 [self filterRules];
-                 
-                 //find row for new rule
-                 if(nil != self.addedRule)
-                 {
-                     //find row
-                     selectedRow = [self findRowForRule:self.addedRule];
-                     
-                     //unset
-                     self.addedRule = nil;
-                 }
-                 //otherwise
-                 // just get currently selected row
-                 else
-                 {
-                     //find (new) row index for prev. selected rule
-                     selectedRow = [self findRowForRule:selectedRule.path];
-                 }
-                 
-                 //default to prev selected row
-                 if(-1 == selectedRow)
-                 {
-                     //get currently selected row
-                     selectedRow = self.tableView.selectedRow;
-                 }
-
-                 //special case when last row was deleted
-                 if(selectedRow == [self numberOfRowsInTableView:self.tableView])
-                 {
-                     //dec
-                     selectedRow--;
-                 }
-            
-                 //reload table
-                 [self.tableView reloadData];
-                 
-                 //re-select & scroll to row
-                 if(-1 != selectedRow)
-                 {
-                     //make it selected
-                     [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow] byExtendingSelection:NO];
-                     
-                     //scroll
-                     [self.tableView scrollRowToVisible:selectedRow];
-                 }
-                 
-             });
-             
-             //signal sema
-             dispatch_semaphore_signal(semaphore);
-             
-         }];
-        
-        //wait for response, before to asking again
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        //unset
+        self.addedRule = nil;
     }
+    //otherwise
+    // just get currently selected row
+    else
+    {
+        //find (new) row index for prev. selected rule
+        selectedRow = [self findRowForRule:selectedRule.path];
+    }
+    
+    //default to prev selected row
+    if(-1 == selectedRow)
+    {
+        //get currently selected row
+        selectedRow = self.tableView.selectedRow;
+    }
+    
+    //special case when last row was deleted
+    if(selectedRow == [self numberOfRowsInTableView:self.tableView])
+    {
+        //dec
+        selectedRow--;
+    }
+    
+    //reload table
+    [self.tableView reloadData];
+    
+    //default to first row
+    if(-1 == selectedRow)
+    {
+        //first
+        selectedRow = 0;
+    }
+    
+    //make row selected
+    [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow] byExtendingSelection:NO];
+    
+    //scroll to selected row
+    [self.tableView scrollRowToVisible:selectedRow];
     
     return;
 }
@@ -1117,7 +1088,7 @@ bail:
             logMsg(LOG_DEBUG, @"updating rule: block");
             
             //update with 'block'
-            [self.daemonComms updateRule:rule.path action:RULE_STATE_BLOCK];
+            [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updateRule:rule.path action:RULE_STATE_BLOCK];
             
             break;
             
@@ -1128,7 +1099,7 @@ bail:
             logMsg(LOG_DEBUG, @"updating rule: allow");
             
             //update with 'allow'
-            [self.daemonComms updateRule:rule.path action:RULE_STATE_ALLOW];
+            [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updateRule:rule.path action:RULE_STATE_ALLOW];
             
             break;
         

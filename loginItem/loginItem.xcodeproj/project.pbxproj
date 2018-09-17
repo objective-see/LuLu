@@ -21,8 +21,7 @@
 		7DD2600F1F252E8C00277EC4 /* VirusTotalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2600E1F252E8C00277EC4 /* VirusTotalViewController.m */; };
 		7DD260131F25307B00277EC4 /* HyperlinkTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD260121F25307B00277EC4 /* HyperlinkTextField.m */; };
 		7DD2601C1F25600900277EC4 /* ParentsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2601B1F25600900277EC4 /* ParentsWindowController.m */; };
-		7DD2BF6E1F1DDF1F00B33214 /* AlertMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF6D1F1DDF1F00B33214 /* AlertMonitor.m */; };
-		7DD2BF7A1F1EAC9C00B33214 /* DaemonComms.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF791F1EAC9C00B33214 /* DaemonComms.m */; };
+		7DD2BF7A1F1EAC9C00B33214 /* XPCDaemonClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF791F1EAC9C00B33214 /* XPCDaemonClient.m */; };
 		7DD2BF971F1FF64300B33214 /* AlertWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DD2BF941F1FF64300B33214 /* AlertWindow.xib */; };
 		7DD2BF981F1FF64300B33214 /* AlertWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF961F1FF64300B33214 /* AlertWindowController.m */; };
 		CD21501C20AD2EE000CEF17B /* Sentry.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CD21501B20AD2EE000CEF17B /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -31,6 +30,7 @@
 		CD32C2352094062D009CADF6 /* SigningInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C2332094062C009CADF6 /* SigningInfoViewController.m */; };
 		CD3FF8CE20DDE3EF007B39F1 /* NSApplicationKeyEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3FF8CC20DDE3EE007B39F1 /* NSApplicationKeyEvents.m */; };
 		CDAFF438203E563600F27635 /* libprocInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDAFF437203E563600F27635 /* libprocInfo.a */; };
+		CDFA08E1214900BF0089758C /* XPCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFA08DF214900BF0089758C /* XPCUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,7 +56,6 @@
 		7D3B74FD1F13354900568828 /* StatusBarMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarMenu.m; sourceTree = "<group>"; };
 		7D3B74FF1F13354900568828 /* StatusBarMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarMenu.h; sourceTree = "<group>"; };
 		7D3B75021F13354900568828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = MainMenu.xib; sourceTree = "<group>"; };
-		7D3B75211F13357D00568828 /* userCommsInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = userCommsInterface.h; path = ../shared/userCommsInterface.h; sourceTree = "<group>"; };
 		7D3B75221F13357D00568828 /* consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = consts.h; path = ../shared/consts.h; sourceTree = "<group>"; };
 		7D3B75231F13357D00568828 /* logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = logging.m; path = ../shared/logging.m; sourceTree = "<group>"; };
 		7D3B75241F13357D00568828 /* logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = logging.h; path = ../shared/logging.h; sourceTree = "<group>"; };
@@ -77,10 +76,8 @@
 		7DD260121F25307B00277EC4 /* HyperlinkTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HyperlinkTextField.m; path = loginItem/3rdParty/HyperlinkTextField.m; sourceTree = "<group>"; };
 		7DD2601A1F25600900277EC4 /* ParentsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentsWindowController.h; sourceTree = "<group>"; };
 		7DD2601B1F25600900277EC4 /* ParentsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentsWindowController.m; sourceTree = "<group>"; };
-		7DD2BF6C1F1DDF1F00B33214 /* AlertMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertMonitor.h; sourceTree = "<group>"; };
-		7DD2BF6D1F1DDF1F00B33214 /* AlertMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertMonitor.m; sourceTree = "<group>"; };
-		7DD2BF781F1EAC9C00B33214 /* DaemonComms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DaemonComms.h; path = ../shared/DaemonComms.h; sourceTree = "<group>"; };
-		7DD2BF791F1EAC9C00B33214 /* DaemonComms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DaemonComms.m; path = ../shared/DaemonComms.m; sourceTree = "<group>"; };
+		7DD2BF781F1EAC9C00B33214 /* XPCDaemonClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPCDaemonClient.h; path = ../shared/XPCDaemonClient.h; sourceTree = "<group>"; };
+		7DD2BF791F1EAC9C00B33214 /* XPCDaemonClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPCDaemonClient.m; path = ../shared/XPCDaemonClient.m; sourceTree = "<group>"; };
 		7DD2BF941F1FF64300B33214 /* AlertWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertWindow.xib; sourceTree = "<group>"; };
 		7DD2BF951F1FF64300B33214 /* AlertWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertWindowController.h; sourceTree = "<group>"; };
 		7DD2BF961F1FF64300B33214 /* AlertWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertWindowController.m; sourceTree = "<group>"; };
@@ -94,6 +91,10 @@
 		CD3FF8CD20DDE3EE007B39F1 /* NSApplicationKeyEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSApplicationKeyEvents.h; path = ../shared/NSApplicationKeyEvents.h; sourceTree = "<group>"; };
 		CDAFF433203E55D500F27635 /* procInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = procInfo.h; path = ../shared/libs/procInfo.h; sourceTree = "<group>"; };
 		CDAFF437203E563600F27635 /* libprocInfo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprocInfo.a; path = ../shared/libs/libprocInfo.a; sourceTree = "<group>"; };
+		CDFA08D7214606DB0089758C /* XPCDaemonProto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPCDaemonProto.h; path = ../shared/XPCDaemonProto.h; sourceTree = "<group>"; };
+		CDFA08DB21460A400089758C /* XPCUserProto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPCUserProto.h; path = ../shared/XPCUserProto.h; sourceTree = "<group>"; };
+		CDFA08DF214900BF0089758C /* XPCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPCUser.m; path = ../shared/XPCUser.m; sourceTree = "<group>"; };
+		CDFA08E0214900BF0089758C /* XPCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPCUser.h; path = ../shared/XPCUser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +120,10 @@
 		7D3B75201F13356900568828 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				CDFA08E0214900BF0089758C /* XPCUser.h */,
+				CDFA08DF214900BF0089758C /* XPCUser.m */,
+				CDFA08DB21460A400089758C /* XPCUserProto.h */,
+				CDFA08D7214606DB0089758C /* XPCDaemonProto.h */,
 				CDAFF433203E55D500F27635 /* procInfo.h */,
 				7D16D68F1F64E43300DB3161 /* Update.h */,
 				7D16D6901F64E43300DB3161 /* Update.m */,
@@ -129,9 +134,8 @@
 				7D16D6931F64E43300DB3161 /* UpdateWindowController.m */,
 				7D5C5F501F200B9200C0E94A /* utilities.h */,
 				7D5C5F511F200B9200C0E94A /* utilities.m */,
-				7DD2BF781F1EAC9C00B33214 /* DaemonComms.h */,
-				7DD2BF791F1EAC9C00B33214 /* DaemonComms.m */,
-				7D3B75211F13357D00568828 /* userCommsInterface.h */,
+				7DD2BF781F1EAC9C00B33214 /* XPCDaemonClient.h */,
+				7DD2BF791F1EAC9C00B33214 /* XPCDaemonClient.m */,
 				7D3B75221F13357D00568828 /* consts.h */,
 				7D3B75231F13357D00568828 /* logging.m */,
 				7D3B75241F13357D00568828 /* logging.h */,
@@ -164,8 +168,6 @@
 				CD22785B20434CAB00C72C76 /* StatusBarPopover.xib */,
 				CD22785C20434CAB00C72C76 /* StatusBarPopoverController.h */,
 				CD22785D20434CAB00C72C76 /* StatusBarPopoverController.m */,
-				7DD2BF6C1F1DDF1F00B33214 /* AlertMonitor.h */,
-				7DD2BF6D1F1DDF1F00B33214 /* AlertMonitor.m */,
 				7DD2BF951F1FF64300B33214 /* AlertWindowController.h */,
 				7DD2BF961F1FF64300B33214 /* AlertWindowController.m */,
 				7D7755E61F02E05B00D0017D /* AppDelegate.h */,
@@ -310,10 +312,10 @@
 				7D5C5F521F200B9200C0E94A /* utilities.m in Sources */,
 				7D7755E81F02E05B00D0017D /* AppDelegate.m in Sources */,
 				7DD2601C1F25600900277EC4 /* ParentsWindowController.m in Sources */,
-				7DD2BF6E1F1DDF1F00B33214 /* AlertMonitor.m in Sources */,
 				CD3FF8CE20DDE3EF007B39F1 /* NSApplicationKeyEvents.m in Sources */,
-				7DD2BF7A1F1EAC9C00B33214 /* DaemonComms.m in Sources */,
+				7DD2BF7A1F1EAC9C00B33214 /* XPCDaemonClient.m in Sources */,
 				7DD2BF981F1FF64300B33214 /* AlertWindowController.m in Sources */,
+				CDFA08E1214900BF0089758C /* XPCUser.m in Sources */,
 				7DD2600C1F252E0C00277EC4 /* VirusTotal.m in Sources */,
 				CD22785F20434CAC00C72C76 /* StatusBarPopoverController.m in Sources */,
 				7D16D6941F64E43300DB3161 /* Update.m in Sources */,
@@ -457,6 +459,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = loginItem/Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../shared/libs";
+				OTHER_CFLAGS = "-DLOGIN_ITEM=1";
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.helper";
@@ -474,6 +477,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = loginItem/Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../shared/libs";
+				OTHER_CFLAGS = "-DLOGIN_ITEM=1";
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.helper";

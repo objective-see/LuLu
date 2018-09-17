@@ -26,19 +26,6 @@ extern Rules* rules;
 
 @synthesize connection;
 
-//init
--(id)init
-{
-    //init super
-    self = [super init];
-    if(nil != self)
-    {
-        //setup listener for
-    }
-    
-    return self;
-}
-
 //connect to the firewall kext
 -(BOOL)connect
 {

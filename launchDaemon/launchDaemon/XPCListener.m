@@ -1,5 +1,5 @@
 //
-//  file: UserCommsListener.m
+//  file: XPCListener.m
 //  project: lulu (launch daemon)
 //  description: XPC listener for connections for user components
 //
@@ -14,19 +14,18 @@
 
 #import "Rule.h"
 #import "Rules.h"
-#import "Queue.h"
 #import "KextComms.h"
-#import "UserComms.h"
 #import "utilities.h"
 #import "UserClientShared.h"
-#import "UserCommsListener.h"
-#import "UserCommsInterface.h"
+#import "XPCListener.h"
+
+#import "XPCDaemon.h"
+
+#import "XPCUserProto.h"
+#import "XPCDaemonProto.h"
 
 //signing auth
 #define SIGNING_AUTH @"Developer ID Application: Objective-See, LLC (VBG97UB4TA)"
-
-//global queue object
-extern Queue* eventQueue;
 
 //interface for 'extension' to NSXPCConnection
 // ->allows us to access the 'private' auditToken iVar
@@ -57,15 +56,10 @@ extern KextComms* kextComms;
 //global rules obj
 extern Rules* rules;
 
-//global queue object
-extern Queue* eventQueue;
-
-//global client status
-extern NSInteger clientConnected;
-
-@implementation UserCommsListener
+@implementation XPCListener
 
 @synthesize listener;
+@synthesize loginItem;
 
 //init
 // ->create XPC listener
@@ -142,25 +136,13 @@ bail:
     SecTaskRef taskRef = 0;
     
     //signing req string
-    NSString *requirementString = nil;
+    NSString* requirementString = nil;
     
-    //make weak ref
-    // see: https://stackoverflow.com/a/23628986/3854841
-    __weak typeof(NSXPCConnection*) weakConnection = newConnection;
+    //path of connecting app
+    NSString* path = nil;
     
     //dbg msg
     logMsg(LOG_DEBUG, @"received request to connect to XPC interface");
-    
-    //set interrupt & invalidation handler
-    newConnection.interruptionHandler = newConnection.invalidationHandler = ^{
-        
-        //make strong ref
-        // see: https://stackoverflow.com/a/23628986/3854841
-        __strong typeof(NSXPCConnection*)strongConnection = weakConnection;
-        
-        //handle invalidation
-        [self connectionInvalidated:strongConnection];
-    };
     
     //init signing req string
     requirementString = [NSString stringWithFormat:@"anchor trusted and certificate leaf [subject.CN] = \"%@\"", SIGNING_AUTH];
@@ -181,18 +163,47 @@ bail:
         //bail
         goto bail;
     }
-
+    
     //set the interface that the exported object implements
-    newConnection.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(UserProtocol)];
+    newConnection.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(XPCDaemonProtocol)];
     
     //set object exported by connection
-    newConnection.exportedObject = [[UserComms alloc] init];
-
+    newConnection.exportedObject = [[XPCDaemon alloc] init];
+    
+    //set type of remote object
+    // user (login item/main app) will set this object
+    newConnection.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol: @protocol(XPCUserProtocol)];
+    
+    //get path
+    path = getProcessPath(newConnection.processIdentifier);
+    
+    //login item
+    // save connection and notify that new client has connected
+    if(YES == [path hasSuffix:@"LuLu Helper"])
+    {
+        //save
+        self.loginItem = newConnection;
+    
+        //in background
+        // notify that a new client connected
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+        ^{
+           //notify
+           [[NSNotificationCenter defaultCenter] postNotificationName:USER_NOTIFICATION object:nil userInfo:nil];
+        });
+    }
+    //main app
+    else
+    {
+        //save
+        self.mainApp = newConnection;
+    }
+    
     //resume
     [newConnection resume];
     
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"allowed XPC connection: %@", newConnection.exportedObject]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"allowed XPC connection from %@", path]);
     
     //happy
     shouldAccept = YES;
@@ -210,76 +221,6 @@ bail:
     }
     
     return shouldAccept;
-}
-
-//connection invalidated
-// if there is an 'undelivered' alert, (re)enqueue it
--(void)connectionInvalidated:(NSXPCConnection *)connection
-{
-    //client path
-    NSString* clientPath = nil;
-    
-    //user comms obj
-    UserComms* userComms = nil;
-    
-    //dbg msg
-    logMsg(LOG_DEBUG, @"XPC connection interrupted/invalidated");
-    
-    //sanity check
-    if(nil == connection)
-    {
-        //bail
-        goto bail;
-    }
-    
-    //get client path
-    clientPath = getProcessPath(connection.processIdentifier);
-    
-    //ignore if not login item
-    // main app might be the one invalidating the connection
-    if(YES == [clientPath hasSuffix:LOGIN_ITEM_NAME])
-    {
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"leaving 'client connected' flag set, as its %@ that's invalidating", clientPath]);
-        
-        //bail
-        goto bail;
-    }
-    
-    //grab user comms object
-    userComms = connection.exportedObject;
-    
-    //no undelivered (dequeued) alert?
-    if(nil == userComms.dequeuedAlert)
-    {
-        //bail
-        goto bail;
-    }
-    
-    //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"found undelivered alert, will (re)enqueue"]);
-    
-    //have alert
-    // requeue it up
-    [eventQueue enqueue:userComms.dequeuedAlert];
-    
-    //client (i.e. login item) should always be running
-    // unset client connection status to prevent delivery of alerts
-    // TODO: will have to change this when supporting multiple users
-    clientConnected = NO;
-    
-    //dbg msg
-    logMsg(LOG_DEBUG, @"unset 'clientConnected'");
-
-bail:
-    
-    //unset export obj
-    connection.exportedObject = nil;
-    
-    //unset connection
-    connection = nil;
-    
-    return;
 }
 
 @end

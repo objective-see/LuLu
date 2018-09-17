@@ -7,26 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D46FEFF1F5E41F000FEB0F8 /* UserCommsListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D46FEFD1F5E41F000FEB0F8 /* UserCommsListener.m */; };
+		7D46FEFF1F5E41F000FEB0F8 /* XPCListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D46FEFD1F5E41F000FEB0F8 /* XPCListener.m */; };
 		7D4FF3721F0B6D3100A59A05 /* KextComms.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FF3701F0B6D3100A59A05 /* KextComms.m */; };
 		7D4FF37B1F0C2DB300A59A05 /* Rules.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FF37A1F0C2DB300A59A05 /* Rules.m */; };
 		7D4FF8C41F0E1402001A4A68 /* libbsm.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4FF8C31F0E1402001A4A68 /* libbsm.tbd */; };
 		7D4FF8C91F0E1770001A4A68 /* ProcListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FF8C81F0E1770001A4A68 /* ProcListener.m */; };
-		7D4FF8CD1F0EF2F9001A4A68 /* UserComms.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FF8CC1F0EF2F9001A4A68 /* UserComms.m */; };
+		7D4FF8CD1F0EF2F9001A4A68 /* XPCDaemon.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D4FF8CC1F0EF2F9001A4A68 /* XPCDaemon.m */; };
 		7D6E87701F3AE6FA00D6BD7C /* libprocInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D6E876F1F3AE6FA00D6BD7C /* libprocInfo.a */; };
 		7D7755D41F02DF9500D0017D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7755D31F02DF9500D0017D /* main.m */; };
 		7D7755F91F02E1F400D0017D /* KextListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7755F71F02E1F400D0017D /* KextListener.m */; };
 		7D7755FC1F02EBBE00D0017D /* logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7755FA1F02EBBE00D0017D /* logging.m */; };
 		7DD2BF5C1F1DAEFD00B33214 /* Rule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF5A1F1DAEFD00B33214 /* Rule.m */; };
 		7DD2BF681F1DC42700B33214 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF671F1DC42700B33214 /* utilities.m */; };
-		7DD2BF761F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF731F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m */; };
-		7DD2BF771F1E9CE700B33214 /* Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DD2BF751F1E9CE700B33214 /* Queue.m */; };
 		CD214FF720ABC53A00CEF17B /* GrayList.m in Sources */ = {isa = PBXBuildFile; fileRef = CD214FF620ABC53A00CEF17B /* GrayList.m */; };
 		CD2E667C208D7D09001B5435 /* Baseline.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2E667B208D7D09001B5435 /* Baseline.m */; };
 		CD32C22820900F50009CADF6 /* LuLu in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D7755D01F02DF9500D0017D /* LuLu */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CD6B484820AD33DE00A9BE71 /* Sentry.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CD6B484720AD33DD00A9BE71 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD6CAC70209FB29700188B0A /* Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6CAC6F209FB29600188B0A /* Alerts.m */; };
 		CDAFF457203FB23800F27635 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAFF456203FB23800F27635 /* Preferences.m */; };
+		CDFA08D62140CB100089758C /* XPCUserClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFA08D52140CB100089758C /* XPCUserClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,17 +72,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7D46FEFD1F5E41F000FEB0F8 /* UserCommsListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCommsListener.m; sourceTree = "<group>"; };
-		7D46FEFE1F5E41F000FEB0F8 /* UserCommsListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommsListener.h; sourceTree = "<group>"; };
+		7D46FEFD1F5E41F000FEB0F8 /* XPCListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPCListener.m; sourceTree = "<group>"; };
+		7D46FEFE1F5E41F000FEB0F8 /* XPCListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCListener.h; sourceTree = "<group>"; };
 		7D4FF3701F0B6D3100A59A05 /* KextComms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KextComms.m; sourceTree = "<group>"; };
 		7D4FF3711F0B6D3100A59A05 /* KextComms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KextComms.h; sourceTree = "<group>"; };
 		7D4FF37A1F0C2DB300A59A05 /* Rules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rules.m; sourceTree = "<group>"; };
 		7D4FF8C31F0E1402001A4A68 /* libbsm.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbsm.tbd; path = usr/lib/libbsm.tbd; sourceTree = SDKROOT; };
 		7D4FF8C51F0E14E8001A4A68 /* ProcListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcListener.h; sourceTree = "<group>"; };
 		7D4FF8C81F0E1770001A4A68 /* ProcListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcListener.m; sourceTree = "<group>"; };
-		7D4FF8CB1F0EF2F9001A4A68 /* UserComms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserComms.h; sourceTree = "<group>"; };
-		7D4FF8CC1F0EF2F9001A4A68 /* UserComms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserComms.m; sourceTree = "<group>"; };
-		7D4FF8CE1F0EF360001A4A68 /* UserCommsInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UserCommsInterface.h; path = ../../shared/UserCommsInterface.h; sourceTree = "<group>"; };
+		7D4FF8CB1F0EF2F9001A4A68 /* XPCDaemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCDaemon.h; sourceTree = "<group>"; };
+		7D4FF8CC1F0EF2F9001A4A68 /* XPCDaemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPCDaemon.m; sourceTree = "<group>"; };
 		7D6E876F1F3AE6FA00D6BD7C /* libprocInfo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprocInfo.a; path = ../shared/libs/libprocInfo.a; sourceTree = "<group>"; };
 		7D7755D01F02DF9500D0017D /* LuLu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LuLu; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7755D31F02DF9500D0017D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -98,10 +96,6 @@
 		7DD2BF621F1DC30600B33214 /* Rules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rules.h; sourceTree = "<group>"; };
 		7DD2BF661F1DC42700B33214 /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = ../../shared/utilities.h; sourceTree = "<group>"; };
 		7DD2BF671F1DC42700B33214 /* utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = utilities.m; path = ../../shared/utilities.m; sourceTree = "<group>"; };
-		7DD2BF721F1E9CE700B33214 /* NSMutableArray+QueueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+QueueAdditions.h"; sourceTree = "<group>"; };
-		7DD2BF731F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
-		7DD2BF741F1E9CE700B33214 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
-		7DD2BF751F1E9CE700B33214 /* Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Queue.m; sourceTree = "<group>"; };
 		CD214FF520ABC53A00CEF17B /* GrayList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrayList.h; sourceTree = "<group>"; };
 		CD214FF620ABC53A00CEF17B /* GrayList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrayList.m; sourceTree = "<group>"; };
 		CD2E667A208D7D09001B5435 /* Baseline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Baseline.h; sourceTree = "<group>"; };
@@ -115,6 +109,10 @@
 		CDAFF432203E55C600F27635 /* procInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = procInfo.h; path = ../../shared/libs/procInfo.h; sourceTree = "<group>"; };
 		CDAFF455203FB23800F27635 /* Preferences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		CDAFF456203FB23800F27635 /* Preferences.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
+		CDFA08D22140C1890089758C /* XPCUserProto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPCUserProto.h; path = ../../shared/XPCUserProto.h; sourceTree = "<group>"; };
+		CDFA08D32140C1890089758C /* XPCDaemonProto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPCDaemonProto.h; path = ../../shared/XPCDaemonProto.h; sourceTree = "<group>"; };
+		CDFA08D42140CB100089758C /* XPCUserClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCUserClient.h; sourceTree = "<group>"; };
+		CDFA08D52140CB100089758C /* XPCUserClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPCUserClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,14 +168,10 @@
 			isa = PBXGroup;
 			children = (
 				7D7756071F05D62E00D0017D /* Shared */,
-				7DD2BF721F1E9CE700B33214 /* NSMutableArray+QueueAdditions.h */,
 				CD214FF520ABC53A00CEF17B /* GrayList.h */,
 				CD214FF620ABC53A00CEF17B /* GrayList.m */,
 				CD6CAC6E209FB29500188B0A /* Alerts.h */,
 				CD6CAC6F209FB29600188B0A /* Alerts.m */,
-				7DD2BF731F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m */,
-				7DD2BF741F1E9CE700B33214 /* Queue.h */,
-				7DD2BF751F1E9CE700B33214 /* Queue.m */,
 				CD55171A210CD65700CE066C /* main.h */,
 				7D7755D31F02DF9500D0017D /* main.m */,
 				CD2E667A208D7D09001B5435 /* Baseline.h */,
@@ -192,10 +186,12 @@
 				CDAFF456203FB23800F27635 /* Preferences.m */,
 				7DD2BF621F1DC30600B33214 /* Rules.h */,
 				7D4FF37A1F0C2DB300A59A05 /* Rules.m */,
-				7D4FF8CB1F0EF2F9001A4A68 /* UserComms.h */,
-				7D4FF8CC1F0EF2F9001A4A68 /* UserComms.m */,
-				7D46FEFE1F5E41F000FEB0F8 /* UserCommsListener.h */,
-				7D46FEFD1F5E41F000FEB0F8 /* UserCommsListener.m */,
+				7D4FF8CB1F0EF2F9001A4A68 /* XPCDaemon.h */,
+				7D4FF8CC1F0EF2F9001A4A68 /* XPCDaemon.m */,
+				7D46FEFE1F5E41F000FEB0F8 /* XPCListener.h */,
+				7D46FEFD1F5E41F000FEB0F8 /* XPCListener.m */,
+				CDFA08D42140CB100089758C /* XPCUserClient.h */,
+				CDFA08D52140CB100089758C /* XPCUserClient.m */,
 			);
 			name = Src;
 			path = launchDaemon;
@@ -204,6 +200,8 @@
 		7D7756071F05D62E00D0017D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				CDFA08D32140C1890089758C /* XPCDaemonProto.h */,
+				CDFA08D22140C1890089758C /* XPCUserProto.h */,
 				CDAFF432203E55C600F27635 /* procInfo.h */,
 				7DD2BF661F1DC42700B33214 /* utilities.h */,
 				7DD2BF671F1DC42700B33214 /* utilities.m */,
@@ -213,7 +211,6 @@
 				7D7755FD1F02EC1800D0017D /* consts.h */,
 				7D7755FA1F02EBBE00D0017D /* logging.m */,
 				7D7755FB1F02EBBE00D0017D /* logging.h */,
-				7D4FF8CE1F0EF360001A4A68 /* UserCommsInterface.h */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -319,18 +316,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D46FEFF1F5E41F000FEB0F8 /* UserCommsListener.m in Sources */,
+				7D46FEFF1F5E41F000FEB0F8 /* XPCListener.m in Sources */,
 				7D7755F91F02E1F400D0017D /* KextListener.m in Sources */,
-				7DD2BF761F1E9CE700B33214 /* NSMutableArray+QueueAdditions.m in Sources */,
 				7DD2BF5C1F1DAEFD00B33214 /* Rule.m in Sources */,
+				CDFA08D62140CB100089758C /* XPCUserClient.m in Sources */,
 				CD214FF720ABC53A00CEF17B /* GrayList.m in Sources */,
 				7D4FF37B1F0C2DB300A59A05 /* Rules.m in Sources */,
 				7DD2BF681F1DC42700B33214 /* utilities.m in Sources */,
-				7DD2BF771F1E9CE700B33214 /* Queue.m in Sources */,
 				7D4FF8C91F0E1770001A4A68 /* ProcListener.m in Sources */,
 				7D7755D41F02DF9500D0017D /* main.m in Sources */,
 				CDAFF457203FB23800F27635 /* Preferences.m in Sources */,
-				7D4FF8CD1F0EF2F9001A4A68 /* UserComms.m in Sources */,
+				7D4FF8CD1F0EF2F9001A4A68 /* XPCDaemon.m in Sources */,
 				CD2E667C208D7D09001B5435 /* Baseline.m in Sources */,
 				CD6CAC70209FB29700188B0A /* Alerts.m in Sources */,
 				7D7755FC1F02EBBE00D0017D /* logging.m in Sources */,
@@ -471,6 +467,7 @@
 					"$(PROJECT_DIR)/../shared/libs",
 					"$(inherited)",
 				);
+				OTHER_CFLAGS = "-DLAUNCH_DAEMON=1";
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_NAME = LuLu;
@@ -487,6 +484,7 @@
 					"$(PROJECT_DIR)/../shared/libs",
 					"$(inherited)",
 				);
+				OTHER_CFLAGS = "-DLAUNCH_DAEMON=1";
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_NAME = LuLu;
@@ -507,6 +505,7 @@
 				INFOPLIST_FILE = launchDaemonBundle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "-DLAUNCH_DAEMON=1";
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.bundle";
 				PRODUCT_NAME = LuLu;
@@ -530,6 +529,7 @@
 				INFOPLIST_FILE = launchDaemonBundle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "-DLAUNCH_DAEMON=1";
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.bundle";
 				PRODUCT_NAME = LuLu;

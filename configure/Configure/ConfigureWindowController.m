@@ -17,6 +17,7 @@
 @implementation ConfigureWindowController
 
 @synthesize statusMsg;
+@synthesize friendsView;
 @synthesize moreInfoButton;
 
 //automatically called when nib is loaded
@@ -97,8 +98,13 @@
     //make window front
     [NSApp activateIgnoringOtherApps:YES];
     
-    //set background color
-    [self.window setBackgroundColor: NSColor.windowBackgroundColor];
+    //not in dark mode?
+    // make window white
+    if(YES != [[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"] isEqualToString:@"Dark"])
+    {
+        //make white
+        self.window.backgroundColor = NSColor.whiteColor;
+    }
 
     return;
 }
@@ -109,87 +115,145 @@
     //action
     NSInteger action = 0;
     
+    //frame
+    NSRect frame = {0};
+
     //'beta installed' alert
     NSAlert* betaInstalled = nil;
-    
-    //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"handling action click: %@", ((NSButton*)sender).title]);
     
     //grab tag
     action = ((NSButton*)sender).tag;
     
-    //action: restart
-    if(action == ACTION_RESTART_FLAG)
-    {
-        //disable button
-        self.installButton.enabled = NO;
-        
-        //bye!
-        restart();
-        
-        //bail
-        goto bail;
-    }
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"handling action click: %@ (%ld)", ((NSButton*)sender).title, (long)action]);
     
-    //action close
-    else if(action == ACTION_CLOSE_FLAG)
+    //process button
+    switch(action)
     {
-        //close window to trigger cleanup logic
-        [self.window close];
+        //restart
+        case ACTION_RESTART_FLAG:
+            
+            //disable button
+            self.restartButton.enabled = NO;
+            
+            //bye!
+            restart();
         
-        //bail
-        goto bail;
-    }
-    
-    //action: install || uninstall
-    else
-    {
-        //upgrade/uninstall
-        // warn if beta is installed
-        if( (action != ACTION_UNINSTALL_FLAG) &&
-            (YES == [((AppDelegate*)[[NSApplication sharedApplication] delegate]).configureObj isBetaInstalled]) )
+            break;
+            
+        //close
+        case ACTION_CLOSE_FLAG:
+            
+            //close window to trigger cleanup logic
+            [self.window close];
+            
+            break;
+            
+        //install/uninstall
+        case ACTION_INSTALL_FLAG:
+        case ACTION_UNINSTALL_FLAG:
         {
-            //init alert
-            betaInstalled = [[NSAlert alloc] init];
+            //upgrade/uninstall
+            // warn if beta is installed
+            if( (action != ACTION_UNINSTALL_FLAG) &&
+                (YES == [((AppDelegate*)[[NSApplication sharedApplication] delegate]).configureObj isBetaInstalled]) )
+            {
+                //init alert
+                betaInstalled = [[NSAlert alloc] init];
+                
+                //set style
+                betaInstalled.alertStyle = NSAlertStyleInformational;
+                
+                //set main text
+                betaInstalled.messageText = @"Beta Version Already Installed";
+                
+                //set detailed text
+                betaInstalled.informativeText = @"Please note, it will be fully uninstalled first!";
+                
+                //add button
+                [betaInstalled addButtonWithTitle:@"Ok"];
+                
+                //show
+                // will block until user
+                [betaInstalled runModal];
+            }
             
-            //set style
-            betaInstalled.alertStyle = NSAlertStyleInformational;
+            //disable 'x' button
+            // don't want user killing app during install/upgrade
+            [[self.window standardWindowButton:NSWindowCloseButton] setEnabled:NO];
             
-            //set main text
-            betaInstalled.messageText = @"Beta Version Already Installed";
+            //clear status msg
+            self.statusMsg.stringValue = @"";
             
-            //set detailed text
-            betaInstalled.informativeText = @"Please note, it will be fully uninstalled first!";
+            //force redraw of status msg
+            // sometime doesn't refresh (e.g. slow VM)
+            self.statusMsg.needsDisplay = YES;
             
-            //add button
-            [betaInstalled addButtonWithTitle:@"Ok"];
+            //invoke logic to install/uninstall
+            // do in background so UI doesn't block
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+            ^{
+               //install/uninstall
+               [self lifeCycleEvent:action];
+            });
+            
+            break;
+        }
+            
+        //next
+        // show 'friends' view
+        case ACTION_NEXT_FLAG:
+        {
+            //unset window title
+            self.window.title = @"";
+            
+            //get main window's frame
+            frame = self.window.contentView.frame;
+            
+            //set origin to 0/0
+            frame.origin = CGPointZero;
+            
+            //increase y offset
+            frame.origin.y += 5;
+            
+            //reduce height
+            frame.size.height -= 5;
+            
+            //pre-req
+            [self.friendsView setWantsLayer:YES];
+            
+            //update view to take up entire window
+            self.friendsView.frame = frame;
+            
+            //not in dark mode?
+            // make window white
+            if(YES != [[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"] isEqualToString:@"Dark"])
+            {
+                //set white
+                self.friendsView.layer.backgroundColor = [NSColor whiteColor].CGColor;
+            }
+            
+            //update config view
+            self.window.contentView = self.friendsView;
+            
+            //make 'restart' button first responder
+            // calling this without a timeout sometimes fails :/
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (100 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+                
+                //set first responder
+                [self.window makeFirstResponder:self.restartButton];
+                
+            });
             
             //show
-            // will block until user
-            [betaInstalled runModal];
+            self.friendsView.hidden = NO;
         }
-
-        //disable 'x' button
-        // don't want user killing app during install/upgrade
-        [[self.window standardWindowButton:NSWindowCloseButton] setEnabled:NO];
         
-        //clear status msg
-        self.statusMsg.stringValue = @"";
+        //default
+        default:
+            break;
         
-        //force redraw of status msg
-        // sometime doesn't refresh (e.g. slow VM)
-        self.statusMsg.needsDisplay = YES;
-
-        //invoke logic to install/uninstall
-        // do in background so UI doesn't block
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-        ^{
-            //install/uninstall
-            [self lifeCycleEvent:action];
-        });
     }
-    
-bail:
     
     return;
 }
@@ -409,17 +473,12 @@ bail:
         //set result msg
         resultMsg = [NSMutableString stringWithFormat:@"LuLu %@ed!\nRestart required to complete.", action];
         
-        //set font to black
-        resultMsgColor = [NSColor labelColor];
     }
     //failure
     else
     {
         //set result msg
         resultMsg = [NSMutableString stringWithFormat:@"error: %@ failed", action];
-        
-        //set font to red
-        resultMsgColor = [NSColor systemRedColor];
         
         //show 'get more info' button
         self.moreInfoButton.hidden = NO;
@@ -450,15 +509,15 @@ bail:
     self.statusMsg.stringValue = resultMsg;
     
     //success
-    // set button title and tag for restart
+    // set button title and tag for 'next'
     if(YES == success)
     {
         //restart
-        self.installButton.title = ACTION_RESTART;
+        self.installButton.title = ACTION_NEXT;
         
         //update it's tag
         // will allow button handler method process
-        self.installButton.tag = ACTION_RESTART_FLAG;
+        self.installButton.tag = ACTION_NEXT_FLAG;
     }
     
     //failed

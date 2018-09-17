@@ -1,7 +1,7 @@
 //
-//  file: DaemonComms.h
+//  file: XPCDaemonClient.h
 //  project: lulu (shared)
-//  description: talk to daemon (header)
+//  description: talk to daemon via XPC (header)
 //
 //  created by Patrick Wardle
 //  copyright (c) 2017 Objective-See. All rights reserved.
@@ -9,18 +9,12 @@
 
 @import Foundation;
 
-#import "UserCommsInterface.h"
+#import "XPCDaemonProto.h"
 
-@interface DaemonComms : NSObject
+@interface XPCDaemonClient : NSObject
 
-//remote deamon proxy object
-@property(nonatomic, retain) id <UserProtocol> daemon;
-
-//xpc connection
-@property (atomic, strong, readwrite) NSXPCConnection* xpcServiceConnection;
-
-//set client status
--(void)clientCheckin;
+//xpc connection to daemon
+@property (atomic, strong, readwrite)NSXPCConnection* daemon;
 
 //get preferences
 // note: synchronous
@@ -30,7 +24,7 @@
 -(void)updatePreferences:(NSDictionary*)preferences;
 
 //ask daemon for rules
--(void)getRules:(BOOL)wait4Change reply:(void (^)(NSDictionary*))reply;
+-(void)getRules:(void (^)(NSDictionary*))reply;
 
 //add rule
 -(void)addRule:(NSString*)processPath action:(NSUInteger)action;
@@ -44,10 +38,12 @@
 //import rules
 -(BOOL)importRules:(NSString*)rulesFile;
 
-//ask for alert
--(void)alertRequest:(void (^)(NSDictionary* alert))reply;
+//login item methods
+#ifndef MAIN_APP
 
 //respond to alert
--(void)alertResponse:(NSDictionary*)alert;
+-(void)alertReply:(NSDictionary*)alert;
+
+#endif
 
 @end

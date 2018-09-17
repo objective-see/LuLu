@@ -13,7 +13,6 @@
 #import "AppDelegate.h"
 #import "StatusBarMenu.h"
 #import "StatusBarPopoverController.h"
-#import "UserCommsInterface.h"
 
 //menu items
 enum menuItems
@@ -29,22 +28,15 @@ enum menuItems
 
 @synthesize isDisabled;
 @synthesize statusItem;
-@synthesize daemonComms;
 
 //init method
 // set some intial flags, init daemon comms, etc.
--(id)init:(NSMenu*)menu firstTime:(BOOL)firstTime
+-(id)init:(NSMenu*)menu preferences:(NSDictionary*)preferences firstTime:(BOOL)firstTime
 {
-    //preferences
-    NSDictionary* preferences = nil;
-    
     //super
     self = [super init];
     if(self != nil)
     {
-        //init daemon comms
-        daemonComms = [[DaemonComms alloc] init];
-        
         //init status item
         statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
         
@@ -71,12 +63,6 @@ enum menuItems
             //show
             [self showPopover];
         }
-        
-        //set notification for when theme toggles
-        [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(interfaceChanged:) name:@"AppleInterfaceThemeChangedNotification" object:nil];
-        
-        //get prefs via XPC
-        preferences = [self.daemonComms getPreferences];
         
         //set state based on (existing) preferences
         self.isDisabled = [preferences[PREF_IS_DISABLED] boolValue];
@@ -116,6 +102,25 @@ enum menuItems
     ^{
        //show
        [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
+    });
+    
+    //wait a bit
+    // then automatically hide popup if user has not closed it
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_main_queue(),
+    ^{
+        //still visible?
+        // close it then...
+        if(YES == self.popover.shown)
+        {
+            //close
+            [self.popover performClose:nil];
+        }
+            
+        //remove action handler
+        self.statusItem.action = nil;
+        
+        //reset highlight mode
+        self.statusItem.highlightMode = YES;
     });
     
     return;
@@ -165,7 +170,7 @@ enum menuItems
         [self setState];
         
         //update prefs
-        [[[DaemonComms alloc] init] updatePreferences:@{PREF_IS_DISABLED:[NSNumber numberWithBool:self.isDisabled]}];
+        [[[XPCDaemonClient alloc] init] updatePreferences:@{PREF_IS_DISABLED:[NSNumber numberWithBool:self.isDisabled]}];
         
         //all done
         goto bail;
@@ -236,7 +241,10 @@ bail:
         //update status
         [self.statusItem.menu itemWithTag:status].title = @"LuLu: disabled";
         
-        //change text
+        //set icon
+        self.statusItem.button.image = [NSImage imageNamed:@"LoginItemStatusInactive"];
+        
+        //change toggle text
         [self.statusItem.menu itemWithTag:toggle].title = @"Enable";
     }
     
@@ -246,42 +254,12 @@ bail:
         //update status
         [self.statusItem.menu itemWithTag:status].title = @"LuLu: enabled";
         
-        //change text
+        //set icon
+        self.statusItem.button.image = [NSImage imageNamed:@"LoginItemStatusActive"];
+        
+        //change toggle text
         [self.statusItem.menu itemWithTag:toggle].title = @"Disable";
     }
-    
-    //set icon
-    [self setIcon];
-    
-    return;
-}
-
-//set status bar icon
-// takes into account dark mode
--(void)setIcon
-{    
-    //enabled
-    if(YES != self.isDisabled)
-    {
-        self.statusItem.button.image = [NSImage imageNamed:@"LoginItemStatusActive"];
-    }
-    //disabled
-    else
-    {
-        self.statusItem.button.image = [NSImage imageNamed:@"LoginItemStatusInactive"];
-    }
-    
-    return;
-}
-
-//callback for when theme changes
-// just invoke helper method to change icon
--(void)interfaceChanged:(NSNotification *)notification
-{
-    #pragma unused(notification)
-    
-    //set icon
-    [self setIcon];
     
     return;
 }

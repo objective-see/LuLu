@@ -7,10 +7,10 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "Rule.h"
-#import "DaemonComms.h"
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
+#import "Rule.h"
+#import "XPCDaemonClient.h"
 #import "AddRuleWindowController.h"
 
 /* CONSTS */
@@ -42,8 +42,8 @@
 
 /* PROPERTIES */
 
-//daemom comms object
-@property (nonatomic, retain)DaemonComms* daemonComms;
+//observer for rules changed
+@property(nonatomic, retain)id rulesObserver;
 
 //flag
 @property BOOL shouldFilter;
