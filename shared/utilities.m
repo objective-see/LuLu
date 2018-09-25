@@ -1,5 +1,5 @@
 //
-//  file: Utilities.m
+//  file: utilities.m
 //  project: lulu (shared)
 //  description: various helper/utility functions
 //
@@ -86,7 +86,7 @@ bail:
 }
 
 //get app's version
-// ->extracted from Info.plist
+// extracted from Info.plist
 NSString* getAppVersion()
 {
     //read and return 'CFBundleVersion' from bundle
@@ -448,7 +448,7 @@ BOOL setFilePermissions(NSString* file, int permissions, BOOL recursive)
     }
     
     //always set permissions on passed in file (or top-level directory)
-    // ->note: recursive enumerator skips root directory, so execute this always
+    // note: recursive enumerator skips root directory, so execute this always
     if(YES != [[NSFileManager defaultManager] setAttributes:filePermissions ofItemAtPath:file error:NULL])
     {
         //err msg
@@ -761,7 +761,7 @@ NSImage* getIconForProcess(NSString* path)
     }
     
     //process is not an app or couldn't get icon
-    // ->try to get it via shared workspace
+    // try to get it via shared workspace
     if( (nil == appBundle) ||
         (nil == icon) )
     {
@@ -847,7 +847,7 @@ void wait4kext(NSString* kext)
 void makeModal(NSWindowController* windowController)
 {
     //wait up to 1 second window to be non-nil
-    // ->then make modal
+    // then make modal
     for(int i=0; i<20; i++)
     {
         //can make it modal once we have a window

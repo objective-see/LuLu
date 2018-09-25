@@ -58,6 +58,7 @@ extern Rules* rules;
 
 @implementation XPCListener
 
+@synthesize mainApp;
 @synthesize listener;
 @synthesize loginItem;
 
@@ -179,7 +180,7 @@ bail:
     
     //login item
     // save connection and notify that new client has connected
-    if(YES == [path hasSuffix:@"LuLu Helper"])
+    if(YES == [path hasSuffix:LOGIN_ITEM_NAME])
     {
         //save
         self.loginItem = newConnection;

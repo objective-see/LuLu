@@ -1,5 +1,5 @@
 //
-//  file: Utilities.h
+//  file: utilities.h
 //  project: lulu (shared)
 //  description: various helper/utility functions (header)
 //
@@ -19,7 +19,7 @@
 void initCrashReporting(void);
 
 //give path to app
-// ->get full path to its binary
+// get full path to its binary
 NSString* getAppBinary(NSString* appPath);
 
 //get path to (main) app
@@ -56,11 +56,11 @@ NSBundle* findAppBundle(NSString* binaryPath);
 NSString* getProcessPath(pid_t pid);
 
 //get process name
-// ->either via app bundle, or path
+// either via app bundle, or path
 NSString* getProcessName(NSString* path);
 
 //given a process path and user
-// ->return array of all matching pids
+// return array of all matching pids
 NSMutableArray* getProcessIDs(NSString* processPath, int userID);
 
 //given a pid, get its parent (ppid)
