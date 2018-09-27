@@ -1660,3 +1660,33 @@ OSStatus transformApp(ProcessApplicationTransformState newState)
     //transform and return
     return TransformProcessType(&psn, newState);
 }
+
+//check if (full) dark mode
+// meaning, Mojave+ and dark mode enabled
+BOOL isDarkMode()
+{
+    //flag
+    BOOL darkMode = NO;
+    
+    //not mojave?
+    // bail, since not true dark mode
+    if(YES != [[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){10, 14, 0}])
+    {
+        //bail
+        goto bail;
+    }
+    
+    //not dark mode?
+    if(YES != [[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"] isEqualToString:@"Dark"])
+    {
+        //bail
+        goto bail;
+    }
+    
+    //ok, mojave dark mode it is!
+    darkMode = YES;
+    
+bail:
+    
+    return darkMode;
+}

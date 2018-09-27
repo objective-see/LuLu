@@ -30,14 +30,14 @@ IOLock* ruleEventLock = NULL;
 /* FUNCTIONS */
 
 //init
-// ->alloc lock and dictionary for rules
+// alloc lock and dictionary for rules
 bool initRules()
 {
     //status var
     bool status = false;
 
     //dbg msg
-    IOLog("LULU: in %s\n", __FUNCTION__);
+    //IOLog("LULU: in %s\n", __FUNCTION__);
     
     //init global rule event lock
     ruleEventLock = IOLockAlloc();
@@ -78,11 +78,11 @@ bail:
 }
 
 //uninit rules
-// ->frees lock and rules dictionary
+// frees lock and rules dictionary
 void uninitRules()
 {
     //dbg msg
-    IOLog("LULU: in %s\n", __FUNCTION__);
+    //IOLog("LULU: in %s\n", __FUNCTION__);
     
     //free rules dictionary
     if(NULL != rules)

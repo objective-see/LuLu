@@ -291,6 +291,9 @@ kern_return_t unregisterSocketFilters()
         
         //set global flag
         gUnregisteringTCPIPV4 = true;
+        
+        //dbg msg
+        IOLog("LULU: unregistered socker filter for tcp ipv4\n");
     }
     
     //UDP IPV4
@@ -312,6 +315,9 @@ kern_return_t unregisterSocketFilters()
         
         //set global flag
         gUnregisteringUDPIPV4 = true;
+        
+        //dbg msg
+        IOLog("LULU: unregistered socker filter for udp ipv4\n");
     }
     
     //TCP IPV6
@@ -333,6 +339,9 @@ kern_return_t unregisterSocketFilters()
         
         //set global flag
         gUnregisteringTCPIPV6 = true;
+        
+        //dbg msg
+        IOLog("LULU: unregistered socker filter for tcp ipv6\n");
     }
     
     //UDP IPV6
@@ -354,6 +363,9 @@ kern_return_t unregisterSocketFilters()
         
         //set global flag
         gUnregisteringUDPIPV6 = true;
+        
+        //dbg msg
+        IOLog("LULU: unregistered socker filter for udp ipv6\n");
     }
 
     //filter still registered?
@@ -385,7 +397,7 @@ bail:
 static void unregistered(sflt_handle handle)
 {
     //dbg msg
-    IOLog("LULU: in %s\n", __FUNCTION__);
+    //IOLog("LULU: in %s\n", __FUNCTION__);
     
     //dbg msg
     IOLog("LULU: unregistering handle %d\n", handle);
@@ -440,7 +452,7 @@ bool shouldIgnore(const struct sockaddr *to, kern_return_t* result)
     if(true != isEnabled)
     {
         //dbg msg
-        IOLog("LULU: firewall is not enabled, so ignoring w/ 'allow'\n");
+        //IOLog("LULU: firewall is not enabled, so ignoring w/ 'allow'\n");
         
         //ignore
         ingore = true;
@@ -457,7 +469,7 @@ bool shouldIgnore(const struct sockaddr *to, kern_return_t* result)
     if(true == isLocalHost(to))
     {
         //dbg msg
-        IOLog("LULU: socket destination is 'localhost' so ignoring w/ 'allow'\n");
+        //IOLog("LULU: socket destination is 'localhost' so ignoring w/ 'allow'\n");
         
         //ignore
         ingore = true;
@@ -474,7 +486,7 @@ bool shouldIgnore(const struct sockaddr *to, kern_return_t* result)
     if(true == isLockedDown)
     {
         //dbg msg
-        IOLog("LULU: firewall is in 'lockdown' mode, so ignoring w/ 'block'\n");
+        //IOLog("LULU: firewall is in 'lockdown' mode, so ignoring w/ 'block'\n");
         
         //ignore
         ingore = true;
@@ -487,7 +499,7 @@ bool shouldIgnore(const struct sockaddr *to, kern_return_t* result)
     }
     
     //dbg msg
-    IOLog("LULU: not ignoring socket/socket action\n");
+    //IOLog("LULU: not ignoring socket/socket action\n");
     
 bail:
     
@@ -573,7 +585,7 @@ static kern_return_t attach(void **cookie, socket_t so)
     ((struct cookieStruct*)(*cookie))->ruleAction = queryRule(proc_selfpid());
     
     //dbg msg
-    IOLog("LULU: rule action for %d: %d\n", proc_selfpid(), ((struct cookieStruct*)(*cookie))->ruleAction);
+    //IOLog("LULU: rule action for %d: %d\n", proc_selfpid(), ((struct cookieStruct*)(*cookie))->ruleAction);
     
     //happy
     result = kIOReturnSuccess;
@@ -867,13 +879,13 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
         proc_selfname(processName, PATH_MAX);
         
         //dbg msg
-        IOLog("LULU: processing outgoing network event for %s (pid: %d / action: %d)\n", processName, proc_selfpid(), action);
+        //IOLog("LULU: processing outgoing network event for %s (pid: %d / action: %d)\n", processName, proc_selfpid(), action);
 
         //block?
         if(RULE_STATE_BLOCK == action)
         {
             //dbg msg
-            IOLog("LULU: rule says block for %s (pid: %d)\n", processName, proc_selfpid());
+            //IOLog("LULU: rule says block for %s (pid: %d)\n", processName, proc_selfpid());
             
             //gtfo
             result = kIOReturnError;
@@ -886,7 +898,7 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
         else if(RULE_STATE_ALLOW == action)
         {
             //dbg msg
-            IOLog("LULU: rule says allow for %s (pid: %d)\n", processName, proc_selfpid());
+            //IOLog("LULU: rule says allow for %s (pid: %d)\n", processName, proc_selfpid());
             
             //ok
             result = kIOReturnSuccess;
@@ -900,7 +912,7 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
         else if(RULE_STATE_NOT_FOUND == action)
         {
             //dbg msg
-            IOLog("LULU: no rule found for %s (pid: %d)\n", processName, proc_selfpid());
+            //IOLog("LULU: no rule found for %s (pid: %d)\n", processName, proc_selfpid());
             
             //first time
             // send to user mode
@@ -911,7 +923,7 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
             }
             
             //dbg msg
-            IOLog("LULU: thread for %s (pid: %d) going (back) to sleep\n", processName, proc_selfpid());
+            //IOLog("LULU: thread for %s (pid: %d) going (back) to sleep\n", processName, proc_selfpid());
             
             //lock
             IOLockLock(ruleEventLock);
@@ -923,13 +935,13 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
             IOLockUnlock(ruleEventLock);
             
             //dbg msg
-            IOLog("LULU: process %d's thread awoke with reason %d\n", proc_selfpid(), reason);
+            //IOLog("LULU: process %d's thread awoke with reason %d\n", proc_selfpid(), reason);
             
             //woke becuase kext is unloading?
             if(true == isUnloading)
             {
                 //dbg msg
-                IOLog("LULU: thread awoke, but because of kext is unloading\n");
+                //IOLog("LULU: thread awoke, but because of kext is unloading\n");
                 
                 //just allow
                 result = kIOReturnSuccess;
@@ -943,7 +955,7 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
             else if(THREAD_AWAKENED != reason)
             {
                 //dbg msg
-                IOLog("LULU: thread awoke, but because of %d!\n", reason);
+                //IOLog("LULU: thread awoke, but because of %d!\n", reason);
                 
                 //gtfo!
                 result = kIOReturnNotPermitted;
@@ -953,7 +965,7 @@ kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to)
             }
             
             //dbg msg
-            IOLog("LULU: process %d's thread awoke, will check/handle response\n", proc_selfpid());
+            //IOLog("LULU: process %d's thread awoke, will check/handle response\n", proc_selfpid());
             
             //try get rule action again
             // not found, block, allow, etc.
@@ -983,7 +995,7 @@ void queueEvent(socket_t so, const struct sockaddr *to)
     int socketTypeLength = 0;
     
     //dbg msg
-    IOLog("LULU: queueing event for user mode...\n");
+    //IOLog("LULU: queueing event for user mode...\n");
     
     //zero out
     bzero(&event, sizeof(firewallEvent));

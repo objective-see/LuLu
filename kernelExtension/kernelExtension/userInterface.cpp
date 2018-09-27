@@ -89,7 +89,7 @@ void com_objectivesee_driver_LuLu::stop (IOService* provider)
     isEnabled = false;
     
     //dbg msg
-    IOLog("LULU: set 'enabled flag' to false\n");
+    //IOLog("LULU: set 'enabled flag' to false\n");
     
     //invoke super
 	super::stop(provider);
@@ -323,7 +323,7 @@ IOReturn com_objectivesee_driver_LuLu::sEnable(OSObject* target, void* reference
     if(true == wasRegistered)
     {
         //dbg msg
-        IOLog("LULU: socket filters already registered\n");
+        //IOLog("LULU: socket filters already registered\n");
         
         //no errors
         result = kIOReturnSuccess;
@@ -356,7 +356,7 @@ bail:
         isEnabled = true;
         
         //dbg msg
-        IOLog("LULU: set 'enabled flag' to true\n");
+        //IOLog("LULU: set 'enabled flag' to true\n");
     }
     
     return result;
@@ -377,7 +377,7 @@ IOReturn com_objectivesee_driver_LuLu::sDisable(OSObject* target, void* referenc
     isEnabled = false;
     
     //dbg msg
-    IOLog("LULU: set 'enabled flag' to false\n");
+    //IOLog("LULU: set 'enabled flag' to false\n");
     
     //also unregister?
     if(1 == (uint32_t)arguments->scalarInput[0])
@@ -418,7 +418,7 @@ IOReturn com_objectivesee_driver_LuLu::sLockDown(OSObject* target, void* referen
     isLockedDown = (uint32_t)arguments->scalarInput[0];
     
     //dbg msg
-    IOLog("LULU: set 'locked down flag' to %d\n", isLockedDown);
+    //IOLog("LULU: set 'locked down flag' to %d\n", isLockedDown);
     
     //happy
     result = kIOReturnSuccess;
@@ -458,7 +458,7 @@ IOReturn com_objectivesee_driver_LuLu::sAddRule(OSObject* target, void* referenc
     }
     
     //dbg msg
-    IOLog("LULU: added rule %d/%d\n", pid, action);
+    //IOLog("LULU: added rule %d/%d\n", pid, action);
     
     //wake up any waiting threads
     // prev. put to sleep until response from daemon
@@ -489,7 +489,7 @@ IOReturn com_objectivesee_driver_LuLu::sRemoveRule(OSObject* target, void* refer
     rulesRemove(pid);
     
     //dbg msg
-    IOLog("LULU: removed rule %d\n", pid);
+    //IOLog("LULU: removed rule %d\n", pid);
     
     return kIOReturnSuccess;
 }

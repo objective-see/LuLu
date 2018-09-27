@@ -36,7 +36,7 @@
     
     //not in dark mode?
     // make window white
-    if(YES != [[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"] isEqualToString:@"Dark"])
+    if(YES != isDarkMode())
     {
         //make white
         self.window.backgroundColor = NSColor.whiteColor;

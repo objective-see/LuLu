@@ -191,15 +191,9 @@ void com_objective_see_firewall::stop(IOService *provider)
         //keep going though...
     }
     
-    //dbg msg
-    IOLog("LULU: waking up threads, as kext is shutting down\n");
-    
     //wake up any waiting threads
     // prev. put to sleep until response from daemon
     IOLockWakeup(ruleEventLock, &ruleEventLock, false);
-    
-    //dbg msg
-    IOLog("LULU: woke up threads as we are shutting down\n");
     
     //try get lock
     // should only succeed once the all other threads have awoken and relinquished it
