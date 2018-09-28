@@ -128,7 +128,6 @@ elif [ "${1}" == "-uninstall" ]; then
 
     #rebuild cache, full path
     echo "rebuilding kernel cache"
-
     /usr/sbin/kextcache -invalidate / &
 
     echo "uninstall complete"

@@ -96,6 +96,9 @@ BOOL cmdlineInterface(int action)
     //configure obj
     Configure* configure = nil;
     
+    //ignore SIGPIPE
+    signal(SIGPIPE, SIG_IGN);
+    
     //alloc/init
     configure = [[Configure alloc] init];
     
@@ -117,15 +120,15 @@ BOOL cmdlineInterface(int action)
         goto bail;
     }
     
-    //extra install logic
-    // wait for 'system_profiler' and 'kextcache' exit
-    if(ACTION_INSTALL_FLAG == action)
+    //for install, wait for 'system_profiler'
+    // note: this is only exec'd on fresh install
+    if( (ACTION_INSTALL_FLAG == action) &&
+        (0 != [getProcessIDs(SYSTEM_PROFILER, -1) count]) )
     {
         //dbg msg
-        printf("LULU: waiting for 'system_profiler' & 'kextcache' to complete\n");
-        
+        printf("LULU: waiting for 'system_profiler' to complete\n");
+
         //wait for 'system_profiler'
-        // this isn't always exec'd, so we'll just exit loop quickly
         while(YES)
         {
             //nap
@@ -138,22 +141,25 @@ BOOL cmdlineInterface(int action)
                 break;
             }
         }
+    }
+    
+    //dbg msg
+    printf("LULU: waiting for 'kextcache' to complete\n");
+    
+    //wait for 'kextcache'
+    while(YES)
+    {
+        //nap
+        [NSThread sleepForTimeInterval:1.0];
         
-        //wait for 'kextcache'
-        while(YES)
+        //exit'd?
+        if(0 == [getProcessIDs(KEXT_CACHE, -1) count])
         {
-            //nap
-            [NSThread sleepForTimeInterval:1.0];
-            
-            //exit'd?
-            if(0 == [getProcessIDs(KEXT_CACHE, -1) count])
-            {
-                //bye
-                break;
-            }
+            //bye
+            break;
         }
     }
-
+    
     //happy
     wasConfigured = YES;
     
