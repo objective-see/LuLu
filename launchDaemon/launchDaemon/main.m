@@ -252,7 +252,7 @@ bail:
     // tell kext to disable/unregister, etc
     goodbye();
         
-    }//autorelease pool
+    }//pool
     
     return 0;
 }

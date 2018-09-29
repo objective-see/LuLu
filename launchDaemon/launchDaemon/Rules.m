@@ -85,24 +85,29 @@ extern Preferences* preferences;
     //init path to rule's file
     rulesFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE];
     
-    //don't exist?
-    // likely first time, so generate default rules
-    if(YES != [[NSFileManager defaultManager] fileExistsAtPath:rulesFile])
+    //sync rule generation
+    // if a user imports rules, while this code is running, that's not ideal!
+    @synchronized(self)
     {
-        //generate
-        if(YES != [self generateDefaultRules])
+        //don't exist?
+        // likely first time, so generate default rules
+        if(YES != [[NSFileManager defaultManager] fileExistsAtPath:rulesFile])
         {
-            //err msg
-            logMsg(LOG_ERR, @"failed to generate default rules");
+            //generate
+            if(YES != [self generateDefaultRules])
+            {
+                //err msg
+                logMsg(LOG_ERR, @"failed to generate default rules");
+                
+                //bail
+                goto bail;
+            }
             
-            //bail
-            goto bail;
+            //dbg msg
+            logMsg(LOG_DEBUG, @"generated default rules");
         }
-        
-        //dbg msg
-        logMsg(LOG_DEBUG, @"generated default rules");
     }
-    
+
     //load serialized rules from disk
     serializedRules = [NSMutableDictionary dictionaryWithContentsOfFile:[INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE]];
     if(nil == serializedRules)

@@ -229,8 +229,7 @@ extern Baseline* baseline;
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"connection event: socket type: %d \n", connection->socketType]);
         
     }//while(YES)
-    
-//bail
+
 bail:
     
     //close socket
@@ -350,8 +349,29 @@ bail:
                     // code signing computations, slow for big apps, don't want those to slow everything down
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                         
+                        //copy of event
+                        struct networkOutEvent_s* networkOutEvent = NULL;
+                        
+                        //allocate
+                        networkOutEvent = calloc(0x1, sizeof(networkOutEvent));
+                        if(NULL == networkOutEvent)
+                        {
+                            //bail
+                            // from block
+                            return;
+                        }
+                    
+                        //make copy
+                        memcpy(&networkOutEvent, &event.networkOutEvent, sizeof(networkOutEvent));
+                        
                         //process
-                        [self processNetworkOut:((struct networkOutEvent_s*)&event.networkOutEvent)];
+                        [self processNetworkOut:networkOutEvent];
+                        
+                        //free
+                        free(networkOutEvent);
+                        
+                        //unset
+                        networkOutEvent = NULL;
                         
                     });
                     
@@ -413,9 +433,6 @@ bail:
 // if there is no matching rule, will tell client to show alert
 -(void)processNetworkOut:(struct networkOutEvent_s*)event
 {
-    //alert info
-    //NSMutableDictionary* alert = nil;
-    
     //process obj
     Process* process = nil;
     

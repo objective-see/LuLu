@@ -122,7 +122,7 @@ bail:
 }
 
 //override description method
-// ->allows rules to be 'pretty-printed'
+// allows rules to be 'pretty-printed'
 -(NSString*)description
 {
     //just serialize
