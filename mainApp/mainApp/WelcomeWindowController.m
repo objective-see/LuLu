@@ -66,9 +66,6 @@
     //high sierra version struct
     NSOperatingSystemVersion highSierra = {10,13,0};
     
-    //apple script object
-    __block NSAppleScript* scriptObject = nil;
-    
     //prev view was config?
     // send prefs to daemon to save
     if( (VIEW_CONFIGURE+1) == ((NSToolbarItem*)sender).tag)
@@ -158,27 +155,15 @@
             // this will block so invoke in background to keep UI responsive 
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
             ^{
-                //init apple script
-                // have it show 'General' tab of 'Security Pane'
-                scriptObject = [[NSAppleScript alloc] initWithSource:
-                                @"tell application \"System Preferences\"\n" \
-                                "activate\n" \
-                                "reveal anchor \"General\" of pane id \"com.apple.preference.security\"\n" \
-                                "end tell\n"];
-                
-                //execute to open prefs
-                [scriptObject executeAndReturnError:nil];
+                //launch system prefs and show 'privacy'
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"x-apple.systempreferences:com.apple.preference.security?General"]];
                 
                 //wait for kext
                 // will block...
                 wait4kext([NSString stringWithUTF8String:LULU_SERVICE_NAME]);
                 
-                //init apple script
-                // have it tell 'System Preferences' to quit
-                scriptObject = [[NSAppleScript alloc] initWithSource:@"tell application \"System Preferences\" to quit"];
-                
-                //execute to quit 'System Preferences'
-                [scriptObject executeAndReturnError:nil];
+                //quit 'System Preferences'
+                [[[NSAppleScript alloc] initWithSource:@"tell application \"System Preferences\" to quit"] executeAndReturnError:nil];
                 
                 //ok loaded!
                 // show next view

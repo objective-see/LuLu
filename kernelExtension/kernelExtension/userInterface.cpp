@@ -52,7 +52,7 @@ OSDefineMetaClassAndStructors(com_objectivesee_driver_LuLu, IOUserClient)
 
 //start
 // init rules, data queue, shared memory, etc
-bool com_objectivesee_driver_LuLu::start (IOService* provider)
+bool com_objectivesee_driver_LuLu::start(IOService* provider)
 {
     //result
     bool result = false;
@@ -76,11 +76,8 @@ bail:
 }
 
 //stop
-void com_objectivesee_driver_LuLu::stop (IOService* provider)
+void com_objectivesee_driver_LuLu::stop(IOService* provider)
 {
-    //status
-    //kern_return_t status = kIOReturnError;
-    
     //dbg msg
     IOLog("LULU: in (IOUserClient) %s\n", __FUNCTION__);
     
@@ -98,7 +95,7 @@ void com_objectivesee_driver_LuLu::stop (IOService* provider)
 }
 
 //free
-// ->don't do anything here, at the moment
+// don't do anything here, at the moment
 void com_objectivesee_driver_LuLu::free (void)
 {
     //dbg msg
@@ -111,7 +108,7 @@ void com_objectivesee_driver_LuLu::free (void)
 }
 
 //client close
-// ->invoke terminate to make object inactive
+// invoke terminate to make object inactive
 IOReturn com_objectivesee_driver_LuLu::clientClose (void)
 {
     //result
@@ -192,14 +189,14 @@ bail:
 }
 
 //dispatcher for external methods
-// ->validate selector, then invoke super which re-routes to appropriate method
+// validate selector, then invoke super which re-routes to appropriate method
 IOReturn com_objectivesee_driver_LuLu::externalMethod(uint32_t selector, IOExternalMethodArguments* arguments, IOExternalMethodDispatch* dispatch, OSObject* target, void* reference)
 {
     //result
     IOReturn result = kIOReturnError;
     
     //dbg msg
-    IOLog("LULU: in (IOUserClient) %s\n", __FUNCTION__);
+    //IOLog("LULU: in (IOUserClient) %s\n", __FUNCTION__);
     
     //set target
     target = this;
@@ -235,7 +232,7 @@ IOReturn com_objectivesee_driver_LuLu::registerNotificationPort(mach_port_t port
     IOReturn result = kIOReturnError;
     
     //dbg msg
-    IOLog("LULU: in (IOUserClient) %s\n", __FUNCTION__);
+    //IOLog("LULU: in (IOUserClient) %s\n", __FUNCTION__);
     
     //sanity check
     if( (NULL == sharedDataQueue) ||
@@ -263,7 +260,7 @@ IOReturn com_objectivesee_driver_LuLu::clientMemoryForType(UInt32 type, IOOption
     IOReturn result = kIOReturnError;
     
     //dbg msg
-    IOLog("LULU: in (IOUserClient) %s\n", __FUNCTION__);
+    //IOLog("LULU: in (IOUserClient) %s\n", __FUNCTION__);
     
     //unset
     *memory = NULL;
@@ -442,7 +439,7 @@ IOReturn com_objectivesee_driver_LuLu::sAddRule(OSObject* target, void* referenc
     uint32_t action = 0;
     
     //dbg msg
-    IOLog("LULU: in %s\n", __FUNCTION__);
+    //IOLog("LULU: in %s\n", __FUNCTION__);
     
     //grab pid
     pid = (uint32_t)arguments->scalarInput[0];
@@ -480,7 +477,7 @@ IOReturn com_objectivesee_driver_LuLu::sRemoveRule(OSObject* target, void* refer
     uint32_t pid = 0;
     
     //dbg msg
-    IOLog("LULU: in %s\n", __FUNCTION__);
+    //IOLog("LULU: in %s\n", __FUNCTION__);
     
     //grab pid
     pid = (uint32_t)arguments->scalarInput[0];

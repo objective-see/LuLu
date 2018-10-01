@@ -353,7 +353,7 @@ bail:
                         struct networkOutEvent_s* networkOutEvent = NULL;
                         
                         //allocate
-                        networkOutEvent = calloc(0x1, sizeof(networkOutEvent));
+                        networkOutEvent = calloc(0x1, sizeof(struct networkOutEvent_s));
                         if(NULL == networkOutEvent)
                         {
                             //bail
@@ -362,7 +362,7 @@ bail:
                         }
                     
                         //make copy
-                        memcpy(&networkOutEvent, &event.networkOutEvent, sizeof(networkOutEvent));
+                        memcpy(networkOutEvent, &event.networkOutEvent, sizeof(struct networkOutEvent_s));
                         
                         //process
                         [self processNetworkOut:networkOutEvent];
