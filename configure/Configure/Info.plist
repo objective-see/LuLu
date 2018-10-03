@@ -13,11 +13,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.0</string>
+	<string>1.1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.1.0</string>
+	<string>1.1.1</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright (c) 2018 Objective-See. All rights reserved.</string>
 	<key>NSMainNibFile</key>
@@ -27,7 +27,7 @@
 	<key>SMPrivilegedExecutables</key>
 	<dict>
 		<key>com.objective-see.lulu.configHelper</key>
-		<string>anchor apple generic and identifier "com.objective-see.lulu.configHelper" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = VBG97UB4TA)</string>
+		<string>anchor apple generic and identifier &quot;com.objective-see.lulu.configHelper&quot; and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = VBG97UB4TA)</string>
 	</dict>
 </dict>
 </plist>

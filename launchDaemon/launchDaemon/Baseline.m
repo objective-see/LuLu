@@ -249,7 +249,7 @@ bail:
         if(YES != [[NSCountedSet setWithArray:preInstalledBinary[KEY_SIGNATURE_AUTHORITIES]] isEqualToSet:[NSCountedSet setWithArray:signingInfo[KEY_SIGNATURE_AUTHORITIES]]] )
         {
             //err msg
-            logMsg(LOG_ERR, [NSString stringWithFormat:@"signing authority mismatch between %@/%@", preInstalledBinary[KEY_SIGNATURE_AUTHORITIES], signingInfo[KEY_SIGNATURE_AUTHORITIES]]);
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"signing authority mismatch for %@ %@/%@", binary.path, preInstalledBinary[KEY_SIGNATURE_AUTHORITIES], signingInfo[KEY_SIGNATURE_AUTHORITIES]]);
             
             //bail
             goto bail;
@@ -427,7 +427,7 @@ bail:
     if(YES != [[NSCountedSet setWithArray:childProcess.signingInfo[KEY_SIGNATURE_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:parentBinary.signingInfo[KEY_SIGNATURE_AUTHORITIES]]] )
     {
         //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"signing authority mismatch between %@/%@", childProcess.signingInfo[KEY_SIGNATURE_AUTHORITIES], parentBinary.signingInfo[KEY_SIGNATURE_AUTHORITIES]]);
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"signing authority mismatch between parent/child %@/%@", childProcess.signingInfo[KEY_SIGNATURE_AUTHORITIES], parentBinary.signingInfo[KEY_SIGNATURE_AUTHORITIES]]);
         
         //bail
         goto bail;
