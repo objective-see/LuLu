@@ -386,7 +386,7 @@ bail:
         if(YES != [[NSCountedSet setWithArray:matchingRule.signingInfo[KEY_SIGNATURE_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:process.signingInfo[KEY_SIGNATURE_AUTHORITIES]]] )
         {
             //err msg
-            logMsg(LOG_ERR, [NSString stringWithFormat:@"signing authority mismatch between %@/%@", matchingRule.signingInfo[KEY_SIGNATURE_AUTHORITIES], process.signingInfo[KEY_SIGNATURE_AUTHORITIES]]);
+            logMsg(LOG_ERR, [NSString stringWithFormat:@"signing authority mismatch for %@ %@/%@", process.path, matchingRule.signingInfo[KEY_SIGNATURE_AUTHORITIES], process.signingInfo[KEY_SIGNATURE_AUTHORITIES]]);
             
             //unset
             matchingRule = nil;
