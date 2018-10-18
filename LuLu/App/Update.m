@@ -91,7 +91,7 @@ extern os_log_t logHandle;
     }
     
     //extract latest version
-    latestVersion = productsVersionDictionary[PRODUCT_KEY][@"version"];
+    latestVersion = [productsVersionDictionary objectForKey:@"tag_name"];
     
     //dbg msg
     os_log_debug(logHandle, "latest version: %{public}@", latestVersion);
