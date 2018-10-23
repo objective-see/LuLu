@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "mac",
-      "filename" : "lulu_text.pdf"
+      "filename" : "luluText.pdf"
     },
     {
       "idiom" : "mac",
-      "filename" : "lulu_text-1.pdf",
+      "filename" : "luluTextLight.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -16,7 +16,7 @@
     },
     {
       "idiom" : "mac",
-      "filename" : "lulu_text-2.pdf",
+      "filename" : "luluTextDark.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",

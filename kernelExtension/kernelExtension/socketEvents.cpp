@@ -442,7 +442,7 @@ static void unregistered(sflt_handle handle)
 
 //determine if socket should be ignored
 // i.e. firewall disabled, in lockdown mode, etc
-bool shouldIgnore(const struct sockaddr *to, kern_return_t* result)
+bool shouldIgnore(socket_t so, const struct sockaddr *to, kern_return_t* result)
 {
     //flag
     bool ingore = false;
@@ -466,7 +466,7 @@ bool shouldIgnore(const struct sockaddr *to, kern_return_t* result)
     
     //check 0x2:
     // is socket local host?
-    if(true == isLocalHost(to))
+    if(true == isLocalHost(so, to))
     {
         //dbg msg
         //IOLog("LULU: socket destination is 'localhost' so ignoring w/ 'allow'\n");
@@ -506,43 +506,92 @@ bail:
     return ingore;
 }
 
-//check if socket is local host
-bool isLocalHost(const struct sockaddr *to)
+//check if socket destination is local host
+bool isLocalHost(socket_t so, const struct sockaddr *to)
 {
     //flag
     bool localHost = false;
     
-    //sanity check
+    //socket name
+    struct sockaddr_in6 socketName = {0};
+    
+    //peer name
+    struct sockaddr_in6 peerName = {0};
+    
+    //destination
+    struct sockaddr_in6* destination = {0};
+    
+    //family
+    int family = 0;
+    
+    //UDP sockets' dest. can be null
+    // if so, extract via 'sock_getsockname' / 'getpeername'
     if(NULL == to)
     {
-        //bail
-        goto bail;
+        //get socket family
+        if(0 != sock_getsockname(so, (struct sockaddr*)&socketName, sizeof(socketName)))
+        {
+            //err msg
+            IOLog("LULU ERROR: sock_getsockname() failed\n");
+            
+            //bail
+            goto bail;
+        }
+        
+        //extract family
+        family = socketName.sin6_family;
+        
+        //lookup remote socket info
+        if(0 != sock_getpeername(so, (struct sockaddr*)&peerName, sizeof(peerName)))
+        {
+            //err msg
+            IOLog("LULU ERROR: sock_getpeername() failed\n");
+            
+            //bail
+            goto bail;
+        }
+        
+        //init destination addr
+        destination = &peerName;
+    }
+    //'to' not NULL
+    // so use its values
+    else
+    {
+        //extract family
+        family = to->sa_family;
+        
+        //init ptr to destination addr
+        destination = (struct sockaddr_in6*)to;
     }
     
     //check socket addr
-    switch(to->sa_family)
+    switch(family)
     {
         //IPv4
         case AF_INET:
-            localHost = (INADDR_LOOPBACK == htonl(((const struct sockaddr_in*)to)->sin_addr.s_addr));
+            
+            //local host check
+            localHost = (INADDR_LOOPBACK == htonl(((const struct sockaddr_in*)destination)->sin_addr.s_addr));
+            
             break;
             
         //IPv6
         case AF_INET6:
             
             //IPv4 addr mapped into IPv6?
-            if(true == IN6_IS_ADDR_V4MAPPED(&((const struct sockaddr_in6*)to)->sin6_addr))
+            if(true == IN6_IS_ADDR_V4MAPPED(&((const struct sockaddr_in6*)destination)->sin6_addr))
             {
                 //local host check
                 // only on IPv4 portion
-                localHost = (INADDR_LOOPBACK == htonl((*(const __uint32_t *)(const void *)(&(((const struct sockaddr_in6*)to)->sin6_addr).s6_addr[12]))));
+                localHost = (INADDR_LOOPBACK == htonl((*(const __uint32_t *)(const void *)(&(((const struct sockaddr_in6*)destination)->sin6_addr).s6_addr[12]))));
             }
             
             //'pure' IPv6 local host?
             else
             {
                 //local host check
-                localHost = IN6_IS_ADDR_LOOPBACK(&((const struct sockaddr_in6*)to)->sin6_addr);
+                localHost = IN6_IS_ADDR_LOOPBACK(&((const struct sockaddr_in6*)destination)->sin6_addr);
             }
             
             break;
@@ -779,7 +828,8 @@ static kern_return_t data_out(void *cookie, socket_t so, const struct sockaddr *
     
     //should ignore?
     // if disabled, in lockdown mode, etc
-    if(true == shouldIgnore(to, &result))
+    // note: call sets result (allow, disallow, etc)
+    if(true == shouldIgnore(so, to, &result))
     {
         //bail
         goto bail;
@@ -822,7 +872,8 @@ static kern_return_t connect_out(void *cookie, socket_t so, const struct sockadd
     
     //should ignore?
     // if disabled, in lockdown mode, etc
-    if(true == shouldIgnore(to, &result))
+    // note: call sets result (allow, disallow, etc)
+    if(true == shouldIgnore(so, to, &result))
     {
         //bail
         goto bail;

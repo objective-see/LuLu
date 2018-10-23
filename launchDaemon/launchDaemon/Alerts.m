@@ -94,7 +94,7 @@ extern KextListener* kextListener;
     alert[ALERT_PATH] = process.path;
     
     //add (remote) ip
-    alert[ALERT_IPADDR] = convertSocketAddr((struct sockaddr*)&(event->remoteAddress));
+    alert[ALERT_IPADDR] = remoteAddress;
     
     //try get host name from DNS cache
     // since it's based on recv'ing data from kernel, try for a bit...

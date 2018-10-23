@@ -345,35 +345,8 @@ bail:
                 //network out events
                 case EVENT_NETWORK_OUT:
                 {
-                    //dispatch to handle/process rule
-                    // code signing computations, slow for big apps, don't want those to slow everything down
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                        
-                        //copy of event
-                        struct networkOutEvent_s* networkOutEvent = NULL;
-                        
-                        //allocate
-                        networkOutEvent = calloc(0x1, sizeof(struct networkOutEvent_s));
-                        if(NULL == networkOutEvent)
-                        {
-                            //bail
-                            // from block
-                            return;
-                        }
-                    
-                        //make copy
-                        memcpy(networkOutEvent, &event.networkOutEvent, sizeof(struct networkOutEvent_s));
-                        
-                        //process
-                        [self processNetworkOut:networkOutEvent];
-                        
-                        //free
-                        free(networkOutEvent);
-                        
-                        //unset
-                        networkOutEvent = NULL;
-                        
-                    });
+                    //process
+                    [self processNetworkOut:((struct networkOutEvent_s*)&event.networkOutEvent)];
                     
                     break;
                 }

@@ -175,7 +175,7 @@ bool com_objectivesee_driver_LuLu::initWithTask(task_t owningTask, void* securit
     }
     
     //TODO: validate client here
-    // only signed by obj-see!?
+    // only signed by objective-see!?
     
     //dbg msg
     IOLog("LULU: allowed client to connect\n");

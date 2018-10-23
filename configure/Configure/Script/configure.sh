@@ -13,11 +13,11 @@
 INSTALL_DIRECTORY="/Library/Objective-See/LuLu"
 
 #OS version check
-# only support 10.10+
+# only support 10.12+
 OSVers="$(sw_vers -productVersion)"
-if [ "${OSVers:3:2}" -lt 10 ]; then
+if [ "${OSVers:3:2}" -lt 12 ]; then
     echo "\nERROR: ${OSVers} is currently unsupported"
-    echo "LuLu requires macOS 10.10+\n"
+    echo "LuLu requires macOS 10.12+\n"
     exit -1
 fi
 

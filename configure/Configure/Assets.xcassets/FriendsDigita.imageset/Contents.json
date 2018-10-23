@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "mac",
-      "filename" : "Digita.pdf"
+      "filename" : "digita.pdf"
     },
     {
       "idiom" : "mac",
-      "filename" : "Digita-1.pdf",
+      "filename" : "digitaLight.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -16,7 +16,7 @@
     },
     {
       "idiom" : "mac",
-      "filename" : "Digita-2.pdf",
+      "filename" : "digitaDark.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",

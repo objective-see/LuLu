@@ -48,8 +48,8 @@ static boolean_t gUnregisteringUDPIPV6 = FALSE;
 //register socket filters
 kern_return_t registerSocketFilters();
 
-//check if socket is local host
-bool isLocalHost(const struct sockaddr *to);
+//check if socket destination is local host
+bool isLocalHost(socket_t so, const struct sockaddr *to);
 
 //process a socket
 kern_return_t process(void *cookie, socket_t so, const struct sockaddr *to);

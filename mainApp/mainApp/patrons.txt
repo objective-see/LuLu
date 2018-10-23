@@ -1,5 +1,5 @@
 Patrons:
-Halo Privacy, Ash Morgan, Jesse Daguanno, Beau Galbraith, Nando Mendonca, Khalil Sehnaoui, Jeff Golden, Geoffrey Weber, Randy Wong, Gamer_Bot
+Halo Privacy, Ash Morgan, Beau Galbraith, Nando Mendonca, Khalil Sehnaoui, Geoffrey Weber, Randy Wong, Gamer_Bot
 
 Friends of Objective-See:
-Digita Security, Malwarebytes, Don MacAskill
+Digita Security, Sophos, Malwarebytes, SmugMug, Sudo Security Group

@@ -115,9 +115,7 @@
 		CD73DA98200490B4001FFC84 /* HelperComms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperComms.h; sourceTree = "<group>"; };
 		CDA6E62C203B674C00C78F91 /* configure.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = configure.sh; sourceTree = "<group>"; };
 		CDA6E62E203B67A100C78F91 /* consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = consts.h; path = ../../shared/consts.h; sourceTree = "<group>"; };
-		CDA6E631203B6B7800C78F91 /* luluText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = luluText.png; path = ../../shared/images/luluText.png; sourceTree = "<group>"; };
 		CDA6E632203B6B7800C78F91 /* objectiveSeeText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = objectiveSeeText.png; path = ../../shared/images/objectiveSeeText.png; sourceTree = "<group>"; };
-		CDA6E633203B6B7900C78F91 /* luluIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = luluIcon.png; path = ../../shared/images/luluIcon.png; sourceTree = "<group>"; };
 		CDA6E634203B6B7900C78F91 /* objectiveSeeLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = objectiveSeeLogo.png; path = ../../shared/images/objectiveSeeLogo.png; sourceTree = "<group>"; };
 		CDAAC23F202255580032F2E6 /* utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = utilities.m; path = ../../shared/utilities.m; sourceTree = "<group>"; };
 		CDAAC240202255580032F2E6 /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = ../../shared/utilities.h; sourceTree = "<group>"; };
@@ -244,8 +242,6 @@
 		CDAAC24620226D400032F2E6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				CDA6E633203B6B7900C78F91 /* luluIcon.png */,
-				CDA6E631203B6B7800C78F91 /* luluText.png */,
 				CDA6E634203B6B7900C78F91 /* objectiveSeeLogo.png */,
 				CDA6E632203B6B7800C78F91 /* objectiveSeeText.png */,
 			);
@@ -477,7 +473,7 @@
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = NO;
 				INFOPLIST_FILE = configure/Info.plist;
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.installer";
 				PRODUCT_NAME = "LuLu Installer";
@@ -500,7 +496,7 @@
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = NO;
 				INFOPLIST_FILE = configure/Info.plist;
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.installer";
 				PRODUCT_NAME = "LuLu Installer";
@@ -554,7 +550,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -604,7 +600,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;

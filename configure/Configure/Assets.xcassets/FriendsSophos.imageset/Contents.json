@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "mac",
-      "filename" : "luluIcon.pdf"
+      "filename" : "sophos.png"
     },
     {
       "idiom" : "mac",
-      "filename" : "luluIconLight.pdf",
+      "filename" : "sophosLight.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -16,7 +16,7 @@
     },
     {
       "idiom" : "mac",
-      "filename" : "luluIconDark.pdf",
+      "filename" : "sophosDark.png",
       "appearances" : [
         {
           "appearance" : "luminosity",

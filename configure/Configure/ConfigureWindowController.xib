@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -106,7 +106,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5m-Bo-NlS">
-                    <rect key="frame" x="68" y="59" width="138" height="19"/>
+                    <rect key="frame" x="39" y="57" width="135" height="19"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Digita Security" id="MtN-NI-kav">
                         <font key="font" size="13" name="Menlo-Regular"/>
@@ -115,14 +115,14 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C7S-GH-AYp">
-                    <rect key="frame" x="117" y="84" width="40" height="50"/>
+                    <rect key="frame" x="78" y="80" width="48" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsDigita" id="fwj-wn-r5b"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pqf-EC-ZHk">
-                    <rect key="frame" x="296" y="84" width="65" height="50"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YBz-bV-qIw">
+                    <rect key="frame" x="198" y="84" width="65" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsMalwarebytes" id="1ys-ig-b1N"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsSophos" id="P6w-a1-9JX"/>
                 </imageView>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Xfy-pO-bPJ">
                     <rect key="frame" x="331" y="13" width="115" height="32"/>
@@ -135,8 +135,17 @@
                         <action selector="buttonHandler:" target="-2" id="3PB-dL-p78"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0m6-no-UxH">
+                    <rect key="frame" x="161" y="57" width="138" height="19"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Sophos" id="bur-GX-u7b">
+                        <font key="font" size="13" name="Menlo-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hrx-qN-4t2">
-                    <rect key="frame" x="259" y="59" width="138" height="19"/>
+                    <rect key="frame" x="306" y="57" width="108" height="19"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Malwarebytes" id="SJb-zK-MOr">
                         <font key="font" size="13" name="Menlo-Regular"/>
@@ -144,6 +153,11 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pqf-EC-ZHk">
+                    <rect key="frame" x="325" y="82" width="71" height="57"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsMalwarebytes" id="1ys-ig-b1N"/>
+                </imageView>
             </subviews>
             <point key="canvasLocation" x="785" y="-256"/>
         </customView>
@@ -151,6 +165,7 @@
     <resources>
         <image name="FriendsDigita" width="450" height="460"/>
         <image name="FriendsMalwarebytes" width="792" height="612"/>
+        <image name="FriendsSophos" width="188" height="190"/>
         <image name="InstallerIcon" width="1276" height="1276"/>
         <image name="InstallerLuLuText" width="1268" height="385"/>
     </resources>
