@@ -103,7 +103,7 @@
 #define BUTTON_MORE_INFO 101
 
 //product version url
-#define PRODUCT_VERSIONS_URL @"https://objective-see.com/products.json"
+#define PRODUCT_VERSIONS_URL @"https://api.github.com/repos/objective-see/LuLu/releases/latest"
 
 //install cmd
 #define CMD_INSTALL @"-install"

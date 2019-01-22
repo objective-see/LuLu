@@ -88,7 +88,7 @@
     }
     
     //extract latest version
-    latestVersion = [[productsVersionDictionary objectForKey:@"LuLu"] objectForKey:@"version"];
+    latestVersion = [productsVersionDictionary objectForKey:@"tag_name"];
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"latest version: %@", latestVersion]);
