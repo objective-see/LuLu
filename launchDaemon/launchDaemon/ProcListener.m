@@ -116,8 +116,7 @@ extern Rules* rules;
 }
 
 //process start
-//  add to list of procs
-//  ...and if rule exists, tell kernel
+//  add to list of procs and broadcast event
 -(void)processStart:(Process*)process
 {
     //dbg msg
@@ -137,8 +136,7 @@ extern Rules* rules;
 }
 
 //process end
-// remove from list of procs
-// ...also tell kernel to invalidate rule for that pid
+// remove from list of procs and broadcast event
 -(void)processEnd:(Process*)process
 {
     //dbg msg

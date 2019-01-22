@@ -21,8 +21,8 @@
 #import "Preferences.h"
 #import "KextListener.h"
 #import "ProcListener.h"
-#import "UserClientShared.h"
 #import "XPCUserProto.h"
+#import "UserClientShared.h"
 
 /* GLOBALS */
 
@@ -85,7 +85,7 @@ extern Baseline* baseline;
     [NSThread detachNewThreadSelector:@selector(processEvents) toTarget:self withObject:nil];
     
     //start process end observer
-    self.processEndObvserver =  [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_PROCESS_END object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
+    self.processEndObvserver = [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_PROCESS_END object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
     {
         //extract process
         process = notification.userInfo[NOTIFICATION_PROCESS_END];
@@ -889,21 +889,36 @@ bail:
 // process mon sometimes a bit slow...
 -(Process*)findProcess:(pid_t)pid
 {
+    //process path
+    NSString* processPath = nil;
+
     //process obj
     Process* process = nil;
 
     //count
     NSUInteger i = 0;
 
+    //get path
+    processPath = getProcessPath(pid);
+    
     //try up to a second
     for(i=0; i<10; i++)
     {
         //try find process
         process = processListener.processes[[NSNumber numberWithUnsignedInt:pid]];
+        
+        //process found?
         if(nil != process)
         {
-            //found  it
-            break;
+            //if locally got a path
+            // make sure path matches
+            // ...sometimes pids are re-used
+            if( (0 == processPath.length) ||
+                (YES == [process.path isEqualToString:processPath]) )
+            {
+                //found  it
+                break;
+            }
         }
         
         //nap
