@@ -39,6 +39,9 @@ NSString* topLevelApp(NSString* binaryPath);
 // b) signed with signing auth
 OSStatus verifyApp(NSString* path, NSString* signingAuth);
 
+//get name of logged in user
+NSString* getConsoleUser(void);
+
 //check if process is alive
 BOOL isProcessAlive(pid_t processID);
 

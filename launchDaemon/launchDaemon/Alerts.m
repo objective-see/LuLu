@@ -25,6 +25,7 @@ extern KextListener* kextListener;
 @implementation Alerts
 
 @synthesize shownAlerts;
+@synthesize consoleUser;
 @synthesize userObserver;
 @synthesize relatedAlerts;
 @synthesize xpcUserClient;
@@ -53,8 +54,11 @@ extern KextListener* kextListener;
         // when it fires, deliver any alerts that occured when user wasn't logged in
         self.userObserver = [[NSNotificationCenter defaultCenter] addObserverForName:USER_NOTIFICATION object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
         {
-             //process alerts
-             [self processUndelivered];
+            //grab console user
+            self.consoleUser = getConsoleUser();
+            
+            //process alerts
+            [self processUndelivered];
         }];
     }
     

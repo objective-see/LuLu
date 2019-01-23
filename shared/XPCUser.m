@@ -40,6 +40,9 @@
         //set alert
         alertWindow.alert = alert;
         
+        //show in all spaces
+        alertWindow.window.collectionBehavior = NSWindowCollectionBehaviorCanJoinAllSpaces;
+        
         //show alert window
         [alertWindow showWindow:self];
         

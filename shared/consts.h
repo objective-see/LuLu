@@ -93,17 +93,20 @@
 //rule state; allow
 #define RULE_STATE_ALLOW 1
 
+//product version url
+#define PRODUCT_VERSIONS_URL @"https://objective-see.com/products.json"
+
 //product url
 #define PRODUCT_URL @"https://objective-see.com/products/lulu.html"
+
+//error(s) url
+#define ERRORS_URL @"https://objective-see.com/errors.html"
 
 //support us button tag
 #define BUTTON_SUPPORT_US 100
 
 //more info button tag
 #define BUTTON_MORE_INFO 101
-
-//product version url
-#define PRODUCT_VERSIONS_URL @"https://objective-see.com/products.json"
 
 //install cmd
 #define CMD_INSTALL @"-install"

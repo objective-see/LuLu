@@ -43,14 +43,6 @@
     return;
 }
 
-//exit when last window is closed
--(BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
-{
-    #pragma unused(sender)
-    
-    return YES;
-}
-
 //display configuration window w/ 'install' || 'uninstall' button
 -(void)displayConfigureWindow:(BOOL)isInstalled
 {

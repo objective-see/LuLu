@@ -151,7 +151,7 @@ bail:
     dispatchSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_SIGNAL, SIGTERM, 0, dispatch_get_main_queue());
     
     //set handler
-    // disable kext & close logging
+    // deletes plist and self
     dispatch_source_set_event_handler(dispatchSource, ^{
         
         //dbg msg
@@ -209,6 +209,7 @@ bail:
     helperPlist = [@"/Library/LaunchDaemons" stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", CONFIG_HELPER_ID]];
     
     //unload
+    // will trigger sigterm
     execTask(@"/bin/launchctl", @[@"unload", helperPlist], YES, NO);
     
     return;

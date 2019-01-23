@@ -34,6 +34,9 @@
 //xpc client for talking to user (login item)
 @property(nonatomic, retain)XPCUserClient* xpcUserClient;
 
+//console user
+@property(nonatomic, retain)NSString* consoleUser;
+
 /* METHODS */
 
 //create an alert object

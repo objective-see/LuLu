@@ -256,6 +256,12 @@ bail:
     return status;
 }
 
+//get name of logged in user
+NSString* getConsoleUser()
+{
+    //copy/return user
+    return CFBridgingRelease(SCDynamicStoreCopyConsoleUser(NULL, NULL, NULL));
+}
 
 //get process name
 // either via app bundle, or path
@@ -1645,6 +1651,7 @@ void backgroundApp()
     //dbg msg
     logMsg(LOG_DEBUG, @"sending login item to background");
     
+    //send to background
     transformApp(kProcessTransformToBackgroundApplication);
     
     return;

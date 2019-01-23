@@ -136,9 +136,17 @@
             //disable button
             self.restartButton.enabled = NO;
             
-            //bye!
-            restart();
-        
+            //cleanup
+            [self cleanup];
+            
+            //restart after a bit (allow cleanup to completee)
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (100 * NSEC_PER_MSEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                
+                //bye!
+                restart();
+                
+            });
+            
             break;
             
         //close
@@ -237,7 +245,7 @@
             self.window.contentView = self.friendsView;
             
             //make 'restart' button first responder
-            // calling this without a timeout sometimes fails :/
+            // calling this without a timeout, sometimes fails :/
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (100 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
                 
                 //set first responder
@@ -251,8 +259,8 @@
         
         //default
         default:
+            
             break;
-        
     }
     
     return;
@@ -264,15 +272,9 @@
 {
     #pragma unused(sender)
     
-    //url
-    NSURL *helpURL = nil;
-    
-    //build help URL
-    helpURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@#errors", PRODUCT_URL]];
-    
     //open URL
     // invokes user's default browser
-    [[NSWorkspace sharedWorkspace] openURL:helpURL];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:ERRORS_URL]];
     
     return;
 }
@@ -588,7 +590,7 @@ bail:
     // then exit application
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
     ^{
-        //install/uninstall
+        //cleanup
         [self cleanup];
         
         //exit

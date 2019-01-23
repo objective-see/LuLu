@@ -412,6 +412,9 @@ bail:
     //matching rule obj
     Rule* matchingRule = nil;
     
+    //console user
+    NSString* consoleUser = nil;
+    
     //default cs flags
     // note: since this is dynamic check, we don't need to check all architectures, skip resources, etf
     SecCSFlags flags = kSecCSDefaultFlags;
@@ -526,6 +529,9 @@ bail:
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"no (saved) rule found for %@ (%d)", process.binary.name, process.pid]);
+
+    //grab console user
+    consoleUser = getConsoleUser();
     
     //if it's an apple process and that preference is set; allow!
     // unless the binary is something like 'curl' which malware could abuse (still alert!)
@@ -602,6 +608,21 @@ bail:
         [self.passiveProcesses addObject:[NSNumber numberWithInt:event->pid]];
         
         //all set 
+        goto bail;
+    }
+    
+    //ingore if console process is different
+    // handles fast-user switching, where the secondary user doesn't have LuLu installed...
+    if( (nil != consoleUser) &&
+        (YES != [alerts.consoleUser isEqualToString:consoleUser]) )
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"current console user '%@', is different than '%@', so allowing %@", consoleUser, alerts.consoleUser, process.path]);
+        
+        //allow
+        [kextComms addRule:event->pid action:RULE_STATE_ALLOW];
+        
+        //all set
         goto bail;
     }
     
@@ -907,7 +928,7 @@ bail:
         //try find process
         process = processListener.processes[[NSNumber numberWithUnsignedInt:pid]];
         
-        //process found?
+        //(candidate) process found?
         if(nil != process)
         {
             //if locally got a path
