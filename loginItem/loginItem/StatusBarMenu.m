@@ -141,86 +141,48 @@ enum menuItems
 //menu handler
 -(void)handler:(id)sender
 {
-    //path to config (main) app
-    NSString* mainApp = nil;
-    
-    //error
-    NSError* error = nil;
-    
-    //window notification
-    NSNumber* windowNotification = nil;
-    
-    //commandline args
-    NSArray* cmdline = nil;
-    
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"user clicked status menu item %lu", ((NSMenuItem*)sender).tag]);
     
-    //toggle?
-    // enable/disable
-    if(toggle == ((NSMenuItem*)sender).tag)
+    //handle user selection
+    switch(((NSMenuItem*)sender).tag)
     {
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"toggling (%d)", self.isDisabled]);
+        //toggle
+        case toggle:
         
-        //invert since toggling
-        self.isDisabled = !self.isDisabled;
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"toggling (%d)", self.isDisabled]);
         
-        //set menu state
-        [self setState];
+            //invert since toggling
+            self.isDisabled = !self.isDisabled;
         
-        //update prefs
-        [[[XPCDaemonClient alloc] init] updatePreferences:@{PREF_IS_DISABLED:[NSNumber numberWithBool:self.isDisabled]}];
+            //set menu state
+            [self setState];
         
-        //all done
-        goto bail;
-    }
-    
-    //get path to main app
-    mainApp = getMainAppPath();
-    
-    //prefs
-    //set window/cmdline flags
-    if(prefs == ((NSMenuItem*)sender).tag)
-    {
-        //set window notification
-        windowNotification = [NSNumber numberWithInt:WINDOW_PREFERENCES];
+            //update prefs
+            [[[XPCDaemonClient alloc] init] updatePreferences:@{PREF_IS_DISABLED:[NSNumber numberWithBool:self.isDisabled]}];
         
-        //set cmdline args
-        cmdline = @[CMDLINE_FLAG_PREFS];
-    }
-    
-    //default to rules
-    // set window/cmdline flags
-    else
-    {
-        //set window notification
-        windowNotification = [NSNumber numberWithInt:WINDOW_RULES];
-        
-        //set cmdline args
-        cmdline = @[CMDLINE_FLAG_RULES];
-    }
-    
-    //when main app alread running
-    // just tell it to show correct window
-    if(nil != [getProcessIDs([[NSBundle bundleWithPath:mainApp] executablePath], getuid()) firstObject])
-    {
-        //send
-        [[NSDistributedNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SHOW_WINDOW object:nil userInfo:@{@"window":windowNotification} deliverImmediately:YES];
-    }
-    //otherwise
-    // launch main app w/ cmdline args
-    else
-    {
-        //launch main app
-        if(nil == [[NSWorkspace sharedWorkspace] launchApplicationAtURL:[NSURL fileURLWithPath:mainApp] options:0 configuration:@{NSWorkspaceLaunchConfigurationArguments: cmdline} error:&error])
-        {
-            //err msg
-            logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to launch %@ (%@)", mainApp, error]);
+            break;
             
-            //bail
-            goto bail;
-        }
+        //rules
+        case rules:
+            
+            //launch main app with 'rules' parameter
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"lulu://rules"]];
+            
+            break;
+            
+        //prefs
+        case prefs:
+            
+            //launch main app with 'preferences' parameter
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"lulu://preferences"]];
+            
+            break;
+            
+        default:
+            
+            break;
     }
     
 bail:

@@ -42,6 +42,9 @@ OSStatus verifyApp(NSString* path, NSString* signingAuth);
 //get name of logged in user
 NSString* getConsoleUser(void);
 
+//start app with options
+BOOL startApplication(NSURL* appPath, NSUInteger launchOptions);
+
 //check if process is alive
 BOOL isProcessAlive(pid_t processID);
 
@@ -101,9 +104,6 @@ NSString* convertIPAddr(unsigned char* ipAddr, __uint8_t socketFamily);
 
 //convert socket numeric address to (ns)string
 NSString* convertSocketAddr(struct sockaddr* socket);
-
-//check if an instance of an app is already running
-BOOL isAppRunning(NSString* bundleID);
 
 //exec a process with args
 // if 'shouldWait' is set, wait and return stdout/in and termination status

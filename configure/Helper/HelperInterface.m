@@ -181,7 +181,6 @@ bail:
             
             //set error
             noErrors = NO;
-            
         }
         
         //no errors?
@@ -200,6 +199,7 @@ bail:
         
         //bye!
         exit(SIGTERM);
+        
     });
     
     //resume

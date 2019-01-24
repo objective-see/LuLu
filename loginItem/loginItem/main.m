@@ -15,26 +15,13 @@
 
 int main(int argc, const char * argv[])
 {
-    //return var
-    int iReturn = -1;
+    //dbg msg
+    logMsg(LOG_DEBUG, @"starting helper (login item)");
     
     //init crash reporting
+    // kicks off sentry.io
     initCrashReporting();
     
-    //already running?
-    if(YES == isAppRunning([[NSBundle mainBundle] bundleIdentifier]))
-    {
-        //err msg
-        logMsg(LOG_DEBUG, @"an instance of LuLu (helper app) is already running...exiting");
-        
-        //bail
-        goto bail;
-    }
-    
     //launch app normally
-    iReturn = NSApplicationMain(argc, argv);
-    
-bail:
-    
-    return iReturn;
+    return NSApplicationMain(argc, argv);
 }

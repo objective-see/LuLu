@@ -32,9 +32,6 @@
     //preferences
     NSDictionary* preferences = nil;
     
-    //dbg msg
-    logMsg(LOG_DEBUG, @"starting login item");
-    
     //alloc array for alert (windows)
     alerts = [NSMutableDictionary dictionary];
     
@@ -64,6 +61,15 @@
         //complete initializations
         [self completeInitialization:preferences firstTime:NO];
     }
+    
+    //TODO: do we need to unregister this on app shutdown?
+    //register notification listener for preferences changing...
+    [[NSDistributedNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_PREFS_CHANGED object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
+     {
+         //handle
+         [self preferencesChanged];
+         
+     }];
     
     return;
 }
@@ -146,6 +152,45 @@
             //check
             [self check4Update];
        });
+    }
+    
+    return;
+}
+
+//preferences changed
+// for now, just check status bar icon setting
+-(void)preferencesChanged
+{
+    //preferences
+    NSDictionary* preferences = nil;
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, @"handling 'preferences changed' notification");
+    
+    //get preferences
+    // sends XPC message to daemon
+    preferences = [self.xpcDaemonClient getPreferences];
+    
+    //should run with icon?
+    if(YES != [preferences[PREF_NO_ICON_MODE] boolValue])
+    {
+        //need to init?
+        if(nil == self.statusBarMenuController)
+        {
+            //alloc/load nib
+            statusBarMenuController = [[StatusBarMenu alloc] init:self.statusMenu preferences:(NSDictionary*)preferences firstTime:NO];
+        }
+        
+        //(always) show
+        statusBarMenuController.statusItem.button.hidden = NO;
+    }
+
+    //run without icon
+    // just hide button
+    else
+    {
+        //hide
+        statusBarMenuController.statusItem.button.hidden = YES;
     }
     
     return;

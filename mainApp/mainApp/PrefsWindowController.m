@@ -248,21 +248,9 @@ bail:
     // note: this will include (all) prefs, which is what we want
     self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient getPreferences];
     
-    //restart login item if user toggle'd icon state
-    // note: this has to be done after the prefs are written out by the daemon
-    if(((NSButton*)sender).tag == BUTTON_NO_ICON_MODE)
-    {
-        //restart login item
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-        ^{
-           //restart
-           if(YES != [((AppDelegate*)[[NSApplication sharedApplication] delegate]) startLoginItem:TRUE])
-           {
-               //err msg
-               logMsg(LOG_ERR, @"failed to (re)start login item");
-           }
-        });
-    }
+    //broadcast notification
+    // tells login item to process prefs (e.g. show/hide status bar icon)
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PREFS_CHANGED object:nil userInfo:nil deliverImmediately:YES];
     
     return;
 }

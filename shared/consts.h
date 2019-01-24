@@ -25,7 +25,7 @@
 //main app bundle id
 #define MAIN_APP_ID @"com.objective-see.lulu"
 
-//helper ID
+//helper (login item) ID
 #define HELPER_ID @"com.objective-see.lulu.helper"
 
 //installer (app) ID
@@ -263,6 +263,9 @@
 //process end notification
 #define NOTIFICATION_PROCESS_END @"com.objective-see.lulu.notificationProcessEnd"
 
+//prefs changed notification
+#define NOTIFICATION_PREFS_CHANGED @"com.objective-see.lulu.preferences"
+
 /* LOGIN ITEM */
 
 //path to osascript
@@ -277,9 +280,6 @@
 
 //app name
 #define APP_NAME @"LuLu.app"
-
-//show window notification
-#define NOTIFICATION_SHOW_WINDOW @"com.objective-see.lulu.showWindow"
 
 #define CMDLINE_FLAG_WELCOME @"-welcome"
 #define CMDLINE_FLAG_PREFS @"-prefs"

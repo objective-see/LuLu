@@ -21,6 +21,9 @@
 
 /* PROPERTIES */
 
+//flag for launch method
+@property BOOL urlLaunch;
+
 //main window
 @property(weak)IBOutlet NSWindow* window;
 
@@ -41,13 +44,11 @@
 
 /* METHODS */
 
-//start the (helper) login item
--(BOOL)startLoginItem:(BOOL)shouldRestart;
-
 //'rules' menu item handler
-// alloc and show rules window
 -(IBAction)showRules:(id)sender;
 
+//'prefs' menu item handler
+-(IBAction)showPreferences:(id)sender;
 
 @end
 

@@ -359,9 +359,6 @@ bail:
         //cleanup
         [self.xpcComms cleanup:^(NSNumber *result)
         {
-            //signal sema
-            dispatch_semaphore_signal(semaphore);
-            
             //save result
             wasRemoved = (BOOL)(result.intValue == 0);
             
@@ -371,6 +368,10 @@ bail:
                 //unset
                 self.gotHelp = NO;
             }
+            
+            //signal sema
+            dispatch_semaphore_signal(semaphore);
+            
         }];
         
         //wait for installer logic to be completed by XPC
@@ -405,11 +406,11 @@ bail:
     //define block
     void(^block)(NSNumber *) = ^(NSNumber *result)
     {
-        //signal sema
-        dispatch_semaphore_signal(semaphore);
-            
         //save result
         wasInstalled = (BOOL)(result.intValue == 0);
+        
+        //signal sema
+        dispatch_semaphore_signal(semaphore);
     };
     
     //install
@@ -476,12 +477,11 @@ bail:
     //define block
     void (^block)(NSNumber *) = ^(NSNumber *result)
     {
-        //signal sema
-        dispatch_semaphore_signal(semaphore);
-            
         //save result
         wasUninstalled = (BOOL)(result.intValue == 0);
         
+        //signal sema
+        dispatch_semaphore_signal(semaphore);
     };
     
     //init path to login item

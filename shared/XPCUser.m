@@ -29,7 +29,7 @@
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"daemon invoked user XPC method, '%s'", __PRETTY_FUNCTION__]);
     
     //on main (ui) thread
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_sync(dispatch_get_main_queue(), ^{
         
         //alert window
         AlertWindowController* alertWindow = nil;
@@ -58,7 +58,7 @@
         @synchronized(((AppDelegate*)[[NSApplication sharedApplication] delegate]).alerts)
         {
             //save
-            ((AppDelegate*)[[NSApplication sharedApplication] delegate]).alerts[alert[ALERT_PATH]] =  alertWindow;
+            ((AppDelegate*)[[NSApplication sharedApplication] delegate]).alerts[alert[ALERT_PATH]] = alertWindow;
         }
     });
     

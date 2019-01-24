@@ -734,8 +734,16 @@ NSImage* getIconForProcess(NSString* path)
     NSBundle* appBundle = nil;
     
     //invalid path?
+    // grab a default icon and bail
     if(YES != [[NSFileManager defaultManager] fileExistsAtPath:path])
     {
+        //set icon to system 'application' icon
+        icon = [[NSWorkspace sharedWorkspace]
+                iconForFileType: NSFileTypeForHFSTypeCode(kGenericApplicationIcon)];
+        
+        //set size to 64 @2x
+        [icon setSize:NSMakeSize(128, 128)];
+   
         //bail
         goto bail;
     }
@@ -775,7 +783,7 @@ NSImage* getIconForProcess(NSString* path)
         icon = [[NSWorkspace sharedWorkspace] iconForFile:path];
         
         //load system document icon
-        // ->static var, so only load once
+        // static var, so only load once
         if(nil == documentIcon)
         {
             //load
@@ -784,16 +792,16 @@ NSImage* getIconForProcess(NSString* path)
         }
         
         //if 'iconForFile' method doesn't find and icon, it returns the system 'document' icon
-        // ->the system 'application' icon seems more applicable, so use that here...
+        // the system 'application' icon seems more applicable, so use that here...
         if(YES == [icon isEqual:documentIcon])
         {
-            //set icon to system 'applicaiton' icon
+            //set icon to system 'application' icon
             icon = [[NSWorkspace sharedWorkspace]
                     iconForFileType: NSFileTypeForHFSTypeCode(kGenericApplicationIcon)];
         }
         
         //'iconForFileType' returns small icons
-        // ->so set size to 64 @2x
+        // so set size to 64 @2x
         [icon setSize:NSMakeSize(128, 128)];
     }
     
@@ -1301,31 +1309,35 @@ pid_t getParentID(int pid)
     return parentID;
 }
 
-//check if an instance of an app is already running
-BOOL isAppRunning(NSString* bundleID)
+//start app
+// note: executed with 'NSWorkspaceLaunchWithoutActivation'
+BOOL startApplication(NSURL* path, NSUInteger launchOptions)
 {
-    //flag
-    BOOL alreadyRunning = NO;
+    //status var
+    BOOL result = NO;
     
-    //aleady an instance?
-    // make that instance active and then bail
-    for(NSRunningApplication* runningApp in [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleID])
+    //error
+    NSError* error = nil;
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"starting application: %@", path]);
+    
+    //launch it
+    if(nil == [[NSWorkspace sharedWorkspace] launchApplicationAtURL:path options:launchOptions configuration:@{} error:&error])
     {
-        //another instance that's not this?
-        if(YES != [runningApp isEqual:[NSRunningApplication currentApplication]])
-        {
-            //set flag
-            alreadyRunning = YES;
-            
-            //make (already) running instance first
-            [runningApp activateWithOptions:NSApplicationActivateAllWindows|NSApplicationActivateIgnoringOtherApps];
-            
-            //done looking
-            break;
-        }
+        //err msg
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to launch application: %@/%@", path, error]);
+        
+        //bail
+        goto bail;
     }
     
-    return alreadyRunning;
+    //happy
+    result = YES;
+    
+bail:
+    
+    return result;
 }
 
 //exec a process with args
@@ -1637,6 +1649,7 @@ void foregroundApp()
     //set ui mode
     SetSystemUIMode(kUIModeNormal, 0);
     
+    //TODO: maybe not needed?
     //bring to front
     [NSApp activateIgnoringOtherApps:YES];
     
@@ -1653,6 +1666,9 @@ void backgroundApp()
     
     //send to background
     transformApp(kProcessTransformToBackgroundApplication);
+    
+    //TODO: need?
+    //SetSystemUIMode(kUIModeNormal, 0);
     
     return;
 }

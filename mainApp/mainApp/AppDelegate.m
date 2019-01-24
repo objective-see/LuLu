@@ -21,10 +21,24 @@
 @synthesize rulesWindowController;
 @synthesize welcomeWindowController;
 
-//center window
-// also make front, init title bar, etc
--(void)awakeFromNib
+//app interface
+// init user interface
+-(void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    //path to login item
+    NSString* loginItem = nil;
+    
+    //dbg msg
+    logMsg(LOG_DEBUG, @"main (rules/pref) app launched");
+    
+    //when launched via URL handler
+    // no need to do anything here...
+    if(YES == self.urlLaunch)
+    {
+        //all set
+        goto bail;
+    }
+    
     //init deamon comms
     // establishes connection to daemon
     xpcDaemonClient = [[XPCDaemonClient alloc] init];
@@ -52,201 +66,88 @@
         
         //make key and front
         [self.welcomeWindowController.window makeKeyAndOrderFront:self];
+        
+        //make app active
+        [NSApp activateIgnoringOtherApps:YES];
     }
     
-    //show preferences?
-    else if(YES == [[[NSProcessInfo processInfo] arguments] containsObject:CMDLINE_FLAG_PREFS])
-    {
-        //show preferences window
-        [self showPreferences:nil];
-        
-        //center
-        [self.prefsWindowController.window center];
-        
-        //make key and front
-        [self.prefsWindowController.window makeKeyAndOrderFront:self];
-    }
-    
-    //display rules
-    // this is the default
+    //otherwise
+    // make sure login item is running, and show rules
     else
     {
+        //init path to login item
+        loginItem = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"/Contents/Library/LoginItems/%@.app", LOGIN_ITEM_NAME]];
+        
         //show rules window
         [self showRules:nil];
         
-        //center window
-        [self.rulesWindowController.window center];
-        
-        //make key and front
-        [self.rulesWindowController.window makeKeyAndOrderFront:self];
-    }
-
-    //make app active
-    [NSApp activateIgnoringOtherApps:YES];
-    
-    return;
-}
-
-//app interface
-// init user interface
--(void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    //dbg msg
-    logMsg(LOG_DEBUG, @"main (rules/pref) app launched");
-    
-    //for rules/pref view
-    // make sure login item is running and register for notifications
-    if(YES != [[[NSProcessInfo processInfo] arguments] containsObject:CMDLINE_FLAG_WELCOME])
-    {
-        //start login item in background
-        // method checks first to make sure only one instance is running
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-        ^{
+        //if needed
+        // start login item
+        if(nil == [[NSRunningApplication runningApplicationsWithBundleIdentifier:HELPER_ID] firstObject])
+        {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+            ^{
                //start
-               [self startLoginItem:NO];
-        });
-        
-        //register for notifications from login item
-        // if user clicks 'rules' or 'prefs' make sure we show that window
-        [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationHandler:) name:NOTIFICATION_SHOW_WINDOW object:nil];
+               startApplication([NSURL fileURLWithPath:loginItem], NSWorkspaceLaunchWithoutActivation);
+            });
+        }
     }
     
-    return;
-}
-
-//unregister notification handler
--(void)applicationWillTerminate:(NSApplication *)application
-{
-    //for rules/pref view
-    // unregister notification
-    if(YES != [[[NSProcessInfo processInfo] arguments] containsObject:CMDLINE_FLAG_WELCOME])
-    {
-        //unregister
-        [[NSDistributedNotificationCenter defaultCenter] removeObserver:self name:NOTIFICATION_SHOW_WINDOW object:nil];
-    }
-    return;
-}
-
-//start the (helper) login item
--(BOOL)startLoginItem:(BOOL)shouldRestart
-{
-    //status var
-    BOOL result = NO;
-    
-    //path to login item app
-    NSString* loginItem = nil;
-    
-    //path to login item binary
-    NSString* loginItemBinary = nil;
-    
-    //login item's pid
-    NSNumber* loginItemPID = nil;
-    
-    //results from 'open'
-    NSDictionary* taskResults = nil;
-    
-    //init path to login item app
-    loginItem = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"/Contents/Library/LoginItems/%@.app", LOGIN_ITEM_NAME]];
-
-    //init path to binary
-    loginItemBinary = [NSString pathWithComponents:@[loginItem, @"Contents", @"MacOS", LOGIN_ITEM_NAME]];
-    
-    //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"looking for login item %@", loginItemBinary]);
-    
-    //get pid(s) of login item for user
-    loginItemPID = [getProcessIDs(loginItemBinary, getuid()) firstObject];
-    
-    //already running and no restart?
-    if( (nil != loginItemPID) &&
-        (YES != shouldRestart) )
-    {
-        //dbg msg
-        logMsg(LOG_DEBUG, @"login item already running and 'shouldRestart' not set, so no need to start it");
-        
-        //happy
-        result = YES;
-        
-        //bail
-        goto bail;
-    }
-    
-    //running?
-    // kill, as restart flag set
-    else if(nil != loginItemPID)
-    {
-        //kill it
-        kill(loginItemPID.intValue, SIGTERM);
-        
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"killed login item (%@)", loginItemPID]);
-    
-        //nap to allow 'kill' sometime...
-        [NSThread sleepForTimeInterval:0.5];
-    }
-
-    //dbg msg
-    logMsg(LOG_DEBUG, @"starting (helper) login item\n");
-
-    //start via 'open'
-    // allows launch without losing focus
-    taskResults = execTask(OPEN, @[@"-g", loginItem], NO, NO);
-    if( (nil == taskResults) ||
-        (0 != [taskResults[EXIT_CODE] intValue]) )
-    {
-        //bail
-        goto bail;
-    }
-    
-    //happy
-    result = YES;
-    
-//bail
 bail:
-
-    return result;
+    
+    return;
 }
+
+//(custom) url handler
+// invoked automatically when user clicks on menu item in login item
+-(void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls
+{
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"main (rules/pref) app launched to handle url(s): %@", urls]);
+    
+    //set flag
+    self.urlLaunch = YES;
+    
+    //init deamon comms
+    // establishes connection to daemon
+    xpcDaemonClient = [[XPCDaemonClient alloc] init];
+    
+    //parse each url
+    // scan or show prefs...
+    for(NSURL* url  in urls)
+    {
+        //show rules?
+        if(YES == [url.host isEqualToString:@"rules"])
+        {
+            //show
+            [self showRules:nil];
+        }
+        
+        //show preferences?
+        else if(YES == [url.host isEqualToString:@"preferences"])
+        {
+            //show
+            [self showPreferences:nil];
+        }
+        
+        /*
+        //close?
+        else if(YES == [url.host isEqualToString:@"close"])
+        {
+            //bye!
+            [NSApp terminate:nil];
+        }
+        */
+    }
+    
+    return;
+}
+
 
 //automatically close when user closes last window
 -(BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication
 {
     return YES;
-}
-
-//notification handler
--(void)notificationHandler:(NSNotification *)notification
-{
-    //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"handling notification from login item %@", notification.userInfo]);
-    
-    //what window to show?
-    switch ([notification.userInfo[@"window"] intValue]) {
-        
-        //show rules window
-        case WINDOW_RULES:
-            
-            //show
-            [self showRules:nil];
-            break;
-            
-        //show preferences window
-        case WINDOW_PREFERENCES:
-            
-            //show
-            [self showPreferences:nil];
-            break;
-            
-        default:
-            break;
-    }
-    
-    //make it key window
-    [self.window makeKeyAndOrderFront:self];
-    
-    //make window front
-    [NSApp activateIgnoringOtherApps:YES];
-
-    return;
 }
 
 #pragma mark -
@@ -325,7 +226,5 @@ bail:
     
     return;
 }
-
-
 
 @end
