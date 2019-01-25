@@ -104,8 +104,14 @@ extern KextListener* kextListener;
     // since it's based on recv'ing data from kernel, try for a bit...
     for(int i=0; i<5; i++)
     {
-        //try grab host name
-        remoteHost = kextListener.dnsCache[alert[ALERT_IPADDR]];
+        //sync to access host names
+        // check if there is one for ip addr
+        @synchronized(kextListener.dnsCache)
+        {
+            //grab
+            remoteHost = [kextListener.dnsCache[alert[ALERT_IPADDR]] objectForKey:DNS_URL];
+        }
+        
         if(nil != remoteHost)
         {
             //add
@@ -143,9 +149,8 @@ extern KextListener* kextListener;
 }
 
 //is related to a shown alert?
-// a) for a given pid
-// b) for this path, if signing info/hash matches
--(BOOL)isRelated:(pid_t)pid process:(Process*)process
+// checks if path/signing info is same
+-(BOOL)isRelated:(Process*)process
 {
     //flag
     __block BOOL related = NO;
@@ -156,76 +161,50 @@ extern KextListener* kextListener;
     //sync
     @synchronized(self.shownAlerts)
     {
-        //when process is nil
-        // only have pid, so check for any match
-        if(nil == process)
+        //grab alert
+        // none, means its new
+        alert = self.shownAlerts[process.path];
+        if(nil == alert)
         {
-            //check for pid match
-            [self.shownAlerts enumerateKeysAndObjectsUsingBlock: ^(id key, NSDictionary* alert, BOOL *stop) {
-                
-                //match?
-                if([alert[ALERT_PID] unsignedIntValue] == pid)
-                {
-                    //set flag
-                    related = YES;
-                    
-                    //stop searching
-                    *stop = YES;
-                }
-            }];
-            
             //bail
             goto bail;
         }
         
-        //check process
-        else
+        //check hash first
+        if(nil != process.binary.sha256)
         {
-            //grab alert
-            // none, means its new
-            alert = self.shownAlerts[process.path];
-            if(nil == alert)
+            //check
+            if(YES == [alert[RULE_HASH] isEqualToString:process.binary.sha256])
+            {
+                //ok hashes match
+                related = YES;
+            }
+            
+            //bail
+            // either way
+            goto bail;
+        }
+        
+        //check code signing info
+        else if(nil != process.signingInfo)
+        {
+            //signing issue?
+            if(noErr != [process.signingInfo[KEY_SIGNATURE_STATUS] intValue])
             {
                 //bail
                 goto bail;
             }
             
-            //check hash first
-            if(nil != process.binary.sha256)
+            //signing auths match?
+            if(YES == [[NSCountedSet setWithArray:alert[RULE_SIGNING_INFO][KEY_SIGNATURE_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:process.signingInfo[KEY_SIGNATURE_AUTHORITIES]]])
             {
-                //check
-                if(YES == [alert[RULE_HASH] isEqualToString:process.binary.sha256])
-                {
-                    //ok hashes match
-                    related = YES;
-                }
-                
-                //bail
-                // either way
-                goto bail;
+                //ok signing match
+                related = YES;
             }
             
-            //check code signing info
-            else if(nil != process.signingInfo)
-            {
-                //signing issue?
-                if(noErr != [process.signingInfo[KEY_SIGNATURE_STATUS] intValue])
-                {
-                    //bail
-                    goto bail;
-                }
-                
-                //signing auths match?
-                if(YES == [[NSCountedSet setWithArray:alert[RULE_SIGNING_INFO][KEY_SIGNATURE_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:process.signingInfo[KEY_SIGNATURE_AUTHORITIES]]])
-                {
-                    //ok signing match
-                    related = YES;
-                }
-                
-                //bail
-                // either way
-                goto bail;
-            }
+            //bail
+            // either way
+            goto bail;
         }
         
     }//sync

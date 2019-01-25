@@ -422,16 +422,6 @@ bail:
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"processing 'network out' event from kernel queue: %d /  %@", event->pid, convertSocketAddr((struct sockaddr*)&(event->remoteAddress))]);
     
-    //check if alert was already processed for this pid
-    if(YES == [alerts isRelated:event->pid process:nil])
-    {
-        //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"an alert already shown for this process (%d), so ignoring", event->pid]);
-        
-        //bail
-        goto bail;
-    }
-    
     //nap a bit
     // for a processes fork/exec, this should process monitor time to register exec event
     [NSThread sleepForTimeInterval:0.5f];
@@ -481,7 +471,7 @@ bail:
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"process object for 'network out' event :%@'", process]);
-
+    
     //proc monitor invoked in 'go easy' mode
     // so generate signing info for process here
     if(nil == process.signingInfo)
@@ -626,24 +616,24 @@ bail:
         goto bail;
     }
     
+    //was alert already shown alert this path?
+    // (and is just awaiting a response from the user)
+    if(YES == [alerts isRelated:process])
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"alert already shown for process (%d) or path (%@), so ignoring", process.pid, process.path]);
+        
+        //add related rule
+        [alerts addRelated:event->pid process:process];
+        
+        //bail
+        goto bail;
+    }
+    
     //ok, have an new process, and an active/enabled client!
     // queue up alert to trigger delivery to client, so user can allow/block
     else
     {
-        //check if alert was already shown for same path
-        // ...and is just awaiting a response from the user
-        if(YES == [alerts isRelated:event->pid process:process])
-        {
-            //dbg msg
-            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"alert already shown for this path (%@), so ignoring", process.path]);
-            
-            //add related rule
-            [alerts addRelated:event->pid process:process];
-            
-            //bail
-            goto bail;
-        }
-        
         //deliver alert
         [alerts deliver:[alerts create:event process:process]];
     }
@@ -717,7 +707,12 @@ bail:
         
         //skip over URL
         // look for NULL terminator
-        while(*dnsData++);
+        while( (*dnsData++) && (dnsData < end));
+        if(dnsData >= end)
+        {
+            //bail
+            goto bail;
+        }
         
         //skip question type
         dnsData += sizeof(unsigned short);
@@ -881,8 +876,12 @@ bail:
             //default to first cName
             if(nil != cName)
             {
-                //add to cache
-                self.dnsCache[ipAddress] = cName;
+                //sync to add
+                @synchronized(self.dnsCache)
+                {
+                    //add to cache
+                    self.dnsCache[ipAddress] = @{DNS_URL:cName, DNS_TIMESTAMP:[NSDate date]};
+                }
                 
                 //dbg msg
                 logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding cName %@ -> %@ to DNS 'cache'", cName, ipAddress]);
@@ -891,8 +890,12 @@ bail:
             // use aName
             else if(nil != aName)
             {
-                //add to cache
-                self.dnsCache[ipAddress] = aName;
+                //sync to add
+                @synchronized(self.dnsCache)
+                {
+                    //add to cache
+                    self.dnsCache[ipAddress] = @{DNS_URL:aName, DNS_TIMESTAMP:[NSDate date]};
+                }
                 
                 //dbg msg
                 logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding aName %@ -> %@ to DNS 'cache'", aName, ipAddress]);
@@ -901,6 +904,26 @@ bail:
         
     }//parse answers
     
+    //prune DNS cache?
+    if(self.dnsCache.count >= 1024)
+    {
+        //sync to remove old entries
+        @synchronized(self.dnsCache)
+        {
+            //iterate over all
+            // delete 'old' dns entries
+            for(NSString* key in self.dnsCache.allKeys)
+            {
+                //older than 1 day? remove...
+                if(60*60*24 <= [[NSDate date] timeIntervalSinceDate:self.dnsCache[key][DNS_TIMESTAMP]])
+                {
+                    //remove
+                    [self.dnsCache removeObjectForKey:key];
+                }
+            }
+        }
+    }
+
 bail:
     
     return;

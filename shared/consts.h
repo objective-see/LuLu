@@ -346,4 +346,10 @@
 //3rd welcome view
 #define WELCOME_VIEW_THREE 3
 
+//DNS url
+#define DNS_URL @"url"
+
+//DNS timestamp
+#define DNS_TIMESTAMP @"timestamp"
+
 #endif /* const_h */

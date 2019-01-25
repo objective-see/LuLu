@@ -47,9 +47,8 @@
 -(void)deliver:(NSDictionary*)alert;
 
 //is related to a shown alert?
-// a) for a given pid
-// b) for this path, if signing info/hash matches
--(BOOL)isRelated:(pid_t)pid process:(Process*)process;
+// checks if path/signing info is same
+-(BOOL)isRelated:(Process*)process;
 
 //add a related rule
 -(void)addRelated:(pid_t)pid process:(Process*)process;
