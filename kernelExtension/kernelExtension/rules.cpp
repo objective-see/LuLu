@@ -58,17 +58,6 @@ bool initRules()
     //alloc rule's dictionary
     rules = OSDictionary::withCapacity(1024);
     
-    //add rule for kernel traffic
-    // pid 0, should always be allowed
-    if(true != rulesAdd(0, RULE_STATE_ALLOW))
-    {
-        //err msg
-        IOLog("LULU ERROR: failed to add rule for kernel (pid 0)\n");
-        
-        //bail
-        goto bail;
-    }
-    
     //happy
     status = true;
 

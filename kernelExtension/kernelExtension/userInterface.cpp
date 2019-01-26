@@ -51,7 +51,6 @@ const IOExternalMethodDispatch com_objectivesee_driver_LuLu::sMethods[kTestUserC
 OSDefineMetaClassAndStructors(com_objectivesee_driver_LuLu, IOUserClient)
 
 //start
-// init rules, data queue, shared memory, etc
 bool com_objectivesee_driver_LuLu::start(IOService* provider)
 {
     //result
@@ -82,7 +81,7 @@ void com_objectivesee_driver_LuLu::stop(IOService* provider)
     IOLog("LULU: in (IOUserClient) %s\n", __FUNCTION__);
     
     //so set flag
-    // tells kext to all everything
+    // tells kext to allow everything
     isEnabled = false;
     
     //dbg msg
@@ -96,7 +95,7 @@ void com_objectivesee_driver_LuLu::stop(IOService* provider)
 
 //free
 // don't do anything here, at the moment
-void com_objectivesee_driver_LuLu::free (void)
+void com_objectivesee_driver_LuLu::free(void)
 {
     //dbg msg
     IOLog("LULU: in (IOUserClient) %s\n", __FUNCTION__);
@@ -109,7 +108,7 @@ void com_objectivesee_driver_LuLu::free (void)
 
 //client close
 // invoke terminate to make object inactive
-IOReturn com_objectivesee_driver_LuLu::clientClose (void)
+IOReturn com_objectivesee_driver_LuLu::clientClose(void)
 {
     //result
     IOReturn result = kIOReturnError;
@@ -133,7 +132,7 @@ bail:
 }
 
 //client died
-IOReturn com_objectivesee_driver_LuLu::clientDied (void)
+IOReturn com_objectivesee_driver_LuLu::clientDied(void)
 {
     //dbg msg
     IOLog("LULU: in (IOUserClient) %s\n", __FUNCTION__);

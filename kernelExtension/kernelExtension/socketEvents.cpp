@@ -607,6 +607,7 @@ bail:
 
 //called for new socket
 // find rule, and attach entry (so know to ask/allow/deny for later actions)
+// note: any non-zero return, prevents filter from attaching to socket (i.e. no callbacks)
 static kern_return_t attach(void **cookie, socket_t so)
 {
     //result
@@ -618,6 +619,17 @@ static kern_return_t attach(void **cookie, socket_t so)
     //unset
     *cookie = NULL;
 
+    //kernel socket?
+    //always ignore, otherwise things break :/
+    if(0 == proc_selfpid())
+    {
+        //ignore
+        result = kIOReturnNotAttached;
+        
+        //all done
+        goto bail;
+    }
+    
     //alloc cookie
     *cookie = (void*)OSMalloc(sizeof(struct cookieStruct), allocTag);
     if(NULL == *cookie)

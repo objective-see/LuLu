@@ -904,28 +904,56 @@ bail:
         
     }//parse answers
     
-    //prune DNS cache?
-    if(self.dnsCache.count >= 1024)
+    //sync
+    @synchronized(self.dnsCache)
     {
-        //sync to remove old entries
-        @synchronized(self.dnsCache)
+        //prune DNS cache?
+        if(self.dnsCache.count >= 1024)
         {
-            //iterate over all
-            // delete 'old' dns entries
-            for(NSString* key in self.dnsCache.allKeys)
-            {
-                //older than 1 day? remove...
-                if(60*60*24 <= [[NSDate date] timeIntervalSinceDate:self.dnsCache[key][DNS_TIMESTAMP]])
-                {
-                    //remove
-                    [self.dnsCache removeObjectForKey:key];
-                }
-            }
+            //prune
+            [self pruneDNSCache];
         }
     }
 
 bail:
     
+    return;
+}
+
+//prune DNS cache
+// remove all old records
+-(void)pruneDNSCache
+{
+    //oldest
+    NSDate *min = nil;
+    
+    //middle
+    NSDate *ave = nil;
+    
+    //newest
+    NSDate *max = nil;
+    
+    //get oldest
+    min = [self.dnsCache.allValues valueForKeyPath:@"@min.time"];
+    
+    //get newest
+    max = [self.dnsCache.allValues valueForKeyPath:@"@max.time"];
+    
+    //get middle
+    ave = [NSDate dateWithTimeInterval:[max timeIntervalSinceDate:min] / 2 sinceDate:min];
+    
+    //delete 'old' dns entries
+    for(NSString* key in self.dnsCache.allKeys)
+    {
+        //older/equal to than ave?
+        // remove record from cache
+        if(NSOrderedDescending == [ave compare:self.dnsCache[key][DNS_TIMESTAMP]])
+        {
+            //remove
+            [self.dnsCache removeObjectForKey:key];
+        }
+    }
+
     return;
 }
 
