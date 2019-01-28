@@ -119,16 +119,6 @@ NSBundle* loadFramework(NSString* name);
 //restart
 void restart(void);
 
-//bring an app to foreground
-// based on: https://stackoverflow.com/questions/7596643/when-calling-transformprocesstype-the-app-menu-doesnt-show-up
-void foregroundApp(void);
-
-//send an app to the background
-void backgroundApp(void);
-
-//transform app state
-OSStatus transformApp(ProcessApplicationTransformState newState);
-
 //check if (full) dark mode
 // meaning, Mojave+ and dark mode enabled
 BOOL isDarkMode(void);

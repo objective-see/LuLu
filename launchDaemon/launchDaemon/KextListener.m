@@ -63,7 +63,10 @@ extern Baseline* baseline;
     if(nil != self)
     {
         //init DNS 'cache'
-        dnsCache = [NSMutableDictionary dictionary];
+        dnsCache = [[NSCache alloc] init];
+        
+        //set cache limit
+        self.dnsCache.countLimit = 1024;
         
         //init list for passively allowed procs
         passiveProcesses = [NSMutableArray array];
@@ -876,12 +879,8 @@ bail:
             //default to first cName
             if(nil != cName)
             {
-                //sync to add
-                @synchronized(self.dnsCache)
-                {
-                    //add to cache
-                    self.dnsCache[ipAddress] = @{DNS_URL:cName, DNS_TIMESTAMP:[NSDate date]};
-                }
+                //add to cache
+                [self.dnsCache setObject:cName forKey:ipAddress];
                 
                 //dbg msg
                 logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding cName %@ -> %@ to DNS 'cache'", cName, ipAddress]);
@@ -890,12 +889,8 @@ bail:
             // use aName
             else if(nil != aName)
             {
-                //sync to add
-                @synchronized(self.dnsCache)
-                {
-                    //add to cache
-                    self.dnsCache[ipAddress] = @{DNS_URL:aName, DNS_TIMESTAMP:[NSDate date]};
-                }
+                //add to cache
+                [self.dnsCache setObject:aName forKey:ipAddress];
                 
                 //dbg msg
                 logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding aName %@ -> %@ to DNS 'cache'", aName, ipAddress]);
@@ -903,57 +898,9 @@ bail:
         }
         
     }//parse answers
-    
-    //sync
-    @synchronized(self.dnsCache)
-    {
-        //prune DNS cache?
-        if(self.dnsCache.count >= 1024)
-        {
-            //prune
-            [self pruneDNSCache];
-        }
-    }
 
 bail:
     
-    return;
-}
-
-//prune DNS cache
-// remove all old records
--(void)pruneDNSCache
-{
-    //oldest
-    NSDate *min = nil;
-    
-    //middle
-    NSDate *ave = nil;
-    
-    //newest
-    NSDate *max = nil;
-    
-    //get oldest
-    min = [self.dnsCache.allValues valueForKeyPath:@"@min.time"];
-    
-    //get newest
-    max = [self.dnsCache.allValues valueForKeyPath:@"@max.time"];
-    
-    //get middle
-    ave = [NSDate dateWithTimeInterval:[max timeIntervalSinceDate:min] / 2 sinceDate:min];
-    
-    //delete 'old' dns entries
-    for(NSString* key in self.dnsCache.allKeys)
-    {
-        //older/equal to than ave?
-        // remove record from cache
-        if(NSOrderedDescending == [ave compare:self.dnsCache[key][DNS_TIMESTAMP]])
-        {
-            //remove
-            [self.dnsCache removeObjectForKey:key];
-        }
-    }
-
     return;
 }
 

@@ -37,6 +37,14 @@
         //alloc/init alert window
         alertWindow = [[AlertWindowController alloc] initWithWindowNibName:@"AlertWindow"];
         
+        //sync to save alert
+        // ensures there is a (memory) reference to the window
+        @synchronized(((AppDelegate*)[[NSApplication sharedApplication] delegate]).alerts)
+        {
+            //save
+            ((AppDelegate*)[[NSApplication sharedApplication] delegate]).alerts[alert[ALERT_PATH]] = alertWindow;
+        }
+        
         //set alert
         alertWindow.alert = alert;
         
@@ -51,15 +59,8 @@
         
         //bring login item to foreground
         // want a dock icon, so user can cmd+tab, etc
-        foregroundApp();
-    
-        //sync to save alert
-        // ensures there is a (memory) reference to the window
-        @synchronized(((AppDelegate*)[[NSApplication sharedApplication] delegate]).alerts)
-        {
-            //save
-            ((AppDelegate*)[[NSApplication sharedApplication] delegate]).alerts[alert[ALERT_PATH]] = alertWindow;
-        }
+        [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+        
     });
     
     return;

@@ -21,6 +21,7 @@
 
 @synthesize alerts;
 @synthesize appObserver;
+@synthesize prefsChanged;
 @synthesize xpcDaemonClient;
 @synthesize updateWindowController;
 @synthesize statusBarMenuController;
@@ -62,14 +63,30 @@
         [self completeInitialization:preferences firstTime:NO];
     }
     
-    //TODO: do we need to unregister this on app shutdown?
     //register notification listener for preferences changing...
-    [[NSDistributedNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_PREFS_CHANGED object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
+    self.prefsChanged = [[NSDistributedNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_PREFS_CHANGED object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
      {
          //handle
          [self preferencesChanged];
          
      }];
+    
+    return;
+}
+
+//app going away
+// cleanup (i.e remove notification, ets
+- (void)applicationWillTerminate:(NSNotification *)notification
+{
+    //remove "prefs changed" observer
+    if(nil != self.prefsChanged)
+    {
+        //remove
+        [[NSDistributedNotificationCenter defaultCenter] removeObserver:self.prefsChanged];
+        
+        //unset
+        self.prefsChanged = nil;
+    }
     
     return;
 }

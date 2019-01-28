@@ -104,14 +104,8 @@ extern KextListener* kextListener;
     // since it's based on recv'ing data from kernel, try for a bit...
     for(int i=0; i<5; i++)
     {
-        //sync to access host names
-        // check if there is one for ip addr
-        @synchronized(kextListener.dnsCache)
-        {
-            //grab
-            remoteHost = [kextListener.dnsCache[alert[ALERT_IPADDR]] objectForKey:DNS_URL];
-        }
-        
+        //try grab host
+        remoteHost = [kextListener.dnsCache objectForKey:alert[ALERT_IPADDR]];
         if(nil != remoteHost)
         {
             //add

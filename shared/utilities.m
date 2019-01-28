@@ -1632,58 +1632,6 @@ void restart()
     return;
 }
 
-//bring an app to foreground
-// based on: https://stackoverflow.com/questions/7596643/when-calling-transformprocesstype-the-app-menu-doesnt-show-up
-void foregroundApp()
-{
-    //dbg msg
-    logMsg(LOG_DEBUG, @"bringing login item to foreground");
-    
-    //transform
-    if(noErr != transformApp(kProcessTransformToForegroundApplication))
-    {
-        //bail
-        goto bail;
-    }
-    
-    //set ui mode
-    SetSystemUIMode(kUIModeNormal, 0);
-    
-    //TODO: maybe not needed?
-    //bring to front
-    [NSApp activateIgnoringOtherApps:YES];
-    
-bail:
-    
-    return;
-}
-
-//send an app to the background
-void backgroundApp()
-{
-    //dbg msg
-    logMsg(LOG_DEBUG, @"sending login item to background");
-    
-    //send to background
-    transformApp(kProcessTransformToBackgroundApplication);
-    
-    //TODO: need?
-    //SetSystemUIMode(kUIModeNormal, 0);
-    
-    return;
-}
-
-//transform app state
-OSStatus transformApp(ProcessApplicationTransformState newState)
-{
-    //serial number
-    // init with current process
-    ProcessSerialNumber psn = { 0, kCurrentProcess };
-    
-    //transform and return
-    return TransformProcessType(&psn, newState);
-}
-
 //check if (full) dark mode
 // meaning, Mojave+ and dark mode enabled
 BOOL isDarkMode()

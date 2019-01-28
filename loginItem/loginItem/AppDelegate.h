@@ -36,6 +36,9 @@
 //alert windows
 @property(nonatomic, retain)NSMutableDictionary* alerts;
 
+//notifcation changed observer
+@property(nonatomic, retain)id prefsChanged;
+
 /* METHODS */
 
 

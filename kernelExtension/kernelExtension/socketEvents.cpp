@@ -619,7 +619,7 @@ static kern_return_t attach(void **cookie, socket_t so)
     //unset
     *cookie = NULL;
 
-    //kernel socket?
+    //kernel socket? (TODO: lockdown mode?)
     //always ignore, otherwise things break :/
     if(0 == proc_selfpid())
     {

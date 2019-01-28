@@ -221,7 +221,7 @@
     if(0 == ((AppDelegate*)[[NSApplication sharedApplication] delegate]).alerts.count)
     {
         //background
-        backgroundApp();
+        [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
     }
 
     return;

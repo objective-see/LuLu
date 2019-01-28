@@ -46,9 +46,9 @@ struct connectionEvent
 //graylist obj
 @property(nonatomic, retain)GrayList* grayList;
 
-//DNS 'cache'
+//DNS cache
 // mappings of IP:URL
-@property(nonatomic, retain)NSMutableDictionary* dnsCache;
+@property(nonatomic, retain)NSCache* dnsCache;
 
 //processes allowed due to 'passive' mode
 // save and reset these if user toggles off this mode
