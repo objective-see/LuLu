@@ -61,6 +61,18 @@
     //timestamp formatter
     NSDateFormatter *timeFormat = nil;
     
+    //paragraph style (for temporary label)
+    NSMutableParagraphStyle* paragraphStyle = nil;
+    
+    //title attributes (for temporary label)
+    NSMutableDictionary* titleAttributes = nil;
+    
+    //init paragraph style
+    paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    
+    //init dictionary for title attributes
+    titleAttributes = [NSMutableDictionary dictionary];
+    
     //init process hierarchy
     [self generateProcessAncestry:[self.alert[ALERT_PID] unsignedIntValue]];
     
@@ -155,8 +167,20 @@
     //add timestamp
     self.timeStamp.stringValue = [NSString stringWithFormat:@"time: %@", [timeFormat stringFromDate:[[NSDate alloc] init]]];
     
-    //temp rule label
-    self.tempRuleLabel.stringValue = [NSString stringWithFormat:@"temporarily (pid: %@)", [self.alert[ALERT_PID] stringValue]];
+    //set paragraph style to left
+    paragraphStyle.alignment = NSTextAlignmentLeft;
+    
+    //set baseline attribute for temporary label
+    titleAttributes[NSBaselineOffsetAttributeName] = [NSNumber numberWithDouble:((self.tempRule.font.xHeight/2.0) - 1.0)];
+    
+    //set paragraph attribute for temporary label
+    titleAttributes[NSParagraphStyleAttributeName] = paragraphStyle;
+    
+    //set color to label default
+    titleAttributes[NSForegroundColorAttributeName] = [NSColor labelColor];
+    
+    //temp rule button label
+    self.tempRule.attributedTitle = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" temporarily (pid: %@)", [self.alert[ALERT_PID] stringValue]] attributes:titleAttributes];
     
     //show touch bar
     [self initTouchBar];

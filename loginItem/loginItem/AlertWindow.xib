@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,7 +25,6 @@
                 <outlet property="signingInfoButton" destination="FqM-TW-r0o" id="rKm-F3-llh"/>
                 <outlet property="signingInfoPopover" destination="Vmt-MD-3aB" id="j62-vV-hvI"/>
                 <outlet property="tempRule" destination="T6r-Lc-cqm" id="Bb5-9g-S6e"/>
-                <outlet property="tempRuleLabel" destination="QCK-3b-3zi" id="t49-Rx-juu"/>
                 <outlet property="timeStamp" destination="qWw-SE-uh0" id="9XD-1e-EJI"/>
                 <outlet property="virusTotalButton" destination="PJQ-Iq-93l" id="S5x-rJ-XJD"/>
                 <outlet property="virusTotalPopover" destination="jsE-Vn-PhK" id="uMq-2j-5rE"/>
@@ -37,7 +36,7 @@
         <window title="LuLu Alert" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
             <rect key="contentRect" x="949" y="509" width="745" height="362"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="2537"/>
             <value key="minSize" type="size" width="745" height="362"/>
             <value key="maxSize" type="size" width="1000" height="362"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
@@ -272,23 +271,15 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T6r-Lc-cqm">
-                        <rect key="frame" x="510" y="8" width="22" height="18"/>
+                        <rect key="frame" x="510" y="8" width="216" height="19"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="18" id="BYE-f6-85S"/>
+                            <constraint firstAttribute="width" constant="212" id="BYE-f6-85S"/>
                         </constraints>
-                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="BdA-oU-RlF">
+                        <buttonCell key="cell" type="check" title="temporarily (pid: 12345)" bezelStyle="regularSquare" imagePosition="left" alignment="center" inset="2" id="BdA-oU-RlF">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="13" name="Menlo-Regular"/>
                         </buttonCell>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QCK-3b-3zi">
-                        <rect key="frame" x="531" y="9" width="196" height="19"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="temporarily (pid: 12345)" id="jMT-bB-bbI">
-                            <font key="font" size="13" name="Menlo-Regular"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="yg5-Dg-d1n">
                         <rect key="frame" x="631" y="28" width="100" height="32"/>
                         <constraints>
@@ -317,15 +308,12 @@
                     <constraint firstItem="AZu-DM-wj7" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="1bn-Ib-j9v"/>
                     <constraint firstItem="i43-b2-cU0" firstAttribute="leading" secondItem="fJv-Iu-3gy" secondAttribute="trailing" constant="9" id="1ie-Km-ATX"/>
                     <constraint firstItem="32G-48-5jq" firstAttribute="leading" secondItem="PJQ-Iq-93l" secondAttribute="trailing" constant="60" id="2RB-oe-ncK"/>
-                    <constraint firstItem="QCK-3b-3zi" firstAttribute="leading" secondItem="T6r-Lc-cqm" secondAttribute="trailing" constant="3" id="2ar-jd-XWt"/>
-                    <constraint firstAttribute="trailing" secondItem="T6r-Lc-cqm" secondAttribute="trailing" constant="215" id="38L-k8-5BX"/>
+                    <constraint firstAttribute="trailing" secondItem="T6r-Lc-cqm" secondAttribute="trailing" constant="21" id="38L-k8-5BX"/>
                     <constraint firstItem="i1i-s4-Q02" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="42" id="8zf-7S-usv"/>
                     <constraint firstItem="hI7-ev-MZU" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="158" id="9Fx-KQ-o7s"/>
                     <constraint firstAttribute="bottom" secondItem="T6r-Lc-cqm" secondAttribute="bottom" constant="10" id="A1o-be-Wcc"/>
                     <constraint firstItem="hI7-ev-MZU" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="25" id="H5F-A8-jOB"/>
                     <constraint firstItem="i1i-s4-Q02" firstAttribute="leading" secondItem="FqM-TW-r0o" secondAttribute="trailing" constant="8" id="HaM-lW-ktN"/>
-                    <constraint firstAttribute="bottom" secondItem="QCK-3b-3zi" secondAttribute="bottom" constant="9" id="JIB-uq-G2o"/>
-                    <constraint firstAttribute="trailing" secondItem="QCK-3b-3zi" secondAttribute="trailing" constant="20" id="JmC-AZ-qcD"/>
                     <constraint firstAttribute="trailing" secondItem="yg5-Dg-d1n" secondAttribute="trailing" constant="20" id="LeZ-Nn-xxg"/>
                     <constraint firstAttribute="bottom" secondItem="Aix-a5-CPT" secondAttribute="bottom" constant="35" id="Obf-Jc-9s2"/>
                     <constraint firstItem="32G-48-5jq" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="45" id="PSz-5K-v7s"/>
@@ -513,7 +501,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="1H0-av-51U">
                         <rect key="frame" x="0.0" y="0.0" width="303" height="79"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="18" indentationPerLevel="16" outlineTableColumn="JFW-5C-nvy" id="1Kj-Rh-cPo">
                                 <rect key="frame" x="0.0" y="0.0" width="303" height="79"/>
