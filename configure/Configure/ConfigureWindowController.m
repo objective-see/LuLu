@@ -55,7 +55,7 @@
     [self window].title = [NSString stringWithFormat:@"version %@", getAppVersion()];
     
     //init status msg
-    [self.statusMsg setStringValue:@"the free, open, firewall 🔥🛡️"];
+    [self.statusMsg setStringValue:@"the free, open-source, firewall 🔥"];
     
     //app already installed?
     // enable 'uninstall' button

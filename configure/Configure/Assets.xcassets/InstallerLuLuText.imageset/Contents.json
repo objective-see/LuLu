@@ -3,26 +3,6 @@
     {
       "idiom" : "mac",
       "filename" : "luluText.pdf"
-    },
-    {
-      "idiom" : "mac",
-      "filename" : "luluTextLight.pdf",
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ]
-    },
-    {
-      "idiom" : "mac",
-      "filename" : "luluTextDark.pdf",
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ]
     }
   ],
   "info" : {

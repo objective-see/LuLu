@@ -18,7 +18,10 @@
     NSRect selectionRect = {0};
     
     //selection path
-    NSBezierPath *selectionPath = nil;
+    NSBezierPath* selectionPath = nil;
+    
+    //selection color
+    NSColor* selectionColor = nil;
     
     //highlight selected rows
     if(self.selectionHighlightStyle != NSTableViewSelectionHighlightStyleNone)
@@ -26,9 +29,14 @@
         //make selection rect
         selectionRect = NSInsetRect(self.bounds, 2.5, 2.5);
         
-        NSColor *selectionColor = [NSColor systemGrayColor];
+        //init color
+        selectionColor = [NSColor systemGrayColor];
         
+        //on 10.14+
+        // set to transparent
         if (@available(macOS 10.14, *)) {
+            
+            //set color
             selectionColor = [NSColor unemphasizedSelectedContentBackgroundColor];
         }
         
@@ -39,7 +47,7 @@
         [selectionColor setFill];
         
         //create selection path
-        // ->with rounded corners
+        // with rounded corners (5x5)
         selectionPath = [NSBezierPath bezierPathWithRoundedRect:selectionRect xRadius:5 yRadius:5];
         
         //fill

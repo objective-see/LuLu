@@ -3,26 +3,6 @@
     {
       "idiom" : "mac",
       "filename" : "sophos.png"
-    },
-    {
-      "idiom" : "mac",
-      "filename" : "sophosLight.png",
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ]
-    },
-    {
-      "idiom" : "mac",
-      "filename" : "sophosDark.png",
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ]
     }
   ],
   "info" : {

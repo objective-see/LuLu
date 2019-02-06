@@ -191,7 +191,7 @@
     if( (tag == RULE_TYPE_ALL) ||
         (tag == RULE_TYPE_USER) )
     {
-        //change label color to black
+        //change label color to default
         self.addRuleLabel.textColor = [NSColor labelColor];
         
         //enable button

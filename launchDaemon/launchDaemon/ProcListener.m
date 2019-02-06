@@ -119,9 +119,27 @@ extern Rules* rules;
 //  add to list of procs and broadcast event
 -(void)processStart:(Process*)process
 {
+    //existing proc
+    Process* existingProcess = nil;
+    
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"process start: %@ (%d)\n", process.path, process.pid]);
     
+    //sync
+    // when invoking 'process remove' logic, want that to complete
+    @synchronized(self)
+    {
+        //see if there is an existing process
+        // fork/exec doesn't trigger an exit event
+        existingProcess = self.processes[[NSNumber numberWithUnsignedInt:process.pid]];
+        if(nil != existingProcess)
+        {
+            //manually remove
+            // will trigger logic to remove rule (in kext)
+            [self processEnd:existingProcess];
+        }
+    }
+
     //sync to add
     @synchronized(self.processes)
     {
