@@ -24,7 +24,7 @@
 @synthesize prefsChanged;
 @synthesize xpcDaemonClient;
 @synthesize updateWindowController;
-@synthesize statusBarMenuController;
+@synthesize statusBarItemController;
 
 //app's main interface
 // load status bar
@@ -145,7 +145,7 @@
     if(YES != [preferences[PREF_NO_ICON_MODE] boolValue])
     {
         //alloc/load nib
-        statusBarMenuController = [[StatusBarMenu alloc] init:self.statusMenu preferences:(NSDictionary*)preferences firstTime:firstTime];
+        statusBarItemController = [[StatusBarItem alloc] init:self.statusMenu preferences:(NSDictionary*)preferences firstTime:firstTime];
         
         //dbg msg
         logMsg(LOG_DEBUG, @"initialized/loaded status bar (icon/menu)");
@@ -153,7 +153,7 @@
     else
     {
         //dbg msg
-        logMsg(LOG_DEBUG, @"running in headless mode");
+        logMsg(LOG_DEBUG, @"running in 'no icon' mode");
     }
     
     //automatically check for updates?
@@ -189,26 +189,41 @@
     preferences = [self.xpcDaemonClient getPreferences];
     
     //should run with icon?
+    // init and show status bar item
     if(YES != [preferences[PREF_NO_ICON_MODE] boolValue])
     {
-        //need to init?
-        if(nil == self.statusBarMenuController)
+        //already showing?
+        if(nil != self.statusBarItemController)
         {
-            //alloc/load nib
-            statusBarMenuController = [[StatusBarMenu alloc] init:self.statusMenu preferences:(NSDictionary*)preferences firstTime:NO];
+            //bail
+            goto bail;
         }
         
-        //(always) show
-        statusBarMenuController.statusItem.button.hidden = NO;
+        //alloc/load status bar icon/menu
+        // will configure, and show popup/menu
+        statusBarItemController = [[StatusBarItem alloc] init:self.statusMenu preferences:(NSDictionary*)preferences firstTime:NO];
+        
     }
-
+    
     //run without icon
-    // just hide button
+    // remove status bar item
     else
     {
-        //hide
-        statusBarMenuController.statusItem.button.hidden = YES;
+        //already removed?
+        if(nil == self.statusBarItemController)
+        {
+            //bail
+            goto bail;
+        }
+        
+        //remove status item
+        [self.statusBarItemController removeStatusItem];
+        
+        //unset
+        self.statusBarItemController = nil;
     }
+    
+bail:
     
     return;
 }

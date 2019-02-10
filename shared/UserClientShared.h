@@ -30,7 +30,6 @@ enum dispatchSelectors {
     
     kTestUserClientEnable,
     kTestUserClientDisable,
-    kTestUserClientLockdown,
     kTestUserClientAddRule,
     kTestUserClientRemoveRule,
 	kTestUserClientMethodCount

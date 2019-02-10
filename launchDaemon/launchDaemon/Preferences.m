@@ -131,18 +131,7 @@ bail:
             [kextComms enable];
         }
     }
-    
-    //lockdown state?
-    if(nil != updates[PREF_LOCKDOWN_MODE])
-    {
-        //dbg msg
-        // and log to file
-        logMsg(LOG_DEBUG, @"setting lockdown state");
-        
-        //enable firewall
-        [kextComms lockdown:[updates[PREF_LOCKDOWN_MODE] boolValue]];
-    }
-    
+
     //add in (new) prefs
     [self.preferences addEntriesFromDictionary:updates];
     

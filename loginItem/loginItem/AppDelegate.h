@@ -9,7 +9,7 @@
 
 @import Cocoa;
 
-#import "StatusBarMenu.h"
+#import "StatusBarItem.h"
 #import "XPCDaemonClient.h"
 #import "UpdateWindowController.h"
 
@@ -22,7 +22,7 @@
 @property(strong) IBOutlet NSMenu* statusMenu;
 
 //status bar menu controller
-@property(nonatomic, retain)StatusBarMenu* statusBarMenuController;
+@property(nonatomic, retain)StatusBarItem* statusBarItemController;
 
 //update window controller
 @property(nonatomic, retain)UpdateWindowController* updateWindowController;

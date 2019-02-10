@@ -180,7 +180,7 @@ extern KextListener* kextListener;
         }
         
         //check code signing info
-        else if(nil != process.signingInfo)
+        if(nil != process.signingInfo)
         {
             //signing issue?
             if(noErr != [process.signingInfo[KEY_SIGNATURE_STATUS] intValue])
@@ -209,10 +209,10 @@ bail:
 }
 
 //add an alert to 'related'
--(void)addRelated:(pid_t)pid process:(Process*)process
+-(void)addRelated:(Process*)process
 {
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding alert to 'related': %@ (%d)", process.path, pid]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"adding alert to 'related': %@ (%d)", process.path, process.pid]);
     
     //save
     @synchronized(self.relatedAlerts)
@@ -226,7 +226,7 @@ bail:
         }
         
         //add
-        [self.relatedAlerts[process.path] addObject:[NSNumber numberWithInt:pid]];
+        [self.relatedAlerts[process.path] addObject:[NSNumber numberWithInt:process.pid]];
     }
     
     return;
@@ -377,6 +377,44 @@ bail:
     }
     
     return;
+}
+
+//check if alert was shown
+-(BOOL)wasShown:(Process*)process
+{
+    //flag
+    BOOL shown = NO;
+    
+    //alert
+    NSDictionary* alert = nil;
+    
+    //sync to check
+    @synchronized(self.shownAlerts)
+    {
+        //grab alert
+        // none means, not shown...
+        alert = self.shownAlerts[process.path];
+        if(nil == alert)
+        {
+            //bail
+            goto bail;
+        }
+        
+        //ensure pid and path are same
+        if( (process.pid != [alert[ALERT_PID] unsignedIntValue]) ||
+            (YES != [process.path isEqualToString:alert[ALERT_PATH]]) )
+        {
+            //bail
+            goto bail;
+        }
+        
+        //ok match
+        shown = YES;
+    }
+    
+bail:
+    
+    return shown;
 }
 
 //via XPC, send an alert

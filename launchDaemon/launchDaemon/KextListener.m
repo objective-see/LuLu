@@ -419,7 +419,7 @@ bail:
     NSString* consoleUser = nil;
     
     //default cs flags
-    // note: since this is dynamic check, we don't need to check all architectures, skip resources, etf
+    // note: since this is dynamic check, we don't need to check all architectures, skip resources, etc
     SecCSFlags flags = kSecCSDefaultFlags;
     
     //dbg msg
@@ -526,8 +526,18 @@ bail:
     //grab console user
     consoleUser = getConsoleUser();
     
+    //ignore if already show for process (pid/path)
+    if(YES == [alerts wasShown:process])
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"an alert already shown for process %@, so ignoring", process]);
+        
+        //bail
+        goto bail;
+    }
+    
     //if it's an apple process and that preference is set; allow!
-    // unless the binary is something like 'curl' which malware could abuse (still alert!)
+    // unless the binary is something like 'curl' which malware could abuse (then, still alert!)
     if( (YES == [preferences.preferences[PREF_ALLOW_APPLE] boolValue]) &&
         (Apple == [process.signingInfo[KEY_SIGNATURE_SIGNER] intValue]) )
     {
@@ -620,14 +630,14 @@ bail:
     }
     
     //was alert already shown alert this path?
-    // (and is just awaiting a response from the user)
+    // ...and is just awaiting a response from the user
     if(YES == [alerts isRelated:process])
     {
         //dbg msg
-        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"alert already shown for process (%d) or path (%@), so ignoring", process.pid, process.path]);
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"alert already shown for path (%@), so ignoring", process.path]);
         
         //add related rule
-        [alerts addRelated:event->pid process:process];
+        [alerts addRelated:process];
         
         //bail
         goto bail;

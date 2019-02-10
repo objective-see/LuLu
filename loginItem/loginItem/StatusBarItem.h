@@ -10,7 +10,7 @@
 
 @import Cocoa;
 
-@interface StatusBarMenu : NSObject <NSPopoverDelegate>
+@interface StatusBarItem : NSObject <NSPopoverDelegate>
 {
 
 }
@@ -28,5 +28,8 @@
 
 //init
 -(id)init:(NSMenu*)menu preferences:(NSDictionary*)preferences firstTime:(BOOL)firstTime;
+
+//remove status item
+-(void)removeStatusItem;
 
 @end

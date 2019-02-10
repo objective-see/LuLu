@@ -34,9 +34,6 @@ bool wasRegistered = false;
 //enabled flag
 bool isEnabled = false;
 
-//locked down flag
-bool isLockedDown = false;
-
 //malloc tag
 OSMallocTag allocTag = NULL;
 

@@ -37,9 +37,6 @@
 //disable socket filtering in kernel
 -(kern_return_t)disable:(BOOL)shouldUnregister;
 
-//set lockdown state
--(kern_return_t)lockdown:(BOOL)shouldLockdown;
-
 //add a rule by pid/action
 -(kern_return_t)addRule:(uint32_t)pid action:(uint32_t)action;
 

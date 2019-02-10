@@ -51,7 +51,7 @@
 -(BOOL)isRelated:(Process*)process;
 
 //add a related rule
--(void)addRelated:(pid_t)pid process:(Process*)process;
+-(void)addRelated:(Process*)process;
 
 //process related alerts
 // adds each to kext, and removes
@@ -62,6 +62,9 @@
 
 //remove an alert from 'shown'
 -(void)removeShown:(NSDictionary*)alert;
+
+//check if alert was shown
+-(BOOL)wasShown:(Process*)process;
 
 //add an alert to 'undelivered'
 -(void)addUndeliverted:(NSDictionary*)alert;

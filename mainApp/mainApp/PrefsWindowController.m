@@ -35,14 +35,11 @@
 //'passive mode' button
 #define BUTTON_PASSIVE_MODE 4
 
-//'lockdown mode' button
-#define BUTTON_LOCKDOWN_MODE 5
-
 //'no-icon mode' button
-#define BUTTON_NO_ICON_MODE 6
+#define BUTTON_NO_ICON_MODE 5
 
 //'update mode' button
-#define BUTTON_NO_UPDATE_MODE 7
+#define BUTTON_NO_UPDATE_MODE 6
 
 //init 'general' view
 // add it, and make it selected
@@ -107,9 +104,6 @@
             //set 'passive mode' button state
             ((NSButton*)[view viewWithTag:BUTTON_PASSIVE_MODE]).state = [self.preferences[PREF_PASSIVE_MODE] boolValue];
             
-            //set 'lockdown mode' button state
-            ((NSButton*)[view viewWithTag:BUTTON_LOCKDOWN_MODE]).state = [self.preferences[PREF_LOCKDOWN_MODE] boolValue];
-            
             //set 'no icon' button state
             ((NSButton*)[view viewWithTag:BUTTON_NO_ICON_MODE]).state = [self.preferences[PREF_NO_ICON_MODE] boolValue];
             
@@ -159,24 +153,6 @@ bail:
     //get button state
     state = [NSNumber numberWithBool:((NSButton*)sender).state];
     
-    //passive mode
-    // lockdown mode can't be on too...
-    if( (BUTTON_PASSIVE_MODE == ((NSButton*)sender).tag) &&
-        (NSOnState == state.intValue) )
-    {
-        //unset lockdown mode button
-        ((NSButton*)[self.modesView viewWithTag:BUTTON_LOCKDOWN_MODE]).state = NSOffState;
-    }
-    
-    //lockdown mode
-    // passive mode can't be on too...
-    else if( (BUTTON_LOCKDOWN_MODE == ((NSButton*)sender).tag) &&
-             (NSOnState == state.intValue) )
-    {
-        //unset passive mode button
-        ((NSButton*)[self.modesView viewWithTag:BUTTON_PASSIVE_MODE]).state = NSOffState;
-    }
-    
     //set appropriate preference
     switch(((NSButton*)sender).tag)
     {
@@ -196,36 +172,9 @@ bail:
             break;
             
         //passive mode
-        // when on, unset lockdown mode
         case BUTTON_PASSIVE_MODE:
-        {
-            //save mode
             updatedPreferences[PREF_PASSIVE_MODE] = state;
-            
-            //unset lockdown mode
-            if(NSOnState == state.intValue)
-            {
-                //unset
-                updatedPreferences[PREF_LOCKDOWN_MODE] = [NSNumber numberWithBool:NSOffState];
-            }
-            
             break;
-        }
-            
-        //lockdown mode
-        // when on, also unset passive mode
-        case BUTTON_LOCKDOWN_MODE:
-        {
-            //save mode
-            updatedPreferences[PREF_LOCKDOWN_MODE] = state;
-            
-            //unset passive mode
-            if(NSOnState == state.intValue)
-            {
-                //unset
-                updatedPreferences[PREF_PASSIVE_MODE] = [NSNumber numberWithBool:NSOffState];
-            }
-        }
             
         //no icon mode
         case BUTTON_NO_ICON_MODE:

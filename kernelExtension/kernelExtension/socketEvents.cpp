@@ -441,7 +441,7 @@ static void unregistered(sflt_handle handle)
 }
 
 //determine if socket should be ignored
-// i.e. firewall disabled, in lockdown mode, etc
+// i.e. firewall disabled, is socket local host, etc
 bool shouldIgnore(socket_t so, const struct sockaddr *to, kern_return_t* result)
 {
     //flag
@@ -476,23 +476,6 @@ bool shouldIgnore(socket_t so, const struct sockaddr *to, kern_return_t* result)
         
         //allow socket
         *result = kIOReturnSuccess;
-        
-        //bail
-        goto bail;
-    }
-    
-    //check 0x3:
-    // is firewall in lockdown mode?
-    if(true == isLockedDown)
-    {
-        //dbg msg
-        //IOLog("LULU: firewall is in 'lockdown' mode, so ignoring w/ 'block'\n");
-        
-        //ignore
-        ingore = true;
-        
-        //disallow socket
-        *result = kIOReturnError;
         
         //bail
         goto bail;
@@ -619,7 +602,7 @@ static kern_return_t attach(void **cookie, socket_t so)
     //unset
     *cookie = NULL;
 
-    //kernel socket? (TODO: lockdown mode?)
+    //kernel socket?
     //always ignore, otherwise things break :/
     if(0 == proc_selfpid())
     {
@@ -839,7 +822,7 @@ static kern_return_t data_out(void *cookie, socket_t so, const struct sockaddr *
     //IOLog("LULU: in %s\n", __FUNCTION__);
     
     //should ignore?
-    // if disabled, in lockdown mode, etc
+    // if disabled, is local host, etc
     // note: call sets result (allow, disallow, etc)
     if(true == shouldIgnore(so, to, &result))
     {
@@ -883,7 +866,7 @@ static kern_return_t connect_out(void *cookie, socket_t so, const struct sockadd
     //IOLog("LULU: in %s\n", __FUNCTION__);
     
     //should ignore?
-    // if disabled, in lockdown mode, etc
+    // if disabled, is local host, etc
     // note: call sets result (allow, disallow, etc)
     if(true == shouldIgnore(so, to, &result))
     {
