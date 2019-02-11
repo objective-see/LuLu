@@ -56,11 +56,11 @@
     
     //ask daemon to load kext
     [[self.daemon remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
-      {
+    {
           //err msg
           logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute daemon XPC method '%s' (error: %@)", __PRETTY_FUNCTION__, proxyError]);
           
-      }] loadKext];
+    }] loadKext];
     
     return;
 }
