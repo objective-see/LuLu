@@ -47,6 +47,24 @@
     return self;
 }
 
+//tell daemon to load kext
+// on 10.13+ might need to re-try to allow user to allow via UI
+-(void)loadKext
+{
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"invoking daemon XPC method, '%s'", __PRETTY_FUNCTION__]);
+    
+    //ask daemon to load kext
+    [[self.daemon remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
+    {
+          //err msg
+          logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute daemon XPC method '%s' (error: %@)", __PRETTY_FUNCTION__, proxyError]);
+          
+    }] loadKext];
+    
+    return;
+}
+
 //get preferences
 // note: synchronous, will block until daemon responds
 -(NSDictionary*)getPreferences
@@ -57,21 +75,13 @@
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"invoking daemon XPC method, '%s'", __PRETTY_FUNCTION__]);
     
-    //request preferences
-    [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
+    //send request to load kext
+    [[self.daemon remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
         //err msg
         logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to execute daemon XPC method '%s' (error: %@)", __PRETTY_FUNCTION__, proxyError]);
-        
-     }] getPreferences:^(NSDictionary* preferencesFromDaemon)
-     {
-         //dbg msg
-         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"got preferences: %@", preferencesFromDaemon]);
-         
-         //save
-         preferences = preferencesFromDaemon;
-         
-     }];
+          
+    }] updatePreferences:preferences];
     
     return preferences;
 }

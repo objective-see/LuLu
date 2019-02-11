@@ -99,9 +99,12 @@
         <customView id="8vS-7f-v27" userLabel="Friends">
             <rect key="frame" x="0.0" y="0.0" width="523" height="237"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <userGuides>
+                <userLayoutGuide location="161" affinity="minY"/>
+            </userGuides>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qNV-KX-UQg">
-                    <rect key="frame" x="49" y="200" width="424" height="25"/>
+                    <rect key="frame" x="18" y="196" width="487" height="29"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="💕 Mahalo to the &quot;Friends of Objective-See&quot; 💕" id="7wy-Mn-dLg">
                         <font key="font" size="15" name="Menlo-Bold"/>
@@ -120,7 +123,7 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsSophos" id="P6w-a1-9JX"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hkl-uW-lnV">
-                    <rect key="frame" x="279" y="106" width="65" height="62"/>
+                    <rect key="frame" x="279" y="103" width="65" height="62"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsMacPaw" id="BGS-wm-o5J"/>
                 </imageView>

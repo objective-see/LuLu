@@ -496,9 +496,13 @@ bail:
     {
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"generating hash for %@ (%d)", process.binary.name, process.pid]);
-        
-        //generate hash
-        [process.binary generateHash];
+
+        //sync to hash
+        @synchronized (process.binary) {
+            
+            //generate hash
+            [process.binary generateHash];
+        }
     
         //dbg msg
         logMsg(LOG_DEBUG, @"done generating hash");

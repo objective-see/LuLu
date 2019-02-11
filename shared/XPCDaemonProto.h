@@ -11,6 +11,9 @@
 
 @protocol XPCDaemonProtocol
 
+//load kext
+-(void)loadKext;
+
 //get preferences
 -(void)getPreferences:(void (^)(NSDictionary* preferences))reply;
 

@@ -346,8 +346,12 @@ bail:
         //generate hash
         if(nil == process.binary.sha256)
         {
-            //generate hash
-            [process.binary generateHash];
+            //sync to hash
+            @synchronized (process.binary) {
+                
+                //generate hash
+                [process.binary generateHash];
+            }
         }
         
         //check for match

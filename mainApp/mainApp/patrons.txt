@@ -1,5 +1,5 @@
-Patrons:
-Halo Privacy, Ash Morgan, Beau Galbraith, Nando Mendonca, Khalil Sehnaoui, Geoffrey Weber, Randy Wong, Gamer_Bot
+Patrons (2^6+):
+Halo Privacy, Ash Morgan, Stuart Ashenbrenner, Beau Galbraith, Aaron Kiemele, Nando Mendonca, Khalil Sehnaoui, Geoffrey Weber, Randy Wong, Gamer_Bot
 
 Friends of Objective-See:
-Digita Security, Sophos, Malwarebytes, SmugMug, Sudo Security Group
+Digita Security, Sophos, CleanMyMac X, Malwarebytes, SmugMug, Guardian Mobile Firewall, SecureMac

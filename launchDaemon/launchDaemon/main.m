@@ -22,9 +22,6 @@ int main(int argc, const char * argv[])
         //error
         NSError* error = nil;
         
-        //high sierra version struct
-        NSOperatingSystemVersion highSierra = {10,13,0};
-        
         //dbg msg
         logMsg(LOG_DEBUG, @"launch daemon started");
         
@@ -126,24 +123,17 @@ int main(int argc, const char * argv[])
         }
 
         //dbg msg
-        logMsg(LOG_DEBUG, @"listening for client XPC connections");
+        logMsg(LOG_DEBUG, @"created client XPC listener");
         
-        //10.13+ and kext not yet loaded?
-        // likely 1st time, and have to wait for user to allow
-        if( (YES == [[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:highSierra]) &&
-            (YES != kextIsLoaded([NSString stringWithUTF8String:LULU_SERVICE_NAME])) )
-        {
-            //trigger kext load again
-            // sometimes 'allow' button in system prefs times out?
-            execTask(KEXT_LOAD, @[[NSString pathWithComponents:@[@"/", @"Library", @"Extensions", @"LuLu.kext"]]], YES, NO);
-
-            //dbg msg
-            logMsg(LOG_DEBUG, @"waiting for kext to load (High Sierra+)");
-            
-            //wait
-            // will block...
-            wait4kext([NSString stringWithUTF8String:LULU_SERVICE_NAME]);
-        }
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"waiting for kext (%s) to load", LULU_SERVICE_NAME]);
+        
+        //wait (blocks)
+        // 10.13+ have to wait for user to allow, first time
+        wait4kext([NSString stringWithUTF8String:LULU_SERVICE_NAME]);
+        
+        //dbg msg
+        logMsg(LOG_DEBUG, @"kext loaded");
         
         //connect to kext
         if(YES != [kextComms connect])

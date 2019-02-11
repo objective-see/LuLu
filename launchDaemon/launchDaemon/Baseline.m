@@ -275,9 +275,13 @@ bail:
             //reduce CPU
             [NSThread setThreadPriority:0.25];
             
-            //hash binary
-            [binary generateHash];
-
+            //sync to hash
+            @synchronized (binary) {
+                
+                //hash binary
+                [binary generateHash];
+            }
+        
             //reset thread priority
             [NSThread setThreadPriority:threadPriority];
         }

@@ -116,6 +116,10 @@
             if( (YES == [[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:highSierra]) &&
                 (YES != kextIsLoaded([NSString stringWithUTF8String:LULU_SERVICE_NAME])) )
             {
+                //ask daemon to load kext
+                // might have to retry, as 'allow' button in system prefs ui times out
+                [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient loadKext];
+                
                 //remove prev. subview
                 [[[self.window.contentView subviews] lastObject] removeFromSuperview];
                 

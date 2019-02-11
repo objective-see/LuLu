@@ -138,7 +138,8 @@ bail:
     //now, did user turn off passive mode?
     // remove all 'allow' rules for procs passively allowed
     if( (nil != updates[PREF_PASSIVE_MODE]) &&
-        (YES != [updates[PREF_PASSIVE_MODE] boolValue]) )
+        (YES != [updates[PREF_PASSIVE_MODE] boolValue]) &&
+        (0 != kextListener.self.passiveProcesses.count) )
     {
         //dbg msg
         logMsg(LOG_DEBUG, [NSString stringWithFormat:@"removing (kernel) rules for passively allowed procs: %@", kextListener.self.passiveProcesses]);

@@ -16,6 +16,10 @@
 //xpc connection to daemon
 @property (atomic, strong, readwrite)NSXPCConnection* daemon;
 
+//tell daemon to load kext
+// on 10.13+ might need to re-try to allow user to allow via UI
+-(void)loadKext;
+
 //get preferences
 // note: synchronous
 -(NSDictionary*)getPreferences;

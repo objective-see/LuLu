@@ -39,6 +39,27 @@ extern KextListener* kextListener;
 
 @implementation XPCDaemon
 
+//load kext
+-(void)loadKext
+{
+    //dbg msg
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: '%s'", __PRETTY_FUNCTION__]);
+    
+    //if already loaded?
+    if(YES == kextIsLoaded([NSString stringWithUTF8String:LULU_SERVICE_NAME]))
+    {
+        //bail
+        goto bail;
+    }
+    
+    //load kext
+    execTask(KEXT_LOAD, @[[NSString pathWithComponents:@[@"/", @"Library", @"Extensions", @"LuLu.kext"]]], YES, NO);
+    
+bail:
+    
+    return;
+}
+
 //load preferences and send them back to client
 -(void)getPreferences:(void (^)(NSDictionary* preferences))reply
 {
