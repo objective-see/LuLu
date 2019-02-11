@@ -39,15 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7D7755CE1F02DF9500D0017D /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		CD32C22720900F40009CADF6 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,7 +223,6 @@
 			buildPhases = (
 				7D7755CC1F02DF9500D0017D /* Sources */,
 				7D7755CD1F02DF9500D0017D /* Frameworks */,
-				7D7755CE1F02DF9500D0017D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -471,6 +461,7 @@
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_NAME = LuLu;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -488,6 +479,7 @@
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_NAME = LuLu;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};

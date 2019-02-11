@@ -121,7 +121,6 @@
 				7D5208EC1E41C23900832F57 /* Sources */,
 				7D5208ED1E41C23900832F57 /* Frameworks */,
 				7D5208EE1E41C23900832F57 /* Headers */,
-				7D5208EF1E41C23900832F57 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -164,16 +163,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		7D5208EF1E41C23900832F57 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7D5208EC1E41C23900832F57 /* Sources */ = {
@@ -310,6 +299,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
 				PRODUCT_MODULE_NAME = LuLu;
 				PRODUCT_NAME = LuLu;
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Debug;
@@ -328,6 +318,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
 				PRODUCT_MODULE_NAME = LuLu;
 				PRODUCT_NAME = LuLu;
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;

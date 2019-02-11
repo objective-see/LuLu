@@ -39,15 +39,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7DD25FEE1F23B5AE00277EC4 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents/Library/LoginItems;
-			dstSubfolderSpec = 1;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CD32C22F209015E3009CADF6 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -247,7 +238,6 @@
 			buildPhases = (
 				7D564DA51F18434F00B8AAD6 /* Sources */,
 				7D564DA71F18434F00B8AAD6 /* Resources */,
-				7DD25FEE1F23B5AE00277EC4 /* CopyFiles */,
 				7D16D6971F650FF400DB3161 /* ShellScript */,
 				CD32C22F209015E3009CADF6 /* Copy Frameworks */,
 			);
@@ -329,7 +319,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#for normal builds\n# just copy into app\nrm -rf   $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\nmkdir -p $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\ncp -R -f \"$BUILT_PRODUCTS_DIR/LuLu Helper.app\" $BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\n";
+			shellScript = "rm -rf   $TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\nmkdir -p $TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\n\ncp -R -f \"$TARGET_BUILD_DIR/LuLu Helper.app\" $TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Library/LoginItems\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -504,6 +494,7 @@
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
 				PRODUCT_NAME = LuLu;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -522,6 +513,7 @@
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
 				PRODUCT_NAME = LuLu;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
