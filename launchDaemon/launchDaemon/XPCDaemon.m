@@ -64,7 +64,7 @@ bail:
 -(void)getPreferences:(void (^)(NSDictionary* preferences))reply
 {
     //dbg msg
-    logMsg(LOG_DEBUG, @"XPC request: get preferences");
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: '%s'", __PRETTY_FUNCTION__]);
     
     //preference obj has em
     reply(preferences.preferences);
@@ -73,16 +73,16 @@ bail:
 }
 
 //update preferences
--(void)updatePreferences:(NSDictionary *)prefs
+-(void)updatePreferences:(NSDictionary *)updates
 {
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: update preferences (%@)", preferences]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: '%s' (%@)", __PRETTY_FUNCTION__, updates]);
     
     //call into prefs obj
-    if(YES != [preferences update:prefs])
+    if(YES != [preferences update:updates])
     {
         //err msg
-        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to save preferences to %@", PREFS_FILE]);
+        logMsg(LOG_ERR, @"failed to updates to preferences");
     }
     
     return;
@@ -93,7 +93,7 @@ bail:
 -(void)getRules:(void (^)(NSDictionary*))reply
 {
     //dbg msg
-    logMsg(LOG_DEBUG, @"XPC request: GET RULES");
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: '%s'", __PRETTY_FUNCTION__]);
     
     //return rules
     reply([rules serialize]);
@@ -111,7 +111,7 @@ bail:
     SecCSFlags flags = kSecCSDefaultFlags | kSecCSCheckNestedCode | kSecCSDoNotValidateResources | kSecCSCheckAllArchitectures;
     
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: ADD RULE (%@/%lu)", path, action]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: '%s' (path: %@ / action: %lu)", __PRETTY_FUNCTION__, path, action]);
     
     //init binary obj w/ path
     binary = [[Binary alloc] init:path];
@@ -150,7 +150,7 @@ bail:
 -(void)updateRule:(NSString*)path action:(NSUInteger)action user:(NSUInteger)user
 {
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: UPDATE RULE (%@/%lu)", path, action]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: '%s' (path: %@ / action: %lu)", __PRETTY_FUNCTION__, path, action]);
     
     //log to file
     logMsg(LOG_TO_FILE, [NSString stringWithFormat:@"updating rule (path: %@ / action: %lu)", path, action]);
@@ -174,7 +174,7 @@ bail:
 -(void)deleteRule:(NSString*)path
 {
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: DELETE RULE (%@)", path]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: '%s' (path: %@)", __PRETTY_FUNCTION__, path]);
     
     //log to file
     logMsg(LOG_TO_FILE, [NSString stringWithFormat:@"deleting rule (path: %@)", path]);
@@ -204,7 +204,7 @@ bail:
     BOOL importedRules = NO;
     
     //dbg msg
-    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: IMPORT RULES (%@)", rulesFile]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC request: '%s' (path: %@)", __PRETTY_FUNCTION__, rulesFile]);
     
     //delete all
     if(YES != [rules deleteAll])
