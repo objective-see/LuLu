@@ -120,6 +120,7 @@
 		7D3B75201F13356900568828 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				7D3B75221F13357D00568828 /* consts.h */,
 				CDFA08E0214900BF0089758C /* XPCUser.h */,
 				CDFA08DF214900BF0089758C /* XPCUser.m */,
 				CDFA08DB21460A400089758C /* XPCUserProto.h */,
@@ -136,7 +137,6 @@
 				7D5C5F511F200B9200C0E94A /* utilities.m */,
 				7DD2BF781F1EAC9C00B33214 /* XPCDaemonClient.h */,
 				7DD2BF791F1EAC9C00B33214 /* XPCDaemonClient.m */,
-				7D3B75221F13357D00568828 /* consts.h */,
 				7D3B75231F13357D00568828 /* logging.m */,
 				7D3B75241F13357D00568828 /* logging.h */,
 			);

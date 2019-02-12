@@ -33,6 +33,16 @@
     //preferences
     NSDictionary* preferences = nil;
     
+    //already running?
+    if([[NSRunningApplication runningApplicationsWithBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]] count] > 1)
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, [NSString stringWithFormat:@"instance of %@ already running, so bailing",[[NSBundle mainBundle] bundleIdentifier]]);
+        
+        //terminate
+        [NSApp terminate:nil];
+    }
+    
     //alloc array for alert (windows)
     alerts = [NSMutableDictionary dictionary];
     
@@ -46,7 +56,7 @@
     
     //dbg msg
     logMsg(LOG_DEBUG, [NSString stringWithFormat:@"loaded preferences: %@", preferences]);
-
+    
     //no preferences yet? ... first run
     // kick off main app to show welcome screen(s)
     if(0 == preferences.count)
@@ -70,7 +80,7 @@
          [self preferencesChanged];
          
      }];
-    
+        
     return;
 }
 
