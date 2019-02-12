@@ -37,6 +37,9 @@
 //friends view
 @property (strong, nonatomic) IBOutlet NSView *friendsView;
 
+//observer for app activation
+@property(nonatomic, retain)id appActivationObserver;
+
 /* METHODS */
 
 //install/uninstall button handler

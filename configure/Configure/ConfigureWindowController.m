@@ -19,6 +19,7 @@
 @synthesize statusMsg;
 @synthesize friendsView;
 @synthesize moreInfoButton;
+@synthesize appActivationObserver;
 
 //automatically called when nib is loaded
 // just center window
@@ -412,6 +413,20 @@
     //align text left
     self.statusMsg.alignment = NSTextAlignmentLeft;
     
+    //observe app activation
+    // allows workaround where process indicator stops
+    self.appActivationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:NSWorkspaceDidActivateApplicationNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
+    {
+        #pragma unused(notification)
+        
+        //show spinner
+        self.activityIndicator.hidden = NO;
+        
+        //start spinner
+        [self.activityIndicator startAnimation:nil];
+        
+    }];
+    
     //install msg
     if(ACTION_INSTALL_FLAG == event)
     {
@@ -432,7 +447,7 @@
     self.installButton.enabled = NO;
     
     //show spinner
-    [self.activityIndicator setHidden:NO];
+    self.activityIndicator.hidden = NO;
     
     //start spinner
     [self.activityIndicator startAnimation:nil];
@@ -455,6 +470,16 @@
     
     //msg font
     NSColor* resultMsgColor = nil;
+    
+    //remove app activation observer
+    if(nil != self.appActivationObserver)
+    {
+        //remove
+        [[NSNotificationCenter defaultCenter] removeObserver:self.appActivationObserver];
+        
+        //unset
+        self.appActivationObserver = nil;
+    }
     
     //set action msg for install
     if(ACTION_INSTALL_FLAG == event)

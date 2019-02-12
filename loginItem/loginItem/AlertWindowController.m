@@ -179,6 +179,9 @@
     //set color to label default
     titleAttributes[NSForegroundColorAttributeName] = [NSColor labelColor];
     
+    //set font
+    titleAttributes[NSFontAttributeName] = [NSFont fontWithName:@"Menlo-Regular" size:13];
+    
     //temp rule button label
     self.tempRule.attributedTitle = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" temporarily (pid: %@)", [self.alert[ALERT_PID] stringValue]] attributes:titleAttributes];
     
