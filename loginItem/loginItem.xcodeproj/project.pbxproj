@@ -85,6 +85,7 @@
 		CD22785B20434CAB00C72C76 /* StatusBarPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusBarPopover.xib; sourceTree = "<group>"; };
 		CD22785C20434CAB00C72C76 /* StatusBarPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarPopoverController.h; sourceTree = "<group>"; };
 		CD22785D20434CAB00C72C76 /* StatusBarPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarPopoverController.m; sourceTree = "<group>"; };
+		CD30BADC22174F9400E5D96A /* LuLu Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "LuLu Helper.entitlements"; path = "loginItem/LuLu Helper.entitlements"; sourceTree = "<group>"; };
 		CD32C2332094062C009CADF6 /* SigningInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigningInfoViewController.m; sourceTree = "<group>"; };
 		CD32C2342094062C009CADF6 /* SigningInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigningInfoViewController.h; sourceTree = "<group>"; };
 		CD3FF8CC20DDE3EE007B39F1 /* NSApplicationKeyEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSApplicationKeyEvents.m; path = ../shared/NSApplicationKeyEvents.m; sourceTree = "<group>"; };
@@ -146,6 +147,7 @@
 		7D7755DA1F02E05B00D0017D = {
 			isa = PBXGroup;
 			children = (
+				CD30BADC22174F9400E5D96A /* LuLu Helper.entitlements */,
 				7DD260101F252EC200277EC4 /* 3rdParty */,
 				7D3B75201F13356900568828 /* Shared */,
 				7D7755E51F02E05B00D0017D /* Src */,
@@ -256,6 +258,9 @@
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 0;
+							};
+							com.apple.HardenedRuntime = {
+								enabled = 1;
 							};
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -456,6 +461,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = loginItem/Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../shared/libs";
@@ -475,6 +481,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = loginItem/Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../shared/libs";

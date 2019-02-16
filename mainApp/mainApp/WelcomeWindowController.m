@@ -14,12 +14,14 @@
 #import "XPCDaemonClient.h"
 #import "WelcomeWindowController.h"
 
-#define VIEW_WELCOME 0
-#define VIEW_CONFIGURE 1
-#define VIEW_KEXT 2
-#define OPEN_SYSTEM_PREFS 3
-#define SUPPORT_NO 4
-#define SUPPORT_YES 5
+//buttons
+#define SHOW_WELCOME 0
+#define SHOW_CONFIGURE 1
+#define SHOW_KEXT 2
+#define SHOW_SUPPORT 3
+#define OPEN_SYSTEM_PREFS 4
+#define SUPPORT_NO 5
+#define SUPPORT_YES 6
 
 @implementation WelcomeWindowController
 
@@ -53,8 +55,8 @@
     //set title
     self.window.title = [NSString stringWithFormat:@"LuLu (version: %@)", getAppVersion()];
     
-    //show first view
-    [self buttonHandler:nil];
+    //show welcome view
+    [self showView:self.welcomeView firstResponder:SHOW_CONFIGURE];
 
     return;
 }
@@ -68,7 +70,7 @@
     
     //prev view was config?
     // send prefs to daemon to save
-    if( (VIEW_CONFIGURE+1) == ((NSToolbarItem*)sender).tag)
+    if( (SHOW_CONFIGURE+1) == ((NSToolbarItem*)sender).tag)
     {
         //update prefs
         // pass in values from UI, plus some defaults
@@ -78,73 +80,38 @@
     //set next view
     switch(((NSButton*)sender).tag)
     {
-        //welcome
-        case VIEW_WELCOME:
-        {
-            //remove prev. subview
-            [[[self.window.contentView subviews] lastObject] removeFromSuperview];
-            
-            //set view
-            [self.window.contentView addSubview:self.welcomeView];
-            
-            //make 'next' button first responder
-            [self.window makeFirstResponder:[self.welcomeView viewWithTag:VIEW_CONFIGURE]];
-        
+        //show configure view
+        case SHOW_CONFIGURE:
+            [self showView:self.configureView firstResponder:SHOW_KEXT];
             break;
-        }
             
-        //configure
-        case VIEW_CONFIGURE:
-        {
-            //remove prev. subview
-            [[[self.window.contentView subviews] lastObject] removeFromSuperview];
-            
-            //set view
-            [self.window.contentView addSubview:self.configureView];
-            
-            //make 'next' button first responder
-            [self.window makeFirstResponder:[self.configureView viewWithTag:VIEW_KEXT]];
-            
-            break;
-        }
-            
-        //kext
+        //show kext view
         // only show on macOS 10.13+ if kext isn't loaded
-        case VIEW_KEXT:
+        case SHOW_KEXT:
+        {
+            //ask daemon to load kext
+            // 'allow' button in system prefs ui times out, so this is really just to re-trigger
+            [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient loadKext];
             
-            //10.13+ and kext not yet loaded?
+            //10.13+
+            // show kext view
             if( (YES == [[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:highSierra]) &&
                 (YES != kextIsLoaded([NSString stringWithUTF8String:LULU_SERVICE_NAME])) )
             {
-                //ask daemon to load kext
-                // might have to retry, as 'allow' button in system prefs ui times out
-                [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient loadKext];
-                
-                //remove prev. subview
-                [[[self.window.contentView subviews] lastObject] removeFromSuperview];
-                
-                //set view
-                [self.window.contentView addSubview:self.kextView];
-                
-                //make 'show system prefs' button first responder
-                [self.window makeFirstResponder:[self.kextView viewWithTag:OPEN_SYSTEM_PREFS]];
+                //show kext view
+                [self showView:self.kextView firstResponder:OPEN_SYSTEM_PREFS];
             }
             
-            //older os || kext loaded
-            // can skip, so just show support view
+            //kext already running,
+            // show support view
             else
             {
-                //remove prev. subview
-                [[[self.window.contentView subviews] lastObject] removeFromSuperview];
-                
-                //set view
-                [self.window.contentView addSubview:self.supportView];
-                
-                //make 'yes' button first responder
-                [self.window makeFirstResponder:[self.supportView viewWithTag:SUPPORT_YES]];
+                //show support view
+                [self showView:self.supportView firstResponder:SUPPORT_YES];
             }
             
             break;
+        }
             
         //support
         case OPEN_SYSTEM_PREFS:
@@ -170,20 +137,13 @@
                 [[[NSAppleScript alloc] initWithSource:@"tell application \"System Preferences\" to quit"] executeAndReturnError:nil];
                 
                 //ok loaded!
-                // show next view
+                // show support view now...
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    //remove prev. subview
-                    [[[self.window.contentView subviews] lastObject] removeFromSuperview];
-                    
-                    //set view
-                    [self.window.contentView addSubview:self.supportView];
-                    
-                    //make 'yes' button first responder
-                    [self.window makeFirstResponder:[self.supportView viewWithTag:SUPPORT_YES]];
+                    //show support view
+                    [self showView:self.supportView firstResponder:SUPPORT_YES];
                     
                 });
-                
             });
             
             break;
@@ -210,5 +170,22 @@
 
     return;
 }
+
+//show a view
+// note: replaces old view and highlights specified responder
+-(void)showView:(NSView*)view firstResponder:(NSInteger)firstResponder
+{
+    //remove prev. subview
+    [[[self.window.contentView subviews] lastObject] removeFromSuperview];
+    
+    //set view
+    [self.window.contentView addSubview:view];
+    
+    //make 'next' button first responder
+    [self.window makeFirstResponder:[view viewWithTag:firstResponder]];
+
+    return;
+}
+                
 
 @end

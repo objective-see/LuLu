@@ -95,6 +95,7 @@
 		CD21501720AD222800CEF17B /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
 		CD223E422083361A0049A76B /* RulesTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RulesTable.h; sourceTree = "<group>"; };
 		CD223E432083361A0049A76B /* RulesTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RulesTable.m; sourceTree = "<group>"; };
+		CD30BADD22174FAF00E5D96A /* LuLu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = LuLu.entitlements; path = mainApp/LuLu.entitlements; sourceTree = "<group>"; };
 		CD3FF8C920DDE392007B39F1 /* NSApplicationKeyEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSApplicationKeyEvents.m; path = ../shared/NSApplicationKeyEvents.m; sourceTree = "<group>"; };
 		CD3FF8CA20DDE392007B39F1 /* NSApplicationKeyEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSApplicationKeyEvents.h; path = ../shared/NSApplicationKeyEvents.h; sourceTree = "<group>"; };
 		CDA6E63B203B9DA700C78F91 /* Welcome.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Welcome.xib; sourceTree = "<group>"; };
@@ -123,6 +124,7 @@
 		7D564DA01F18434F00B8AAD6 = {
 			isa = PBXGroup;
 			children = (
+				CD30BADD22174FAF00E5D96A /* LuLu.entitlements */,
 				7D564DE21F18445400B8AAD6 /* Shared */,
 				7D564DAB1F18434F00B8AAD6 /* Src */,
 				CD21501920AD224A00CEF17B /* Frameworks */,
@@ -265,6 +267,9 @@
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 0;
+							};
+							com.apple.HardenedRuntime = {
+								enabled = 1;
 							};
 						};
 					};
@@ -483,10 +488,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = mainApp/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -502,10 +507,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = mainApp/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;

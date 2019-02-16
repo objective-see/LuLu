@@ -11,7 +11,7 @@
 #define consts_h
 
 //patreon url
-#define PATREON_URL @"https://www.patreon.com/bePatron?c=701171"
+#define PATREON_URL @"https://www.patreon.com/join/objective_see"
 
 //sentry crash reporting URL
 #define CRASH_REPORTING_URL @"https://639e824c5bc14eaca06c55f52aee1946:77fa2885950642288a52b1773e5375b3@sentry.io/1195655"
