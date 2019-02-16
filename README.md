@@ -1,14 +1,15 @@
 # LuLu
 
-LuLu is the free macOS firewall that aims to block unauthorized (outgoing) network traffic, unless explicitly approved by the user:
+LuLu is the free macOS firewall:
 <p align="center"><img src="https://objective-see.com/images/LL/lulu.png"></p>
 
+**Documentation** \
 Full details and usage instructions can be found [here](https://objective-see.com/products/lulu.html). 
 
-**To Build**<br>
+**To Build** \
 LuLu should build cleanly in Xcode (though you will have to remove code signing constraints, or replace with your own Apple developer/kernel code signing certificate).
 
-**To Install**<br>
+**To Install** \
 Simply run the installer application: `LuLu Installer.app`
 
 &#x2764;&nbsp; Love this product or want to support it? Check out my [patreon page](https://www.patreon.com/objective_see) :)
