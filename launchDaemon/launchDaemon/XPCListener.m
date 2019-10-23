@@ -136,8 +136,11 @@ bail:
     //task ref
     SecTaskRef taskRef = 0;
     
-    //signing req string
-    NSString* requirementString = nil;
+    //signing req string (main app)
+    NSString* requirementStringApp = nil;
+    
+    //signing req string (helper item)
+    NSString* requirementStringHelper = nil;
     
     //path of connecting app
     NSString* path = nil;
@@ -145,8 +148,11 @@ bail:
     //dbg msg
     logMsg(LOG_DEBUG, @"received request to connect to XPC interface");
     
-    //init signing req string
-    requirementString = [NSString stringWithFormat:@"anchor trusted and certificate leaf [subject.CN] = \"%@\"", SIGNING_AUTH];
+    //init signing req string (main app)
+    requirementStringApp = [NSString stringWithFormat:@"anchor trusted and identifier \"%@\" and certificate leaf [subject.CN] = \"%@\" and info [CFBundleShortVersionString] >= \"1.2.0\"", MAIN_APP_ID, SIGNING_AUTH];
+    
+    //init signing req string (helper)
+    requirementStringHelper = [NSString stringWithFormat:@"anchor trusted and identifier \"%@\" and certificate leaf [subject.CN] = \"%@\" and info [CFBundleShortVersionString] >= \"1.2.0\"", HELPER_ID, SIGNING_AUTH];
     
     //step 1: create task ref
     // uses NSXPCConnection's (private) 'auditToken' iVar
@@ -158,8 +164,9 @@ bail:
     }
     
     //step 2: validate
-    // check that client is signed with Objective-See's dev cert
-    if(0 != SecTaskValidateForRequirement(taskRef, (__bridge CFStringRef)(requirementString)))
+    // check that client is signed with Objective-See's and it's LuLu (main app or helper)
+    if( (0 != SecTaskValidateForRequirement(taskRef, (__bridge CFStringRef)(requirementStringApp))) &&
+        (0 != SecTaskValidateForRequirement(taskRef, (__bridge CFStringRef)(requirementStringHelper))) )
     {
         //bail
         goto bail;

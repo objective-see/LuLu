@@ -120,7 +120,7 @@ bail:
     NSString *requirementString = nil;
     
     //init signing req string
-    requirementString = [NSString stringWithFormat:@"anchor trusted and certificate leaf [subject.CN] = \"%@\"", SIGNING_AUTH];
+    requirementString = [NSString stringWithFormat:@"anchor trusted and identifier \"%@\" and certificate leaf [subject.CN] = \"%@\" and info [CFBundleShortVersionString] >= \"1.2.0\"", INSTALLER_ID, SIGNING_AUTH];
     
     //step 1: create task ref
     // uses NSXPCConnection's (private) 'auditToken' iVar
@@ -132,9 +132,12 @@ bail:
     }
     
     //step 2: validate
-    // check that client is signed with Objective-See's dev cert
+    // check that client is signed with Objective-See's dev cert and it's the LuLu installer
     if(0 != SecTaskValidateForRequirement(taskRef, (__bridge CFStringRef)(requirementString)))
     {
+        //err msg
+        logMsg(LOG_ERR, [NSString stringWithFormat:@"failed to validated against %@", requirementString]);
+        
         //bail
         goto bail;
     }

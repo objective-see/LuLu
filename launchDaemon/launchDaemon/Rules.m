@@ -368,7 +368,7 @@ bail:
         goto bail;
     }
         
-    //binary validly signed w/ auths?
+    //process validly signed w/ auths?
     // make sure it (still) matches rule
     if( (nil != process.signingInfo[KEY_SIGNATURE_STATUS]) &&
         (0 != [process.signingInfo[KEY_SIGNATURE_AUTHORITIES] count]) )
@@ -387,16 +387,31 @@ bail:
         }
         
         //compare all signing auths
+        // first check process, and then binary image
         if(YES != [[NSCountedSet setWithArray:matchingRule.signingInfo[KEY_SIGNATURE_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:process.signingInfo[KEY_SIGNATURE_AUTHORITIES]]] )
         {
-            //err msg
-            logMsg(LOG_ERR, [NSString stringWithFormat:@"signing authority mismatch for %@ %@/%@", process.path, matchingRule.signingInfo[KEY_SIGNATURE_AUTHORITIES], process.signingInfo[KEY_SIGNATURE_AUTHORITIES]]);
+            //dbg msg
+            logMsg(LOG_DEBUG, [NSString stringWithFormat:@"signing authority mismatch for process %@ %@/%@", process.path, matchingRule.signingInfo[KEY_SIGNATURE_AUTHORITIES], process.signingInfo[KEY_SIGNATURE_AUTHORITIES]]);
             
-            //unset
-            matchingRule = nil;
+            //need to generate binary code signing?
+            if(nil == process.binary.signingInfo)
+            {
+                //generate
+                [process.binary generateSigningInfo:kSecCSDefaultFlags | kSecCSCheckNestedCode | kSecCSDoNotValidateResources | kSecCSCheckAllArchitectures];
+            }
             
-            //bail
-            goto bail;
+            //check binary's on-disk signature
+            if(YES != [[NSCountedSet setWithArray:matchingRule.signingInfo[KEY_SIGNATURE_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:process.binary.signingInfo[KEY_SIGNATURE_AUTHORITIES]]] )
+            {
+                //err msg
+                logMsg(LOG_ERR, [NSString stringWithFormat:@"signing authority mismatch for binary %@ %@/%@", process.path, matchingRule.signingInfo[KEY_SIGNATURE_AUTHORITIES], process.binary.signingInfo[KEY_SIGNATURE_AUTHORITIES]]);
+                
+                //unset
+                matchingRule = nil;
+                
+                //bail
+                goto bail;
+            }
         }
     }
     

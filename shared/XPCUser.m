@@ -54,12 +54,16 @@
         //show alert window
         [alertWindow showWindow:self];
         
-        //make it key window
-        [alertWindow.window makeKeyAndOrderFront:self];
-        
-        //bring login item to foreground
+        //bring lulu (login item) to foreground
         // want a dock icon, so user can cmd+tab, etc
         [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+        
+        //'request' user attenion
+        // bounces icon on the dock
+        [NSApp requestUserAttention:NSInformationalRequest];
+        
+        //make alert window key
+        [alertWindow.window makeKeyAndOrderFront:self];
         
     });
     

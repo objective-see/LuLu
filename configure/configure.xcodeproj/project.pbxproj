@@ -319,6 +319,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* SMJobBless */;
@@ -430,6 +431,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.configHelper";
 				PRODUCT_NAME = "com.objective-see.lulu.configHelper";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx10.14;
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = x86_64;
 			};
@@ -461,6 +463,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.configHelper";
 				PRODUCT_NAME = "com.objective-see.lulu.configHelper";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx10.14;
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = x86_64;
 			};
@@ -486,6 +489,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.installer";
 				PRODUCT_NAME = "LuLu Installer";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx10.14;
 				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
@@ -510,6 +514,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.installer";
 				PRODUCT_NAME = "LuLu Installer";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx10.14;
 				VALID_ARCHS = x86_64;
 			};
 			name = Release;

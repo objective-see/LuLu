@@ -278,6 +278,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 7D7755C71F02DF9400D0017D;
@@ -394,7 +395,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.14;
 			};
 			name = Debug;
 		};
@@ -443,7 +444,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.14;
 			};
 			name = Release;
 		};
@@ -462,6 +463,7 @@
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_NAME = LuLu;
+				SDKROOT = macosx10.14;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -481,6 +483,7 @@
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = "-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null";
 				PRODUCT_NAME = LuLu;
+				SDKROOT = macosx10.14;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -505,6 +508,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.bundle";
 				PRODUCT_NAME = LuLu;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx10.14;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -530,6 +534,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.bundle";
 				PRODUCT_NAME = LuLu;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx10.14;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};

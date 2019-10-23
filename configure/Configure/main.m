@@ -7,6 +7,8 @@
 //  copyright (c) 2018 Objective-See. All rights reserved.
 //
 
+//TODO: 10.11 crash!
+
 @import Cocoa;
 @import Sentry;
 

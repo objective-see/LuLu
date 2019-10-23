@@ -409,6 +409,10 @@ bail:
 // if there is no matching rule, will tell client to show alert
 -(void)processNetworkOut:(struct networkOutEvent_s*)event
 {
+    //pool
+    @autoreleasepool
+    {
+    
     //process obj
     Process* process = nil;
     
@@ -656,6 +660,10 @@ bail:
     }
     
 bail:
+        
+    ;
+        
+    }//pool
     
     return;
 }

@@ -33,7 +33,7 @@ dispatch_source_t dispatchSource = nil;
     NSNumber* result = nil;
     
     //dbg msg
-    logMsg(LOG_NOTICE, [NSString stringWithFormat:@"XPC-request: install (%@)", app]);
+    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"XPC-request: install (%@)", app]);
     
     //configure
     // pass in 'install' flag
