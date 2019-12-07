@@ -478,6 +478,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.2.2;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
@@ -485,6 +486,7 @@
 				INFOPLIST_FILE = configure/Info.plist;
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.2.2;
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.installer";
 				PRODUCT_NAME = "LuLu Installer";
@@ -503,6 +505,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.2.2;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
@@ -510,6 +513,7 @@
 				INFOPLIST_FILE = configure/Info.plist;
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.2.2;
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.installer";
 				PRODUCT_NAME = "LuLu Installer";
