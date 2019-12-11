@@ -79,6 +79,17 @@ int main(int argc, char *argv[])
         goto bail;
     }
     
+    //autolaunched?
+    // just exit, as otherwise it's confusing to launch (again)
+    if(YES == autoLaunched())
+    {
+        //dbg msg
+        logMsg(LOG_DEBUG, @"exiting, as it looks like we're autolaunched");
+        
+        //bail
+        goto bail;
+    }
+    
     //default run mode
     // just kick off main app logic
     status = NSApplicationMain(argc,  (const char **) argv);
@@ -86,6 +97,68 @@ int main(int argc, char *argv[])
 bail:
     
     return status;
+}
+
+//since install triggers a reboot
+// macOS might automatically launch installer again on login
+BOOL autoLaunched()
+{
+    //flag
+    BOOL wasAutoLaunched = NO;
+    
+    //last arg
+    NSString* finalArgument = nil;
+      
+    //finder.app's pid
+    pid_t finderPID = 0;
+    
+    //(app) start time
+    NSDate *startTime = nil;
+   
+    //finder's start time
+    NSDate* finderStartTime;
+    
+    //get last arg
+    finalArgument = [[[NSProcessInfo processInfo] arguments] lastObject];
+    
+    //when auto started
+    // last arg will be `-psn ...`
+    if(YES != [finalArgument hasPrefix:@"-psn"])
+    {
+        //not autostarted
+        goto bail;
+    }
+    
+    //get app's start time
+    startTime = [NSDate dateWithTimeIntervalSinceNow:-(clock()/CLOCKS_PER_SEC)];
+    
+    //get finder.app's pid
+    finderPID = [[getProcessIDs(FINDER_APP, (int)getuid()) firstObject] intValue];
+    if(0 == finderPID)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //get finder.app's start time
+    finderStartTime = getProcessStartTime(finderPID);
+    if(nil == finderStartTime)
+    {
+        //bail
+        goto bail;
+    }
+    
+    //compare
+    // finder launch time / app launch < 2 seconds?
+    if(fabs([startTime timeIntervalSinceDate:finderStartTime]) < 2.0f)
+    {
+        //auto launched
+        wasAutoLaunched = YES;
+    }
+    
+bail:
+    
+    return wasAutoLaunched;
 }
 
 //cmdline interface

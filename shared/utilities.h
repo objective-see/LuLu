@@ -72,6 +72,9 @@ NSMutableArray* getProcessIDs(NSString* processPath, int userID);
 //given a pid, get its parent (ppid)
 pid_t getParentID(int pid);
 
+//get a processes start time
+NSDate* getProcessStartTime(pid_t pid);
+
 //enable/disable a menu
 void toggleMenu(NSMenu* menu, BOOL shouldEnable);
 

@@ -145,7 +145,7 @@ NSString* getAppBinary(NSString* appPath)
     }
     
     //extract executable
-    binaryPath = appBundle.executablePath;
+    binaryPath = [appBundle.executablePath stringByResolvingSymlinksInPath];
     
 bail:
     
@@ -600,7 +600,7 @@ NSMutableArray* getProcessIDs(NSString* processPath, int userID)
     pid_t* pids = NULL;
     
     //process info struct
-    struct kinfo_proc procInfo;
+    struct kinfo_proc procInfo = {0};
     
     //size of struct
     size_t procInfoSize = sizeof(procInfo);
@@ -692,6 +692,40 @@ bail:
     }
     
     return processIDs;
+}
+
+//get a processes start time
+NSDate* getProcessStartTime(pid_t pid)
+{
+    //start time
+    NSDate* startTime = nil;
+    
+    //process info struct
+    struct kinfo_proc procInfo = {0};
+   
+    //size of struct
+    size_t procInfoSize = sizeof(procInfo);
+   
+    //mib
+    int mib[4] = {CTL_KERN, KERN_PROC, KERN_PROC_PID, pid};
+   
+    //clear buffer
+    memset(&procInfo, 0x0, procInfoSize);
+    
+    //get process info
+    if( (-1 == sysctl(mib, 0x4, &procInfo, &procInfoSize, NULL, 0)) &&
+        (0 == procInfoSize) )
+    {
+        //bail
+        goto bail;
+    }
+    
+    //start time
+    startTime = [NSDate dateWithTimeIntervalSince1970:procInfo.kp_proc.p_starttime.tv_sec];
+    
+bail:
+    
+    return startTime;
 }
 
 //enable/disable a menu
@@ -1051,7 +1085,7 @@ BOOL toggleLoginItem(NSURL* loginItem, int toggleFlag)
         loginItems = LSSharedFileListCopySnapshot(loginItemsRef, nil);
         
         //iterate over all login items
-        // look for self, then remove it
+        // look for self(s), then remove it
         for(id item in (__bridge NSArray *)loginItems)
         {
             //get current login item
@@ -1068,22 +1102,20 @@ BOOL toggleLoginItem(NSURL* loginItem, int toggleFlag)
                 //remove
                 if(noErr != LSSharedFileListItemRemove(loginItemsRef, (__bridge LSSharedFileListItemRef)item))
                 {
+                    //dbg msg
+                    logMsg(LOG_DEBUG, [NSString stringWithFormat:@"removed login item: %@", loginItem]);
+                    
+                    //happy
+                    wasToggled = YES;
+                }
+                else
+                {
                     //err msg
                     logMsg(LOG_ERR, @"failed to remove login item");
                     
-                    //bail
-                    goto bail;
-                    
+                    //keep trying though
+                    // as might be multiple instances
                 }
-                
-                //dbg msg
-                logMsg(LOG_DEBUG, [NSString stringWithFormat:@"removed login item: %@", loginItem]);
-                
-                //happy
-                wasToggled = YES;
-                
-                //all done
-                goto bail;
             }
             
             //release
@@ -1116,16 +1148,6 @@ bail:
         
         //reset
         loginItemsRef = NULL;
-    }
-    
-    //release url
-    if(NULL != currentLoginItem)
-    {
-        //release
-        CFRelease(currentLoginItem);
-        
-        //reset
-        currentLoginItem = NULL;
     }
     
     return wasToggled;

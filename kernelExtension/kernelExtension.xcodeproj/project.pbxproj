@@ -291,11 +291,11 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.2.2;
+				CURRENT_PROJECT_VERSION = 1.2.3;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				INFOPLIST_FILE = kernelExtension/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.2.3;
 				MODULE_NAME = "com.objective-see.lulu";
 				MODULE_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";
@@ -312,11 +312,11 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.2.2;
+				CURRENT_PROJECT_VERSION = 1.2.3;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				INFOPLIST_FILE = kernelExtension/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.2.3;
 				MODULE_NAME = "com.objective-see.lulu";
 				MODULE_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu";

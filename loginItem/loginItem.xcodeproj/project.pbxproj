@@ -467,7 +467,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = loginItem/Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../shared/libs";
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.2.3;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DLOGIN_ITEM=1";
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
@@ -492,7 +492,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
 				INFOPLIST_FILE = loginItem/Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../shared/libs";
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.2.3;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DLOGIN_ITEM=1";
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";

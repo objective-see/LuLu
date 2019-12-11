@@ -202,6 +202,9 @@
 //installed apps file
 #define INSTALLED_APPS @"installedApps"
 
+//finder
+#define FINDER_APP @"/System/Library/CoreServices/Finder.app/Contents/MacOS/Finder"
+
 //frame shift
 // for status msg to avoid activity indicator
 #define FRAME_SHIFT 45
@@ -261,6 +264,9 @@
 
 //prefs changed notification
 #define NOTIFICATION_PREFS_CHANGED @"com.objective-see.lulu.preferences"
+
+//XPC Proxy
+#define XPCPROXY @"/usr/libexec/xpcproxy"
 
 /* LOGIN ITEM */
 

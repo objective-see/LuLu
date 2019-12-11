@@ -25,6 +25,7 @@ NSString* const GRAYLISTED_BINARIES[] =
     @"com.apple.perl",
     @"com.apple.ruby",
     @"com.apple.sftp",
+    @"com.tcltk.tclsh"
     @"com.apple.perl5",
     @"com.apple.whois",
     @"com.apple.python",

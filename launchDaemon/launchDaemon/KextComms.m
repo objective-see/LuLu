@@ -119,6 +119,14 @@ bail:
                 return;
             }
             
+            //skip xpcproxy
+            // always fork/execs anyways
+            if(YES == [process.path isEqualToString:XPCPROXY])
+            {
+                //skip
+                return;
+            }
+            
             //existing rule for process
             matchingRule = [rules find:process];
             if(nil != matchingRule)

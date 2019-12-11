@@ -189,16 +189,23 @@ extern KextListener* kextListener;
                 goto bail;
             }
             
-            //signing auths match?
-            if(YES == [[NSCountedSet setWithArray:alert[RULE_SIGNING_INFO][KEY_SIGNATURE_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:process.signingInfo[KEY_SIGNATURE_AUTHORITIES]]])
+            //signing id mismatch?
+            if( (nil != alert[RULE_SIGNING_INFO][KEY_SIGNATURE_IDENTIFIER]) &&
+                (YES != [process.signingInfo[KEY_SIGNATURE_IDENTIFIER] isEqualToString:alert[RULE_SIGNING_INFO][KEY_SIGNATURE_IDENTIFIER]]) )
             {
-                //ok signing match
-                related = YES;
+                //bail
+                goto bail;
+            }
+                
+            //signing auths mismatch?
+            if(YES != [[NSCountedSet setWithArray:alert[RULE_SIGNING_INFO][KEY_SIGNATURE_AUTHORITIES]] isEqualToSet: [NSCountedSet setWithArray:process.signingInfo[KEY_SIGNATURE_AUTHORITIES]]])
+            {
+                //bail
+                goto bail;
             }
             
-            //bail
-            // either way
-            goto bail;
+            //ok signing match
+            related = YES;
         }
         
     }//sync

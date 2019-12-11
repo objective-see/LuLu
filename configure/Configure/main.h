@@ -16,4 +16,7 @@
 // install or uninstall
 BOOL cmdlineInterface(int action);
 
+//determine if launched by macOS (on (re)login)
+BOOL autoLaunched(void);
+
 #endif /* main_h */
