@@ -1,39 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <Group
-      location = "container:"
-      name = "configure">
-      <FileRef
-         location = "group:configure/configure.xcodeproj">
-      </FileRef>
-   </Group>
-   <Group
-      location = "group:kernelExtension"
-      name = "kernelExtension">
-      <FileRef
-         location = "group:kernelExtension.xcodeproj">
-      </FileRef>
-   </Group>
-   <Group
-      location = "group:launchDaemon"
-      name = "launchDaemon">
-      <FileRef
-         location = "group:launchDaemon.xcodeproj">
-      </FileRef>
-   </Group>
-   <Group
-      location = "group:mainApp"
-      name = "mainApp">
-      <FileRef
-         location = "group:mainApp.xcodeproj">
-      </FileRef>
-   </Group>
-   <Group
-      location = "group:loginItem"
-      name = "loginItem">
-      <FileRef
-         location = "group:loginItem.xcodeproj">
-      </FileRef>
-   </Group>
+   <FileRef
+      location = "group:LuLu/LuLu.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Uninstaller/Uninstaller.xcodeproj">
+   </FileRef>
 </Workspace>

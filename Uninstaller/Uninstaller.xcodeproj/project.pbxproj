@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4BE4905110445D49006BE471 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4904D10445D49006BE471 /* main.m */; };
+		4BE4906110445E13006BE471 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4905510445DDD006BE471 /* main.m */; };
+		4BE4906410445F2F006BE471 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906310445F2F006BE471 /* Security.framework */; };
+		4BE4906810445F36006BE471 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906710445F36006BE471 /* ServiceManagement.framework */; };
+		4BE49092104463A0006BE471 /* com.objective-see.lulu.configHelper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4BE4905D10445E0A006BE471 /* com.objective-see.lulu.configHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		BF04235611C0531400431286 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF04235511C0531400431286 /* AppDelegate.m */; };
+		BF65C19111B985C0007C20AB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF65C19011B985C0007C20AB /* MainMenu.xib */; };
+		CD17D54F20104EE700F798D7 /* Configure.m in Sources */ = {isa = PBXBuildFile; fileRef = CD17D54720104EE700F798D7 /* Configure.m */; };
+		CD17D55020104EE700F798D7 /* ConfigureWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD17D54820104EE700F798D7 /* ConfigureWindowController.m */; };
+		CD17D55120104EE700F798D7 /* ConfigureWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD17D54920104EE700F798D7 /* ConfigureWindowController.xib */; };
+		CD3307AE203567D500F10D71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD3307AD203567D400F10D71 /* Assets.xcassets */; };
+		CD73DA912004629D001FFC84 /* HelperInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = CD73DA902004629D001FFC84 /* HelperInterface.m */; };
+		CD73DA942004633A001FFC84 /* HelperListener.m in Sources */ = {isa = PBXBuildFile; fileRef = CD73DA9220046339001FFC84 /* HelperListener.m */; };
+		CD73DA9520046548001FFC84 /* HelperInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = CD73DA902004629D001FFC84 /* HelperInterface.m */; };
+		CD73DA9620046548001FFC84 /* HelperListener.m in Sources */ = {isa = PBXBuildFile; fileRef = CD73DA9220046339001FFC84 /* HelperListener.m */; };
+		CD73DA99200490B4001FFC84 /* HelperComms.m in Sources */ = {isa = PBXBuildFile; fileRef = CD73DA97200490B4001FFC84 /* HelperComms.m */; };
+		CDA6E62D203B674C00C78F91 /* configure.sh in Resources */ = {isa = PBXBuildFile; fileRef = CDA6E62C203B674C00C78F91 /* configure.sh */; };
+		CDC3792B250D49A400314064 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC3792A250D49A300314064 /* utilities.m */; };
+		CDC3792C250D65BA00314064 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC3792A250D49A300314064 /* utilities.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4BE4907E1044624F006BE471 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4BE4905C10445E0A006BE471;
+			remoteInfo = SMJobBlessHelper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4BE49098104463C5006BE471 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchServices;
+			dstSubfolderSpec = 1;
+			files = (
+				4BE49092104463A0006BE471 /* com.objective-see.lulu.configHelper in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		4BE4904C10445D49006BE471 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BE4904D10445D49006BE471 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4BE4905310445DDD006BE471 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BE4905410445DDD006BE471 /* Launchd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Launchd.plist; sourceTree = "<group>"; };
+		4BE4905510445DDD006BE471 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4BE4905D10445E0A006BE471 /* com.objective-see.lulu.configHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "com.objective-see.lulu.configHelper"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BE4906310445F2F006BE471 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4BE4906710445F36006BE471 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		8D1107320486CEB800E47090 /* LuLu Uninstaller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LuLu Uninstaller.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF04235411C0531400431286 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BF04235511C0531400431286 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BF65C19011B985C0007C20AB /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		CD17D54520104EE700F798D7 /* Configure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configure.h; sourceTree = "<group>"; };
+		CD17D54620104EE700F798D7 /* ConfigureWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigureWindowController.h; sourceTree = "<group>"; };
+		CD17D54720104EE700F798D7 /* Configure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configure.m; sourceTree = "<group>"; };
+		CD17D54820104EE700F798D7 /* ConfigureWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigureWindowController.m; sourceTree = "<group>"; };
+		CD17D54920104EE700F798D7 /* ConfigureWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigureWindowController.xib; sourceTree = "<group>"; };
+		CD18D64C200DA301005609F9 /* XPCProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPCProtocol.h; path = Shared/XPCProtocol.h; sourceTree = SOURCE_ROOT; };
+		CD3307AD203567D400F10D71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CD6B484220AD323E00A9BE71 /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
+		CD6CAC9120A42D5000188B0A /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		CD73DA8F2004629D001FFC84 /* HelperInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperInterface.h; sourceTree = "<group>"; };
+		CD73DA902004629D001FFC84 /* HelperInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperInterface.m; sourceTree = "<group>"; };
+		CD73DA9220046339001FFC84 /* HelperListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperListener.m; sourceTree = "<group>"; };
+		CD73DA932004633A001FFC84 /* HelperListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperListener.h; sourceTree = "<group>"; };
+		CD73DA97200490B4001FFC84 /* HelperComms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperComms.m; sourceTree = "<group>"; };
+		CD73DA98200490B4001FFC84 /* HelperComms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperComms.h; sourceTree = "<group>"; };
+		CDA6E62C203B674C00C78F91 /* configure.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = configure.sh; sourceTree = "<group>"; };
+		CDA6E632203B6B7800C78F91 /* objectiveSeeText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = objectiveSeeText.png; path = ../../shared/images/objectiveSeeText.png; sourceTree = "<group>"; };
+		CDA6E634203B6B7900C78F91 /* objectiveSeeLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = objectiveSeeLogo.png; path = ../../shared/images/objectiveSeeLogo.png; sourceTree = "<group>"; };
+		CDAFF43F203E971F00F27635 /* com.objective-see.lulu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "com.objective-see.lulu.plist"; path = "Configure/ConfigFiles/com.objective-see.lulu.plist"; sourceTree = "<group>"; };
+		CDC37928250D49A300314064 /* consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = consts.h; sourceTree = "<group>"; };
+		CDC37929250D49A300314064 /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utilities.h; sourceTree = "<group>"; };
+		CDC3792A250D49A300314064 /* utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utilities.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				4BE4906410445F2F006BE471 /* Security.framework in Frameworks */,
+				4BE4906810445F36006BE471 /* ServiceManagement.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* LuLu Uninstaller.app */,
+				4BE4905D10445E0A006BE471 /* com.objective-see.lulu.configHelper */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* SMJobBless */ = {
+			isa = PBXGroup;
+			children = (
+				CD17D56120116C2000F798D7 /* SupportingFiles */,
+				CD17D55C201148F900F798D7 /* Script */,
+				CD73DA9C20049158001FFC84 /* Shared */,
+				4BE4904710445D49006BE471 /* Uninstaller */,
+				4BE4905210445DDD006BE471 /* Helper */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = SMJobBless;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD6B484220AD323E00A9BE71 /* Sentry.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				4BE4906310445F2F006BE471 /* Security.framework */,
+				4BE4906710445F36006BE471 /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4BE4904710445D49006BE471 /* Uninstaller */ = {
+			isa = PBXGroup;
+			children = (
+				BF04235411C0531400431286 /* AppDelegate.h */,
+				BF04235511C0531400431286 /* AppDelegate.m */,
+				CD3307AD203567D400F10D71 /* Assets.xcassets */,
+				CD17D54520104EE700F798D7 /* Configure.h */,
+				CD17D54720104EE700F798D7 /* Configure.m */,
+				CD17D54620104EE700F798D7 /* ConfigureWindowController.h */,
+				CD17D54820104EE700F798D7 /* ConfigureWindowController.m */,
+				CD17D54920104EE700F798D7 /* ConfigureWindowController.xib */,
+				CD73DA98200490B4001FFC84 /* HelperComms.h */,
+				CD73DA97200490B4001FFC84 /* HelperComms.m */,
+				4BE4904C10445D49006BE471 /* Info.plist */,
+				CD6CAC9120A42D5000188B0A /* main.h */,
+				4BE4904D10445D49006BE471 /* main.m */,
+				BF65C19011B985C0007C20AB /* MainMenu.xib */,
+			);
+			path = Uninstaller;
+			sourceTree = "<group>";
+		};
+		4BE4905210445DDD006BE471 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CD73DA8F2004629D001FFC84 /* HelperInterface.h */,
+				CD73DA902004629D001FFC84 /* HelperInterface.m */,
+				CD73DA932004633A001FFC84 /* HelperListener.h */,
+				CD73DA9220046339001FFC84 /* HelperListener.m */,
+				4BE4905310445DDD006BE471 /* Info.plist */,
+				4BE4905410445DDD006BE471 /* Launchd.plist */,
+				4BE4905510445DDD006BE471 /* main.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		CD17D55C201148F900F798D7 /* Script */ = {
+			isa = PBXGroup;
+			children = (
+				CDA6E62C203B674C00C78F91 /* configure.sh */,
+			);
+			name = Script;
+			path = Uninstaller/Script;
+			sourceTree = "<group>";
+		};
+		CD17D56120116C2000F798D7 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				CDAFF43F203E971F00F27635 /* com.objective-see.lulu.plist */,
+			);
+			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		CD73DA9C20049158001FFC84 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CDC37928250D49A300314064 /* consts.h */,
+				CDC37929250D49A300314064 /* utilities.h */,
+				CDC3792A250D49A300314064 /* utilities.m */,
+				CDAAC24620226D400032F2E6 /* Images */,
+				CD18D64C200DA301005609F9 /* XPCProtocol.h */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		CDAAC24620226D400032F2E6 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CDA6E634203B6B7900C78F91 /* objectiveSeeLogo.png */,
+				CDA6E632203B6B7800C78F91 /* objectiveSeeText.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4BE4905C10445E0A006BE471 /* helper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4BE4906210445E31006BE471 /* Build configuration list for PBXNativeTarget "helper" */;
+			buildPhases = (
+				4BE4905A10445E0A006BE471 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = helper;
+			productName = SMJobBlessHelper;
+			productReference = 4BE4905D10445E0A006BE471 /* com.objective-see.lulu.configHelper */;
+			productType = "com.apple.product-type.tool";
+		};
+		8D1107260486CEB800E47090 /* Uninstaller */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Uninstaller" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+				4BE49098104463C5006BE471 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4BE4907F1044624F006BE471 /* PBXTargetDependency */,
+			);
+			name = Uninstaller;
+			productInstallPath = "$(HOME)/Applications";
+			productName = SMJobBless;
+			productReference = 8D1107320486CEB800E47090 /* LuLu Uninstaller.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1000;
+				TargetAttributes = {
+					4BE4905C10445E0A006BE471 = {
+						DevelopmentTeam = VBG97UB4TA;
+						ProvisioningStyle = Manual;
+					};
+					8D1107260486CEB800E47090 = {
+						DevelopmentTeam = VBG97UB4TA;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Uninstaller" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* SMJobBless */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* Uninstaller */,
+				4BE4905C10445E0A006BE471 /* helper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDA6E62D203B674C00C78F91 /* configure.sh in Resources */,
+				BF65C19111B985C0007C20AB /* MainMenu.xib in Resources */,
+				CD3307AE203567D500F10D71 /* Assets.xcassets in Resources */,
+				CD17D55120104EE700F798D7 /* ConfigureWindowController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4BE4905A10445E0A006BE471 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD73DA9520046548001FFC84 /* HelperInterface.m in Sources */,
+				CD73DA9620046548001FFC84 /* HelperListener.m in Sources */,
+				4BE4906110445E13006BE471 /* main.m in Sources */,
+				CDC3792C250D65BA00314064 /* utilities.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BE4905110445D49006BE471 /* main.m in Sources */,
+				CD73DA942004633A001FFC84 /* HelperListener.m in Sources */,
+				CDC3792B250D49A400314064 /* utilities.m in Sources */,
+				CD73DA99200490B4001FFC84 /* HelperComms.m in Sources */,
+				CD73DA912004629D001FFC84 /* HelperInterface.m in Sources */,
+				BF04235611C0531400431286 /* AppDelegate.m in Sources */,
+				CD17D54F20104EE700F798D7 /* Configure.m in Sources */,
+				CD17D55020104EE700F798D7 /* ConfigureWindowController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4BE4907F1044624F006BE471 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4BE4905C10445E0A006BE471 /* helper */;
+			targetProxy = 4BE4907E1044624F006BE471 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4BE4905F10445E0B006BE471 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2.0.0;
+				DEVELOPMENT_TEAM = VBG97UB4TA;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = NO;
+				INFOPLIST_FILE = Helper/Info.plist;
+				MARKETING_VERSION = 2.0.0.;
+				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					Helper/Info.plist,
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					Helper/launchd.plist,
+					"-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.configHelper";
+				PRODUCT_NAME = "com.objective-see.lulu.configHelper";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = x86_64;
+			};
+			name = Debug;
+		};
+		4BE4906010445E0B006BE471 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2.0.0;
+				DEVELOPMENT_TEAM = VBG97UB4TA;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = NO;
+				INFOPLIST_FILE = Helper/Info.plist;
+				MARKETING_VERSION = 2.0.0.;
+				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					Helper/Info.plist,
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					Helper/launchd.plist,
+					"-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.configHelper";
+				PRODUCT_NAME = "com.objective-see.lulu.configHelper";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = x86_64;
+			};
+			name = Release;
+		};
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_STICKER_PACK_IDENTIFIER_PREFIX = "";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2.0.0;
+				DEVELOPMENT_TEAM = VBG97UB4TA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = NO;
+				INFOPLIST_FILE = Uninstaller/Info.plist;
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 2.0.0;
+				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.config";
+				PRODUCT_NAME = "LuLu Uninstaller";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = x86_64;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_STICKER_PACK_IDENTIFIER_PREFIX = "";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2.0.0;
+				DEVELOPMENT_TEAM = VBG97UB4TA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = NO;
+				INFOPLIST_FILE = Uninstaller/Info.plist;
+				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 2.0.0;
+				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.config";
+				PRODUCT_NAME = "LuLu Uninstaller";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = x86_64;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PROVISIONING_PROFILE = "";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4BE4906210445E31006BE471 /* Build configuration list for PBXNativeTarget "helper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BE4905F10445E0B006BE471 /* Debug */,
+				4BE4906010445E0B006BE471 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Uninstaller" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Uninstaller" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

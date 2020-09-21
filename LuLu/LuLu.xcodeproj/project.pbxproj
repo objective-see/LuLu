@@ -1,0 +1,864 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CD03F8F524F8E68300723BDC /* Binary.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03F8F324F8E68300723BDC /* Binary.m */; };
+		CD03F8F624F8E68300723BDC /* Process.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03F8F424F8E68300723BDC /* Process.m */; };
+		CD03F8F924F8E69C00723BDC /* Signing.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03F8F824F8E69C00723BDC /* Signing.m */; };
+		CD9E1477251349A800DA05C3 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9E1476251349A800DA05C3 /* Sentry.framework */; };
+		CD9E1478251349FB00DA05C3 /* Sentry.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD9E1476251349A800DA05C3 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CD9E147925134A0100DA05C3 /* Sentry.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD9E1476251349A800DA05C3 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CD9E147D25171BF200DA05C3 /* ItemPathsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9E147B25171BF200DA05C3 /* ItemPathsWindowController.m */; };
+		CD9E147E25171BF200DA05C3 /* ItemPaths.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9E147C25171BF200DA05C3 /* ItemPaths.xib */; };
+		CDA1364624EF4DA1005AD424 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1363324EF4DA0005AD424 /* utilities.m */; };
+		CDA1364824EF4DA1005AD424 /* Rule.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1363724EF4DA0005AD424 /* Rule.m */; };
+		CDA1366224EF4E57005AD424 /* XPCUserClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1364D24EF4E56005AD424 /* XPCUserClient.m */; };
+		CDA1366324EF4E57005AD424 /* Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1364F24EF4E56005AD424 /* Alerts.m */; };
+		CDA1366424EF4E57005AD424 /* GrayList.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1365124EF4E56005AD424 /* GrayList.m */; };
+		CDA1366624EF4E57005AD424 /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1365324EF4E56005AD424 /* Preferences.m */; };
+		CDA1366724EF4E57005AD424 /* XPCDaemon.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1365624EF4E56005AD424 /* XPCDaemon.m */; };
+		CDA1366824EF4E57005AD424 /* XPCListener.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1365724EF4E56005AD424 /* XPCListener.m */; };
+		CDA1366D24EF4F89005AD424 /* Rules.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1366C24EF4F89005AD424 /* Rules.m */; };
+		CDA1366F24EF5587005AD424 /* libbsm.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA1366E24EF5587005AD424 /* libbsm.tbd */; };
+		CDA136C724F0D7C3005AD424 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136C524F0D7C3005AD424 /* utilities.m */; };
+		CDA136CD24F0D94F005AD424 /* XPCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136CC24F0D94F005AD424 /* XPCUser.m */; };
+		CDA136D024F0D9C1005AD424 /* XPCDaemonClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136CF24F0D9C1005AD424 /* XPCDaemonClient.m */; };
+		CDA136D124F0DA0E005AD424 /* Update.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136B424F0D4A8005AD424 /* Update.m */; };
+		CDA136D224F0DA0E005AD424 /* UpdateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136B324F0D4A8005AD424 /* UpdateWindowController.m */; };
+		CDA136D324F0DA0E005AD424 /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369524F0D2CF005AD424 /* AboutWindowController.m */; };
+		CDA136D424F0DA0E005AD424 /* AddRuleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369A24F0D2CF005AD424 /* AddRuleWindowController.m */; };
+		CDA136D524F0DA0E005AD424 /* PrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1368E24F0D2CF005AD424 /* PrefsWindowController.m */; };
+		CDA136D624F0DA0E005AD424 /* RuleRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369E24F0D2CF005AD424 /* RuleRow.m */; };
+		CDA136D724F0DA0E005AD424 /* RuleRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136A024F0D2D0005AD424 /* RuleRowCell.m */; };
+		CDA136D824F0DA0E005AD424 /* RulesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136A324F0D2D0005AD424 /* RulesTable.m */; };
+		CDA136D924F0DA0E005AD424 /* RulesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369C24F0D2CF005AD424 /* RulesWindowController.m */; };
+		CDA136DA24F0DA0E005AD424 /* WelcomeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369924F0D2CF005AD424 /* WelcomeWindowController.m */; };
+		CDA136DB24F0DA0E005AD424 /* AlertWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367224F0D268005AD424 /* AlertWindowController.m */; };
+		CDA136DD24F0DA0F005AD424 /* ParentsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367E24F0D268005AD424 /* ParentsWindowController.m */; };
+		CDA136DE24F0DA0F005AD424 /* SigningInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367524F0D268005AD424 /* SigningInfoViewController.m */; };
+		CDA136DF24F0DA0F005AD424 /* StatusBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1368024F0D268005AD424 /* StatusBarItem.m */; };
+		CDA136E024F0DA0F005AD424 /* StatusBarPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367C24F0D268005AD424 /* StatusBarPopoverController.m */; };
+		CDA136E124F0DA0F005AD424 /* VirusTotal.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367924F0D268005AD424 /* VirusTotal.m */; };
+		CDA136E224F0DA0F005AD424 /* VirusTotalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367D24F0D268005AD424 /* VirusTotalViewController.m */; };
+		CDA136E524F0DA43005AD424 /* Rule.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136E424F0DA43005AD424 /* Rule.m */; };
+		CDA136E624F0F88F005AD424 /* UpdateWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA136B224F0D4A8005AD424 /* UpdateWindow.xib */; };
+		CDA136E724F0F88F005AD424 /* AddRule.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA1369824F0D2CF005AD424 /* AddRule.xib */; };
+		CDA136E824F0F88F005AD424 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA1369F24F0D2D0005AD424 /* Preferences.xib */; };
+		CDA136E924F0F88F005AD424 /* Rules.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA136A124F0D2D0005AD424 /* Rules.xib */; };
+		CDA136EA24F0F88F005AD424 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA1369124F0D2CF005AD424 /* Welcome.xib */; };
+		CDA136EB24F0F88F005AD424 /* AlertWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA1367424F0D268005AD424 /* AlertWindow.xib */; };
+		CDA136EC24F0F88F005AD424 /* StatusBarPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA1367B24F0D268005AD424 /* StatusBarPopover.xib */; };
+		CDA1547824F34BEC00E0AE97 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA1369024F0D2CF005AD424 /* AboutWindow.xib */; };
+		CDB2CC1D24D61A4E00D0EECE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB2CC1C24D61A4E00D0EECE /* AppDelegate.m */; };
+		CDB2CC1F24D61A5000D0EECE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDB2CC1E24D61A5000D0EECE /* Assets.xcassets */; };
+		CDB2CC2224D61A5000D0EECE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB2CC2024D61A5000D0EECE /* MainMenu.xib */; };
+		CDB2CC2524D61A5000D0EECE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB2CC2424D61A5000D0EECE /* main.m */; };
+		CDB2CC3324D61B3900D0EECE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB2CC3224D61B3900D0EECE /* NetworkExtension.framework */; };
+		CDB2CC3724D61B3900D0EECE /* FilterDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB2CC3624D61B3900D0EECE /* FilterDataProvider.m */; };
+		CDB2CC3924D61B3900D0EECE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB2CC3824D61B3900D0EECE /* main.m */; };
+		CDB2CC3E24D61B3900D0EECE /* com.objective-see.lulu.extension.systemextension in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = CDB2CC3024D61B3900D0EECE /* com.objective-see.lulu.extension.systemextension */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CDB2CC4424DBE48100D0EECE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB2CC3224D61B3900D0EECE /* NetworkExtension.framework */; };
+		CDC378C7250C66C300314064 /* Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC378C6250C66C300314064 /* Extension.m */; };
+		CDC378CB250C83F200314064 /* Netiquette.app in Resources */ = {isa = PBXBuildFile; fileRef = CDC378C9250C83F100314064 /* Netiquette.app */; };
+		CDC41C412503424800CB302B /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC41C3F2503424800CB302B /* OrderedDictionary.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CDB2CC3C24D61B3900D0EECE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDB2CC1024D61A4E00D0EECE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CDB2CC2F24D61B3900D0EECE;
+			remoteInfo = Extension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CD9E1470251348F500DA05C3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CD9E147925134A0100DA05C3 /* Sentry.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD9E14742513494400DA05C3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CD9E1478251349FB00DA05C3 /* Sentry.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDB2CC4224D61B3900D0EECE /* Embed System Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "$(SYSTEM_EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				CDB2CC3E24D61B3900D0EECE /* com.objective-see.lulu.extension.systemextension in Embed System Extensions */,
+			);
+			name = "Embed System Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CD03F8F324F8E68300723BDC /* Binary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Binary.m; sourceTree = "<group>"; };
+		CD03F8F424F8E68300723BDC /* Process.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Process.m; sourceTree = "<group>"; };
+		CD03F8F724F8E69C00723BDC /* Signing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Signing.h; sourceTree = "<group>"; };
+		CD03F8F824F8E69C00723BDC /* Signing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Signing.m; sourceTree = "<group>"; };
+		CD03F8FA24F8E6BD00723BDC /* Binary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Binary.h; sourceTree = "<group>"; };
+		CD03F8FB24F8E6C600723BDC /* Process.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Process.h; sourceTree = "<group>"; };
+		CD9E1476251349A800DA05C3 /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
+		CD9E147A25171BF200DA05C3 /* ItemPathsWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemPathsWindowController.h; sourceTree = "<group>"; };
+		CD9E147B25171BF200DA05C3 /* ItemPathsWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemPathsWindowController.m; sourceTree = "<group>"; };
+		CD9E147C25171BF200DA05C3 /* ItemPaths.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemPaths.xib; sourceTree = "<group>"; };
+		CDA1362E24EF4DA0005AD424 /* logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = logging.m; path = Shared/logging.m; sourceTree = SOURCE_ROOT; };
+		CDA1363224EF4DA0005AD424 /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = Shared/utilities.h; sourceTree = SOURCE_ROOT; };
+		CDA1363324EF4DA0005AD424 /* utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = utilities.m; path = Shared/utilities.m; sourceTree = SOURCE_ROOT; };
+		CDA1363424EF4DA0005AD424 /* XPCDaemonProto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPCDaemonProto.h; path = Shared/XPCDaemonProto.h; sourceTree = SOURCE_ROOT; };
+		CDA1363724EF4DA0005AD424 /* Rule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rule.m; path = Shared/Rule.m; sourceTree = SOURCE_ROOT; };
+		CDA1363824EF4DA0005AD424 /* Rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rule.h; path = Shared/Rule.h; sourceTree = SOURCE_ROOT; };
+		CDA1363A24EF4DA0005AD424 /* consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = consts.h; path = Shared/consts.h; sourceTree = SOURCE_ROOT; };
+		CDA1363C24EF4DA0005AD424 /* logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = logging.h; path = Shared/logging.h; sourceTree = SOURCE_ROOT; };
+		CDA1363D24EF4DA0005AD424 /* UserClientShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserClientShared.h; path = Shared/UserClientShared.h; sourceTree = SOURCE_ROOT; };
+		CDA1364124EF4DA1005AD424 /* XPCUserProto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPCUserProto.h; path = Shared/XPCUserProto.h; sourceTree = SOURCE_ROOT; };
+		CDA1364D24EF4E56005AD424 /* XPCUserClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPCUserClient.m; sourceTree = "<group>"; };
+		CDA1364F24EF4E56005AD424 /* Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts.m; sourceTree = "<group>"; };
+		CDA1365024EF4E56005AD424 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		CDA1365124EF4E56005AD424 /* GrayList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrayList.m; sourceTree = "<group>"; };
+		CDA1365324EF4E56005AD424 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
+		CDA1365624EF4E56005AD424 /* XPCDaemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPCDaemon.m; sourceTree = "<group>"; };
+		CDA1365724EF4E56005AD424 /* XPCListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPCListener.m; sourceTree = "<group>"; };
+		CDA1365924EF4E56005AD424 /* XPCUserClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCUserClient.h; sourceTree = "<group>"; };
+		CDA1365A24EF4E56005AD424 /* Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts.h; sourceTree = "<group>"; };
+		CDA1365B24EF4E57005AD424 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
+		CDA1365C24EF4E57005AD424 /* XPCListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCListener.h; sourceTree = "<group>"; };
+		CDA1365D24EF4E57005AD424 /* GrayList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrayList.h; sourceTree = "<group>"; };
+		CDA1365E24EF4E57005AD424 /* XPCDaemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCDaemon.h; sourceTree = "<group>"; };
+		CDA1366B24EF4F89005AD424 /* Rules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rules.h; sourceTree = "<group>"; };
+		CDA1366C24EF4F89005AD424 /* Rules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rules.m; sourceTree = "<group>"; };
+		CDA1366E24EF5587005AD424 /* libbsm.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbsm.tbd; path = usr/lib/libbsm.tbd; sourceTree = SDKROOT; };
+		CDA1367224F0D268005AD424 /* AlertWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertWindowController.m; sourceTree = "<group>"; };
+		CDA1367324F0D268005AD424 /* VirusTotal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirusTotal.h; sourceTree = "<group>"; };
+		CDA1367424F0D268005AD424 /* AlertWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertWindow.xib; sourceTree = "<group>"; };
+		CDA1367524F0D268005AD424 /* SigningInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigningInfoViewController.m; sourceTree = "<group>"; };
+		CDA1367724F0D268005AD424 /* StatusBarPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarPopoverController.h; sourceTree = "<group>"; };
+		CDA1367824F0D268005AD424 /* SigningInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigningInfoViewController.h; sourceTree = "<group>"; };
+		CDA1367924F0D268005AD424 /* VirusTotal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirusTotal.m; sourceTree = "<group>"; };
+		CDA1367A24F0D268005AD424 /* ParentsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentsWindowController.h; sourceTree = "<group>"; };
+		CDA1367B24F0D268005AD424 /* StatusBarPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusBarPopover.xib; sourceTree = "<group>"; };
+		CDA1367C24F0D268005AD424 /* StatusBarPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarPopoverController.m; sourceTree = "<group>"; };
+		CDA1367D24F0D268005AD424 /* VirusTotalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirusTotalViewController.m; sourceTree = "<group>"; };
+		CDA1367E24F0D268005AD424 /* ParentsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentsWindowController.m; sourceTree = "<group>"; };
+		CDA1367F24F0D268005AD424 /* AlertWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertWindowController.h; sourceTree = "<group>"; };
+		CDA1368024F0D268005AD424 /* StatusBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarItem.m; sourceTree = "<group>"; };
+		CDA1368224F0D269005AD424 /* StatusBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarItem.h; sourceTree = "<group>"; };
+		CDA1368324F0D269005AD424 /* VirusTotalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirusTotalViewController.h; sourceTree = "<group>"; };
+		CDA1368E24F0D2CF005AD424 /* PrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsWindowController.m; sourceTree = "<group>"; };
+		CDA1368F24F0D2CF005AD424 /* RulesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesWindowController.h; sourceTree = "<group>"; };
+		CDA1369024F0D2CF005AD424 /* AboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
+		CDA1369124F0D2CF005AD424 /* Welcome.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Welcome.xib; sourceTree = "<group>"; };
+		CDA1369224F0D2CF005AD424 /* PrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsWindowController.h; sourceTree = "<group>"; };
+		CDA1369324F0D2CF005AD424 /* AddRuleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRuleWindowController.h; sourceTree = "<group>"; };
+		CDA1369424F0D2CF005AD424 /* RuleRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleRowCell.h; sourceTree = "<group>"; };
+		CDA1369524F0D2CF005AD424 /* AboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWindowController.m; sourceTree = "<group>"; };
+		CDA1369624F0D2CF005AD424 /* patrons.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = patrons.txt; sourceTree = "<group>"; };
+		CDA1369724F0D2CF005AD424 /* WelcomeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeWindowController.h; sourceTree = "<group>"; };
+		CDA1369824F0D2CF005AD424 /* AddRule.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRule.xib; sourceTree = "<group>"; };
+		CDA1369924F0D2CF005AD424 /* WelcomeWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeWindowController.m; sourceTree = "<group>"; };
+		CDA1369A24F0D2CF005AD424 /* AddRuleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRuleWindowController.m; sourceTree = "<group>"; };
+		CDA1369B24F0D2CF005AD424 /* AboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWindowController.h; sourceTree = "<group>"; };
+		CDA1369C24F0D2CF005AD424 /* RulesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesWindowController.m; sourceTree = "<group>"; };
+		CDA1369D24F0D2CF005AD424 /* RuleRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleRow.h; sourceTree = "<group>"; };
+		CDA1369E24F0D2CF005AD424 /* RuleRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleRow.m; sourceTree = "<group>"; };
+		CDA1369F24F0D2D0005AD424 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		CDA136A024F0D2D0005AD424 /* RuleRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleRowCell.m; sourceTree = "<group>"; };
+		CDA136A124F0D2D0005AD424 /* Rules.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Rules.xib; sourceTree = "<group>"; };
+		CDA136A224F0D2D0005AD424 /* RulesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesTable.h; sourceTree = "<group>"; };
+		CDA136A324F0D2D0005AD424 /* RulesTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesTable.m; sourceTree = "<group>"; };
+		CDA136B224F0D4A8005AD424 /* UpdateWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateWindow.xib; sourceTree = "<group>"; };
+		CDA136B324F0D4A8005AD424 /* UpdateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateWindowController.m; sourceTree = "<group>"; };
+		CDA136B424F0D4A8005AD424 /* Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Update.m; sourceTree = "<group>"; };
+		CDA136B524F0D4A9005AD424 /* Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Update.h; sourceTree = "<group>"; };
+		CDA136B624F0D4A9005AD424 /* UpdateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateWindowController.h; sourceTree = "<group>"; };
+		CDA136C424F0D7C3005AD424 /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = Shared/utilities.h; sourceTree = SOURCE_ROOT; };
+		CDA136C524F0D7C3005AD424 /* utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = utilities.m; path = Shared/utilities.m; sourceTree = SOURCE_ROOT; };
+		CDA136C624F0D7C3005AD424 /* consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = consts.h; path = Shared/consts.h; sourceTree = SOURCE_ROOT; };
+		CDA136CB24F0D94F005AD424 /* XPCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCUser.h; sourceTree = "<group>"; };
+		CDA136CC24F0D94F005AD424 /* XPCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPCUser.m; sourceTree = "<group>"; };
+		CDA136CE24F0D9C1005AD424 /* XPCDaemonClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCDaemonClient.h; sourceTree = "<group>"; };
+		CDA136CF24F0D9C1005AD424 /* XPCDaemonClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPCDaemonClient.m; sourceTree = "<group>"; };
+		CDA136E324F0DA43005AD424 /* Rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rule.h; path = Shared/Rule.h; sourceTree = SOURCE_ROOT; };
+		CDA136E424F0DA43005AD424 /* Rule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rule.m; path = Shared/Rule.m; sourceTree = SOURCE_ROOT; };
+		CDB2CC1824D61A4E00D0EECE /* LuLu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuLu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDB2CC1B24D61A4E00D0EECE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CDB2CC1C24D61A4E00D0EECE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CDB2CC1E24D61A5000D0EECE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CDB2CC2124D61A5000D0EECE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CDB2CC2324D61A5000D0EECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDB2CC2424D61A5000D0EECE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CDB2CC2624D61A5000D0EECE /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
+		CDB2CC3024D61B3900D0EECE /* com.objective-see.lulu.extension.systemextension */ = {isa = PBXFileReference; explicitFileType = "wrapper.system-extension"; includeInIndex = 0; path = "com.objective-see.lulu.extension.systemextension"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDB2CC3224D61B3900D0EECE /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		CDB2CC3524D61B3900D0EECE /* FilterDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterDataProvider.h; sourceTree = "<group>"; };
+		CDB2CC3624D61B3900D0EECE /* FilterDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterDataProvider.m; sourceTree = "<group>"; };
+		CDB2CC3824D61B3900D0EECE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CDB2CC3A24D61B3900D0EECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDB2CC3B24D61B3900D0EECE /* Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Extension.entitlements; sourceTree = "<group>"; };
+		CDC378C5250C66C200314064 /* Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Extension.h; sourceTree = "<group>"; };
+		CDC378C6250C66C300314064 /* Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Extension.m; sourceTree = "<group>"; };
+		CDC378C9250C83F100314064 /* Netiquette.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = Netiquette.app; sourceTree = "<group>"; };
+		CDC41C3F2503424800CB302B /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderedDictionary.m; path = "3rd-party/OrderedDictionary.m"; sourceTree = "<group>"; };
+		CDC41C402503424800CB302B /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderedDictionary.h; path = "3rd-party/OrderedDictionary.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CDB2CC1524D61A4E00D0EECE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDB2CC4424DBE48100D0EECE /* NetworkExtension.framework in Frameworks */,
+				CD9E1477251349A800DA05C3 /* Sentry.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDB2CC2D24D61B3900D0EECE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDA1366F24EF5587005AD424 /* libbsm.tbd in Frameworks */,
+				CDB2CC3324D61B3900D0EECE /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CDA135F824EBB58E005AD424 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CDA1363A24EF4DA0005AD424 /* consts.h */,
+				CDA1363C24EF4DA0005AD424 /* logging.h */,
+				CDA1362E24EF4DA0005AD424 /* logging.m */,
+				CDA1363824EF4DA0005AD424 /* Rule.h */,
+				CDA1363724EF4DA0005AD424 /* Rule.m */,
+				CDA1363D24EF4DA0005AD424 /* UserClientShared.h */,
+				CDA1363224EF4DA0005AD424 /* utilities.h */,
+				CDA1363324EF4DA0005AD424 /* utilities.m */,
+				CDA1363424EF4DA0005AD424 /* XPCDaemonProto.h */,
+				CDA1364124EF4DA1005AD424 /* XPCUserProto.h */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		CDA136BD24F0D526005AD424 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CDA136C624F0D7C3005AD424 /* consts.h */,
+				CDA136E324F0DA43005AD424 /* Rule.h */,
+				CDA136E424F0DA43005AD424 /* Rule.m */,
+				CDA136C424F0D7C3005AD424 /* utilities.h */,
+				CDA136C524F0D7C3005AD424 /* utilities.m */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		CDB2CC0F24D61A4E00D0EECE = {
+			isa = PBXGroup;
+			children = (
+				CDB2CC1A24D61A4E00D0EECE /* App */,
+				CDB2CC3424D61B3900D0EECE /* Extension */,
+				CDB2CC3124D61B3900D0EECE /* Frameworks */,
+				CDB2CC1924D61A4E00D0EECE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CDB2CC1924D61A4E00D0EECE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CDB2CC1824D61A4E00D0EECE /* LuLu.app */,
+				CDB2CC3024D61B3900D0EECE /* com.objective-see.lulu.extension.systemextension */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CDB2CC1A24D61A4E00D0EECE /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CDA1369024F0D2CF005AD424 /* AboutWindow.xib */,
+				CDA1369B24F0D2CF005AD424 /* AboutWindowController.h */,
+				CDA1369524F0D2CF005AD424 /* AboutWindowController.m */,
+				CDA1369824F0D2CF005AD424 /* AddRule.xib */,
+				CDA1369324F0D2CF005AD424 /* AddRuleWindowController.h */,
+				CDA1369A24F0D2CF005AD424 /* AddRuleWindowController.m */,
+				CDA1367424F0D268005AD424 /* AlertWindow.xib */,
+				CDA1367F24F0D268005AD424 /* AlertWindowController.h */,
+				CDA1367224F0D268005AD424 /* AlertWindowController.m */,
+				CDB2CC2624D61A5000D0EECE /* App.entitlements */,
+				CDB2CC1B24D61A4E00D0EECE /* AppDelegate.h */,
+				CDB2CC1C24D61A4E00D0EECE /* AppDelegate.m */,
+				CDB2CC1E24D61A5000D0EECE /* Assets.xcassets */,
+				CDC378C8250C83F100314064 /* Binaries */,
+				CDC378C5250C66C200314064 /* Extension.h */,
+				CDC378C6250C66C300314064 /* Extension.m */,
+				CDB2CC2324D61A5000D0EECE /* Info.plist */,
+				CD9E147C25171BF200DA05C3 /* ItemPaths.xib */,
+				CD9E147A25171BF200DA05C3 /* ItemPathsWindowController.h */,
+				CD9E147B25171BF200DA05C3 /* ItemPathsWindowController.m */,
+				CDB2CC2424D61A5000D0EECE /* main.m */,
+				CDB2CC2024D61A5000D0EECE /* MainMenu.xib */,
+				CDC41C402503424800CB302B /* OrderedDictionary.h */,
+				CDC41C3F2503424800CB302B /* OrderedDictionary.m */,
+				CDA1367A24F0D268005AD424 /* ParentsWindowController.h */,
+				CDA1367E24F0D268005AD424 /* ParentsWindowController.m */,
+				CDA1369624F0D2CF005AD424 /* patrons.txt */,
+				CDA1369F24F0D2D0005AD424 /* Preferences.xib */,
+				CDA1369224F0D2CF005AD424 /* PrefsWindowController.h */,
+				CDA1368E24F0D2CF005AD424 /* PrefsWindowController.m */,
+				CDA1369D24F0D2CF005AD424 /* RuleRow.h */,
+				CDA1369E24F0D2CF005AD424 /* RuleRow.m */,
+				CDA1369424F0D2CF005AD424 /* RuleRowCell.h */,
+				CDA136A024F0D2D0005AD424 /* RuleRowCell.m */,
+				CDA136A124F0D2D0005AD424 /* Rules.xib */,
+				CDA136A224F0D2D0005AD424 /* RulesTable.h */,
+				CDA136A324F0D2D0005AD424 /* RulesTable.m */,
+				CDA1368F24F0D2CF005AD424 /* RulesWindowController.h */,
+				CDA1369C24F0D2CF005AD424 /* RulesWindowController.m */,
+				CDA136BD24F0D526005AD424 /* Shared */,
+				CDA1367824F0D268005AD424 /* SigningInfoViewController.h */,
+				CDA1367524F0D268005AD424 /* SigningInfoViewController.m */,
+				CDA1368224F0D269005AD424 /* StatusBarItem.h */,
+				CDA1368024F0D268005AD424 /* StatusBarItem.m */,
+				CDA1367B24F0D268005AD424 /* StatusBarPopover.xib */,
+				CDA1367724F0D268005AD424 /* StatusBarPopoverController.h */,
+				CDA1367C24F0D268005AD424 /* StatusBarPopoverController.m */,
+				CDA136B524F0D4A9005AD424 /* Update.h */,
+				CDA136B424F0D4A8005AD424 /* Update.m */,
+				CDA136B224F0D4A8005AD424 /* UpdateWindow.xib */,
+				CDA136B624F0D4A9005AD424 /* UpdateWindowController.h */,
+				CDA136B324F0D4A8005AD424 /* UpdateWindowController.m */,
+				CDA1367324F0D268005AD424 /* VirusTotal.h */,
+				CDA1367924F0D268005AD424 /* VirusTotal.m */,
+				CDA1368324F0D269005AD424 /* VirusTotalViewController.h */,
+				CDA1367D24F0D268005AD424 /* VirusTotalViewController.m */,
+				CDA1369124F0D2CF005AD424 /* Welcome.xib */,
+				CDA1369724F0D2CF005AD424 /* WelcomeWindowController.h */,
+				CDA1369924F0D2CF005AD424 /* WelcomeWindowController.m */,
+				CDA136CE24F0D9C1005AD424 /* XPCDaemonClient.h */,
+				CDA136CF24F0D9C1005AD424 /* XPCDaemonClient.m */,
+				CDA136CB24F0D94F005AD424 /* XPCUser.h */,
+				CDA136CC24F0D94F005AD424 /* XPCUser.m */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CDB2CC3124D61B3900D0EECE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD9E1476251349A800DA05C3 /* Sentry.framework */,
+				CDA1366E24EF5587005AD424 /* libbsm.tbd */,
+				CDB2CC3224D61B3900D0EECE /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CDB2CC3424D61B3900D0EECE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CD03F8F324F8E68300723BDC /* Binary.m */,
+				CD03F8FA24F8E6BD00723BDC /* Binary.h */,
+				CD03F8FB24F8E6C600723BDC /* Process.h */,
+				CD03F8F424F8E68300723BDC /* Process.m */,
+				CDA1365A24EF4E56005AD424 /* Alerts.h */,
+				CDA1364F24EF4E56005AD424 /* Alerts.m */,
+				CDB2CC3B24D61B3900D0EECE /* Extension.entitlements */,
+				CDB2CC3524D61B3900D0EECE /* FilterDataProvider.h */,
+				CDB2CC3624D61B3900D0EECE /* FilterDataProvider.m */,
+				CDA1365D24EF4E57005AD424 /* GrayList.h */,
+				CDA1365124EF4E56005AD424 /* GrayList.m */,
+				CDB2CC3A24D61B3900D0EECE /* Info.plist */,
+				CD03F8F724F8E69C00723BDC /* Signing.h */,
+				CD03F8F824F8E69C00723BDC /* Signing.m */,
+				CDA1365024EF4E56005AD424 /* main.h */,
+				CDB2CC3824D61B3900D0EECE /* main.m */,
+				CDA1365B24EF4E57005AD424 /* Preferences.h */,
+				CDA1365324EF4E56005AD424 /* Preferences.m */,
+				CDA1366B24EF4F89005AD424 /* Rules.h */,
+				CDA1366C24EF4F89005AD424 /* Rules.m */,
+				CDA135F824EBB58E005AD424 /* Shared */,
+				CDA1365E24EF4E57005AD424 /* XPCDaemon.h */,
+				CDA1365624EF4E56005AD424 /* XPCDaemon.m */,
+				CDA1365C24EF4E57005AD424 /* XPCListener.h */,
+				CDA1365724EF4E56005AD424 /* XPCListener.m */,
+				CDA1365924EF4E56005AD424 /* XPCUserClient.h */,
+				CDA1364D24EF4E56005AD424 /* XPCUserClient.m */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CDC378C8250C83F100314064 /* Binaries */ = {
+			isa = PBXGroup;
+			children = (
+				CDC378C9250C83F100314064 /* Netiquette.app */,
+			);
+			path = Binaries;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CDB2CC1724D61A4E00D0EECE /* LuLu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDB2CC2924D61A5000D0EECE /* Build configuration list for PBXNativeTarget "LuLu" */;
+			buildPhases = (
+				CDB2CC1424D61A4E00D0EECE /* Sources */,
+				CDB2CC1524D61A4E00D0EECE /* Frameworks */,
+				CDB2CC1624D61A4E00D0EECE /* Resources */,
+				CD9E14742513494400DA05C3 /* CopyFiles */,
+				CDB2CC4224D61B3900D0EECE /* Embed System Extensions */,
+				CDC37930250D66E900314064 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CDB2CC3D24D61B3900D0EECE /* PBXTargetDependency */,
+			);
+			name = LuLu;
+			productName = TestExtension;
+			productReference = CDB2CC1824D61A4E00D0EECE /* LuLu.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CDB2CC2F24D61B3900D0EECE /* Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDB2CC3F24D61B3900D0EECE /* Build configuration list for PBXNativeTarget "Extension" */;
+			buildPhases = (
+				CDB2CC2C24D61B3900D0EECE /* Sources */,
+				CDB2CC2D24D61B3900D0EECE /* Frameworks */,
+				CDB2CC2E24D61B3900D0EECE /* Resources */,
+				CD9E1470251348F500DA05C3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Extension;
+			productName = Extension;
+			productReference = CDB2CC3024D61B3900D0EECE /* com.objective-see.lulu.extension.systemextension */;
+			productType = "com.apple.product-type.system-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CDB2CC1024D61A4E00D0EECE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Objective-See";
+				TargetAttributes = {
+					CDB2CC1724D61A4E00D0EECE = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					CDB2CC2F24D61B3900D0EECE = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = CDB2CC1324D61A4E00D0EECE /* Build configuration list for PBXProject "LuLu" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CDB2CC0F24D61A4E00D0EECE;
+			productRefGroup = CDB2CC1924D61A4E00D0EECE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CDB2CC1724D61A4E00D0EECE /* LuLu */,
+				CDB2CC2F24D61B3900D0EECE /* Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CDB2CC1624D61A4E00D0EECE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDC378CB250C83F200314064 /* Netiquette.app in Resources */,
+				CD9E147E25171BF200DA05C3 /* ItemPaths.xib in Resources */,
+				CDA1547824F34BEC00E0AE97 /* AboutWindow.xib in Resources */,
+				CDA136E624F0F88F005AD424 /* UpdateWindow.xib in Resources */,
+				CDA136E724F0F88F005AD424 /* AddRule.xib in Resources */,
+				CDA136E824F0F88F005AD424 /* Preferences.xib in Resources */,
+				CDA136E924F0F88F005AD424 /* Rules.xib in Resources */,
+				CDA136EA24F0F88F005AD424 /* Welcome.xib in Resources */,
+				CDA136EB24F0F88F005AD424 /* AlertWindow.xib in Resources */,
+				CDA136EC24F0F88F005AD424 /* StatusBarPopover.xib in Resources */,
+				CDB2CC1F24D61A5000D0EECE /* Assets.xcassets in Resources */,
+				CDB2CC2224D61A5000D0EECE /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDB2CC2E24D61B3900D0EECE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CDC37930250D66E900314064 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -R -f \"$BUILT_PRODUCTS_DIR/LuLu Uninstaller.app\" \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Resources\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CDB2CC1424D61A4E00D0EECE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDA136E524F0DA43005AD424 /* Rule.m in Sources */,
+				CDA136D124F0DA0E005AD424 /* Update.m in Sources */,
+				CDA136D224F0DA0E005AD424 /* UpdateWindowController.m in Sources */,
+				CDA136D324F0DA0E005AD424 /* AboutWindowController.m in Sources */,
+				CDA136D424F0DA0E005AD424 /* AddRuleWindowController.m in Sources */,
+				CDA136D524F0DA0E005AD424 /* PrefsWindowController.m in Sources */,
+				CDA136D624F0DA0E005AD424 /* RuleRow.m in Sources */,
+				CDA136D724F0DA0E005AD424 /* RuleRowCell.m in Sources */,
+				CDA136D824F0DA0E005AD424 /* RulesTable.m in Sources */,
+				CDA136D924F0DA0E005AD424 /* RulesWindowController.m in Sources */,
+				CDA136DA24F0DA0E005AD424 /* WelcomeWindowController.m in Sources */,
+				CDA136DB24F0DA0E005AD424 /* AlertWindowController.m in Sources */,
+				CDA136DD24F0DA0F005AD424 /* ParentsWindowController.m in Sources */,
+				CDA136DE24F0DA0F005AD424 /* SigningInfoViewController.m in Sources */,
+				CDA136DF24F0DA0F005AD424 /* StatusBarItem.m in Sources */,
+				CDA136E024F0DA0F005AD424 /* StatusBarPopoverController.m in Sources */,
+				CDA136E124F0DA0F005AD424 /* VirusTotal.m in Sources */,
+				CDA136E224F0DA0F005AD424 /* VirusTotalViewController.m in Sources */,
+				CDA136D024F0D9C1005AD424 /* XPCDaemonClient.m in Sources */,
+				CDA136C724F0D7C3005AD424 /* utilities.m in Sources */,
+				CDB2CC2524D61A5000D0EECE /* main.m in Sources */,
+				CD9E147D25171BF200DA05C3 /* ItemPathsWindowController.m in Sources */,
+				CDB2CC1D24D61A4E00D0EECE /* AppDelegate.m in Sources */,
+				CDC41C412503424800CB302B /* OrderedDictionary.m in Sources */,
+				CDC378C7250C66C300314064 /* Extension.m in Sources */,
+				CDA136CD24F0D94F005AD424 /* XPCUser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDB2CC2C24D61B3900D0EECE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDA1364624EF4DA1005AD424 /* utilities.m in Sources */,
+				CDA1366824EF4E57005AD424 /* XPCListener.m in Sources */,
+				CDA1364824EF4DA1005AD424 /* Rule.m in Sources */,
+				CD03F8F624F8E68300723BDC /* Process.m in Sources */,
+				CDA1366424EF4E57005AD424 /* GrayList.m in Sources */,
+				CDB2CC3924D61B3900D0EECE /* main.m in Sources */,
+				CDA1366724EF4E57005AD424 /* XPCDaemon.m in Sources */,
+				CDA1366324EF4E57005AD424 /* Alerts.m in Sources */,
+				CDB2CC3724D61B3900D0EECE /* FilterDataProvider.m in Sources */,
+				CDA1366224EF4E57005AD424 /* XPCUserClient.m in Sources */,
+				CD03F8F924F8E69C00723BDC /* Signing.m in Sources */,
+				CDA1366D24EF4F89005AD424 /* Rules.m in Sources */,
+				CDA1366624EF4E57005AD424 /* Preferences.m in Sources */,
+				CD03F8F524F8E68300723BDC /* Binary.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CDB2CC3D24D61B3900D0EECE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CDB2CC2F24D61B3900D0EECE /* Extension */;
+			targetProxy = CDB2CC3C24D61B3900D0EECE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CDB2CC2024D61A5000D0EECE /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDB2CC2124D61A5000D0EECE /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CDB2CC2724D61A5000D0EECE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CDB2CC2824D61A5000D0EECE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CDB2CC2A24D61A5000D0EECE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2.0.0;
+				DEVELOPMENT_TEAM = VBG97UB4TA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "LuLu Application";
+			};
+			name = Debug;
+		};
+		CDB2CC2B24D61A5000D0EECE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2.0.0;
+				DEVELOPMENT_TEAM = VBG97UB4TA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "LuLu Application";
+			};
+			name = Release;
+		};
+		CDB2CC4024D61B3900D0EECE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Extension/Extension.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2.0.0;
+				DEVELOPMENT_TEAM = VBG97UB4TA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
+				INFOPLIST_FILE = Extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Shared/libs";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.extension";
+				PRODUCT_NAME = "com.objective-see.lulu.extension";
+				PROVISIONING_PROFILE_SPECIFIER = "LuLu Extension";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CDB2CC4124D61B3900D0EECE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Extension/Extension.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2.0.0;
+				DEVELOPMENT_TEAM = VBG97UB4TA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/Mac";
+				INFOPLIST_FILE = Extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Shared/libs";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.extension";
+				PRODUCT_NAME = "com.objective-see.lulu.extension";
+				PROVISIONING_PROFILE_SPECIFIER = "LuLu Extension";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CDB2CC1324D61A4E00D0EECE /* Build configuration list for PBXProject "LuLu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDB2CC2724D61A5000D0EECE /* Debug */,
+				CDB2CC2824D61A5000D0EECE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDB2CC2924D61A5000D0EECE /* Build configuration list for PBXNativeTarget "LuLu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDB2CC2A24D61A5000D0EECE /* Debug */,
+				CDB2CC2B24D61A5000D0EECE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDB2CC3F24D61B3900D0EECE /* Build configuration list for PBXNativeTarget "Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDB2CC4024D61B3900D0EECE /* Debug */,
+				CDB2CC4124D61B3900D0EECE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CDB2CC1024D61A4E00D0EECE /* Project object */;
+}

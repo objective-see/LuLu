@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
+            <connections>
+                <outlet property="statusMenu" destination="bI7-kC-IUx" id="czq-O5-Zp6"/>
+            </connections>
+        </customObject>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <menu title="Main Menu" systemMenu="main" autoenablesItems="NO" id="uhX-d8-iZM">
+            <items>
+                <menuItem title="LuLu" id="aJV-EX-6bj" userLabel="LuLu">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="LuLu" systemMenu="apple" id="J1I-fS-R65">
+                        <items>
+                            <menuItem title="About LuLu" id="q1D-fP-yr1" userLabel="About LuLu">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showAbout:" target="Voe-Tx-rLC" id="SNF-kS-dLh"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="AmB-Y6-frK"/>
+                            <menuItem title="Quit LuLu" keyEquivalent="q" id="DEa-wY-se7">
+                                <connections>
+                                    <action selector="quit:" target="Voe-Tx-rLC" id="dd7-Bg-qcz"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-59" y="-473"/>
+        </menu>
+        <menu id="bI7-kC-IUx" userLabel="Status Bar Menu">
+            <items>
+                <menuItem title="LULU: enabled" tag="100" id="w99-Wo-epe">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="RP3-f7-E06"/>
+                <menuItem title="Disable" tag="101" id="mxA-q2-fvN">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="bOQ-2w-DOF"/>
+                <menuItem title="Rules..." tag="102" id="kec-r9-2yd">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Preferences..." tag="103" id="4Uv-rm-VzQ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Network Monitor..." tag="104" id="VuY-Sy-392" userLabel="Network Monitor...">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="i6W-GD-eRH"/>
+                <menuItem title="Quit LuLu" tag="104" id="QrZ-U2-1Ib">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="quit:" target="Voe-Tx-rLC" id="c4F-rG-00H"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Uninstall LuLu" id="lns-C6-Aa5">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="uninstall:" target="Voe-Tx-rLC" id="LPk-AK-PjB"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="55" y="10"/>
+        </menu>
+    </objects>
+</document>
