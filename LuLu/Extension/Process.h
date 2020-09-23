@@ -20,9 +20,6 @@
 //pid
 @property pid_t pid;
 
-//ppid
-@property pid_t ppid;
-
 //user id
 @property uid_t uid;
 

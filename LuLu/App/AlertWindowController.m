@@ -107,8 +107,23 @@ extern os_log_t logHandle;
     self.processID.stringValue = [self.alert[KEY_PROCESS_ID] stringValue];
     
     //process args
-    // ignore argv[0], as this is just proc name
-    if([self.alert[KEY_PROCESS_ARGS] count] > 1)
+    // none? means error
+    if(0 == [self.alert[KEY_PROCESS_ARGS] count])
+    {
+        //unknown
+        self.processArgs.stringValue = @"unknown";
+    }
+    //process args
+    // only one? means, argv[0] and none
+    else if(1 == [self.alert[KEY_PROCESS_ARGS] count])
+    {
+        //none
+        self.processArgs.stringValue = @"none";
+    }
+    
+    //process args
+    // more than one? create string of all
+    else
     {
         //alloc
         arguments = [NSMutableString string];
@@ -126,12 +141,6 @@ extern os_log_t logHandle;
         
         //add to UI
         self.processArgs.stringValue = arguments;
-    }
-    //no args
-    else
-    {
-        //none
-        self.processArgs.stringValue = @"none";
     }
     
     //process path

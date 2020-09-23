@@ -369,8 +369,6 @@ bail:
     {
         //free
         free(taskArgs);
-        
-        //reset
         taskArgs = NULL;
     }
     

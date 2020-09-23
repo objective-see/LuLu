@@ -16,12 +16,12 @@
 -(NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
 {
     //# of kids
-    // ->defaults to 1
+    // defaults to 1
     NSInteger kidCount = 1;
     
     //for last item
-    // no more kids (e.g. 0)
-    if( (0x1 != self.processHierarchy.count) &&
+    // no more kids...
+    if( (1 != self.processHierarchy.count) &&
         ([((NSDictionary*)item)[@"index"] integerValue] == self.processHierarchy.count-1) )
     {
         //no kids

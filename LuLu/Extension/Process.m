@@ -25,7 +25,6 @@ extern os_log_t logHandle;
 @synthesize pid;
 @synthesize exit;
 @synthesize path;
-@synthesize ppid;
 @synthesize csInfo;
 @synthesize ancestors;
 @synthesize arguments;
@@ -49,9 +48,6 @@ extern os_log_t logHandle;
         
         //init pid
         self.pid = -1;
-        
-        //init ppid
-        self.ppid = -1;
         
         //init user
         self.uid = -1;
@@ -105,9 +101,6 @@ extern os_log_t logHandle;
            so we check audit token is still same!
          */
         
-        //parent
-        self.ppid = getParent(self.pid);
-        
         //set args
         [self getArgs];
         
@@ -118,15 +111,12 @@ extern os_log_t logHandle;
         currentToken = tokenForPid(self.pid);
         
         //check!
-        // if it's changed, means pid point to new process, so unset parent, args, etc as these may be invalid!
+        // if it's changed, means pid points to new process, so unset parent, args, etc as these may be invalid!
         if( (0 == currentToken.length) ||
             (audit_token_to_pidversion(*token) != audit_token_to_pidversion(*(audit_token_t*)currentToken.bytes)) )
         {
             //err msg
             os_log_error(logHandle, "ERROR: audit token mismatch ...pid re-used?");
-            
-            //unset
-            self.ppid = -1;
             
             //unset
             arguments = nil;
@@ -147,34 +137,32 @@ bail:
     //current process id
     pid_t currentPID = -1;
     
+    //current name
+    NSString* currentName = nil;
+    
     //parent pid
     pid_t parentPID = -1;
     
-    //add parent
-    if(-1 != self.ppid)
-    {
-        //add
-        [self.ancestors addObject:[NSNumber numberWithInt:self.ppid]];
-        
-        //set current to parent
-        currentPID = self.ppid;
-    }
-    //don't know parent
-    // just start with self
-    else
-    {
-        //start w/ self
-        currentPID = self.pid;
-    }
+    //start w/ self
+    currentPID = self.pid;
     
-    //add until we get to to end (pid 0)
-    // or error out during the traversal
-    while(YES)
-    {
+    do {
+        
+        //get name
+        if(nil == (currentName = getProcessPath(currentPID)))
+        {
+            //default
+            currentName = @"unknown";
+        }
+        
+        //add
+        [self.ancestors insertObject:[@{KEY_PROCESS_ID:[NSNumber numberWithInt:currentPID], KEY_NAME:currentName} mutableCopy] atIndex:0];
+        
         //get parent pid
         parentPID = getParent(currentPID);
-        if( (0 == parentPID) ||
-            (-1 == parentPID) ||
+        
+        //done?
+        if( (parentPID <= 0) ||
             (currentPID == parentPID) )
         {
             //bail
@@ -184,10 +172,17 @@ bail:
         //update
         currentPID = parentPID;
         
-        //add
-        [self.ancestors addObject:[NSNumber numberWithInt:parentPID]];
-    }
+    } while(YES);
     
+    
+    //now, will all items added
+    // add each item's index for UI purposes
+    for(NSUInteger i = 0; i < self.ancestors.count; i++)
+    {
+        //set index
+        self.ancestors[i][KEY_INDEX] = [NSNumber numberWithInteger:i];
+    }
+
     return;
 }
 

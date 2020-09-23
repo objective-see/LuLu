@@ -71,9 +71,13 @@ extern os_log_t logHandle;
     //add path
     alert[KEY_PATH] = process.path;
     
-    //init/add process ancestors
-    // pid:name mapping for alert window
-    alert[KEY_PROCESS_ANCESTORS] = [self buildProcessHierarchy:process];
+    //process ancestors?
+    // ...only add if more than just self
+    if(process.ancestors.count > 1)
+    {
+        //add
+        alert[KEY_PROCESS_ANCESTORS] = process.ancestors;
+    }
     
     //add (remote) ip
     alert[KEY_HOST] = remoteEndpoint.hostname;
@@ -97,52 +101,6 @@ extern os_log_t logHandle;
 
     return alert;
 }
-
-//build an array of processes ancestry
-// this is used to populate the 'ancestry' popup
--(NSMutableArray*)buildProcessHierarchy:(Process*)process
-{
-    //process hierarchy
-    NSMutableArray* processHierarchy = nil;
-    
-    //ancestor
-    NSNumber* ancestor = nil;
-    
-    //alloc
-    processHierarchy = [NSMutableArray array];
-    
-    //add current process (leaf)
-    // parent(s) will then be added at front...
-    [processHierarchy addObject:[@{KEY_PROCESS_ID:[NSNumber numberWithInt:process.pid], KEY_NAME:valueForStringItem(process.binary.name)} mutableCopy]];
-    
-    //get name and add each ancestor
-    for(NSUInteger i=0; i<process.ancestors.count; i++)
-    {
-        //skip first one (self)
-        // already have it (with pid/path!)
-        if(0 == i) continue;
-        
-        //extact ancestor
-        ancestor = process.ancestors[i];
-        
-        //add
-        [processHierarchy addObject:[@{KEY_PROCESS_ID:ancestor, KEY_NAME:valueForStringItem(getProcessPath(ancestor.intValue))} mutableCopy]];
-    }
-        
-    //add the index value
-    // used to populate outline/table
-    for(NSUInteger i = 0; i < processHierarchy.count; i++)
-    {
-        //set index
-        processHierarchy[i][KEY_INDEX] = [NSNumber numberWithInteger:i];
-    }
-    
-    //dbg msg
-    os_log_debug(logHandle, "process hierarchy for %{public}@ : %{public}@", process.binary.name, processHierarchy);
-
-    return processHierarchy;
-}
-
 
 //is related to a shown alert?
 // checks if path/signing info is same
