@@ -149,16 +149,14 @@ extern os_log_t logHandle;
                 //add to ordered dictionary
                 [self.rules insertObject:currentRules[sortedKeys[i]] forKey:sortedKeys[i] atIndex:i];
             }
-        }
+            
+        }//sync
         
         //show rules in UI
         dispatch_async(dispatch_get_main_queue(), ^{
             
             //hide overlay
             self.loadingRules.hidden = YES;
-                    
-            //update ui
-            [self update];
             
             //no tab selected?
             // set 'all' as default
@@ -170,7 +168,10 @@ extern os_log_t logHandle;
                 //set table header
                 self.outlineView.tableColumns.firstObject.headerCell.stringValue = @"All Rules";
             }
-        
+                    
+            //update ui
+            [self update];
+            
         });
 
     });
@@ -536,87 +537,86 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "selected toolbar item: %{public}@ %ld", selectedItem.itemIdentifier, (long)selectedItem.tag);
     
-    //filter
-    @synchronized(self)
+    //all/no filter
+    // don't need to filter
+    if( (RULE_TYPE_ALL == selectedItem.tag) &&
+        (0 == self.filterBox.stringValue.length) )
     {
-        //all/no filter
-        // don't need to filter
-        if( (RULE_TYPE_ALL == selectedItem.tag) &&
-            (0 == self.filterBox.stringValue.length) )
-        {
-            //no filter
-            results = self.rules;
-            
-            //bail
-            goto bail;
-        }
-                
         //dbg msg
-        os_log_debug(logHandle, "filtering on '%{public}@'", filter);
+        os_log_debug(logHandle, "selected toolbar item is 'all' and filter box is empty ...no need to filter");
         
-        //scan all rules
-        // add any that match toolbar and filter string
-        [self.rules enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL* stop) {
-            
-            //item
-            // cs info, rules, etc
-            NSMutableDictionary* item = nil;
-            
-            //(item's) rules that match
-            NSMutableArray* matchedRules = nil;
-            
-            //not on 'all' tab?
-            // and no match on selected toolbar tab? ...skip
-            if( (RULE_TYPE_ALL != selectedItem.tag) &&
-                (selectedItem.tag != ((Rule*)[value[KEY_RULES] firstObject]).type.intValue) )
-            {
-                //skip
-                return;
-            }
-            
-            //no filter string?
-            // it's a 'match, add, and continue
-            if(0 == filter.length)
-            {
-                //append
-                [results insertObject:value forKey:key atIndex:results.count];
-                
-                //next
-                return;
-            }
-            
-            //init matched (process) rules
-            matchedRules = [NSMutableArray array];
-            
-            //check each rule(s)
-            for(Rule* rule in value[KEY_RULES])
-            {
-                //match?
-                // save rule
-                if(YES == [rule matchesString:filter])
-                {
-                    //add
-                    [matchedRules addObject:rule];
-                }
-            }
-            
-            //any matched (item) rules?
-            // update item rule array and add item
-            if(0 != matchedRules.count)
-            {
-                //make copy
-                item = [value mutableCopy];
-                
-                //update item's rules
-                item[KEY_RULES] = matchedRules;
-                
-                //append to filtered results
-                [results insertObject:item forKey:key atIndex:results.count];
-            }
-        }];
+        //no filter
+        results = self.rules;
         
-    }//sync
+        //bail
+        goto bail;
+    }
+          
+    //dbg msg
+    os_log_debug(logHandle, "filtering on '%{public}@'", filter);
     
+    //scan all rules
+    // add any that match toolbar and filter string
+    {[self.rules enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL* stop) {
+        
+        //item
+        // cs info, rules, etc
+        NSMutableDictionary* item = nil;
+        
+        //(item's) rules that match
+        NSMutableArray* matchedRules = nil;
+        
+        //not on 'all' tab?
+        // and no match on selected toolbar tab? ...skip
+        if( (RULE_TYPE_ALL != selectedItem.tag) &&
+            (selectedItem.tag != ((Rule*)[value[KEY_RULES] firstObject]).type.intValue) )
+        {
+            //skip
+            return;
+        }
+        
+        //no filter string?
+        // it's a 'match, add, and continue
+        if(0 == filter.length)
+        {
+            //append
+            [results insertObject:value forKey:key atIndex:results.count];
+            
+            //next
+            return;
+        }
+        
+        //init matched (process) rules
+        matchedRules = [NSMutableArray array];
+        
+        //check each rule(s)
+        for(Rule* rule in value[KEY_RULES])
+        {
+            //match?
+            // save rule
+            if(YES == [rule matchesString:filter])
+            {
+                //add
+                [matchedRules addObject:rule];
+            }
+        }
+        
+        //any matched (item) rules?
+        // update item rule array and add item
+        if(0 != matchedRules.count)
+        {
+            //make copy
+            item = [value mutableCopy];
+            
+            //update item's rules
+            item[KEY_RULES] = matchedRules;
+            
+            //append to filtered results
+            [results insertObject:item forKey:key atIndex:results.count];
+        }
+        
+    }];}
+            
 bail:
     
     //dbg msg
