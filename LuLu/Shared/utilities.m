@@ -873,6 +873,7 @@ bail:
 
 //grab date added
 // extracted via 'kMDItemDateAdded'
+// or if that's NULL, then 'kMDItemFSCreationDate'
 NSDate* dateAdded(NSString* file)
 {
     //date added
@@ -918,9 +919,17 @@ NSDate* dateAdded(NSString* file)
     
     //grab date added
     date = CFBridgingRelease(MDItemCopyAttribute(item, kMDItemDateAdded));
+    if(nil == date)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "'kMDItemDateAdded' is nil ...falling back to 'kMDItemFSCreationDate'");
+        
+        //grab date via 'kMDItemFSCreationDate'
+        date = CFBridgingRelease(MDItemCopyAttribute(item, kMDItemFSCreationDate));
+    }
     
     //dbg msg
-    os_log_debug(logHandle, "kMDItemDateAdded: %{public}@", date);
+    os_log_debug(logHandle, "extacted date: %{public}@", date);
 
 bail:
     
@@ -1103,4 +1112,70 @@ NSModalResponse showAlert(NSString* messageText, NSString* informativeText)
     response = [alert runModal];
     
     return response;
+}
+
+//get audit token for pid
+NSData* tokenForPid(pid_t pid)
+{
+    //audit token
+    NSData* token = nil;
+    
+    //task's token
+    audit_token_t taskToken = {0};
+    
+    //task
+    task_name_t task = 0;
+    
+    //status
+    kern_return_t status = !KERN_SUCCESS;
+
+    //size
+    mach_msg_type_number_t size = TASK_AUDIT_TOKEN_COUNT;
+    
+    //clear
+    memset(&taskToken, 0x0, sizeof(audit_token_t));
+    
+    //dbg msg
+    os_log_debug(logHandle, "retrieving audit token for %d", pid);
+    
+    //get task for process
+    status = task_name_for_pid(mach_task_self(), pid, &task);
+    if(KERN_SUCCESS != status)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: 'task_name_for_pid' failed with %x", status);
+        
+        //bail
+        goto bail;
+    }
+    
+    //now get task's audit token
+    status = task_info(task, TASK_AUDIT_TOKEN, (task_info_t)&taskToken, &size);
+    if(KERN_SUCCESS != status)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: 'task_info' failed with %x", status);
+        
+        //bail
+        goto bail;
+    }
+    
+    //capture
+    token = [NSData dataWithBytes:&taskToken length:sizeof(audit_token_t)];
+    
+    //dbg msg
+    os_log_debug(logHandle, "retrieved audit token");
+
+    
+bail:
+    
+    //cleanup task
+    if(0 != task)
+    {
+        //cleanup
+        mach_port_deallocate(mach_task_self(), task);
+        task = 0;
+    }
+
+    return token;
 }

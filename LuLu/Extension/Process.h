@@ -54,16 +54,9 @@
 
 /* METHODS */
 
-//init with a pid
+//init with a audit token
 // method will then (try) fill out rest of object
--(id _Nullable)init:(pid_t)processID;
-
-//generate signing info
-// also classifies if Apple/from App Store/etc.
--(void)generateSigningInfo:(SecCSFlags)flags;
-
-//set process's path
--(void)pathFromPid;
+-(id _Nullable)init:(audit_token_t* _Nonnull)token;
 
 //generate list of ancestors
 -(void)enumerateAncestors;

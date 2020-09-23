@@ -17,9 +17,17 @@
 #import "FilterDataProvider.h"
 
 /* GLOBALS */
+
+//alerts
 extern Alerts* alerts;
+
+//log handle
 extern os_log_t logHandle;
+
+//rules
 extern Rules* rules;
+
+//preferences
 extern Preferences* preferences;
 
 @implementation FilterDataProvider
@@ -162,7 +170,7 @@ extern Preferences* preferences;
     
     //process flow
     // determine verdict
-    // deliverd alert (if necessary)
+    // deliver alert (if necessary)
     verdict = [self processEvent:flow];
     
     //log msg
@@ -625,87 +633,24 @@ bail:
 //create process object
 -(Process*)createProcess:(NEFilterFlow*)flow
 {
+    //audit token
+    audit_token_t* token = NULL;
+    
     //process obj
     Process* process = nil;
     
-    //pid
-    pid_t pid = 0;
+    //extract (audit) token
+    token = (audit_token_t*)flow.sourceAppAuditToken.bytes;
     
-    //status
-    OSStatus status = !errSecSuccess;
-    
-    //code ref
-    SecCodeRef codeRef = NULL;
-    
-    //code signing info
-    CFDictionaryRef csInfo = NULL;
-    
-    //process url (from cs info)
-    NSURL* processURL = nil;
-    
-    //extract pid from flow's audit token
-    pid = audit_token_to_pid(*(audit_token_t*)flow.sourceAppAuditToken.bytes);
-    
-    //init process
-    process = [[Process alloc] init:pid];
+    //init process object, via audit token
+    process = [[Process alloc] init:token];
     if(nil == process)
     {
         //err msg
-        os_log_error(logHandle, "ERROR: failed to create process for %d", pid);
+        os_log_error(logHandle, "ERROR: failed to create process for %d", audit_token_to_pid(*token));
         
         //bail
         goto bail;
-    }
-    
-    //generate code signing info
-    // should be dynamic, so not a big hit
-    [process generateSigningInfo:kSecCSDefaultFlags];
-    
-    //obtain dynamic code ref from audit token
-    status = SecCodeCopyGuestWithAttributes(NULL, (__bridge CFDictionaryRef _Nullable)(@{(__bridge NSString *)kSecGuestAttributeAudit:[NSData dataWithBytes:(audit_token_t*)flow.sourceAppAuditToken.bytes length:sizeof(audit_token_t)]}), kSecCSDefaultFlags, &codeRef);
-    if(errSecSuccess != status)
-    {
-        //err msg
-        os_log_error(logHandle, "ERROR: 'SecCodeCopyGuestWithAttributes' failed for %d with %d/%x", pid, status, status);
-        
-        //bail
-        goto bail;
-    }
-    
-    //get code signing info
-    status = SecCodeCopySigningInformation(codeRef, kSecCSDynamicInformation, &csInfo);
-    if(errSecSuccess != status)
-    {
-        //err msg
-        os_log_error(logHandle, "ERROR: 'SecCodeCopySigningInformation' failed for %d with %d/%x", pid, status, status);
-        
-        //bail
-        goto bail;
-    }
-    
-    //dbg msg
-    os_log_debug(logHandle, "process (%d)%{public}@'s code signing info: %{public}@", pid, process.binary.name, csInfo);
-    
-    //extract URL from code signing info
-    processURL = ((__bridge NSDictionary *)csInfo)[(__bridge NSString *)kSecCodeInfoMainExecutable];
-    
-    //use pid to create process
-    // double-check path matches
-    if(nil != processURL)
-    {
-        //no match?
-        // unset and bail
-        if(YES != [process.path isEqualToString:processURL.path])
-        {
-            //err msg
-            os_log_error(logHandle, "ERROR: path %{public}@ doesn't match %{public}@", process.path, processURL.path);
-            
-            //unset
-            process = nil;
-            
-            //bail
-            goto bail;
-        }
     }
     
     //sync to add to cache
@@ -716,22 +661,6 @@ bail:
     }
     
 bail:
-    
-    //free cs info
-    if(NULL != csInfo)
-    {
-        //free
-        CFRelease(csInfo);
-        csInfo = NULL;
-    }
-    
-    //free code ref
-    if(NULL != codeRef)
-    {
-        //free
-        CFRelease(codeRef);
-        codeRef = NULL;
-    }
     
     return process;
 }

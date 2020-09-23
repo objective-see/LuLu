@@ -14,9 +14,9 @@
 @import SystemConfiguration;
 
 //get the signing info of a item
-// pid specified: extract dynamic code signing info
-// path specified: generate static code signing info
-NSMutableDictionary* extractSigningInfo(pid_t pid, NSString* path, SecCSFlags flags)
+// audit token: extract dynamic code signing info
+// path on disk: generate static code signing info
+NSMutableDictionary* extractSigningInfo(audit_token_t* token, NSString* path, SecCSFlags flags)
 {
     //info dictionary
     NSMutableDictionary* signingInfo = nil;
@@ -43,8 +43,8 @@ NSMutableDictionary* extractSigningInfo(pid_t pid, NSString* path, SecCSFlags fl
     // no path, dynamic check via pid
     if(nil == path)
     {
-        //generate dynamic code ref via pid
-        status = SecCodeCopyGuestWithAttributes(NULL, (__bridge CFDictionaryRef _Nullable)(@{(__bridge NSString *)kSecGuestAttributePid : [NSNumber numberWithInt:pid]}), kSecCSDefaultFlags, &dynamicCode);
+        //obtain dynamic code ref from (audit) token
+        status = SecCodeCopyGuestWithAttributes(NULL, (__bridge CFDictionaryRef _Nullable)(@{(__bridge NSString *)kSecGuestAttributeAudit:[NSData dataWithBytes:token length:sizeof(audit_token_t)]}), kSecCSDefaultFlags, &dynamicCode);
         if(errSecSuccess != status)
         {
             //set error

@@ -91,4 +91,7 @@ NSDate* dateAdded(NSString* file);
 //show an alert
 NSModalResponse showAlert(NSString* messageText, NSString* informativeText);
 
+//get audit token for pid
+NSData* tokenForPid(pid_t pid);
+
 #endif

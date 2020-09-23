@@ -12,6 +12,7 @@
 #import "Utilities.h"
 
 #import <libproc.h>
+#import <bsm/libbsm.h>
 #import <sys/sysctl.h>
 
 /* GLOBALS */
@@ -42,10 +43,7 @@ extern os_log_t logHandle;
         
         //alloc array for parents
         ancestors  = [NSMutableArray array];
-        
-        //alloc array for args
-        arguments = [NSMutableArray array];
-        
+            
         //set start time
         timestamp = [NSDate date];
         
@@ -67,20 +65,20 @@ extern os_log_t logHandle;
 
 //init with a pid
 // method will then (try) fill out rest of object
--(id)init:(pid_t)processID
+-(id)init:(audit_token_t*)token
 {
+    //current token
+    NSData* currentToken = nil;
+    
     //init self/super
     self = [self init];
     if(self)
     {
         //save pid
-        self.pid = processID;
-        
-        //set parent
-        self.ppid = getParent(self.pid);
+        self.pid = audit_token_to_pid(*token);
         
         //get path
-        [self pathFromPid];
+        [self getPath:token];
         if(0 == self.path.length)
         {
             //err msg
@@ -93,58 +91,54 @@ extern os_log_t logHandle;
             goto bail;
         }
         
+        //get user
+        self.uid = audit_token_to_euid(*token);
+        
+        //generate (dynamic) code information
+        [self generateSigningInfo:token];
+        
+        //init binary
+        self.binary = [[Binary alloc] init:self.path];
+        
+        /* pid specific logic
+           note: pids can wrap,
+           so we check audit token is still same!
+         */
+        
+        //parent
+        self.ppid = getParent(self.pid);
+        
         //set args
         [self getArgs];
         
-        //set user
-        [self getUser];
-        
         //enum ancestors
         [self enumerateAncestors];
-    
-        //init binary
-        self.binary = [[Binary alloc] init:self.path];
+        
+        //grab current (audit) token
+        currentToken = tokenForPid(self.pid);
+        
+        //check!
+        // if it's changed, means pid point to new process, so unset parent, args, etc as these may be invalid!
+        if( (0 == currentToken.length) ||
+            (audit_token_to_pidversion(*token) != audit_token_to_pidversion(*(audit_token_t*)currentToken.bytes)) )
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: audit token mismatch ...pid re-used?");
+            
+            //unset
+            self.ppid = -1;
+            
+            //unset
+            arguments = nil;
+            
+            //alloc array for parents
+            ancestors = nil;
+        }
     }
     
 bail:
     
     return self;
-}
-
-//get uid
-// sets 'user' instance var
--(void)getUser
-{
-    //kinfo_proc struct
-    struct kinfo_proc processStruct = {0};
-    
-    //size
-    size_t procBufferSize = 0;
-    
-    //mib
-    const u_int mibLength = 4;
-    
-    //syscall result
-    int sysctlResult = -1;
-    
-    //init buffer length
-    procBufferSize = sizeof(processStruct);
-    
-    //init mib
-    int mib[mibLength] = {CTL_KERN, KERN_PROC, KERN_PROC_PID, self.pid};
-    
-    //make syscall
-    sysctlResult = sysctl(mib, mibLength, &processStruct, &procBufferSize, NULL, 0);
-    
-    //check if got ppid
-    if( (noErr == sysctlResult) &&
-        (0 != procBufferSize) )
-    {
-        //save uid
-        self.uid = processStruct.kp_eproc.e_ucred.cr_uid;
-    }
-    
-    return;
 }
 
 //generate list of ancestors
@@ -198,109 +192,61 @@ bail:
 }
 
 //set process's path
--(void)pathFromPid
+-(void)getPath:(audit_token_t*)token
 {
-    //buffer for process path
-    char pathBuffer[PROC_PIDPATHINFO_MAXSIZE] = {0};
-    
     //status
-    int status = -1;
+    OSStatus status = !errSecSuccess;
     
-    //'management info base' array
-    int mib[3] = {0};
+    //code ref
+    SecCodeRef code = NULL;
     
-    //system's size for max args
-    int systemMaxArgs = 0;
+    //path
+    CFURLRef path = nil;
     
-    //process's args
-    char* processArgs = NULL;
-    
-    //size of buffers, etc
-    size_t size = 0;
-    
-    //clear out buffer
-    bzero(pathBuffer, PROC_PIDPATHINFO_MAXSIZE);
-    
-    //1st:
-    // attempt to get path via 'proc_pidpath()'
-    status = proc_pidpath(self.pid, pathBuffer, sizeof(pathBuffer));
-    if( (0 != status) &&
-        (0 != strlen(pathBuffer)) )
+    //obtain code ref
+    status = SecCodeCopyGuestWithAttributes(NULL, (__bridge CFDictionaryRef _Nullable)(@{(__bridge NSString *)kSecGuestAttributeAudit:[NSData dataWithBytes:token length:sizeof(audit_token_t)]}), kSecCSDefaultFlags, &code);
+    if(errSecSuccess != status)
     {
-        //init path
-        self.path = [NSString stringWithUTF8String:pathBuffer];
+        //err msg
+        os_log_error(logHandle, "ERROR: 'SecCodeCopyGuestWithAttributes' failed with': %#x", status);
         
-        //all set
+        //bail
         goto bail;
     }
     
-    //2nd:
-    // try via process's args ('KERN_PROCARGS2')
-   
-    //init mib
-    // want system's size for max args
-    mib[0] = CTL_KERN;
-    mib[1] = KERN_ARGMAX;
+    //copy path
+    status = SecCodeCopyPath(code, kSecCSDefaultFlags, &path);
+    if(errSecSuccess != status)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: 'SecCodeCopyPath' failed with': %#x", status);
         
-    //set size
-    size = sizeof(systemMaxArgs);
-    
-    //get system's size for max args
-    if(-1 == sysctl(mib, 2, &systemMaxArgs, &size, NULL, 0))
-    {
         //bail
         goto bail;
     }
-    
-    //alloc space for args
-    processArgs = calloc(systemMaxArgs, sizeof(char));
-    if(NULL == processArgs)
-    {
-        //bail
-        goto bail;
-    }
-    
-    //init mib
-    // want process args
-    mib[0] = CTL_KERN;
-    mib[1] = KERN_PROCARGS2;
-    mib[2] = pid;
-    
-    //set size
-    size = (size_t)systemMaxArgs;
-    
-    //get process's args
-    if(-1 == sysctl(mib, 3, processArgs, &size, NULL, 0))
-    {
-        //bail
-        goto bail;
-    }
-    
-    //sanity check
-    // ensure buffer is somewhat sane
-    if(size <= sizeof(int))
-    {
-        //bail
-        goto bail;
-    }
-    
-    //extract process name
-    // follows # of args (int) and is NULL-terminated
-    self.path = [NSString stringWithUTF8String:processArgs + sizeof(int)];
+
+    //extract/copy path
+    self.path = [((__bridge NSURL*)path).path copy];
     
 bail:
     
-    //resolve symlnks
+    //resolve symlinks
     self.path = [self.path stringByResolvingSymlinksInPath];
     
-    //free process args
-    if(NULL != processArgs)
+    //free path
+    if(NULL != path)
     {
         //free
-        free(processArgs);
-        
-        //unset
-        processArgs = NULL;
+        CFRelease(path);
+        path = NULL;
+    }
+    
+    //free code ref
+    if(NULL != code)
+    {
+        //free
+        CFRelease(code);
+        code = NULL;
     }
     
     return;
@@ -481,21 +427,18 @@ bail:
 }
 
 //generate signing info
--(void)generateSigningInfo:(SecCSFlags)flags
+-(void)generateSigningInfo:(audit_token_t*)token
 {
     //extract signing info dynamically
-    self.csInfo = extractSigningInfo(self.pid, nil, flags);
+    self.csInfo = extractSigningInfo(token, nil, kSecCSDefaultFlags);
     
     //failed?
     // try extract signing info statically
     if(nil == self.csInfo)
     {
-        //add 'all archs' / 'nested'
-        // cuz don't know which is/was running
-        flags |= kSecCSCheckAllArchitectures | kSecCSCheckNestedCode | kSecCSDoNotValidateResources;
-        
         //extract signing info statically
-        self.csInfo = extractSigningInfo(0, self.binary.path, flags);
+        //add 'all archs' / 'nested', since we don't know which is running
+        self.csInfo = extractSigningInfo(0, self.binary.path, kSecCSCheckAllArchitectures | kSecCSCheckNestedCode | kSecCSDoNotValidateResources);
     }
 
     return;

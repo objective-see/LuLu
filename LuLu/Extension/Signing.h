@@ -15,9 +15,9 @@
 /* FUNCTIONS */
 
 //get the signing info of a item
-// pid specified: extract dynamic code signing info
+// audit token: extract dynamic code signing info
 // path specified: generate static code signing info
-NSMutableDictionary* extractSigningInfo(pid_t pid, NSString* path, SecCSFlags flags);
+NSMutableDictionary* extractSigningInfo(audit_token_t* token, NSString* path, SecCSFlags flags);
 
 //determine who signed item
 NSNumber* extractSigner(SecStaticCodeRef code, SecCSFlags flags, BOOL isDynamic);

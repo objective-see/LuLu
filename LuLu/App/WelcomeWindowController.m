@@ -167,7 +167,7 @@ extern os_log_t logHandle;
                         os_log_debug(logHandle, "extension now up and running");
                         
                         //update UI
-                        dispatch_sync(dispatch_get_main_queue(),
+                        dispatch_async(dispatch_get_main_queue(),
                         ^{
                             //hide spinner
                             self.allowExtActivityIndicator.hidden = YES;
