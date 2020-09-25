@@ -188,13 +188,16 @@ bail:
 }
 
 //via XPC, send an alert to the client (user)
--(void)deliver:(NSDictionary*)alert reply:(void (^)(NSDictionary* preferences))reply
+-(BOOL)deliver:(NSDictionary*)alert reply:(void (^)(NSDictionary*))reply
 {
+    //flag
+    BOOL delivered = NO;
+    
     //dbg msg
     os_log_debug(logHandle, "delivering alert %{public}@", alert);
     
     //send via XPC to user
-    if(YES != [self.xpcUserClient deliverAlert:alert reply:reply])
+    if(YES != (delivered = [self.xpcUserClient deliverAlert:alert reply:reply]))
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to deliver alert to user (no client?)");
@@ -205,7 +208,7 @@ bail:
 
 bail:
     
-    return;
+    return delivered;
 }
 
 @end

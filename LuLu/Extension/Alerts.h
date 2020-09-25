@@ -36,7 +36,7 @@
 -(NSMutableDictionary*)create:(NEFilterSocketFlow*)flow process:(Process*)process;
 
 //via XPC, send an alert
--(void)deliver:(NSDictionary*)alert reply:(void (^)(NSDictionary* preferences))reply;
+-(BOOL)deliver:(NSDictionary*)alert reply:(void (^)(NSDictionary*))reply;
 
 //is related to a shown alert?
 // checks if path/signing info is same

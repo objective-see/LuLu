@@ -181,6 +181,12 @@ NSNumber* extractSigner(SecStaticCodeRef code, SecCSFlags flags, BOOL isDynamic)
     //"anchor apple generic and certificate leaf [subject.CN] = \"Apple Mac OS Application Signing\""
     static SecRequirementRef isAppStore = nil;
     
+    //signing details
+    CFDictionaryRef signingDetails = NULL;
+    
+    //team id
+    NSString* teamID = nil;
+    
     //token
     static dispatch_once_t onceToken = 0;
     
@@ -204,13 +210,34 @@ NSNumber* extractSigner(SecStaticCodeRef code, SecCSFlags flags, BOOL isDynamic)
         //set signer to apple
         signer = [NSNumber numberWithInt:Apple];
     }
-    
+
     //check 2: "is app store"
     // note: this is more specific than dev id, so do it first
     else if(errSecSuccess == validateRequirement(code, isAppStore, flags, isDynamic))
     {
-        //set signer to app store
-        signer = [NSNumber numberWithInt:AppStore];
+        //extract signing info
+        if(errSecSuccess == SecCodeCopySigningInformation(code, kSecCSSigningInformation, &signingDetails))
+        {
+            //extract team id
+            // and check if it belongs to apple
+            teamID = [(__bridge NSDictionary*)signingDetails objectForKey:(__bridge NSString*)kSecCodeInfoTeamIdentifier];
+            if( (YES == [teamID isEqualToString:@"K36BKF7T3D"]) ||
+                (YES == [teamID isEqualToString:@"APPLECOMPUTER"]) )
+            {
+               //set signer to apple
+               signer = [NSNumber numberWithInt:Apple];
+            }
+            
+            //release
+            CFRelease(signingDetails);
+            signingDetails = NULL;
+        }
+        //non-apple app store app
+        else
+        {
+            //set signer to app store
+            signer = [NSNumber numberWithInt:AppStore];
+        }
     }
     
     //check 3: "is dev id"

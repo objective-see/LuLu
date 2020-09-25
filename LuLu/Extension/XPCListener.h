@@ -29,14 +29,4 @@ OSStatus SecTaskValidateForRequirement(SecTaskRef task, CFStringRef requirement)
 //XPC connection for login item
 @property(weak)NSXPCConnection* client;
 
-//XPC connection for main app
-//@property(weak)NSXPCConnection* mainApp;
-
-/* METHODS */
-
-//automatically invoked
-// allows NSXPCListener to configure/accept/resume a new incoming NSXPCConnection
-// note: we only allow binaries signed by Objective-See to talk to this!
-//-(BOOL)listener:(NSXPCListener *)listener shouldAcceptNewConnection:(NSXPCConnection *)newConnection;
-
 @end

@@ -157,7 +157,7 @@ extern Preferences* preferences;
         goto bail;
     }
     
-    //ignore traffic "destined" for localhost
+    //ignore traffic destined for localhost
     if( (YES == [remoteEndpoint.hostname hasPrefix:@"::1"]) ||
         (YES == [remoteEndpoint.hostname isEqualToString:@"127.0.0.1"]) )
     {
@@ -505,22 +505,24 @@ bail:
     os_log_debug(logHandle, "created alert...");
 
     //deliver alert
-    [alerts deliver:alert reply:^(NSDictionary* alert)
+    if(YES != [alerts deliver:alert reply:^(NSDictionary* alert)
     {
-        //action
-        uint32_t action = 0;
-        
         //verdict
         NEFilterNewFlowVerdict* verdict = nil;
         
         //dbg msg
         os_log_debug(logHandle, "(user) response: %{public}@", alert);
         
-        //extract action
-        action = [alert[KEY_ACTION] unsignedIntValue];
+        //init verdict to allow
+        verdict = [NEFilterNewFlowVerdict allowVerdict];
         
-        //init verdict
-        verdict = (action == RULE_STATE_ALLOW) ? [NEFilterNewFlowVerdict allowVerdict] : [NEFilterNewFlowVerdict dropVerdict];
+        //user replied with block?
+        if( (nil != alert[KEY_ACTION]) &&
+            (RULE_STATE_BLOCK == [alert[KEY_ACTION] unsignedIntValue]) )
+        {
+            //verdict: block
+            verdict = [NEFilterNewFlowVerdict dropVerdict];
+        }
         
         //resume flow w/ verdict
         [self resumeFlow:flow withVerdict:verdict];
@@ -536,11 +538,20 @@ bail:
         
         //process (any) related flows
         [self processRelatedFlow:alert];
-    }];
+    }])
+    {
+        //failed to deliver
+        // just allow flow...
+        [self resumeFlow:flow withVerdict:[NEFilterNewFlowVerdict allowVerdict]];
+    }
     
-    //save as shown
-    // needed so related (same process!) alerts aren't delivered as well!
-    [alerts addShown:alert];
+    //delivered to user
+    else
+    {
+        //save as shown
+        // needed so related (same process!) alerts aren't delivered as well
+        [alerts addShown:alert];
+    }
     
     return;
 }

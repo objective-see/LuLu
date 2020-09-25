@@ -7,8 +7,6 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-
-
 #import "consts.h"
 
 #import "Rule.h"
@@ -21,7 +19,6 @@
 
 #import "XPCUserProto.h"
 #import "XPCDaemonProto.h"
-
 
 @import OSLog;
 #import <bsm/libbsm.h>
@@ -45,7 +42,7 @@ extern Alerts* alerts;
 @end
 
 //implementation for 'extension' to NSXPCConnection
-// ->allows us to access the 'private' auditToken iVar
+// allows us to access the 'private' auditToken iVar
 @implementation ExtendedNSXPCConnection
 
 //private iVar
