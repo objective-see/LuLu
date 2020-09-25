@@ -673,7 +673,7 @@ bail:
     [NSApp activateIgnoringOtherApps:YES];
 
     //show alert
-    // cancel? ingnore
+    // cancel? ignore
     if(NSModalResponseCancel == [alert runModal])
     {
          //dbg msg

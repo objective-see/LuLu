@@ -26,6 +26,9 @@ int main(int argc, char *argv[])
     //status
     int status = -1;
     
+    //parent
+    NSDictionary* parent = nil;
+    
     //init log
     logHandle = os_log_create(BUNDLE_ID, "configure");
     
@@ -35,7 +38,7 @@ int main(int argc, char *argv[])
     
     //disable re-launch
     [NSApplication.sharedApplication disableRelaunchOnLogin];
-        
+    
     //cmdline uninstall?
     if( (YES == [NSProcessInfo.processInfo.arguments containsObject:CMD_UPGRADE]) ||
         (YES == [NSProcessInfo.processInfo.arguments containsObject:CMD_UNINSTALL]) )
@@ -55,6 +58,26 @@ int main(int argc, char *argv[])
         
         //dbg msg
         printf("LULU: uninstall ok!\n...reboot to complete\n\n");
+        
+        //happy
+        status = 0;
+        
+        //done
+        goto bail;
+    }
+    
+    //get real parent
+    parent = getRealParent(getpid());
+    
+    //dbg msg
+    os_log_debug(logHandle, "(real) parent: %{public}@", parent);
+    
+    //auto launched? (i.e. after reboot)
+    // exit, as we don't need to re-show
+    if(YES == [parent[@"CFBundleIdentifier"] isEqualToString:@"com.apple.loginwindow"])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "...system (auto)launched, so, goodbye");
         
         //happy
         status = 0;

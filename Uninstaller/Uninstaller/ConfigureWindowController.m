@@ -115,6 +115,9 @@ extern os_log_t logHandle;
             //cleanup
             [self cleanup];
             
+            //disable re-launch
+            [NSApplication.sharedApplication disableRelaunchOnLogin];
+            
             //restart after a bit (allow cleanup to completee)
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (100 * NSEC_PER_MSEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 

@@ -569,3 +569,52 @@ BOOL isDarkMode()
     //check 'AppleInterfaceStyle'
     return [[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"] isEqualToString:@"Dark"];
 }
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
+//get (true) parent
+NSDictionary* getRealParent(pid_t pid)
+{
+    //process info
+    NSDictionary* processInfo = nil;
+    
+    //process serial number
+    ProcessSerialNumber psn = {0, kNoProcess};
+    
+    //(parent) process serial number
+    ProcessSerialNumber ppsn = {0, kNoProcess};
+    
+    //get process serial number from pid
+    if(noErr != GetProcessForPID(pid, &psn))
+    {
+        //err
+        goto bail;
+    }
+    
+    //get process (carbon) info
+    processInfo = CFBridgingRelease(ProcessInformationCopyDictionary(&psn, (UInt32)kProcessDictionaryIncludeAllInformationMask));
+    if(nil == processInfo)
+    {
+        //err
+        goto bail;
+    }
+    
+    //extract/convert parent ppsn
+    ppsn.lowLongOfPSN =  [processInfo[@"ParentPSN"] longLongValue] & 0x00000000FFFFFFFFLL;
+    ppsn.highLongOfPSN = ([processInfo[@"ParentPSN"] longLongValue] >> 32) & 0x00000000FFFFFFFFLL;
+    
+    //get parent process (carbon) info
+    processInfo = CFBridgingRelease(ProcessInformationCopyDictionary(&ppsn, (UInt32)kProcessDictionaryIncludeAllInformationMask));
+    if(nil == processInfo)
+    {
+        //err
+        goto bail;
+    }
+    
+bail:
+    
+    return processInfo;
+}
+
+#pragma GCC diagnostic pop
