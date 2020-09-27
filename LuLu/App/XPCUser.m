@@ -58,8 +58,8 @@ extern NSMutableDictionary* alerts;
         //show alert window
         [alertWindow showWindow:self];
     
-        //'request' user attenion
-        // bounces icon on the dock
+        //'request' user attention
+        //  bounces icon on the dock
         [NSApp requestUserAttention:NSInformationalRequest];
         
         //make alert window key

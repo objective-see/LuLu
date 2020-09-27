@@ -60,7 +60,6 @@
 //finish up initializations
 -(void)completeInitialization:(NSDictionary*)initialPreferenes;
 
-
 //set app foreground/background
 // determined by the app's window count
 -(void)setActivationPolicy;

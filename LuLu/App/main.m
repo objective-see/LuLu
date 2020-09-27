@@ -29,8 +29,8 @@ int main(int argc, const char * argv[]) {
         os_log_debug(logHandle, "started: %{public}@ (pid: %d / uid: %d)", NSProcessInfo.processInfo.arguments.firstObject, getpid(), getuid());
         os_log_debug(logHandle, "arguments: %{public}@", NSProcessInfo.processInfo.arguments);
     
-        //init crash reporting
-        //initCrashReporting();
+        //crash reporting
+        initCrashReporting();
     }
     
     //main app interface

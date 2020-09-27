@@ -52,6 +52,9 @@ NSMutableDictionary* alerts = nil;
         //dbg msg
         os_log_debug(logHandle, "LuLu running from %{public}@, not from within /Applications", NSBundle.mainBundle.bundlePath);
         
+        //foreground
+        [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+        
         //show alert
         showAlert([NSString stringWithFormat:@"LuLu must run from:\r\n  %@", [@"/Applications" stringByAppendingPathComponent:APP_NAME]], @"...please copy it to /Applications and re-launch.");
         
@@ -156,6 +159,9 @@ NSMutableDictionary* alerts = nil;
                     
                     //show error on main thread
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        //foreground
+                        [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
                         
                         //show alert
                         showAlert(@"ERROR: activation failed", @"failed to activate system/network extension");
