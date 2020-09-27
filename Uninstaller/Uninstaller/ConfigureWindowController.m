@@ -314,7 +314,7 @@ extern os_log_t logHandle;
         action = (ACTION_UPGRADE_FLAG == event) ? @"upgrad" : @"uninstall";
         
         //set result msg
-        resultMsg = [NSMutableString stringWithFormat:@"LuLu %@ed!\nRestart required to complete.", action];
+        resultMsg = [NSMutableString stringWithFormat:@"LuLu %@ed!\nSystem restart required to complete.", action];
     }
     //failure
     else

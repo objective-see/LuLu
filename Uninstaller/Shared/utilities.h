@@ -52,7 +52,4 @@ void restart(void);
 // meaning, Mojave+ and dark mode enabled
 BOOL isDarkMode(void);
 
-//get (true) parent
-NSDictionary* getRealParent(pid_t pid);
-
 #endif
