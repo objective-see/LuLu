@@ -9,9 +9,6 @@
 
 #import "consts.h"
 #import "utilities.h"
-
-//#define CONF_SCRIPT @"configure.sh"
-
 #import "HelperInterface.h"
 
 #import <signal.h>

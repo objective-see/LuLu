@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     //dbg msg
     os_log_debug(logHandle, "started: %{public}@ (pid: %d / uid: %d)", NSProcessInfo.processInfo.arguments.firstObject, getpid(), getuid());
     
-    //init crash reporting
+    //crash reporting
     initCrashReporting();
     
     //alloc/init/load prefs
