@@ -15,23 +15,23 @@ INSTALL_DIRECTORY="/Library/Objective-See/LuLu"
 #OS version check
 # only support 10.12+
 OSVers="$(sw_vers -productVersion)"
-if [ "${OSVers:3:2}" -lt 12 ]; then
-    echo "\nERROR: ${OSVers} is currently unsupported"
-    echo "LuLu requires macOS 10.12+\n"
+if [[ ("${OSVers:0:2}" -ne 11) && ("${OSVers:3:2}" -lt 12) ]]; then
+    printf "\nERROR: ${OSVers} is currently unsupported"
+    printf "LuLu requires macOS 10.12+\n\n"
     exit -1
 fi
 
 #auth check
 # gotta be root
 if [ "${EUID}" -ne 0 ]; then
-    echo "\nERROR: must be run as root\n"
+    printf "\nERROR: must be run as root\n\n"
     exit -1
 fi
 
 #uninstall logic
 if [ "${1}" == "-uninstall" ]; then
 
-    echo "uninstalling"
+    printf "uninstalling\n"
 
     #change into dir
     cd "$(dirname "${0}")"
@@ -44,7 +44,7 @@ if [ "${1}" == "-uninstall" ]; then
     launchctl unload "/Library/LaunchDaemons/com.objective-see.lulu.plist"
     rm "/Library/LaunchDaemons/com.objective-see.lulu.plist"
 
-    echo "unloaded launch daemon"
+    printf "unloaded launch daemon\n"
 
     #full uninstall?
     # delete app & LuLu's folder w/ everything
@@ -86,16 +86,16 @@ if [ "${1}" == "-uninstall" ]; then
     # note: will be unloaded on reboot
     rm -rf /Library/Extensions/LuLu.kext
 
-    echo "kext removed"
+    printf "kext removed\n"
 
     #rebuild cache, full path
-    echo "rebuilding kernel cache"
+    printf "rebuilding kernel cache\n"
     /usr/sbin/kextcache -invalidate / &
 
-    echo "uninstall complete"
+    printf "uninstall complete\n\n"
     exit 0
 fi
 
 #invalid args
-echo "\nERROR: run w/ '-install' or '-uninstall'"
+printf "\nERROR: run w/ '-install' or '-uninstall'\n\n"
 exit -1
