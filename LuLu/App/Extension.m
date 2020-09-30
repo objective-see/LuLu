@@ -299,10 +299,11 @@ bail:
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         //not first time?
+        // show alert telling user to approve extension
         if(YES != [((AppDelegate*)[[NSApplication sharedApplication] delegate]) isFirstTime])
         {
             //show alert
-            showAlert(@"LuLu's Extension Approval Required", @"Extensions must be manually approved\r\n...via System Preferences.");
+            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) noExtensionAlert];
         }
     });
     

@@ -45,7 +45,7 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>10.10</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright (c) 2020 Objective-See. All rights reserved.</string>
+	<string>Copyright © 2019 Objective-See. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

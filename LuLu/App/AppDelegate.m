@@ -241,7 +241,7 @@ bail:
     os_log_debug(logHandle, "launching v1.* uninstaller (%{public}@)", path);
 
     //launch
-    if(YES !=  [NSWorkspace.sharedWorkspace launchApplication:path])
+    if(YES != [NSWorkspace.sharedWorkspace launchApplication:path])
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to launch v1.* uninstaller (%{public}@, error:%{public}@)", path, error);
@@ -262,8 +262,25 @@ bail:
 // app is (likely) already running as login item, so show (or) activate window
 -(BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)hasVisibleWindows
 {
+    //extension
+    Extension* extension = nil;
+
+    //init extension object
+    extension = [[Extension alloc] init];
+    
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked (hasVisibleWindows: %d)", __PRETTY_FUNCTION__, hasVisibleWindows);
+    
+    //extention isn't running?
+    // show alert, otherwise things get confusing
+    if(YES != [extension isExtensionRunning])
+    {
+        //show alert
+        [self noExtensionAlert];
+        
+        //bail
+        goto bail;
+    }
     
     //no visible window(s)
     // default to show preferences
@@ -273,7 +290,79 @@ bail:
         [self showPreferences:nil];
     }
     
+bail:
+    
     return NO;
+}
+
+//when extension is not running
+// show alert to user, to open sys prefs, or exit
+-(void)noExtensionAlert
+{
+    //alert
+    NSAlert* alert = nil;
+    
+    //response
+    NSModalResponse response = 0;
+
+    //init alert
+    alert = [[NSAlert alloc] init];
+    
+    //set style
+    alert.alertStyle = NSAlertStyleWarning;
+    
+    //main text
+    alert.messageText = @"LuLu's Network Extension Is Not Running";
+    
+    //details
+    alert.informativeText = @"Extensions must be manually approved via System Preferences.";
+    
+    //add button
+    [alert addButtonWithTitle:@"Open System Prefs"];
+
+    //add button
+    [alert addButtonWithTitle:@"Exit LuLu"];
+
+    //foreground
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+
+    //make key and front
+    [self.window makeKeyAndOrderFront:self];
+
+    //make app active
+    [NSApp activateIgnoringOtherApps:YES];
+    
+    //dbg msg
+    os_log_debug(logHandle, "showing 'no extension running alert' to user...");
+
+    //show alert
+    // modal/blocks until response
+    response = [alert runModal];
+    
+    //dbg msg
+    os_log_debug(logHandle, "user responsed with %ld", (long)response);
+    
+    // response: open system prefs?
+    if(NSModalResponseOpen == response)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "launching System Preferenes...");
+        
+        //launch system prefs and show 'privacy'
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"x-apple.systempreferences:com.apple.preference.security?General"]];
+    }
+    //ok
+    // user wants to quit
+    else
+    {
+        //dbg msg
+        os_log_debug(logHandle, "exiting ...bye!");
+        
+        //exit
+        [NSApplication.sharedApplication terminate:self];
+    }
+    
+    return;
 }
 
 //'rules' menu item handler
@@ -612,7 +701,7 @@ bail:
                 self.updateWindowController = [[UpdateWindowController alloc] initWithWindowNibName:@"UpdateWindow"];
                 
                 //configure
-                [self.updateWindowController configure:[NSString stringWithFormat:@"a new version (%@) is available!", newVersion] buttonTitle:@"Update"];
+                [self.updateWindowController configure:[NSString stringWithFormat:@"a new version (%@) is available!", newVersion]];
                 
                 //center window
                 [self.updateWindowController.window center];
@@ -640,11 +729,6 @@ bail:
 // do any cleanup, then exit
 -(IBAction)quit:(id)sender
 {
-    
-    
-    //wait semaphore
-    //dispatch_semaphore_t semaphore = 0;
-                
     //(confirmation) alert
     NSAlert* alert = nil;
     

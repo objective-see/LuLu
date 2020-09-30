@@ -63,9 +63,6 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 //preferences file
 #define PREFS_FILE @"preferences.plist"
 
-//name of user client class
-#define LULU_USER_CLIENT_CLASS "com_objectivesee_driver_LuLu"
-
 //rules file
 #define RULES_FILE @"rules.plist"
 
@@ -95,6 +92,9 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 
 //product version url
 #define PRODUCT_VERSIONS_URL @"https://objective-see.com/products.json"
+
+//product key
+#define PRODUCT_KEY @"LuLu"
 
 //product url
 #define PRODUCT_URL @"https://objective-see.com/products/lulu.html"
@@ -249,6 +249,9 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 
 //path to osascript
 #define OSASCRIPT @"/usr/bin/osascript"
+
+//open system prefs
+#define NSModalResponseOpen 1000
 
 //cancel
 #define NSModalResponseCancel 1001

@@ -34,7 +34,7 @@ extern os_log_t logHandle;
         
         //grab latest version
         latestVersion = [self getLatestVersion];
-        if(nil != latestVersion)
+        if(0 != latestVersion.length)
         {
             //check
             result = (NSOrderedAscending == [getAppVersion() compare:latestVersion options:NSNumericSearch]);
@@ -91,7 +91,7 @@ extern os_log_t logHandle;
     }
     
     //extract latest version
-    latestVersion = [[productsVersionDictionary objectForKey:@"LuLu"] objectForKey:@"version"];
+    latestVersion = productsVersionDictionary[PRODUCT_KEY][@"version"];
     
     //dbg msg
     os_log_debug(logHandle, "latest version: %{public}@", latestVersion);
