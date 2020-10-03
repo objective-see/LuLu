@@ -22,7 +22,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="913" y="419" width="1110" height="555"/>
             <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1417"/>
             <value key="minSize" type="size" width="1110" height="555"/>
@@ -273,8 +273,6 @@
             </view>
             <toolbar key="toolbar" implicitIdentifier="BAC88DC5-D2D2-4ADF-B070-99F6A091AAC8" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="VgN-2b-k77">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="1EK-dM-lw3"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="csB-HX-Bm6"/>
                     <toolbarItem implicitItemIdentifier="30F01156-553F-47BA-8CF6-5DFEC71D307D" explicitItemIdentifier="all" label="All" paletteLabel="All" tag="-1" image="LoginItemIcon" selectable="YES" id="Nav-wg-Vxe">
                         <connections>
                             <action selector="toolbarHandler:" target="-2" id="KU4-im-DdS"/>
@@ -283,6 +281,11 @@
                     <toolbarItem implicitItemIdentifier="17D5DFCB-B79D-4FBA-8336-AB8E66D6387D" label="Default" paletteLabel="Default" image="MainAppRulesSystem" selectable="YES" id="gc6-AZ-l8V">
                         <connections>
                             <action selector="toolbarHandler:" target="-2" id="qTF-1F-7cS"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="E8F6F4D2-B7D0-47AB-9045-F7524F2A6E23" label="Apple" paletteLabel="Apple" tag="1" image="MainAppRulesApple" selectable="YES" id="B1u-bW-fb1">
+                        <connections>
+                            <action selector="toolbarHandler:" target="-2" id="ZfS-Ds-cYK"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="F277D773-ED53-4D39-A773-4AD19A56CECD" label="3rd-Party" paletteLabel="3rd-Party" tag="2" image="MainAppRulesApps" selectable="YES" id="IhL-Bt-OuB">
@@ -300,11 +303,13 @@
                             <action selector="toolbarHandler:" target="-2" id="zmU-xj-PzD"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="6A861BC3-0977-42BD-857D-D0D8C06EB403" label="" paletteLabel="" id="laZ-lE-1iU">
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="1EK-dM-lw3"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="csB-HX-Bm6"/>
+                    <toolbarItem implicitItemIdentifier="6A861BC3-0977-42BD-857D-D0D8C06EB403" label="" paletteLabel="" tag="5" id="laZ-lE-1iU">
                         <nil key="toolTip"/>
                         <size key="minSize" width="96" height="22"/>
                         <size key="maxSize" width="155" height="22"/>
-                        <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" id="6hG-3v-G35">
+                        <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" tag="5" textCompletion="NO" id="6hG-3v-G35">
                             <rect key="frame" x="0.0" y="14" width="145" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Filter Rules" usesSingleLineMode="YES" bezelStyle="round" id="DWG-ck-lDk">
@@ -317,11 +322,6 @@
                                 <outlet property="delegate" destination="-2" id="V1g-ox-J2j"/>
                             </connections>
                         </searchField>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="E8F6F4D2-B7D0-47AB-9045-F7524F2A6E23" label="Apple" paletteLabel="Apple" tag="1" image="MainAppRulesApple" selectable="YES" id="B1u-bW-fb1">
-                        <connections>
-                            <action selector="toolbarHandler:" target="-2" id="ZfS-Ds-cYK"/>
-                        </connections>
                     </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
