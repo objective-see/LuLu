@@ -15,9 +15,6 @@
 
 /* FUNCTIONS */
 
-//init crash reporting
-void initCrashReporting(void);
-
 //give path to app
 // get full path to its binary
 NSString* getAppBinary(NSString* appPath);

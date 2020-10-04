@@ -11,6 +11,8 @@
 
 #import "main.h"
 
+@import Sentry;
+
 @import OSLog;
 @import Foundation;
 @import NetworkExtension;
@@ -32,8 +34,11 @@ int main(int argc, char *argv[])
     //dbg msg
     os_log_debug(logHandle, "started: %{public}@ (pid: %d / uid: %d)", NSProcessInfo.processInfo.arguments.firstObject, getpid(), getuid());
     
-    //crash reporting
-    initCrashReporting();
+    //init crash reporting
+    [SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
+        options.dsn = SENTRY_DSN;
+        options.debug = YES;
+    }];
     
     //alloc/init/load prefs
     preferences = [[Preferences alloc] init];

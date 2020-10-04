@@ -13,6 +13,7 @@
 #import "Signing.h"
 #import "utilities.h"
 
+@import OSLog;
 @import CommonCrypto;
 
 @interface Binary : NSObject

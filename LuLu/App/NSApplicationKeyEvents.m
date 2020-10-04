@@ -8,6 +8,7 @@
 //
 
 #import "consts.h"
+#import "AppDelegate.h"
 #import "NSApplicationKeyEvents.h"
 
 @implementation NSApplicationKeyEvents
@@ -106,6 +107,14 @@
             //done
             return;
         }
+    }
+    
+    //+, (show preferences)
+    else if([[event charactersIgnoringModifiers] isEqualToString:@","])
+    {
+        //show
+        [((AppDelegate*)[[NSApplication sharedApplication] delegate]) showPreferences:nil];
+        return;
     }
     
 bail:

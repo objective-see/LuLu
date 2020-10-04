@@ -424,17 +424,22 @@ bail:
 //generate signing info
 -(void)generateSigningInfo:(audit_token_t*)token
 {
-    //extract signing info dynamically
-    self.csInfo = extractSigningInfo(token, nil, kSecCSDefaultFlags);
+    //signing info
+    NSMutableDictionary* extractedSigningInfo = nil;
     
-    //failed?
-    // try extract signing info statically
-    if(nil == self.csInfo)
+    //extract signing info
+    extractedSigningInfo = extractSigningInfo(token, nil, kSecCSDefaultFlags);
+    
+    //valid?
+    // save into iVar
+    if( (nil != extractedSigningInfo[KEY_CS_STATUS]) &&
+        (noErr == [extractedSigningInfo[KEY_CS_STATUS] intValue]))
     {
-        //extract signing info statically
-        //add 'all archs' / 'nested', since we don't know which is running
-        self.csInfo = extractSigningInfo(0, self.binary.path, kSecCSCheckAllArchitectures | kSecCSCheckNestedCode | kSecCSDoNotValidateResources);
+        //save
+        self.csInfo = extractedSigningInfo;
     }
+    //dbg msg
+    else os_log_debug(logHandle, "invalid code signing information for %{public}@: %{public}@", self.path, extractedSigningInfo);
 
     return;
 }

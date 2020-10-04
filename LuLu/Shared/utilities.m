@@ -33,64 +33,6 @@
 //log handle
 extern os_log_t logHandle;
 
-//init crash reporting
-void initCrashReporting()
-{
-    //sentry
-    NSBundle *sentry = nil;
-    
-    //error
-    NSError* error = nil;
-    
-    //class
-    Class SentryClient = nil;
-    
-    //load senty
-    sentry = loadFramework(@"Sentry.framework");
-    if(nil == sentry)
-    {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to load 'Sentry' framework");
-        
-        //bail
-        goto bail;
-    }
-   
-    //get client class
-    SentryClient = NSClassFromString(@"SentryClient");
-    if(nil == SentryClient)
-    {
-        //bail
-        goto bail;
-    }
-    
-    //set shared client
-    [SentryClient setSharedClient:[[SentryClient alloc] initWithDsn:CRASH_REPORTING_URL didFailWithError:&error]];
-    if(nil != error)
-    {
-        //err msg
-        os_log_error(logHandle, "ERROR: initializing 'Sentry' failed with %{public}@", error);
-        
-        //bail
-        goto bail;
-    }
-    
-    //start crash handler
-    [[SentryClient sharedClient] startCrashHandlerWithError:&error];
-    if(nil != error)
-    {
-        //err msg
-        os_log_error(logHandle, "ERROR: starting 'Sentry' crash handler failed with %{public}@", error);
-        
-        //bail
-        goto bail;
-    }
-
-bail:
-    
-    return;
-}
-
 //get app's version
 // extracted from Info.plist
 NSString* getAppVersion()
@@ -98,7 +40,6 @@ NSString* getAppVersion()
     //read and return 'CFBundleVersion' from bundle
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
-
 
 //give path to app
 // get full path to its binary

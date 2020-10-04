@@ -18,6 +18,11 @@
 @synthesize metadata;
 @synthesize attributes;
 
+/* GLOBALS */
+
+//log handle
+extern os_log_t logHandle;
+
 //init binary object
 // note: CPU-intensive logic (code signing, etc) called manually
 -(id)init:(NSString*)binaryPath
@@ -134,8 +139,6 @@ bail:
     {
         //release
         CFRelease(attributeNames);
-        
-        //unset
         attributeNames = NULL;
     }
     
@@ -144,8 +147,6 @@ bail:
     {
         //release
         CFRelease(mdItem);
-        
-        //unset
         mdItem = NULL;
     }
 
@@ -219,8 +220,22 @@ bail:
 //statically, generate signing info
 -(void)generateSigningInfo:(SecCSFlags)flags
 {
-    //extract signing info statically
-    self.csInfo = extractSigningInfo(0, self.path, flags);
+    //signing info
+    NSMutableDictionary* extractedSigningInfo = nil;
+    
+    //extract signing info
+    extractedSigningInfo = extractSigningInfo(0, self.path, flags);
+    
+    //valid?
+    // save into iVar
+    if( (nil != extractedSigningInfo[KEY_CS_STATUS]) &&
+        (noErr == [extractedSigningInfo[KEY_CS_STATUS] intValue]))
+    {
+        //save
+        self.csInfo = extractedSigningInfo;
+    }
+    //dbg msg
+    else os_log_debug(logHandle, "invalid code signing information for %{public}@: %{public}@", self.path, extractedSigningInfo);
     
     return;
 }

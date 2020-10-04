@@ -397,9 +397,6 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "adding rule: %{public}@ -> %{public}@", key, rule);
 
-    //TODO:
-    // check that cs info matches!
-    
     //new rule for process
     // need to init array and cs info
     if(nil == self.rules[key])
@@ -491,16 +488,40 @@ bail:
     //sync to access
     @synchronized(self.rules)
     {
-        //key
-        // signing id or path
-        key = (nil != process.csInfo[KEY_CS_ID]) ? process.csInfo[KEY_CS_ID] : process.path;
-        
-        //dbg msg
-        os_log_debug(logHandle, "key for rule lookup: %{public}@", key);
+        //item rules
+        // no cs info? lookup by path
+        if(nil == process.csInfo[KEY_CS_ID])
+        {
+            //set key
+            key = process.path;
+            
+            //dbg msg
+            os_log_debug(logHandle, "extracting rules based on path: %{public}@", key);
+            
+            //extract rules
+            itemRules = self.rules[key][KEY_RULES];
+        }
+        //item rules
+        // cs info, look up cs id, if cs info matches!
+        else
+        {
+            //set key
+            key = process.csInfo[KEY_CS_ID];
+            
+            //cs info match?
+            if(YES == [process.csInfo isEqualToDictionary:self.rules[key][KEY_CS_INFO]])
+            {
+                //dbg msg
+                os_log_debug(logHandle, "extracting rules based on cs id: %{public}@", key);
+                
+                //item rules
+                itemRules = self.rules[key][KEY_RULES];
+            }
+            //err msg
+            else os_log_error(logHandle, "ERROR: code signing mismatch: %{public}@ /  %{public}@", process.csInfo, self.rules[key][KEY_CS_INFO]);
+        }
     
-        //item's rules
-        itemRules = self.rules[key][KEY_RULES];
-        
+    
         //global rules
         globalRules = self.rules[VALUE_ANY][KEY_RULES];
         

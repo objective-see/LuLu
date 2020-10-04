@@ -12,6 +12,8 @@
 @import Cocoa;
 @import OSLog;
 
+@import Sentry;
+
 /* GLOBALS */
 
 //log handle
@@ -28,9 +30,12 @@ int main(int argc, const char * argv[]) {
         //dbg msg(s)
         os_log_debug(logHandle, "started: %{public}@ (pid: %d / uid: %d)", NSProcessInfo.processInfo.arguments.firstObject, getpid(), getuid());
         os_log_debug(logHandle, "arguments: %{public}@", NSProcessInfo.processInfo.arguments);
-    
-        //crash reporting
-        initCrashReporting();
+        
+        //init crash reporting
+        [SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
+            options.dsn = SENTRY_DSN;
+            options.debug = YES;
+        }];
     }
     
     //main app interface
