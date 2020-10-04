@@ -6,23 +6,23 @@
 	<dict>
 		<key>Resources/AboutWindow.nib</key>
 		<data>
-		67wzLQkFM2tAiOPC37T/pnkmnd0=
+		dsPaU6J+MfMAoGMIrtQtMU5NE6U=
 		</data>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		x6quvyK4uLZY/OG9ryaNMW0JMPs=
+		TaUWCo6Yu2OW+cCqaAmur4C4niI=
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		Ti+3bxASY9B/hNx+vZaTAV8QaFc=
+		aTN3XAPiYW1GyJ7JRkyhcfi4N24=
 		</data>
 		<key>Resources/Base.lproj/MainMenu.nib</key>
 		<data>
-		1Mx0fjofKAszfGGiR56pJ6+tjBM=
+		eecZDGP3s8wVKP1qEnKom2xUimE=
 		</data>
 		<key>Resources/UpdateWindow.nib</key>
 		<data>
-		w0Mb6Pt0ddcNReMvzA6bTYe9Bt0=
+		dFvr95tSEd4hzxWtemS8xVgL4Zk=
 		</data>
 		<key>Resources/patrons.txt</key>
 		<data>
@@ -44,55 +44,55 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			67wzLQkFM2tAiOPC37T/pnkmnd0=
+			dsPaU6J+MfMAoGMIrtQtMU5NE6U=
 			</data>
 			<key>hash2</key>
 			<data>
-			+7ZBbtB6UZV1nwuKkSH/CfZdDWCKN93Jk6MVO0sTdV4=
+			i13ENhvOeDl/6/VOsf8PRHTLF1LBJlmyzbAATpLzmeU=
 			</data>
 		</dict>
 		<key>Resources/AppIcon.icns</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			x6quvyK4uLZY/OG9ryaNMW0JMPs=
+			TaUWCo6Yu2OW+cCqaAmur4C4niI=
 			</data>
 			<key>hash2</key>
 			<data>
-			HVn/mv4nX+OtGP6xzBgghY5eNMAF2t5CtzTqbyDm+Zo=
+			NhSew6RVsC4YR04bW5qN49foBIUuDSSENhYr713HDBg=
 			</data>
 		</dict>
 		<key>Resources/Assets.car</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Ti+3bxASY9B/hNx+vZaTAV8QaFc=
+			aTN3XAPiYW1GyJ7JRkyhcfi4N24=
 			</data>
 			<key>hash2</key>
 			<data>
-			omi2qIguhehxTH/pYlb6dq1S+rBsM+eCprnt9BWrpZE=
+			+dLIJq14LIFLnCsWVUSzum2QPU8lZUNOyAS/6EeeleY=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/MainMenu.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1Mx0fjofKAszfGGiR56pJ6+tjBM=
+			eecZDGP3s8wVKP1qEnKom2xUimE=
 			</data>
 			<key>hash2</key>
 			<data>
-			uNw3ZRWx6juSCl5uwg9wMqkYhDL4s/JHllDBHgHV/Yg=
+			NG16pE9mP/WeYYDCIiF+Tq7olLKTVJrC0bG2NCgLVHA=
 			</data>
 		</dict>
 		<key>Resources/UpdateWindow.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			w0Mb6Pt0ddcNReMvzA6bTYe9Bt0=
+			dFvr95tSEd4hzxWtemS8xVgL4Zk=
 			</data>
 			<key>hash2</key>
 			<data>
-			z0Q4J++58sXbG7GDYTcwlMoY3EiTtr90iApPRIjLYZo=
+			VoeuErKlZwAxmW4jKw1dBvLWsWG+/68ytVX63gLdeks=
 			</data>
 		</dict>
 		<key>Resources/patrons.txt</key>
