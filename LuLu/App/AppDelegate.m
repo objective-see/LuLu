@@ -44,6 +44,9 @@ NSMutableDictionary* alerts = nil;
 {
     //dbg msg
     os_log_debug(logHandle, "%s", __PRETTY_FUNCTION__);
+    
+    //don't relaunch
+    [NSApp disableRelaunchOnLogin];
 
     //CHECK 0x1:
     // must be run from /Applications as LuLu.app
@@ -76,8 +79,10 @@ NSMutableDictionary* alerts = nil;
         {
             //err msg
             os_log_error(logHandle, "ERROR: failed to install self as login item");
-            
-        } else os_log_debug(logHandle, "installed self as login item");
+        
+        }
+        //dbg msg
+        else os_log_debug(logHandle, "installed self as login item");
         
         //launch (v1.*) uninstaller
         if(YES != [self launchUninstaller])
@@ -85,7 +90,9 @@ NSMutableDictionary* alerts = nil;
             //err msg
             os_log_error(logHandle, "ERROR: failed to launch v1.* uninstaller");
             
-        } else os_log_debug(logHandle, "launched v1.* uninstaller");
+        }
+        //dbg msg
+        else os_log_debug(logHandle, "launched v1.* uninstaller");
                 
         //exit
         // on reboot we'll be re-launched to continue...
@@ -97,7 +104,7 @@ NSMutableDictionary* alerts = nil;
     // ...will call back here to complete initializations
     if(YES == [self isFirstTime])
     {
-        //dbg
+        //dbg msg
         os_log_debug(logHandle, "first launch, will kick of welcome window(s)");
         
         //alloc window controller
@@ -112,11 +119,9 @@ NSMutableDictionary* alerts = nil;
             //err msg
             os_log_error(logHandle, "ERROR: failed to install self as login item");
             
-        } else {
-            
-            //dbg msg
-            os_log_debug(logHandle, "installed self as login item");
         }
+        //dbg msg
+        else os_log_debug(logHandle, "installed self as login item");
     }
     
     //subsequent launches...
