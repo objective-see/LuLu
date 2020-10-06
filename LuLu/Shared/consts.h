@@ -34,27 +34,10 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 //signing auth
 #define SIGNING_AUTH @"Developer ID Application: Objective-See, LLC (VBG97UB4TA)"
 
-//firewall event: network out
-#define EVENT_NETWORK_OUT 0x0
+//firewall event: new flow
+#define LULU_EVENT @"com.objective-see.lulu.event"
 
-//firewall event: dns response
-#define EVENT_DNS_RESPONSE 0x1
-
-//connect out (TCP)
-#define EVENT_CONNECT_OUT 0x1
-
-//data out (UDP)
-#define EVENT_DATA_OUT 0x2
-
-//log to file flag
-#define LOG_TO_FILE 0x10
-
-//max size of msg
-#define MAX_KEV_MSG 254
-
-//max Q items
-#define MAX_FIREWALL_EVENTS 512
-
+//lulu service
 #define LULU_SERVICE_NAME "com_objective_see_firewall"
 
 //install directory

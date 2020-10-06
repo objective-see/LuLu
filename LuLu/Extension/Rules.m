@@ -508,19 +508,24 @@ bail:
             //set key
             key = process.csInfo[KEY_CS_ID];
             
-            //cs info match?
-            if(YES == [process.csInfo isEqualToDictionary:self.rules[key][KEY_CS_INFO]])
+            //cs info?
+            // make sure it matches
+            if(nil != self.rules[key][KEY_CS_INFO])
             {
-                //dbg msg
-                os_log_debug(logHandle, "extracting rules based on cs id: %{public}@", key);
+                //match?
+                if(YES == [process.csInfo isEqualToDictionary:self.rules[key][KEY_CS_INFO]])
+                {
+                    //dbg msg
+                    os_log_debug(logHandle, "extracting rules based on cs id: %{public}@", key);
+                    
+                    //item rules
+                    itemRules = self.rules[key][KEY_RULES];
+                }
                 
-                //item rules
-                itemRules = self.rules[key][KEY_RULES];
+                //err msg
+                else os_log_error(logHandle, "ERROR: code signing mismatch: %{public}@ / %{public}@", process.csInfo, self.rules[key][KEY_CS_INFO]);
             }
-            //err msg
-            else os_log_error(logHandle, "ERROR: code signing mismatch: %{public}@ /  %{public}@", process.csInfo, self.rules[key][KEY_CS_INFO]);
         }
-    
     
         //global rules
         globalRules = self.rules[VALUE_ANY][KEY_RULES];

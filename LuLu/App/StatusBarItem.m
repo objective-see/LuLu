@@ -154,7 +154,7 @@ enum menuItems
     
     //wait a bit
     // then automatically hide popup if user has not closed it
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_main_queue(),
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(),
     ^{
         //still visible?
         // close it then...

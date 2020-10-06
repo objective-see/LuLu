@@ -46,7 +46,7 @@ extern os_log_t logHandle;
 -(void)updatePreferences:(NSDictionary *)updates reply:(void (^)(NSDictionary*))reply
 {
     //dbg msg
-    os_log_debug(logHandle, "XPC request: '%s' (%@)", __PRETTY_FUNCTION__, updates);
+    os_log_debug(logHandle, "XPC request: '%s' (%{public}@)", __PRETTY_FUNCTION__, updates);
     
     //call into prefs obj
     if(YES != [preferences update:updates])

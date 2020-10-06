@@ -141,8 +141,8 @@ extern Preferences* preferences;
     socketFlow = (NEFilterSocketFlow*)flow;
     
     //log msg
-    os_log_debug(logHandle, "%{public}@", flow);
-    
+    os_log_debug(logHandle, "flow: %{public}@", flow);
+
     //extract remote endpoint
     remoteEndpoint = (NWHostEndpoint*)socketFlow.remoteEndpoint;
     
@@ -255,7 +255,11 @@ bail:
         //bail
         goto bail;
     }
-    
+        
+    //(now), broadcast notification
+    // allows anybody to listen to flows
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:LULU_EVENT object:@"new flow" userInfo:[alerts create:(NEFilterSocketFlow*)flow process:process] options:NSNotificationDeliverImmediately|NSNotificationPostToAllSessions];
+            
     //dbg msg
     //os_log_debug(logHandle, "process object for flow: %{public}@", process);
     
