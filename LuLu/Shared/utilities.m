@@ -835,18 +835,20 @@ NSDate* dateAdded(NSString* file)
     
     //try find an app bundle
     appBundle = findAppBundle(file);
-    if(nil == appBundle)
+    if(nil != appBundle)
     {
-        //dbg msg
-        os_log_debug(logHandle, "no app bundle found for %{public}@", file);
-        
-        //bail
-        goto bail;
+        //init item with app's path
+        item = MDItemCreateWithURL(NULL, (__bridge CFURLRef)appBundle.bundleURL);
+        if(NULL == item) goto bail;
     }
-    
-    //create item reference
-    item = MDItemCreateWithURL(NULL, (__bridge CFURLRef)appBundle.bundleURL);
-    if(NULL == item) goto bail;
+    //no app bundle
+    // just use item/path as it
+    else
+    {
+        //init item with path
+        item = MDItemCreateWithURL(NULL, (__bridge CFURLRef)[NSURL fileURLWithPath:file]);
+        if(NULL == item) goto bail;
+    }
     
     //get attribute names
     attributeNames = MDItemCopyAttributeNames(item);
@@ -868,7 +870,7 @@ NSDate* dateAdded(NSString* file)
     }
     
     //dbg msg
-    os_log_debug(logHandle, "extacted date: %{public}@", date);
+    os_log_debug(logHandle, "extacted date, %{public}@, for %{public}@", date, item);
 
 bail:
     
@@ -882,7 +884,6 @@ bail:
     if(NULL != item) CFRelease(item);
     
     return date;
-    
 }
 
 #pragma clang diagnostic pop

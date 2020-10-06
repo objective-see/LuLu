@@ -407,22 +407,21 @@ bail:
         // get install date
         dispatch_once(&onceToken, ^{
             
-            //get (app's) install date
+            //get LuLu's install date
             installDate = preferences.preferences[PREF_INSTALL_TIMESTAMP];
             
             //dbg msg
-            os_log_debug(logHandle, "install date: %{public}@", installDate);
+            os_log_debug(logHandle, "LuLu's install date: %{public}@", installDate);
             
         });
         
-        //get date added
+        //get item's date added
         date = dateAdded(process.path);
-        
         if( (nil != date) &&
             (NSOrderedAscending == [date compare:installDate]) )
         {
             //dbg msg
-            os_log_debug(logHandle, "3rd-party application was installed prior, allowing & adding rule");
+            os_log_debug(logHandle, "3rd-party item was installed prior, allowing & adding rule");
             
             //init info for rule creation
             info = [@{KEY_PATH:process.path, KEY_ACTION:@RULE_STATE_ALLOW, KEY_TYPE:@RULE_TYPE_BASELINE} mutableCopy];
