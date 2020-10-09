@@ -111,9 +111,10 @@ extern os_log_t logHandle;
         // just use cs id
         if(Apple == signer) key = self.csInfo[KEY_CS_ID];
         
-        //dev id?
-        // use cs id + (last) signer
-        else if(DevID == signer)
+        //app store/dev id?
+        // use cs id + (leaf) signer
+        else if ( (DevID == signer) ||
+                  (AppStore == signer) )
         {
             if( (0 != [self.csInfo[KEY_CS_ID] length]) &&
                 (0 != [self.csInfo[KEY_CS_AUTHS] count]) )
