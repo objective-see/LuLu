@@ -7,6 +7,8 @@
 //
 
 #import "consts.h"
+#import "signing.h"
+#import "utilities.h"
 #import "ItemPathsWindowController.h"
 
 /* GLOBALS */
@@ -29,6 +31,9 @@ extern os_log_t logHandle;
     
     //item bundle id
     NSString* bundleID = nil;
+    
+    //signing info
+    NSMutableDictionary* signingInfo = nil;
     
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
@@ -54,10 +59,37 @@ extern os_log_t logHandle;
             goto bail;
         }
         
+        //dbg msg
+        os_log_debug(logHandle, "matching apps: %{public}@", items);
+        
         //add each to UI
+        // note: check for cs match
         for(NSURL* item in items)
         {
-            //first one?
+            //path
+            NSString* path = nil;
+            
+            //when it's an app
+            // get path to app's binary
+            if(YES == [item.path hasSuffix:@".app"])
+            {
+                //get path
+                path = getAppBinary(item.path);
+                if(nil == path) path = item.path;
+            }
+            
+            //extract signing info
+            signingInfo = extractSigningInfo(0, path, kSecCSDefaultFlags);
+            
+            //ingore if cs info doesn't match
+            // can be multiple apps on the system w/ same bundle id
+            if(YES != [self.rule.csInfo isEqualToDictionary:signingInfo])
+            {
+                //skip
+                continue;
+            }
+            
+            //1st one?
             // just add
             if(0 == self.itemPaths.stringValue.length)
             {

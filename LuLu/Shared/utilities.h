@@ -29,7 +29,6 @@ NSDictionary* getRealParent(pid_t pid);
 //get name of logged in user
 NSString* getConsoleUser(void);
 
-
 //given a path to binary
 // parse it back up to find app's bundle
 NSBundle* findAppBundle(NSString* binaryPath);

@@ -21,7 +21,10 @@
 /* PROPERTIES */
 
 //uuid
-@property (nonatomic, retain)NSString* uuid;
+@property(nonatomic, retain)NSString* uuid;
+
+//key
+@property(nonatomic, retain)NSString* key;
 
 // PROCESS/BINARY INFO
 

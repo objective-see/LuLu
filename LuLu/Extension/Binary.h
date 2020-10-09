@@ -10,7 +10,7 @@
 #define Binary_h
 
 #import "Consts.h"
-#import "Signing.h"
+#import "signing.h"
 #import "utilities.h"
 
 @import OSLog;

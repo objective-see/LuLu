@@ -387,36 +387,29 @@ bail:
     //result
     BOOL added = NO;
     
-    //key
-    NSString* key = nil;
-    
-    //key
-    // code signing ID or path
-    key = (nil != rule.csInfo[KEY_CS_ID]) ? rule.csInfo[KEY_CS_ID] : rule.path;
-    
     //dbg msg
-    os_log_debug(logHandle, "adding rule: %{public}@ -> %{public}@", key, rule);
+    os_log_debug(logHandle, "adding rule: %{public}@ -> %{public}@", rule.key, rule);
 
     //new rule for process
     // need to init array and cs info
-    if(nil == self.rules[key])
+    if(nil == self.rules[rule.key])
     {
         //init
-        self.rules[key] = [NSMutableDictionary dictionary];
+        self.rules[rule.key] = [NSMutableDictionary dictionary];
         
         //init (proc) rules
-        self.rules[key][KEY_RULES] = [NSMutableArray array];
+        self.rules[rule.key][KEY_RULES] = [NSMutableArray array];
         
         //add cs info
         if(nil != rule.csInfo)
         {
             //add
-            self.rules[key][KEY_CS_INFO] = rule.csInfo;
+            self.rules[rule.key][KEY_CS_INFO] = rule.csInfo;
         }
     }
     
     //(now) add rule
-    [self.rules[key][KEY_RULES] addObject:rule];
+    [self.rules[rule.key][KEY_RULES] addObject:rule];
 
     //not temporary?
     // save out to disk
@@ -453,6 +446,9 @@ bail:
 //find (matching) rule
 -(Rule*)find:(Process*)process flow:(NEFilterSocketFlow*)flow
 {
+    //rule's cs info
+    NSDictionary* csInfo = nil;
+    
     //matching rule
     Rule* matchingRule = nil;
     
@@ -479,54 +475,33 @@ bail:
     //remote endpoint
     NWHostEndpoint* remoteEndpoint = nil;
     
-    //key
-    NSString* key = nil;
-    
     //dbg msg
-    os_log_debug(logHandle, "looking for rule for %{public}@", process.path);
+    os_log_debug(logHandle, "looking for rule for %{public}@ -> %{public}@", process.key, process.path);
     
     //sync to access
     @synchronized(self.rules)
     {
         //item rules
-        // no cs info? lookup by path
-        if(nil == process.csInfo[KEY_CS_ID])
+        itemRules = self.rules[process.key][KEY_RULES];
+        
+        //extract cs info
+        csInfo = self.rules[process.key][KEY_CS_INFO];
+            
+        //cs info?
+        // make sure it (still) matches
+        if(nil != csInfo)
         {
-            //set key
-            key = process.path;
-            
-            //dbg msg
-            os_log_debug(logHandle, "extracting rules based on path: %{public}@", key);
-            
-            //extract rules
-            itemRules = self.rules[key][KEY_RULES];
-        }
-        //item rules
-        // cs info, look up cs id, if cs info matches!
-        else
-        {
-            //set key
-            key = process.csInfo[KEY_CS_ID];
-            
-            //cs info?
-            // make sure it matches
-            if(nil != self.rules[key][KEY_CS_INFO])
+            //match?
+            if(YES == [process.csInfo isEqualToDictionary:csInfo])
             {
-                //match?
-                if(YES == [process.csInfo isEqualToDictionary:self.rules[key][KEY_CS_INFO]])
-                {
-                    //dbg msg
-                    os_log_debug(logHandle, "extracting rules based on cs id: %{public}@", key);
-                    
-                    //item rules
-                    itemRules = self.rules[key][KEY_RULES];
-                }
-                
-                //err msg
-                else os_log_error(logHandle, "ERROR: code signing mismatch: %{public}@ / %{public}@", process.csInfo, self.rules[key][KEY_CS_INFO]);
+                //item rules
+                itemRules = self.rules[process.key][KEY_RULES];
             }
+            //no match
+            // just print err msg
+            else os_log_error(logHandle, "ERROR: code signing mismatch: %{public}@ / %{public}@", process.csInfo, csInfo);
         }
-    
+       
         //global rules
         globalRules = self.rules[VALUE_ANY][KEY_RULES];
         

@@ -565,29 +565,22 @@ bail:
 // once user responds to alert, these will then be processed
 -(void)addRelatedFlow:(Process*)process flow:(NEFilterSocketFlow*)flow
 {
-    //key
-    NSString* key = nil;
-    
-    //key
-    // signing ID or path
-    key = (nil != process.csInfo[KEY_CS_ID]) ? process.csInfo[KEY_CS_ID] : process.path;
-    
     //dbg msg
-    os_log_debug(logHandle, "adding flow to 'related': %{public}@ / %{public}@", key, flow);
+    os_log_debug(logHandle, "adding flow to 'related': %{public}@ / %{public}@", process.key, flow);
     
     //sync/save
     @synchronized(self.relatedFlows)
     {
         //first time
         // init array for item (process) alerts
-        if(nil == self.relatedFlows[key])
+        if(nil == self.relatedFlows[process.key])
         {
             //create array
-            self.relatedFlows[key] = [NSMutableArray array];
+            self.relatedFlows[process.key] = [NSMutableArray array];
         }
         
         //add
-        [self.relatedFlows[key] addObject:flow];
+        [self.relatedFlows[process.key] addObject:flow];
     }
     
     return;
@@ -596,27 +589,20 @@ bail:
 //process related flows
 -(void)processRelatedFlow:(NSDictionary*)alert
 {
-    //key
-    NSString* key = nil;
-    
     //flows
     NSMutableArray* flows = nil;
     
     //flow
     NEFilterSocketFlow* flow = nil;
     
-    //key
-    // signing id or path
-    key = (nil != alert[KEY_CS_INFO][KEY_CS_ID]) ? alert[KEY_CS_INFO][KEY_CS_ID] : alert[KEY_PATH];
-    
     //dbg msg
-    os_log_debug(logHandle, "processing related flow(s) for %{public}@", key);
+    os_log_debug(logHandle, "processing related flow(s) for %{public}@", alert[KEY_KEY]);
     
     //sync
     @synchronized(self.relatedFlows)
     {
         //grab flows
-        flows = self.relatedFlows[key];
+        flows = self.relatedFlows[alert[KEY_KEY]];
         if(0 == flows.count)
         {
             //dbg msg

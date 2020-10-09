@@ -22,8 +22,8 @@
 //id (tag) for detailed text in category table
 #define TABLE_ROW_NAME_TAG 100
 
-//id (tag) for detailed text in category table
-#define TABLE_ROW_SUB_TEXT_TAG 101
+//id (tag) for detailed text
+#define TABLE_ROW_SUB_TEXT 101
 
 //id (tag) for delete button
 #define TABLE_ROW_DELETE_TAG 110
@@ -49,9 +49,6 @@
 
 //observer for rules changed
 @property(nonatomic, retain)id rulesObserver;
-
-//flag
-//@property BOOL shouldFilter;
 
 //loading rules overlay
 @property (weak) IBOutlet NSVisualEffectView* loadingRules;
@@ -92,9 +89,6 @@
 
 //(last) added rule
 @property(nonatomic,retain)NSString* addedRule;
-
-//status message for import/export rules
-@property (weak) IBOutlet NSTextField *rulesStatusMsg;
 
 /* METHODS */
 

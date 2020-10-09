@@ -13,6 +13,8 @@
 
 #import "Binary.h"
 
+//TODO: _Nonnull?
+
 @interface Process : NSObject
 
 /* PROPERTIES */
@@ -41,6 +43,9 @@
 
 //signing info
 @property(nonatomic, retain)NSMutableDictionary* _Nonnull csInfo;
+
+//key
+@property(nonatomic, retain)NSString* _Nonnull key;
 
 //Binary object
 // has path, hash, etc

@@ -55,6 +55,9 @@ extern os_log_t logHandle;
     //add uuid
     alert[KEY_UUID] = [[NSUUID UUID] UUIDString];
     
+    //add key
+    alert[KEY_KEY] = process.key;
+    
     //extract remote endpoint
     remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
     
@@ -112,19 +115,12 @@ extern os_log_t logHandle;
     //alert
     NSDictionary* alert = nil;
     
-    //key
-    NSString* key = nil;
-   
-    //key
-    // signing ID or path
-    key = (nil != process.csInfo[KEY_CS_ID]) ? process.csInfo[KEY_CS_ID] : process.path;
-    
     //sync
     @synchronized(self.shownAlerts)
     {
         //grab alert
         // none, means its new
-        alert = self.shownAlerts[key];
+        alert = self.shownAlerts[process.key];
         if(nil == alert)
         {
             //bail
@@ -144,21 +140,14 @@ bail:
 //add an alert to 'shown'
 -(void)addShown:(NSDictionary*)alert
 {
-    //key
-    NSString* key = nil;
-    
-    //key
-    // signing id or path
-    key = (nil != alert[KEY_CS_INFO][KEY_CS_ID]) ? alert[KEY_CS_INFO][KEY_CS_ID] : alert[KEY_PATH];
-    
     //dbg msg
-    os_log_debug(logHandle, "adding alert to 'shown': %{public}@ -> %{public}@", key, alert);
+    os_log_debug(logHandle, "adding alert to 'shown': %{public}@ -> %{public}@", alert[KEY_KEY], alert);
     
     //add alert
     @synchronized(self.shownAlerts)
     {
         //add
-        self.shownAlerts[key] = alert;
+        self.shownAlerts[KEY_KEY] = alert;
     }
     
     return;
@@ -167,21 +156,14 @@ bail:
 //remove an alert from 'shown'
 -(void)removeShown:(NSDictionary*)alert
 {
-    //key
-    NSString* key = nil;
-    
-    //key
-    // signing id or path
-    key = (nil != alert[KEY_CS_INFO][KEY_CS_ID]) ? alert[KEY_CS_INFO][KEY_CS_ID] : alert[KEY_PATH];
-    
     //dbg msg
-    os_log_debug(logHandle, "removing alert from 'shown': %{public}@ -> %{public}@", key, alert);
+    os_log_debug(logHandle, "removing alert from 'shown': %{public}@ -> %{public}@", alert[KEY_KEY], alert);
     
     //remove alert
     @synchronized(self.shownAlerts)
     {
         //remove
-        [self.shownAlerts removeObjectForKey:key];
+        [self.shownAlerts removeObjectForKey:alert[KEY_KEY]];
     }
     
     return;

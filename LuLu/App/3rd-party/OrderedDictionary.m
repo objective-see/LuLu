@@ -154,11 +154,4 @@ bail:
     return item;
 }
 
-//given a key
-// return its index
--(NSUInteger)indexOfKey:(id)aKey
-{
-    return [array indexOfObject:aKey];
-}
-
 @end

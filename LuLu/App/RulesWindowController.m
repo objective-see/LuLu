@@ -31,7 +31,6 @@ extern os_log_t logHandle;
 @synthesize loadingRules;
 @synthesize rulesFiltered;
 @synthesize rulesObserver;
-@synthesize rulesStatusMsg;
 @synthesize loadingRulesSpinner;
 
 //init some settings
@@ -68,9 +67,6 @@ extern os_log_t logHandle;
     
     //set indentation level for outline view
     self.outlineView.indentationPerLevel = 42;
-
-    //unset message
-    self.rulesStatusMsg.stringValue = @"";
     
     //pre-req for color of overlay
     self.loadingRules.wantsLayer = YES;
@@ -447,9 +443,6 @@ bail:
     // on close/OK, invoke XPC to add rule, then reload
     [self.window beginSheet:self.addRuleWindowController.window completionHandler:^(NSModalResponse returnCode) {
         
-        //key
-        NSString* key = nil;
-        
         //(existing) rule
         Rule* rule = nil;
         
@@ -463,11 +456,8 @@ bail:
             // delete it first, then go ahead and add
             if(nil != (rule = self.addRuleWindowController.rule))
             {
-                //key
-                key = (nil != rule.csInfo[KEY_CS_ID]) ? rule.csInfo[KEY_CS_ID] : rule.path;
-                
                 //remove rule via XPC
-                [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient deleteRule:key rule:rule.uuid];
+                [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient deleteRule:rule.key rule:rule.uuid];
             }
             
             //add rule via XPC
@@ -830,12 +820,26 @@ bail:
         //set icon
         processCell.imageView.image = getIconForProcess(rule.path);
         
+        //main text
+        // item's name
+        processCell.textField.stringValue = rule.name;
+        
+        //set text color to gray
+        //set sub text (file)
+        ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT]).stringValue = rule.key;
+        
+        /*
         //set (main) text
         // name and signing id
         if(nil != rule.csInfo[KEY_CS_ID])
         {
             //set text
-            processCell.textField.stringValue = [NSString stringWithFormat:@"%@ (%@)", rule.name, rule.csInfo[KEY_CS_ID]];
+            processCell.textField.stringValue = rule.name;
+            
+            //set detailed text
+            self.itemDetails.stringValue = [NSString stringWithFormat:@"%@ (%@)", , rule.csInfo[KEY_CS_ID]];
+    
+            
         }
         //otherwise
         // name (and path)
@@ -844,6 +848,7 @@ bail:
             //set text
             processCell.textField.stringValue = [NSString stringWithFormat:@"%@ (%@)", rule.name, rule.path];
         }
+        */
     }
     
     return processCell;
@@ -889,12 +894,6 @@ bail:
     //item
     id item = nil;
     
-    //key
-    NSString* key = nil;
-    
-    //uuid
-    NSString* uuid = nil;
-    
     //rule
     Rule* rule = nil;
     
@@ -933,17 +932,11 @@ bail:
     {
         //typecast
         rule = (Rule*)item;
-        
-        //set uuid
-        uuid = rule.uuid;
     }
-    
-    //key
-    key = (nil != rule.csInfo[KEY_CS_ID]) ? rule.csInfo[KEY_CS_ID] : rule.path;
     
     //remove rule via XPC
     // nil uuid, means delete all rules for item (process)
-    [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient deleteRule:key rule:uuid];
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient deleteRule:rule.key rule:rule.uuid];
     
     //(re)load rules
     [self loadRules];

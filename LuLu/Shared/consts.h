@@ -255,6 +255,8 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define KEY_PATH @"path"
 #define KEY_NAME @"name"
 
+#define KEY_KEY @"key"
+
 #define KEY_CS_ID @"signatureIdentifier"
 #define KEY_CS_INFO @"signingInfo"
 #define KEY_CS_AUTHS @"signatureAuthorities"

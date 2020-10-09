@@ -21,8 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 //item paths
 @property (weak) IBOutlet NSTextField *itemPaths;
 
-
-
 @end
 
 NS_ASSUME_NONNULL_END

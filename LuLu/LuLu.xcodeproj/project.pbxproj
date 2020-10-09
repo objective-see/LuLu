@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		CD03F8F524F8E68300723BDC /* Binary.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03F8F324F8E68300723BDC /* Binary.m */; };
 		CD03F8F624F8E68300723BDC /* Process.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03F8F424F8E68300723BDC /* Process.m */; };
-		CD03F8F924F8E69C00723BDC /* Signing.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03F8F824F8E69C00723BDC /* Signing.m */; };
+		CD21D37A252FE91E001A19A8 /* signing.m in Sources */ = {isa = PBXBuildFile; fileRef = CD21D379252FE91E001A19A8 /* signing.m */; };
+		CD21D37D252FE94F001A19A8 /* signing.m in Sources */ = {isa = PBXBuildFile; fileRef = CD21D37B252FE94F001A19A8 /* signing.m */; };
 		CD9E1477251349A800DA05C3 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9E1476251349A800DA05C3 /* Sentry.framework */; };
 		CD9E1478251349FB00DA05C3 /* Sentry.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD9E1476251349A800DA05C3 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD9E147925134A0100DA05C3 /* Sentry.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD9E1476251349A800DA05C3 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -116,25 +117,24 @@
 /* Begin PBXFileReference section */
 		CD03F8F324F8E68300723BDC /* Binary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Binary.m; sourceTree = "<group>"; };
 		CD03F8F424F8E68300723BDC /* Process.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Process.m; sourceTree = "<group>"; };
-		CD03F8F724F8E69C00723BDC /* Signing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Signing.h; sourceTree = "<group>"; };
-		CD03F8F824F8E69C00723BDC /* Signing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Signing.m; sourceTree = "<group>"; };
 		CD03F8FA24F8E6BD00723BDC /* Binary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Binary.h; sourceTree = "<group>"; };
 		CD03F8FB24F8E6C600723BDC /* Process.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Process.h; sourceTree = "<group>"; };
+		CD21D378252FE91E001A19A8 /* signing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = signing.h; path = Shared/signing.h; sourceTree = SOURCE_ROOT; };
+		CD21D379252FE91E001A19A8 /* signing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = signing.m; path = Shared/signing.m; sourceTree = SOURCE_ROOT; };
+		CD21D37B252FE94F001A19A8 /* signing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = signing.m; path = Shared/signing.m; sourceTree = SOURCE_ROOT; };
+		CD21D37C252FE94F001A19A8 /* signing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = signing.h; path = Shared/signing.h; sourceTree = SOURCE_ROOT; };
 		CD9E1476251349A800DA05C3 /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
 		CD9E147A25171BF200DA05C3 /* ItemPathsWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemPathsWindowController.h; sourceTree = "<group>"; };
 		CD9E147B25171BF200DA05C3 /* ItemPathsWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemPathsWindowController.m; sourceTree = "<group>"; };
 		CD9E147C25171BF200DA05C3 /* ItemPaths.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemPaths.xib; sourceTree = "<group>"; };
 		CD9F567D252533CD00F3DEB5 /* NSApplicationKeyEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSApplicationKeyEvents.h; sourceTree = "<group>"; };
 		CD9F567E252533CD00F3DEB5 /* NSApplicationKeyEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSApplicationKeyEvents.m; sourceTree = "<group>"; };
-		CDA1362E24EF4DA0005AD424 /* logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = logging.m; path = Shared/logging.m; sourceTree = SOURCE_ROOT; };
 		CDA1363224EF4DA0005AD424 /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = Shared/utilities.h; sourceTree = SOURCE_ROOT; };
 		CDA1363324EF4DA0005AD424 /* utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = utilities.m; path = Shared/utilities.m; sourceTree = SOURCE_ROOT; };
 		CDA1363424EF4DA0005AD424 /* XPCDaemonProto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPCDaemonProto.h; path = Shared/XPCDaemonProto.h; sourceTree = SOURCE_ROOT; };
 		CDA1363724EF4DA0005AD424 /* Rule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rule.m; path = Shared/Rule.m; sourceTree = SOURCE_ROOT; };
 		CDA1363824EF4DA0005AD424 /* Rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rule.h; path = Shared/Rule.h; sourceTree = SOURCE_ROOT; };
 		CDA1363A24EF4DA0005AD424 /* consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = consts.h; path = Shared/consts.h; sourceTree = SOURCE_ROOT; };
-		CDA1363C24EF4DA0005AD424 /* logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = logging.h; path = Shared/logging.h; sourceTree = SOURCE_ROOT; };
-		CDA1363D24EF4DA0005AD424 /* UserClientShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserClientShared.h; path = Shared/UserClientShared.h; sourceTree = SOURCE_ROOT; };
 		CDA1364124EF4DA1005AD424 /* XPCUserProto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPCUserProto.h; path = Shared/XPCUserProto.h; sourceTree = SOURCE_ROOT; };
 		CDA1364D24EF4E56005AD424 /* XPCUserClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPCUserClient.m; sourceTree = "<group>"; };
 		CDA1364F24EF4E56005AD424 /* Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts.m; sourceTree = "<group>"; };
@@ -252,11 +252,10 @@
 			isa = PBXGroup;
 			children = (
 				CDA1363A24EF4DA0005AD424 /* consts.h */,
-				CDA1363C24EF4DA0005AD424 /* logging.h */,
-				CDA1362E24EF4DA0005AD424 /* logging.m */,
 				CDA1363824EF4DA0005AD424 /* Rule.h */,
 				CDA1363724EF4DA0005AD424 /* Rule.m */,
-				CDA1363D24EF4DA0005AD424 /* UserClientShared.h */,
+				CD21D378252FE91E001A19A8 /* signing.h */,
+				CD21D379252FE91E001A19A8 /* signing.m */,
 				CDA1363224EF4DA0005AD424 /* utilities.h */,
 				CDA1363324EF4DA0005AD424 /* utilities.m */,
 				CDA1363424EF4DA0005AD424 /* XPCDaemonProto.h */,
@@ -271,6 +270,8 @@
 				CDA136C624F0D7C3005AD424 /* consts.h */,
 				CDA136E324F0DA43005AD424 /* Rule.h */,
 				CDA136E424F0DA43005AD424 /* Rule.m */,
+				CD21D37C252FE94F001A19A8 /* signing.h */,
+				CD21D37B252FE94F001A19A8 /* signing.m */,
 				CDA136C424F0D7C3005AD424 /* utilities.h */,
 				CDA136C524F0D7C3005AD424 /* utilities.m */,
 			);
@@ -400,8 +401,6 @@
 				CDA1366B24EF4F89005AD424 /* Rules.h */,
 				CDA1366C24EF4F89005AD424 /* Rules.m */,
 				CDA135F824EBB58E005AD424 /* Shared */,
-				CD03F8F724F8E69C00723BDC /* Signing.h */,
-				CD03F8F824F8E69C00723BDC /* Signing.m */,
 				CDA1365E24EF4E57005AD424 /* XPCDaemon.h */,
 				CDA1365624EF4E56005AD424 /* XPCDaemon.m */,
 				CDA1365C24EF4E57005AD424 /* XPCListener.h */,
@@ -571,6 +570,7 @@
 				CDA136E124F0DA0F005AD424 /* VirusTotal.m in Sources */,
 				CDA136E224F0DA0F005AD424 /* VirusTotalViewController.m in Sources */,
 				CDA136D024F0D9C1005AD424 /* XPCDaemonClient.m in Sources */,
+				CD21D37D252FE94F001A19A8 /* signing.m in Sources */,
 				CDA136C724F0D7C3005AD424 /* utilities.m in Sources */,
 				CDB2CC2524D61A5000D0EECE /* main.m in Sources */,
 				CD9E147D25171BF200DA05C3 /* ItemPathsWindowController.m in Sources */,
@@ -587,6 +587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDA1364624EF4DA1005AD424 /* utilities.m in Sources */,
+				CD21D37A252FE91E001A19A8 /* signing.m in Sources */,
 				CDA1366824EF4E57005AD424 /* XPCListener.m in Sources */,
 				CDA1364824EF4DA1005AD424 /* Rule.m in Sources */,
 				CD03F8F624F8E68300723BDC /* Process.m in Sources */,
@@ -596,7 +597,6 @@
 				CDA1366324EF4E57005AD424 /* Alerts.m in Sources */,
 				CDB2CC3724D61B3900D0EECE /* FilterDataProvider.m in Sources */,
 				CDA1366224EF4E57005AD424 /* XPCUserClient.m in Sources */,
-				CD03F8F924F8E69C00723BDC /* Signing.m in Sources */,
 				CDA1366D24EF4F89005AD424 /* Rules.m in Sources */,
 				CDA1366624EF4E57005AD424 /* Preferences.m in Sources */,
 				CD03F8F524F8E68300723BDC /* Binary.m in Sources */,

@@ -84,9 +84,58 @@ extern os_log_t logHandle;
         //init lifetime
         self.temporary = info[KEY_TEMPORARY];
         
+        //now, generate key
+        self.key = [self generateKey];
     }
         
     return self;
+}
+
+//generate id
+// cs info or path
+-(NSString*)generateKey
+{
+    //id
+    NSString* key = nil;
+    
+    //signer
+    NSInteger signer = None;
+    
+    //cs info?
+    if(nil != self.csInfo)
+    {
+        //extract signer
+        signer = [self.csInfo[KEY_CS_SIGNER] intValue];
+        
+        //apple?
+        // just use cs id
+        if(Apple == signer) key = self.csInfo[KEY_CS_ID];
+        
+        //dev id?
+        // use cs id + (last) signer
+        else if(DevID == signer)
+        {
+            if( (0 != [self.csInfo[KEY_CS_ID] length]) &&
+                (0 != [self.csInfo[KEY_CS_AUTHS] count]) )
+            {
+                //set
+                key = [NSString stringWithFormat:@"%@ (%@)", self.csInfo[KEY_CS_ID], [self.csInfo[KEY_CS_AUTHS] firstObject]];
+            }
+        }
+    }
+    
+    //no valid cs info, etc
+    // just use item's path
+    if(0 == key.length)
+    {
+        //set
+        key = self.path;
+    }
+    
+    //dbg msg
+    os_log_debug(logHandle, "generated rule key: %{public}@", key);
+
+    return key;
 }
 
 //required as we support secure coding
@@ -102,6 +151,9 @@ extern os_log_t logHandle;
     if(self = [super init])
     {
         //decode object
+        
+        self.key = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(key))];
+        
         self.uuid = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(uuid))];
         
         self.path = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(path))];
@@ -126,6 +178,9 @@ extern os_log_t logHandle;
 -(void)encodeWithCoder:(NSCoder *)encoder
 {
     //encode object
+    
+    [encoder encodeObject:self.key forKey:NSStringFromSelector(@selector(key))];
+    
     [encoder encodeObject:self.uuid forKey:NSStringFromSelector(@selector(uuid))];
     
     [encoder encodeObject:self.path forKey:NSStringFromSelector(@selector(path))];

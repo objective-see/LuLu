@@ -7,7 +7,7 @@
 //  License:    Creative Commons Attribution-NonCommercial 4.0 International
 
 #import "consts.h"
-#import "Signing.h"
+#import "signing.h"
 #import "utilities.h"
 
 @import Security;
