@@ -157,7 +157,8 @@ bail:
         
         //dev id?
         // use cs id + (last) signer
-        else if(DevID == signer)
+        else if ( (DevID == signer) ||
+                  (AppStore == signer) )
         {
             if( (0 != [self.csInfo[KEY_CS_ID] length]) &&
                 (0 != [self.csInfo[KEY_CS_AUTHS] count]) )
