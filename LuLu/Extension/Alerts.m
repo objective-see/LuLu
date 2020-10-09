@@ -147,7 +147,7 @@ bail:
     @synchronized(self.shownAlerts)
     {
         //add
-        self.shownAlerts[KEY_KEY] = alert;
+        self.shownAlerts[alert[KEY_KEY]] = alert;
     }
     
     return;

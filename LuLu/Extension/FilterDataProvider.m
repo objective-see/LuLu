@@ -243,7 +243,7 @@ bail:
     }
 
     //dbg msg
-    //else os_log_debug(logHandle, "found process object in cache: %{public}@", process);
+    else os_log_debug(logHandle, "found process object in cache: %{public}@", process);
     
     //sanity check
     // no process? just allow...
