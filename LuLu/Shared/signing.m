@@ -215,7 +215,11 @@ NSNumber* extractSigner(SecStaticCodeRef code, SecCSFlags flags, BOOL isDynamic)
     // note: this is more specific than dev id, so do it first
     else if(errSecSuccess == validateRequirement(code, isAppStore, flags, isDynamic))
     {
-        //extract signing info
+        //default signer to app store
+        signer = [NSNumber numberWithInt:AppStore];
+        
+        //however, set back to apple
+        // ...if it's one of apple's app store apps
         if(errSecSuccess == SecCodeCopySigningInformation(code, kSecCSSigningInformation, &signingDetails))
         {
             //extract team id
@@ -231,12 +235,6 @@ NSNumber* extractSigner(SecStaticCodeRef code, SecCSFlags flags, BOOL isDynamic)
             //release
             CFRelease(signingDetails);
             signingDetails = NULL;
-        }
-        //non-apple app store app
-        else
-        {
-            //set signer to app store
-            signer = [NSNumber numberWithInt:AppStore];
         }
     }
     
