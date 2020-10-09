@@ -1105,7 +1105,6 @@ NSData* tokenForPid(pid_t pid)
     
     //dbg msg
     os_log_debug(logHandle, "retrieved audit token");
-
     
 bail:
     

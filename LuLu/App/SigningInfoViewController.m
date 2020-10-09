@@ -47,7 +47,7 @@
         [summary appendFormat:@" is not validly signed"];
         
         //set details
-        self.details.stringValue = [@"n/a" mutableCopy];
+        self.details.stringValue = @"not applicable";
         
         //bail
         goto bail;
@@ -132,7 +132,7 @@
             [summary appendFormat:@" is not signed"];
             
             //set details
-            self.details.stringValue = [@"n/a" mutableCopy];
+            self.details.stringValue = @"not applicable";
             
             break;
             
@@ -144,10 +144,12 @@
             [summary appendFormat:@" has a signing issue"];
             
             //set details
-            self.details.stringValue = [NSMutableString stringWithFormat:@"signing error: %ld", (long)[signingInfo[KEY_CS_STATUS] integerValue]];
+            self.details.stringValue = [NSMutableString stringWithFormat:@"signing error: %#lx", (long)[signingInfo[KEY_CS_STATUS] integerValue]];
             
             break;
     }
+    
+bail:
     
     //no (valid) signing auths?
     // show 'not applicable' msg
@@ -156,8 +158,6 @@
         //show
         self.noSigningAuths.hidden = NO;
     }
-
-bail:
     
     //assign summary to outlet
     self.message.stringValue = summary;

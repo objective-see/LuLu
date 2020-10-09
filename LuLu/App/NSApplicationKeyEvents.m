@@ -84,8 +84,16 @@
     }
     
     //+w (close window)
+    // unless its an alert ...need response!
     else if([[event charactersIgnoringModifiers] isEqualToString:@"w"])
     {
+        //alert window?
+        if(YES == [NSApplication.sharedApplication.keyWindow.identifier isEqualToString:@"Alert"])
+        {
+            //skip
+            goto bail;
+        }
+        
         //close
         [NSApplication.sharedApplication.keyWindow close];
         return;

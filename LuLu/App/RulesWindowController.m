@@ -824,35 +824,59 @@ bail:
         // item's name
         processCell.textField.stringValue = rule.name;
         
-        //set text color to gray
-        //set sub text (file)
-        ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT]).stringValue = rule.key;
-        
-        /*
-        //set (main) text
-        // name and signing id
-        if(nil != rule.csInfo[KEY_CS_ID])
-        {
-            //set text
-            processCell.textField.stringValue = rule.name;
-            
-            //set detailed text
-            self.itemDetails.stringValue = [NSString stringWithFormat:@"%@ (%@)", , rule.csInfo[KEY_CS_ID]];
-    
-            
-        }
-        //otherwise
-        // name (and path)
-        else
-        {
-            //set text
-            processCell.textField.stringValue = [NSString stringWithFormat:@"%@ (%@)", rule.name, rule.path];
-        }
-        */
+        //details
+        ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT]).stringValue = [self formatItemDetails:rule];
     }
     
     return processCell;
 }
+
+//format details for item
+-(NSString*)formatItemDetails:(Rule*)rule
+{
+    //details
+    NSString* details = @"";
+    
+    //signer
+    NSInteger signer = None;
+    
+    //cs info?
+    if(nil != rule.csInfo)
+    {
+        //format, based on signer
+        switch([rule.csInfo[KEY_CS_SIGNER] intValue])
+        {
+            //apple
+            case Apple:
+                details = [NSString stringWithFormat:@"%@ (signer: Apple Proper)", rule.csInfo[KEY_CS_ID]];
+                break;
+            
+            //app store
+            case AppStore:
+                details = [NSString stringWithFormat:@"%@ (signer: Apple Mac OS App Store)", rule.csInfo[KEY_CS_ID]];
+                break;
+                
+            //dev id
+            case DevID:
+                details = [NSString stringWithFormat:@"%@ (signer: %@)", rule.csInfo[KEY_CS_ID], [rule.csInfo[KEY_CS_AUTHS] firstObject]];
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    //no valid cs info, etc
+    // just use item's path
+    if(0 == details.length)
+    {
+        //set
+        details = [NSString stringWithFormat:@"%@ (signer: invalid/unsigned)", rule.path];
+    }
+
+    return details;
+}
+
 //create & customize connection cell
 -(NSTableCellView*)createConnectionCell:(Rule*)rule
 {

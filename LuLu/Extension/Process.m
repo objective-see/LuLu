@@ -151,24 +151,29 @@ bail:
         //extract signer
         signer = [self.csInfo[KEY_CS_SIGNER] intValue];
         
-        //apple?
+        //apple/app store
         // just use cs id
-        if(Apple == signer) key = self.csInfo[KEY_CS_ID];
+        if( (Apple == signer) ||
+            (AppStore == signer) )
+        {
+            //set key
+            key = self.csInfo[KEY_CS_ID];
+        }
         
         //dev id?
-        // use cs id + (last) signer
-        else if ( (DevID == signer) ||
-                  (AppStore == signer) )
+        // use cs id + (leaf) signer
+        else if(DevID == signer)
         {
+            //check for cs id/auths
             if( (0 != [self.csInfo[KEY_CS_ID] length]) &&
                 (0 != [self.csInfo[KEY_CS_AUTHS] count]) )
             {
                 //set
-                key = [NSString stringWithFormat:@"%@ (%@)", self.csInfo[KEY_CS_ID], [self.csInfo[KEY_CS_AUTHS] firstObject]];
+                key = [NSString stringWithFormat:@"%@:%@", self.csInfo[KEY_CS_ID], [self.csInfo[KEY_CS_AUTHS] firstObject]];
             }
         }
     }
-    
+        
     //no valid cs info, etc
     // just use item's path
     if(0 == key.length)

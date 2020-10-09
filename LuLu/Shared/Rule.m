@@ -107,20 +107,25 @@ extern os_log_t logHandle;
         //extract signer
         signer = [self.csInfo[KEY_CS_SIGNER] intValue];
         
-        //apple?
+        //apple/app store
         // just use cs id
-        if(Apple == signer) key = self.csInfo[KEY_CS_ID];
-        
-        //app store/dev id?
-        // use cs id + (leaf) signer
-        else if ( (DevID == signer) ||
-                  (AppStore == signer) )
+        if( (Apple == signer) ||
+            (AppStore == signer) )
         {
+            //set key
+            key = self.csInfo[KEY_CS_ID];
+        }
+        
+        //dev id?
+        // use cs id + (leaf) signer
+        else if(DevID == signer)
+        {
+            //check for cs id/auths
             if( (0 != [self.csInfo[KEY_CS_ID] length]) &&
                 (0 != [self.csInfo[KEY_CS_AUTHS] count]) )
             {
                 //set
-                key = [NSString stringWithFormat:@"%@ (%@)", self.csInfo[KEY_CS_ID], [self.csInfo[KEY_CS_AUTHS] firstObject]];
+                key = [NSString stringWithFormat:@"%@:%@", self.csInfo[KEY_CS_ID], [self.csInfo[KEY_CS_AUTHS] firstObject]];
             }
         }
     }
