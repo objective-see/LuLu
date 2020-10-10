@@ -13,8 +13,6 @@
 
 #import "Binary.h"
 
-//TODO: _Nonnull?
-
 @interface Process : NSObject
 
 /* PROPERTIES */

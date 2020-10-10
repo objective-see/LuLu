@@ -811,6 +811,9 @@ bail:
         
         //set text
         processCell.textField.stringValue = @"Any Process";
+        
+        //(un)set detailed text
+        ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT]).stringValue = @"";
     }
     
     //non global rule?
@@ -836,10 +839,7 @@ bail:
 {
     //details
     NSString* details = @"";
-    
-    //signer
-    NSInteger signer = None;
-    
+        
     //cs info?
     if(nil != rule.csInfo)
     {

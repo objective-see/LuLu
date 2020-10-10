@@ -63,6 +63,10 @@ extern os_log_t logHandle;
     //item
     NSMutableDictionary* item = nil;
     
+    //path
+    // for apps, this is app's binary
+    NSString* path = nil;
+    
     //alloc
     vtObj = [[VirusTotal alloc] init];
     
@@ -72,8 +76,24 @@ extern os_log_t logHandle;
     //nap to allow msg/spinner to do a bit
     [NSThread sleepForTimeInterval:1.0f];
     
+    //when it's an app
+    // get path to app's binary
+    if(YES == [path hasSuffix:@".app"])
+    {
+        //get path
+        path = getAppBinary(self.itemPath);
+    }
+    
+    //not app / no app binary?
+    // just use item's path for file
+    if(0 == path.length)
+    {
+        //init path
+        path = self.itemPath;
+    }
+        
     //hash
-    hash = hashFile(self.itemPath);
+    hash = hashFile(path);
     if(0 == hash.length)
     {
         //err msg

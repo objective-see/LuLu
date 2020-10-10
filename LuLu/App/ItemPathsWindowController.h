@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 //item paths
 @property (weak) IBOutlet NSTextField *itemPaths;
 
+//close button
+@property (weak) IBOutlet NSButton *closeButton;
+
 @end
 
 NS_ASSUME_NONNULL_END

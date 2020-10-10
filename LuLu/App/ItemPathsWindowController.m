@@ -111,13 +111,16 @@ extern os_log_t logHandle;
         self.itemPaths.stringValue = [NSString stringWithFormat:@"▪ %@", self.rule.path];
     }
     
+    //make close button first responder
+    [self.window makeFirstResponder:self.closeButton];
+    
 bail:
     
     return;
 }
 
 //close
-- (IBAction)closeButtonHandler:(id)sender {
+-(IBAction)closeButtonHandler:(id)sender {
     
     //dbg msg
     os_log_debug(logHandle, "user clicked: %{public}@", ((NSButton*)sender).title);
