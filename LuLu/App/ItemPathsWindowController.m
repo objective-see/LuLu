@@ -75,16 +75,27 @@ extern os_log_t logHandle;
             {
                 //get path
                 path = getAppBinary(item.path);
-                if(nil == path) path = item.path;
+            }
+            
+            //not app / no app binary?
+            // just use item's path for file
+            if(0 == path.length)
+            {
+                //init path
+                path = item.path;
             }
             
             //extract signing info
-            signingInfo = extractSigningInfo(0, path, kSecCSDefaultFlags);
+            // note: use item's path, to match rule
+            signingInfo = extractSigningInfo(0, item.path, kSecCSDefaultFlags);
             
             //ingore if cs info doesn't match
             // can be multiple apps on the system w/ same bundle id
             if(YES != [self.rule.csInfo isEqualToDictionary:signingInfo])
             {
+                //dbg msg
+                os_log_debug(logHandle, "rule's code signing info, %{public}@, didn't match item's, %{public}@", self.rule.csInfo, signingInfo);
+                
                 //skip
                 continue;
             }
@@ -93,13 +104,13 @@ extern os_log_t logHandle;
             // just add
             if(0 == self.itemPaths.stringValue.length)
             {
-                self.itemPaths.stringValue = [NSString stringWithFormat:@"▪ %@", item.path];
+                self.itemPaths.stringValue = [NSString stringWithFormat:@"▪ %@", path];
             }
             //otherwise
             // append to existing
             else
             {
-                self.itemPaths.stringValue = [NSString stringWithFormat:@"%@\r\n▪ %@", self.itemPaths.stringValue, item.path];
+                self.itemPaths.stringValue = [NSString stringWithFormat:@"%@\r\n▪ %@", self.itemPaths.stringValue, path];
             }
         }
     }

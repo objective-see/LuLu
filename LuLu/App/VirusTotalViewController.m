@@ -76,12 +76,18 @@ extern os_log_t logHandle;
     //nap to allow msg/spinner to do a bit
     [NSThread sleepForTimeInterval:1.0f];
     
+    //dbg msg
+    os_log_debug(logHandle, "querying VirusTotal with %{public}@", self.itemPath);
+    
     //when it's an app
     // get path to app's binary
-    if(YES == [path hasSuffix:@".app"])
+    if(YES == [self.itemPath hasSuffix:@".app"])
     {
         //get path
         path = getAppBinary(self.itemPath);
+        
+        //dbg msg
+        os_log_debug(logHandle, "resolved app's binary: %{public}@", path);
     }
     
     //not app / no app binary?
@@ -97,7 +103,7 @@ extern os_log_t logHandle;
     if(0 == hash.length)
     {
         //err msg
-        os_log_error(logHandle, "ERROR: failed to hash %{public}@ to submit", self.itemName);
+        os_log_error(logHandle, "ERROR: failed to hash %{public}@, for VT submission", path);
         
         //show error on main thread
         dispatch_sync(dispatch_get_main_queue(), ^{
