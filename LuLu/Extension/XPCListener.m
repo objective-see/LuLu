@@ -177,7 +177,7 @@ extern os_log_t logHandle;
     os_log_debug(logHandle, "client code signing flags, ok (includes 'CS_RUNTIME')");
     
     //init signing req
-    requirement = [NSString stringWithFormat:@"anchor trusted and identifier \"%@\" and certificate leaf [subject.CN] = \"%@\"", APP_ID, SIGNING_AUTH];
+    requirement = [NSString stringWithFormat:@"anchor apple generic and identifier \"%@\" and certificate leaf [subject.CN] = \"%@\"", APP_ID, SIGNING_AUTH];
     
     //step 1: create task ref
     // uses NSXPCConnection's (private) 'auditToken' iVar

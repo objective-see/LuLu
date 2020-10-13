@@ -41,7 +41,7 @@ OSStatus verifyApp(NSString* path, NSString* signingAuth)
     SecRequirementRef requirementRef = NULL;
     
     //init requirement string
-    requirementString = [NSString stringWithFormat:@"anchor trusted and certificate leaf [subject.CN] = \"%@\"", signingAuth];
+    requirementString = [NSString stringWithFormat:@"anchor apple generic and certificate leaf [subject.CN] = \"%@\"", signingAuth];
     
     //create static code
     status = SecStaticCodeCreateWithPath((__bridge CFURLRef)([NSURL fileURLWithPath:path]), kSecCSDefaultFlags, &staticCode);
