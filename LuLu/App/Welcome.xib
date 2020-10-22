@@ -293,7 +293,7 @@
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="JBN-MO-km3">
                     <rect key="frame" x="18" y="295" width="664" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Finally, would you like to support LuLu?" id="qNj-Zh-8FW">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Would you like to support LuLu?" id="qNj-Zh-8FW">
                         <font key="font" size="32" name="AvenirNextCondensed-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

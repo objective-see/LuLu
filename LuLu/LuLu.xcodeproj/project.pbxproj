@@ -11,6 +11,7 @@
 		CD03F8F624F8E68300723BDC /* Process.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03F8F424F8E68300723BDC /* Process.m */; };
 		CD21D37A252FE91E001A19A8 /* signing.m in Sources */ = {isa = PBXBuildFile; fileRef = CD21D379252FE91E001A19A8 /* signing.m */; };
 		CD21D37D252FE94F001A19A8 /* signing.m in Sources */ = {isa = PBXBuildFile; fileRef = CD21D37B252FE94F001A19A8 /* signing.m */; };
+		CD9E04D3254163AF00DB3218 /* patrons.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDA1369624F0D2CF005AD424 /* patrons.txt */; };
 		CD9E1477251349A800DA05C3 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9E1476251349A800DA05C3 /* Sentry.framework */; };
 		CD9E1478251349FB00DA05C3 /* Sentry.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD9E1476251349A800DA05C3 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD9E147925134A0100DA05C3 /* Sentry.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD9E1476251349A800DA05C3 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -502,6 +503,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD9E04D3254163AF00DB3218 /* patrons.txt in Resources */,
 				CDC378CB250C83F200314064 /* Netiquette.app in Resources */,
 				CD9E147E25171BF200DA05C3 /* ItemPaths.xib in Resources */,
 				CDA1547824F34BEC00E0AE97 /* AboutWindow.xib in Resources */,
