@@ -11,6 +11,7 @@
 #import "Process.h"
 #import "Utilities.h"
 
+#import <dlfcn.h>
 #import <libproc.h>
 #import <bsm/libbsm.h>
 #import <sys/sysctl.h>
@@ -200,6 +201,21 @@ bail:
     //parent pid
     pid_t parentPID = -1;
     
+    //rpid function
+    __block pid_t (*getRPID)(pid_t pid) = NULL;
+    
+    //token
+    static dispatch_once_t onceToken = 0;
+    
+    //only once
+    // init requirements
+    dispatch_once(&onceToken, ^{
+        
+        //get function pointer
+        getRPID = dlsym(RTLD_NEXT, "responsibility_get_pid_responsible_for_pid");
+        
+    });
+    
     //start w/ self
     currentPID = self.pid;
     
@@ -215,8 +231,22 @@ bail:
         //add
         [self.ancestors insertObject:[@{KEY_PROCESS_ID:[NSNumber numberWithInt:currentPID], KEY_NAME:currentName} mutableCopy] atIndex:0];
         
-        //get parent pid
-        parentPID = getParent(currentPID);
+        //for parent
+        // first try via rPID
+        if(NULL != getRPID)
+        {
+            //get rpid
+            parentPID = getRPID(currentPID);
+        }
+        
+        //couldn't find/get rPID?
+        // default back to using standard method
+        if( (parentPID <= 0) ||
+            (currentPID == parentPID) )
+        {
+            //get parent pid
+            parentPID = getParent(currentPID);
+        }
         
         //done?
         if( (parentPID <= 0) ||
@@ -230,7 +260,6 @@ bail:
         currentPID = parentPID;
         
     } while(YES);
-    
     
     //now, will all items added
     // add each item's index for UI purposes

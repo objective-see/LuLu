@@ -113,6 +113,9 @@ NSMutableDictionary* alerts = nil;
         //show window
         [self.welcomeWindowController showWindow:self];
         
+        //set activation policy
+        [self setActivationPolicy];
+        
         //install (self as) login item
         if(YES != toggleLoginItem(NSBundle.mainBundle.bundleURL, ACTION_INSTALL_FLAG))
         {

@@ -1,6 +1,6 @@
 //
 //  file: Rules.m
-//  project: BlockBlock (launch daemon)
+//  project: LuLu (launch daemon)
 //  description: handles rules & actions such as add/delete
 //
 //  created by Patrick Wardle

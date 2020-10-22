@@ -238,7 +238,7 @@ bail:
         os_log_debug(logHandle, "no process found in cache, will create");
         
         //create
-        // via pid, bundle id, etc
+        // also adds to cache
         process = [self createProcess:flow];
     }
 

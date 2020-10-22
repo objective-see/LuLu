@@ -1,6 +1,6 @@
 //
 //  file: Rule.h
-//  project: BlockBlock (shared)
+//  project: LuLu (shared)
 //  description: Rule object (header)
 //
 //  created by Patrick Wardle
