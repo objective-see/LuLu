@@ -217,7 +217,7 @@ bail:
     //grab console user
     consoleUser = getConsoleUser();
     
-    //CHECK 0xx:
+    //CHECK:
     // different logged in user?
     // just allow flow, as we don't want to block their traffic
     if( (nil != consoleUser) &&
@@ -263,7 +263,7 @@ bail:
     //dbg msg
     //os_log_debug(logHandle, "process object for flow: %{public}@", process);
     
-    //CHECK 0x1:
+    //CHECK:
     // check for existing rule
     
     //existing rule for process?
@@ -311,7 +311,7 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "client not in passive mode");
     
-    //CHECK 0x3:
+    //CHECK:
     // is a related alert shown, and pending reponse?
     // save, but don't send yet (until the user responds)
     if(YES == [alerts isRelated:process])
@@ -333,7 +333,7 @@ bail:
     os_log_debug(logHandle, "no related alert, currently shown...");
     
     
-    //CHECK 0xx:
+    //CHECK:
     // Apple process and 'PREF_ALLOW_APPLE' is set?
     // ...allow!
     
@@ -448,7 +448,7 @@ bail:
     }
     
     //no user?
-    // allow but create rule for user to review
+    // allow, but create rule for user to review
     if( (nil == consoleUser) ||
         (nil == alerts.xpcUserClient) )
     {
@@ -495,7 +495,7 @@ bail:
 }
 
 //1. create and deliver alert
-//2. handle response (and process other shown alerts, etc)
+//2. handle response (and process other shown alerts, etc.)
 -(void)alert:(NEFilterSocketFlow*)flow process:(Process*)process
 {
     //alert
@@ -508,6 +508,7 @@ bail:
     os_log_debug(logHandle, "created alert...");
 
     //deliver alert
+    // and process user response
     if(YES != [alerts deliver:alert reply:^(NSDictionary* alert)
     {
         //verdict

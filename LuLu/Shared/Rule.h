@@ -28,6 +28,10 @@
 
 // PROCESS/BINARY INFO
 
+//rule pid
+// only set if rule is temporary
+@property(nonatomic, retain)NSNumber* pid;
+
 //path
 @property(nonatomic, retain)NSString* path;
 
@@ -64,8 +68,6 @@
 // process, endpoint, etc
 @property(nonatomic, retain)NSNumber* scope;
 
-//temporary rule?
-@property(nonatomic, retain)NSNumber* temporary;
 
 /* METHODS */
 

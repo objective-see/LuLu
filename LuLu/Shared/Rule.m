@@ -33,6 +33,14 @@ extern os_log_t logHandle;
         //create UUID
         self.uuid = [[NSUUID UUID] UUIDString];
         
+        //init pid
+        // only set for temporary rules
+        if(YES == [info[KEY_TEMPORARY] boolValue])
+        {
+            //set
+            self.pid = info[KEY_PROCESS_ID];
+        }
+        
         //init path
         self.path = info[KEY_PATH];
         
@@ -80,9 +88,6 @@ extern os_log_t logHandle;
         
         //init action
         self.action = info[KEY_ACTION];
-        
-        //init lifetime
-        self.temporary = info[KEY_TEMPORARY];
         
         //now, generate key
         self.key = [self generateKey];
@@ -156,12 +161,12 @@ extern os_log_t logHandle;
     //super
     if(self = [super init])
     {
-        //decode object
+        //decode rule object
         
         self.key = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(key))];
-        
         self.uuid = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(uuid))];
         
+        self.pid = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(pid))];
         self.path = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(path))];
         self.name = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(name))];
         self.csInfo = [decoder decodeObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class]]] forKey:NSStringFromSelector(@selector(csInfo))];
@@ -174,7 +179,6 @@ extern os_log_t logHandle;
         self.scope = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(scope))];
         self.action = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(action))];
         
-        self.temporary = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(temporary))];
     }
     
     return self;
@@ -183,12 +187,12 @@ extern os_log_t logHandle;
 //encode with coder
 -(void)encodeWithCoder:(NSCoder *)encoder
 {
-    //encode object
+    //encode rule object
     
     [encoder encodeObject:self.key forKey:NSStringFromSelector(@selector(key))];
-    
     [encoder encodeObject:self.uuid forKey:NSStringFromSelector(@selector(uuid))];
     
+    [encoder encodeObject:self.pid forKey:NSStringFromSelector(@selector(pid))];
     [encoder encodeObject:self.path forKey:NSStringFromSelector(@selector(path))];
     [encoder encodeObject:self.name forKey:NSStringFromSelector(@selector(name))];
     [encoder encodeObject:self.csInfo forKey:NSStringFromSelector(@selector(csInfo))];
@@ -201,7 +205,6 @@ extern os_log_t logHandle;
     
     [encoder encodeObject:self.scope forKey:NSStringFromSelector(@selector(scope))];
     [encoder encodeObject:self.action forKey:NSStringFromSelector(@selector(action))];
-    [encoder encodeObject:self.temporary forKey:NSStringFromSelector(@selector(temporary))];
     
     return;
 }
@@ -261,8 +264,14 @@ bail:
 // allows rules to be 'pretty-printed'
 -(NSString*)description
 {
+    //pid
+    id pid = @"all";
+    
+    //temp, has pid?
+    if(nil != self.pid) pid = self.pid;
+        
     //just serialize
-    return [NSString stringWithFormat:@"RULE: path: %@, name: %@, code signing info: %@, endpoint addr: %@, endpoint port: %@, action: %@, type: %@, temporary: %@", self.path, self.name, self.csInfo, self.endpointAddr, self.endpointPort, self.action, self.type, self.temporary];
+    return [NSString stringWithFormat:@"RULE: pid: %@, path: %@, name: %@, code signing info: %@, endpoint addr: %@, endpoint port: %@, action: %@, type: %@", pid, self.path, self.name, self.csInfo, self.endpointAddr, self.endpointPort, self.action, self.type];
 }
 
 @end

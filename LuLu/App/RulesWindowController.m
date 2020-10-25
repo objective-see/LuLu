@@ -731,9 +731,12 @@ bail:
         cell = [self.outlineView makeViewWithIdentifier:@"ruleCell" owner:self];
         if(nil == cell) goto bail;
         
-        //only add rule for connection (i.e. not root item)
+        //only add rule for connection (i.e. not item)
         if(YES == [item isKindOfClass:[Rule class]])
         {
+            //action
+            NSString* action = nil;
+            
             //typecast
             rule = (Rule*)item;
             
@@ -743,8 +746,8 @@ bail:
                 //set image
                 cell.imageView.image = [NSImage imageNamed:@"MainAppRulesBlock"];
                 
-                //set text
-                cell.textField.stringValue = @"block";
+                //set action text
+                action = (nil == rule.pid) ? @"block" : [NSString stringWithFormat:@"block (pid: %@)", rule.pid];
             }
             //allow?
             else
@@ -752,9 +755,13 @@ bail:
                 //set image
                 cell.imageView.image = [NSImage imageNamed:@"MainAppRulesAllow"];
                 
-                //set text
-                cell.textField.stringValue = @"allow";
+                //set action text
+                action = (nil == rule.pid) ? @"allow" : [NSString stringWithFormat:@"allow (pid: %@)", rule.pid];
             }
+            
+            //set text
+            cell.textField.stringValue = action;
+            
         }
         //otherwise unset image/text
         else

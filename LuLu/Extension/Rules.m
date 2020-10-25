@@ -414,7 +414,7 @@ bail:
     //not temporary?
     // save out to disk
     if( (YES == save) &&
-        (YES != rule.temporary.boolValue) )
+        (nil == rule.pid) )
     {
         //dbg msg
         os_log_debug(logHandle, "'save' is set and rule is not temporary ...will save");
@@ -534,6 +534,15 @@ bail:
             // note: * is a wildcard, meaning any match
             for(Rule* rule in rules)
             {
+                //ingore if rule is temporary
+                // and this pid doesn't match
+                if( (nil != rule.pid) &&
+                    (rule.pid.unsignedIntValue != process.pid) )
+                {
+                    //skip
+                    continue;
+                }
+                
                 //any match?
                 if( (YES == [rule.endpointAddr isEqualToString:VALUE_ANY]) &&
                     (YES == [rule.endpointPort isEqualToString:VALUE_ANY]) )
@@ -596,7 +605,7 @@ bail:
                 else
                 {
                     //dbg msg
-                    os_log_debug(logHandle, "address and port set, will both for match");
+                    os_log_debug(logHandle, "address and port set, will check both for match");
                     
                     //port match?
                     if( (YES == [self endpointAddrMatch:flow rule:rule]) &&
@@ -791,7 +800,7 @@ bail:
     
 bail:
     
-    //save to disk
+    //always save to disk
     if(YES != [self save])
     {
         //err msg
