@@ -49,9 +49,6 @@ extern os_log_t logHandle;
 // add it, and make it selected
 -(void)awakeFromNib
 {
-    //set title
-    self.window.title = [NSString stringWithFormat:@"LuLu (v. %@)", getAppVersion()];
-    
     //get prefs
     self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient getPreferences];
     
