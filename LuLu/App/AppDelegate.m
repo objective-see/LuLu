@@ -775,7 +775,7 @@ bail:
     if(NSModalResponseCancel == [alert runModal])
     {
          //dbg msg
-         os_log_debug(logHandle, "user canceled uninstall");
+         os_log_debug(logHandle, "user canceled quitting");
          
          //(re)background
          [self setActivationPolicy];
@@ -807,7 +807,7 @@ bail:
             [extension toggleExtension:ACTION_DEACTIVATE reply:^(BOOL toggled)
             {
                 //dbg msg
-                os_log_debug(logHandle, "extension 'deactivate' returned");
+                os_log_debug(logHandle, "extension 'deactivate' returned...");
                 
                 //signal semaphore
                 dispatch_semaphore_signal(semaphore);
@@ -827,9 +827,6 @@ bail:
                     
                     //dbg msg
                     os_log_debug(logHandle, "all done, goodbye!");
-                    
-                    //signal semaphore
-                    dispatch_semaphore_signal(semaphore);
                     
                     //bye
                     [NSApplication.sharedApplication terminate:self];
@@ -906,22 +903,15 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "user confirmed uninstall");
 
-        //tell ext to uninstall
-        // remove rules, etc, etc
-        if(YES != [self.xpcDaemonClient uninstall])
-        {
-            //err msg
-            os_log_error(logHandle, "ERROR: daemon's XPC uninstall logic");
-            
-            //but continue onwards
-        }
-        
-        //deactive network extension
-        // this will also cause the extension to be unloaded
+        //tell extension to uninstall
+        // and then deactive network extension
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
             //extension
             Extension* extension = nil;
+            
+            //flag
+            __block BOOL deactivated = NO;
             
             //wait semaphore
             dispatch_semaphore_t semaphore = 0;
@@ -938,29 +928,60 @@ bail:
             //init wait semaphore
             semaphore = dispatch_semaphore_create(0);
             
-            //kick off extension activation request
-            [extension toggleExtension:ACTION_DEACTIVATE reply:^(BOOL toggled)
+            //tell ext to uninstall
+            // remove rules, etc, etc
+            if(YES != [self.xpcDaemonClient uninstall])
             {
-                //dbg msg
-                os_log_debug(logHandle, "extension 'deactivate' returned (%d)", toggled);
+                //err msg
+                os_log_error(logHandle, "ERROR: daemon's XPC uninstall logic");
                 
-                //signal semaphore
-                dispatch_semaphore_signal(semaphore);
-            }];
+                //but continue onwards
+            }
             
-            //wait for extension semaphore
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-            
-            //dbg msg
-            os_log_debug(logHandle, "extension event triggered");
+            //user has to remove
+            // otherwise we get into a funky state :/
+            while(YES)
+            {
+                //kick off extension activation request
+                [extension toggleExtension:ACTION_DEACTIVATE reply:^(BOOL toggled)
+                {
+                    //save
+                    deactivated = toggled;
+                    
+                    //toggled ok?
+                    if(YES == toggled)
+                    {
+                        //dbg msg
+                        os_log_debug(logHandle, "extension deactivated");
+                    }
+                    //failed?
+                    else
+                    {
+                        //err msg
+                        os_log_error(logHandle, "ERROR: failed to deactivate extension, will reattempt");
+                    }
+                    
+                    //signal semaphore
+                    dispatch_semaphore_signal(semaphore);
+                }];
+                
+                //wait for extension semaphore
+                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+                
+                //dbg msg
+                os_log_debug(logHandle, "extension event triggered");
+                
+                //deactivated?
+                if(YES == deactivated) break;
+            }
             
             //remove login item
             if(YES != toggleLoginItem(NSBundle.mainBundle.bundleURL, ACTION_UNINSTALL_FLAG))
             {
                 //err msg
-                os_log_error(logHandle, "ERROR: failed to uninstall login item (self)");
+                os_log_error(logHandle, "ERROR: failed to uninstall login item");
                 
-            } else os_log_debug(logHandle, "uninstalled login item (self)");
+            } else os_log_debug(logHandle, "uninstalled login item");
             
             //init app path
             path = NSBundle.mainBundle.bundlePath;

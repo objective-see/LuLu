@@ -686,8 +686,14 @@ BOOL toggleLoginItem(NSURL* loginItem, int toggleFlag)
     //flag
     BOOL wasToggled = NO;
     
-    //login item ref
+    //status
+    OSStatus status = !noErr;
+    
+    //login items ref
     LSSharedFileListRef loginItemsRef = NULL;
+    
+    //login item ref
+    LSSharedFileListItemRef loginItemRef = NULL;
     
     //login items
     CFArrayRef loginItems = NULL;
@@ -705,19 +711,15 @@ BOOL toggleLoginItem(NSURL* loginItem, int toggleFlag)
         os_log_debug(logHandle, "adding login item: %{public}@", loginItem.path);
         
         //add
-        LSSharedFileListItemRef itemRef = LSSharedFileListInsertItemURL(loginItemsRef, kLSSharedFileListItemLast, NULL, NULL, (__bridge CFURLRef)(loginItem), NULL, NULL);
-        
-        //release item ref
-        if(NULL != itemRef)
+        loginItemRef = LSSharedFileListInsertItemURL(loginItemsRef, kLSSharedFileListItemLast, NULL, NULL, (__bridge CFURLRef)(loginItem), NULL, NULL);
+        if(NULL != loginItemRef)
         {
             //dbg msg
-            os_log_debug(logHandle, "added %{public}@/%{public}@", loginItem, itemRef);
+            os_log_debug(logHandle, "login item added");
             
             //release
-            CFRelease(itemRef);
-            
-            //reset
-            itemRef = NULL;
+            CFRelease(loginItemRef);
+            loginItemRef = NULL;
         }
         //failed
         else
@@ -736,9 +738,9 @@ BOOL toggleLoginItem(NSURL* loginItem, int toggleFlag)
     else
     {
         //dbg msg
-        os_log_debug(logHandle, "removing login item, %{public}@", loginItem.path);
+        os_log_debug(logHandle, "removing login item: %{public}@", loginItem.path);
         
-        //grab existing login items
+        //grab all login items
         loginItems = LSSharedFileListCopySnapshot(loginItemsRef, nil);
         
         //iterate over all login items
@@ -747,17 +749,16 @@ BOOL toggleLoginItem(NSURL* loginItem, int toggleFlag)
         {
             //get current login item
             currentLoginItem = LSSharedFileListItemCopyResolvedURL((__bridge LSSharedFileListItemRef)item, 0, NULL);
-            if(NULL == currentLoginItem)
-            {
-                //skip
-                continue;
-            }
+            if(NULL == currentLoginItem) continue;
             
             //current login item match self?
             if(YES == [(__bridge NSURL *)currentLoginItem isEqual:loginItem])
             {
+                //dbg msg
+                os_log_debug(logHandle, "found match");
+                
                 //remove
-                if(noErr == LSSharedFileListItemRemove(loginItemsRef, (__bridge LSSharedFileListItemRef)item))
+                if(noErr == (status = LSSharedFileListItemRemove(loginItemsRef, (__bridge LSSharedFileListItemRef)item)))
                 {
                     //dbg msg
                     os_log_debug(logHandle, "removed login item");
@@ -768,7 +769,7 @@ BOOL toggleLoginItem(NSURL* loginItem, int toggleFlag)
                 else
                 {
                     //err msg
-                    os_log_error(logHandle, "ERROR: failed to remove login item");
+                    os_log_error(logHandle, "ERROR: failed to remove login item (%x)", status);
                     
                     //keep trying though
                     // as might be multiple instances...
@@ -777,8 +778,6 @@ BOOL toggleLoginItem(NSURL* loginItem, int toggleFlag)
             
             //release
             CFRelease(currentLoginItem);
-            
-            //reset
             currentLoginItem = NULL;
             
         }//all login items
@@ -792,8 +791,6 @@ bail:
     {
         //release
         CFRelease(loginItems);
-        
-        //reset
         loginItems = NULL;
     }
     
@@ -802,8 +799,6 @@ bail:
     {
         //release
         CFRelease(loginItemsRef);
-        
-        //reset
         loginItemsRef = NULL;
     }
     
