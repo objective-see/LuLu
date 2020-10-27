@@ -760,6 +760,10 @@ BOOL toggleLoginItem(NSURL* loginItem, int toggleFlag)
                 //remove
                 if(noErr == (status = LSSharedFileListItemRemove(loginItemsRef, (__bridge LSSharedFileListItemRef)item)))
                 {
+                    //nap
+                    // give some time for event to complete
+                    [NSThread sleepForTimeInterval:1.0f];
+                    
                     //dbg msg
                     os_log_debug(logHandle, "removed login item");
                     

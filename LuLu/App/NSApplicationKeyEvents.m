@@ -15,18 +15,35 @@
 
 //to enable copy/paste etc even though we don't have an 'Edit' menu
 // details: http://stackoverflow.com/questions/970707/cocoa-keyboard-shortcuts-in-dialog-without-an-edit-menu
--(void)sendEvent:(NSEvent *)event
+-(void)sendEvent:(NSEvent*)event
 {
-    //only care about key down + command
-    if( (NSEventTypeKeyDown != event.type) ||
-        (NSEventModifierFlagCommand != (event.modifierFlags & NSEventModifierFlagDeviceIndependentFlagsMask)) )
+    //only care about key down
+    if(NSEventTypeKeyDown != event.type)
+    {
+        //bail
+        goto bail;
+    }
+        
+    //delete?
+    // in Rules window, delete row
+    if( (NSDeleteCharacter == [event.charactersIgnoringModifiers characterAtIndex:0]) &&
+        (YES == [NSApplication.sharedApplication.keyWindow.identifier isEqualToString:@"Rules"]) )
+    {
+        //delete rule
+        [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) rulesWindowController] deleteRule:nil];
+        return;
+    }
+    
+    //otherwise
+    // ...only care about key down + command
+    if(NSEventModifierFlagCommand != (event.modifierFlags & NSEventModifierFlagDeviceIndependentFlagsMask))
     {
         //bail
         goto bail;
     }
     
     //+c (copy)
-    if(YES == [[event charactersIgnoringModifiers] isEqualToString:@"c"])
+    if(YES == [event.charactersIgnoringModifiers isEqualToString:@"c"])
     {
         //copy
         if(YES == [self sendAction:@selector(copy:) to:nil from:self])
@@ -36,7 +53,7 @@
     }
             
     //+v (paste)
-    else if ([[event charactersIgnoringModifiers] isEqualToString:@"v"])
+    else if ([event.charactersIgnoringModifiers isEqualToString:@"v"])
     {
         //paste
         if(YES == [self sendAction:@selector(paste:) to:nil from:self])
@@ -46,7 +63,7 @@
     }
             
     //+x (cut)
-    else if ([[event charactersIgnoringModifiers] isEqualToString:@"x"])
+    else if ([event.charactersIgnoringModifiers isEqualToString:@"x"])
     {
         //cut
         if(YES == [self sendAction:@selector(cut:) to:nil from:self])
@@ -56,7 +73,7 @@
     }
             
     //+a (select all)
-    else if([[event charactersIgnoringModifiers] isEqualToString:@"a"])
+    else if([event.charactersIgnoringModifiers isEqualToString:@"a"])
     {
         //select
         if(YES == [self sendAction:@selector(selectAll:) to:nil from:self])
@@ -66,7 +83,7 @@
     }
     
     //+h (hide window)
-    else if([[event charactersIgnoringModifiers] isEqualToString:@"h"])
+    else if([event.charactersIgnoringModifiers isEqualToString:@"h"])
     {
         //hide
         if(YES == [self sendAction:@selector(hide:) to:nil from:self])
@@ -76,7 +93,7 @@
     }
     
     //+m (minimize window)
-    else if([[event charactersIgnoringModifiers] isEqualToString:@"m"])
+    else if([event.charactersIgnoringModifiers isEqualToString:@"m"])
     {
         //minimize
         [NSApplication.sharedApplication.keyWindow miniaturize:nil];
@@ -85,22 +102,17 @@
     
     //+w (close window)
     // unless its an alert ...need response!
-    else if([[event charactersIgnoringModifiers] isEqualToString:@"w"])
+    else if( ([event.charactersIgnoringModifiers isEqualToString:@"w"]) &&
+             (YES != [NSApplication.sharedApplication.keyWindow.identifier isEqualToString:@"Alert"]) )
     {
-        //alert window?
-        if(YES == [NSApplication.sharedApplication.keyWindow.identifier isEqualToString:@"Alert"])
-        {
-            //skip
-            goto bail;
-        }
-        
         //close
         [NSApplication.sharedApplication.keyWindow close];
         return;
     }
     
     //+f (find, but only in rules window)
-    else if([[event charactersIgnoringModifiers] isEqualToString:@"f"])
+    else if( ([event.charactersIgnoringModifiers isEqualToString:@"f"]) &&
+             (YES == [NSApplication.sharedApplication.keyWindow.identifier isEqualToString:@"Rules"]) )
     {
         //iterate over all toolbar items
         // ...find rule search field, and select
@@ -118,7 +130,7 @@
     }
     
     //+, (show preferences)
-    else if([[event charactersIgnoringModifiers] isEqualToString:@","])
+    else if([event.charactersIgnoringModifiers isEqualToString:@","])
     {
         //show
         [((AppDelegate*)[[NSApplication sharedApplication] delegate]) showPreferences:nil];

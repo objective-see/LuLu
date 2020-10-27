@@ -326,7 +326,7 @@ bail:
     alert.informativeText = @"Extensions must be manually approved via System Preferences.";
     
     //add button
-    [alert addButtonWithTitle:@"Open System Prefs"];
+    [alert addButtonWithTitle:@"Open Security Prefs"];
 
     //add button
     [alert addButtonWithTitle:@"Exit LuLu"];

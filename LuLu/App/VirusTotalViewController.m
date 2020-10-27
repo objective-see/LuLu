@@ -74,7 +74,7 @@ extern os_log_t logHandle;
     item = [NSMutableDictionary dictionary];
     
     //nap to allow msg/spinner to do a bit
-    [NSThread sleepForTimeInterval:1.0f];
+    [NSThread sleepForTimeInterval:0.5f];
     
     //dbg msg
     os_log_debug(logHandle, "querying VirusTotal with %{public}@", self.itemPath);

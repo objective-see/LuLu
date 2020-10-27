@@ -965,6 +965,16 @@ bail:
         rule = (Rule*)item;
     }
     
+    //don't delete system rules
+    if(RULE_TYPE_DEFAULT == rule.type.intValue)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "rule is default/system ...won't delete");
+        
+        //bail
+        goto bail;
+    }
+    
     //remove rule via XPC
     // nil uuid, means delete all rules for item (process)
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient deleteRule:rule.key rule:rule.uuid];
