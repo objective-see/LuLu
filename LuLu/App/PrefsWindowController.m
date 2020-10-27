@@ -39,11 +39,14 @@ extern os_log_t logHandle;
 //'passive mode' button
 #define BUTTON_PASSIVE_MODE 4
 
+//'block mode' button
+#define BUTTON_BLOCK_MODE 5
+
 //'no-icon mode' button
-#define BUTTON_NO_ICON_MODE 5
+#define BUTTON_NO_ICON_MODE 6
 
 //'update mode' button
-#define BUTTON_NO_UPDATE_MODE 6
+#define BUTTON_NO_UPDATE_MODE 7
 
 //init 'general' view
 // add it, and make it selected
@@ -101,6 +104,9 @@ extern os_log_t logHandle;
             
             //set 'passive mode' button state
             ((NSButton*)[view viewWithTag:BUTTON_PASSIVE_MODE]).state = [self.preferences[PREF_PASSIVE_MODE] boolValue];
+            
+            //set 'block mode' button
+            ((NSButton*)[view viewWithTag:BUTTON_BLOCK_MODE]).state = [self.preferences[PREF_BLOCK_MODE] boolValue];
             
             //set 'no icon' button state
             ((NSButton*)[view viewWithTag:BUTTON_NO_ICON_MODE]).state = [self.preferences[PREF_NO_ICON_MODE] boolValue];
@@ -167,6 +173,11 @@ bail:
         //passive mode
         case BUTTON_PASSIVE_MODE:
             updatedPreferences[PREF_PASSIVE_MODE] = state;
+            break;
+            
+        //block mode
+        case BUTTON_BLOCK_MODE:
+            updatedPreferences[PREF_BLOCK_MODE] = state;
             break;
             
         //no icon mode

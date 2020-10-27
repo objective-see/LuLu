@@ -151,7 +151,7 @@ extern Preferences* preferences;
     if(NETrafficDirectionOutbound != socketFlow.direction)
     {
         //log msg
-        os_log_debug(logHandle, "ignoring non-outbound traffic");
+        os_log_debug(logHandle, "ignoring non-outbound traffic (direction: %ld)", (long)socketFlow.direction);
            
         //bail
         goto bail;
@@ -264,6 +264,20 @@ bail:
     //os_log_debug(logHandle, "process object for flow: %{public}@", process);
     
     //CHECK:
+    // client in block mode? ...block!
+    if(YES == [preferences.preferences[PREF_BLOCK_MODE] boolValue])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "client in block mode, so disallowing %d/%{public}@", process.pid, process.binary.name);
+        
+        //deny
+        verdict = [NEFilterNewFlowVerdict dropVerdict];
+        
+        //all set
+        goto bail;
+    }
+        
+    //CHECK:
     // check for existing rule
     
     //existing rule for process?
@@ -271,7 +285,7 @@ bail:
     if(nil != matchingRule)
     {
         //dbg msg
-        os_log_debug(logHandle, "found matching rule for %{public}@ (pid: %d): %{public}@", process.binary.name, process.pid, matchingRule);
+        os_log_debug(logHandle, "found matching rule for %d/%{public}@: %{public}@", process.pid, process.binary.name, matchingRule);
         
         //deny?
         // otherwise will default to allow
@@ -293,16 +307,16 @@ bail:
     /* NO MATCHING RULE FOUND */
     
     //dbg msg
-    os_log_debug(logHandle, "no (saved) rule found for %{public}@ (pid: (%d))", process.binary.name, process.pid);
+    os_log_debug(logHandle, "no (saved) rule found for %d/%{public}@)", process.pid, process.binary.name);
     
     //no client?
 
-    //CHECK 0x2:
+    //CHECK:
     // client in passive mode? ...allow
     if(YES == [preferences.preferences[PREF_PASSIVE_MODE] boolValue])
     {
         //dbg msg
-        os_log_debug(logHandle, "client in passive mode, so allowing (%d)%{public}@", process.pid, process.binary.name);
+        os_log_debug(logHandle, "client in passive mode, so allowing %d/%{public}@", process.pid, process.binary.name);
         
         //all set
         goto bail;
@@ -317,7 +331,7 @@ bail:
     if(YES == [alerts isRelated:process])
     {
         //dbg msg
-        os_log_debug(logHandle, "an alert is shown for process %{public}@, so holding off delivering for now...", process.binary.name);
+        os_log_debug(logHandle, "an alert is shown for process %d/%{public}@, so holding off delivering for now...", process.pid, process.binary.name);
         
         //add related flow
         [self addRelatedFlow:process flow:(NEFilterSocketFlow*)flow];
@@ -377,7 +391,7 @@ bail:
         else
         {
             //dbg msg
-            os_log_debug(logHandle, "while signed by apple, %{public}@ is gray listed, so will alert", process.binary.name);
+            os_log_debug(logHandle, "while signed by apple, %d/%{public}@ is gray listed, so will alert", process.pid, process.binary.name);
             
             //pause
             verdict = [NEFilterNewFlowVerdict pauseVerdict];

@@ -128,6 +128,10 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define PREF_PASSIVE_MODE @"passiveMode"
 
 //prefs
+// block mode
+#define PREF_BLOCK_MODE @"blockMode"
+
+//prefs
 // icon mode
 #define PREF_NO_ICON_MODE @"noIconMode"
 
