@@ -68,7 +68,7 @@
         rule = ((NSArray*)item).firstObject;
         
         //add item
-        [menu insertItemWithTitle:@"show path(s)" action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:0];
+        [menu insertItemWithTitle:@"→ Show path(s)" action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:0];
         
         //set tag
         menu.itemArray.firstObject.tag = MENU_SHOW_PATHS;
@@ -77,7 +77,7 @@
         menu.itemArray.lastObject.enabled = YES;
         
         //add delete
-        [menu insertItemWithTitle:@"delete rule(s)" action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:1];
+        [menu insertItemWithTitle:@"→ Delete rule(s)" action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:1];
         
         //set tag
         menu.itemArray.lastObject.tag = MENU_DELETE_RULE;
@@ -105,13 +105,13 @@
         rule = (Rule*)item;
         
         //set title
-        [menu insertItemWithTitle:@"edit rule" action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:0];
+        [menu insertItemWithTitle:@"→ Edit Rule" action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:0];
         
         //set tag
         menu.itemArray.firstObject.tag = MENU_EDIT_RULE;
         
         //add delete
-        [menu insertItemWithTitle:@"delete rule" action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:1];
+        [menu insertItemWithTitle:@"→ Delete Rule" action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:1];
         
         //set tag
         menu.itemArray.lastObject.tag = MENU_DELETE_RULE;

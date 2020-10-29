@@ -177,6 +177,15 @@ bail:
             
         //block mode
         case BUTTON_BLOCK_MODE:
+            
+            //enable?
+            // show alert
+            if(NSControlStateValueOn == state.longValue)
+            {
+                //show alert
+                showAlert(@"Outgoing traffic will now be blocked.", @"Note however:\r\n▪ Existing connections will not be impacted.\r\n▪ OS traffic (not routed thru LuLu) will not be blocked.");
+            }
+                
             updatedPreferences[PREF_BLOCK_MODE] = state;
             break;
             
