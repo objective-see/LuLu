@@ -27,11 +27,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="600" height="365"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tx4-yW-fcJ">
-                        <rect key="frame" x="138" y="8" width="325" height="65"/>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eoU-Oj-o6v">
+                        <rect key="frame" x="199" y="20" width="202" height="56"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="MainAppLuLuText" id="m7R-HO-YMp"/>
-                    </imageView>
+                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="MainAppLuLuText" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="BYZ-ZL-7AF">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="openHomePage:" target="-2" id="1yr-kU-CBI"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <toolbar key="toolbar" implicitIdentifier="C2AC49E3-FD8B-4919-9001-868355500E38" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="V8g-Ya-LK4">

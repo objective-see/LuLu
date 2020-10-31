@@ -318,6 +318,16 @@ bail:
     return;
 }
 
+//button handler
+// open LuLu home page/docs
+-(IBAction)openHomePage:(id)sender {
+    
+    //open
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:PRODUCT_URL]];
+    
+    return;
+}
+
 //on window close
 // set activation policy
 -(void)windowWillClose:(NSNotification *)notification

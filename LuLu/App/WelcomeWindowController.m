@@ -144,11 +144,15 @@ extern os_log_t logHandle;
                         //err msg
                         os_log_error(logHandle, "ERROR: failed to activate extension");
                         
-                        //show alert
-                        showAlert(@"ERROR: activation failed", @"failed to activate system/network extension");
-                        
-                        //bye
-                        [NSApplication.sharedApplication terminate:self];
+                        //show alert/exit on main thread
+                        dispatch_async(dispatch_get_main_queue(),
+                        ^{
+                            //show alert
+                            showAlert(@"ERROR: activation failed", @"failed to activate system/network extension");
+                            
+                            //bye
+                            [NSApplication.sharedApplication terminate:self];
+                        });
                     }
                     //happy
                     else
