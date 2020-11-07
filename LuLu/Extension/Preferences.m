@@ -7,12 +7,16 @@
 //
 
 #import "consts.h"
+#import "BlockList.h"
 #import "Preferences.h"
 
 /* GLOBALS */
 
 //log handle
 extern os_log_t logHandle;
+
+//block list
+extern BlockList* blockList;
 
 @implementation Preferences
 
@@ -42,6 +46,7 @@ extern os_log_t logHandle;
                 //bail
                 goto bail;
             }
+            
         }
         //no prefs (yet)
         // just initialze empty dictionary
@@ -106,6 +111,14 @@ bail:
         
         //bail
         goto bail;
+    }
+    
+    //(new) block list?
+    // now, trigger reload
+    if(0 != [updates[PREF_BLOCK_LIST] length])
+    {
+        //(re)load
+        [blockList load];
     }
     
     //happy

@@ -303,7 +303,7 @@ bail:
         if(YES != [((AppDelegate*)[[NSApplication sharedApplication] delegate]) isFirstTime])
         {
             //show alert
-            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) noExtensionAlert];
+            showAlert(@"LuLu's Network Extension Is Not Running", @"Extensions must be manually approved via\r\nSecurity & Privacy System Preferences.");
         }
     });
     

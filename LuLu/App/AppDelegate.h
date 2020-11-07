@@ -57,10 +57,6 @@
 // check for install time(stamp)
 -(BOOL)isFirstTime;
 
-//when extension is not running
-// show alert to user, to open sys prefs, or exit
--(void)noExtensionAlert;
-
 //finish up initializations
 -(void)completeInitialization:(NSDictionary*)initialPreferenes;
 

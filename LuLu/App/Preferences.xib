@@ -7,8 +7,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PrefsWindowController">
             <connections>
+                <outlet property="blockList" destination="UL1-ci-HRm" id="bvz-Cl-NA0"/>
                 <outlet property="modesView" destination="K6i-xr-27e" id="DOb-L3-eeR"/>
                 <outlet property="rulesView" destination="378-bj-fYw" id="10Z-g6-I1q"/>
+                <outlet property="selectBlockListButton" destination="zXj-H3-PHp" id="fsL-1k-LRx"/>
                 <outlet property="toolbar" destination="V8g-Ya-LK4" id="SH2-6E-QST"/>
                 <outlet property="updateButton" destination="Mtn-pi-zIl" id="Oe1-Jy-nMH"/>
                 <outlet property="updateIndicator" destination="o0T-ra-4H0" id="DwL-OB-WQR"/>
@@ -107,7 +109,7 @@
                     </textFieldCell>
                 </textField>
                 <button fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="kLX-Ap-3dh">
-                    <rect key="frame" x="39" y="168" width="29" height="18"/>
+                    <rect key="frame" x="39" y="178" width="29" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="8KA-Aq-zex">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -118,7 +120,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q5L-bq-4ua">
-                    <rect key="frame" x="72" y="166" width="224" height="19"/>
+                    <rect key="frame" x="72" y="176" width="224" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Allow Installed Programs" id="jvT-uI-uNq">
                         <font key="font" size="13" name="Menlo-Bold"/>
@@ -127,7 +129,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="Hyt-Pl-KUs">
-                    <rect key="frame" x="72" y="142" width="508" height="25"/>
+                    <rect key="frame" x="72" y="152" width="508" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Previously installed, 3rd-party programs will be allowed." id="6gH-HW-CFe">
                         <font key="font" size="13" name="Menlo-Regular"/>
@@ -135,8 +137,37 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="Zf1-Od-Qxw">
+                    <rect key="frame" x="39" y="111" width="29" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="0vO-sJ-3Sn">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="menu" size="14"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="togglePreference:" target="-2" id="gXM-b9-JOs"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zxq-6f-pWN">
+                    <rect key="frame" x="72" y="109" width="95" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Block List:" id="GIK-ti-aku">
+                        <font key="font" size="13" name="Menlo-Bold"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="Bdy-zJ-fC8">
+                    <rect key="frame" x="171" y="80" width="365" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="List of endpoints (ips/urls) to always block." id="L7x-uU-rth">
+                        <font key="font" size="13" name="Menlo-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z2e-jM-Y0P">
-                    <rect key="frame" x="233" y="17" width="134" height="32"/>
+                    <rect key="frame" x="233" y="6" width="134" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="View Rules" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cfj-2E-dIA">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -146,6 +177,29 @@
                         <action selector="viewRules:" target="-2" id="PDE-gg-qGI"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zXj-H3-PHp">
+                    <rect key="frame" x="68" y="74" width="96" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u9V-ny-Cia">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name="Menlo-Bold"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="selectBlockList:" target="-2" id="M5U-ir-4f7"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UL1-ci-HRm">
+                    <rect key="frame" x="173" y="110" width="349" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Sqh-u3-0h7">
+                        <font key="font" size="13" name="Menlo-Regular"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <action selector="updateBlockList:" target="-2" id="Gf3-jI-Ark"/>
+                    </connections>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="-149" y="479.5"/>
         </customView>

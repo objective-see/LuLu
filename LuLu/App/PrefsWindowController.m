@@ -34,7 +34,7 @@ extern os_log_t logHandle;
 #define BUTTON_ALLOW_INSTALLED 2
 
 //'allow globally' button
-#define BUTTON_ALLOW_GLOBALLY 3
+#define BUTTON_USE_BLOCK_LIST 3
 
 //'passive mode' button
 #define BUTTON_PASSIVE_MODE 4
@@ -93,6 +93,22 @@ extern os_log_t logHandle;
             
             //set 'installed allowed' button state
             ((NSButton*)[view viewWithTag:BUTTON_ALLOW_INSTALLED]).state = [self.preferences[PREF_ALLOW_INSTALLED] boolValue];
+            
+            //set 'block list' button state
+            ((NSButton*)[view viewWithTag:BUTTON_USE_BLOCK_LIST]).state = [self.preferences[PREF_USE_BLOCK_LIST] boolValue];
+            
+            //is there a block list? ...set!
+            if(0 != [self.preferences[PREF_BLOCK_LIST] length])
+            {
+                //set
+                self.blockList.stringValue = self.preferences[PREF_BLOCK_LIST];
+            }
+            
+            //set 'browse' button state
+            self.selectBlockListButton.enabled = [self.preferences[PREF_USE_BLOCK_LIST] boolValue];
+            
+            //set block list input state
+            self.blockList.enabled = [self.preferences[PREF_USE_BLOCK_LIST] boolValue];
             
             break;
             
@@ -170,6 +186,18 @@ bail:
             updatedPreferences[PREF_ALLOW_INSTALLED] = state;
             break;
             
+        //use block list
+        case BUTTON_USE_BLOCK_LIST:
+            updatedPreferences[PREF_USE_BLOCK_LIST] = state;
+            
+            //set 'browse' button state
+            self.selectBlockListButton.enabled = (NSControlStateValueOn == state.longValue);
+            
+            //set block list input state
+            self.blockList.enabled = (NSControlStateValueOn == state.longValue);
+            
+            break;
+            
         //passive mode
         case BUTTON_PASSIVE_MODE:
             updatedPreferences[PREF_PASSIVE_MODE] = state;
@@ -210,6 +238,55 @@ bail:
     //call back into app to process
     // e.g. show/hide status bar icon, etc.
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
+    
+    return;
+}
+
+//browse for select list
+-(IBAction)selectBlockList:(id)sender
+{
+    //'browse' panel
+    NSOpenPanel *panel = nil;
+        
+    //init panel
+    panel = [NSOpenPanel openPanel];
+        
+    //allow files
+    panel.canChooseFiles = YES;
+    
+    //start ...at desktop
+    panel.directoryURL = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains (NSDesktopDirectory, NSUserDomainMask, YES) firstObject]];
+        
+    //disable multiple selections
+    panel.allowsMultipleSelection = NO;
+        
+    //show it
+    // and wait for response
+    if(NSModalResponseOK == [panel runModal])
+    {
+        //update ui
+        self.blockList.stringValue = panel.URL.path;
+        
+        //dbg msg
+        os_log_debug(logHandle, "user selected block list: %{public}@", self.blockList.stringValue);
+        
+        //send XPC msg to daemon to update prefs
+        // returns (all/latest) prefs, which is what we want
+        self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:panel.URL.path}];
+    }
+    
+    return;
+}
+
+//invoked when block list path is (manually entered)
+-(IBAction)updateBlockList:(id)sender
+{
+    //dbg msg
+    os_log_debug(logHandle, "got 'update block list event' (value: %{public}@)", self.blockList.stringValue);
+    
+    //send XPC msg to daemon to update prefs
+    // returns (all/latest) prefs, which is what we want
+    self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:self.blockList.stringValue}];
     
     return;
 }

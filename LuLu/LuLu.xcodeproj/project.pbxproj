@@ -69,6 +69,7 @@
 		CDC378C7250C66C300314064 /* Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC378C6250C66C300314064 /* Extension.m */; };
 		CDC378CB250C83F200314064 /* Netiquette.app in Resources */ = {isa = PBXBuildFile; fileRef = CDC378C9250C83F100314064 /* Netiquette.app */; };
 		CDC41C412503424800CB302B /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC41C3F2503424800CB302B /* OrderedDictionary.m */; };
+		CDD7853D255609AC001BB0BE /* BlockList.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD7853C255609AC001BB0BE /* BlockList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +226,8 @@
 		CDC378C9250C83F100314064 /* Netiquette.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = Netiquette.app; sourceTree = "<group>"; };
 		CDC41C3F2503424800CB302B /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderedDictionary.m; path = "3rd-party/OrderedDictionary.m"; sourceTree = "<group>"; };
 		CDC41C402503424800CB302B /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderedDictionary.h; path = "3rd-party/OrderedDictionary.h"; sourceTree = "<group>"; };
+		CDD7853B255609AC001BB0BE /* BlockList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockList.h; sourceTree = "<group>"; };
+		CDD7853C255609AC001BB0BE /* BlockList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +387,8 @@
 			isa = PBXGroup;
 			children = (
 				CDA1365A24EF4E56005AD424 /* Alerts.h */,
+				CDD7853B255609AC001BB0BE /* BlockList.h */,
+				CDD7853C255609AC001BB0BE /* BlockList.m */,
 				CDA1364F24EF4E56005AD424 /* Alerts.m */,
 				CD03F8FA24F8E6BD00723BDC /* Binary.h */,
 				CD03F8F324F8E68300723BDC /* Binary.m */,
@@ -597,6 +602,7 @@
 				CDB2CC3924D61B3900D0EECE /* main.m in Sources */,
 				CDA1366724EF4E57005AD424 /* XPCDaemon.m in Sources */,
 				CDA1366324EF4E57005AD424 /* Alerts.m in Sources */,
+				CDD7853D255609AC001BB0BE /* BlockList.m in Sources */,
 				CDB2CC3724D61B3900D0EECE /* FilterDataProvider.m in Sources */,
 				CDA1366224EF4E57005AD424 /* XPCUserClient.m in Sources */,
 				CDA1366D24EF4F89005AD424 /* Rules.m in Sources */,

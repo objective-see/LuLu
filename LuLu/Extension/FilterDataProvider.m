@@ -11,6 +11,7 @@
 #import "Alerts.h"
 #import "consts.h"
 #import "GrayList.h"
+#import "BlockList.h"
 #import "utilities.h"
 #import "Preferences.h"
 #import "XPCUserProto.h"
@@ -29,6 +30,9 @@ extern Rules* rules;
 
 //preferences
 extern Preferences* preferences;
+
+//block list
+extern BlockList* blockList;
 
 @implementation FilterDataProvider
 
@@ -181,7 +185,7 @@ bail:
     return verdict;
 }
 
-//process a network out event from the kernel
+//process a network out event from the network extension (OS)
 // if there is no matching rule, will tell client to show alert
 -(NEFilterNewFlowVerdict*)processEvent:(NEFilterFlow*)flow
 {
@@ -264,7 +268,7 @@ bail:
     //os_log_debug(logHandle, "process object for flow: %{public}@", process);
     
     //CHECK:
-    // client in block mode? ...block!
+    // client in (full) block mode? ...block!
     if(YES == [preferences.preferences[PREF_BLOCK_MODE] boolValue])
     {
         //dbg msg
@@ -275,6 +279,27 @@ bail:
         
         //all set
         goto bail;
+    }
+        
+    //CHECK:
+    // client using (global) block list
+    if(YES == [preferences.preferences[PREF_USE_BLOCK_LIST] boolValue])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "client in using block list, will check for match");
+        
+        //match in block list?
+        if(YES == [blockList isMatch:(NEFilterSocketFlow*)flow])
+        {
+            //dbg msg
+            os_log_debug(logHandle, "flow matches item in block list, so denying");
+            
+            //deny
+            verdict = [NEFilterNewFlowVerdict dropVerdict];
+            
+            //all set
+            goto bail;
+        }
     }
         
     //CHECK:
@@ -500,10 +525,8 @@ bail:
     verdict = [NEFilterNewFlowVerdict pauseVerdict];
     
 bail:
-        
-    ;
     
-    }//pool
+    ;} //pool
     
     return verdict;
 }

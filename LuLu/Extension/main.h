@@ -11,6 +11,7 @@
 #import "Alerts.h"
 #import "consts.h"
 #import "utilities.h"
+#import "BlockList.h"
 #import "Preferences.h"
 #import "XPCListener.h"
 
@@ -19,17 +20,20 @@
 
 //GLOBALS
 
-//prefs obj
-Preferences* preferences = nil;
-
 //rules obj
 Rules* rules = nil;
 
 //alerts obj
 Alerts* alerts = nil;
 
+//block list
+BlockList* blockList = nil;
+
 //XPC listener obj
 XPCListener* xpcListener = nil;
+
+//prefs obj
+Preferences* preferences = nil;
 
 //dispatch source for SIGTERM
 dispatch_source_t dispatchSource = nil;

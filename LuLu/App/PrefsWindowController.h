@@ -40,6 +40,12 @@
 //rules prefs view
 @property (weak) IBOutlet NSView *rulesView;
 
+//block list
+@property (weak) IBOutlet NSTextField *blockList;
+
+//select block list button
+@property (weak) IBOutlet NSButton *selectBlockListButton;
+
 //modes view
 @property (strong) IBOutlet NSView *modesView;
 

@@ -284,7 +284,7 @@ bail:
     if(YES != [extension isExtensionRunning])
     {
         //show alert
-        [self noExtensionAlert];
+        showAlert(@"LuLu's Network Extension Is Not Running", @"Extensions must be manually approved via Security & Privacy System Preferences.");
         
         //bail
         goto bail;
@@ -301,76 +301,6 @@ bail:
 bail:
     
     return NO;
-}
-
-//when extension is not running
-// show alert to user, to open sys prefs, or exit
--(void)noExtensionAlert
-{
-    //alert
-    NSAlert* alert = nil;
-    
-    //response
-    NSModalResponse response = 0;
-
-    //init alert
-    alert = [[NSAlert alloc] init];
-    
-    //set style
-    alert.alertStyle = NSAlertStyleWarning;
-    
-    //main text
-    alert.messageText = @"LuLu's Network Extension Is Not Running";
-    
-    //details
-    alert.informativeText = @"Extensions must be manually approved via System Preferences.";
-    
-    //add button
-    [alert addButtonWithTitle:@"Open Security Prefs"];
-
-    //add button
-    [alert addButtonWithTitle:@"Exit LuLu"];
-
-    //foreground
-    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
-
-    //make key and front
-    [self.window makeKeyAndOrderFront:self];
-
-    //make app active
-    [NSApp activateIgnoringOtherApps:YES];
-    
-    //dbg msg
-    os_log_debug(logHandle, "showing 'no extension running alert' to user...");
-
-    //show alert
-    // modal/blocks until response
-    response = [alert runModal];
-    
-    //dbg msg
-    os_log_debug(logHandle, "user responsed with %ld", (long)response);
-    
-    // response: open system prefs?
-    if(NSModalResponseOpen == response)
-    {
-        //dbg msg
-        os_log_debug(logHandle, "launching System Preferenes...");
-        
-        //launch system prefs and show 'privacy'
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"x-apple.systempreferences:com.apple.preference.security?General"]];
-    }
-    //ok
-    // user wants to quit
-    else
-    {
-        //dbg msg
-        os_log_debug(logHandle, "exiting ...bye!");
-        
-        //exit
-        [NSApplication.sharedApplication terminate:self];
-    }
-    
-    return;
 }
 
 //'rules' menu item handler
