@@ -61,7 +61,7 @@ extern Preferences* preferences;
     if(YES != [NSFileManager.defaultManager fileExistsAtPath:path])
     {
         //dbg msg
-        os_log_debug(logHandle, "specified block list path, %{public}@ doesn't exist", path);
+        os_log_error(logHandle, "ERROR: specified block list path, %{public}@ doesn't exist", path);
         
         //bail
         goto bail;
@@ -75,7 +75,7 @@ extern Preferences* preferences;
     if(nil != error)
     {
         //err msg
-        os_log_error(logHandle, "ERROR: failed to load block list, %{public}@", path);
+        os_log_error(logHandle, "ERROR: failed to load block list, %{public}@ (error: %@)", path, error);
         
         //bail
         goto bail;
@@ -83,7 +83,6 @@ extern Preferences* preferences;
         
     //dbg msg
     os_log_debug(logHandle, "loaded %lu block list items", (unsigned long)self.blockList.count);
-    
     
 bail:
     
@@ -114,7 +113,7 @@ bail:
             (YES == [flow.URL.absoluteString hasPrefix:item]) )
         {
             //dbg msg
-            os_log_debug(logHandle, "block-listed item %{public}@, matches flow %{public}@/%{public}@", item, remoteEndpoint.hostname, flow.URL.absoluteString);
+            os_log_debug(logHandle, "block listed item %{public}@, matches flow hostname: %{public}@ / url: %{public}@", item, remoteEndpoint.hostname, flow.URL.absoluteString);
             
             //happy
             isMatch = YES;

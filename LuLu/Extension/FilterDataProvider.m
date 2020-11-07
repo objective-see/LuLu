@@ -221,19 +221,6 @@ bail:
     //grab console user
     consoleUser = getConsoleUser();
     
-    //CHECK:
-    // different logged in user?
-    // just allow flow, as we don't want to block their traffic
-    if( (nil != consoleUser) &&
-        (YES != [alerts.consoleUser isEqualToString:consoleUser]) )
-    {
-        //dbg msg
-        os_log_debug(logHandle, "current console user '%{public}@', is different than '%{public}@', so allowing flow: %{public}@", consoleUser, alerts.consoleUser, ((NEFilterSocketFlow*)flow).remoteEndpoint);
-        
-        //all set
-        goto bail;
-    }
-        
     //check cache for process
     process = [self.cache objectForKey:flow.sourceAppAuditToken];
     if(nil == process)
@@ -266,6 +253,19 @@ bail:
             
     //dbg msg
     //os_log_debug(logHandle, "process object for flow: %{public}@", process);
+        
+    //CHECK:
+    // different logged in user?
+    // just allow flow, as we don't want to block their traffic
+    if( (nil != consoleUser) &&
+        (YES != [alerts.consoleUser isEqualToString:consoleUser]) )
+    {
+        //dbg msg
+        os_log_debug(logHandle, "current console user '%{public}@', is different than '%{public}@', so allowing flow: %{public}@", consoleUser, alerts.consoleUser, ((NEFilterSocketFlow*)flow).remoteEndpoint);
+        
+        //all set
+        goto bail;
+    }
     
     //CHECK:
     // client in (full) block mode? ...block!
