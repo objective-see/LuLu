@@ -564,7 +564,7 @@ bail:
     self.touchBar.delegate = self;
     
     //set id
-    self.touchBar.customizationIdentifier = @"com.objective-see.lulu";
+    self.touchBar.customizationIdentifier = @BUNDLE_ID;
     
     //init items
     touchBarItems = @[@".icon", @".label", @".block", @".allow"];

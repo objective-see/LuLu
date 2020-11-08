@@ -26,28 +26,48 @@ extern Preferences* preferences;
     self = [super init];
     if(nil != self)
     {
-        //load block list
-        // ok if fails ...no block list yet?
-        [self load];
+        //load
+        [self load:preferences.preferences[PREF_BLOCK_LIST]];
     }
 
     return self;
 }
 
-//(re)load from disk
--(void)load
+//should reload
+// checks file modification time
+-(BOOL)shouldReload:(NSString*)path
 {
-    //path
-    NSString* path = nil;
+    //flag
+    BOOL shouldReload = NO;
     
+    //current mod. time
+    NSDate* modified = nil;
+    
+    //get modified timestamp
+    modified = [[NSFileManager.defaultManager attributesOfItemAtPath:path error:nil] objectForKey:NSFileModificationDate];
+
+    //was file modified?
+    if(NSOrderedDescending == [modified compare:self.lastModified])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "block list was modified ...will reload");
+        
+        //yes
+        shouldReload = YES;
+    }
+    
+    return shouldReload;
+}
+
+//load
+// and listen
+-(void)load:(NSString*)path
+{
     //error
     NSError* error = nil;
     
-    //extact path
-    path = preferences.preferences[PREF_BLOCK_LIST];
-    
     //check
-    // is there a specified block list?
+    // path?
     if(0 == path.length)
     {
         //dbg msg
@@ -57,7 +77,8 @@ extern Preferences* preferences;
         goto bail;
     }
     
-    //check file exists?
+    //check
+    // file exists?
     if(YES != [NSFileManager.defaultManager fileExistsAtPath:path])
     {
         //dbg msg
@@ -68,10 +89,10 @@ extern Preferences* preferences;
     }
     
     //dbg msg
-    os_log_debug(logHandle, "loading block list, %{public}@", preferences.preferences[PREF_BLOCK_LIST]);
+    os_log_debug(logHandle, "(re)loading block list, %{public}@", path);
         
     //load
-    self.blockList = [[NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error] componentsSeparatedByString:@"\n"];
+    self.items = [[NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error] componentsSeparatedByString:@"\n"];
     if(nil != error)
     {
         //err msg
@@ -82,8 +103,11 @@ extern Preferences* preferences;
     }
         
     //dbg msg
-    os_log_debug(logHandle, "loaded %lu block list items", (unsigned long)self.blockList.count);
+    os_log_debug(logHandle, "loaded %lu block list items", (unsigned long)self.items.count);
     
+    //save timestamp
+    self.lastModified = [[NSFileManager.defaultManager attributesOfItemAtPath:path error:nil] objectForKey:NSFileModificationDate];
+
 bail:
     
     return;
@@ -95,15 +119,28 @@ bail:
     //match
     BOOL isMatch = NO;
     
+    //path
+    NSString* path = nil;
+    
     //remote endpoint
     NWHostEndpoint* remoteEndpoint = nil;
+    
+    //extact path
+    path = preferences.preferences[PREF_BLOCK_LIST];
     
     //extract remote endpoint
     remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
     
+    //need to reload?
+    if(YES == [self shouldReload:path])
+    {
+        //reload
+        [self load:path];
+    }
+    
     //check each item
     // do prefix check to make more robust
-    for(NSString* item in self.blockList)
+    for(NSString* item in self.items)
     {
         //sanity check
         if(0 == item.length) continue;
@@ -127,7 +164,5 @@ bail:
     
     return isMatch;
 }
-
-
 
 @end

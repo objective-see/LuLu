@@ -16,13 +16,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 /* PROPERTIES */
 
+//path
+@property(nonatomic, retain)NSString* path;
+
 //block list
-@property(nonatomic, retain)NSArray* blockList;
+@property(nonatomic, retain)NSArray* items;
+
+//modification time
+@property(nonatomic, retain)NSDate* lastModified;
+
 
 /* METHODS */
 
 //(re)load from disk
--(void)load;
+-(void)load:(NSString*)path;
+
+//should reload
+// checks file modification time
+-(BOOL)shouldReload:(NSString*)path;
 
 //check if flow matches item on block list
 -(BOOL)isMatch:(NEFilterSocketFlow*)flow;

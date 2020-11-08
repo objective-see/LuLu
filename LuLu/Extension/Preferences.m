@@ -118,7 +118,7 @@ bail:
     if(0 != [updates[PREF_BLOCK_LIST] length])
     {
         //(re)load
-        [blockList load];
+        [blockList load:updates[PREF_BLOCK_LIST]];
     }
     
     //happy

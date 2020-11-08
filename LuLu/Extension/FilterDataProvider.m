@@ -300,6 +300,8 @@ bail:
             //all set
             goto bail;
         }
+        //dbg msg
+        else os_log_debug(logHandle, "remote endpoint/URL not on block list...");
     }
         
     //CHECK:
