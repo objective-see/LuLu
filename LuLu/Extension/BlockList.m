@@ -131,26 +131,26 @@ bail:
     //extract remote endpoint
     remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
     
-    //need to reload?
+    //need to reload list?
+    // checks timestamp to see if modified
     if(YES == [self shouldReload:path])
     {
-        //reload
+        //reload list
         [self load:path];
     }
     
     //check each item
-    // do prefix check to make more robust
     for(NSString* item in self.items)
     {
         //sanity check
         if(0 == item.length) continue;
         
-        //check host name and url
-        if( (YES == [remoteEndpoint.hostname hasPrefix:item]) ||
-            (YES == [flow.URL.absoluteString hasPrefix:item]) )
+        //check url host and flow's host name (IP)
+        if( (YES == [item isEqualToString:flow.URL.host]) ||
+            (YES == [item isEqualToString:remoteEndpoint.hostname]) )
         {
             //dbg msg
-            os_log_debug(logHandle, "block listed item %{public}@, matches flow hostname: %{public}@ / url: %{public}@", item, remoteEndpoint.hostname, flow.URL.absoluteString);
+            os_log_debug(logHandle, "block listed item %{public}@, matches flow url host: %{public}@ / host name: %{public}@", item, flow.URL.host, remoteEndpoint.hostname);
             
             //happy
             isMatch = YES;

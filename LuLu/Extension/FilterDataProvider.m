@@ -136,7 +136,7 @@ extern BlockList* blockList;
     NEFilterNewFlowVerdict* verdict = nil;
     
     //log msg
-    os_log_debug(logHandle, "%s", __PRETTY_FUNCTION__);
+    os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
     
     //init verdict to allow
     verdict = [NEFilterNewFlowVerdict allowVerdict];
@@ -149,6 +149,9 @@ extern BlockList* blockList;
 
     //extract remote endpoint
     remoteEndpoint = (NWHostEndpoint*)socketFlow.remoteEndpoint;
+    
+    //log msg
+    os_log_debug(logHandle, "remote endpoint: %{public}@ / url: %{public}@", remoteEndpoint, flow.URL);
     
     //ignore non-outbound traffic
     // even though we init'd `NETrafficDirectionOutbound`, sometimes get inbound traffic :|
