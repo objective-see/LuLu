@@ -92,7 +92,7 @@ extern Preferences* preferences;
     os_log_debug(logHandle, "(re)loading block list, %{public}@", path);
         
     //load
-    self.items = [[NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error] componentsSeparatedByString:@"\n"];
+    self.items = [[[NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error] componentsSeparatedByString:@"\n"] mutableCopy];
     if(nil != error)
     {
         //err msg
@@ -101,7 +101,19 @@ extern Preferences* preferences;
         //bail
         goto bail;
     }
-        
+    
+    //remove any rows that start w/ comments ('#')
+    for(NSInteger i = self.items.count-1; i >= 0; i--)
+    {
+        //comment row?
+        // remove from list
+        if(YES == [self.items[i] hasPrefix:@"#"])
+        {
+            //remove
+            [self.items removeObjectAtIndex:i];
+        }
+    }
+    
     //dbg msg
     os_log_debug(logHandle, "loaded %lu block list items", (unsigned long)self.items.count);
     
@@ -150,7 +162,7 @@ bail:
             (YES == [item isEqualToString:remoteEndpoint.hostname]) )
         {
             //dbg msg
-            os_log_debug(logHandle, "block listed item %{public}@, matches flow url host: %{public}@ / host name: %{public}@", item, flow.URL.host, remoteEndpoint.hostname);
+            os_log_debug(logHandle, "block listed item %{public}@, matches flow url host: %{public}@ or ip addr: %{public}@", item, flow.URL.host, remoteEndpoint.hostname);
             
             //happy
             isMatch = YES;
