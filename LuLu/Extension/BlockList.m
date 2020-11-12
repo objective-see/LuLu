@@ -66,6 +66,12 @@ extern Preferences* preferences;
     //error
     NSError* error = nil;
     
+    //file contents
+    NSString* blockList = nil;
+    
+    //sync
+    @synchronized (self) {
+    
     //check
     // path?
     if(0 == path.length)
@@ -92,7 +98,7 @@ extern Preferences* preferences;
     os_log_debug(logHandle, "(re)loading block list, %{public}@", path);
         
     //load
-    self.items = [[[NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error] componentsSeparatedByString:@"\n"] mutableCopy];
+    blockList = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
     if(nil != error)
     {
         //err msg
@@ -102,16 +108,20 @@ extern Preferences* preferences;
         goto bail;
     }
     
-    //remove any rows that start w/ comments ('#')
-    for(NSInteger i = self.items.count-1; i >= 0; i--)
+    //now alloc
+    self.items = [NSMutableArray array];
+    
+    //parse/check each
+    for(NSString* item in [blockList componentsSeparatedByString:@"\n"])
     {
-        //comment row?
-        // remove from list
-        if(YES == [self.items[i] hasPrefix:@"#"])
-        {
-            //remove
-            [self.items removeObjectAtIndex:i];
-        }
+        //skip empty items
+        if(0 == item.length) continue;
+        
+        //skip commands
+        if(YES == [item hasPrefix:@"#"]) continue;
+        
+        //add
+        [self.items addObject:item];
     }
     
     //dbg msg
@@ -119,6 +129,8 @@ extern Preferences* preferences;
     
     //save timestamp
     self.lastModified = [[NSFileManager.defaultManager attributesOfItemAtPath:path error:nil] objectForKey:NSFileModificationDate];
+        
+    } //sync
 
 bail:
     
@@ -151,12 +163,12 @@ bail:
         [self load:path];
     }
     
+    //sync
+    @synchronized (self) {
+
     //check each item
     for(NSString* item in self.items)
     {
-        //sanity check
-        if(0 == item.length) continue;
-        
         //check url host and flow's host name (IP)
         if( (YES == [item isEqualToString:flow.URL.host]) ||
             (YES == [item isEqualToString:remoteEndpoint.hostname]) )
@@ -171,6 +183,8 @@ bail:
             goto bail;
         }
     }
+        
+    }//sync
     
 bail:
     
