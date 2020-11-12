@@ -921,12 +921,15 @@ bail:
     //index of row
     // either clicked or selected row
     NSInteger row = 0;
-    
+
     //item
     id item = nil;
     
     //rule
     Rule* rule = nil;
+    
+    //rule uuid
+    NSString* uuid = nil;
     
     //dbg msg
     os_log_debug(logHandle, "deleting rule...");
@@ -963,6 +966,9 @@ bail:
     {
         //typecast
         rule = (Rule*)item;
+        
+        //set uuid
+        uuid = rule.uuid;
     }
     
     //don't delete system rules
@@ -977,7 +983,7 @@ bail:
     
     //remove rule via XPC
     // nil uuid, means delete all rules for item (process)
-    [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient deleteRule:rule.key rule:rule.uuid];
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient deleteRule:rule.key rule:uuid];
     
     //(re)load rules
     [self loadRules];

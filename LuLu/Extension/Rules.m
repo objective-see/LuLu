@@ -750,11 +750,14 @@ bail:
     @synchronized(self.rules)
     {
         //no uuid
-        // delete all (process) rules
+        // delete all (process') rules
         if(nil == uuid)
         {
             //remove
             [self.rules removeObjectForKey:key];
+            
+            //happy
+            result = YES;
             
             //done
             goto bail;
