@@ -38,7 +38,7 @@ extern BlockList* blockList;
             if(YES != [self load])
             {
                 //err msg
-                os_log_error(logHandle, "failed to loads preferences from %@", PREFS_FILE);
+                os_log_error(logHandle, "ERROR: failed to loads preferences from %@", PREFS_FILE);
                 
                 //unset
                 self = nil;

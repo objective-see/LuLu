@@ -234,7 +234,7 @@ bail:
     if(YES != [self removeLoginItem:action])
     {
         //err msg
-        os_log_error(logHandle, "failed to uninstall login item(s)");
+        os_log_error(logHandle, "ERROR: failed to uninstall login item(s)");
         
         //keep going though...
     }

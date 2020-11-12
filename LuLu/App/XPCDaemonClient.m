@@ -131,7 +131,7 @@ extern NSMutableDictionary* alerts;
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
         //err msg
-        os_log_error(logHandle, "failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
         
     }] getRules:^(NSData* archivedRules)
     {
@@ -142,7 +142,7 @@ extern NSMutableDictionary* alerts;
         if(nil != error)
         {
             //err msg
-            os_log_error(logHandle, "failed to unarchive rules: %{public}@", error);
+            os_log_error(logHandle, "ERROR: failed to unarchive rules: %{public}@", error);
         }
     
     }];

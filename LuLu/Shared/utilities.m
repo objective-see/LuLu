@@ -56,7 +56,7 @@ NSString* getAppBinary(NSString* appPath)
     if(nil == appBundle)
     {
         //err msg
-        os_log_error(logHandle, "failed to load app bundle for %{public}@", appPath);
+        os_log_error(logHandle, "ERROR: failed to load app bundle for %{public}@", appPath);
         
         //bail
         goto bail;

@@ -620,7 +620,7 @@ bail:
         {
             //error
             case -1:
-                os_log_error(logHandle, "update check failed");
+                os_log_error(logHandle, "ERROR: update check failed");
                 break;
                 
             //no updates

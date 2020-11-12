@@ -56,7 +56,7 @@ extern os_log_t logHandle;
     if(nil == request)
     {
         //err msg
-        os_log_error(logHandle, "failed to create request for extension");
+        os_log_error(logHandle, "ERROR: failed to create request for extension");
         
         //bail
         goto bail;

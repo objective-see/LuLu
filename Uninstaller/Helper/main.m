@@ -49,7 +49,7 @@ int main(int argc, const char * argv[])
         if(nil == helperListener)
         {
             //err msg
-            os_log_error(logHandle, "failed to initialize helper XPC listener");
+            os_log_error(logHandle, "ERROR: failed to initialize helper XPC listener");
             
             //bail
             goto bail;

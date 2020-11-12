@@ -78,7 +78,7 @@ bail:
     if(nil == self.listener)
     {
         //err msg
-        os_log_error(logHandle, "failed to create mach service %{public}@", CONFIG_HELPER_ID);
+        os_log_error(logHandle, "ERROR: failed to create mach service %{public}@", CONFIG_HELPER_ID);
         
         //bail
         goto bail;

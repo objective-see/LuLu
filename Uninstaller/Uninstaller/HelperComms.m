@@ -78,7 +78,8 @@ extern os_log_t logHandle;
     //remove
     [[(NSXPCConnection*)self.xpcServiceConnection remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
-        os_log_error(logHandle, "failed to execute 'remove' method on helper tool (error: %{public}@)", proxyError);
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to execute 'remove' method on helper tool (error: %{public}@)", proxyError);
           
     }] cleanup:^(NSNumber* result)
     {
