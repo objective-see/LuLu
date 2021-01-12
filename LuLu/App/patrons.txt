@@ -1,5 +1,5 @@
 Patrons (2^6+):
-Christian Blümlein, Brock Gunter-Smith, Jan Koum
+Jan Koum, Christian Blümlein, MikeyH
 
 Friends of Objective-See:
-Airo, SmugMug, Guardian Mobile Firewall, SecureMac, iVerify, Halo Privacy
+1Password, SmugMug, Guardian Mobile Firewall, SecureMac, iVerify, Halo Privacy

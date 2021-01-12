@@ -1,5 +1,5 @@
 create-dmg \
-  --volname "LuLu v2.0.0" \
+  --volname "LuLu v2.1.0" \
   --volicon "LuLu.icns" \
   --background "background.png" \
   --window-pos 200 120 \
@@ -8,5 +8,5 @@ create-dmg \
   --icon "LuLu.app" 200 190 \
   --hide-extension "LuLu.app" \
   --app-drop-link 600 185 \
-  "LuLu_2.0.0.dmg" \
+  "LuLu_2.1.0.dmg" \
   "Release/"
