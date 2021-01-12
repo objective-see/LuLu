@@ -406,12 +406,30 @@ bail:
 }
 
 //on window close
-// set activation policy
+// update prefs/set activation policy
 -(void)windowWillClose:(NSNotification *)notification
 {
-     //wait a bit, then set activation policy
-     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-     ^{
+    //blank block list?
+    // uncheck 'enabled'
+    if(0 == self.blockList.stringValue.length)
+    {
+        //uncheck 'blocklist' radio button
+        ((NSButton*)[self.rulesView viewWithTag:BUTTON_USE_BLOCK_LIST]).state = NSControlStateValueOff;
+        
+        //disable 'browse' button
+        self.selectBlockListButton.enabled = NSControlStateValueOff;
+        
+        //disable block list input
+        self.blockList.enabled = NSControlStateValueOff;
+        
+        //send XPC msg to daemon to update prefs
+        // returns (all/latest) prefs, which is what we want
+        self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updatePreferences:@{PREF_USE_BLOCK_LIST:@0}];
+    }
+
+    //wait a bit, then set activation policy
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+    ^{
          //on main thread
          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
              
@@ -419,9 +437,8 @@ bail:
              [((AppDelegate*)[[NSApplication sharedApplication] delegate]) setActivationPolicy];
              
          });
-     });
+    });
     
     return;
 }
-
 @end

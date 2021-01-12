@@ -61,10 +61,6 @@ extern os_log_t logHandle;
 // get rules and listen for new ones
 -(void)windowDidLoad
 {
-    //filtering?
-    // only generate events end events
-    self.filterBox.sendsWholeSearchString = YES;
-    
     //set indentation level for outline view
     self.outlineView.indentationPerLevel = 42;
     

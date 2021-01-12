@@ -86,6 +86,10 @@ extern os_log_t logHandle;
     //host name?
     // or if nil, use host (ip address)
     remoteAddress = (nil != self.alert[KEY_URL]) ? self.alert[KEY_URL] : self.alert[KEY_HOST];
+    if(nil == remoteAddress)
+    {
+        remoteAddress = @"unknown";
+    }
     
     /* TOP */
     
@@ -147,7 +151,7 @@ extern os_log_t logHandle;
     self.processPath.stringValue = self.alert[KEY_PATH];
     
     //ip address
-    self.ipAddress.stringValue = self.alert[KEY_HOST];
+    self.ipAddress.stringValue = (nil != self.alert[KEY_HOST]) ? self.alert[KEY_HOST] : @"unknown";
     
     //port & proto
     self.portProto.stringValue = [NSString stringWithFormat:@"%@ (%@)", self.alert[KEY_ENDPOINT_PORT], [self convertProtocol:self.alert[KEY_PROTOCOL]]];

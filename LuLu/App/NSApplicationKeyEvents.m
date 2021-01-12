@@ -25,9 +25,10 @@
     }
         
     //delete?
-    // in Rules window, delete row
+    // in Rules window/table, delete row
     if( (NSDeleteCharacter == [event.charactersIgnoringModifiers characterAtIndex:0]) &&
-        (YES == [NSApplication.sharedApplication.keyWindow.identifier isEqualToString:@"Rules"]) )
+        (YES == [event.window.identifier isEqualToString:@"Rules"]) &&
+        (YES == [event.window.firstResponder.className isEqualToString:@"RulesTable"]) )
     {
         //delete rule
         [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) rulesWindowController] deleteRule:nil];
@@ -103,16 +104,16 @@
     //+w (close window)
     // unless its an alert ...need response!
     else if( ([event.charactersIgnoringModifiers isEqualToString:@"w"]) &&
-             (YES != [NSApplication.sharedApplication.keyWindow.identifier isEqualToString:@"Alert"]) )
+             (YES != [event.window.identifier isEqualToString:@"Alert"]) )
     {
         //close
         [NSApplication.sharedApplication.keyWindow close];
         return;
     }
-    
+
     //+f (find, but only in rules window)
     else if( ([event.charactersIgnoringModifiers isEqualToString:@"f"]) &&
-             (YES == [NSApplication.sharedApplication.keyWindow.identifier isEqualToString:@"Rules"]) )
+             (YES == [event.window.identifier isEqualToString:@"Rules"]) )
     {
         //iterate over all toolbar items
         // ...find rule search field, and select

@@ -33,6 +33,14 @@ extern Preferences* preferences;
     return self;
 }
 
+//was specified block list remote
+// ...just checks if prefixed with http:// || https://
+-(BOOL)isRemote:(NSString*)path
+{
+    //specified path a URL?
+    return ((YES == [path hasPrefix:@"http://"]) || (YES == [path hasPrefix:@"https://"]));
+}
+
 //should reload
 // checks file modification time
 -(BOOL)shouldReload:(NSString*)path
@@ -42,6 +50,14 @@ extern Preferences* preferences;
     
     //current mod. time
     NSDate* modified = nil;
+    
+    //if it's remote
+    // can't tell, so default to no
+    if(YES == [self isRemote:path])
+    {
+        //bail
+        goto bail;
+    }
     
     //get modified timestamp
     modified = [[NSFileManager.defaultManager attributesOfItemAtPath:path error:nil] objectForKey:NSFileModificationDate];
@@ -55,6 +71,8 @@ extern Preferences* preferences;
         //yes
         shouldReload = YES;
     }
+    
+bail:
     
     return shouldReload;
 }
@@ -71,6 +89,9 @@ extern Preferences* preferences;
     
     //sync
     @synchronized (self) {
+        
+    //dbg msg
+    os_log_debug(logHandle, "%s", __PRETTY_FUNCTION__);
     
     //check
     // path?
@@ -82,32 +103,54 @@ extern Preferences* preferences;
         //bail
         goto bail;
     }
-    
-    //check
-    // file exists?
-    if(YES != [NSFileManager.defaultManager fileExistsAtPath:path])
+        
+    //remote?
+    // load via URL
+    if(YES == [self isRemote:path])
     {
         //dbg msg
-        os_log_error(logHandle, "ERROR: specified block list path, %{public}@ doesn't exist", path);
+        os_log_debug(logHandle, "loading (remote) block list");
         
-        //bail
-        goto bail;
+        //load
+        blockList = [NSString stringWithContentsOfURL:[NSURL URLWithString:path] encoding:NSUTF8StringEncoding error:&error];
+        if(nil != error)
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: failed to load (remote) block list, %{public}@ (error: %@)", path, error);
+            
+            //bail
+            goto bail;
+        }
     }
     
-    //dbg msg
-    os_log_debug(logHandle, "(re)loading block list, %{public}@", path);
-        
-    //load
-    blockList = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-    if(nil != error)
+    //local file
+    // check and load
+    else
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to load block list, %{public}@ (error: %@)", path, error);
+        if(YES != [NSFileManager.defaultManager fileExistsAtPath:path])
+        {
+            //dbg msg
+            os_log_error(logHandle, "ERROR: specified block list path, %{public}@ doesn't exist", path);
+            
+            //bail
+            goto bail;
+        }
         
-        //bail
-        goto bail;
+        //dbg msg
+        os_log_debug(logHandle, "(re)loading (local) block list, %{public}@", path);
+            
+        //load
+        blockList = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+        if(nil != error)
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: failed to load (local) block list, %{public}@ (error: %@)", path, error);
+            
+            //bail
+            goto bail;
+        }
     }
-    
+     
     //now alloc
     self.items = [NSMutableArray array];
     
@@ -174,7 +217,7 @@ bail:
             (YES == [item isEqualToString:remoteEndpoint.hostname]) )
         {
             //dbg msg
-            os_log_debug(logHandle, "block listed item %{public}@, matches flow url host: %{public}@ or ip addr: %{public}@", item, flow.URL.host, remoteEndpoint.hostname);
+            os_log_debug(logHandle, "block listed item '%{public}@', matches flow url host: %{public}@ or ip addr: %{public}@", item, flow.URL.host, remoteEndpoint.hostname);
             
             //happy
             isMatch = YES;
