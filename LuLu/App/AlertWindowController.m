@@ -15,8 +15,10 @@
 #import "XPCDaemonClient.h"
 #import "AlertWindowController.h"
 
-
 /* GLOBALS */
+
+//(last) action scope
+NSInteger lastActionScope = 0;
 
 //log handle
 extern os_log_t logHandle;
@@ -183,6 +185,10 @@ extern os_log_t logHandle;
     //temp rule button label
     self.tempRule.attributedTitle = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" temporarily (pid: %@)", [self.alert[KEY_PROCESS_ID] stringValue]] attributes:titleAttributes];
     
+    //set action scope
+    // ...based on last one
+    [self.actionScope selectItemAtIndex:lastActionScope];
+        
     //show touch bar
     [self initTouchBar];
     
@@ -524,6 +530,9 @@ bail:
     
     //add action scope
     alertResponse[KEY_SCOPE] = [NSNumber numberWithInteger:self.actionScope.indexOfSelectedItem];
+    
+    //and save it for next alert
+    lastActionScope = self.actionScope.indexOfSelectedItem;
     
     //temporary?
     alertResponse[KEY_TEMPORARY] = [NSNumber numberWithBool:(BOOL)self.tempRule.state];

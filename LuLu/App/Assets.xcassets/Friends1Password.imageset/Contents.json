@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "mac",
-      "filename" : "1Password.png"
+      "filename" : "darkMode.png"
     },
     {
       "idiom" : "mac",
-      "filename" : "1Password.png",
+      "filename" : "lightMode.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -16,7 +16,7 @@
     },
     {
       "idiom" : "mac",
-      "filename" : "1Password.png",
+      "filename" : "darkMode.png",
       "appearances" : [
         {
           "appearance" : "luminosity",

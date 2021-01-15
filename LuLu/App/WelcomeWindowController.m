@@ -55,7 +55,7 @@ extern os_log_t logHandle;
     }
     
     //set title
-    self.window.title = [NSString stringWithFormat:@"LuLu (version: %@)", getAppVersion()];
+    self.window.title = [NSString stringWithFormat:@"LuLu v%@", getAppVersion()];
     
     //show welcome view
     [self showView:self.welcomeView firstResponder:SHOW_ALLOW_EXT];
