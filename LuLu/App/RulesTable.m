@@ -82,20 +82,8 @@
         //set tag
         menu.itemArray.lastObject.tag = MENU_DELETE_RULE;
         
-        //rule not editable?
-        // disable delete then
-        if(RULE_TYPE_DEFAULT == rule.type.intValue)
-        {
-            //set state
-            menu.itemArray.lastObject.enabled = NO;
-        }
-        //otherwise
-        // ok to enable
-        else
-        {
-            //enable
-            menu.itemArray.lastObject.enabled = YES;
-        }
+        //enable
+        menu.itemArray.lastObject.enabled = YES;
     }
     
     //rule row
@@ -116,20 +104,8 @@
         //set tag
         menu.itemArray.lastObject.tag = MENU_DELETE_RULE;
         
-        //disable menu for default (system) rules
-        // these should not be edited via normal users!
-        if(RULE_TYPE_DEFAULT == rule.type.intValue)
-        {
-            //disable
-            toggleMenu(menu, NO);
-        }
-        //otherwise
-        // ok to enable
-        else
-        {
-            //enable
-            toggleMenu(menu, YES);
-        }
+        //enable
+        toggleMenu(menu, YES);
     }
     
 bail:

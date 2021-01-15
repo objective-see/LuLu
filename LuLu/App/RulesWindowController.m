@@ -351,7 +351,7 @@ bail:
 }
 
 //double-click handler
-// if it's an (editable) rule, bring up add/edit box
+// bring up add/edit box
 -(void)doubleClickHandler:(id)object
 {
     //clicked row
@@ -373,7 +373,7 @@ bail:
     os_log_debug(logHandle, "row: %ld, item: %{public}@", (long)row, item);
     
     //item row?
-    // show paths
+    // ...show paths
     if(YES == [item isKindOfClass:[NSArray class]])
     {
         //show paths
@@ -381,10 +381,22 @@ bail:
     }
     
     //rule row
-    // ...only allowed editable ones
-    else if( (YES == [item isKindOfClass:[Rule class]]) &&
-             (RULE_TYPE_DEFAULT != ((Rule*)item).type.intValue) )
+    // ...edit!
+    else if(YES == [item isKindOfClass:[Rule class]])
     {
+        //default rule?
+        //show alert/warning
+        if(RULE_TYPE_DEFAULT == ((Rule*)item).type.intValue)
+        {
+            //show alert
+            // ...and bail if user cancels
+            if(NSModalResponseCancel == [self showDefaultRuleAlert:item action:@"Editing"])
+            {
+                //bail
+                goto bail;
+            }
+        }
+        
         //add (edit) rule
         [self addRule:item];
     }
@@ -393,6 +405,42 @@ bail:
     
     return;
 
+}
+
+//warn user the modifying default rules might break things
+-(NSModalResponse)showDefaultRuleAlert:(Rule*)rule action:(NSString*)action
+{
+    //alert
+    NSAlert* alert = nil;
+    
+    //response
+    NSModalResponse response = 0;
+    
+    //init alert
+    alert = [[NSAlert alloc] init];
+    
+    //set style
+    alert.alertStyle = NSAlertStyleWarning;
+    
+    //main text
+    alert.messageText = [NSString stringWithFormat:@"%@ is legitimate macOS process", rule.name];
+    
+    //details
+    alert.informativeText = [NSString stringWithFormat:@"%@ this rule, may impact legitimate system functionalty ...continue?", action];;
+    
+    //add button
+    [alert addButtonWithTitle:@"Continue"];
+    
+    //add button
+    [alert addButtonWithTitle:@"Cancel"];
+    
+    //make app active
+    [NSApp activateIgnoringOtherApps:YES];
+    
+    //show
+    response = [alert runModal];
+    
+    return response;
 }
 
 //show paths in sheet
@@ -431,13 +479,26 @@ bail:
     //invoked with existing rule (to edit)
     if(YES == [sender isKindOfClass:[Rule class]])
     {
+        //default rule?
+        //show alert/warning
+        if(RULE_TYPE_DEFAULT == ((Rule*)sender).type.intValue)
+        {
+            //show alert
+            // ...and bail if user cancels
+            if(NSModalResponseCancel == [self showDefaultRuleAlert:sender action:@"Editing"])
+            {
+                //bail
+                goto bail;
+            }
+        }
+        
         //set rule
         self.addRuleWindowController.rule = (Rule*)sender;
     }
     
     //show it
     // on close/OK, invoke XPC to add rule, then reload
-    [self.window beginSheet:self.addRuleWindowController.window completionHandler:^(NSModalResponse returnCode) {
+    {[self.window beginSheet:self.addRuleWindowController.window completionHandler:^(NSModalResponse returnCode) {
         
         //(existing) rule
         Rule* rule = nil;
@@ -479,7 +540,9 @@ bail:
         //unset add rule window controller
         self.addRuleWindowController = nil;
         
-    }];
+    }];}
+    
+bail:
     
     return;
 }
@@ -772,20 +835,8 @@ bail:
             cell.textField.stringValue = @"";
         }
         
-        //disable button delete button if rule is a default (system) rule
-        if(RULE_TYPE_DEFAULT == rule.type.intValue)
-        {
-            //disable
-            [(NSButton*)[cell viewWithTag:TABLE_ROW_DELETE_TAG] setEnabled:NO];
-        }
-        
-        //otherwise
-        // enable delete button
-        else
-        {
-            //enable
-            [(NSButton*)[cell viewWithTag:TABLE_ROW_DELETE_TAG] setEnabled:YES];
-        }
+        //enable
+        [(NSButton*)[cell viewWithTag:TABLE_ROW_DELETE_TAG] setEnabled:YES];
     }
     
 bail:
@@ -967,14 +1018,17 @@ bail:
         uuid = rule.uuid;
     }
     
-    //don't delete system rules
+    //default rule?
+    // show alert/warning
     if(RULE_TYPE_DEFAULT == rule.type.intValue)
     {
-        //dbg msg
-        os_log_debug(logHandle, "rule is default/system ...won't delete");
-        
-        //bail
-        goto bail;
+        //show alert
+        // ...and bail if user cancels
+        if(NSModalResponseCancel == [self showDefaultRuleAlert:rule action:@"Deleting"])
+        {
+            //bail
+            goto bail;
+        }
     }
     
     //remove rule via XPC
