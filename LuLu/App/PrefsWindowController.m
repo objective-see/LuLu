@@ -278,6 +278,7 @@ bail:
     return;
 }
 
+
 //invoked when block list path is (manually entered)
 -(IBAction)updateBlockList:(id)sender
 {
@@ -410,7 +411,7 @@ bail:
 -(void)windowWillClose:(NSNotification *)notification
 {
     //blank block list?
-    // uncheck 'enabled'
+    // uncheck 'enabled' and update prefs
     if(0 == self.blockList.stringValue.length)
     {
         //uncheck 'blocklist' radio button
@@ -426,7 +427,16 @@ bail:
         // returns (all/latest) prefs, which is what we want
         self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updatePreferences:@{PREF_USE_BLOCK_LIST:@0}];
     }
-
+        
+    //block list changed? capture!
+    // this logic is needed, as window can be closed when text field still has focus and 'end edit' won't have fired
+    if(YES != [self.preferences[PREF_BLOCK_LIST] isEqualToString:self.blockList.stringValue])
+    {
+        //send XPC msg to daemon to update prefs
+        // returns (all/latest) prefs, which is what we want
+        self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:self.blockList.stringValue}];
+    }
+     
     //wait a bit, then set activation policy
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
     ^{

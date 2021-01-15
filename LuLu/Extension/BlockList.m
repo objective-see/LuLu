@@ -90,6 +90,9 @@ bail:
     //sync
     @synchronized (self) {
         
+    //reset list
+    [self.items removeAllObjects];
+        
     //dbg msg
     os_log_debug(logHandle, "%s", __PRETTY_FUNCTION__);
     
@@ -149,6 +152,9 @@ bail:
             //bail
             goto bail;
         }
+        
+        //save timestamp
+        self.lastModified = [[NSFileManager.defaultManager attributesOfItemAtPath:path error:nil] objectForKey:NSFileModificationDate];
     }
      
     //now alloc
@@ -170,9 +176,6 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "loaded %lu block list items", (unsigned long)self.items.count);
     
-    //save timestamp
-    self.lastModified = [[NSFileManager.defaultManager attributesOfItemAtPath:path error:nil] objectForKey:NSFileModificationDate];
-        
     } //sync
 
 bail:

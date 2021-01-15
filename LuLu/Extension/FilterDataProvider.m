@@ -289,7 +289,7 @@ bail:
     if(YES == [preferences.preferences[PREF_USE_BLOCK_LIST] boolValue])
     {
         //dbg msg
-        os_log_debug(logHandle, "client in using block list, will check for match");
+        os_log_debug(logHandle, "client in using block list '%{public}@' with %lu items ...will check for match", preferences.preferences[PREF_BLOCK_LIST], (unsigned long)blockList.items.count);
         
         //match in block list?
         if(YES == [blockList isMatch:(NEFilterSocketFlow*)flow])
