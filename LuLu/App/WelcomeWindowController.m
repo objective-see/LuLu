@@ -205,25 +205,29 @@ extern os_log_t logHandle;
             [self showView:self.configureView firstResponder:SHOW_SUPPORT];
             break;
             
-        //show configure view
+        //show "support us" view
+        // + kick off main logic so traffic filtering is started
         case SHOW_SUPPORT:
+            
+            //show support view
             [self showView:self.supportView firstResponder:SUPPORT_YES];
+            
+            //kick off main (client) logic
+            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) completeInitialization:self.preferences];
+            
             break;
             
         //support, yes!
         case SUPPORT_YES:
             
-            //open URL
+            //open patreon URL
             // invokes user's default browser
             [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:PATREON_URL]];
         
-            //fall thru as we want to kick off main logic / close
+            //fall thru as we want to close/set app state
         
         //support, no :(
         case SUPPORT_NO:
-            
-            //kick off main client logic
-            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) completeInitialization:self.preferences];
             
             //close window
             [self.window close];
