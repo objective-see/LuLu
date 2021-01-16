@@ -195,7 +195,7 @@ NSMutableDictionary* alerts = nil;
                     //dbg msg
                     os_log_debug(logHandle, "extension now up and running");
                     
-                    //show error on main thread
+                    //complete initialization on main thread
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
                         //complete inits

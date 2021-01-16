@@ -119,7 +119,7 @@ bail:
         if(nil != error)
         {
             //err msg
-            os_log_error(logHandle, "ERROR: failed to load (remote) block list, %{public}@ (error: %@)", path, error);
+            os_log_error(logHandle, "ERROR: failed to load (remote) block list, %{public}@ (error: %{public}@)", path, error);
             
             //bail
             goto bail;
@@ -147,7 +147,7 @@ bail:
         if(nil != error)
         {
             //err msg
-            os_log_error(logHandle, "ERROR: failed to load (local) block list, %{public}@ (error: %@)", path, error);
+            os_log_error(logHandle, "ERROR: failed to load (local) block list, %{public}@ (error: %{public}@)", path, error);
             
             //bail
             goto bail;

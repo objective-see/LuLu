@@ -94,7 +94,9 @@ extern BlockList* blockList;
         //error?
         if(nil != error) os_log_error(logHandle, "ERROR: failed to apply filter settings: %@", error.localizedDescription);
         
+        //call completion handler
         completionHandler(error);
+        
     }];
     
     return;
@@ -135,6 +137,9 @@ extern BlockList* blockList;
     //verdict
     NEFilterNewFlowVerdict* verdict = nil;
     
+    //token
+    static dispatch_once_t onceToken = 0;
+    
     //log msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
     
@@ -146,6 +151,20 @@ extern BlockList* blockList;
     
     //log msg
     os_log_debug(logHandle, "flow: %{public}@", flow);
+    
+    //only once
+    // load init block list
+    // ...early it may fail for remote lists, as network isn't up
+    dispatch_once(&onceToken, ^{
+        
+        //dbg msg
+        os_log_debug(logHandle, "init'ing block list");
+        
+        //alloc/init/load block list
+        blockList = [[BlockList alloc] init];
+        
+    });
+    
 
     //extract remote endpoint
     remoteEndpoint = (NWHostEndpoint*)socketFlow.remoteEndpoint;
@@ -256,11 +275,11 @@ bail:
             
     //dbg msg
     //os_log_debug(logHandle, "process object for flow: %{public}@", process);
-        
+    
     //CHECK:
     // different logged in user?
     // just allow flow, as we don't want to block their traffic
-    if( (nil != consoleUser) &&
+    if( (nil != consoleUser) && (nil != alerts.consoleUser) &&
         (YES != [alerts.consoleUser isEqualToString:consoleUser]) )
     {
         //dbg msg
@@ -286,10 +305,11 @@ bail:
         
     //CHECK:
     // client using (global) block list
-    if(YES == [preferences.preferences[PREF_USE_BLOCK_LIST] boolValue])
+    if( (YES == [preferences.preferences[PREF_USE_BLOCK_LIST] boolValue]) &&
+        (0 != [preferences.preferences[PREF_BLOCK_LIST] length]) )
     {
         //dbg msg
-        os_log_debug(logHandle, "client in using block list '%{public}@' with %lu items ...will check for match", preferences.preferences[PREF_BLOCK_LIST], (unsigned long)blockList.items.count);
+        os_log_debug(logHandle, "client is using block list '%{public}@' (%lu items) ...will check for match", preferences.preferences[PREF_BLOCK_LIST], (unsigned long)blockList.items.count);
         
         //match in block list?
         if(YES == [blockList isMatch:(NEFilterSocketFlow*)flow])

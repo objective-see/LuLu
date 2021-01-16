@@ -68,7 +68,7 @@ extern NSMutableDictionary* alerts;
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
         //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %@)", __PRETTY_FUNCTION__, proxyError);
+        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
         
      }] getPreferences:^(NSDictionary* preferencesFromDaemon)
      {
@@ -115,9 +115,6 @@ extern NSMutableDictionary* alerts;
 // note: synchronous, will block until daemon responds
 -(NSDictionary*)getRules
 {
-    //unarchived rules
-    //__block NSDictionary* unarchivedRules = nil;
-    
     //rules
     __block NSMutableDictionary* rules = nil;
     
