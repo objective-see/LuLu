@@ -279,7 +279,7 @@ bail:
     //CHECK:
     // different logged in user?
     // just allow flow, as we don't want to block their traffic
-    if( (nil != consoleUser) && (nil != alerts.consoleUser) &&
+    if( (nil != consoleUser) &&
         (YES != [alerts.consoleUser isEqualToString:consoleUser]) )
     {
         //dbg msg
@@ -576,8 +576,9 @@ bail:
         //verdict
         NEFilterNewFlowVerdict* verdict = nil;
         
-        //dbg msg
-        os_log_debug(logHandle, "(user) response: %{public}@", alert);
+        //log msg
+        // note, this msg persists in log
+        os_log(logHandle, "(user) response: \"%@\" for %{public}@, that was trying to connect to %{public}@:%{public}@", (RULE_STATE_BLOCK == [alert[KEY_ACTION] unsignedIntValue]) ? @"block" : @"allow", alert[KEY_PATH], alert[KEY_ENDPOINT_ADDR], alert[KEY_ENDPOINT_PORT]);
         
         //init verdict to allow
         verdict = [NEFilterNewFlowVerdict allowVerdict];
