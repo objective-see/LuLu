@@ -349,6 +349,9 @@ bail:
     //# of args
     int numberOfArgs = 0;
     
+    //arg
+    NSString* argument = nil;
+    
     //start of (each) arg
     char* argStart = NULL;
     
@@ -473,8 +476,13 @@ bail:
             //save arg
             if(NULL != argStart)
             {
+                //try convert
+                // ignore (if not UTF8, etc...)
+                argument = [NSString stringWithUTF8String:argStart];
+                if(nil == argument) continue;
+                
                 //save
-                [self.arguments addObject:[NSString stringWithUTF8String:argStart]];
+                [self.arguments addObject:argument];
             }
             
             //init string pointer to (possibly) next arg
