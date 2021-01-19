@@ -479,10 +479,11 @@ bail:
                 //try convert
                 // ignore (if not UTF8, etc...)
                 argument = [NSString stringWithUTF8String:argStart];
-                if(nil == argument) continue;
-                
-                //save
-                [self.arguments addObject:argument];
+                if(nil != argument)
+                {
+                    //save
+                    [self.arguments addObject:argument];
+                }
             }
             
             //init string pointer to (possibly) next arg
