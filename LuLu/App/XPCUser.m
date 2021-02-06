@@ -67,8 +67,55 @@ extern NSMutableDictionary* alerts;
         
         //set app's background/foreground state
         [((AppDelegate*)[[NSApplication sharedApplication] delegate]) setActivationPolicy];
-        
     });
+    
+    //reverse dns resolve ip
+    // background resolve, then update alert window
+    if(nil != alert[KEY_HOST])
+    {
+        //async
+        // resolve ip -> host
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            //responses
+            NSArray* responses = nil;
+            
+            //address
+            NSString* address = nil;
+            
+            //capture
+            address = alert[KEY_HOST];
+            
+            //resolve
+            responses = resolveAddress(address);
+            
+            //dbg msg
+            os_log_debug(logHandle, "resolved %{public}@ to %{public}@", address, responses);
+         
+            //sync to add to alert window(s)
+            @synchronized(alerts)
+            {
+                //find any who's ip matches
+                [alerts enumerateKeysAndObjectsUsingBlock:^(id key, AlertWindowController* alertWindow, BOOL* stop) {
+                  
+                    //match?
+                    // update alert window
+                    if(YES == [alertWindow.alert[KEY_HOST] isEqualToString:address])
+                    {
+                        //update window on main thread
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            //update
+                            alertWindow.reverseDNS.stringValue = (0 != [responses.firstObject length]) ? responses.firstObject : @"unknown";
+                            
+                        });
+                    }
+                    
+                }];
+            }
+            
+        });
+    }
     
     return;
 }

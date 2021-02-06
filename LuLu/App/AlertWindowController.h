@@ -82,6 +82,9 @@
 //port/protocol
 @property (weak) IBOutlet NSTextField *portProto;
 
+//reverse dns name
+@property (weak) IBOutlet NSTextField *reverseDNS;
+
 //ancestry view
 @property (strong) IBOutlet NSView *ancestryView;
 

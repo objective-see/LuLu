@@ -90,4 +90,8 @@ NSModalResponse showAlert(NSString* messageText, NSString* informativeText);
 //get audit token for pid
 NSData* tokenForPid(pid_t pid);
 
+//given an ip address
+// reverse resolves it
+NSArray* resolveAddress(NSString * address);
+
 #endif

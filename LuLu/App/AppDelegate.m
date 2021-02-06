@@ -20,9 +20,6 @@ extern os_log_t logHandle;
 //alert windows
 NSMutableDictionary* alerts = nil;
 
-//extension obj
-//Extension* extension = nil;
-
 @interface AppDelegate ()
 
 @property (weak) IBOutlet NSWindow *window;
