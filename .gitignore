@@ -39,3 +39,4 @@ Carthage/Checkouts
 DMG/Release/*
 DMG/LuLu.app
 DMG/*.dmg
+DMG/background.psd

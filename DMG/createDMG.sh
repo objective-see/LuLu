@@ -7,6 +7,6 @@ create-dmg \
   --icon-size 100 \
   --icon "LuLu.app" 200 190 \
   --hide-extension "LuLu.app" \
-  --app-drop-link 600 185 \
+  --app-drop-link 600 190 \
   "LuLu_2.3.0.dmg" \
-  "Release/"
+  "."
