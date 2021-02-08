@@ -309,8 +309,13 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.5" id="9lk-SB-wZn">
+                    <rect key="frame" x="550" y="298" width="86" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsJamf" id="YaM-iV-DJB"/>
+                </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.5" id="dY6-bu-hB0">
-                    <rect key="frame" x="553" y="296" width="127" height="42"/>
+                    <rect key="frame" x="553" y="265" width="116" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Friends1Password" id="HA7-b9-2I1"/>
                 </imageView>
@@ -320,6 +325,7 @@
     </objects>
     <resources>
         <image name="Friends1Password" width="666" height="134"/>
+        <image name="FriendsJamf" width="328" height="114"/>
         <image name="InstallInstructions" width="2844" height="1461"/>
         <image name="MainAppHeart" width="256" height="256"/>
         <image name="MainAppIcon" width="1276" height="1276"/>
