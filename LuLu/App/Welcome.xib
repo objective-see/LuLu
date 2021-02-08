@@ -310,12 +310,12 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.5" id="9lk-SB-wZn">
-                    <rect key="frame" x="550" y="298" width="86" height="28"/>
+                    <rect key="frame" x="550" y="300" width="80" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsJamf" id="YaM-iV-DJB"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.5" id="dY6-bu-hB0">
-                    <rect key="frame" x="553" y="265" width="116" height="38"/>
+                    <rect key="frame" x="553" y="266" width="116" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Friends1Password" id="HA7-b9-2I1"/>
                 </imageView>
