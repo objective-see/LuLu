@@ -210,15 +210,40 @@ extern os_log_t logHandle;
 }
 
 //matches a string?
-// used for filtering...
+// used for filtering in UI
 -(BOOL)matchesString:(NSString*)match
 {
     //match
     BOOL matches = NO;
     
+    //rule action (as string)
+    NSString* action = nil;
+    
+    //init w/ allow
+    if(RULE_STATE_ALLOW == self.action.integerValue)
+    {
+        action = @"allow";
+    }
+    //init w/ block
+    else if(RULE_STATE_BLOCK == self.action.integerValue)
+    {
+        action = @"block";
+    }
+    
     //check name, path
     if( (YES == [self.name localizedCaseInsensitiveContainsString:match]) ||
         (YES == [self.path localizedCaseInsensitiveContainsString:match]) )
+    {
+        //match
+        matches = YES;
+        
+        //bail
+        goto bail;
+    }
+    
+    //check pid
+    if( (nil != self.pid) &&
+        (YES == [self.pid.stringValue containsString:match]) )
     {
         //match
         matches = YES;
@@ -248,7 +273,18 @@ extern os_log_t logHandle;
         //bail
         goto bail;
     }
-
+    
+    //check state
+    if( (nil != action) &&
+        (YES == [action localizedCaseInsensitiveContainsString:match]) )
+    {
+        //match
+        matches = YES;
+        
+        //bail
+        goto bail;
+    }
+    
 bail:
     
     return matches;

@@ -34,13 +34,13 @@
 @property(nonatomic, retain)NSString* _Nullable path;
 
 //args
-@property(nonatomic, retain)NSMutableArray* _Nonnull arguments;
+@property(nonatomic, retain)NSMutableArray* _Nullable arguments;
 
 //ancestors
-@property(nonatomic, retain)NSMutableArray* _Nonnull ancestors;
+@property(nonatomic, retain)NSMutableArray* _Nullable ancestors;
 
 //signing info
-@property(nonatomic, retain)NSMutableDictionary* _Nonnull csInfo;
+@property(nonatomic, retain)NSMutableDictionary* _Nullable csInfo;
 
 //key
 @property(nonatomic, retain)NSString* _Nonnull key;
