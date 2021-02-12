@@ -382,6 +382,7 @@ bail:
 }
 
 //add a rule
+// and if specified, save to disk
 -(BOOL)add:(Rule*)rule save:(BOOL)save
 {
     //result
@@ -390,35 +391,35 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "adding rule: %{public}@ -> %{public}@", rule.key, rule);
 
-    //new rule for process
-    // need to init array and cs info
-    if(nil == self.rules[rule.key])
+    //sycn to access
+    @synchronized(self.rules)
     {
-        //init
-        self.rules[rule.key] = [NSMutableDictionary dictionary];
-        
-        //init (proc) rules
-        self.rules[rule.key][KEY_RULES] = [NSMutableArray array];
-        
-        //add cs info
-        if(nil != rule.csInfo)
+        //new rule for process
+        // need to init array and cs info
+        if(nil == self.rules[rule.key])
         {
-            //add
-            self.rules[rule.key][KEY_CS_INFO] = rule.csInfo;
+            //init
+            self.rules[rule.key] = [NSMutableDictionary dictionary];
+            
+            //init (proc) rules
+            self.rules[rule.key][KEY_RULES] = [NSMutableArray array];
+            
+            //add cs info
+            if(nil != rule.csInfo)
+            {
+                //add
+                self.rules[rule.key][KEY_CS_INFO] = rule.csInfo;
+            }
         }
-    }
-    
-    //(now) add rule
-    [self.rules[rule.key][KEY_RULES] addObject:rule];
-
-    //not temporary?
-    // save out to disk
-    if( (YES == save) &&
-        (nil == rule.pid) )
-    {
-        //dbg msg
-        os_log_debug(logHandle, "'save' is set and rule is not temporary ...will save");
         
+        //(now) add rule
+        [self.rules[rule.key][KEY_RULES] addObject:rule];
+
+    } //sync
+    
+    //save
+    if(YES == save)
+    {
         //save
         if(YES != [self save])
         {
@@ -432,8 +433,6 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "saved rule to disk");
     }
-    //dbg msg
-    else os_log_debug(logHandle, "'save' not set, or rule is temporary ...didn't save to disk");
     
     //happy
     added = YES;
@@ -796,7 +795,8 @@ bail:
                 [self.rules removeObjectForKey:key];
             }
         }
-    }
+        
+    } //sync
         
     //happy
     result = YES;
@@ -817,6 +817,8 @@ bail:
 }
 
 //save to disk
+// note: temporary rules are ignored
+// note: temporary rules for (now) dead processes are removed
 -(BOOL)save
 {
     //result
@@ -828,35 +830,113 @@ bail:
     //rule's file
     NSString* rulesFile = nil;
     
+    //(non-temp) rules
+    NSMutableDictionary* persistentRules = nil;
+    
     //archived rules
     NSData* archivedRules = nil;
     
     //init path to rule's file
     rulesFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE];
     
+    //init persistent rules
+    persistentRules = [NSMutableDictionary dictionary];
+    
     //dbg msg
     os_log_debug(logHandle, "saving rules to %{public}@", rulesFile);
     
-    //archive rules
-    archivedRules = [NSKeyedArchiver archivedDataWithRootObject:self.rules requiringSecureCoding:YES error:&error];
-    if(nil == archivedRules)
-    {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to archive rules: %{public}@", error);
-        
-        //bail
-        goto bail;
-    }
+    //sync to access
+    @synchronized(self.rules) {
     
-    //write out
-    if(YES != [archivedRules writeToFile:rulesFile atomically:YES])
-    {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to save archived rules to: %{public}@", rulesFile);
+        //generate list of persistent rules
+        for(NSString* key in self.rules.allKeys)
+        {
+            //item's rules
+            NSMutableArray* rules = nil;
+            
+            //init
+            rules = self.rules[key][KEY_RULES];
+            
+            //first
+            // prune any temporary rules for dead processes
+            for(NSInteger i = rules.count-1; i >= 0; i--)
+            {
+                //pid
+                NSNumber* processID = nil;
+                
+                //init
+                processID = ((Rule*)(rules[i])).pid;
+                
+                //if rule has a pid
+                // it's temporary, so check if process still alive
+                if( (nil != processID) &&
+                    (YES != isAlive(processID.unsignedIntValue)) )
+                {
+                    //remove
+                    [rules removeObjectAtIndex:i];
+                }
+            }
+            
+            //no more rules?
+            // i.e. all were temp to now dead processes...
+            if(0 == rules.count)
+            {
+                //remove process
+                [self.rules removeObjectForKey:key];
+                
+                //next
+                continue;
+            }
+            
+            //(re)init w/ make copy
+            // ...as we're now going to filter out temp rules
+            rules = [self.rules[key][KEY_RULES] mutableCopy];
+            
+            //remove temporary rules
+            for(NSInteger i = rules.count-1; i >= 0; i--)
+            {
+                //if rule has a pid
+                // it's temporary, and thus, remove
+                if(nil != ((Rule*)(rules[i])).pid)
+                {
+                    //remove
+                    [rules removeObjectAtIndex:i];
+                }
+            }
+            
+            //add if process (still) has persistent rules
+            if(0 != rules.count)
+            {
+                //copy
+                persistentRules[key] = self.rules[key];
+                
+                //but add only persistent rules
+                persistentRules[key][KEY_RULES] = rules;
+            }
+        }
         
-        //bail
-        goto bail;
-    }
+        //archive persistent rules
+        archivedRules = [NSKeyedArchiver archivedDataWithRootObject:persistentRules requiringSecureCoding:YES error:&error];
+        if(nil == archivedRules)
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: failed to archive rules: %{public}@", error);
+            
+            //bail
+            goto bail;
+        }
+        
+        //write out persistent rules
+        if(YES != [archivedRules writeToFile:rulesFile atomically:YES])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: failed to save archived rules to: %{public}@", rulesFile);
+            
+            //bail
+            goto bail;
+        }
+        
+    } //sync
     
     //happy
     result = YES;

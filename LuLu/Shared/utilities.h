@@ -94,4 +94,7 @@ NSData* tokenForPid(pid_t pid);
 // reverse resolves it
 NSArray* resolveAddress(NSString * address);
 
+//process alive?
+BOOL isAlive(pid_t processID);
+
 #endif

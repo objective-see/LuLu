@@ -213,7 +213,7 @@ NSString* getProcessPath(pid_t pid)
     else
     {
         //init mib
-        // ->want system's size for max args
+        // want system's size for max args
         mib[0] = CTL_KERN;
         mib[1] = KERN_ARGMAX;
         
@@ -236,7 +236,7 @@ NSString* getProcessPath(pid_t pid)
         }
         
         //init mib
-        // ->want process args
+        // want process args
         mib[0] = CTL_KERN;
         mib[1] = KERN_PROCARGS2;
         mib[2] = pid;
@@ -333,7 +333,7 @@ NSMutableArray* getProcessIDs(NSString* processPath, int userID)
     }
         
     //iterate over all pids
-    // ->get name for each process
+    // get name for each process
     for(int i = 0; i < (int)numberOfProcesses; i++)
     {
         //skip blank pids

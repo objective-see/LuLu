@@ -423,7 +423,7 @@ bail:
             //add process cs info
             if(nil != process.csInfo) info[KEY_CS_INFO] = process.csInfo;
             
-            //add
+            //add/save
             if(YES != [rules add:[[Rule alloc] init:info] save:YES])
             {
                 //err msg

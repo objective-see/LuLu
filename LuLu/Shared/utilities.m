@@ -1216,3 +1216,66 @@ bail:
     
     return hostNames;
 }
+
+//process alive?
+BOOL isAlive(pid_t processID)
+{
+    //flag
+    BOOL isAlive = YES;
+    
+    //reset errno
+    errno = 0;
+    
+    //'management info base' array
+    int mib[4] = {0};
+    
+    //kinfo proc
+    struct kinfo_proc procInfo = {0};
+    
+    //try 'kill' with 0
+    // no harm done, but will fail with 'ESRCH' if process is dead
+    kill(processID, 0);
+    
+    //dead proc
+    // 'ESRCH' ->'No such process'
+    if(ESRCH == errno)
+    {
+        //dead
+        isAlive = NO;
+        
+        //bail
+        goto bail;
+    }
+    
+    //size
+    size_t size = 0;
+    
+    //init mib
+    mib[0] = CTL_KERN;
+    mib[1] = KERN_PROC;
+    mib[2] = KERN_PROC_PID;
+    mib[3] = processID;
+    
+    //init size
+    size = sizeof(procInfo);
+
+    //get task's flags
+    // allows to check for zombies
+    if(0 == sysctl(mib, sizeof(mib)/sizeof(*mib), &procInfo, &size, NULL, 0))
+    {
+        //check for zombies
+        if(SZOMB == ((procInfo.kp_proc.p_stat) & SZOMB))
+        {
+            //dead
+            isAlive = NO;
+            
+            //bail
+            goto bail;
+            
+        }
+    }
+    
+bail:
+    
+    return isAlive;
+}
