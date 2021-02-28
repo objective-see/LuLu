@@ -135,66 +135,81 @@ extern os_log_t logHandle;
                     //dbg msg
                     os_log_debug(logHandle, "extension 'activate' returned");
                     
-                    //signal semaphore
-                    dispatch_semaphore_signal(semaphore);
-                    
                     //error
                     if(YES != toggled)
                     {
                         //err msg
-                        os_log_error(logHandle, "ERROR: failed to activate extension");
+                        os_log_error(logHandle, "ERROR: failed to activate system extension");
                         
                         //show alert/exit on main thread
                         dispatch_async(dispatch_get_main_queue(),
                         ^{
                             //show alert
-                            showAlert(@"ERROR: activation failed", @"failed to activate system/network extension");
+                            showAlert(@"ERROR: activation failed", @"failed to activate system extension");
                             
                             //bye
                             [NSApplication.sharedApplication terminate:self];
                         });
                     }
-                    //happy
-                    else
-                    {
-                        //dbg msg
-                        os_log_debug(logHandle, "extension + network filtering approved");
-                        
-                        //wait till it's up and running
-                        while(YES != [extension isExtensionRunning])
-                        {
-                            //nap
-                            [NSThread sleepForTimeInterval:0.25];
-                        }
-                        
-                        //dbg msg
-                        os_log_debug(logHandle, "extension now up and running");
-                        
+                    
+                    //dbg msg
+                    os_log_debug(logHandle, "system extension activated");
+                     
+                    //update message on main thread
+                    dispatch_sync(dispatch_get_main_queue(),
+                    ^{
                         //update UI
+                        self.allowExtMessage.stringValue = @"Waiting for Network Extension Approval";
+                    });
+                    
+                    //activate network extension
+                    if(YES != [extension toggleNetworkExtension:ACTION_ACTIVATE])
+                    {
+                        //err msg
+                        os_log_error(logHandle, "ERROR: failed to activate network extension");
+                        
+                        //show alert/exit on main thread
                         dispatch_async(dispatch_get_main_queue(),
                         ^{
-                            //hide spinner
-                            self.allowExtActivityIndicator.hidden = YES;
+                            //show alert
+                            showAlert(@"ERROR: activation failed", @"failed to activate network extension");
                             
-                            //hide message
-                            self.allowExtMessage.hidden = YES;
-                            
-                            //goto to next view!
-                            [self showView:self.configureView firstResponder:SHOW_SUPPORT];
-                            
-                            //make it key window
-                            [self.window makeKeyAndOrderFront:self];
-                            
-                            //make window front
-                            [NSApp activateIgnoringOtherApps:YES];
-                            
+                            //bye
+                            [NSApplication.sharedApplication terminate:self];
                         });
                     }
+                    
+                    //dbg msg
+                    os_log_debug(logHandle, "network filter approved/enabled");
+                    
+                    //update UI
+                    dispatch_sync(dispatch_get_main_queue(),
+                    ^{
+                        //hide spinner
+                        self.allowExtActivityIndicator.hidden = YES;
+                        
+                        //hide message
+                        self.allowExtMessage.hidden = YES;
+                        
+                        //goto to next view!
+                        [self showView:self.configureView firstResponder:SHOW_SUPPORT];
+                        
+                        //make it key window
+                        [self.window makeKeyAndOrderFront:self];
+                        
+                        //make window front
+                        [NSApp activateIgnoringOtherApps:YES];
+                        
+                    });
+                    
+                    //signal semaphore
+                    dispatch_semaphore_signal(semaphore);
+                    
                 }];
                 
                 //wait for extension semaphore
                 dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-
+                
             });
             
             break;

@@ -39,6 +39,13 @@ int main(int argc, char *argv[])
         options.dsn = SENTRY_DSN;
         options.debug = YES;
     }];
+        
+    //start sysext
+    // Apple notes, "call [this] as early as possible"
+    [NEProvider startSystemExtensionMode];
+        
+    //dbg msg
+    os_log_debug(logHandle, "enabled extension ('startSystemExtensionMode' was called)");
     
     //alloc/init/load prefs
     preferences = [[Preferences alloc] init];
@@ -56,7 +63,7 @@ int main(int argc, char *argv[])
     os_log_debug(logHandle, "created client XPC listener");
     
     //need to create
-    //create install directory?
+    // create install directory?
     if(YES != [[NSFileManager defaultManager] fileExistsAtPath:INSTALL_DIRECTORY])
     {
         //create it
@@ -85,37 +92,6 @@ int main(int argc, char *argv[])
         goto bail;
     }
     
-    //no prefs w/ install time
-    // means user is still clicking thru welcome, so wait for that
-    if(nil == preferences.preferences[PREF_INSTALL_TIMESTAMP])
-    {
-        //dbg msg
-        os_log_debug(logHandle, "waiting for preferences...");
-        
-        //wait
-        while(nil == preferences.preferences[PREF_INSTALL_TIMESTAMP]) [NSThread sleepForTimeInterval:0.25];
-    }
-    
-    //dbg msg
-    os_log_debug(logHandle, "(current) preferences: %{public}@", preferences.preferences);
-
-    //prefs say, 'enabled'?
-    if(YES != [preferences.preferences[PREF_IS_DISABLED] boolValue])
-    {
-        //start sysext
-        [NEProvider startSystemExtensionMode];
-        
-        //dbg msg
-        os_log_debug(logHandle, "enabled extension");
-    }
-    //user (prev) disabled firewall
-    // just log this fact, and don't start it
-    else
-    {
-        //dbg msg
-        os_log_debug(logHandle, "user has disabled firewall, so, not enabling extension");
-    }
-
     }//pool
     
     dispatch_main();

@@ -17,9 +17,6 @@ typedef void(^replyBlockType)(BOOL);
 
 /* PROPERTIES */
 
-//action
-@property NSUInteger requestedAction;
-
 //reply
 @property(nonatomic, copy)replyBlockType replyBlock;
 

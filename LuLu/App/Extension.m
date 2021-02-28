@@ -29,10 +29,7 @@ extern os_log_t logHandle;
     
     //save reply
     self.replyBlock = reply;
-    
-    //set action
-    self.requestedAction = action;
-    
+        
     //activation request
     if(ACTION_ACTIVATE == action)
     {
@@ -70,6 +67,9 @@ extern os_log_t logHandle;
        
     //submit request
     [OSSystemExtensionManager.sharedManager submitRequest:request];
+    
+    //dbg msg
+    os_log_debug(logHandle, "submitting request returned...");
     
 bail:
     
@@ -265,19 +265,6 @@ bail:
     
     //happy
     completed = YES;
-    
-    //what was the request?
-    if(ACTION_ACTIVATE == self.requestedAction)
-    {
-        //dbg msg
-        os_log_debug(logHandle, "request for was for activate, so also activating network extension");
-        
-        //unset
-        self.requestedAction = 0;
-        
-        //now, activate network extension
-        [self toggleNetworkExtension:ACTION_ACTIVATE];
-    }
     
 bail:
     

@@ -103,9 +103,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="osh-aW-f6g">
-                                <rect key="frame" x="303" y="15" width="348" height="18"/>
+                                <rect key="frame" x="303" y="15" width="419" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Waiting for Network Extension Approval" id="VIe-9o-Kc7">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Waiting for System Extension Approval" id="VIe-9o-Kc7">
                                     <font key="font" size="15" name="Menlo-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

@@ -22,9 +22,6 @@
     //item
     id item = nil;
  
-    //rule
-    Rule* rule = nil;
-    
     //selected row
     NSInteger selectedRow = -1;
     
@@ -64,9 +61,6 @@
     // show paths
     if(YES == [item isKindOfClass:[NSArray class]])
     {
-        //extract (a) rule
-        rule = ((NSArray*)item).firstObject;
-        
         //add item
         [menu insertItemWithTitle:@"→ Show path(s)" action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:0];
         
@@ -89,9 +83,6 @@
     //rule row
     else if(YES == [item isKindOfClass:[Rule class]])
     {
-        //typecast
-        rule = (Rule*)item;
-        
         //set title
         [menu insertItemWithTitle:@"→ Edit Rule" action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:0];
         

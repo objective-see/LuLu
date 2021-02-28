@@ -140,7 +140,7 @@ NSMutableDictionary* alerts = nil;
             
             //wait semaphore
             dispatch_semaphore_t semaphore = 0;
-            
+                        
             //init extension object
             extension = [[Extension alloc] init];
             
@@ -152,9 +152,6 @@ NSMutableDictionary* alerts = nil;
             {
                 //dbg msg
                 os_log_debug(logHandle, "extension 'activate' returned");
-                
-                //signal semaphore
-                dispatch_semaphore_signal(semaphore);
                 
                 //error
                 if(YES != toggled)
@@ -176,34 +173,27 @@ NSMutableDictionary* alerts = nil;
                         
                     });
                 }
-                //happy
-                else
-                {
-                    //dbg msg
-                    os_log_debug(logHandle, "extension + network filtering approved");
-                    
-                    //wait till it's up and running
-                    while(YES != [extension isExtensionRunning])
-                    {
-                        //nap
-                        [NSThread sleepForTimeInterval:0.25];
-                    }
-                    
-                    //dbg msg
-                    os_log_debug(logHandle, "extension now up and running");
-                    
-                    //complete initialization on main thread
-                    dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //complete initialization on main thread
+                // this will get prefs, and enable net ext, etc...
+                dispatch_async(dispatch_get_main_queue(), ^{
                         
-                        //complete inits
-                        [self completeInitialization:nil];
-                        
-                    });
-                }
+                    //complete inits
+                    [self completeInitialization:nil];
+                    
+                });
+                
+                //signal semaphore
+                dispatch_semaphore_signal(semaphore);
+                
             }];
+            
+            //dbg msg
+            os_log_debug(logHandle, "waiting network extension activation...");
             
             //wait for extension semaphore
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            
         });
     }
 
@@ -535,7 +525,8 @@ bail:
 }
 
 //finish up initializations
--(void)completeInitialization:(NSDictionary*)initialPreferenes
+// includes enabling network ext if user hasn't disabled
+-(void)completeInitialization:(NSDictionary*)initialPreferences
 {
     //preferences
     NSDictionary* preferences = nil;
@@ -552,10 +543,10 @@ bail:
     
     //initial prefs?
     // send to extension
-    if(nil != initialPreferenes)
+    if(nil != initialPreferences)
     {
         //set prefs
-        [self.xpcDaemonClient updatePreferences:initialPreferenes];
+        [self.xpcDaemonClient updatePreferences:initialPreferences];
     }
 
     //(always) get preferences from extension
@@ -580,6 +571,49 @@ bail:
         os_log_debug(logHandle, "running in 'no icon' mode (so no need for status bar)");
     }
     
+    //not first time, reactive network filter
+    if(nil == initialPreferences)
+    {
+        //not disabled?
+        // activate network filter
+        if(YES != [preferences[PREF_IS_DISABLED] boolValue])
+        {
+            //dbg msg
+            os_log_debug(logHandle, "activating network extension...");
+            
+            //activate in background thread
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+            ^{
+                //activate network extension
+                if(YES != [[[Extension alloc] init] toggleNetworkExtension:ACTION_ACTIVATE])
+                {
+                    //err msg
+                    os_log_error(logHandle, "ERROR: failed to activate network extension");
+                    
+                    //show alert/exit on main thread
+                    dispatch_async(dispatch_get_main_queue(),
+                    ^{
+                        //show alert
+                        showAlert(@"ERROR: activation failed", @"failed to activate network extension");
+                        
+                        //bye
+                        //[NSApplication.sharedApplication terminate:self];
+                    });
+                }
+                
+                //dbg msg
+                os_log_debug(logHandle, "network filter approved/enabled");
+                
+            });
+        }
+        //disabled
+        else
+        {
+            //dbg msg
+            os_log_debug(logHandle, "user disabled ...didn't activate network filter");
+        }
+    }
+       
     //automatically check for updates?
     if(YES != [preferences[PREF_NO_UPDATE_MODE] boolValue])
     {
@@ -608,7 +642,7 @@ bail:
     update = [[Update alloc] init];
     
     //check for update
-    // ->'updateResponse newVersion:' method will be called when check is done
+    // 'updateResponse newVersion:' method will be called when check is done
     [update checkForUpdate:^(NSUInteger result, NSString* newVersion) {
         
         //handle response
@@ -730,14 +764,11 @@ bail:
             //init wait semaphore
             semaphore = dispatch_semaphore_create(0);
             
-            //kick off extension activation request
+            //kick off extension deactivation request
             [extension toggleExtension:ACTION_DEACTIVATE reply:^(BOOL toggled)
             {
                 //dbg msg
                 os_log_debug(logHandle, "extension 'deactivate' returned...");
-                
-                //signal semaphore
-                dispatch_semaphore_signal(semaphore);
                 
                 //error
                 // user likely cancelled
@@ -758,6 +789,10 @@ bail:
                     //bye
                     [NSApplication.sharedApplication terminate:self];
                 }
+                
+                //signal semaphore
+                dispatch_semaphore_signal(semaphore);
+                
             }];
             
             //wait for extension semaphore
@@ -891,6 +926,9 @@ bail:
                     //signal semaphore
                     dispatch_semaphore_signal(semaphore);
                 }];
+                
+                //dbg msg
+                os_log_debug(logHandle, "waiting system extension deactivation...");
                 
                 //wait for extension semaphore
                 dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
