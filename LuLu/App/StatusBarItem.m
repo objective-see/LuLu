@@ -124,9 +124,6 @@ enum menuItems
 //show popver
 -(void)showPopover
 {
-    //message
-    NSString* message = nil;
-    
     //alloc popover
     self.popover = [[NSPopover alloc] init];
     
@@ -138,24 +135,6 @@ enum menuItems
     
     //set view controller
     self.popover.contentViewController = [[StatusBarPopoverController alloc] initWithNibName:@"StatusBarPopover" bundle:nil];
-    
-    //disabled
-    // set msg
-    if(YES == self.isDisabled)
-    {
-        //set msg
-        message = @"LuLu installed (though disabled)";
-    }
-    //enabled
-    //set msg
-    else
-    {
-        //set msg
-        message = @"LuLu installed & enabled!";
-    }
-    
-    //set msg for label
-    ((StatusBarPopoverController*)self.popover.contentViewController).message = message;
     
     //set behavior
     // auto-close if user clicks button in status bar

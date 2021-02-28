@@ -174,22 +174,59 @@ NSMutableDictionary* alerts = nil;
                     });
                 }
                 
-                //complete initialization on main thread
-                // this will get prefs, and enable net ext, etc...
-                dispatch_async(dispatch_get_main_queue(), ^{
+                //dbg msg
+                os_log_debug(logHandle, "activated system extension, will now activate network filter...");
+                
+                //(always) activate network filter
+                // side affect is that it launches system extension
+                if(YES != [[[Extension alloc] init] toggleNetworkExtension:ACTION_ACTIVATE])
+                {
+                    //err msg
+                    os_log_error(logHandle, "ERROR: failed to activate network filter");
+                    
+                    //show alert/exit on main thread
+                    dispatch_async(dispatch_get_main_queue(),
+                    ^{
+                        //show alert
+                        showAlert(@"ERROR: activation failed", @"failed to activate network filter");
                         
-                    //complete inits
+                        //bye
+                        [NSApplication.sharedApplication terminate:self];
+                    });
+                }
+                
+                //dbg msg
+                os_log_debug(logHandle, "network filter activated/enabled");
+                
+                //wait to ensure extension is up an running
+                do
+                {
+                    //dbg msg
+                    os_log_debug(logHandle, "waiting for %{public}@", EXT_BUNDLE_ID);
+                    
+                    //nap
+                    [NSThread sleepForTimeInterval:0.25f];
+                    
+                } while(YES != [extension isExtensionRunning]);
+                
+                //dbg msg
+                os_log_debug(logHandle, "%{public}@ is off and running", EXT_BUNDLE_ID);
+                        
+                //complete initialization on main thread
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    //complete initializations
                     [self completeInitialization:nil];
                     
                 });
-                
+                    
                 //signal semaphore
                 dispatch_semaphore_signal(semaphore);
                 
             }];
             
             //dbg msg
-            os_log_debug(logHandle, "waiting network extension activation...");
+            os_log_debug(logHandle, "waiting system extension & network filter activation...");
             
             //wait for extension semaphore
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
@@ -548,10 +585,10 @@ bail:
         //set prefs
         [self.xpcDaemonClient updatePreferences:initialPreferences];
     }
-
-    //(always) get preferences from extension
-    // also establishes (persistent) connection with daemon
-    preferences = [self.xpcDaemonClient getPreferences];
+    
+    //always (reset) disabled
+    // always want enabled on (restart)
+    preferences = [self.xpcDaemonClient updatePreferences:@{PREF_IS_DISABLED:@NO}];
     
     //dbg msg
     os_log_debug(logHandle, "loaded preferences %{public}@", preferences);
@@ -570,50 +607,7 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "running in 'no icon' mode (so no need for status bar)");
     }
-    
-    //not first time, reactive network filter
-    if(nil == initialPreferences)
-    {
-        //not disabled?
-        // activate network filter
-        if(YES != [preferences[PREF_IS_DISABLED] boolValue])
-        {
-            //dbg msg
-            os_log_debug(logHandle, "activating network extension...");
-            
-            //activate in background thread
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-            ^{
-                //activate network extension
-                if(YES != [[[Extension alloc] init] toggleNetworkExtension:ACTION_ACTIVATE])
-                {
-                    //err msg
-                    os_log_error(logHandle, "ERROR: failed to activate network extension");
-                    
-                    //show alert/exit on main thread
-                    dispatch_async(dispatch_get_main_queue(),
-                    ^{
-                        //show alert
-                        showAlert(@"ERROR: activation failed", @"failed to activate network extension");
-                        
-                        //bye
-                        //[NSApplication.sharedApplication terminate:self];
-                    });
-                }
-                
-                //dbg msg
-                os_log_debug(logHandle, "network filter approved/enabled");
-                
-            });
-        }
-        //disabled
-        else
-        {
-            //dbg msg
-            os_log_debug(logHandle, "user disabled ...didn't activate network filter");
-        }
-    }
-       
+
     //automatically check for updates?
     if(YES != [preferences[PREF_NO_UPDATE_MODE] boolValue])
     {

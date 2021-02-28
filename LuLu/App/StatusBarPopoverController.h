@@ -11,10 +11,4 @@
 
 @interface StatusBarPopoverController : NSViewController
 
-//message
-@property(nonatomic, retain)NSString* message;
-
-//label for popover
-@property (weak) IBOutlet NSTextField *label;
-
 @end
