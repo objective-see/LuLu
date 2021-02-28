@@ -49,6 +49,9 @@ enum menuItems
         //create item
         [self createStatusItem:menu];
         
+        //set state based on (existing) preferences
+        self.isDisabled = [preferences[PREF_IS_DISABLED] boolValue];
+        
         //only once
         // show popover
         dispatch_once(&onceToken, ^{
@@ -62,7 +65,7 @@ enum menuItems
             //dbg msg
             os_log_debug(logHandle, "(real) parent: %{public}@", parent);
             
-            //set auto launched flag (i.e. login item)
+            //only show popover if we're not autolaunched
             if(YES != [parent[@"CFBundleIdentifier"] isEqualToString:@"com.apple.loginwindow"])
             {
                 //dbg msg
@@ -73,10 +76,7 @@ enum menuItems
             }
             
         });
-        
-        //set state based on (existing) preferences
-        self.isDisabled = [preferences[PREF_IS_DISABLED] boolValue];
-        
+    
         //set initial menu state
         [self setState];
     }
@@ -124,6 +124,9 @@ enum menuItems
 //show popver
 -(void)showPopover
 {
+    //message
+    NSString* message = nil;
+    
     //alloc popover
     self.popover = [[NSPopover alloc] init];
     
@@ -136,6 +139,24 @@ enum menuItems
     //set view controller
     self.popover.contentViewController = [[StatusBarPopoverController alloc] initWithNibName:@"StatusBarPopover" bundle:nil];
     
+    //disabled
+    // set msg
+    if(YES == self.isDisabled)
+    {
+        //set msg
+        message = @"LuLu installed (though disabled)";
+    }
+    //enabled
+    //set msg
+    else
+    {
+        //set msg
+        message = @"LuLu installed & enabled!";
+    }
+    
+    //set msg for label
+    ((StatusBarPopoverController*)self.popover.contentViewController).message = message;
+    
     //set behavior
     // auto-close if user clicks button in status bar
     self.popover.behavior = NSPopoverBehaviorTransient;
@@ -147,8 +168,8 @@ enum menuItems
     // have to wait cuz...
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(),
     ^{
-       //show
-       [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
+        //show
+        [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
     });
     
     //wait a bit

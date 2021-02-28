@@ -12,6 +12,20 @@
 
 @implementation StatusBarPopoverController
 
+@synthesize message;
+
+//set message
+-(void)viewDidLoad
+{
+    //super
+    [super viewDidLoad];
+   
+    //set label
+    self.label.stringValue = self.message;
+    
+    return;
+}
+
 //'close' button handler
 // simply dismiss/close popover
 -(IBAction)closePopover:(NSControl *)sender
