@@ -230,8 +230,8 @@ bail:
     NEFilterNewFlowVerdict* verdict = nil;
     
     //pool
-    @autoreleasepool
-    {
+    //@autoreleasepool
+    //{
     
     //process obj
     Process* process = nil;
@@ -565,7 +565,7 @@ bail:
     
 bail:
     
-    ;} //pool
+    //;} //pool
     
     return verdict;
 }
