@@ -6,27 +6,31 @@
 	<dict>
 		<key>Resources/AboutWindow.nib</key>
 		<data>
-		dsPaU6J+MfMAoGMIrtQtMU5NE6U=
+		seDKO97bTT3D/vD5kb5A662MB1I=
 		</data>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		TaUWCo6Yu2OW+cCqaAmur4C4niI=
+		ti8cWN+boVv4jzBk4yK2WJ2go00=
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		vgfBfXAAu9QmB+k5p69NF6PpXtU=
+		OWFV/4vrfHeNP85QJNN0S5fc+kg=
 		</data>
-		<key>Resources/Base.lproj/MainMenu.nib</key>
+		<key>Resources/Base.lproj/MainMenu.nib/keyedobjects-110000.nib</key>
 		<data>
-		qh7+AMNffhT4QjCIlDkS29VZNF4=
+		CecgE7LtfdtJZYlY6E5oVYa+ex8=
+		</data>
+		<key>Resources/Base.lproj/MainMenu.nib/keyedobjects.nib</key>
+		<data>
+		eDqm1NdXJfqxj3fatcrpIvrqFKA=
 		</data>
 		<key>Resources/UpdateWindow.nib</key>
 		<data>
-		dFvr95tSEd4hzxWtemS8xVgL4Zk=
+		xXEVz9MSmI0h+bvA57tq5ZhLuB4=
 		</data>
 		<key>Resources/patrons.txt</key>
 		<data>
-		c8DX+0XxYbKo7nqifUCzmabGR6A=
+		Fh9JXwLTC8v4ig7oYvhYtCLvGKU=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -35,75 +39,58 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			5oM8RUlGciht3j+i1caz1YxAu10=
+			mv//C291rwjqP+xY+CCRSn0OujI=
 			</data>
 			<key>requirement</key>
 			<string>anchor apple generic and identifier "io.sentry.Sentry" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = VBG97UB4TA)</string>
 		</dict>
 		<key>Resources/AboutWindow.nib</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			dsPaU6J+MfMAoGMIrtQtMU5NE6U=
-			</data>
 			<key>hash2</key>
 			<data>
-			i13ENhvOeDl/6/VOsf8PRHTLF1LBJlmyzbAATpLzmeU=
+			QfCpXENTIhpDh6WcB4fyVS0Rmf8xl2X618Z8/k/MP+c=
 			</data>
 		</dict>
 		<key>Resources/AppIcon.icns</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			TaUWCo6Yu2OW+cCqaAmur4C4niI=
-			</data>
 			<key>hash2</key>
 			<data>
-			NhSew6RVsC4YR04bW5qN49foBIUuDSSENhYr713HDBg=
+			RLU1hYszsewOXRZLXIaE/Q1js06FBs9Cs18mOLn3FT4=
 			</data>
 		</dict>
 		<key>Resources/Assets.car</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			vgfBfXAAu9QmB+k5p69NF6PpXtU=
-			</data>
 			<key>hash2</key>
 			<data>
-			1qL2PPFRZPD5J8a/hXo/+Fc4aVh1g90XLrh9mjA7HW4=
+			TTYo0x5zc4qqYKhLNo7E/DqwdCV4fha8o+o8l9t6Dfs=
 			</data>
 		</dict>
-		<key>Resources/Base.lproj/MainMenu.nib</key>
+		<key>Resources/Base.lproj/MainMenu.nib/keyedobjects-110000.nib</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			qh7+AMNffhT4QjCIlDkS29VZNF4=
-			</data>
 			<key>hash2</key>
 			<data>
-			IiDUcN68oaoQdE0E3Yn4qTMeCONH+rMzXh89ZXZT+Uk=
+			avHKNdsfveO1LrjkuD+j8c0/8R+hp2YXhDmLN7Pl01Y=
+			</data>
+		</dict>
+		<key>Resources/Base.lproj/MainMenu.nib/keyedobjects.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vD9dCJSA4lt6FLWA6opgiROL7Mx2p/k/jXC/sEM+jYY=
 			</data>
 		</dict>
 		<key>Resources/UpdateWindow.nib</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			dFvr95tSEd4hzxWtemS8xVgL4Zk=
-			</data>
 			<key>hash2</key>
 			<data>
-			VoeuErKlZwAxmW4jKw1dBvLWsWG+/68ytVX63gLdeks=
+			R241zG5iGCzUSQmAmyFs8RYPgTUw5S0yhzsaovZ2/30=
 			</data>
 		</dict>
 		<key>Resources/patrons.txt</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			c8DX+0XxYbKo7nqifUCzmabGR6A=
-			</data>
 			<key>hash2</key>
 			<data>
-			xGEzKqSaGy2GAMIZZyL5UF8yJJtFQcbWQah3j4O3jFg=
+			9gpBJhQflivBJB/EEvGfgcN0Daw8SL9YKBNhnB256aI=
 			</data>
 		</dict>
 	</dict>

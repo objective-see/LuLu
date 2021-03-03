@@ -845,13 +845,13 @@ bail:
     
     //foreground
     [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
-
-    //make key and front
-    [self.window makeKeyAndOrderFront:self];
-   
+    
     //make app active
     [NSApp activateIgnoringOtherApps:YES];
     
+    //make key and front
+    [self.window makeKeyAndOrderFront:self];
+
     //show alert
     // and if not a 'cancel', uninstall
     if(NSModalResponseCancel != [alert runModal])
