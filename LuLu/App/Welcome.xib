@@ -24,7 +24,7 @@
         <window title="LuLu" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="196" y="240" width="700" height="350"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
             <value key="minSize" type="size" width="700" height="350"/>
             <value key="maxSize" type="size" width="700" height="350"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
@@ -269,7 +269,7 @@
                     <color key="fillColor" red="0.57793885469999995" green="0.75859862570000003" blue="0.2368842065" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </box>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="NeU-Pi-VDr">
-                    <rect key="frame" x="453" y="63" width="229" height="57"/>
+                    <rect key="frame" x="174" y="140" width="229" height="57"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Show some love? " id="XBE-gW-YkK">
                         <font key="font" textStyle="headline" name=".SFNS-Bold"/>
@@ -301,23 +301,23 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" alphaValue="0.5" id="vPs-6O-RMx">
-                    <rect key="frame" x="536" y="321" width="118" height="29"/>
+                    <rect key="frame" x="548" y="312" width="118" height="29"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Special mahalo to :" id="0iC-Zj-fwI">
-                        <font key="font" size="15" name="AvenirNextCondensed-Regular"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Special mahalo to:" id="0iC-Zj-fwI">
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.5" id="9lk-SB-wZn">
-                    <rect key="frame" x="550" y="300" width="80" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsJamf" id="YaM-iV-DJB"/>
-                </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.5" id="dY6-bu-hB0">
-                    <rect key="frame" x="553" y="266" width="116" height="38"/>
+                    <rect key="frame" x="550" y="245" width="116" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Friends1Password" id="HA7-b9-2I1"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.5" id="9lk-SB-wZn">
+                    <rect key="frame" x="550" y="285" width="80" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsJamf" id="YaM-iV-DJB"/>
                 </imageView>
             </subviews>
             <point key="canvasLocation" x="629" y="1303"/>
