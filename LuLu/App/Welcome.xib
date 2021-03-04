@@ -53,7 +53,7 @@
                     <rect key="frame" x="149" y="276" width="338" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Welcome to" id="Qyh-uK-Afv">
-                        <font key="font" size="32" name="AvenirNextCondensed-Regular"/>
+                        <font key="font" textStyle="largeTitle" name=".SFNS-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -78,7 +78,7 @@
                     <rect key="frame" x="34" y="75" width="648" height="108"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="LuLu detects outgoing network connections, alerting you when something is trying to 'call home'" id="pMo-Yj-XKY">
-                        <font key="font" size="32" name="AvenirNextCondensed-Regular"/>
+                        <font key="font" textStyle="headline" name=".SFNS-Bold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -106,7 +106,7 @@
                                 <rect key="frame" x="303" y="15" width="419" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Waiting for System Extension Approval" id="VIe-9o-Kc7">
-                                    <font key="font" size="15" name="Menlo-Regular"/>
+                                    <font key="font" textStyle="headline" name=".SFNS-Bold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -123,7 +123,7 @@
                     <rect key="frame" x="18" y="568" width="664" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="First,  allow the LuLu Network Extension:" id="Cwe-NI-HiJ">
-                        <font key="font" size="32" name="AvenirNextCondensed-Regular"/>
+                        <font key="font" textStyle="largeTitle" name=".SFNS-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -166,7 +166,7 @@
                     <rect key="frame" x="31" y="256" width="664" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Now, let's configure LuLu:" id="XHD-XH-wR0">
-                        <font key="font" size="32" name="AvenirNextCondensed-Regular"/>
+                        <font key="font" textStyle="largeTitle" name=".SFNS-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -191,7 +191,7 @@
                     <rect key="frame" x="179" y="176" width="470" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This option will allow any Apple-signed binary to access the network without generating an alert." id="r1b-Nl-Ii7">
-                        <font key="font" size="12" name="Menlo-Regular"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -200,7 +200,7 @@
                     <rect key="frame" x="177" y="97" width="449" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This option will allow any 3rd-party app that is already installed, to access the network without generating an alert." id="3aO-AI-YtY">
-                        <font key="font" size="12" name="Menlo-Regular"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -214,7 +214,7 @@
                     <rect key="frame" x="200" y="216" width="310" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" Allow Apple Programs" id="zo1-a0-tPg">
-                        <font key="font" size="17" name="Menlo-Bold"/>
+                        <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -223,7 +223,7 @@
                     <rect key="frame" x="200" y="137" width="399" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" Allow Already Installed Applications" id="ymJ-tB-qiA">
-                        <font key="font" size="17" name="Menlo-Bold"/>
+                        <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -271,8 +271,8 @@
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="NeU-Pi-VDr">
                     <rect key="frame" x="453" y="63" width="229" height="57"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Show some love? " id="XBE-gW-YkK">
-                        <font key="font" size="32" name="AvenirNextCondensed-Regular"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Show some love? " id="XBE-gW-YkK">
+                        <font key="font" textStyle="headline" name=".SFNS-Bold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -286,7 +286,7 @@
                     <rect key="frame" x="174" y="121" width="500" height="108"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="It's free, open-source, and written by a single (mac-loving) coder!" id="Uzd-7P-dzG">
-                        <font key="font" size="32" name="AvenirNextCondensed-Regular"/>
+                        <font key="font" textStyle="headline" name=".SFNS-Bold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -295,7 +295,7 @@
                     <rect key="frame" x="33" y="256" width="664" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Would you like to support LuLu?" id="qNj-Zh-8FW">
-                        <font key="font" size="32" name="AvenirNextCondensed-Regular"/>
+                        <font key="font" textStyle="largeTitle" name=".SFNS-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
