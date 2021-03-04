@@ -47,21 +47,21 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="J66-tT-qAf"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="6nW-4K-zf4"/>
-                    <toolbarItem implicitItemIdentifier="99F00439-5E3B-4FBB-BC65-3E1F7EBDDBC6" explicitItemIdentifier="rules" label="rules" paletteLabel="rules" image="MainAppPrefsRules" selectable="YES" id="Twx-TJ-y2Q">
+                    <toolbarItem implicitItemIdentifier="99F00439-5E3B-4FBB-BC65-3E1F7EBDDBC6" explicitItemIdentifier="rules" label="Rules" paletteLabel="Rules" image="MainAppPrefsRules" selectable="YES" id="Twx-TJ-y2Q">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="toolbarButtonHandler:" target="-2" id="6sP-cE-opo"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="3F78D487-BA4D-4E1B-8FC6-A844D292C69B" explicitItemIdentifier="visuals" label="mode" paletteLabel="mode" tag="1" image="MainAppPrefsMode" selectable="YES" id="k0w-Oi-kwd" userLabel="mode">
+                    <toolbarItem implicitItemIdentifier="3F78D487-BA4D-4E1B-8FC6-A844D292C69B" explicitItemIdentifier="visuals" label="Mode" paletteLabel="Mode" tag="1" image="MainAppPrefsMode" selectable="YES" id="k0w-Oi-kwd" userLabel="mode">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="toolbarButtonHandler:" target="-2" id="5Bh-RO-nSN"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="384D69C6-2351-417E-9C93-B14039FE440F" explicitItemIdentifier="update" label="update" paletteLabel="update" tag="2" image="MainAppPrefsUpdate" selectable="YES" id="rrF-xj-cXp">
+                    <toolbarItem implicitItemIdentifier="384D69C6-2351-417E-9C93-B14039FE440F" explicitItemIdentifier="update" label="Update" paletteLabel="Update" tag="2" image="MainAppPrefsUpdate" selectable="YES" id="rrF-xj-cXp">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
