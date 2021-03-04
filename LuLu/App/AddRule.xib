@@ -61,7 +61,7 @@
                             <constraint firstAttribute="height" constant="24" id="mOR-Su-gK2"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Bon-iR-8FO">
-                            <font key="font" size="13" name="Menlo-Regular"/>
+                            <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -95,7 +95,7 @@
                             <constraint firstAttribute="height" constant="24" id="azV-rq-4Id"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="*" drawsBackground="YES" id="QWe-2U-lfn">
-                            <font key="font" size="13" name="Menlo-Regular"/>
+                            <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -118,7 +118,7 @@
                             <constraint firstAttribute="height" constant="24" id="rzM-Fb-Vh0"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="*" drawsBackground="YES" id="kXW-Xv-Fc4">
-                            <font key="font" size="13" name="Menlo-Regular"/>
+                            <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -130,7 +130,7 @@
                             <constraint firstAttribute="height" constant="17" id="o6F-EB-EIp"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Remote port" id="5ic-Om-d8g">
-                            <font key="font" size="13" name="Menlo-Regular"/>
+                            <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
