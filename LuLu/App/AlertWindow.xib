@@ -171,7 +171,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="499" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nf4-ZN-jcK">
-                        <rect key="frame" x="140" y="214" width="586" height="14"/>
+                        <rect key="frame" x="140" y="215" width="586" height="13"/>
                         <textFieldCell key="cell" lineBreakMode="truncatingMiddle" truncatesLastVisibleLine="YES" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" id="ezD-RZ-q5S">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -364,7 +364,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0yy-0X-fb5">
-                        <rect key="frame" x="140" y="123" width="586" height="13"/>
+                        <rect key="frame" x="140" y="124" width="586" height="13"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="13" id="I86-1o-p4T"/>
                         </constraints>

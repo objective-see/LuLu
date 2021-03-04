@@ -161,7 +161,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XX0-l9-AZe">
-                        <rect key="frame" x="403" y="13" width="92" height="33"/>
+                        <rect key="frame" x="404" y="13" width="90" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="78" id="L0j-xG-Jk9"/>
                             <constraint firstAttribute="height" constant="21" id="Pno-Yh-Pt3"/>
@@ -178,7 +178,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AdX-rG-UUh">
-                        <rect key="frame" x="279" y="177" width="76" height="17"/>
+                        <rect key="frame" x="279" y="176" width="76" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="regex?" bezelStyle="regularSquare" imagePosition="left" inset="2" id="FCA-Cv-yT3">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>

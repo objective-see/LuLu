@@ -58,7 +58,7 @@
                     <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5if-J7-OZf">
                         <rect key="frame" x="20" y="68" width="446" height="97"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" drawsBackground="NO" id="WiG-CC-JV3">
+                        <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="WiG-CC-JV3">
                             <rect key="frame" x="1" y="1" width="444" height="95"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
