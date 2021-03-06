@@ -12,6 +12,8 @@ LuLu should build cleanly in Xcode (though you will have to remove code signing 
 **To Install:** \
 Simply run the installer application: `LuLu Installer.app`
 
+    brew nstall lulu
+
 **To Support:** \
 &#x2764;&nbsp; Love this product and want to support it? Please check out my [patreon page](https://www.patreon.com/objective_see) :)
 
