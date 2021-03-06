@@ -13,7 +13,7 @@ LuLu should build cleanly in Xcode (though you will have to remove code signing 
 Simply run the installer application: `LuLu Installer.app`
 
 **To Support:** \
-&#x2764;&nbsp; Love this product or want to support it? Please check out my [patreon page](https://www.patreon.com/objective_see) :)
+&#x2764;&nbsp; Love this product and want to support it? Please check out my [patreon page](https://www.patreon.com/objective_see) :)
 
 <p align="center">
 <a class="inlineLink" href="https://www.patreon.com/objective_see">
