@@ -48,9 +48,6 @@
 //update window controller
 @property(nonatomic, retain)UpdateWindowController* updateWindowController;
 
-//xpc for daemon comms
-@property(nonatomic, retain)XPCDaemonClient* xpcDaemonClient;
-
 /* METHODS */
 
 //first launch?

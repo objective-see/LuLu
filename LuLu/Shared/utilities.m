@@ -487,6 +487,14 @@ NSImage* getIconForProcess(NSString* path)
     appBundle = findAppBundle(path);
     if(nil != appBundle)
     {
+        //extract icon
+        icon = [[NSWorkspace sharedWorkspace] iconForFile:appBundle.bundlePath];
+        if(nil != icon)
+        {
+            //done!
+            goto bail;
+        }
+        
         //get file
         iconFile = appBundle.infoDictionary[@"CFBundleIconFile"];
         
@@ -1039,8 +1047,12 @@ NSModalResponse showAlert(NSString* messageText, NSString* informativeText)
     //main text
     alert.messageText = messageText;
     
-    //details
-    alert.informativeText = informativeText;
+    //add details
+    if(nil != informativeText)
+    {
+        //details
+        alert.informativeText = informativeText;
+    }
     
     //add button
     [alert addButtonWithTitle:@"OK"];

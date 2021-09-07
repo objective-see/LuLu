@@ -190,7 +190,7 @@ extern NSMutableDictionary* alerts;
     //dbg msg
     os_log_debug(logHandle, "invoking daemon XPC method, '%s'", __PRETTY_FUNCTION__);
     
-    //update prefs
+    //uninstall
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
         //err msg

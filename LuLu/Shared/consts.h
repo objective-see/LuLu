@@ -376,9 +376,6 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define CS_VALID 0x00000001
 #define CS_RUNTIME 0x00010000
 
-//first time flag
-#define INITIAL_LAUNCH @"-initialLaunch"
-
 //deactivate
 #define ACTION_DEACTIVATE 0
 

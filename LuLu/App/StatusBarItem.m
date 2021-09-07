@@ -19,6 +19,9 @@
 //log handle
 extern os_log_t logHandle;
 
+//xpc for daemon comms
+extern XPCDaemonClient* xpcDaemonClient;
+
 //menu items
 enum menuItems
 {
@@ -207,7 +210,7 @@ enum menuItems
             [self setState];
         
             //update prefs
-            [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updatePreferences:@{PREF_IS_DISABLED:[NSNumber numberWithBool:self.isDisabled]}];
+            [xpcDaemonClient updatePreferences:@{PREF_IS_DISABLED:[NSNumber numberWithBool:self.isDisabled]}];
             
             //toggle network extension based on (new) state
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),

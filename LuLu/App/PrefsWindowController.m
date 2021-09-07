@@ -19,6 +19,9 @@
 //log handle
 extern os_log_t logHandle;
 
+//xpc for daemon comms
+extern XPCDaemonClient* xpcDaemonClient;
+
 @implementation PrefsWindowController
 
 @synthesize toolbar;
@@ -53,7 +56,7 @@ extern os_log_t logHandle;
 -(void)awakeFromNib
 {
     //get prefs
-    self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient getPreferences];
+    self.preferences = [xpcDaemonClient getPreferences];
     
     //set rules prefs as default
     [self toolbarButtonHandler:nil];
@@ -233,7 +236,7 @@ bail:
     
     //send XPC msg to daemon to update prefs
     // returns (all/latest) prefs, which is what we want
-    self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updatePreferences:updatedPreferences];
+    self.preferences = [xpcDaemonClient updatePreferences:updatedPreferences];
 
     //call back into app to process
     // e.g. show/hide status bar icon, etc.
@@ -272,7 +275,7 @@ bail:
         
         //send XPC msg to daemon to update prefs
         // returns (all/latest) prefs, which is what we want
-        self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:panel.URL.path}];
+        self.preferences = [xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:panel.URL.path}];
     }
     
     return;
@@ -287,7 +290,7 @@ bail:
     
     //send XPC msg to daemon to update prefs
     // returns (all/latest) prefs, which is what we want
-    self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:self.blockList.stringValue}];
+    self.preferences = [xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:self.blockList.stringValue}];
     
     return;
 }
@@ -425,7 +428,7 @@ bail:
         
         //send XPC msg to daemon to update prefs
         // returns (all/latest) prefs, which is what we want
-        self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updatePreferences:@{PREF_USE_BLOCK_LIST:@0}];
+        self.preferences = [xpcDaemonClient updatePreferences:@{PREF_USE_BLOCK_LIST:@0}];
     }
         
     //block list changed? capture!
@@ -434,7 +437,7 @@ bail:
     {
         //send XPC msg to daemon to update prefs
         // returns (all/latest) prefs, which is what we want
-        self.preferences = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:self.blockList.stringValue}];
+        self.preferences = [xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:self.blockList.stringValue}];
     }
      
     //wait a bit, then set activation policy

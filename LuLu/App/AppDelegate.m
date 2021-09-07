@@ -20,6 +20,9 @@ extern os_log_t logHandle;
 //alert windows
 NSMutableDictionary* alerts = nil;
 
+//xpc for daemon comms
+XPCDaemonClient* xpcDaemonClient = nil;
+
 @interface AppDelegate ()
 
 @property (weak) IBOutlet NSWindow *window;
@@ -28,7 +31,6 @@ NSMutableDictionary* alerts = nil;
 
 @implementation AppDelegate
 
-@synthesize xpcDaemonClient;
 @synthesize aboutWindowController;
 @synthesize prefsWindowController;
 @synthesize rulesWindowController;
@@ -102,7 +104,7 @@ NSMutableDictionary* alerts = nil;
     if(YES == [self isFirstTime])
     {
         //dbg msg
-        os_log_debug(logHandle, "first launch, will kick of welcome window(s)");
+        os_log_debug(logHandle, "first launch, will kick off welcome window(s)");
         
         //alloc window controller
         welcomeWindowController = [[WelcomeWindowController alloc] initWithWindowNibName:@"Welcome"];
@@ -583,12 +585,12 @@ bail:
     if(nil != initialPreferences)
     {
         //set prefs
-        [self.xpcDaemonClient updatePreferences:initialPreferences];
+        [xpcDaemonClient updatePreferences:initialPreferences];
     }
     
     //always (reset) disabled
     // always want enabled on (restart)
-    preferences = [self.xpcDaemonClient updatePreferences:@{PREF_IS_DISABLED:@NO}];
+    preferences = [xpcDaemonClient updatePreferences:@{PREF_IS_DISABLED:@NO}];
     
     //dbg msg
     os_log_debug(logHandle, "loaded preferences %{public}@", preferences);
@@ -886,7 +888,7 @@ bail:
             
             //tell ext to uninstall
             // remove rules, etc, etc
-            if(YES != [self.xpcDaemonClient uninstall])
+            if(YES != [xpcDaemonClient uninstall])
             {
                 //err msg
                 os_log_error(logHandle, "ERROR: daemon's XPC uninstall logic");

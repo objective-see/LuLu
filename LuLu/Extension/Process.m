@@ -202,7 +202,7 @@ bail:
     pid_t parentPID = -1;
     
     //rpid function
-    __block pid_t (*getRPID)(pid_t pid) = NULL;
+    static pid_t (*getRPID)(pid_t pid) = NULL;
     
     //token
     static dispatch_once_t onceToken = 0;

@@ -21,6 +21,9 @@
 //log handle
 extern os_log_t logHandle;
 
+//xpc for daemon comms
+extern XPCDaemonClient* xpcDaemonClient;
+
 @implementation RulesWindowController
 
 @synthesize rules;
@@ -114,7 +117,7 @@ extern os_log_t logHandle;
         [NSThread sleepForTimeInterval:0.5f];
         
         //get rules
-        currentRules = [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient getRules];
+        currentRules = [xpcDaemonClient getRules];
         
         //dbg msg
         os_log_debug(logHandle, "received %lu rules from daemon: %{public}@", (unsigned long)currentRules.count, currentRules.allKeys);
@@ -514,11 +517,11 @@ bail:
             if(nil != (rule = self.addRuleWindowController.rule))
             {
                 //remove rule via XPC
-                [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient deleteRule:rule.key rule:rule.uuid];
+                [xpcDaemonClient deleteRule:rule.key rule:rule.uuid];
             }
             
             //add rule via XPC
-            [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient addRule:self.addRuleWindowController.info];
+            [xpcDaemonClient addRule:self.addRuleWindowController.info];
             
             //new rule?
             // save path, and toggle to user tab
@@ -1033,7 +1036,7 @@ bail:
     
     //remove rule via XPC
     // nil uuid, means delete all rules for item (process)
-    [((AppDelegate*)[[NSApplication sharedApplication] delegate]).xpcDaemonClient deleteRule:rule.key rule:uuid];
+    [xpcDaemonClient deleteRule:rule.key rule:uuid];
     
     //(re)load rules
     [self loadRules];
