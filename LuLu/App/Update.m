@@ -91,7 +91,10 @@ extern os_log_t logHandle;
     }
     
     //extract latest version
-    latestVersion = productsVersionDictionary[PRODUCT_KEY][@"version"];
+    latestVersion = productsVersionDictionary[@"tag_name"];
+    
+    //remove any prefix 'v' from tag number
+    latestVersion = [latestVersion stringByReplacingOccurrencesOfString:@"v" withString:@""];
     
     //dbg msg
     os_log_debug(logHandle, "latest version: %{public}@", latestVersion);
