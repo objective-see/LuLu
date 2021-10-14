@@ -20,7 +20,7 @@
 NSString* getAppBinary(NSString* appPath);
 
 //get app's version
-// ->extracted from Info.plist
+// extracted from Info.plist
 NSString* getAppVersion(void);
 
 //get (true) parent
@@ -96,5 +96,8 @@ NSArray* resolveAddress(NSString * address);
 
 //process alive?
 BOOL isAlive(pid_t processID);
+
+//check if app is an iOS simulator app
+BOOL isSimulatorApp(NSString* path);
 
 #endif

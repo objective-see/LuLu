@@ -145,6 +145,10 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 //allow all installed
 #define PREF_ALLOW_INSTALLED @"allowInstalled"
 
+//prefs
+// allow iOS simulator apps
+#define PREF_ALLOW_SIMULATOR @"allowSimulatorApps"
+
 //use global block list
 #define PREF_USE_BLOCK_LIST @"useBlockList"
 

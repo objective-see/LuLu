@@ -454,6 +454,9 @@ bail:
     //global rules
     NSArray* globalRules = nil;
     
+    //directory rules
+    NSMutableArray* directoryRules = nil;
+    
     //item's rules
     NSArray* itemRules = nil;
     
@@ -501,13 +504,44 @@ bail:
             else os_log_error(logHandle, "ERROR: code signing mismatch: %{public}@ / %{public}@", process.csInfo, csInfo);
         }
        
-        //global rules
+        //grab global rules
         globalRules = self.rules[VALUE_ANY][KEY_RULES];
         
-        //no global rules
-        // and no item rules?
+        //init directory rules
+        directoryRules = [NSMutableArray array];
+        
+        //add any directory rules
+        // i.e. any rule that's '/<anything>*'
+        for(NSString* key in self.rules)
+        {
+            //directory
+            NSString* directory = nil;
+            
+            //directory rule?
+            if( (YES == [key hasPrefix:@"/"]) &&
+                (YES == [key hasSuffix:@"/*"]) )
+            {
+                //init directory
+                // ...by removing *
+                directory = [key substringToIndex:(key.length-1)];
+                
+                //does item fall within dir?
+                if(YES == [process.path hasPrefix:directory])
+                {
+                    //add
+                    [directoryRules addObjectsFromArray:self.rules[key][KEY_RULES]];
+                }
+            }
+        }
+        
+        //dbg msg
+        //os_log_debug(logHandle, "directory rules:  %{public}@", directoryRules);
+        
+        //no global, directory, nor item rules
+        // bail, with no match so user is prompted
         if( (nil == itemRules) &&
-            (nil == globalRules) )
+            (nil == globalRules) &&
+            (0 == directoryRules.count) )
         {
             //no match
             goto bail;
@@ -518,6 +552,9 @@ bail:
         
         //add global rules first
         if(nil != globalRules) [candidateRules addObject:globalRules];
+        
+        //add directory rules next
+        if(0 != directoryRules.count) [candidateRules addObject:directoryRules];
         
         //add item's rules last...
         if(nil != itemRules) [candidateRules addObject:itemRules];

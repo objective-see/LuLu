@@ -855,6 +855,9 @@ bail:
     //item cell
     NSTableCellView* processCell = nil;
     
+    //directory
+    NSString* directory = nil;
+    
     //create cell
     processCell = [self.outlineView makeViewWithIdentifier:@"processCell" owner:self];
     
@@ -871,6 +874,24 @@ bail:
         
         //(un)set detailed text
         ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT]).stringValue = @"";
+    }
+    //directory rule?
+    else if( (YES == [rule.path hasPrefix:@"/"]) &&
+             (YES == [rule.path hasSuffix:@"/*"]) )
+    {
+        //init directory
+        // ...by removing *
+        directory = [rule.path substringToIndex:(rule.path.length-1)];
+        
+        //set icon
+        processCell.imageView.image = getIconForProcess(directory);
+        
+        //main text
+        // item's name
+        processCell.textField.stringValue = rule.name;
+        
+        //details
+        ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT]).stringValue = [self formatItemDetails:rule];
     }
     
     //non global rule?
@@ -924,11 +945,24 @@ bail:
     }
     
     //no valid cs info, etc
-    // just use item's path
+    // if not a directory rule, just use path
     if(0 == details.length)
     {
-        //set
-        details = [NSString stringWithFormat:@"%@ (signer: invalid/unsigned)", rule.path];
+        //directory rule?
+        if( (YES == [rule.path hasPrefix:@"/"]) &&
+            (YES == [rule.path hasSuffix:@"/*"]) )
+        {
+            //set
+            details = rule.path;
+        }
+        
+        //no signing info
+        // use path + signer: invalid
+        else
+        {
+            //set
+            details = [NSString stringWithFormat:@"%@ (signer: invalid/unsigned)", rule.path];
+        }
     }
 
     return details;

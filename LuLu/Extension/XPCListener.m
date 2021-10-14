@@ -244,7 +244,7 @@ extern os_log_t logHandle;
     [newConnection resume];
     
     //dbg msg
-    os_log_debug(logHandle, "allowing XPC connection from client (pid: %d)", audit_token_to_pid(auditToken));
+    os_log_debug(logHandle, "allowing XPC connection from client (pid: %d, user: %{public}@)", audit_token_to_pid(auditToken), alerts.consoleUser);
     
     //happy
     shouldAccept = YES;

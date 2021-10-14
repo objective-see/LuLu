@@ -197,17 +197,6 @@ extern BlockList* blockList;
         goto bail;
     }
     
-    //ignore traffic destined for localhost
-    if( (YES == [remoteEndpoint.hostname hasPrefix:@"::1"]) ||
-        (YES == [remoteEndpoint.hostname isEqualToString:@"127.0.0.1"]) )
-    {
-       //log msg
-       os_log_debug(logHandle, "ignoring 'localhost' traffic");
-          
-       //bail
-       goto bail;
-    }
-    
     //process flow
     // determine verdict
     // deliver alert (if necessary)
@@ -521,6 +510,26 @@ bail:
             [alerts.xpcUserClient rulesChanged];
             
             //all set
+            goto bail;
+        }
+    }
+    
+    //allow iOS simulator apps?
+    if(YES == [preferences.preferences[PREF_ALLOW_SIMULATOR] boolValue])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "'allow iOS simulator apps' is enabled, so checking process");
+        
+        //is simulator app?
+        if(YES == isSimulatorApp(process.path))
+        {
+            //dbg msg
+            os_log_debug(logHandle, "%{public}@, is an iOS simulator app, so will allow", process.path);
+            
+            //allow
+            verdict = [NEFilterNewFlowVerdict allowVerdict];
+            
+            //done
             goto bail;
         }
     }

@@ -278,9 +278,10 @@ bail:
     }
     
     //invalid path?
-    // allow '*' for any
+    // allow '*' or '/*' for any
     if( (0 == path.length) ||
-        ( (YES != [path isEqualToString:VALUE_ANY]) && (YES != [[NSFileManager defaultManager] fileExistsAtPath:path]) ) )
+        ( (YES != [path hasSuffix:VALUE_ANY]) &&
+          (YES != [[NSFileManager defaultManager] fileExistsAtPath:path]) ) )
     {
         //show alert
         showAlert(@"ERROR: invalid path", [NSString stringWithFormat:@"%@ does not exist!", path]);

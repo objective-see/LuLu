@@ -36,20 +36,23 @@ extern XPCDaemonClient* xpcDaemonClient;
 //'allow installed' button
 #define BUTTON_ALLOW_INSTALLED 2
 
-//'allow globally' button
-#define BUTTON_USE_BLOCK_LIST 3
+//'allow iOS simulator apps' mode button
+#define BUTTON_ALLOW_SIMULATOR 3
+
+//'use blocklist' button
+#define BUTTON_USE_BLOCK_LIST 4
 
 //'passive mode' button
-#define BUTTON_PASSIVE_MODE 4
+#define BUTTON_PASSIVE_MODE 5
 
 //'block mode' button
-#define BUTTON_BLOCK_MODE 5
+#define BUTTON_BLOCK_MODE 6
 
 //'no-icon mode' button
-#define BUTTON_NO_ICON_MODE 6
+#define BUTTON_NO_ICON_MODE 7
 
 //'update mode' button
-#define BUTTON_NO_UPDATE_MODE 7
+#define BUTTON_NO_UPDATE_MODE 8
 
 //init 'general' view
 // add it, and make it selected
@@ -97,6 +100,9 @@ extern XPCDaemonClient* xpcDaemonClient;
             //set 'installed allowed' button state
             ((NSButton*)[view viewWithTag:BUTTON_ALLOW_INSTALLED]).state = [self.preferences[PREF_ALLOW_INSTALLED] boolValue];
             
+            //set 'allow iOS simulator apps' button
+            ((NSButton*)[view viewWithTag:BUTTON_ALLOW_SIMULATOR]).state = [self.preferences[PREF_ALLOW_SIMULATOR] boolValue];
+
             //set 'block list' button state
             ((NSButton*)[view viewWithTag:BUTTON_USE_BLOCK_LIST]).state = [self.preferences[PREF_USE_BLOCK_LIST] boolValue];
             
@@ -187,6 +193,11 @@ bail:
         //allow installed
         case BUTTON_ALLOW_INSTALLED:
             updatedPreferences[PREF_ALLOW_INSTALLED] = state;
+            break;
+            
+        //allow iOS simulated apps
+        case BUTTON_ALLOW_SIMULATOR:
+            updatedPreferences[PREF_ALLOW_SIMULATOR] = state;
             break;
             
         //use block list

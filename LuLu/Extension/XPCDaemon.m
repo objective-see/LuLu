@@ -106,9 +106,9 @@ extern os_log_t logHandle;
     //make copy
     ruleInfo = [info mutableCopy];
     
-    //non-global path
+    //non-specific path
     // init binary and cs info
-    if(YES != [info[KEY_PATH] isEqualToString:VALUE_ANY])
+    if(YES != [info[KEY_PATH] hasSuffix:VALUE_ANY])
     {
         //init binary obj w/ path
         binary = [[Binary alloc] init:info[KEY_PATH]];

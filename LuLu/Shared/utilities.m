@@ -183,7 +183,7 @@ NSBundle* findAppBundle(NSString* path)
         }
         
         //check for match
-        // ->binary path's match
+        // binary path's match
         if( (nil != appBundle) &&
             (YES == [appBundle.executablePath isEqualToString:path]))
         {
@@ -192,11 +192,11 @@ NSBundle* findAppBundle(NSString* path)
         }
         
         //always unset bundle var since it's being returned
-        // ->and at this point, its not a match
+        // and at this point, its not a match
         appBundle = nil;
         
         //remove last part
-        // ->will try this next
+        // will try this next
         appPath = [appPath stringByDeletingLastPathComponent];
         
     //scan until we get to root
@@ -1290,4 +1290,48 @@ BOOL isAlive(pid_t processID)
 bail:
     
     return isAlive;
+}
+
+//check if app is an iOS simulator app
+BOOL isSimulatorApp(NSString* path)
+{
+    //flag
+    BOOL simulatorApp = NO;
+    
+    //bundle
+    NSBundle* bundle = nil;
+    
+    //supported platforms
+    NSArray* supportedPlatforms = nil;
+    
+    //supported platform
+    NSString* supportedPlatform = nil;
+    
+    //dbg msg
+    os_log_debug(logHandle, "checking if %{public}@ is a simulator application", path);
+    
+    //get bundle
+    bundle = findAppBundle(path);
+    if(nil == bundle) goto bail;
+    
+    //get supported platforms
+    supportedPlatforms = bundle.infoDictionary[@"CFBundleSupportedPlatforms"];
+    if(YES != [supportedPlatforms isKindOfClass:[NSArray class]]) goto bail;
+    
+    //dbg msg
+    os_log_debug(logHandle, "supported platforms: %{public}@", supportedPlatforms);
+    
+    //app should only supported one platform (iPhoneSimulator)
+    if(1 != supportedPlatforms.count) goto bail;
+    
+    //extract supported platform
+    supportedPlatform = supportedPlatforms.firstObject;
+    if(YES != [supportedPlatform isKindOfClass:[NSString class]]) goto bail;
+    
+    //check for 'iPhoneSimulator'
+    simulatorApp = [supportedPlatform isEqualTo:@"iPhoneSimulator"];
+    
+bail:
+    
+    return simulatorApp;
 }
