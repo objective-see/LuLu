@@ -514,17 +514,17 @@ bail:
         }
     }
     
-    //allow iOS simulator apps?
+    //allow simulator apps?
     if(YES == [preferences.preferences[PREF_ALLOW_SIMULATOR] boolValue])
     {
         //dbg msg
-        os_log_debug(logHandle, "'allow iOS simulator apps' is enabled, so checking process");
+        os_log_debug(logHandle, "'allow simulator apps' is enabled, so checking process");
         
         //is simulator app?
         if(YES == isSimulatorApp(process.path))
         {
             //dbg msg
-            os_log_debug(logHandle, "%{public}@, is an iOS simulator app, so will allow", process.path);
+            os_log_debug(logHandle, "%{public}@, is an simulator app, so will allow", process.path);
             
             //allow
             verdict = [NEFilterNewFlowVerdict allowVerdict];

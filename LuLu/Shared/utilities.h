@@ -97,7 +97,8 @@ NSArray* resolveAddress(NSString * address);
 //process alive?
 BOOL isAlive(pid_t processID);
 
-//check if app is an iOS simulator app
+//check if app is an simulator app
+// for now check 'iPhoneSimulator' and 'AppleTVSimulator'
 BOOL isSimulatorApp(NSString* path);
 
 #endif

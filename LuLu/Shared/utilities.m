@@ -1292,7 +1292,8 @@ bail:
     return isAlive;
 }
 
-//check if app is an iOS simulator app
+//check if app is an simulator app
+// for now check 'iPhoneSimulator' and 'AppleTVSimulator'
 BOOL isSimulatorApp(NSString* path)
 {
     //flag
@@ -1300,9 +1301,6 @@ BOOL isSimulatorApp(NSString* path)
     
     //bundle
     NSBundle* bundle = nil;
-    
-    //simulators
-    NSArray* simulators = @[@"iPhoneSimulator", @"AppleTVSimulator"];
     
     //supported platforms
     NSArray* supportedPlatforms = nil;
@@ -1321,26 +1319,11 @@ BOOL isSimulatorApp(NSString* path)
     //dbg msg
     os_log_debug(logHandle, "supported platforms: %{public}@", supportedPlatforms);
     
-    //app should only supported one platform (iPhoneSimulator)
-    if(1 != supportedPlatforms.count) goto bail;
+    //sanity check
+    if(0 == supportedPlatforms.count) goto bail;
     
-    //check supported platforms
-    for(NSString* supportedPlatform in supportedPlatforms)
-    {
-        //sanity check
-        // makes sure it's a string
-        if(YES != [supportedPlatform isKindOfClass:[NSString class]]) goto bail;
-        
-        //is it a simulated app
-        simulatorApp = [simulators containsObject:supportedPlatform];
-        if(NO == simulatorApp)
-        {
-            //nope
-            goto bail;
-        }
-        
-        //keep checking...
-    }
+    //check if simulator app
+    simulatorApp = [[NSSet setWithArray: supportedPlatforms] isSubsetOfSet: [NSSet setWithArray: @[@"iPhoneSimulator", @"AppleTVSimulator"]]];
     
 bail:
     

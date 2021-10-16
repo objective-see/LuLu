@@ -100,7 +100,7 @@ extern XPCDaemonClient* xpcDaemonClient;
             //set 'installed allowed' button state
             ((NSButton*)[view viewWithTag:BUTTON_ALLOW_INSTALLED]).state = [self.preferences[PREF_ALLOW_INSTALLED] boolValue];
             
-            //set 'allow iOS simulator apps' button
+            //set 'allow simulator apps' button
             ((NSButton*)[view viewWithTag:BUTTON_ALLOW_SIMULATOR]).state = [self.preferences[PREF_ALLOW_SIMULATOR] boolValue];
 
             //set 'block list' button state
@@ -195,7 +195,7 @@ bail:
             updatedPreferences[PREF_ALLOW_INSTALLED] = state;
             break;
             
-        //allow iOS simulated apps
+        //allow simulator apps
         case BUTTON_ALLOW_SIMULATOR:
             updatedPreferences[PREF_ALLOW_SIMULATOR] = state;
             break;
