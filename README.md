@@ -24,62 +24,39 @@ Simply run the installer application: `LuLu Installer.app`
 </p>    
 
 **Mahalo!** \
-This product is supported by the following "Friends of Objective-See":
+LuLu is supported by the "Friends of Objective-See" such as:
+\
+\
+<a href="https://www.jamf.com/?utm_source=objective-see&utm_medium=sponsored-link&utm_campaign=next-gen-security&utm_content=2021-02-05_protect">
+  <img src="https://objective-see.com/images/friends/jamf.png" height="50px" />
+</a>
+\
+...the standard in apple enterprise management.
 
-<img src="https://objective-see.com/images/friends/digita.jpg" width="64"/> [Digita Security](https://digitasecurity.com/)
+\
+<a href="http://mosyle.com/">
+  <img src="https://objective-see.com/images/friends/mosyle.png" height="50px" />
+</a>
+\
+...modern apple mdm & security for enterprise &amp; education.
 
-<img src="https://objective-see.com/images/friends/sophos.png" width="64"/> [Sophos](https://www.sophos.com/)
+\
+<a href="http://kandji.io/">
+  <img src="https://objective-see.com/images/friends/kandji.png" height="50px" />
+</a>
+\
+...next-generation apple enterprise management.
 
-<img src="https://objective-see.com/images/friends/cleanmymac.png" width="64"/> [CleanMyMac X](https://macpaw.com/cleanmymac)
+\
+<a href="https://1password.com/?utm_medium=parnter&utm_source=Objective-See&utm_campaign=gp&utm_content=sponsorship">
+    <img src="https://objective-see.com/images/friends/1Password.png" height="50px" />
+</a>
+\
+...the world’s most-loved password manager.
 
-<img src="https://objective-see.com/images/friends/malwarebytes.png" width="64"/> [Malwarebytes](https://www.malwarebytes.com)
-
-<img src="https://objective-see.com/images/friends/smugmug.png" width="64"/> [SmugMug](https://www.smugmug.com/)
-
-<img src="https://objective-see.com/images/friends/guardian.png" width="64"/> [Guardian Mobile Firewall](https://guardianapp.com)
-
-<img src="https://objective-see.com/images/friends/securemac.png" width="64"/> [SecureMac](https://www.securemac.com/)
-
-
-
-
-
-
-
-
-This product is supported by the following patrons:
-+ Halo Privacy 
-+ Ash Morgan
-
-+ Nando Mendonca
-+ Khalil Sehnaoui
-+ Jeff Golden
-+ Geoffrey Weber
-
-+ Ming
-+ Peter Sinclair
-+ trifero
-+ Keelian Wardle
-+ Chad Collins
-+ Shain Singh
-+ David Sulpy
-+ Martin OConnell
-+ Bill Smartt
-+ Mike Windham
-+ Brent Joyce
-+ Russell Imrie
-+ Michael Thomas
-+ Andy One
-+ Edmund Harriss
-+ Brad Knowles
-+ Tom Smith
-+ Chuck Talk
-+ Derivative Fool
-+ Joaquim Espinhara
-+ Rudolf Coetzee
-+ Chris Ferebee
-+ Les Aker
-+ Allen Hancock
-+ Stuart Ashenbrenner
-
-+ Gamer_Bot
+\
+<a href="https://macpaw.com/cleanmymac">
+  <img src="https://objective-see.com/images/friends/cleanmymac.png" height="50px" />
+</a>
+\
+...an all-in-one package to awesomize your Mac.
