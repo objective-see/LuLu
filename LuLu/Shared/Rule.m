@@ -149,6 +149,34 @@ extern os_log_t logHandle;
     return key;
 }
 
+//is rule global?
+-(NSNumber*)isGlobal
+{
+    //first time?
+    // init and set
+    if(nil == _isGlobal)
+    {
+        //set
+        _isGlobal = [NSNumber numberWithBool:[self.path isEqualToString:VALUE_ANY]];
+    }
+    
+    return _isGlobal;
+}
+
+//is rule directory?
+-(NSNumber*)isDirectory
+{
+    //first time?
+    // init and set
+    if(nil == _isDirectory)
+    {
+        //set
+        _isDirectory = [NSNumber numberWithBool:((YES == [self.path hasPrefix:@"/"]) && (YES == [self.path hasSuffix:@"/*"]))];
+    }
+    
+    return _isDirectory;
+}
+
 //required as we support secure coding
 +(BOOL)supportsSecureCoding
 {

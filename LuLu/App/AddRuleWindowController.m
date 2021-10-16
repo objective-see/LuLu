@@ -235,10 +235,13 @@ bail:
     NSModalResponse response = NSModalResponseAbort;
     
     //path
-    NSString* path = nil;
+    NSMutableString* path = nil;
     
-    //binary path
-    NSString* binaryPath = nil;
+    //flag
+    BOOL exists = NO;
+    
+    //flag
+    BOOL isDirectory = NO;
     
     //(remote) endpoint addr
     NSString* endpointAddr = nil;
@@ -262,32 +265,62 @@ bail:
     os_log_debug(logHandle, "user clicked: %{public}@", ((NSButton*)sender).title);
 
     //init path
-    path = self.path.stringValue;
+    // and check
+    path = [self.path.stringValue mutableCopy];
+    if(0 == path.length)
+    {
+        //bail
+        goto bail;
+    }
     
     //when it's an app
     // get path to app's binary
     if(YES == [path hasSuffix:@".app"])
     {
-        //get path
-        binaryPath = getAppBinary(self.path.stringValue);
-        if(nil != binaryPath)
+        //get app path
+        // and also check
+        path = [getAppBinary(self.path.stringValue) mutableCopy];
+        if(0 == path.length)
         {
-            //assign
-            path = binaryPath;
+            //bail
+            goto bail;
         }
     }
     
-    //invalid path?
-    // allow '*' or '/*' for any
-    if( (0 == path.length) ||
-        ( (YES != [path hasSuffix:VALUE_ANY]) &&
-          (YES != [[NSFileManager defaultManager] fileExistsAtPath:path]) ) )
+    //set flags
+    // exists/is directory
+    exists = [NSFileManager.defaultManager fileExistsAtPath:path isDirectory:&isDirectory];
+    
+    //if its a directory
+    // add '/*' to make it directory rule
+    if(YES == isDirectory)
     {
-        //show alert
-        showAlert(@"ERROR: invalid path", [NSString stringWithFormat:@"%@ does not exist!", path]);
+        //no '/'?
+        // ...append it
+        if(YES != [path hasSuffix:@"/"])
+        {
+            //append
+            [path appendString:@"/"];
+        }
         
-        //bail
-        goto bail;
+        //add '*' to make it a directory rule
+        [path appendString:VALUE_ANY];
+    }
+    
+    //invalid path?
+    if( (YES != exists) ||
+        (0 == path.length) )
+    {
+        //error
+        // though only if its not '*' or '/*'
+        if(YES != [path hasSuffix:VALUE_ANY])
+        {
+            //show alert
+            showAlert(@"ERROR: invalid path", [NSString stringWithFormat:@"%@ does not exist!", path]);
+        
+            //bail
+            goto bail;
+        }
     }
     
     //endpoint addr

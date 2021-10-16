@@ -35,6 +35,12 @@
 //path
 @property(nonatomic, retain)NSString* path;
 
+//flag for global rule
+@property(nonatomic, retain)NSNumber* isGlobal;
+
+//flag for directory rule
+@property(nonatomic, retain)NSNumber* isDirectory;
+
 //name
 @property(nonatomic, retain)NSString* name;
 

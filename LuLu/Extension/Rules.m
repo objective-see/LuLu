@@ -518,8 +518,8 @@ bail:
             NSString* directory = nil;
             
             //directory rule?
-            if( (YES == [key hasPrefix:@"/"]) &&
-                (YES == [key hasSuffix:@"/*"]) )
+            // grab first/any rule and check
+            if(YES == ((Rule*)[self.rules[key][KEY_RULES] firstObject]).isDirectory.boolValue)
             {
                 //init directory
                 // ...by removing *
@@ -533,9 +533,6 @@ bail:
                 }
             }
         }
-        
-        //dbg msg
-        //os_log_debug(logHandle, "directory rules:  %{public}@", directoryRules);
         
         //no global, directory, nor item rules
         // bail, with no match so user is prompted
@@ -563,7 +560,7 @@ bail:
         remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
         
         //check each set of rules
-        // set: global, and/or item rules
+        // set: global, directory, and/or item rules
         for(NSArray* rules in candidateRules)
         {
             //check all set of rules

@@ -863,21 +863,20 @@ bail:
     
     //global rule?
     // no icon, no path, etc.
-    if(YES == [rule.path isEqualToString:VALUE_ANY])
+    if(YES == rule.isGlobal.boolValue)
     {
         //set icon
         processCell.imageView.image = [[NSWorkspace sharedWorkspace]
         iconForFileType: NSFileTypeForHFSTypeCode(kGenericHardDiskIcon)];
         
         //set text
-        processCell.textField.stringValue = @"Any Process";
+        processCell.textField.stringValue = @"Any program";
         
         //(un)set detailed text
         ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT]).stringValue = @"";
     }
     //directory rule?
-    else if( (YES == [rule.path hasPrefix:@"/"]) &&
-             (YES == [rule.path hasSuffix:@"/*"]) )
+    else if(YES == rule.isDirectory.boolValue)
     {
         //init directory
         // ...by removing *
@@ -887,11 +886,12 @@ bail:
         processCell.imageView.image = getIconForProcess(directory);
         
         //main text
-        // item's name
-        processCell.textField.stringValue = rule.name;
+        // last directory
+        processCell.textField.stringValue = [NSString stringWithFormat:@"Programs within \"%@/\"", directory.lastPathComponent];
         
         //details
-        ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT]).stringValue = [self formatItemDetails:rule];
+        // just use path
+        ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT]).stringValue = rule.path;
     }
     
     //non global rule?
@@ -905,7 +905,7 @@ bail:
         // item's name
         processCell.textField.stringValue = rule.name;
         
-        //details
+        //format/set details
         ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT]).stringValue = [self formatItemDetails:rule];
     }
     
@@ -944,25 +944,12 @@ bail:
         }
     }
     
-    //no valid cs info, etc
-    // if not a directory rule, just use path
+    //no valid cs info
+    // just use path / and mention issue
     if(0 == details.length)
     {
-        //directory rule?
-        if( (YES == [rule.path hasPrefix:@"/"]) &&
-            (YES == [rule.path hasSuffix:@"/*"]) )
-        {
-            //set
-            details = rule.path;
-        }
-        
-        //no signing info
-        // use path + signer: invalid
-        else
-        {
-            //set
-            details = [NSString stringWithFormat:@"%@ (signer: invalid/unsigned)", rule.path];
-        }
+        //set
+        details = [NSString stringWithFormat:@"%@ (signer: invalid/unsigned)", rule.path];
     }
 
     return details;
