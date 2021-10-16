@@ -8,5 +8,5 @@ create-dmg \
   --icon "LuLu.app" 200 190 \
   --hide-extension "LuLu.app" \
   --app-drop-link 600 190 \
-  "LuLu_2.3.2.dmg" \
+  "LuLu_2.4.0.dmg" \
   "Release/"
