@@ -73,6 +73,9 @@ extern os_log_t logHandle;
     //title attributes (for temporary label)
     NSMutableDictionary* titleAttributes = nil;
     
+    //width
+    NSUInteger width = 0;
+    
     //init paragraph style
     paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     
@@ -107,11 +110,15 @@ extern os_log_t logHandle;
     //alert message
     self.alertMessage.stringValue = [NSString stringWithFormat:@"is trying to connect to %@", remoteAddress];
     
+    //and set a tool tip
+    // as super long URLs can be truncated
+    self.alertMessage.toolTip = [NSString stringWithFormat:@"remote address: %@", remoteAddress];
+    
     /* BOTTOM */
     
     //process pid
     self.processID.stringValue = [self.alert[KEY_PROCESS_ID] stringValue];
-    
+
     //process args
     // none? means error
     if(0 == [self.alert[KEY_PROCESS_ARGS] count])
@@ -191,6 +198,13 @@ extern os_log_t logHandle;
         
     //show touch bar
     [self initTouchBar];
+    
+    //width of alert
+    // max of standard window size, or size of alert msg + padding for addition items
+    width = MAX(self.window.frame.size.width, self.alertMessage.intrinsicContentSize.width+400);
+    
+    //resize to handle size of alert
+    [self.window setFrame:NSMakeRect(self.window.frame.origin.x, self.window.frame.origin.y, width, NSHeight(self.window.frame)) display:YES];
     
 bail:
     
