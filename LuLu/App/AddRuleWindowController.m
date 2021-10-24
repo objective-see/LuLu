@@ -273,27 +273,14 @@ bail:
         goto bail;
     }
     
-    //when it's an app
-    // get path to app's binary
-    if(YES == [path hasSuffix:@".app"])
-    {
-        //get app path
-        // and also check
-        path = [getAppBinary(self.path.stringValue) mutableCopy];
-        if(0 == path.length)
-        {
-            //bail
-            goto bail;
-        }
-    }
-    
     //set flags
     // exists/is directory
     exists = [NSFileManager.defaultManager fileExistsAtPath:path isDirectory:&isDirectory];
     
-    //if its a directory
+    //if its a directory (but not an app)
     // add '/*' to make it directory rule
-    if(YES == isDirectory)
+    if( (YES == isDirectory) &&
+        (YES != [path hasSuffix:@".app"]) )
     {
         //no '/'?
         // ...append it

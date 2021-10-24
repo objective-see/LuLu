@@ -1,5 +1,5 @@
 create-dmg \
-  --volname "LuLu v2.3.2" \
+  --volname "LuLu v2.4.0" \
   --volicon "LuLu.icns" \
   --background "background.png" \
   --window-pos 200 120 \

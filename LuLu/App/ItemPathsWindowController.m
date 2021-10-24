@@ -16,7 +16,6 @@
 //log handle
 extern os_log_t logHandle;
 
-
 @implementation ItemPathsWindowController
 
 @synthesize rule;

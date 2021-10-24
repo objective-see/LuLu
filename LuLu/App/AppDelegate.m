@@ -174,6 +174,8 @@ XPCDaemonClient* xpcDaemonClient = nil;
                         [NSApplication.sharedApplication terminate:self];
                         
                     });
+                    
+                    return;
                 }
                 
                 //dbg msg
