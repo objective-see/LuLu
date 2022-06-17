@@ -1,0 +1,81 @@
+
+/* Class = "NSButtonCell"; title = "Check Now"; ObjectID = "2qr-2x-A3U"; */
+"2qr-2x-A3U.title" = "现在检查";
+
+/* Class = "NSTextFieldCell"; title = "Block Mode"; ObjectID = "4EN-j2-enV"; */
+"4EN-j2-enV.title" = "阻断模式";
+
+/* Class = "NSTextFieldCell"; title = "Previously installed, 3rd-party programs will be allowed."; ObjectID = "6gH-HW-CFe"; */
+"6gH-HW-CFe.title" = "已安装第三方程序将默认允许.";
+
+/* Class = "NSButtonCell"; title = "View Rules"; ObjectID = "Cfj-2E-dIA"; */
+"Cfj-2E-dIA.title" = "查看规则";
+
+/* Class = "NSTextFieldCell"; title = "Silently run without alerts, applying existing rules. New connections will be automatically allowed."; ObjectID = "E0T-Ug-P8f"; */
+"E0T-Ug-P8f.title" = "安静无报警，自动应用所有现存 规则. 新的网络连接将会自动被允许.";
+
+/* Class = "NSWindow"; title = "LuLu Preferences"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "LuLu 设置";
+
+/* Class = "NSTextFieldCell"; title = "Block List:"; ObjectID = "GIK-ti-aku"; */
+"GIK-ti-aku.title" = "黑名单:";
+
+/* Class = "NSTextFieldCell"; title = "Limitations apply, see documentation for details."; ObjectID = "Gr4-eN-arK"; */
+"Gr4-eN-arK.title" = "此功能有一定限制，详情请参考文档.";
+
+/* Class = "NSTextFieldCell"; title = "Do not automatically check for new versions."; ObjectID = "JV5-cY-ff4"; */
+"JV5-cY-ff4.title" = "不自动检查新版本.";
+
+/* Class = "NSTextFieldCell"; title = "Passive Mode"; ObjectID = "JVI-Or-h0u"; */
+"JVI-Or-h0u.title" = "被动模式";
+
+/* Class = "NSTextFieldCell"; title = "List of endpoints (ips/urls) to always block. "; ObjectID = "L7x-uU-rth"; */
+"L7x-uU-rth.title" = "以下远程端点 (IP/URL) 将永远被 阻止. ";
+
+/* Class = "NSTextFieldCell"; title = "Apple-signed binaries will be allowed."; ObjectID = "M8X-n4-v2d"; */
+"M8X-n4-v2d.title" = "Apple 官方签名的程序将被允许.";
+
+/* Class = "NSTextFieldCell"; title = "All traffic (routed thru LuLu) will be blocked."; ObjectID = "SG5-YM-BoV"; */
+"SG5-YM-BoV.title" = "所有通过 Lulu 的网络通信都将被阻止.";
+
+/* Class = "NSTextFieldCell"; title = "Allow Apple Programs"; ObjectID = "Shu-Wz-4ax"; */
+"Shu-Wz-4ax.title" = "允许 Apple 官方程序";
+
+/* Class = "NSToolbarItem"; label = "rules"; ObjectID = "Twx-TJ-y2Q"; */
+"Twx-TJ-y2Q.label" = "规则";
+
+/* Class = "NSToolbarItem"; paletteLabel = "rules"; ObjectID = "Twx-TJ-y2Q"; */
+"Twx-TJ-y2Q.paletteLabel" = "规则";
+
+/* Class = "NSTextFieldCell"; title = "Allow Simulator Applications"; ObjectID = "Uqq-dW-xf2"; */
+"Uqq-dW-xf2.title" = "允许模拟器程序";
+
+/* Class = "NSTextFieldCell"; title = "Run without showing an icon in the status menu bar."; ObjectID = "bYB-s1-S3f"; */
+"bYB-s1-S3f.title" = "在后台运行并且不在菜单栏显示图标.";
+
+/* Class = "NSTextFieldCell"; title = "Applications running within the simulator will be allowed."; ObjectID = "e6s-dd-HG6"; */
+"e6s-dd-HG6.title" = "模拟器内运行的程序将被默认允许.";
+
+/* Class = "NSTextFieldCell"; title = "No Icon Mode"; ObjectID = "iOJ-Bc-hxG"; */
+"iOJ-Bc-hxG.title" = "隐身模式";
+
+/* Class = "NSTextFieldCell"; title = "Allow Installed Programs"; ObjectID = "jvT-uI-uNq"; */
+"jvT-uI-uNq.title" = "允许已安装程序";
+
+/* Class = "NSToolbarItem"; label = "mode"; ObjectID = "k0w-Oi-kwd"; */
+"k0w-Oi-kwd.label" = "模式";
+
+/* Class = "NSToolbarItem"; paletteLabel = "mode"; ObjectID = "k0w-Oi-kwd"; */
+"k0w-Oi-kwd.paletteLabel" = "模式";
+
+/* Class = "NSToolbarItem"; label = "update"; ObjectID = "rrF-xj-cXp"; */
+"rrF-xj-cXp.label" = "更新";
+
+/* Class = "NSToolbarItem"; paletteLabel = "update"; ObjectID = "rrF-xj-cXp"; */
+"rrF-xj-cXp.paletteLabel" = "更新";
+
+/* Class = "NSButtonCell"; title = "Browse"; ObjectID = "u9V-ny-Cia"; */
+"u9V-ny-Cia.title" = "浏览";
+
+/* Class = "NSTextFieldCell"; title = "Disable Update Checks"; ObjectID = "z5b-fA-WCk"; */
+"z5b-fA-WCk.title" = "禁止检查更新";

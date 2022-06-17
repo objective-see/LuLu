@@ -1,0 +1,69 @@
+
+/* Class = "NSTextFieldCell"; title = "Item Name"; ObjectID = "7zm-Uo-lwv"; */
+"7zm-Uo-lwv.title" = "Item Name";
+
+/* Class = "NSToolbarItem"; label = "User"; ObjectID = "8lN-Ti-cWt"; */
+"8lN-Ti-cWt.label" = "用户";
+
+/* Class = "NSToolbarItem"; paletteLabel = "User"; ObjectID = "8lN-Ti-cWt"; */
+"8lN-Ti-cWt.paletteLabel" = "用户";
+
+/* Class = "NSToolbarItem"; label = "Apple"; ObjectID = "B1u-bW-fb1"; */
+"B1u-bW-fb1.label" = "Apple";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Apple"; ObjectID = "B1u-bW-fb1"; */
+"B1u-bW-fb1.paletteLabel" = "Apple";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "BsU-Gh-mch"; */
+"BsU-Gh-mch.title" = "Text Cell";
+
+/* Class = "NSSearchFieldCell"; placeholderString = "Filter Rules"; ObjectID = "DWG-ck-lDk"; */
+"DWG-ck-lDk.placeholderString" = "过滤规则";
+
+/* Class = "NSWindow"; title = "LuLu Rules"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "LuLu 规则";
+
+/* Class = "NSToolbarItem"; label = "3rd-Party"; ObjectID = "IhL-Bt-OuB"; */
+"IhL-Bt-OuB.label" = "第三方";
+
+/* Class = "NSToolbarItem"; paletteLabel = "3rd-Party"; ObjectID = "IhL-Bt-OuB"; */
+"IhL-Bt-OuB.paletteLabel" = "第三方";
+
+/* Class = "NSToolbarItem"; label = "All"; ObjectID = "Nav-wg-Vxe"; */
+"Nav-wg-Vxe.label" = "所有";
+
+/* Class = "NSToolbarItem"; paletteLabel = "All"; ObjectID = "Nav-wg-Vxe"; */
+"Nav-wg-Vxe.paletteLabel" = "所有";
+
+/* Class = "NSToolbarItem"; label = "Default"; ObjectID = "gc6-AZ-l8V"; */
+"gc6-AZ-l8V.label" = "默认";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Default"; ObjectID = "gc6-AZ-l8V"; */
+"gc6-AZ-l8V.paletteLabel" = "默认";
+
+/* Class = "NSTableColumn"; headerCell.title = " Rule"; ObjectID = "mQo-bf-aNx"; */
+"mQo-bf-aNx.headerCell.title" = " 规则";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "pch-yV-NXy"; */
+"pch-yV-NXy.title" = "窗口";
+
+/* Class = "NSTextFieldCell"; title = "item details..."; ObjectID = "qbv-z3-4PI"; */
+"qbv-z3-4PI.title" = "item details...";
+
+/* Class = "NSTextFieldCell"; title = "connection info"; ObjectID = "tZf-9e-yHh"; */
+"tZf-9e-yHh.title" = "连接信息";
+
+/* Class = "NSToolbarItem"; label = "Unclassified"; ObjectID = "uL1-gQ-Sc7"; */
+"uL1-gQ-Sc7.label" = "未分类";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Unclassified"; ObjectID = "uL1-gQ-Sc7"; */
+"uL1-gQ-Sc7.paletteLabel" = "未分类";
+
+/* Class = "NSTextFieldCell"; title = "(re)loading rules..."; ObjectID = "vD6-Bk-elz"; */
+"vD6-Bk-elz.title" = "重新加载规则...";
+
+/* Class = "NSTextFieldCell"; title = "Add Rule"; ObjectID = "wLE-Rk-GOf"; */
+"wLE-Rk-GOf.title" = "添加规则";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "zq7-2E-zbT"; */
+"zq7-2E-zbT.title" = "Text Cell";

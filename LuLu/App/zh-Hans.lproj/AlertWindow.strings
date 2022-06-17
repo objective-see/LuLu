@@ -1,0 +1,87 @@
+
+/* Class = "NSTextFieldCell"; title = " - signing auth 2"; ObjectID = "1zg-95-QM7"; */
+"1zg-95-QM7.title" = " - signing auth 2";
+
+/* Class = "NSTextFieldCell"; title = "port & protocol:"; ObjectID = "31V-e4-dgv"; */
+"31V-e4-dgv.title" = "端口与协议:";
+
+/* Class = "NSTextFieldCell"; title = "Network Info"; ObjectID = "8eV-Ag-i7n"; */
+"8eV-Ag-i7n.title" = "网络信息";
+
+/* Class = "NSTextFieldCell"; title = "not applicable"; ObjectID = "9Yb-sJ-Kcj"; */
+"9Yb-sJ-Kcj.title" = "不可用";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "9sX-aC-eeQ"; */
+"9sX-aC-eeQ.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = " temporarily (pid: 12345)"; ObjectID = "BdA-oU-RlF"; */
+"BdA-oU-RlF.title" = " 临时 (pid: 12345)";
+
+/* Class = "NSTextFieldCell"; title = "Signed by:"; ObjectID = "D1C-aK-AFU"; */
+"D1C-aK-AFU.title" = "签名者:";
+
+/* Class = "NSWindow"; title = "LuLu Alert"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "LuLu 警告";
+
+/* Class = "NSTextFieldCell"; title = " - signing auth 3"; ObjectID = "FLb-1c-otA"; */
+"FLb-1c-otA.title" = " - signing auth 3";
+
+/* Class = "NSTextFieldCell"; title = "reverse dns name:"; ObjectID = "Fxr-aW-bT2"; */
+"Fxr-aW-bT2.title" = "反向DNS域名:";
+
+/* Class = "NSTextFieldCell"; title = "rule scope:"; ObjectID = "G2Q-QQ-EX7"; */
+"G2Q-QQ-EX7.title" = "规则范围:";
+
+/* Class = "NSTextFieldCell"; title = "process path:"; ObjectID = "Gqr-cR-TAF"; */
+"Gqr-cR-TAF.title" = "进程路径:";
+
+/* Class = "NSTextFieldCell"; title = "process id: "; ObjectID = "HZu-Op-XHi"; */
+"HZu-Op-XHi.title" = "进程ID: ";
+
+/* Class = "NSMenuItem"; title = "Process"; ObjectID = "Iys-aY-OZ4"; */
+"Iys-aY-OZ4.title" = "进程";
+
+/* Class = "NSTableColumn"; headerCell.title = "Name"; ObjectID = "JFW-5C-nvy"; */
+"JFW-5C-nvy.headerCell.title" = "名称";
+
+/* Class = "NSTextFieldCell"; placeholderString = "resolving..."; ObjectID = "KMj-LZ-EdU"; */
+"KMj-LZ-EdU.placeholderString" = "正在解析...";
+
+/* Class = "NSTextFieldCell"; title = " - signing auth 1"; ObjectID = "Ki9-ld-5Xu"; */
+"Ki9-ld-5Xu.title" = " - signing auth 1";
+
+/* Class = "NSMenuItem"; title = "Remote Endpoint"; ObjectID = "N6E-eT-Q39"; */
+"N6E-eT-Q39.title" = "远程端点";
+
+/* Class = "NSTextFieldCell"; title = "Process Info"; ObjectID = "Pp2-2W-YkT"; */
+"Pp2-2W-YkT.title" = "进程信息";
+
+/* Class = "NSTextFieldCell"; title = "message"; ObjectID = "Ssw-3u-wEC"; */
+"Ssw-3u-wEC.title" = "消息";
+
+/* Class = "NSTextFieldCell"; title = "process args:"; ObjectID = "T20-eE-vRR"; */
+"T20-eE-vRR.title" = "进程参数:";
+
+/* Class = "NSButtonCell"; title = "Block"; ObjectID = "W18-Ba-X7J"; */
+"W18-Ba-X7J.title" = "阻止";
+
+/* Class = "NSButtonCell"; title = "Allow"; ObjectID = "Zk5-p6-VV3"; */
+"Zk5-p6-VV3.title" = "允许";
+
+/* Class = "NSTextFieldCell"; title = "Details:"; ObjectID = "b63-At-csb"; */
+"b63-At-csb.title" = "详细信息:";
+
+/* Class = "NSTextFieldCell"; title = "virus total"; ObjectID = "h8U-b3-ujA"; */
+"h8U-b3-ujA.title" = "查询virus total";
+
+/* Class = "NSTextFieldCell"; title = "ancestry"; ObjectID = "jJh-pj-fqv"; */
+"jJh-pj-fqv.title" = "查询ancestry";
+
+/* Class = "NSTextFieldCell"; title = "querying virus total..."; ObjectID = "nFi-bu-Okm"; */
+"nFi-bu-Okm.title" = "正在查询 virus total...";
+
+/* Class = "NSTextFieldCell"; title = "ip address:"; ObjectID = "vmZ-KS-uuK"; */
+"vmZ-KS-uuK.title" = "IP地址:";
+
+/* Class = "NSTextFieldCell"; title = "time stamp"; ObjectID = "ybM-PR-IbA"; */
+"ybM-PR-IbA.title" = "时间戳";

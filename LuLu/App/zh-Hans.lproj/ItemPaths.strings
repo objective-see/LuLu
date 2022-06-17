@@ -1,0 +1,9 @@
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "窗口";
+
+/* Class = "NSTextFieldCell"; title = "Path(s):"; ObjectID = "NhE-Zh-Scd"; */
+"NhE-Zh-Scd.title" = "路径(s):";
+
+/* Class = "NSButtonCell"; title = "Close"; ObjectID = "ox8-oX-X3s"; */
+"ox8-oX-X3s.title" = "关闭";

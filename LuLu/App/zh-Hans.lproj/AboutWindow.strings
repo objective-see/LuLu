@@ -1,0 +1,12 @@
+
+/* Class = "NSButtonCell"; title = "Support Us!"; ObjectID = "6g3-Pg-x3P"; */
+"6g3-Pg-x3P.title" = "支持我们!";
+
+/* Class = "NSButtonCell"; title = "More Info"; ObjectID = "J9x-sM-h9S"; */
+"J9x-sM-h9S.title" = "更多信息";
+
+/* Class = "NSTextFieldCell"; title = "Version:"; ObjectID = "bBK-v0-ypq"; */
+"bBK-v0-ypq.title" = "版本:";
+
+/* Class = "NSTextFieldCell"; title = "Supporters/Patrons:"; ObjectID = "fJg-qw-wDf"; */
+"fJg-qw-wDf.title" = "支持者/赞助者:";

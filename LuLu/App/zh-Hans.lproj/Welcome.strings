@@ -1,0 +1,54 @@
+
+/* Class = "NSTextFieldCell"; title = "This option will allow any 3rd-party app that is already installed, to access the network without generating an alert."; ObjectID = "3aO-AI-YtY"; */
+"3aO-AI-YtY.title" = "这个选项允许所有已安装的第三方二进制程序访问网络而不报警.";
+
+/* Class = "NSTextFieldCell"; title = "Mahalo to the \"Friends Objective-See\""; ObjectID = "7pD-BH-c8i"; */
+"7pD-BH-c8i.title" = "Mahalo （夏威夷语：欢迎） \"Objective-See\" 的朋友们";
+
+/* Class = "NSTextFieldCell"; title = "First,  allow the LuLu Network Extension:"; ObjectID = "Cwe-NI-HiJ"; */
+"Cwe-NI-HiJ.title" = "首先，请在系统设置中允许 Lulu 的网络系统扩展:";
+
+/* Class = "NSWindow"; title = "LuLu"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "LuLu";
+
+/* Class = "NSButtonCell"; title = "No"; ObjectID = "QA3-Ww-PeC"; */
+"QA3-Ww-PeC.title" = "以后";
+
+/* Class = "NSTextFieldCell"; title = "Welcome to"; ObjectID = "Qyh-uK-Afv"; */
+"Qyh-uK-Afv.title" = "欢迎使用";
+
+/* Class = "NSButtonCell"; title = "Yes!"; ObjectID = "Re5-aD-QVR"; */
+"Re5-aD-QVR.title" = "支持!";
+
+/* Class = "NSTextFieldCell"; title = "It's free, open-source, and written by a single (mac-loving) coder!"; ObjectID = "Uzd-7P-dzG"; */
+"Uzd-7P-dzG.title" = "免费，开源，由一个热爱 Mac 的程序员独立开发完成!";
+
+/* Class = "NSTextFieldCell"; title = "Waiting for System Extension Approval"; ObjectID = "VIe-9o-Kc7"; */
+"VIe-9o-Kc7.title" = "等待批准系统扩展";
+
+/* Class = "NSTextFieldCell"; title = "Show some love? "; ObjectID = "XBE-gW-YkK"; */
+"XBE-gW-YkK.title" = "给我们一些关爱? ";
+
+/* Class = "NSTextFieldCell"; title = "Now, let's configure LuLu:"; ObjectID = "XHD-XH-wR0"; */
+"XHD-XH-wR0.title" = "现在，让我们开始配置 LuLu:";
+
+/* Class = "NSButtonCell"; title = "Next"; ObjectID = "YXa-F3-XSG"; */
+"YXa-F3-XSG.title" = "下一步";
+
+/* Class = "NSTextFieldCell"; title = "LuLu detects outgoing network connections, alerting you when something is trying to 'call home'"; ObjectID = "pMo-Yj-XKY"; */
+"pMo-Yj-XKY.title" = "LuLu 可以侦测应用程序向外发出的网络连接, 当有程序试图'呼叫基地'的时候就会提醒您";
+
+/* Class = "NSTextFieldCell"; title = "Support LuLu?"; ObjectID = "qNj-Zh-8FW"; */
+"qNj-Zh-8FW.title" = "支持 LuLu?";
+
+/* Class = "NSTextFieldCell"; title = "This option will allow any Apple-signed binary to access the network without generating an alert."; ObjectID = "r1b-Nl-Ii7"; */
+"r1b-Nl-Ii7.title" = "这个选项允许所有由 Apple 公司签名的二进制程序访问网络而不报警.";
+
+/* Class = "NSButtonCell"; title = "Next"; ObjectID = "xbU-XH-hYT"; */
+"xbU-XH-hYT.title" = "下一步";
+
+/* Class = "NSTextFieldCell"; title = " Allow Already Installed Applications"; ObjectID = "ymJ-tB-qiA"; */
+"ymJ-tB-qiA.title" = " 允许已安装的程序的连接请求";
+
+/* Class = "NSTextFieldCell"; title = " Allow Apple Programs"; ObjectID = "zo1-a0-tPg"; */
+"zo1-a0-tPg.title" = " 允许所有 Apple 官方程序的连接请求";

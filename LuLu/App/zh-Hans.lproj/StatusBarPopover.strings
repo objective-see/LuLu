@@ -1,0 +1,9 @@
+
+/* Class = "NSTextFieldCell"; title = "LuLu up & running!"; ObjectID = "17"; */
+"17.title" = "LuLu 已经启动并正在运行!";
+
+/* Class = "NSTextFieldCell"; title = "...access it from here anytime."; ObjectID = "22"; */
+"22.title" = "...您随时可以通过这个图标打开 Lulu.";
+
+/* Class = "NSButtonCell"; title = "⌃"; ObjectID = "2jG-uf-4XV"; */
+"2jG-uf-4XV.title" = "⌃";

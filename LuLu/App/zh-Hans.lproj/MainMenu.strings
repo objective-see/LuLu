@@ -1,0 +1,36 @@
+
+/* Class = "NSMenuItem"; title = "Preferences..."; ObjectID = "4Uv-rm-VzQ"; */
+"4Uv-rm-VzQ.title" = "设置...";
+
+/* Class = "NSMenuItem"; title = "Quit LuLu"; ObjectID = "DEa-wY-se7"; */
+"DEa-wY-se7.title" = "退出 LuLu";
+
+/* Class = "NSMenu"; title = "LuLu"; ObjectID = "J1I-fS-R65"; */
+"J1I-fS-R65.title" = "LuLu";
+
+/* Class = "NSMenuItem"; title = "Quit LuLu"; ObjectID = "QrZ-U2-1Ib"; */
+"QrZ-U2-1Ib.title" = "退出 LuLu";
+
+/* Class = "NSMenuItem"; title = "Network Monitor..."; ObjectID = "VuY-Sy-392"; */
+"VuY-Sy-392.title" = "网络监视器...";
+
+/* Class = "NSMenuItem"; title = "LuLu"; ObjectID = "aJV-EX-6bj"; */
+"aJV-EX-6bj.title" = "LuLu";
+
+/* Class = "NSMenuItem"; title = "Rules..."; ObjectID = "kec-r9-2yd"; */
+"kec-r9-2yd.title" = "规则...";
+
+/* Class = "NSMenuItem"; title = "Uninstall LuLu"; ObjectID = "lns-C6-Aa5"; */
+"lns-C6-Aa5.title" = "卸载 LuLu";
+
+/* Class = "NSMenuItem"; title = "Disable"; ObjectID = "mxA-q2-fvN"; */
+"mxA-q2-fvN.title" = "暂停";
+
+/* Class = "NSMenuItem"; title = "About LuLu"; ObjectID = "q1D-fP-yr1"; */
+"q1D-fP-yr1.title" = "关于 LuLu";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "uhX-d8-iZM"; */
+"uhX-d8-iZM.title" = "主菜单";
+
+/* Class = "NSMenuItem"; title = "LULU: enabled"; ObjectID = "w99-Wo-epe"; */
+"w99-Wo-epe.title" = "LULU: 已激活";

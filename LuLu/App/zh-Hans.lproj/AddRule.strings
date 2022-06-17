@@ -1,0 +1,33 @@
+
+/* Class = "NSTextFieldCell"; title = "Remote port"; ObjectID = "5ic-Om-d8g"; */
+"5ic-Om-d8g.title" = "远程端口";
+
+/* Class = "NSTextFieldCell"; title = "Remote address/domain"; ObjectID = "7yf-wW-FZC"; */
+"7yf-wW-FZC.title" = "远程地址/域名";
+
+/* Class = "NSButtonCell"; title = "regex?"; ObjectID = "FCA-Cv-yT3"; */
+"FCA-Cv-yT3.title" = "正则表达式?";
+
+/* Class = "NSButtonCell"; title = " Block"; ObjectID = "JJl-Lz-apr"; */
+"JJl-Lz-apr.title" = " 阻止";
+
+/* Class = "NSButtonCell"; title = "Browse"; ObjectID = "OoX-aE-Hgf"; */
+"OoX-aE-Hgf.title" = "浏览";
+
+/* Class = "NSTextFieldCell"; placeholderString = "*"; ObjectID = "QWe-2U-lfn"; */
+"QWe-2U-lfn.placeholderString" = "*";
+
+/* Class = "NSButtonCell"; title = "Add"; ObjectID = "V5P-DF-wCP"; */
+"V5P-DF-wCP.title" = "添加";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "fX0-Jq-Okq"; */
+"fX0-Jq-Okq.title" = "取消";
+
+/* Class = "NSTextFieldCell"; placeholderString = "*"; ObjectID = "kXW-Xv-Fc4"; */
+"kXW-Xv-Fc4.placeholderString" = "*";
+
+/* Class = "NSButtonCell"; title = " Allow"; ObjectID = "oCK-aR-Ek4"; */
+"oCK-aR-Ek4.title" = " 允许";
+
+/* Class = "NSTextFieldCell"; title = "Program path"; ObjectID = "tc1-pS-Wns"; */
+"tc1-pS-Wns.title" = "程序路径";
