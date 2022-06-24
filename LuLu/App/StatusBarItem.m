@@ -232,23 +232,28 @@ enum menuItems
             [((AppDelegate*)[[NSApplication sharedApplication] delegate]) showPreferences:nil];
             break;
             
-        //prefs
+        //monitor
+        // launch netiquette (with lulu args)
         case monitor:
         {
             //path
-            NSString* path = nil;
-            
+            NSURL* path = nil;
+           
+            //error
+            NSError* error = nil;
+           
             //init path
-            path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:NETWORK_MONITOR];
+            path = [NSURL fileURLWithPath:[NSBundle.mainBundle.resourcePath stringByAppendingPathComponent:NETWORK_MONITOR]];
             
             //dbg msg
             os_log_debug(logHandle, "launching network monitor (%{public}@)", path);
             
             //launch
-            if(YES != [[NSWorkspace sharedWorkspace] launchApplication:path])
+            // with args
+            if(nil != [NSWorkspace.sharedWorkspace launchApplicationAtURL:path options:0 configuration:[NSDictionary dictionaryWithObject:@[@"-lulu"] forKey:NSWorkspaceLaunchConfigurationArguments] error:&error])
             {
                 //err msg
-                os_log_error(logHandle, "ERROR: failed to launch network monitor (%{public}@)", path);
+                os_log_error(logHandle, "ERROR: failed to launch network monitor, %{public}@, (error: %{public}@)", path, error);
             }
             
             break;

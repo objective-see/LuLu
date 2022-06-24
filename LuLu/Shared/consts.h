@@ -328,7 +328,6 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 //search (filter) field
 #define RULE_SEARCH_FIELD 5
 
-
 //network monitor
 #define NETWORK_MONITOR @"Netiquette.app"
 

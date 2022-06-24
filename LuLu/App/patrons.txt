@@ -1,5 +1,5 @@
 Patrons (2^6+):
-Jan Koum, Christian Blümlein, MikeyH
+Jan Koum, Nick, Cane Juice, Christian Blümlein, M S, Shain Singh
 
 Friends of Objective-See:
-1Password, Jamf, Mosyle, CleanMyMac X, SmugMug, Guardian Mobile Firewall, iVerify, Halo Privacy, uberAgent
+Jamf, Mosyle, Kandji, CleanMyMac X, Kolide, Fleet, Palo Alto Networks, Addigy, SmugMug, Guardian Mobile Firewall, iVerify, Halo Privacy

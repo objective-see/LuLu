@@ -178,8 +178,11 @@ NSNumber* extractSigner(SecStaticCodeRef code, SecCSFlags flags, BOOL isDynamic)
     //"anchor apple generic"
     static SecRequirementRef isDevID = nil;
     
-    //"anchor apple generic and certificate leaf [subject.CN] = \"Apple Mac OS Application Signing\""
+    //"Apple Mac OS Application Signing"
     static SecRequirementRef isAppStore = nil;
+    
+    //"Apple iPhone OS Application Signing"
+    static SecRequirementRef isiOSAppStore = nil;
     
     //signing details
     CFDictionaryRef signingDetails = NULL;
@@ -200,8 +203,11 @@ NSNumber* extractSigner(SecStaticCodeRef code, SecCSFlags flags, BOOL isDynamic)
         //init dev id signing requirement
         SecRequirementCreateWithString(CFSTR("anchor apple generic"), kSecCSDefaultFlags, &isDevID);
         
-        //init app store signing requirement
+        //init (macOS)  app store signing requirement
         SecRequirementCreateWithString(CFSTR("anchor apple generic and certificate leaf [subject.CN] = \"Apple Mac OS Application Signing\""), kSecCSDefaultFlags, &isAppStore);
+        
+        //init (iOS) app store signing requirement
+        SecRequirementCreateWithString(CFSTR("anchor apple generic and certificate leaf [subject.CN] = \"Apple iPhone OS Application Signing\""), kSecCSDefaultFlags, &isiOSAppStore);
     });
     
     //check 1: "is apple" (proper)
@@ -238,7 +244,15 @@ NSNumber* extractSigner(SecStaticCodeRef code, SecCSFlags flags, BOOL isDynamic)
         }
     }
     
-    //check 3: "is dev id"
+    //check 3: "is (iOS) app store"
+    // note: this is more specific than dev id, so also do it first
+    else if(errSecSuccess == validateRequirement(code, isiOSAppStore, flags, isDynamic))
+    {
+        //set signer to app store
+        signer = [NSNumber numberWithInt:AppStore];
+    }
+    
+    //check 4: "is dev id"
     else if(errSecSuccess == validateRequirement(code, isDevID, flags, isDynamic))
     {
         //set signer to dev id
