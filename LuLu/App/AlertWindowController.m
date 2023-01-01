@@ -602,9 +602,6 @@ bail:
     //set customization items
     self.touchBar.customizationAllowedItemIdentifiers = touchBarItems;
     
-    //activate so touchbar shows up
-    [NSApp activateIgnoringOtherApps:YES];
-    
 bail:
     
     return;

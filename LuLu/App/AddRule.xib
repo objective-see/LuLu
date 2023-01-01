@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,7 +24,7 @@
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titleVisibility="hidden" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="196" y="240" width="508" height="325"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
             <value key="minSize" type="size" width="508" height="325"/>
             <value key="maxSize" type="size" width="800" height="325"/>
             <view key="contentView" id="se5-gp-TjO">
@@ -42,7 +43,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZX5-FR-Ua8">
-                        <rect key="frame" x="407" y="212" width="87" height="32"/>
+                        <rect key="frame" x="406" y="212" width="89" height="33"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="2tj-XI-LkF"/>
                             <constraint firstAttribute="width" constant="75" id="kBa-5d-iLO"/>
@@ -144,7 +145,7 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="h8l-JG-MHD"/>
                     </imageView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rer-xE-vmi">
-                        <rect key="frame" x="299" y="13" width="90" height="32"/>
+                        <rect key="frame" x="298" y="13" width="92" height="33"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="78" id="4xU-ew-nvK"/>
                             <constraint firstAttribute="height" constant="21" id="ret-kW-s6x"/>
@@ -161,7 +162,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XX0-l9-AZe">
-                        <rect key="frame" x="404" y="13" width="90" height="32"/>
+                        <rect key="frame" x="403" y="13" width="92" height="33"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="78" id="L0j-xG-Jk9"/>
                             <constraint firstAttribute="height" constant="21" id="Pno-Yh-Pt3"/>
