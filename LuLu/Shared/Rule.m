@@ -45,7 +45,7 @@ extern os_log_t logHandle;
         self.path = info[KEY_PATH];
         
         //init name
-        self.name = (nil != info[KEY_NAME]) ? info[KEY_NAME] : getProcessName(self.path);
+        self.name = (nil != info[KEY_PROCESS_NAME]) ? info[KEY_PROCESS_NAME] : getProcessName(0, self.path);
         
         //init signing info
         self.csInfo = info[KEY_CS_INFO];

@@ -877,7 +877,7 @@ bail:
     persistentRules = [NSMutableDictionary dictionary];
     
     //dbg msg
-    os_log_debug(logHandle, "saving rules to %{public}@", rulesFile);
+    os_log_debug(logHandle, "saving (non-temp) rules to %{public}@", rulesFile);
     
     //sync to access
     @synchronized(self.rules) {

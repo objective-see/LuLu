@@ -105,7 +105,7 @@ extern os_log_t logHandle;
     [self setSigningIcon];
     
     //set name
-    self.processName.stringValue = getProcessName(self.alert[KEY_PATH]);
+    self.processName.stringValue = self.alert[KEY_PROCESS_NAME];
     
     //alert message
     self.alertMessage.stringValue = [NSString stringWithFormat:@"is trying to connect to %@", remoteAddress];
@@ -156,9 +156,20 @@ extern os_log_t logHandle;
         self.processArgs.stringValue = arguments;
     }
     
-    //process path
-    self.processPath.stringValue = self.alert[KEY_PATH];
-    
+    //process path for normal processes
+    if(YES != [self.alert[KEY_PROCESS_DELETED] boolValue])
+    {
+        //add as is
+        self.processPath.stringValue = self.alert[KEY_PATH];
+    }
+    //deleted processes
+    // strike thru, so user knows
+    else
+    {
+        //strike thru
+        self.processPath.attributedStringValue = [[NSAttributedString alloc] initWithString:self.alert[KEY_PATH] attributes:@{NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle)}];
+    }
+        
     //ip address
     self.ipAddress.stringValue = (nil != self.alert[KEY_HOST]) ? self.alert[KEY_HOST] : @"unknown";
     
@@ -191,6 +202,17 @@ extern os_log_t logHandle;
     
     //temp rule button label
     self.tempRule.attributedTitle = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" temporarily (pid: %@)", [self.alert[KEY_PROCESS_ID] stringValue]] attributes:titleAttributes];
+    
+    //process deleted?
+    // check and disable ...always want this a temp rule for this
+    if(YES == [self.alert[KEY_PROCESS_DELETED] boolValue])
+    {
+        //on
+        self.tempRule.state = NSControlStateValueOn;
+        
+        //disable
+        self.tempRule.enabled = NO;
+    }
     
     //set action scope
     // ...based on last one

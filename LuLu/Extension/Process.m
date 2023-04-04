@@ -88,6 +88,21 @@ extern os_log_t logHandle;
             goto bail;
         }
         
+        //set name
+        //name for normal procs
+        if(YES != self.deleted)
+        {
+            //get/add
+            self.name = getProcessName(0, self.path);
+        }
+        //for delete procs
+        // get path via pid
+        else
+        {
+            //get/add
+            self.name = getProcessName(self.pid, self.path);
+        }
+        
         //get user
         self.uid = audit_token_to_euid(*token);
         
@@ -229,7 +244,7 @@ bail:
         }
         
         //add
-        [self.ancestors insertObject:[@{KEY_PROCESS_ID:[NSNumber numberWithInt:currentPID], KEY_NAME:currentName} mutableCopy] atIndex:0];
+        [self.ancestors insertObject:[@{KEY_PROCESS_ID:[NSNumber numberWithInt:currentPID], KEY_PROCESS_NAME:currentName} mutableCopy] atIndex:0];
         
         //for parent
         // first try via rPID
@@ -286,30 +301,46 @@ bail:
     
     //obtain code ref
     status = SecCodeCopyGuestWithAttributes(NULL, (__bridge CFDictionaryRef _Nullable)(@{(__bridge NSString *)kSecGuestAttributeAudit:[NSData dataWithBytes:token length:sizeof(audit_token_t)]}), kSecCSDefaultFlags, &code);
-    if(errSecSuccess != status)
+    if(errSecSuccess == status)
+    {
+        //copy path
+        status = SecCodeCopyPath(code, kSecCSDefaultFlags, &path);
+        if(errSecSuccess == status)
+        {
+            //extract/copy path
+            self.path = [((__bridge NSURL*)path).path copy];
+        }
+        //err msg
+        else
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'SecCodeCopyPath' failed with': %#x", status);
+        }
+    }
+    //err msg
+    else
     {
         //err msg
         os_log_error(logHandle, "ERROR: 'SecCodeCopyGuestWithAttributes' failed with': %#x", status);
-        
-        //bail
-        goto bail;
     }
     
-    //copy path
-    status = SecCodeCopyPath(code, kSecCSDefaultFlags, &path);
-    if(errSecSuccess != status)
+    //process's binary deleted?
+    if(kPOSIXErrorENOENT == status)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: 'SecCodeCopyPath' failed with': %#x", status);
+        //dbg msg
+        os_log_debug(logHandle, "process %d's binary appears to be deleted", pid);
         
-        //bail
-        goto bail;
+        //set flag
+        self.deleted = YES;
     }
 
-    //extract/copy path
-    self.path = [((__bridge NSURL*)path).path copy];
-    
-bail:
+    //path (still) nil?
+    // try other methods
+    if(nil == path)
+    {
+        //get path via pid
+        self.path = getProcessPath(self.pid);
+    }
     
     //resolve symlinks
     self.path = [self.path stringByResolvingSymlinksInPath];
@@ -515,6 +546,8 @@ bail:
     
     return;
 }
+
+
 
 //generate signing info
 -(void)generateSigningInfo:(audit_token_t*)token

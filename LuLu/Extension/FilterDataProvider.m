@@ -360,7 +360,7 @@ bail:
     /* NO MATCHING RULE FOUND */
     
     //dbg msg
-    os_log_debug(logHandle, "no (saved) rule found for %d/%{public}@)", process.pid, process.binary.name);
+    os_log_debug(logHandle, "no (saved) rule found for %d/%{public}@", process.pid, process.binary.name);
     
     //no client?
 
@@ -398,7 +398,6 @@ bail:
     
     //dbg msg
     os_log_debug(logHandle, "no related alert, currently shown...");
-    
     
     //CHECK:
     // Apple process and 'PREF_ALLOW_APPLE' is set?
@@ -596,6 +595,9 @@ bail:
     // and process user response
     if(YES != [alerts deliver:alert reply:^(NSDictionary* alert)
     {
+        //flag
+        BOOL shouldSave = YES;
+        
         //verdict
         NEFilterNewFlowVerdict* verdict = nil;
         
@@ -617,8 +619,11 @@ bail:
         //resume flow w/ verdict
         [self resumeFlow:flow withVerdict:verdict];
         
+        //save ...if not temporary
+        shouldSave = ![alert[KEY_TEMPORARY] boolValue];
+        
         //add/save rules
-        [rules add:[[Rule alloc] init:alert] save:YES];
+        [rules add:[[Rule alloc] init:alert] save:shouldSave];
         
         //remove from 'shown'
         [alerts removeShown:alert];

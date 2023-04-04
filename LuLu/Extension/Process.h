@@ -30,6 +30,12 @@
 //exit code
 @property u_int32_t exit;
 
+//(self) deleted binary
+@property BOOL deleted;
+
+//name
+@property(nonatomic, retain)NSString* _Nullable name;
+
 //path
 @property(nonatomic, retain)NSString* _Nullable path;
 

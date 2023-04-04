@@ -31,7 +31,7 @@
     signingInfo = alert[KEY_CS_INFO];
     
     //start summary with item name
-    [summary appendString:getProcessName(alert[KEY_PATH])];
+    [summary appendString:alert[KEY_PROCESS_NAME]];
     
     //unset signing auth field
     for(NSUInteger i=0; i<3; i++)

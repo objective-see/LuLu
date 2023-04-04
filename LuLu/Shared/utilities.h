@@ -38,7 +38,10 @@ NSString* getProcessPath(pid_t pid);
 
 //get process name
 // either via app bundle, or path
-NSString* getProcessName(NSString* path);
+NSString* getProcessName(pid_t pid, NSString* path);
+
+//get current working dir
+NSString* getProcessCWD(pid_t pid);
 
 //given a process path and user
 // return array of all matching pids

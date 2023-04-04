@@ -74,6 +74,15 @@ extern os_log_t logHandle;
     //add path
     alert[KEY_PATH] = process.path;
     
+    //add name
+    alert[KEY_PROCESS_NAME] = process.name;
+
+    //add process state
+    if(YES == process.deleted)
+    {
+        alert[KEY_PROCESS_DELETED] = @YES;
+    }
+    
     //process ancestors?
     // ...only add if more than just self
     if(process.ancestors.count > 1)

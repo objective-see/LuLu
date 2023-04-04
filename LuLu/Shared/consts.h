@@ -267,8 +267,6 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 
 #define KEY_ID @"id"
 #define KEY_PATH @"path"
-#define KEY_NAME @"name"
-
 #define KEY_KEY @"key"
 
 #define KEY_CS_ID @"signatureIdentifier"
@@ -292,6 +290,10 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define KEY_UUID @"uuid"
 #define KEY_PROCESS_ID @"pid"
 #define KEY_PROCESS_ARGS @"args"
+#define KEY_PROCESS_NAME @"name"
+
+#define KEY_PROCESS_DELETED @"deleted"
+
 #define KEY_PROCESS_ANCESTORS @"ancestors"
 
 #define KEY_HOST @"host"

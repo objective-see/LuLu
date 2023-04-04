@@ -78,7 +78,6 @@ bail:
 }
 
 //load
-// and listen
 -(void)load:(NSString*)path
 {
     //error
@@ -215,18 +214,43 @@ bail:
     //check each item
     for(NSString* item in self.items)
     {
-        //check url host and flow's host name (IP)
-        if( (YES == [item isEqualToString:flow.URL.host]) ||
-            (YES == [item isEqualToString:remoteEndpoint.hostname]) )
-        {
-            //dbg msg
-            os_log_debug(logHandle, "block listed item '%{public}@', matches flow url host: %{public}@ or ip addr: %{public}@", item, flow.URL.host, remoteEndpoint.hostname);
+        //macOS 11+
+        // also check 'remoteHostname'
+        if (@available(macOS 11, *)) {
             
-            //happy
-            isMatch = YES;
+            //check url host, and remote host and host name
+            if( (YES == [item isEqualToString:flow.URL.host]) ||
+                (YES == [item isEqualToString:flow.remoteHostname]) ||
+                (YES == [item isEqualToString:remoteEndpoint.hostname]) )
+            {
+                //dbg msg
+                os_log_debug(logHandle, "block listed item '%{public}@', matches flow url host: %{public}@ or ip addr: %{public}@", item, flow.URL.host, remoteEndpoint.hostname);
+                
+                //happy
+                isMatch = YES;
+                
+                //done
+                goto bail;
+            }
+        }
+        
+        //pre-macOS 11
+        // ...no `remoteHostname` to check :|
+        else {
             
-            //done
-            goto bail;
+            //check url host and flow's host name (IP)
+            if( (YES == [item isEqualToString:flow.URL.host]) ||
+               (YES == [item isEqualToString:remoteEndpoint.hostname]) )
+            {
+                //dbg msg
+                os_log_debug(logHandle, "block listed item '%{public}@', matches flow url host: %{public}@ or ip addr: %{public}@", item, flow.URL.host, remoteEndpoint.hostname);
+                
+                //happy
+                isMatch = YES;
+                
+                //done
+                goto bail;
+            }
         }
     }
         

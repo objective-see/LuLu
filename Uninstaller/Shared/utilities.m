@@ -554,7 +554,7 @@ bail:
 }
 
 //restart
-void restart()
+void restart(void)
 {
     //first quit self
     // then reboot the box...nicely!
@@ -564,7 +564,7 @@ void restart()
 }
 
 //dark mode?
-BOOL isDarkMode()
+BOOL isDarkMode(void)
 {
     //check 'AppleInterfaceStyle'
     return [[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"] isEqualToString:@"Dark"];

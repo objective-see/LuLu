@@ -75,7 +75,7 @@ bail:
 
 //cmdline uninstall
 // removes v1.* installs
-BOOL cmdlineUninstall()
+BOOL cmdlineUninstall(void)
 {
     //flag
     BOOL uninstalled = NO;

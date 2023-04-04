@@ -36,7 +36,7 @@ extern os_log_t logHandle;
 
 //get app's version
 // extracted from Info.plist
-NSString* getAppVersion()
+NSString* getAppVersion(void)
 {
     //read and return 'CFBundleVersion' from bundle
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
@@ -121,7 +121,7 @@ bail:
 #pragma GCC diagnostic pop
 
 //get name of logged in user
-NSString* getConsoleUser()
+NSString* getConsoleUser(void)
 {
     //copy/return user
     return CFBridgingRelease(SCDynamicStoreCopyConsoleUser(NULL, NULL, NULL));
@@ -129,23 +129,49 @@ NSString* getConsoleUser()
 
 //get process name
 // either via app bundle, or path
-NSString* getProcessName(NSString* path)
+NSString* getProcessName(pid_t pid, NSString* path)
 {
+    //status
+    int status = -1;
+    
     //process name
     NSString* processName = nil;
     
     //app bundle
     NSBundle* appBundle = nil;
     
-    //try find an app bundle
-    appBundle = findAppBundle(path);
-    if(nil != appBundle)
+    //buffer for process path
+    char nameBuffer[PROC_PIDPATHINFO_MAXSIZE] = {0};
+    
+    //clear
+    memset(nameBuffer, 0x0, sizeof(nameBuffer));
+    
+    //via pid?
+    if(pid != 0)
     {
-        //grab name from app's bundle
-        processName = [appBundle infoDictionary][@"CFBundleName"];
+        //get name
+        status = proc_name(pid, &nameBuffer, sizeof(nameBuffer));
+        if(status >= 0)
+        {
+            //init task's name
+            processName = [NSString stringWithUTF8String:nameBuffer];
+        }
     }
     
-    //still nil?
+    //(still) nil
+    // try via app bundle
+    if(nil == processName)
+    {
+        //find app bundle
+        appBundle = findAppBundle(path);
+        if(nil != appBundle)
+        {
+            //grab name from app's bundle
+            processName = [appBundle infoDictionary][@"CFBundleName"];
+        }
+    }
+    
+    //(still) nil
     // just grab from path
     if(nil == processName)
     {
@@ -219,6 +245,9 @@ NSString* getProcessPath(pid_t pid)
     //task path
     NSString* processPath = nil;
     
+    //cwd
+    NSString* cwd = nil;
+    
     //buffer for process path
     char pathBuffer[PROC_PIDPATHINFO_MAXSIZE] = {0};
     
@@ -254,6 +283,9 @@ NSString* getProcessPath(pid_t pid)
     // try via task's args ('KERN_PROCARGS2')
     else
     {
+        //err msg
+        os_log_error(logHandle, "ERROR: 'proc_pidpath' failed with %d", status);
+        
         //init mib
         // want system's size for max args
         mib[0] = CTL_KERN;
@@ -307,6 +339,20 @@ NSString* getProcessPath(pid_t pid)
         //extract task's name
         // follows # of args (int) and is NULL-terminated
         processPath = [NSString stringWithUTF8String:taskArgs + sizeof(int)];
+        
+        //short path?
+        // get cwd + to append
+        if(YES == [processPath hasPrefix:@"./"])
+        {
+            //chop ./
+            processPath = [processPath substringWithRange:NSMakeRange(2, [processPath length]-2)];
+            cwd = getProcessCWD(pid);
+            if(nil != cwd)
+            {
+                //append
+                processPath = [cwd stringByAppendingPathComponent:processPath];
+            }
+        }
     }
     
 bail:
@@ -320,6 +366,32 @@ bail:
     }
     
     return processPath;
+}
+
+//get current working dir
+NSString* getProcessCWD(pid_t pid)
+{
+    //cwd
+    NSString* directory = nil;
+    
+    //status
+    int status = -1;
+    
+    //path info
+    struct proc_vnodepathinfo vpi = {0,};
+    
+    //init
+    memset(&vpi, 0x0, sizeof(vpi));
+    
+    //get proc's cwd, via PROC_PIDVNODEPATHINFO
+    status = proc_pidinfo(pid, PROC_PIDVNODEPATHINFO, 0, &vpi, sizeof(vpi));
+    if(status > 0)
+    {
+        //convert to string
+        directory = [NSString stringWithUTF8String:vpi.pvi_cdir.vip_path];
+    }
+    
+    return directory;
 }
 
 //given a process path and user
@@ -1021,7 +1093,7 @@ bail:
 }
 
 //dark mode?
-BOOL isDarkMode()
+BOOL isDarkMode(void)
 {
     //check 'AppleInterfaceStyle'
     return [[[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"] isEqualToString:@"Dark"];
