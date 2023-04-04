@@ -224,7 +224,7 @@ bail:
                 (YES == [item isEqualToString:remoteEndpoint.hostname]) )
             {
                 //dbg msg
-                os_log_debug(logHandle, "block listed item '%{public}@', matches flow url host: %{public}@ or ip addr: %{public}@", item, flow.URL.host, remoteEndpoint.hostname);
+                os_log_debug(logHandle, "block listed item '%{public}@', matches flow's url host: %{public}@, or 'remoteHostname': %{public}@, or 'remoteEndpoint.hostname': %{public}@", item, flow.URL.host, flow.remoteHostname, remoteEndpoint.hostname);
                 
                 //happy
                 isMatch = YES;
@@ -243,7 +243,7 @@ bail:
                (YES == [item isEqualToString:remoteEndpoint.hostname]) )
             {
                 //dbg msg
-                os_log_debug(logHandle, "block listed item '%{public}@', matches flow url host: %{public}@ or ip addr: %{public}@", item, flow.URL.host, remoteEndpoint.hostname);
+                os_log_debug(logHandle, "block listed item '%{public}@', matches flow's url host: %{public}@, or 'remoteEndpoint.hostname': %{public}@", item, flow.URL.host, remoteEndpoint.hostname);
                 
                 //happy
                 isMatch = YES;

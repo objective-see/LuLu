@@ -42,6 +42,7 @@
 //support view
 @property (strong) IBOutlet NSView *supportView;
 
+//preferences
 @property (nonatomic, retain)NSDictionary* preferences;
 
 /* METHODS */
