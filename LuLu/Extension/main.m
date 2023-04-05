@@ -34,12 +34,6 @@ int main(int argc, char *argv[])
     //dbg msg
     os_log_debug(logHandle, "started: %{public}@ (pid: %d / uid: %d)", NSProcessInfo.processInfo.arguments.firstObject, getpid(), getuid());
     
-    //init crash reporting
-    [SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
-        options.dsn = SENTRY_DSN;
-        options.debug = YES;
-    }];
-        
     //start sysext
     // Apple notes, "call [this] as early as possible"
     [NEProvider startSystemExtensionMode];
@@ -50,6 +44,20 @@ int main(int argc, char *argv[])
     //alloc/init/load prefs
     preferences = [[Preferences alloc] init];
         
+    //init crash reporting
+    // unless user has turned it off
+    if(YES != [preferences.preferences[PREF_NO_ERROR_REPORTING] boolValue])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "enabling crash reporting");
+        
+        //init crash reporting
+        [SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
+            options.dsn = SENTRY_DSN;
+            options.debug = YES;
+        }];
+    }
+    
     //alloc/init alerts object
     alerts = [[Alerts alloc] init];
     

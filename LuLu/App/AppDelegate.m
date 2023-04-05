@@ -6,6 +6,8 @@
 //  Copyright (c) 2020 Objective-See. All rights reserved.
 //
 
+@import Sentry;
+
 #import "consts.h"
 #import "Update.h"
 #import "utilities.h"
@@ -471,7 +473,7 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
     
-    //should run with no icon?
+    //should run with icon?
     // init and show status bar item
     if(YES != [preferences[PREF_NO_ICON_MODE] boolValue])
     {
@@ -596,6 +598,20 @@ bail:
     
     //dbg msg
     os_log_debug(logHandle, "loaded preferences %{public}@", preferences);
+    
+    //init crash reporting
+    // unless user has turned it off
+    if(YES != [preferences[PREF_NO_ERROR_REPORTING] boolValue])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "enabling crash reporting");
+        
+        //init crash reporting
+        [SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
+            options.dsn = SENTRY_DSN;
+            options.debug = YES;
+        }];
+    }
     
     //run with status bar icon?
     if(YES != [preferences[PREF_NO_ICON_MODE] boolValue])

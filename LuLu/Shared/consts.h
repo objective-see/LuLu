@@ -132,6 +132,10 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define PREF_BLOCK_MODE @"blockMode"
 
 //prefs
+// no error reporting
+#define PREF_NO_ERROR_REPORTING @"noErorrReporting"
+
+//prefs
 // icon mode
 #define PREF_NO_ICON_MODE @"noIconMode"
 
