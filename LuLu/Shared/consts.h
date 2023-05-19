@@ -143,11 +143,17 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 // update mode
 #define PREF_NO_UPDATE_MODE @"noupdateMode"
 
-//allow all apple binaries
+//prefs
+// allow all apple binaries
 #define PREF_ALLOW_APPLE @"allowApple"
 
-//allow all installed
+//prefs
+// allow all installed
 #define PREF_ALLOW_INSTALLED @"allowInstalled"
+
+//prefs
+// allow dns traffic
+#define PREF_ALLOW_DNS @"allowDNS"
 
 //prefs
 // allow simulator apps

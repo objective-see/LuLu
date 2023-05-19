@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="WelcomeWindowController">
             <connections>
                 <outlet property="allowApple" destination="b0q-yl-6sv" id="Wjt-Cb-bfM"/>
+                <outlet property="allowDNS" destination="TKV-2M-L24" id="cZl-yn-ymP"/>
                 <outlet property="allowExtActivityIndicator" destination="rJu-8L-JZP" id="5BQ-gP-dc5"/>
                 <outlet property="allowExtMessage" destination="osh-aW-f6g" id="HHi-df-l3Y"/>
                 <outlet property="allowExtensionView" destination="J4K-Wf-OVI" id="NQa-Kx-45w"/>
@@ -24,7 +25,7 @@
         <window title="LuLu" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="196" y="240" width="700" height="350"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
             <value key="minSize" type="size" width="700" height="350"/>
             <value key="maxSize" type="size" width="700" height="350"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
@@ -163,7 +164,7 @@
                     <color key="fillColor" red="0.57793885469999995" green="0.75859862570000003" blue="0.2368842065" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </box>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="ikd-wz-01Q">
-                    <rect key="frame" x="31" y="256" width="664" height="54"/>
+                    <rect key="frame" x="31" y="266" width="664" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Now, let's configure LuLu:" id="XHD-XH-wR0">
                         <font key="font" size="32" name="AvenirNextCondensed-Regular"/>
@@ -172,7 +173,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b0q-yl-6sv">
-                    <rect key="frame" x="177" y="211" width="22" height="44"/>
+                    <rect key="frame" x="177" y="221" width="22" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6UN-fn-MkZ">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -180,7 +181,7 @@
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LHE-lc-cEL">
-                    <rect key="frame" x="177" y="134" width="22" height="44"/>
+                    <rect key="frame" x="177" y="144" width="22" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="aZp-4P-816">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -188,7 +189,7 @@
                     </buttonCell>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="445" translatesAutoresizingMaskIntoConstraints="NO" id="AhJ-ov-jbx">
-                    <rect key="frame" x="179" y="176" width="470" height="45"/>
+                    <rect key="frame" x="179" y="186" width="470" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This option will allow any Apple-signed binary to access the network without generating an alert." id="r1b-Nl-Ii7">
                         <font key="font" size="12" name="Menlo-Regular"/>
@@ -197,7 +198,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="445" translatesAutoresizingMaskIntoConstraints="NO" id="KHZ-VJ-JkQ">
-                    <rect key="frame" x="177" y="97" width="449" height="45"/>
+                    <rect key="frame" x="177" y="107" width="449" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This option will allow any 3rd-party app that is already installed, to access the network without generating an alert." id="3aO-AI-YtY">
                         <font key="font" size="12" name="Menlo-Regular"/>
@@ -206,12 +207,12 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zct-RU-d1Y">
-                    <rect key="frame" x="20" y="111" width="128" height="128"/>
+                    <rect key="frame" x="20" y="98" width="128" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="MainAppIcon" id="PwK-g9-sQH"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Udh-qU-3t3">
-                    <rect key="frame" x="200" y="216" width="310" height="28"/>
+                    <rect key="frame" x="200" y="226" width="310" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" Allow Apple Programs" id="zo1-a0-tPg">
                         <font key="font" size="17" name="Menlo-Bold"/>
@@ -220,9 +221,35 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gf8-do-3hb">
-                    <rect key="frame" x="200" y="137" width="399" height="28"/>
+                    <rect key="frame" x="200" y="147" width="399" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" Allow Already Installed Applications" id="ymJ-tB-qiA">
+                        <font key="font" size="17" name="Menlo-Bold"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TKV-2M-L24">
+                    <rect key="frame" x="179" y="67" width="22" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="BDy-82-lOp">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system" size="20"/>
+                    </buttonCell>
+                </button>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="445" translatesAutoresizingMaskIntoConstraints="NO" id="yI4-k1-boN">
+                    <rect key="frame" x="179" y="30" width="449" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This option will allow any (UDP) traffic over port 53." id="sAE-Mf-3fz">
+                        <font key="font" size="12" name="Menlo-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bLF-86-77M">
+                    <rect key="frame" x="202" y="70" width="399" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" Allow DNS Traffic" id="SWc-iv-oN4">
                         <font key="font" size="17" name="Menlo-Bold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

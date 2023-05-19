@@ -27,6 +27,10 @@ extern os_log_t logHandle;
     //init super
     if(self = [super init])
     {
+        
+        //url
+        NSURL* remoteURL = nil;
+        
         //dbg msg
         os_log_debug(logHandle, "creating rule with: %{public}@", info);
         
@@ -78,6 +82,27 @@ extern os_log_t logHandle;
             //init port
             // nil? default to all ('*')
             self.endpointPort = (nil != info[KEY_ENDPOINT_PORT]) ? info[KEY_ENDPOINT_PORT] : VALUE_ANY;
+        }
+        
+        //init url
+        if(YES != [self.endpointAddr isEqualToString:VALUE_ANY])
+        {
+            //init url
+            // add prefix
+            if(YES != [self.endpointAddr hasPrefix:@"http"])
+            {
+                //init url
+                remoteURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://%@", self.endpointAddr]];
+            }
+            //no prefix needed
+            else
+            {
+                //init url
+                remoteURL = [NSURL URLWithString:self.endpointAddr];
+            }
+            
+            //get host name
+            self.endpointHost = remoteURL.host;
         }
         
         //set proto

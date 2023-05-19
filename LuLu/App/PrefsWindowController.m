@@ -38,26 +38,29 @@ extern XPCDaemonClient* xpcDaemonClient;
 //'allow installed' button
 #define BUTTON_ALLOW_INSTALLED 2
 
+//'allow dns' button
+#define BUTTON_ALLOW_DNS 3
+
 //'allow iOS simulator apps' mode button
-#define BUTTON_ALLOW_SIMULATOR 3
+#define BUTTON_ALLOW_SIMULATOR 4
 
 //'use blocklist' button
-#define BUTTON_USE_BLOCK_LIST 4
+#define BUTTON_USE_BLOCK_LIST 5
 
 //'passive mode' button
-#define BUTTON_PASSIVE_MODE 5
+#define BUTTON_PASSIVE_MODE 6
 
 //'block mode' button
-#define BUTTON_BLOCK_MODE 6
+#define BUTTON_BLOCK_MODE 7
 
 //'no-icon mode' button
-#define BUTTON_NO_ICON_MODE 7
+#define BUTTON_NO_ICON_MODE 8
 
 //'no-icon mode' button
-#define BUTTON_NO_ERROR_REPORTING_MODE 8
+#define BUTTON_NO_ERROR_REPORTING_MODE 9
 
 //'update mode' button
-#define BUTTON_NO_UPDATE_MODE 9
+#define BUTTON_NO_UPDATE_MODE 10
 
 //init 'general' view
 // add it, and make it selected
@@ -105,6 +108,9 @@ extern XPCDaemonClient* xpcDaemonClient;
             //set 'installed allowed' button state
             ((NSButton*)[view viewWithTag:BUTTON_ALLOW_INSTALLED]).state = [self.preferences[PREF_ALLOW_INSTALLED] boolValue];
             
+            //set 'allow dns' button state
+            ((NSButton*)[view viewWithTag:BUTTON_ALLOW_DNS]).state = [self.preferences[PREF_ALLOW_DNS] boolValue];
+        
             //set 'allow simulator apps' button
             ((NSButton*)[view viewWithTag:BUTTON_ALLOW_SIMULATOR]).state = [self.preferences[PREF_ALLOW_SIMULATOR] boolValue];
 
@@ -163,11 +169,12 @@ extern XPCDaemonClient* xpcDaemonClient;
             goto bail;
     }
     
-    //set frame rect
-    view.frame = CGRectMake(0, 75, self.window.contentView.frame.size.width, self.window.contentView.frame.size.height-75);
+    //set window size to match each pref's view
+    [self.window setFrame:NSMakeRect(self.window.frame.origin.x, NSMaxY(self.window.frame) - view.frame.size.height, view.frame.size.width, view.frame.size.height) display:YES];
     
     //add to window
     [self.window.contentView addSubview:view];
+    
     
 bail:
     
@@ -202,6 +209,11 @@ bail:
         case BUTTON_ALLOW_INSTALLED:
             updatedPreferences[PREF_ALLOW_INSTALLED] = state;
             break;
+        
+        //allow dns traffic
+        case BUTTON_ALLOW_DNS:
+            updatedPreferences[PREF_ALLOW_DNS] = state;
+            break;
             
         //allow simulator apps
         case BUTTON_ALLOW_SIMULATOR:
@@ -212,11 +224,22 @@ bail:
         case BUTTON_USE_BLOCK_LIST:
             updatedPreferences[PREF_USE_BLOCK_LIST] = state;
             
-            //set 'browse' button state
-            self.selectBlockListButton.enabled = (NSControlStateValueOn == state.longValue);
+            //disable?
+            // remove list too
+            if(NSControlStateValueOff == state.longValue)
+            {
+                //unset
+                updatedPreferences[PREF_BLOCK_LIST] = @"";
+                
+                //clear
+                self.blockList.stringValue = @"";
+            }
             
             //set block list input state
             self.blockList.enabled = (NSControlStateValueOn == state.longValue);
+            
+            //set 'browse' button state
+            self.selectBlockListButton.enabled = (NSControlStateValueOn == state.longValue);
             
             break;
             
@@ -236,7 +259,6 @@ bail:
                 //show alert
                 showAlert(@"Outgoing traffic will now be blocked.", @"Note however:\r\n▪ Existing connections will not be impacted.\r\n▪ OS traffic (not routed thru LuLu) will not be blocked.");
             }
-                
             
             break;
             
@@ -470,17 +492,20 @@ bail:
         //disable 'browse' button
         self.selectBlockListButton.enabled = NSControlStateValueOff;
         
+        //clear block list
+        self.blockList.stringValue = @"";
+        
         //disable block list input
         self.blockList.enabled = NSControlStateValueOff;
         
         //send XPC msg to daemon to update prefs
         // returns (all/latest) prefs, which is what we want
-        self.preferences = [xpcDaemonClient updatePreferences:@{PREF_USE_BLOCK_LIST:@0}];
+        self.preferences = [xpcDaemonClient updatePreferences:@{PREF_USE_BLOCK_LIST:@0, PREF_BLOCK_LIST:@""}];
     }
         
     //block list changed? capture!
     // this logic is needed, as window can be closed when text field still has focus and 'end edit' won't have fired
-    if(YES != [self.preferences[PREF_BLOCK_LIST] isEqualToString:self.blockList.stringValue])
+    else if(YES != [self.preferences[PREF_BLOCK_LIST] isEqualToString:self.blockList.stringValue])
     {
         //send XPC msg to daemon to update prefs
         // returns (all/latest) prefs, which is what we want

@@ -194,6 +194,9 @@ bail:
     //remote endpoint
     NWHostEndpoint* remoteEndpoint = nil;
     
+    //endpoint url/hosts
+    NSMutableArray* endpointNames = nil;
+    
     //extact path
     path = preferences.preferences[PREF_BLOCK_LIST];
     
@@ -210,40 +213,47 @@ bail:
     
     //sync
     @synchronized (self) {
+        
+    //init endpoint names
+    endpointNames = [NSMutableArray array];
+        
+    //add url
+    if(nil != flow.URL.absoluteString)
+    {
+        //add
+        [endpointNames addObject:flow.URL.absoluteString];
+    }
+    
+    //add host name
+    if(nil != remoteEndpoint.hostname)
+    {
+        //add
+        [endpointNames addObject:remoteEndpoint.hostname];
+    }
+    
+    //macOS 11+?
+    // add remote host name
+    if(@available(macOS 11, *))
+    {
+        //add remote host name
+        if(nil != flow.remoteHostname)
+        {
+            //add
+            [endpointNames addObject:flow.remoteHostname];
+        }
+    }
 
     //check each item
     for(NSString* item in self.items)
     {
-        //macOS 11+
-        // also check 'remoteHostname'
-        if (@available(macOS 11, *)) {
-            
-            //check url host, and remote host and host name
-            if( (YES == [item isEqualToString:flow.URL.host]) ||
-                (YES == [item isEqualToString:flow.remoteHostname]) ||
-                (YES == [item isEqualToString:remoteEndpoint.hostname]) )
+        //check against each name
+        for(NSString* endpointName in endpointNames)
+        {
+            //match?
+            if(NSOrderedSame == [item caseInsensitiveCompare:endpointName])
             {
                 //dbg msg
-                os_log_debug(logHandle, "block listed item '%{public}@', matches flow's url host: %{public}@, or 'remoteHostname': %{public}@, or 'remoteEndpoint.hostname': %{public}@", item, flow.URL.host, flow.remoteHostname, remoteEndpoint.hostname);
-                
-                //happy
-                isMatch = YES;
-                
-                //done
-                goto bail;
-            }
-        }
-        
-        //pre-macOS 11
-        // ...no `remoteHostname` to check :|
-        else {
-            
-            //check url host and flow's host name (IP)
-            if( (YES == [item isEqualToString:flow.URL.host]) ||
-               (YES == [item isEqualToString:remoteEndpoint.hostname]) )
-            {
-                //dbg msg
-                os_log_debug(logHandle, "block listed item '%{public}@', matches flow's url host: %{public}@, or 'remoteEndpoint.hostname': %{public}@", item, flow.URL.host, remoteEndpoint.hostname);
+                os_log_debug(logHandle, "block listed item '%{public}@' matches %{public}@", item, endpointNames);
                 
                 //happy
                 isMatch = YES;

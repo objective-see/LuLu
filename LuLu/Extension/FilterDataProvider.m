@@ -513,6 +513,28 @@ bail:
         }
     }
     
+    //allow dns traffic
+    // really, just any UDP traffic over port 53
+    if(YES == [preferences.preferences[PREF_ALLOW_DNS] boolValue])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "'allow DNS traffic' is enabled, so checking port/protocol");
+        
+        //check proto (UDP) and port (53)
+        if( (IPPROTO_UDP == ((NEFilterSocketFlow*)flow).socketProtocol) &&
+            (YES == [((NWHostEndpoint*)((NEFilterSocketFlow*)flow).remoteEndpoint).port isEqualToString:@"53"]) )
+        {
+            //dbg msg
+            os_log_debug(logHandle, "protocol is 'UDP' and port is '53', (so likely DNS traffic) ...will allow" );
+            
+            //allow
+            verdict = [NEFilterNewFlowVerdict allowVerdict];
+            
+            //done
+            goto bail;
+        }
+    }
+    
     //allow simulator apps?
     if(YES == [preferences.preferences[PREF_ALLOW_SIMULATOR] boolValue])
     {

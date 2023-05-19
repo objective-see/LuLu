@@ -50,6 +50,9 @@
 //remote ip or url
 @property(nonatomic, retain)NSString* endpointAddr;
 
+//remote host
+@property(nonatomic, retain)NSString* endpointHost;
+
 //flag for endpoint addr
 @property BOOL isEndpointAddrRegex;
 

@@ -48,7 +48,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
     
     //don't relaunch
     [NSApp disableRelaunchOnLogin];
-
+    
     //CHECK 0x1:
     // must be run from /Applications as LuLu.app
     if(YES != [NSBundle.mainBundle.bundlePath isEqualToString:[@"/Applications" stringByAppendingPathComponent:APP_NAME]])

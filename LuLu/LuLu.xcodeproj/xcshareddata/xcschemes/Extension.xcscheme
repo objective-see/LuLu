@@ -3,7 +3,7 @@
    LastUpgradeVersion = "1160"
    version = "1.3">
    <BuildAction
-      parallelizeBuildables = "YES"
+      parallelizeBuildables = "NO"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CDB2CC2F24D61B3900D0EECE"
-               BuildableName = "com.objective-see.lulu.extension.systemextension"
-               BlueprintName = "Extension"
+               BlueprintIdentifier = "8D1107260486CEB800E47090"
+               BuildableName = "LuLu Uninstaller.app"
+               BlueprintName = "Uninstaller"
+               ReferencedContainer = "container:../Uninstaller/Uninstaller.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CDB2CC1724D61A4E00D0EECE"
+               BuildableName = "LuLu.app"
+               BlueprintName = "LuLu"
                ReferencedContainer = "container:LuLu.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,15 +61,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CDB2CC2F24D61B3900D0EECE"
-            BuildableName = "com.objective-see.lulu.extension.systemextension"
-            BlueprintName = "Extension"
-            ReferencedContainer = "container:LuLu.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

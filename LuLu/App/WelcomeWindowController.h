@@ -39,6 +39,9 @@
 //allow 3rd-party installed apps
 @property (weak) IBOutlet NSButton *allowInstalled;
 
+//allow dns traffic installed apps
+@property (weak) IBOutlet NSButton *allowDNS;
+
 //support view
 @property (strong) IBOutlet NSView *supportView;
 

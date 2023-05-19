@@ -685,6 +685,9 @@ bail:
     //error
     NSError* error = nil;
     
+    //endpoint url/hosts
+    NSMutableArray* endpointNames = nil;
+    
     //endpoint regex
     NSRegularExpression* endpointAddrRegex = nil;
     
@@ -693,6 +696,38 @@ bail:
     
     //extract remote endpoint
     remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
+    
+    //init endpoint names
+    endpointNames = [NSMutableArray array];
+    
+    //add url
+    if(nil != flow.URL.absoluteString)
+    {
+        //add
+        [endpointNames addObject:flow.URL.absoluteString];
+    }
+    
+    //add host name
+    if(nil != remoteEndpoint.hostname)
+    {
+        //add
+        [endpointNames addObject:remoteEndpoint.hostname];
+    }
+    
+    //macOS 11+?
+    // add remote host name
+    if(@available(macOS 11, *))
+    {
+        //add remote host name
+        if(nil != flow.remoteHostname)
+        {
+            //add
+            [endpointNames addObject:flow.remoteHostname];
+        }
+    }
+    
+    //dbg msg
+    os_log_debug(logHandle, "checking %{public}@ against %{public}@ and just %{public}@", rule.endpointAddr, endpointNames, rule.endpointHost);
     
     //endpoint addr a regex?
     // init regex and check for match
@@ -712,53 +747,101 @@ bail:
             goto bail;
         }
         
-        //dbg msg
-        os_log_debug(logHandle, "regex check: %{public}@ against %{public}@", rule.endpointAddr, remoteEndpoint.hostname);
-        
-        //check host name for regex match
-        if( (nil != remoteEndpoint.hostname) &&
-            (0 != [endpointAddrRegex numberOfMatchesInString:remoteEndpoint.hostname options:0 range:NSMakeRange(0, remoteEndpoint.hostname.length)]) )
+        //check each
+        for(NSString* endpointName in endpointNames)
         {
-            //dbg msg
-            os_log_debug(logHandle, "rule match: regex (endpoint hostname)");
-            
-            //match
-            isMatch = YES;
-            
-            //bail
-            goto bail;
-        }
-        
-        //check url for regex match
-        if( (nil != flow.URL.absoluteString) &&
-            (0 != [endpointAddrRegex numberOfMatchesInString:flow.URL.absoluteString options:0 range:NSMakeRange(0, flow.URL.absoluteString.length)]) )
-        {
-            //dbg msg
-            os_log_debug(logHandle, "rule match: regex (endpoint url)");
-            
-            //match
-            isMatch = YES;
-            
-            //bail
-            goto bail;
+            //match?
+            if(0 != [endpointAddrRegex numberOfMatchesInString:endpointName options:0 range:NSMakeRange(0, endpointName.length)])
+            {
+                //dbg msg
+                os_log_debug(logHandle, "rule match: regex on %{public}@", endpointName);
+                
+                //match
+                isMatch = YES;
+                
+                //bail
+                goto bail;
+            }
         }
     }
     
     //not regex
-    // just check host and url for exact match
+    // check each (plus host) for exact match
     else
     {
-        if( (YES == [rule.endpointAddr isEqualToString:remoteEndpoint.hostname]) ||
-            (YES == [rule.endpointAddr isEqualToString:flow.URL.absoluteString]) )
+        //check each
+        for(NSString* endpointName in endpointNames)
         {
+            //url
+            NSURL* url = nil;
+            
+            NSArray* hostComponents = nil;
+            
+            //host
+            NSString* host = nil;
+            
             //dbg msg
-            os_log_debug(logHandle, "rule match: endpoint host||url");
+            os_log_debug(logHandle, "checking %{public}@ vs. %{public}@", endpointName, rule.endpointAddr);
             
-            //match
-            isMatch = YES;
+            //init url
+            // add prefix
+            if(YES != [endpointName hasPrefix:@"http"])
+            {
+                //init url
+                url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", endpointName]];
+            }
+            //no prefix needed
+            else
+            {
+                //init url
+                url = [NSURL URLWithString:endpointName];
+            }
             
-            //bail
-            goto bail;
+            //match?
+            if(NSOrderedSame == [rule.endpointAddr caseInsensitiveCompare:endpointName])
+            {
+                //dbg msg
+                os_log_debug(logHandle, "rule match: %{public}@", endpointName);
+                
+                //match
+                isMatch = YES;
+                
+                //bail
+                goto bail;
+            }
+            
+            //dbg msg
+            os_log_debug(logHandle, "also checking %{public}@ vs. %{public}@", url.host, rule.endpointHost);
+        
+            //also check (just) host name
+            // for example "a.b.c.com" will be checked against "c.com"
+            if( (nil != url.host) &&
+                     (nil != rule.endpointHost) )
+            {
+                //split
+                hostComponents = [url.host componentsSeparatedByString:@"."];
+                if(hostComponents.count < 2)
+                {
+                    //skip
+                    continue;
+                }
+                
+                //build host from last two componets
+                host = [NSString stringWithFormat:@"%@.%@", [hostComponents objectAtIndex:hostComponents.count - 2], hostComponents.lastObject];
+                
+                //match?
+                if(NSOrderedSame == [rule.endpointHost caseInsensitiveCompare:host])
+                {
+                    //dbg msg
+                    os_log_debug(logHandle, "rule match: (host) %{public}@", rule.endpointHost);
+                    
+                    //match
+                    isMatch = YES;
+                    
+                    //bail
+                    goto bail;
+                }
+            }
         }
     }
     
