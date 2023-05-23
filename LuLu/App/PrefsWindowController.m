@@ -277,6 +277,9 @@ bail:
                 //dbg msg
                 os_log_debug(logHandle, "turning off error/crash reporting");
                 
+                //end session
+                [SentrySDK endSession];
+                
                 //stop
                 [SentrySDK close];
             }

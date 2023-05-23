@@ -208,7 +208,7 @@ bail:
     }
     
     //step 2: validate
-    // check that client is signed with Objective-See's dev cert and it's the BB's installer
+    // check that client is signed with Objective-See's dev cert and it's the LuLu installer
     if(0 != SecTaskValidateForRequirement(taskRef, (__bridge CFStringRef)(requirement)))
     {
         //err msg
