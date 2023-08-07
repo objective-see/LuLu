@@ -243,6 +243,9 @@ bail:
     //token
     static dispatch_once_t onceToken = 0;
     
+    //flag
+    BOOL isAlert = NO;
+    
     //grab console user
     consoleUser = getConsoleUser();
     
@@ -379,15 +382,18 @@ bail:
     os_log_debug(logHandle, "client not in passive mode");
     
     //CHECK:
-    // is a related alert shown, and pending reponse?
-    // save, but don't send yet (until the user responds)
+    // there a related alert shown (i.e. for same process)
+    // save this flow, as only want to process once user responds to first alert
     if(YES == [alerts isRelated:process])
     {
         //dbg msg
         os_log_debug(logHandle, "an alert is shown for process %d/%{public}@, so holding off delivering for now...", process.pid, process.binary.name);
         
+        //set flag
+        isAlert = YES;
+        
         //add related flow
-        [self addRelatedFlow:process flow:(NEFilterSocketFlow*)flow];
+        [self addRelatedFlow:process.key flow:(NEFilterSocketFlow*)flow];
         
         //pause
         verdict = [NEFilterNewFlowVerdict pauseVerdict];
@@ -403,61 +409,72 @@ bail:
     // Apple process and 'PREF_ALLOW_APPLE' is set?
     // ...allow!
     
-    //if it's an apple process and that preference is set; allow!
-    // unless the binary is something like 'curl' which malware could abuse (then, still alert!)
-    if( (YES == [preferences.preferences[PREF_ALLOW_APPLE] boolValue]) &&
-        (Apple == [process.csInfo[KEY_CS_SIGNER] intValue]) )
+    //if it's an apple process and that preference is set; allow
+    // unless the binary is something like 'curl' which malware could abuse (then, still alert)
+    if(YES == [preferences.preferences[PREF_ALLOW_APPLE] boolValue])
     {
         //dbg msg
-        os_log_debug(logHandle, "apple binary...");
+        os_log_debug(logHandle, "'Allow Apple' preference is set, will check if is an Apple binary");
         
-        //though make sure isn't a graylisted binary
-        // such binaries, even if signed by apple, should alert user
-        if(YES != [self.grayList isGrayListed:process])
+        //signed by Apple?
+        if(Apple == [process.csInfo[KEY_CS_SIGNER] intValue])
         {
             //dbg msg
-            os_log_debug(logHandle, "due to preferences, allowing (non-graylisted) apple process %d/%{public}@", process.pid, process.path);
+            os_log_debug(logHandle, "is an Apple binary...");
             
-            //init for (rule) info
-            // type: apple, action: allow
-            info = [@{KEY_PATH:process.path, KEY_ACTION:@RULE_STATE_ALLOW, KEY_TYPE:@RULE_TYPE_APPLE} mutableCopy];
-            
-            //add process cs info
-            if(nil != process.csInfo) info[KEY_CS_INFO] = process.csInfo;
-            
-            //add/save
-            if(YES != [rules add:[[Rule alloc] init:info] save:YES])
+            //though make sure isn't a graylisted binary
+            // such binaries, even if signed by apple, should alert user
+            if(YES != [self.grayList isGrayListed:process])
             {
-                //err msg
-                os_log_error(logHandle, "ERROR: failed to add rule");
+                //dbg msg
+                os_log_debug(logHandle, "due to preferences, allowing (non-graylisted) apple process %d/%{public}@", process.pid, process.path);
                 
-                //bail
-                goto bail;
+                //init for (rule) info
+                // type: apple, action: allow
+                info = [@{KEY_PATH:process.path, KEY_ACTION:@RULE_STATE_ALLOW, KEY_TYPE:@RULE_TYPE_APPLE} mutableCopy];
+                
+                //add process cs info
+                if(nil != process.csInfo) info[KEY_CS_INFO] = process.csInfo;
+                
+                //add/save
+                if(YES != [rules add:[[Rule alloc] init:info] save:YES])
+                {
+                    //err msg
+                    os_log_error(logHandle, "ERROR: failed to add rule");
+                    
+                    //bail
+                    goto bail;
+                }
+                
+                //tell user rules changed
+                [alerts.xpcUserClient rulesChanged];
             }
             
-            //tell user rules changed
-            [alerts.xpcUserClient rulesChanged];
-        }
-        
-        //dbg msg
-        else
-        {
-            //dbg msg
-            os_log_debug(logHandle, "while signed by apple, %d/%{public}@ is gray listed, so will alert", process.pid, process.binary.name);
+            //graylisted item
+            // pause and alert user
+            else
+            {
+                //dbg msg
+                os_log_debug(logHandle, "while signed by apple, %d/%{public}@ is gray listed, so will alert", process.pid, process.binary.name);
+                
+                //pause
+                verdict = [NEFilterNewFlowVerdict pauseVerdict];
+                
+                //create/deliver alert
+                [self alert:(NEFilterSocketFlow*)flow process:process];
+            }
             
-            //pause
-            verdict = [NEFilterNewFlowVerdict pauseVerdict];
+            //all set
+            goto bail;
             
-            //create/deliver alert
-            [self alert:(NEFilterSocketFlow*)flow process:process];
-        }
-        
-        //all set
-        goto bail;
+        } //signed by apple
     }
-    
     //dbg msg
-    os_log_debug(logHandle, "not apple...");
+    else
+    {
+        //dbg msg
+        os_log_debug(logHandle, "'Allow Apple' preference not set, so skipped 'Is Apple' check");
+    }
     
     //if it's a prev installed 3rd-party process and that preference is set; allow!
     if( (YES == [preferences.preferences[PREF_ALLOW_INSTALLED] boolValue]) &&
@@ -513,7 +530,7 @@ bail:
         }
     }
     
-    //allow dns traffic
+    //allow dns traffic pref set?
     // really, just any UDP traffic over port 53
     if(YES == [preferences.preferences[PREF_ALLOW_DNS] boolValue])
     {
@@ -585,15 +602,29 @@ bail:
         //all set
         goto bail;
     }
+    
+    //sending to user, so pause!
+    verdict = [NEFilterNewFlowVerdict pauseVerdict];
         
     //create/deliver alert
-    // note: also handles response (rule creation, etc)
+    // note: handles response + next/any related flow
     [self alert:(NEFilterSocketFlow*)flow process:process];
-
-    //alert sent to user, so pause!
-    verdict = [NEFilterNewFlowVerdict pauseVerdict];
+    
+    //set flag
+    isAlert = YES;
     
 bail:
+    
+    //no alert?
+    // don't need to wait for user to process (next/any) related flows
+    if(YES != isAlert)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "no alert generated for flow, will process any/next related flow");
+        
+        //process (any) related flows
+        [self processRelatedFlow:process.key];
+    }
     
     //;} //pool
     
@@ -654,7 +685,7 @@ bail:
         [alerts.xpcUserClient rulesChanged];
         
         //process (any) related flows
-        [self processRelatedFlow:alert];
+        [self processRelatedFlow:alert[KEY_KEY]];
     }])
     {
         //failed to deliver
@@ -677,31 +708,31 @@ bail:
 //add an alert to 'related'
 // invoked when there is already an alert shown for process
 // once user responds to alert, these will then be processed
--(void)addRelatedFlow:(Process*)process flow:(NEFilterSocketFlow*)flow
+-(void)addRelatedFlow:(NSString*)key flow:(NEFilterSocketFlow*)flow
 {
     //dbg msg
-    os_log_debug(logHandle, "adding flow to 'related': %{public}@ / %{public}@", process.key, flow);
+    os_log_debug(logHandle, "adding flow to 'related': %{public}@ / %{public}@", key, flow);
     
     //sync/save
     @synchronized(self.relatedFlows)
     {
         //first time
         // init array for item (process) alerts
-        if(nil == self.relatedFlows[process.key])
+        if(nil == self.relatedFlows[key])
         {
             //create array
-            self.relatedFlows[process.key] = [NSMutableArray array];
+            self.relatedFlows[key] = [NSMutableArray array];
         }
         
         //add
-        [self.relatedFlows[process.key] addObject:flow];
+        [self.relatedFlows[key] addObject:flow];
     }
     
     return;
 }
 
 //process related flows
--(void)processRelatedFlow:(NSDictionary*)alert
+-(void)processRelatedFlow:(NSString*)key
 {
     //flows
     NSMutableArray* flows = nil;
@@ -710,17 +741,17 @@ bail:
     NEFilterSocketFlow* flow = nil;
     
     //dbg msg
-    os_log_debug(logHandle, "processing related flow(s) for %{public}@", alert[KEY_KEY]);
+    os_log_debug(logHandle, "processing any related flow(s) for %{public}@", key);
     
     //sync
     @synchronized(self.relatedFlows)
     {
-        //grab flows
-        flows = self.relatedFlows[alert[KEY_KEY]];
+        //grab flows for process
+        flows = self.relatedFlows[key];
         if(0 == flows.count)
         {
             //dbg msg
-            os_log_debug(logHandle, "no related flows");
+            os_log_debug(logHandle, "no related flows...");
             
             //bail
             goto bail;
@@ -734,8 +765,12 @@ bail:
         
         //remove it
         [flows removeObjectAtIndex:0];
-        
-        //process it
+    }
+    
+    //process it
+    if(nil != flow)
+    {
+        //process
         [self processEvent:flow];
     }
     

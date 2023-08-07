@@ -284,7 +284,7 @@ NSString* getProcessPath(pid_t pid)
     else
     {
         //err msg
-        os_log_error(logHandle, "ERROR: 'proc_pidpath' failed with %d", status);
+        os_log_error(logHandle, "ERROR: 'proc_pidpath' failed with %d (errno: %d)", status, errno);
         
         //init mib
         // want system's size for max args

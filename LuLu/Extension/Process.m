@@ -60,7 +60,7 @@ extern os_log_t logHandle;
     return self;
 }
 
-//init with a pid
+//init with a token / pid
 // method will then (try) fill out rest of object
 -(id)init:(audit_token_t*)token
 {
@@ -73,8 +73,20 @@ extern os_log_t logHandle;
     {
         //save pid
         self.pid = audit_token_to_pid(*token);
+        if(0 == self.pid)
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'audit_token_to_pid' returned NULL\n");
+            
+            //unset
+            self = nil;
+            
+            //bail
+            goto bail;
+        }
         
         //get path
+        // also sets 'self.deleted' iVar
         [self getPath:token];
         if(0 == self.path.length)
         {

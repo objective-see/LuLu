@@ -391,7 +391,7 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "adding rule: %{public}@ -> %{public}@", rule.key, rule);
 
-    //sycn to access
+    //sync to access
     @synchronized(self.rules)
     {
         //new rule for process
