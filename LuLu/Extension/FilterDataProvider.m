@@ -243,9 +243,6 @@ bail:
     //token
     static dispatch_once_t onceToken = 0;
     
-    //flag
-    BOOL isAlert = NO;
-    
     //grab console user
     consoleUser = getConsoleUser();
     
@@ -388,9 +385,6 @@ bail:
     {
         //dbg msg
         os_log_debug(logHandle, "an alert is shown for process %d/%{public}@, so holding off delivering for now...", process.pid, process.binary.name);
-        
-        //set flag
-        isAlert = YES;
         
         //add related flow
         [self addRelatedFlow:process.key flow:(NEFilterSocketFlow*)flow];
@@ -609,22 +603,9 @@ bail:
     //create/deliver alert
     // note: handles response + next/any related flow
     [self alert:(NEFilterSocketFlow*)flow process:process];
-    
-    //set flag
-    isAlert = YES;
-    
+        
 bail:
     
-    //no alert?
-    // don't need to wait for user to process (next/any) related flows
-    if(YES != isAlert)
-    {
-        //dbg msg
-        os_log_debug(logHandle, "no alert generated for flow, will process any/next related flow");
-        
-        //process (any) related flows
-        [self processRelatedFlow:process.key];
-    }
     
     //;} //pool
     
@@ -741,39 +722,32 @@ bail:
     NEFilterSocketFlow* flow = nil;
     
     //dbg msg
-    os_log_debug(logHandle, "processing any related flow(s) for %{public}@", key);
+    os_log_debug(logHandle, "processing %lu related flow(s) for %{public}@", (unsigned long)[self.relatedFlows[key] count], key);
     
     //sync
     @synchronized(self.relatedFlows)
     {
         //grab flows for process
         flows = self.relatedFlows[key];
-        if(0 == flows.count)
+        for(NSInteger i = flows.count - 1; i >= 0; i--)
         {
-            //dbg msg
-            os_log_debug(logHandle, "no related flows...");
+            //grab flow
+            flow = flows[i];
             
-            //bail
-            goto bail;
+            //remove
+            [flows removeObjectAtIndex:i];
+           
+            //process
+            // pause means alert is/was shown
+            // ...so stop, and wait for user response (which will retrigger processing)
+            if([NEFilterNewFlowVerdict pauseVerdict] == [self processEvent:flow])
+            {
+                //stop
+                break;
+            }
         }
-        
-        //grab first
-        flow = flows.firstObject;
-        
-        //dbg msg
-        os_log_debug(logHandle, "processing related flow: %{public}@", flow);
-        
-        //remove it
-        [flows removeObjectAtIndex:0];
     }
-    
-    //process it
-    if(nil != flow)
-    {
-        //process
-        [self processEvent:flow];
-    }
-    
+   
 bail:
 
     return;
