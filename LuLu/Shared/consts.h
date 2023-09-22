@@ -16,9 +16,6 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 //patreon url
 #define PATREON_URL @"https://www.patreon.com/join/objective_see"
 
-//sentry crash reporting URL
-#define SENTRY_DSN @"https://639e824c5bc14eaca06c55f52aee1946:77fa2885950642288a52b1773e5375b3@sentry.io/1195655"
-
 //vendor id string
 #define OBJECTIVE_SEE_VENDOR "com.objectiveSee"
 
@@ -130,10 +127,6 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 //prefs
 // block mode
 #define PREF_BLOCK_MODE @"blockMode"
-
-//prefs
-// no error reporting
-#define PREF_NO_ERROR_REPORTING @"noErorrReporting"
 
 //prefs
 // icon mode

@@ -12,7 +12,6 @@
 @import Cocoa;
 @import OSLog;
 
-@import Sentry;
 
 /* GLOBALS */
 

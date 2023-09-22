@@ -7,8 +7,6 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-@import Sentry;
-
 #import "consts.h"
 #import "Update.h"
 #import "utilities.h"
@@ -56,11 +54,8 @@ extern XPCDaemonClient* xpcDaemonClient;
 //'no-icon mode' button
 #define BUTTON_NO_ICON_MODE 8
 
-//'no-icon mode' button
-#define BUTTON_NO_ERROR_REPORTING_MODE 9
-
 //'update mode' button
-#define BUTTON_NO_UPDATE_MODE 10
+#define BUTTON_NO_UPDATE_MODE 9
 
 //init 'general' view
 // add it, and make it selected
@@ -146,9 +141,6 @@ extern XPCDaemonClient* xpcDaemonClient;
             
             //set 'no icon' button state
             ((NSButton*)[view viewWithTag:BUTTON_NO_ICON_MODE]).state = [self.preferences[PREF_NO_ICON_MODE] boolValue];
-            
-            //set 'no error reporting' button state
-            ((NSButton*)[view viewWithTag:BUTTON_NO_ERROR_REPORTING_MODE]).state = [self.preferences[PREF_NO_ERROR_REPORTING] boolValue];
             
             break;
             
@@ -266,38 +258,6 @@ bail:
         case BUTTON_NO_ICON_MODE:
             updatedPreferences[PREF_NO_ICON_MODE] = state;
             break;
-            
-        //no error reporting more
-        case BUTTON_NO_ERROR_REPORTING_MODE:
-            updatedPreferences[PREF_NO_ERROR_REPORTING] = state;
-
-            //off?
-            if(NSControlStateValueOn == state.longValue)
-            {
-                //dbg msg
-                os_log_debug(logHandle, "turning off error/crash reporting");
-                
-                //end session
-                [SentrySDK endSession];
-                
-                //stop
-                [SentrySDK close];
-            }
-            //on?
-            else
-            {
-                //dbg msg
-                os_log_debug(logHandle, "turning on error/crash reporting");
-                
-                //start
-                [SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
-                    options.dsn = SENTRY_DSN;
-                    options.debug = YES;
-                }];
-            }
-            
-            break;
-            
             
         //no update mode
         case BUTTON_NO_UPDATE_MODE:

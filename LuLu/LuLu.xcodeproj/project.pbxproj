@@ -12,9 +12,6 @@
 		CD21D37A252FE91E001A19A8 /* signing.m in Sources */ = {isa = PBXBuildFile; fileRef = CD21D379252FE91E001A19A8 /* signing.m */; };
 		CD21D37D252FE94F001A19A8 /* signing.m in Sources */ = {isa = PBXBuildFile; fileRef = CD21D37B252FE94F001A19A8 /* signing.m */; };
 		CD9E04D3254163AF00DB3218 /* patrons.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDA1369624F0D2CF005AD424 /* patrons.txt */; };
-		CD9E1477251349A800DA05C3 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9E1476251349A800DA05C3 /* Sentry.framework */; };
-		CD9E1478251349FB00DA05C3 /* Sentry.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD9E1476251349A800DA05C3 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CD9E147925134A0100DA05C3 /* Sentry.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CD9E1476251349A800DA05C3 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD9E147D25171BF200DA05C3 /* ItemPathsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9E147B25171BF200DA05C3 /* ItemPathsWindowController.m */; };
 		CD9E147E25171BF200DA05C3 /* ItemPaths.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9E147C25171BF200DA05C3 /* ItemPaths.xib */; };
 		CD9F567F252533CE00F3DEB5 /* NSApplicationKeyEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9F567E252533CD00F3DEB5 /* NSApplicationKeyEvents.m */; };
@@ -89,7 +86,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CD9E147925134A0100DA05C3 /* Sentry.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +95,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CD9E1478251349FB00DA05C3 /* Sentry.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +120,6 @@
 		CD21D379252FE91E001A19A8 /* signing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = signing.m; path = Shared/signing.m; sourceTree = SOURCE_ROOT; };
 		CD21D37B252FE94F001A19A8 /* signing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = signing.m; path = Shared/signing.m; sourceTree = SOURCE_ROOT; };
 		CD21D37C252FE94F001A19A8 /* signing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = signing.h; path = Shared/signing.h; sourceTree = SOURCE_ROOT; };
-		CD9E1476251349A800DA05C3 /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = ../Carthage/Build/Mac/Sentry.framework; sourceTree = "<group>"; };
 		CD9E147A25171BF200DA05C3 /* ItemPathsWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemPathsWindowController.h; sourceTree = "<group>"; };
 		CD9E147B25171BF200DA05C3 /* ItemPathsWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemPathsWindowController.m; sourceTree = "<group>"; };
 		CD9E147C25171BF200DA05C3 /* ItemPaths.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemPaths.xib; sourceTree = "<group>"; };
@@ -236,7 +230,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDB2CC4424DBE48100D0EECE /* NetworkExtension.framework in Frameworks */,
-				CD9E1477251349A800DA05C3 /* Sentry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +369,6 @@
 		CDB2CC3124D61B3900D0EECE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CD9E1476251349A800DA05C3 /* Sentry.framework */,
 				CDA1366E24EF5587005AD424 /* libbsm.tbd */,
 				CDB2CC3224D61B3900D0EECE /* NetworkExtension.framework */,
 			);

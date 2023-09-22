@@ -10,8 +10,6 @@
 #import "consts.h"
 #import "utilities.h"
 
-@import Sentry;
-
 @import OSLog;
 @import Carbon;
 @import Security;
