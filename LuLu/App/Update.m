@@ -77,7 +77,7 @@ extern os_log_t logHandle;
     @try
     {
         //convert
-        productsVersionDictionary = [NSJSONSerialization JSONObjectWithData:productsVersionData options:0 error:nil];
+        productsVersionDictionary = [NSJSONSerialization JSONObjectWithData:productsVersionData options:kNilOptions error:nil];
         if(nil == productsVersionDictionary)
         {
             //bail

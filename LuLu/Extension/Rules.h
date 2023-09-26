@@ -54,7 +54,15 @@
 //delete rule
 -(BOOL)delete:(NSString*)key rule:(NSString*)uuid;
 
-@end
+//import rules
+-(BOOL)import:(NSString*)path;
 
+//export rules
+-(BOOL)export:(NSString*)path;
+
+//cleanup rules
+-(void)cleanup;
+
+@end
 
 #endif /* Rules_h */

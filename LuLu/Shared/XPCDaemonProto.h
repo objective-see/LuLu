@@ -26,6 +26,15 @@
 //delete rule
 -(void)deleteRule:(NSString*)key rule:(NSString*)uuid;
 
+//import rules
+-(void)importRules:(NSString*)path result:(void (^)(BOOL))reply;
+
+//export rules
+-(void)exportRules:(NSString*)path result:(void (^)(BOOL))reply;
+
+//cleanup rules
+-(void)cleanupRules;
+
 //uninstall
 -(void)uninstall:(void (^)(BOOL))reply;
 

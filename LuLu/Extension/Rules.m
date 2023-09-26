@@ -221,7 +221,7 @@ bail:
     }
     
     //save
-    if(YES != [self save])
+    if(YES != [self save:nil format:RULES_FORMAT_SERIALIZED])
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to save v1 -> v2 rules");
@@ -364,7 +364,7 @@ bail:
     }
     
     //save
-    if(YES != [self save])
+    if(YES != [self save:nil format:RULES_FORMAT_SERIALIZED])
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to save (generated) rules");
@@ -421,7 +421,7 @@ bail:
     if(YES == save)
     {
         //save
-        if(YES != [self save])
+        if(YES != [self save:nil format:RULES_FORMAT_SERIALIZED])
         {
             //err msg
             os_log_error(logHandle, "ERROR: failed to save rules");
@@ -921,7 +921,7 @@ bail:
 bail:
     
     //always save to disk
-    if(YES != [self save])
+    if(YES != [self save:nil format:RULES_FORMAT_SERIALIZED])
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to save (updated) rules");
@@ -936,7 +936,7 @@ bail:
 //save to disk
 // note: temporary rules are ignored
 // note: temporary rules for (now) dead processes are removed
--(BOOL)save
+-(BOOL)save:path format:(NSUInteger)format
 {
     //result
     BOOL result = NO;
@@ -950,11 +950,21 @@ bail:
     //(non-temp) rules
     NSMutableDictionary* persistentRules = nil;
     
-    //archived rules
-    NSData* archivedRules = nil;
+    //formatted rules
+    NSData* formattedRules = nil;
     
     //init path to rule's file
-    rulesFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE];
+    if(nil == path)
+    {
+        //init
+        rulesFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE];
+    }
+    
+    //otherwise, used specified path (e.g. for an export)
+    else
+    {
+        rulesFile = path;
+    }
     
     //init persistent rules
     persistentRules = [NSMutableDictionary dictionary];
@@ -1032,19 +1042,62 @@ bail:
             }
         }
         
-        //archive persistent rules
-        archivedRules = [NSKeyedArchiver archivedDataWithRootObject:persistentRules requiringSecureCoding:YES error:&error];
-        if(nil == archivedRules)
+        //serialize?
+        if(format == RULES_FORMAT_SERIALIZED)
+        {
+            //archive persistent rules
+            formattedRules = [NSKeyedArchiver archivedDataWithRootObject:persistentRules requiringSecureCoding:YES error:&error];
+            if(nil == formattedRules)
+            {
+                //err msg
+                os_log_error(logHandle, "ERROR: failed to serialize rules: %{public}@", error);
+                
+                //bail
+                goto bail;
+            }
+        }
+        //otherwise
+        // ...to JSON
+        else if(format == RULES_FORMAT_JSON)
+        {
+            //convert JSON to dictionary
+            // wrap as may throw exception
+            @try
+            {
+                //convert
+                formattedRules = [NSJSONSerialization dataWithJSONObject:persistentRules options:kNilOptions error:&error];
+                if(nil == formattedRules)
+                {
+                    //err msg
+                    os_log_error(logHandle, "ERROR: failed to JSON'ify rules: %{public}@", error);
+                    
+                    //bail
+                    goto bail;
+                }
+            }
+            //catch
+            @catch(NSException* exception)
+            {
+                //err msg
+                os_log_error(logHandle, "ERROR: failed to JSON'ify rules: %{public}@", error);
+                
+                //bail
+                goto bail;
+            }
+        }
+        
+        //invalid format
+        else
         {
             //err msg
-            os_log_error(logHandle, "ERROR: failed to archive rules: %{public}@", error);
+            os_log_error(logHandle, "ERROR: %lu is an invalid rules format", (unsigned long)format);
             
             //bail
             goto bail;
         }
         
         //write out persistent rules
-        if(YES != [archivedRules writeToFile:rulesFile atomically:YES])
+        if(YES != [formattedRules writeToFile:rulesFile atomically:YES])
         {
             //err msg
             os_log_error(logHandle, "ERROR: failed to save archived rules to: %{public}@", rulesFile);
@@ -1061,6 +1114,74 @@ bail:
 bail:
     
     return result;
+}
+
+//import rules
+//TODO: in client check permissions of file
+-(BOOL)import:(NSString*)path
+{
+    //flag
+    BOOL imported = NO;
+    
+    //error
+    NSError* error = nil;
+    
+    //rules data
+    NSData* data = nil;
+    
+    //import rules
+    NSMutableDictionary* importedRules = nil;
+    
+    //load from user-specified file
+    data = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:&error];
+    if(nil == data)
+    {
+        goto bail;
+    }
+    
+    //deserialize
+    @try
+    {
+        //convert
+        importedRules = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if(nil == importedRules)
+        {
+            //bail
+            goto bail;
+        }
+        
+        //replace all existing rules
+        @synchronized (self) {
+            
+            //replace
+            self.rules = importedRules;
+        }
+    }
+    @catch(NSException* exception)
+    {
+        //bail
+        goto bail;
+    }
+    
+bail:
+    
+    return imported;
+}
+
+//export rules
+//TODO: in client check permissions of file
+-(BOOL)export:(NSString*)path
+{
+    return [self save:path format:RULES_FORMAT_JSON];
+}
+
+//cleanup
+// ...remove any rules that don't match a on-disk
+-(void)cleanup
+{
+    //TODO:
+    
+    return;
 }
 
 @end

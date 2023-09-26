@@ -48,7 +48,7 @@
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="804" minWidth="800" maxWidth="3.4028234663852886e+38" id="Iaf-If-UX3" userLabel="Main">
+                                        <tableColumn width="800" minWidth="800" maxWidth="3.4028234663852886e+38" id="Iaf-If-UX3" userLabel="Main">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,7 +61,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="processCell" id="hYC-a4-Gp3" userLabel="Process">
-                                                    <rect key="frame" x="1" y="1" width="809" height="50"/>
+                                                    <rect key="frame" x="1" y="1" width="805" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkx-JF-q5i">
@@ -94,7 +94,7 @@
                                                     </connections>
                                                 </tableCellView>
                                                 <tableCellView identifier="simpleCell" id="Tec-Zl-6cm" userLabel="Connection">
-                                                    <rect key="frame" x="1" y="53" width="809" height="50"/>
+                                                    <rect key="frame" x="1" y="53" width="805" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpF-QT-jfh">
@@ -126,7 +126,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="ruleCell" id="5sm-If-Eqg" customClass="RuleRowCell">
-                                                    <rect key="frame" x="813" y="1" width="204" height="54"/>
+                                                    <rect key="frame" x="809" y="1" width="204" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <button verticalHuggingPriority="750" fixedFrame="YES" tag="110" translatesAutoresizingMaskIntoConstraints="NO" id="ZYK-WR-Jeh">
@@ -171,7 +171,7 @@
                             </subviews>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="djS-lX-Nkf">
-                            <rect key="frame" x="1" y="512" width="1014" height="16"/>
+                            <rect key="frame" x="1" y="488" width="1019" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Ud6-Ad-xqt">

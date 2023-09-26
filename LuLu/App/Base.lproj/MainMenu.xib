@@ -39,6 +39,32 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Rules" id="rZ2-dU-Sks">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Rules" systemMenu="apple" id="F6a-9V-HHo">
+                        <items>
+                            <menuItem title="Import..." tag="1" id="KcY-Hb-SMi" userLabel="Import">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="q3G-v0-dR7"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Export..." tag="2" id="RRJ-ZN-K2Q" userLabel="Export">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="9sL-Mh-74f"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="t8R-1v-1JD"/>
+                            <menuItem title="Cleanup" tag="3" id="Txf-8U-czQ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="3uz-F1-eEm"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
             </items>
             <point key="canvasLocation" x="-59" y="-473"/>
         </menu>

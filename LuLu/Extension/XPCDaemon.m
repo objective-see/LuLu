@@ -170,10 +170,43 @@ bail:
     return;
 }
 
+//import rules
+-(void)importRules:(NSString*)path result:(void (^)(BOOL))reply
+{
+    //dbg msg
+    os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
+    
+    //import rules
+    reply([rules import:path]);
+
+    return;
+}
+
+//export rules
+-(void)exportRules:(NSString*)path result:(void (^)(BOOL))reply
+{
+    //dbg msg
+    os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
+    
+    //import rules
+    reply([rules export:path]);
+
+    return;
+}
+
+//cleanup rules
+-(void)cleanupRules
+{
+    //dbg msg
+    os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
+
+    return;
+}
+
 //uninstall
 -(void)uninstall:(void (^)(BOOL))reply
 {
-    //flab
+    //flag
     BOOL uninstalled = NO;
     
     //directory
@@ -233,6 +266,5 @@ bail:
     
     return;
 }
-
 
 @end

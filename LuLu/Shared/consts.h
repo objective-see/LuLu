@@ -263,10 +263,7 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define CMDLINE_FLAG_PREFS @"-prefs"
 #define CMDLINE_FLAG_RULES @"-rules"
 
-
 #define KEY_RULES @"rules"
-
-
 
 #define KEY_ID @"id"
 #define KEY_PATH @"path"
@@ -389,5 +386,15 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 
 //activate
 #define ACTION_ACTIVATE 1
+
+//rules menu
+#define MENU_IMPORT_RULES 1
+#define MENU_EXPORT_RULES 2
+#define MENU_CLEANUP_RULES 3
+
+//rules (save) format
+#define RULES_FORMAT_JSON 0
+#define RULES_FORMAT_SERIALIZED 1
+
 
 #endif /* const_h */

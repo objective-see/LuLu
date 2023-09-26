@@ -407,6 +407,22 @@ bail:
     return;
 }
 
+//menu handler for rules
+-(IBAction)rulesMenuHandler:(id)sender {
+    
+    switch(((NSMenuItem*)sender).tag)
+    {
+        case MENU_IMPORT_RULES:
+        case MENU_EXPORT_RULES:
+        case MENU_CLEANUP_RULES:
+            
+        default:
+            return;
+    }
+    
+    return;
+}
+
 //close window handler
 // close rules || pref window
 -(IBAction)closeWindow:(id)sender
