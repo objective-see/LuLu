@@ -237,6 +237,9 @@ bail:
     //path
     NSMutableString* path = nil;
     
+    //extension
+    NSString* extension = nil;
+    
     //flag
     BOOL exists = NO;
     
@@ -261,6 +264,9 @@ bail:
     //error
     NSError* error = nil;
     
+    //bundles
+    NSArray* bundles = @[@"app", @"bundle", @"xpc"];
+    
     //dbg msg
     os_log_debug(logHandle, "user clicked: %{public}@", ((NSButton*)sender).title);
 
@@ -277,10 +283,13 @@ bail:
     // exists/is directory
     exists = [NSFileManager.defaultManager fileExistsAtPath:path isDirectory:&isDirectory];
     
-    //if its a directory (but not an app)
+    //get extension
+    extension = path.pathExtension;
+    
+    //if its a directory (but not bundle)
     // add '/*' to make it directory rule
     if( (YES == isDirectory) &&
-        (YES != [path hasSuffix:@".app"]) )
+        (YES != [bundles containsObject:extension]) )
     {
         //no '/'?
         // ...append it
