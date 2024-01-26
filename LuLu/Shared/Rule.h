@@ -89,7 +89,15 @@
 //matches a(nother) rule?
 -(BOOL)isEqualToRule:(Rule *)rule;
 
-@end
+//is rule temp?
+-(BOOL)isTemporary;
 
+//covert to dictionary
+-(NSMutableString*)toJSON;
+
+//make a rule obj from a dictioanary
+-(id)initFromJSON:(NSDictionary*)info;
+
+@end
 
 #endif /* Rule_h */

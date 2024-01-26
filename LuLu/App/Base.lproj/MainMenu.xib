@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22505"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -43,20 +43,26 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Rules" systemMenu="apple" id="F6a-9V-HHo">
                         <items>
-                            <menuItem title="Import..." tag="1" id="KcY-Hb-SMi" userLabel="Import">
+                            <menuItem title="View..." tag="1" id="KcY-Hb-SMi" userLabel="View">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="q3G-v0-dR7"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Export..." tag="2" id="RRJ-ZN-K2Q" userLabel="Export">
+                            <menuItem title="Import..." tag="2" id="QBi-XO-YAQ" userLabel="Import">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="GET-M6-XS5"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Export..." tag="3" id="RRJ-ZN-K2Q" userLabel="Export">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="9sL-Mh-74f"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="t8R-1v-1JD"/>
-                            <menuItem title="Cleanup" tag="3" id="Txf-8U-czQ">
+                            <menuItem title="Cleanup" tag="4" id="Txf-8U-czQ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="3uz-F1-eEm"/>

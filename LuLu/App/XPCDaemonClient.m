@@ -181,6 +181,34 @@ extern NSMutableDictionary* alerts;
     return;
 }
 
+//update (save) preferences
+-(BOOL)importRules:(NSData*)newRules
+{
+    //flag
+    __block BOOL wasImported = NO;
+    
+    //dbg msg
+    os_log_debug(logHandle, "invoking daemon XPC method, '%s'", __PRETTY_FUNCTION__);
+    
+    //import rules
+    [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+          
+    }] importRules:newRules result:^(BOOL result)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "daemon XPC method, '%s', done!", __PRETTY_FUNCTION__);
+         
+        //set flag
+        wasImported = YES;
+         
+    }];
+    
+    return wasImported;
+}
+
 //uninstall
 -(BOOL)uninstall
 {

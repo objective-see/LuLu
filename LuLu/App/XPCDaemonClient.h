@@ -37,6 +37,11 @@
 //delete rule
 -(void)deleteRule:(NSString*)key rule:(NSString*)uuid;
 
+//import rules
+-(BOOL)importRules:(NSData*)newRules;
+
+//TODO cleanup
+
 //uninstall
 -(BOOL)uninstall;
 

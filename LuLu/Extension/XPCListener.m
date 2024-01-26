@@ -62,12 +62,31 @@ extern os_log_t logHandle;
 // create XPC listener
 -(id)init
 {
+    //code signing requirement
+    NSString* requirement = nil;
+    
     //init super
     self = [super init];
     if(nil != self)
     {
         //init listener
         listener = [[NSXPCListener alloc] initWithMachServiceName:DAEMON_MACH_SERVICE];
+        
+        //macOS 13+
+        // set code signing requirement for clients via 'setConnectionCodeSigningRequirement'
+        if(@available(macOS 13.0, *)) {
+        
+            //init requirement
+            // BB helper, v2.0+
+            requirement = [NSString stringWithFormat:@"anchor apple generic and identifier \"%@\" and certificate leaf [subject.CN] = \"%@\" and info [CFBundleShortVersionString] >= \"2.0.0\"", APP_ID, SIGNING_AUTH];
+            
+            //set requirement
+            [self.listener setConnectionCodeSigningRequirement:requirement];
+            
+            //dbg msg
+            os_log_debug(logHandle, "set XPC requirement %@", requirement);
+            
+        }
         
         //dbg msg
         os_log_debug(logHandle, "created mach service %@", DAEMON_MACH_SERVICE);

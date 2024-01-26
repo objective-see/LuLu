@@ -11,6 +11,8 @@
 #import "consts.h"
 #import "utilities.h"
 
+#import <objc/runtime.h>
+
 /* GLOBALS */
 
 //log handle
@@ -27,7 +29,6 @@ extern os_log_t logHandle;
     //init super
     if(self = [super init])
     {
-        
         //url
         NSURL* remoteURL = nil;
         
@@ -188,6 +189,12 @@ extern os_log_t logHandle;
     return _isGlobal;
 }
 
+//is rule temporary
+-(BOOL)isTemporary
+{
+    return (nil != self.pid);
+}
+
 //is rule directory?
 -(NSNumber*)isDirectory
 {
@@ -224,8 +231,9 @@ extern os_log_t logHandle;
         self.name = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(name))];
         self.csInfo = [decoder decodeObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class]]] forKey:NSStringFromSelector(@selector(csInfo))];
         
-        self.endpointAddr = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointAddr))];
         self.isEndpointAddrRegex = [decoder decodeBoolForKey:NSStringFromSelector(@selector(isEndpointAddrRegex))];
+        self.endpointAddr = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointAddr))];
+        self.endpointHost = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointHost))];
         self.endpointPort = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointPort))];
         
         self.type = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(type))];
@@ -251,11 +259,11 @@ extern os_log_t logHandle;
     [encoder encodeObject:self.csInfo forKey:NSStringFromSelector(@selector(csInfo))];
     
     [encoder encodeObject:self.endpointAddr forKey:NSStringFromSelector(@selector(endpointAddr))];
-    [encoder encodeBool:self.isEndpointAddrRegex forKey:NSStringFromSelector(@selector(isEndpointAddrRegex))];
+    [encoder encodeObject:self.endpointHost forKey:NSStringFromSelector(@selector(endpointHost))];
     [encoder encodeObject:self.endpointPort forKey:NSStringFromSelector(@selector(endpointPort))];
+    [encoder encodeBool:self.isEndpointAddrRegex forKey:NSStringFromSelector(@selector(isEndpointAddrRegex))];
     
     [encoder encodeObject:self.type forKey:NSStringFromSelector(@selector(type))];
-    
     [encoder encodeObject:self.scope forKey:NSStringFromSelector(@selector(scope))];
     [encoder encodeObject:self.action forKey:NSStringFromSelector(@selector(action))];
     
@@ -361,6 +369,154 @@ bail:
         
     //just serialize
     return [NSString stringWithFormat:@"RULE: pid: %@, path: %@, name: %@, code signing info: %@, endpoint addr: %@, endpoint port: %@, action: %@, type: %@", pid, self.path, self.name, self.csInfo, self.endpointAddr, self.endpointPort, self.action, self.type];
+}
+
+//covert rule to dictionary
+// needed for conversion to JSON
+-(NSMutableString*)toJSON
+{
+    //dbg msg
+    os_log_debug(logHandle, "converting rule to JSON...");
+    
+    //json
+    NSMutableString* json = nil;
+    
+    //init
+    json = [NSMutableString string];
+    
+    [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(key)), self.key];
+    [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(uuid)), self.uuid];
+    
+    if(nil != self.pid)
+    {
+        [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(pid)), self.pid.intValue];
+    }
+    
+    [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(path)), self.path];
+    [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(name)), self.name];
+    
+    [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(endpointAddr)), self.endpointAddr];
+    
+    if(nil != self.endpointHost)
+    {
+        [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(endpointHost)), self.endpointHost];
+    }
+    
+    [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(endpointPort)), self.endpointPort];
+    [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(isEndpointAddrRegex)), self.isEndpointAddrRegex];
+
+    [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(type)), self.type.intValue];
+    [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(scope)), self.scope.intValue];
+    [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(action)), self.action.intValue];
+    
+    //cs info
+    // dictionary...
+    if(nil != self.csInfo)
+    {
+        [json appendFormat:@"\"%@\" : {", NSStringFromSelector(@selector(csInfo))];
+        
+        //convert each key/value pair
+        for(NSString* key in self.csInfo)
+        {
+            //extract value
+            id value = self.csInfo[key];
+            
+            //string?
+            if(YES == [value isKindOfClass:[NSString class]])
+            {
+                //append
+                [json appendFormat:@"\"%@\" : \"%@\",", key, value];
+            }
+            
+            //number?
+            if(YES == [value isKindOfClass:[NSNumber class]])
+            {
+                //append
+                [json appendFormat:@"\"%@\" : \"%d\",", key, [value intValue]];
+            }
+            
+            //array?
+            if(YES == [value isKindOfClass:[NSArray class]])
+            {
+                //append
+                [json appendFormat:@"\"%@\" : [", key];
+                
+                //add each item
+                for(id item in value)
+                {
+                    [json appendFormat:@"\"%@\",", item];
+                }
+                
+                //remove last ','
+                if(YES == [json hasSuffix:@","])
+                {
+                    //remove
+                    [json deleteCharactersInRange:NSMakeRange(json.length-1, 1)];
+                }
+                
+                //end
+                [json appendFormat:@"],"];
+            }
+        }
+        
+        //remove last ','
+        if(YES == [json hasSuffix:@","])
+        {
+            //remove
+            [json deleteCharactersInRange:NSMakeRange(json.length-1, 1)];
+        }
+        
+        //end
+        [json appendFormat:@"}"];
+    }
+    
+    //remove last ','
+    if(YES == [json hasSuffix:@","])
+    {
+        //remove
+        [json deleteCharactersInRange:NSMakeRange(json.length-1, 1)];
+    }
+    
+    return json;
+}
+
+//make a rule obj from a dictioanary
+-(id)initFromJSON:(NSDictionary*)info
+{
+    //formatter
+    NSNumberFormatter* formatter = nil;
+    
+    //init
+    formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    
+    //dbg msg
+    os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
+    
+    //super
+    if(self = [super init])
+    {
+        //init
+        self.key = info[NSStringFromSelector(@selector(key))];
+        self.uuid = info[NSStringFromSelector(@selector(uuid))];
+        
+        self.pid = info[NSStringFromSelector(@selector(pid))];
+        self.path = info[NSStringFromSelector(@selector(path))];
+        self.name = info[NSStringFromSelector(@selector(name))];
+        
+        self.endpointAddr = info[NSStringFromSelector(@selector(endpointAddr))];
+        self.endpointHost = info[NSStringFromSelector(@selector(endpointHost))];
+        self.endpointPort = info[NSStringFromSelector(@selector(endpointPort))];
+        
+        self.isEndpointAddrRegex = [info[NSStringFromSelector(@selector(isEndpointAddrRegex))] boolValue];
+        
+        self.type = [formatter numberFromString:info[NSStringFromSelector(@selector(type))]];
+        self.scope = [formatter numberFromString:info[NSStringFromSelector(@selector(scope))]];
+        self.action = [formatter numberFromString:info[NSStringFromSelector(@selector(action))]];
+        
+    }
+        
+    return self;
 }
 
 @end

@@ -34,7 +34,6 @@
 //xpc client for talking to login item
 @property(nonatomic, retain)XPCUserClient* xpcUserClient;
 
-
 /* METHODS */
 
 //prepare
@@ -55,10 +54,7 @@
 -(BOOL)delete:(NSString*)key rule:(NSString*)uuid;
 
 //import rules
--(BOOL)import:(NSString*)path;
-
-//export rules
--(BOOL)export:(NSString*)path;
+-(BOOL)import:(NSData*)rules;
 
 //cleanup rules
 -(void)cleanup;

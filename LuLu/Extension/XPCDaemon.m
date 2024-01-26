@@ -78,7 +78,7 @@ extern os_log_t logHandle;
     if(nil == archivedRules)
     {
         //err msg
-        os_log_error(logHandle, "ERROR: failed to archive rules: %@", error);
+        os_log_error(logHandle, "ERROR: failed to archive rules: %{public}@", error);
             
     } else os_log_debug(logHandle, "archived %lu rules, and sending to user...", (unsigned long)rules.rules.count);
 
@@ -171,25 +171,13 @@ bail:
 }
 
 //import rules
--(void)importRules:(NSString*)path result:(void (^)(BOOL))reply
+-(void)importRules:(NSData*)importedRules result:(void (^)(BOOL))reply
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
     
     //import rules
-    reply([rules import:path]);
-
-    return;
-}
-
-//export rules
--(void)exportRules:(NSString*)path result:(void (^)(BOOL))reply
-{
-    //dbg msg
-    os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
-    
-    //import rules
-    reply([rules export:path]);
+    reply([rules import:importedRules]);
 
     return;
 }

@@ -198,7 +198,7 @@ extern os_log_t logHandle;
     titleAttributes[NSForegroundColorAttributeName] = [NSColor labelColor];
     
     //set font
-    titleAttributes[NSFontAttributeName] = [NSFont fontWithName:@"Menlo-Regular" size:13];
+    titleAttributes[NSFontAttributeName] = [NSFont fontWithName:@"Menlo-Regular" size:12];
     
     //temp rule button label
     self.tempRule.attributedTitle = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" temporarily (pid: %@)", [self.alert[KEY_PROCESS_ID] stringValue]] attributes:titleAttributes];
