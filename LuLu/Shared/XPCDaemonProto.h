@@ -30,7 +30,7 @@
 -(void)importRules:(NSData*)newRules result:(void (^)(BOOL))reply;
 
 //cleanup rules
--(void)cleanupRules;
+-(void)cleanupRules:(void (^)(NSInteger))reply;
 
 //uninstall
 -(void)uninstall:(void (^)(BOOL))reply;

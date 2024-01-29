@@ -389,8 +389,9 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 
 //rules menu
 #define MENU_RULES_VIEW    1
-#define MENU_RULES_IMPORT  2
-#define MENU_RULES_EXPORT  3
-#define MENU_RULES_CLEANUP 4
+#define MENU_RULES_ADD     2
+#define MENU_RULES_IMPORT  3
+#define MENU_RULES_EXPORT  4
+#define MENU_RULES_CLEANUP 5
 
 #endif /* const_h */

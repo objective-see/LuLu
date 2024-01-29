@@ -923,8 +923,8 @@ bail:
         //err msg
         os_log_error(logHandle, "ERROR: failed to save (updated) rules");
         
-        //bail
-        goto bail;
+        //not happy
+        result = NO;
     }
     
     return result;
@@ -1039,7 +1039,7 @@ bail:
 -(BOOL)import:(NSData*)importedRules
 {
     //flag
-    BOOL wasImported = NO;
+    BOOL result = NO;
     
     //unserialized rules
     NSDictionary* unarchivedRules = nil;
@@ -1093,20 +1093,86 @@ bail:
     os_log_debug(logHandle, "saved (imported) rules");
     
     //happy
-    wasImported = YES;
+    result = YES;
     
 bail:
     
-    return wasImported;
+    return result;
 }
 
 //cleanup
 // ...remove any rules that don't match a on-disk
--(void)cleanup
+-(NSInteger)cleanup
 {
-    //TODO:
+    //flag
+    NSInteger deletedRules = 0;
     
-    return;
+    //dbg msg
+    os_log_debug(logHandle, "cleaning up rules");
+    
+    //sync to access
+    @synchronized(self.rules)
+    {
+        //iterate over all rules
+        // and path that's gone, delete
+        for(NSString* key in self.rules.allKeys)
+        {
+            //rules for item
+            NSArray* itemRules = nil;
+            
+            //item rule
+            Rule* rule = nil;
+            
+            //extract rules for item
+            itemRules = self.rules[key][KEY_RULES];
+            
+            //grab first process object
+            // should all be the same anyways...
+            rule = itemRules.firstObject;
+            
+            //sanity check(s)
+            if( (nil == rule) ||
+                (0 == rule.path.length) )
+            {
+                //skip
+                continue;
+            }
+            
+            //dbg msg
+            os_log_debug(logHandle, "checking if %{public}@ was deleted", rule.path);
+            
+            //path ...gone?
+            if(YES != [NSFileManager.defaultManager fileExistsAtPath:rule.path])
+            {
+                //dbg msg
+                os_log_debug(logHandle, "%{public}@ is gone, will delete rule", rule.path);
+                
+                //delete
+                [self.rules removeObjectForKey:key];
+                
+                //inc
+                // but for all item's rule(s)
+                deletedRules += itemRules.count;
+            }
+        }
+    }
+    
+    //dbg msg
+    os_log_debug(logHandle, "cleaned up/deleted %ld rules", (long)deletedRules);
+    
+bail:
+    
+    //always save to disk
+    if(YES != [self save])
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to save (cleaned up) rules");
+        
+        //set error
+        deletedRules = -1;
+    }
+    
+    return deletedRules;
 }
 
 @end

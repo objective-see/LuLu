@@ -40,7 +40,8 @@
 //import rules
 -(BOOL)importRules:(NSData*)newRules;
 
-//TODO cleanup
+//cleanup rules
+-(NSInteger)cleanupRules;
 
 //uninstall
 -(BOOL)uninstall;

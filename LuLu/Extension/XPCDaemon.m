@@ -183,10 +183,13 @@ bail:
 }
 
 //cleanup rules
--(void)cleanupRules
+-(void)cleanupRules:(void (^)(NSInteger))reply
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
+    
+    //cleanup rules
+    reply([rules cleanup]);
 
     return;
 }

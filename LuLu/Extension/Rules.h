@@ -57,7 +57,7 @@
 -(BOOL)import:(NSData*)rules;
 
 //cleanup rules
--(void)cleanup;
+-(NSInteger)cleanup;
 
 @end
 

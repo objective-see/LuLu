@@ -49,20 +49,27 @@
                                     <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="q3G-v0-dR7"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Import..." tag="2" id="QBi-XO-YAQ" userLabel="Import">
+                            <menuItem isSeparatorItem="YES" id="t8R-1v-1JD"/>
+                            <menuItem title="Add..." tag="2" id="PwB-oA-CbO" userLabel="Add">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="7St-97-Pdy"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Import..." tag="3" id="QBi-XO-YAQ" userLabel="Import">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="GET-M6-XS5"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Export..." tag="3" id="RRJ-ZN-K2Q" userLabel="Export">
+                            <menuItem title="Export..." tag="4" id="RRJ-ZN-K2Q" userLabel="Export">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="9sL-Mh-74f"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="t8R-1v-1JD"/>
-                            <menuItem title="Cleanup" tag="4" id="Txf-8U-czQ">
+                            <menuItem isSeparatorItem="YES" id="Nmz-U7-2LK"/>
+                            <menuItem title="Cleanup" tag="5" id="Txf-8U-czQ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="3uz-F1-eEm"/>

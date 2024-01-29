@@ -249,7 +249,7 @@ bail:
             if(NSControlStateValueOn == state.longValue)
             {
                 //show alert
-                showAlert(@"Outgoing traffic will now be blocked.", @"Note however:\r\n▪ Existing connections will not be impacted.\r\n▪ OS traffic (not routed thru LuLu) will not be blocked.");
+                showAlert(@"Outgoing traffic will now be blocked.", @"Note however:\r\n▪ Existing connections will not be impacted.\r\n▪ OS traffic (not routed thru LuLu) will not be blocked.", @[@"OK"]);
             }
             
             break;

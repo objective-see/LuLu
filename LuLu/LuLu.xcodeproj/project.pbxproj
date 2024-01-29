@@ -66,6 +66,8 @@
 		CDC378C7250C66C300314064 /* Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC378C6250C66C300314064 /* Extension.m */; };
 		CDC378CB250C83F200314064 /* Netiquette.app in Resources */ = {isa = PBXBuildFile; fileRef = CDC378C9250C83F100314064 /* Netiquette.app */; };
 		CDC41C412503424800CB302B /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC41C3F2503424800CB302B /* OrderedDictionary.m */; };
+		CDCAA9692B677AFC00FE27DD /* StartupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCAA9662B677AFC00FE27DD /* StartupWindowController.m */; };
+		CDCAA96A2B677AFC00FE27DD /* StartupWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCAA9682B677AFC00FE27DD /* StartupWindowController.xib */; };
 		CDD7853D255609AC001BB0BE /* BlockList.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD7853C255609AC001BB0BE /* BlockList.m */; };
 /* End PBXBuildFile section */
 
@@ -220,6 +222,9 @@
 		CDC378C9250C83F100314064 /* Netiquette.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = Netiquette.app; sourceTree = "<group>"; };
 		CDC41C3F2503424800CB302B /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderedDictionary.m; path = "3rd-party/OrderedDictionary.m"; sourceTree = "<group>"; };
 		CDC41C402503424800CB302B /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderedDictionary.h; path = "3rd-party/OrderedDictionary.h"; sourceTree = "<group>"; };
+		CDCAA9662B677AFC00FE27DD /* StartupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupWindowController.m; sourceTree = "<group>"; };
+		CDCAA9672B677AFC00FE27DD /* StartupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupWindowController.h; sourceTree = "<group>"; };
+		CDCAA9682B677AFC00FE27DD /* StartupWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartupWindowController.xib; sourceTree = "<group>"; };
 		CDD7853B255609AC001BB0BE /* BlockList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockList.h; sourceTree = "<group>"; };
 		CDD7853C255609AC001BB0BE /* BlockList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -305,7 +310,6 @@
 				CDA1369A24F0D2CF005AD424 /* AddRuleWindowController.m */,
 				CDA1367424F0D268005AD424 /* AlertWindow.xib */,
 				CDA1367F24F0D268005AD424 /* AlertWindowController.h */,
-				CDC378C6250C66C300314064 /* Extension.m */,
 				CDA1367224F0D268005AD424 /* AlertWindowController.m */,
 				CDB2CC2624D61A5000D0EECE /* App.entitlements */,
 				CDB2CC1B24D61A4E00D0EECE /* AppDelegate.h */,
@@ -313,6 +317,7 @@
 				CDB2CC1E24D61A5000D0EECE /* Assets.xcassets */,
 				CDC378C8250C83F100314064 /* Binaries */,
 				CDC378C5250C66C200314064 /* Extension.h */,
+				CDC378C6250C66C300314064 /* Extension.m */,
 				CDB2CC2324D61A5000D0EECE /* Info.plist */,
 				CD9E147C25171BF200DA05C3 /* ItemPaths.xib */,
 				CD9E147A25171BF200DA05C3 /* ItemPathsWindowController.h */,
@@ -341,6 +346,9 @@
 				CDA136BD24F0D526005AD424 /* Shared */,
 				CDA1367824F0D268005AD424 /* SigningInfoViewController.h */,
 				CDA1367524F0D268005AD424 /* SigningInfoViewController.m */,
+				CDCAA9672B677AFC00FE27DD /* StartupWindowController.h */,
+				CDCAA9662B677AFC00FE27DD /* StartupWindowController.m */,
+				CDCAA9682B677AFC00FE27DD /* StartupWindowController.xib */,
 				CDA1368224F0D269005AD424 /* StatusBarItem.h */,
 				CDA1368024F0D268005AD424 /* StatusBarItem.m */,
 				CDA1367B24F0D268005AD424 /* StatusBarPopover.xib */,
@@ -501,6 +509,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD9E04D3254163AF00DB3218 /* patrons.txt in Resources */,
+				CDCAA96A2B677AFC00FE27DD /* StartupWindowController.xib in Resources */,
 				CDC378CB250C83F200314064 /* Netiquette.app in Resources */,
 				CD9E147E25171BF200DA05C3 /* ItemPaths.xib in Resources */,
 				CDA1547824F34BEC00E0AE97 /* AboutWindow.xib in Resources */,
@@ -557,6 +566,7 @@
 				CDA136D424F0DA0E005AD424 /* AddRuleWindowController.m in Sources */,
 				CDA136D524F0DA0E005AD424 /* PrefsWindowController.m in Sources */,
 				CDA136D624F0DA0E005AD424 /* RuleRow.m in Sources */,
+				CDCAA9692B677AFC00FE27DD /* StartupWindowController.m in Sources */,
 				CDA136D724F0DA0E005AD424 /* RuleRowCell.m in Sources */,
 				CDA136D824F0DA0E005AD424 /* RulesTable.m in Sources */,
 				CDA136D924F0DA0E005AD424 /* RulesWindowController.m in Sources */,
@@ -742,7 +752,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.5.1;
+				CURRENT_PROJECT_VERSION = 2.6.0;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -752,7 +762,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.5.1;
+				MARKETING_VERSION = 2.6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -768,7 +778,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.5.1;
+				CURRENT_PROJECT_VERSION = 2.6.0;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -778,7 +788,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.5.1;
+				MARKETING_VERSION = 2.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "LuLu Application";
@@ -791,7 +801,7 @@
 				CODE_SIGN_ENTITLEMENTS = Extension/Extension.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2.5.1;
+				CURRENT_PROJECT_VERSION = 2.6.0;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -803,7 +813,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.5.1;
+				MARKETING_VERSION = 2.6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.extension";
 				PRODUCT_NAME = "com.objective-see.lulu.extension";
@@ -818,7 +828,7 @@
 				CODE_SIGN_ENTITLEMENTS = Extension/Extension.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2.5.1;
+				CURRENT_PROJECT_VERSION = 2.6.0;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -830,7 +840,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.5.1;
+				MARKETING_VERSION = 2.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.extension";
 				PRODUCT_NAME = "com.objective-see.lulu.extension";
 				PROVISIONING_PROFILE_SPECIFIER = "LuLu Extension";

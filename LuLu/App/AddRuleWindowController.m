@@ -312,7 +312,7 @@ bail:
         if(YES != [path hasSuffix:VALUE_ANY])
         {
             //show alert
-            showAlert(@"ERROR: invalid path", [NSString stringWithFormat:@"%@ does not exist!", path]);
+            showAlert(@"ERROR: invalid path", [NSString stringWithFormat:@"%@ does not exist!", path], @[@"OK"]);
         
             //bail
             goto bail;
@@ -330,7 +330,7 @@ bail:
         (nil == [NSRegularExpression regularExpressionWithPattern:endpointAddr options:0 error:&error]) )
     {
         //show alert
-        showAlert(@"ERROR: invalid regex", [NSString stringWithFormat:@"%@ is not a valid regular expression\r\ndetails: %@", endpointAddr, error.localizedDescription]);
+        showAlert(@"ERROR: invalid regex", [NSString stringWithFormat:@"%@ is not a valid regular expression\r\ndetails: %@", endpointAddr, error.localizedDescription], @[@"OK"]);
         
         //bail
         goto bail;
@@ -344,7 +344,7 @@ bail:
         (NSNotFound != [endpointPort rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location) )
     {
         //show alert
-        showAlert(@"ERROR: invalid port", [NSString stringWithFormat:@"%@ is not a valid (port) number", endpointPort]);
+        showAlert(@"ERROR: invalid port", [NSString stringWithFormat:@"%@ is not a valid (port) number", endpointPort], @[@"OK"]);
         
         //bail
         goto bail;

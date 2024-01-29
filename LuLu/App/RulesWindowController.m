@@ -388,7 +388,7 @@ bail:
     else if(YES == [item isKindOfClass:[Rule class]])
     {
         //default rule?
-        //show alert/warning
+        // show alert/warning
         if(RULE_TYPE_DEFAULT == ((Rule*)item).type.intValue)
         {
             //show alert

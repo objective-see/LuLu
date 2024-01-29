@@ -165,7 +165,7 @@ extern BlockList* blockList;
     socketFlow = (NEFilterSocketFlow*)flow;
     
     //log msg
-    os_log_debug(logHandle, "flow: %{public}@", flow);
+    //os_log_debug(logHandle, "flow: %{public}@", flow);
     
     //only once
     // load init block list

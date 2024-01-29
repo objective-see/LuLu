@@ -17,12 +17,16 @@
 #import "PrefsWindowController.h"
 #import "RulesWindowController.h"
 #import "UpdateWindowController.h"
+#import "StartupWindowController.h"
 #import "WelcomeWindowController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 
 /* PROPERTIES */
+
+//configure window controller
+@property(nonatomic, retain)StartupWindowController* startupWindowController;
 
 //uninstall (deactivation) request
 @property(nonatomic, retain)OSSystemExtensionRequest *uninstallRequest;

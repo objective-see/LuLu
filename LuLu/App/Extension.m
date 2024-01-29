@@ -278,18 +278,12 @@ bail:
 // if this isn't the first time launch, will alert user to approve
 -(void)requestNeedsUserApproval:(nonnull OSSystemExtensionRequest *)request {
     
-    NSDictionary* parent = nil;
-    
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked with %{public}@", __PRETTY_FUNCTION__, request);
     
-    //get parent
-    parent = getRealParent(getpid());
-    
     //not user launched?
     // show alert on desktop
-    if( (YES != [parent[@"CFBundleIdentifier"] isEqualTo:@"com.apple.dock"]) &&
-        (YES != [parent[@"CFBundleIdentifier"] isEqualTo:@"com.apple.finder"]) )
+    if(YES != launchedByUser())
     {
         //on main thread
         // check and invoke
@@ -300,7 +294,7 @@ bail:
             if(YES != [((AppDelegate*)[[NSApplication sharedApplication] delegate]) isFirstTime])
             {
                 //show alert
-                showAlert(@"LuLu's Network Extension Is Not Running", @"Extensions must be manually approved via\r\nSecurity & Privacy System Preferences.");
+                showAlert(@"LuLu's Network Extension Is Not Running", @"Extensions must be manually approved via\r\nSecurity & Privacy System Preferences.", @[@"OK"]);
             }
         });
     }

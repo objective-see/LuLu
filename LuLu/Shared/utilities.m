@@ -1105,7 +1105,7 @@ NSString* valueForStringItem(NSString* item)
 }
 
 //show an alert
-NSModalResponse showAlert(NSString* messageText, NSString* informativeText)
+NSModalResponse showAlert(NSString* messageText, NSString* informativeText, NSArray* buttons)
 {
     //alert
     NSAlert* alert = nil;
@@ -1129,8 +1129,15 @@ NSModalResponse showAlert(NSString* messageText, NSString* informativeText)
         alert.informativeText = informativeText;
     }
     
-    //add button
-    [alert addButtonWithTitle:@"OK"];
+    //add buttons
+    for(NSString* title in buttons)
+    {
+        //add button
+        [alert addButtonWithTitle:title];
+    }
+
+    //make first button, first responder
+    alert.buttons[0].keyEquivalent = @"\r";
     
     //make app active
     [NSApp activateIgnoringOtherApps:YES];
@@ -1403,4 +1410,51 @@ BOOL isSimulatorApp(NSString* path)
 bail:
     
     return simulatorApp;
+}
+
+//was app launched by user
+BOOL launchedByUser(void)
+{
+    //flag
+    BOOL byUser = NO;
+    
+    //parent
+    NSDictionary* parent = nil;
+    
+    //get parent
+    parent = getRealParent(getpid());
+    
+    //parent dock or finder?
+    // ...then assume its user launched
+    if( (YES == [parent[@"CFBundleIdentifier"] isEqualTo:@"com.apple.dock"]) ||
+        (YES == [parent[@"CFBundleIdentifier"] isEqualTo:@"com.apple.finder"]) )
+    {
+        //set flag
+        byUser = YES;
+    }
+    
+    return byUser;
+}
+
+//fade out and close a window
+void fadeOut(NSWindow* window, float duration)
+{
+    //animate fade out
+    // and then also close
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        
+        //set duration
+        context.duration = duration;
+        
+        //set final alpha
+        [[window animator] setAlphaValue:0.0];
+        
+       } completionHandler:^{
+           
+           //close
+           [window close];
+           
+       }];
+    
+    return;
 }

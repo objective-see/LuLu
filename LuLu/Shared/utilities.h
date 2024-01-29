@@ -88,7 +88,7 @@ NSString* valueForStringItem(NSString* item);
 NSDate* dateAdded(NSString* file);
 
 //show an alert
-NSModalResponse showAlert(NSString* messageText, NSString* informativeText);
+NSModalResponse showAlert(NSString* messageText, NSString* informativeText, NSArray* buttons);
 
 //get audit token for pid
 NSData* tokenForPid(pid_t pid);
@@ -103,5 +103,11 @@ BOOL isAlive(pid_t processID);
 //check if app is an simulator app
 // for now check 'iPhoneSimulator' and 'AppleTVSimulator'
 BOOL isSimulatorApp(NSString* path);
+
+//was app launched by user
+BOOL launchedByUser(void);
+
+//fade out a window
+void fadeOut(NSWindow* window, float duration);
 
 #endif

@@ -35,6 +35,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
 @synthesize prefsWindowController;
 @synthesize rulesWindowController;
 @synthesize updateWindowController;
+@synthesize startupWindowController;
 @synthesize statusBarItemController;
 @synthesize welcomeWindowController;
 
@@ -58,7 +59,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
         [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
         
         //show alert
-        showAlert([NSString stringWithFormat:@"LuLu must run from:\r\n  %@", [@"/Applications" stringByAppendingPathComponent:APP_NAME]], @"...please copy it to /Applications and re-launch.");
+        showAlert([NSString stringWithFormat:@"LuLu must run from:\r\n  %@", [@"/Applications" stringByAppendingPathComponent:APP_NAME]], @"...please copy it to /Applications and re-launch.", @[@"OK"]);
         
         //exit
         [NSApplication.sharedApplication terminate:self];
@@ -133,108 +134,130 @@ XPCDaemonClient* xpcDaemonClient = nil;
         //dbg
         os_log_debug(logHandle, "subsequent launch...");
         
-        //(re)activate extension
-        // this will call back to complete inits when done
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+        //started by user?
+        // show startup msg....
+        if(YES == launchedByUser())
+        {
+            //dbg msg
+            os_log_debug(logHandle, "showing startup window...");
+            
+            //alloc/init
+            startupWindowController = [[StartupWindowController alloc] initWithWindowNibName:@"StartupWindowController"];
+            
+            //show window
+            [self.startupWindowController showWindow:nil];
+           
+        }
+        
+        //wait 1 second, so that startup window can show...
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(),
         ^{
-            //extension
-            Extension* extension = nil;
+            //fade out
+            fadeOut(self.startupWindowController.window, 1.0f);
             
-            //wait semaphore
-            dispatch_semaphore_t semaphore = 0;
-                        
-            //init extension object
-            extension = [[Extension alloc] init];
-            
-            //init wait semaphore
-            semaphore = dispatch_semaphore_create(0);
-            
-            //kick off extension activation request
-            [extension toggleExtension:ACTION_ACTIVATE reply:^(BOOL toggled)
-            {
-                //dbg msg
-                os_log_debug(logHandle, "extension 'activate' returned");
+            //(re)activate extension
+            // this will call back to complete inits when done
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+            ^{
+                //extension
+                Extension* extension = nil;
                 
-                //error
-                if(YES != toggled)
-                {
-                    //err msg
-                    os_log_error(logHandle, "ERROR: failed to activate extension");
-                    
-                    //show error on main thread
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        
-                        //foreground
-                        [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
-                        
-                        //show alert
-                        showAlert(@"ERROR: activation failed", @"failed to activate system/network extension");
-                        
-                        //exit
-                        [NSApplication.sharedApplication terminate:self];
-                        
-                    });
-                    
-                    return;
-                }
+                //wait semaphore
+                dispatch_semaphore_t semaphore = 0;
+                            
+                //init extension object
+                extension = [[Extension alloc] init];
                 
-                //dbg msg
-                os_log_debug(logHandle, "activated system extension, will now activate network filter...");
+                //init wait semaphore
+                semaphore = dispatch_semaphore_create(0);
                 
-                //(always) activate network filter
-                // side affect is that it launches system extension
-                if(YES != [[[Extension alloc] init] toggleNetworkExtension:ACTION_ACTIVATE])
-                {
-                    //err msg
-                    os_log_error(logHandle, "ERROR: failed to activate network filter");
-                    
-                    //show alert/exit on main thread
-                    dispatch_async(dispatch_get_main_queue(),
-                    ^{
-                        //show alert
-                        showAlert(@"ERROR: activation failed", @"failed to activate network filter");
-                        
-                        //bye
-                        [NSApplication.sharedApplication terminate:self];
-                    });
-                }
-                
-                //dbg msg
-                os_log_debug(logHandle, "network filter activated/enabled");
-                
-                //wait to ensure extension is up an running
-                do
+                //kick off extension activation request
+                [extension toggleExtension:ACTION_ACTIVATE reply:^(BOOL toggled)
                 {
                     //dbg msg
-                    os_log_debug(logHandle, "waiting for %{public}@", EXT_BUNDLE_ID);
+                    os_log_debug(logHandle, "extension 'activate' returned");
                     
-                    //nap
-                    [NSThread sleepForTimeInterval:0.25f];
+                    //error
+                    if(YES != toggled)
+                    {
+                        //err msg
+                        os_log_error(logHandle, "ERROR: failed to activate extension");
+                        
+                        //show error on main thread
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            //foreground
+                            [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+                            
+                            //show alert
+                            showAlert(@"ERROR: activation failed", @"failed to activate system/network extension", @[@"OK"]);
+                            
+                            //exit
+                            [NSApplication.sharedApplication terminate:self];
+                            
+                        });
+                        
+                        return;
+                    }
                     
-                } while(YES != [extension isExtensionRunning]);
+                    //dbg msg
+                    os_log_debug(logHandle, "activated system extension, will now activate network filter...");
+                    
+                    //(always) activate network filter
+                    // side affect is that it launches system extension
+                    if(YES != [[[Extension alloc] init] toggleNetworkExtension:ACTION_ACTIVATE])
+                    {
+                        //err msg
+                        os_log_error(logHandle, "ERROR: failed to activate network filter");
+                        
+                        //show alert/exit on main thread
+                        dispatch_async(dispatch_get_main_queue(),
+                        ^{
+                            //show alert
+                            showAlert(@"ERROR: activation failed", @"failed to activate network filter", @[@"OK"]);
+                            
+                            //bye
+                            [NSApplication.sharedApplication terminate:self];
+                        });
+                    }
+                    
+                    //dbg msg
+                    os_log_debug(logHandle, "network filter activated/enabled");
+                    
+                    //wait to ensure extension is up an running
+                    do
+                    {
+                        //dbg msg
+                        os_log_debug(logHandle, "waiting for %{public}@", EXT_BUNDLE_ID);
+                        
+                        //nap
+                        [NSThread sleepForTimeInterval:0.25f];
+                        
+                    } while(YES != [extension isExtensionRunning]);
+                    
+                    //dbg msg
+                    os_log_debug(logHandle, "%{public}@ is off and running", EXT_BUNDLE_ID);
+                            
+                    //complete initialization on main thread
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        //complete initializations
+                        [self completeInitialization:nil];
+                        
+                    });
+                        
+                    //signal semaphore
+                    dispatch_semaphore_signal(semaphore);
+                    
+                }];
                 
                 //dbg msg
-                os_log_debug(logHandle, "%{public}@ is off and running", EXT_BUNDLE_ID);
-                        
-                //complete initialization on main thread
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    //complete initializations
-                    [self completeInitialization:nil];
-                    
-                });
-                    
-                //signal semaphore
-                dispatch_semaphore_signal(semaphore);
+                os_log_debug(logHandle, "waiting system extension & network filter activation...");
                 
-            }];
-            
-            //dbg msg
-            os_log_debug(logHandle, "waiting system extension & network filter activation...");
-            
-            //wait for extension semaphore
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-            
+                //wait for extension semaphore
+                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+                
+            });
         });
     }
 
@@ -312,7 +335,7 @@ bail:
     if(YES != [extension isExtensionRunning])
     {
         //show alert
-        showAlert(@"LuLu's Network Extension Is Not Running", @"Extensions must be manually approved via Security & Privacy System Preferences.");
+        showAlert(@"LuLu's Network Extension Is Not Running", @"Extensions must be manually approved via Security & Privacy System Preferences.", @[@"OK"]);
         
         //bail
         goto bail;
@@ -407,10 +430,9 @@ bail:
     return;
 }
 
-//menu handler for rules
--(IBAction)rulesMenuHandler:(id)sender 
+//handler for "Rules" menu
+-(IBAction)rulesMenuHandler:(id)sender
 {
-    
     //handle rules
     switch(((NSMenuItem*)sender).tag)
     {
@@ -419,16 +441,19 @@ bail:
             [self showRules:sender];
             break;
             
+        //add
+        case MENU_RULES_ADD:
+            
+            //show rules window
+            //...then trigger add
+            [self showRules:sender];
+            [self.rulesWindowController addRule:nil];
+            
+            break;
+            
         //import
-        // and refresh
         case MENU_RULES_IMPORT:
-            
-            //import
             [self importRules];
-            
-            //tell (any) windows rules changed
-            [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
-            
             break;
             
         //export
@@ -436,8 +461,9 @@ bail:
             [self exportRules];
             break;
             
+        //cleanup
         case MENU_RULES_CLEANUP:
-            //[self cleanupRules];
+            [self cleanupRules];
             break;
             
         default:
@@ -575,7 +601,6 @@ bail:
             
             //add rule obj
             [newRules[key][KEY_RULES] addObject:rule];
-            
         }
     }
     
@@ -593,6 +618,9 @@ bail:
     
     //send to daemon
     [xpcDaemonClient importRules:archivedRules];
+    
+    //tell (any) windows rules changed
+    [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
     
 bail:
     
@@ -735,6 +763,52 @@ bail:
     }];
     
     return exported;
+}
+
+//cleanup rules
+-(BOOL)cleanupRules
+{
+    //flag
+    BOOL cleanedUp = NO;
+    
+    //cleaned up rules
+    NSInteger cleanedUpRules = 0;
+    
+    //dbg msg
+    os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
+    
+    //show alert
+    // if user cancels, just bail
+    if(NSAlertSecondButtonReturn == showAlert(@"Cleanup rules that reference (now) deleted items?", nil, @[@"OK", @"Cancel"]))
+    {
+        //dbg msg
+        os_log_debug(logHandle, "user cancelled rule cleanup");
+        goto bail;
+    }
+    
+    //call into daemon to cleanup
+    cleanedUpRules = [xpcDaemonClient cleanupRules];
+    if(-1 == cleanedUpRules)
+    {
+        //error
+        showAlert(@"ERROR: Failed to clean up rules.", @"See log for (more) details", @[@"OK"]);
+        
+        //bail
+        goto bail;
+    }
+    
+    //happy
+    cleanedUp = YES;
+    
+    //tell (any) windows rules changed
+    [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
+    
+    //share results w/ user
+    showAlert([NSString stringWithFormat:@"Cleaned up %ld rules", cleanedUpRules], nil, @[@"OK"]);
+    
+bail:
+    
+    return cleanedUp;
 }
 
 //close window handler
@@ -943,14 +1017,16 @@ bail:
     }
 
     //automatically check for updates?
-    if(YES != [preferences[PREF_NO_UPDATE_MODE] boolValue])
+    // skipped if launched by user (e.g. first time run)
+    if( (YES != launchedByUser()) &&
+        (YES != [preferences[PREF_NO_UPDATE_MODE] boolValue]) )
     {
         //after a 30 seconds
         // check for updates in background
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
         {
             //dbg msg
-            os_log_debug(logHandle, "checking for update");
+            os_log_debug(logHandle, "checking for update...");
            
             //check
             [self check4Update];
@@ -1042,7 +1118,7 @@ bail:
     alert.messageText = @"Quit LuLu?";
 
     //details
-    alert.informativeText = @"...this will exit LuLu (until restart/(re)login).";
+    alert.informativeText = @"...this will terminated LuLu, until the next time you log in.";
 
     //add button
     [alert addButtonWithTitle:@"Quit"];
