@@ -498,9 +498,26 @@ bail:
     {
         //init
         self.key = info[NSStringFromSelector(@selector(key))];
+        if(YES != [self.key isKindOfClass:[NSString class]])
+        {
+            self = nil;
+            goto bail;
+        }
+        
         self.uuid = info[NSStringFromSelector(@selector(uuid))];
+        if(YES != [self.uuid isKindOfClass:[NSString class]])
+        {
+            self = nil;
+            goto bail;
+        }
         
         self.pid = info[NSStringFromSelector(@selector(pid))];
+        if(YES != [self.pid isKindOfClass:[NSNumber class]])
+        {
+            self = nil;
+            goto bail;
+        }
+        
         self.path = info[NSStringFromSelector(@selector(path))];
         self.name = info[NSStringFromSelector(@selector(name))];
         
@@ -516,6 +533,8 @@ bail:
         self.scope = [formatter numberFromString:info[NSStringFromSelector(@selector(scope))]];
         self.action = [formatter numberFromString:info[NSStringFromSelector(@selector(action))]];
     }
+    
+bail:
         
     return self;
 }

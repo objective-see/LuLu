@@ -979,38 +979,46 @@ bail:
     //sync to save
     @synchronized(self) {
         
-        //generate list of persistent rules
+        //generate list of non-temp rules
+        // these are the ones we'll write out
         for(NSString* key in self.rules.allKeys)
         {
             //item's rules
             NSMutableArray* itemRules = nil;
             
-            //copy rules
-            itemRules = [self.rules[key][KEY_RULES] mutableCopy];
-            
             //init
-            itemRules = persistentRules[key][KEY_RULES];
-
-            //remove any temporary rules
-            for(NSInteger i = itemRules.count-1; i >= 0; i--)
+            itemRules = [NSMutableArray array];
+            
+            //add only non-temporary rules
+            for(Rule* itemRule in self.rules[key][KEY_RULES])
             {
                 //temp?
-                if(YES == [((Rule*)(itemRules[i])) isTemporary])
+                if(YES == [itemRule isTemporary])
                 {
-                    //remove
-                    [itemRules removeObjectAtIndex:i];
+                    //skip
+                    continue;
                 }
+                
+                //add
+                [itemRules addObject:itemRule];
             }
             
-            //all rules for item, temp?
-            // remove the entry altogether
+            //any non-temp rules?
+            // add to rules we're going to write out
             if(0 != itemRules.count)
             {
-                //copy
-                persistentRules[key] = self.rules[key];
+                //start w/ empty dictionary
+                persistentRules[key] = [NSMutableDictionary dictionary];
                                 
-                //replace w/ persistent rules
+                //add (non-temp) rules
                 persistentRules[key][KEY_RULES] = itemRules;
+                
+                //add cs info
+                if(nil != self.rules[key][KEY_CS_INFO])
+                {
+                    //add
+                    persistentRules[key][KEY_CS_INFO] = self.rules[key][KEY_CS_INFO];
+                }
             }
         }
         
