@@ -56,6 +56,9 @@ extern XPCDaemonClient* xpcDaemonClient;
     
     //load rules
     [self loadRules];
+    
+    //select first row
+    [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
 
     return;
 }
@@ -763,7 +766,7 @@ bail:
     
     //first rule
     Rule* rule = nil;
-        
+    
     //first column
     // process or connection
     if(tableColumn == self.outlineView.tableColumns[0])
@@ -773,7 +776,7 @@ bail:
         {
             //grab first rule
             rule = [item firstObject];
-            
+
             //create/configure process cell
             cell = [self createProcessCell:rule];
         }
@@ -809,7 +812,7 @@ bail:
                 cell.imageView.image = [NSImage imageNamed:@"MainAppRulesBlock"];
                 
                 //set action text
-                action = (nil == rule.pid) ? @"block" : [NSString stringWithFormat:@"block (pid: %@)", rule.pid];
+                action = (nil == rule.pid) ? @"Block" : [NSString stringWithFormat:@"Block (pid: %@)", rule.pid];
             }
             //allow?
             else
@@ -818,7 +821,7 @@ bail:
                 cell.imageView.image = [NSImage imageNamed:@"MainAppRulesAllow"];
                 
                 //set action text
-                action = (nil == rule.pid) ? @"allow" : [NSString stringWithFormat:@"allow (pid: %@)", rule.pid];
+                action = (nil == rule.pid) ? @"Allow" : [NSString stringWithFormat:@"Allow (pid: %@)", rule.pid];
             }
             
             //set text
@@ -849,7 +852,7 @@ bail:
 }
 
 //create & customize process cell
-// this are the root cells, that hold the item (process)
+// these are the root cells, that hold the item (process)
 -(NSTableCellView*)createProcessCell:(Rule*)rule
 {
     //item cell
@@ -900,7 +903,7 @@ bail:
     {
         //set icon
         processCell.imageView.image = getIconForProcess(rule.path);
-        
+
         //main text
         // item's name
         processCell.textField.stringValue = rule.name;

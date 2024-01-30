@@ -1458,3 +1458,135 @@ void fadeOut(NSWindow* window, float duration)
     
     return;
 }
+
+
+//matches CS info?
+BOOL matchesCSInfo(NSDictionary* csInfo_1, NSDictionary* csInfo_2)
+{
+    //match
+    BOOL matches = NO;
+    
+    //status
+    int status_1 = -1;
+    int status_2 = -1;
+    
+    //signer
+    int signer_1 = -1;
+    int signer_2 = -1;
+    
+    //signing ID
+    NSString* signingID_1 = nil;
+    NSString* signingID_2 = nil;
+    
+    //signing auths
+    NSArray* signingAuths_1 = nil;
+    NSArray* signingAuths_2 = nil;
+    
+    //extract status #1
+    if(nil != csInfo_1[KEY_CS_STATUS])
+    {
+        //extract
+        status_1 = [csInfo_1[KEY_CS_STATUS] intValue];
+    }
+    
+    //extract status #2
+    if(nil != csInfo_2[KEY_CS_STATUS])
+    {
+        //extract
+        status_2 = [csInfo_2[KEY_CS_STATUS] intValue];
+    }
+    
+    //check 0x1
+    // signing status mismatch?
+    if(status_1 != status_2)
+    {
+        //dbg msg
+        os_log_error(logHandle, "ERROR: code signing mismatch (signing status): %{public}@ / %{public}@", csInfo_1, csInfo_2);
+        
+        //bail
+        goto bail;
+    }
+    
+    //extract signer #1
+    if(nil != csInfo_1[KEY_CS_SIGNER])
+    {
+        //extract
+        signer_1 = [csInfo_1[KEY_CS_SIGNER] intValue];
+    }
+    
+    //extract signer #2
+    if(nil != csInfo_2[KEY_CS_SIGNER])
+    {
+        //extract
+        signer_2 = [csInfo_2[KEY_CS_SIGNER] intValue];
+    }
+    
+    //check 0x2
+    // signer mismatch?
+    if(signer_1 != signer_2)
+    {
+        //dbg msg
+        os_log_error(logHandle, "ERROR: code signing mismatch (signer): %{public}@ / %{public}@", csInfo_1, csInfo_2);
+        
+        //bail
+        goto bail;
+    }
+    
+    //extract signing ID #1
+    if(nil != csInfo_1[KEY_CS_ID])
+    {
+        //extract
+        signingID_1 = csInfo_1[KEY_CS_ID];
+    }
+    
+    //extract signing ID #2
+    if(nil != csInfo_2[KEY_CS_ID])
+    {
+        //extract
+        signingID_2 = csInfo_2[KEY_CS_ID];
+    }
+    
+    //check 0x3
+    // signing ID mismatch?
+    if(YES != [signingID_1 isEqualToString:signingID_2])
+    {
+        //dbg msg
+        os_log_error(logHandle, "ERROR: code signing mismatch (signing ID): %{public}@ / %{public}@", csInfo_1, csInfo_2);
+        
+        //bail
+        goto bail;
+    }
+    
+    //extract signing auths #1
+    if(nil != csInfo_1[KEY_CS_AUTHS])
+    {
+        //extract
+        signingAuths_1 = csInfo_1[KEY_CS_AUTHS];
+    }
+    
+    //extract match's signing auths #2
+    if(nil != csInfo_2[KEY_CS_AUTHS])
+    {
+        //extract
+        signingAuths_2 = csInfo_2[KEY_CS_AUTHS];
+    }
+    
+    //check 0x4
+    // signing auths mismatch?
+    if(YES != [signingAuths_1 isEqualToArray:signingAuths_2])
+    {
+        //dbg msg
+        os_log_error(logHandle, "ERROR: code signing mismatch (signing auths): %{public}@ / %{public}@", csInfo_1, csInfo_2);
+        
+        //bail
+        goto bail;
+    }
+    
+    //happy
+    matches = YES;
+    
+bail:
+    
+    return matches;
+    
+}

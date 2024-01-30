@@ -125,7 +125,11 @@ extern os_log_t logHandle;
         [binary generateSigningInfo:flags];
         
         //add any code signing info
-        if(nil != binary.csInfo) ruleInfo[KEY_CS_INFO] = binary.csInfo;
+        if(nil != binary.csInfo) 
+        {
+            //add
+            ruleInfo[KEY_CS_INFO] = binary.csInfo;
+        }
     }
     
     //create and add rule

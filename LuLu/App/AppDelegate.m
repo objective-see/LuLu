@@ -483,6 +483,9 @@ bail:
     //error
     NSError* error = nil;
     
+    //count
+    NSUInteger count = 0;
+    
     //rules data
     NSData* data = nil;
     
@@ -584,6 +587,9 @@ bail:
                 goto bail;
             }
             
+            //inc
+            count++;
+            
             //first rule
             // init dictionary, array, etc...
             if(nil == newRules[key])
@@ -617,7 +623,20 @@ bail:
     os_log_debug(logHandle, "serialized (imported) rules");
     
     //send to daemon
-    [xpcDaemonClient importRules:archivedRules];
+    if(YES != [xpcDaemonClient importRules:archivedRules])
+    {
+        //show alert
+        showAlert(@"ERROR: Failed to import rules", @"See log for (more) details", @[@"OK"]);
+    
+        //bail
+        goto bail;
+    }
+    
+    //happy
+    imported = YES;
+    
+    //show alert
+    showAlert([NSString stringWithFormat:@"Imported %ld rules", count], nil, @[@"OK"]);
     
     //tell (any) windows rules changed
     [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
@@ -791,7 +810,7 @@ bail:
     if(-1 == cleanedUpRules)
     {
         //error
-        showAlert(@"ERROR: Failed to clean up rules.", @"See log for (more) details", @[@"OK"]);
+        showAlert(@"ERROR: Failed to clean up rules", @"See log for (more) details", @[@"OK"]);
         
         //bail
         goto bail;

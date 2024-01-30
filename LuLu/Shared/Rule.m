@@ -283,12 +283,12 @@ extern os_log_t logHandle;
     //init w/ allow
     if(RULE_STATE_ALLOW == self.action.integerValue)
     {
-        action = @"allow";
+        action = @"Allow";
     }
     //init w/ block
     else if(RULE_STATE_BLOCK == self.action.integerValue)
     {
-        action = @"block";
+        action = @"Block";
     }
     
     //check name, path
@@ -504,6 +504,8 @@ bail:
         self.path = info[NSStringFromSelector(@selector(path))];
         self.name = info[NSStringFromSelector(@selector(name))];
         
+        self.csInfo = info[NSStringFromSelector(@selector(csInfo))];
+        
         self.endpointAddr = info[NSStringFromSelector(@selector(endpointAddr))];
         self.endpointHost = info[NSStringFromSelector(@selector(endpointHost))];
         self.endpointPort = info[NSStringFromSelector(@selector(endpointPort))];
@@ -513,7 +515,6 @@ bail:
         self.type = [formatter numberFromString:info[NSStringFromSelector(@selector(type))]];
         self.scope = [formatter numberFromString:info[NSStringFromSelector(@selector(scope))]];
         self.action = [formatter numberFromString:info[NSStringFromSelector(@selector(action))]];
-        
     }
         
     return self;

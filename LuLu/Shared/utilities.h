@@ -110,4 +110,7 @@ BOOL launchedByUser(void);
 //fade out a window
 void fadeOut(NSWindow* window, float duration);
 
+//matches CS info?
+BOOL matchesCSInfo(NSDictionary* csInfo_1, NSDictionary* csInfo_2);
+
 #endif

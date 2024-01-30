@@ -90,15 +90,15 @@ extern os_log_t logHandle;
             
             //ingore if cs info doesn't match
             // can be multiple apps on the system w/ same bundle id
-            if(YES != [self.rule.csInfo isEqualToDictionary:signingInfo])
+            if(YES != matchesCSInfo(rule.csInfo, signingInfo))
             {
                 //dbg msg
-                os_log_debug(logHandle, "rule's code signing info, %{public}@, didn't match item's, %{public}@", self.rule.csInfo, signingInfo);
+                os_log_debug(logHandle, "rule's code signing info doesn't match item's");
                 
                 //skip
                 continue;
             }
-            
+           
             //1st one?
             // just add
             if(0 == self.itemPaths.stringValue.length)

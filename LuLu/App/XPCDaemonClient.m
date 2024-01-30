@@ -133,8 +133,8 @@ extern NSMutableDictionary* alerts;
     }] getRules:^(NSData* archivedRules)
     {
         //unarchive
-        rules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray: @[[NSMutableDictionary class], [NSMutableArray class], [NSString class], [NSNumber class], [Rule class]]]
-                                                    fromData:archivedRules error:&error];
+        rules = [NSKeyedUnarchiver unarchivedObjectOfClasses:
+                 [NSSet setWithArray: @[[NSMutableDictionary class], [NSMutableArray class], [NSString class], [NSNumber class], [Rule class]]] fromData:archivedRules error:&error];
         
         if(nil != error)
         {

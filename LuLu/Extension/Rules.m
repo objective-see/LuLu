@@ -206,7 +206,11 @@ bail:
         csInfo[KEY_CS_ENTITLEMENTS] = nil;
     
         //add cs info
-        if(nil != csInfo) info[KEY_CS_INFO] = csInfo;
+        if(nil != csInfo)
+        {
+            //add
+            info[KEY_CS_INFO] = csInfo;
+        }
             
         //add
         // note: will save after loop
@@ -388,6 +392,16 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "adding rule: %{public}@ -> %{public}@", rule.key, rule);
 
+    //sanity check
+    if(nil == rule)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: can't add nil rule");
+        
+        //bail
+        goto bail;
+    }
+    
     //sync to access
     @synchronized(self.rules)
     {
@@ -490,15 +504,19 @@ bail:
         // make sure it (still) matches
         if(nil != csInfo)
         {
-            //match?
-            if(YES == [process.csInfo isEqualToDictionary:csInfo])
+            //mismatch?
+            // ignore...
+            if(YES != matchesCSInfo(process.csInfo, csInfo))
             {
-                //item rules
-                itemRules = self.rules[process.key][KEY_RULES];
+                //err msg
+                os_log_error(logHandle, "ERROR: code signing mismatch: %{public}@ / %{public}@", process.csInfo, csInfo);
+                
+                //bail
+                goto bail;
             }
-            //no match
-            // just print err msg
-            else os_log_error(logHandle, "ERROR: code signing mismatch: %{public}@ / %{public}@", process.csInfo, csInfo);
+            
+            //extract item rules
+            itemRules = self.rules[process.key][KEY_RULES];
         }
        
         //grab global rules
@@ -949,38 +967,30 @@ bail:
     //archived rules
     NSData* archivedRules = nil;
     
+    //init
+    persistentRules = [NSMutableDictionary dictionary];
+    
     //init path to rule's file
     rulesFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE];
     
     //dbg msg
     os_log_debug(logHandle, "saving (non-temp) rules to %{public}@", rulesFile);
     
-    //start with copy
-    persistentRules = [self.rules mutableCopy];
-    
     //sync to save
     @synchronized(self) {
         
         //generate list of persistent rules
-        for(NSString* key in persistentRules.allKeys)
+        for(NSString* key in self.rules.allKeys)
         {
             //item's rules
             NSMutableArray* itemRules = nil;
             
+            //copy rules
+            itemRules = [self.rules[key][KEY_RULES] mutableCopy];
+            
             //init
             itemRules = persistentRules[key][KEY_RULES];
-            
-            //sanity check
-            if( (nil == itemRules) ||
-                (0 == itemRules.count) )
-            {
-                //remove
-                [persistentRules removeObjectForKey:key];
-                
-                //next
-                continue;
-            }
-            
+
             //remove any temporary rules
             for(NSInteger i = itemRules.count-1; i >= 0; i--)
             {
@@ -996,8 +1006,11 @@ bail:
             // remove the entry altogether
             if(0 != itemRules.count)
             {
-                //remove
-                [persistentRules removeObjectForKey:key];
+                //copy
+                persistentRules[key] = self.rules[key];
+                                
+                //replace w/ persistent rules
+                persistentRules[key][KEY_RULES] = itemRules;
             }
         }
         
