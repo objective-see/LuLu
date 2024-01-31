@@ -68,6 +68,7 @@
 		CDC41C412503424800CB302B /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC41C3F2503424800CB302B /* OrderedDictionary.m */; };
 		CDCAA9692B677AFC00FE27DD /* StartupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCAA9662B677AFC00FE27DD /* StartupWindowController.m */; };
 		CDCAA96A2B677AFC00FE27DD /* StartupWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDCAA9682B677AFC00FE27DD /* StartupWindowController.xib */; };
+		CDCAA96C2B69DC3700FE27DD /* RulesMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCAA96B2B69DC3700FE27DD /* RulesMenuController.m */; };
 		CDD7853D255609AC001BB0BE /* BlockList.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD7853C255609AC001BB0BE /* BlockList.m */; };
 /* End PBXBuildFile section */
 
@@ -225,6 +226,8 @@
 		CDCAA9662B677AFC00FE27DD /* StartupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupWindowController.m; sourceTree = "<group>"; };
 		CDCAA9672B677AFC00FE27DD /* StartupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupWindowController.h; sourceTree = "<group>"; };
 		CDCAA9682B677AFC00FE27DD /* StartupWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartupWindowController.xib; sourceTree = "<group>"; };
+		CDCAA96B2B69DC3700FE27DD /* RulesMenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RulesMenuController.m; sourceTree = "<group>"; };
+		CDCAA96D2B69DC4500FE27DD /* RulesMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RulesMenuController.h; sourceTree = "<group>"; };
 		CDD7853B255609AC001BB0BE /* BlockList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockList.h; sourceTree = "<group>"; };
 		CDD7853C255609AC001BB0BE /* BlockList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -339,6 +342,8 @@
 				CDA1369424F0D2CF005AD424 /* RuleRowCell.h */,
 				CDA136A024F0D2D0005AD424 /* RuleRowCell.m */,
 				CDA136A124F0D2D0005AD424 /* Rules.xib */,
+				CDCAA96D2B69DC4500FE27DD /* RulesMenuController.h */,
+				CDCAA96B2B69DC3700FE27DD /* RulesMenuController.m */,
 				CDA136A224F0D2D0005AD424 /* RulesTable.h */,
 				CDA136A324F0D2D0005AD424 /* RulesTable.m */,
 				CDA1368F24F0D2CF005AD424 /* RulesWindowController.h */,
@@ -577,6 +582,7 @@
 				CDA136DF24F0DA0F005AD424 /* StatusBarItem.m in Sources */,
 				CDA136E024F0DA0F005AD424 /* StatusBarPopoverController.m in Sources */,
 				CDA136E124F0DA0F005AD424 /* VirusTotal.m in Sources */,
+				CDCAA96C2B69DC3700FE27DD /* RulesMenuController.m in Sources */,
 				CDA136E224F0DA0F005AD424 /* VirusTotalViewController.m in Sources */,
 				CDA136D024F0D9C1005AD424 /* XPCDaemonClient.m in Sources */,
 				CD21D37D252FE94F001A19A8 /* signing.m in Sources */,

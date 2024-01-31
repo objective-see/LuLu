@@ -11,26 +11,32 @@
 @import Cocoa;
 @import OSLog;
 
+#import "RulesMenuController.h"
+
 @interface StatusBarItem : NSObject <NSPopoverDelegate>
 {
 
 }
 
 //status item
-@property(nonatomic, strong, readwrite)NSStatusItem *statusItem;
+@property(nonatomic, strong, readwrite)NSStatusItem* statusItem;
+
+//rules (sub)menu handler
+@property(nonatomic, retain)RulesMenuController* rulesMenuController;
 
 //popover
-@property(retain, nonatomic)NSPopover *popover;
+@property(retain, nonatomic)NSPopover* popover;
 
 //disabled flag
 @property BOOL isDisabled;
 
-/* METHODS */
 
-//init
--(id)init:(NSMenu*)menu preferences:(NSDictionary*)preferences;
+/* METHODS */
 
 //remove status item
 -(void)removeStatusItem;
+
+//init
+-(id)init:(NSMenu*)menu preferences:(NSDictionary*)preferences;
 
 @end

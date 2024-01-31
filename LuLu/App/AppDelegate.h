@@ -80,5 +80,11 @@
 //toggle (status) bar icon
 -(void)toggleIcon:(NSDictionary*)preferences;
 
+//quit
+-(IBAction)quit:(id)sender;
+
+//uninstall
+-(IBAction)uninstall:(id)sender;
+
 @end
 

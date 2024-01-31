@@ -491,15 +491,18 @@ bail:
     formatter.numberStyle = NSNumberFormatterDecimalStyle;
     
     //dbg msg
-    os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
+    //os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
     
     //super
     if(self = [super init])
     {
-        //init
+        //init + sanity checks
         self.key = info[NSStringFromSelector(@selector(key))];
         if(YES != [self.key isKindOfClass:[NSString class]])
         {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'key' should be a string");
+            
             self = nil;
             goto bail;
         }
@@ -507,31 +510,118 @@ bail:
         self.uuid = info[NSStringFromSelector(@selector(uuid))];
         if(YES != [self.uuid isKindOfClass:[NSString class]])
         {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'uuid' should be a string");
+            
             self = nil;
             goto bail;
         }
         
+        
         self.pid = info[NSStringFromSelector(@selector(pid))];
-        if(YES != [self.pid isKindOfClass:[NSNumber class]])
+        if( (nil != self.pid) &&
+            (YES != [self.pid isKindOfClass:[NSNumber class]]) )
         {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'pid' should be a number");
+            
             self = nil;
             goto bail;
         }
         
         self.path = info[NSStringFromSelector(@selector(path))];
+        if(YES != [self.path isKindOfClass:[NSString class]])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'path' should be a string");
+            
+            self = nil;
+            goto bail;
+        }
+        
         self.name = info[NSStringFromSelector(@selector(name))];
+        if(YES != [self.name isKindOfClass:[NSString class]])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'name' should be a string");
+            
+            self = nil;
+            goto bail;
+        }
         
         self.csInfo = info[NSStringFromSelector(@selector(csInfo))];
-        
+        if( (nil != self.csInfo) &&
+            (YES != [self.csInfo isKindOfClass:[NSDictionary class]]) )
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'csInfo' should be a dictionary");
+            
+            self = nil;
+            goto bail;
+        }
+
         self.endpointAddr = info[NSStringFromSelector(@selector(endpointAddr))];
+        if(YES != [self.endpointAddr isKindOfClass:[NSString class]])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'endpointAddr' should be a string");
+            
+            self = nil;
+            goto bail;
+        }
+        
         self.endpointHost = info[NSStringFromSelector(@selector(endpointHost))];
+        if( (nil != self.endpointHost) &&
+            (YES != [self.endpointHost isKindOfClass:[NSString class]]) )
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'endpointHost' should be a string");
+            
+            self = nil;
+            goto bail;
+        }
+        
         self.endpointPort = info[NSStringFromSelector(@selector(endpointPort))];
+        if(YES != [self.endpointPort isKindOfClass:[NSString class]])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'endpointPort' should be a string");
+            
+            self = nil;
+            goto bail;
+        }
         
         self.isEndpointAddrRegex = [info[NSStringFromSelector(@selector(isEndpointAddrRegex))] boolValue];
         
         self.type = [formatter numberFromString:info[NSStringFromSelector(@selector(type))]];
+        if(YES != [self.type isKindOfClass:[NSNumber class]])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'type' should be a number");
+            
+            self = nil;
+            goto bail;
+        }
+        
         self.scope = [formatter numberFromString:info[NSStringFromSelector(@selector(scope))]];
+        if(YES != [self.scope isKindOfClass:[NSNumber class]])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'scope' should be a number");
+            
+            self = nil;
+            goto bail;
+        }
+        
         self.action = [formatter numberFromString:info[NSStringFromSelector(@selector(action))]];
+        if(YES != [self.action isKindOfClass:[NSNumber class]])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'action' should be a number");
+            
+            self = nil;
+            goto bail;
+        }
     }
     
 bail:

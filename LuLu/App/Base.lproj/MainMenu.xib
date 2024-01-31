@@ -39,45 +39,6 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Rules" id="rZ2-dU-Sks">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Rules" systemMenu="apple" id="F6a-9V-HHo">
-                        <items>
-                            <menuItem title="View..." tag="1" id="KcY-Hb-SMi" userLabel="View">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="q3G-v0-dR7"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="t8R-1v-1JD"/>
-                            <menuItem title="Add..." tag="2" id="PwB-oA-CbO" userLabel="Add">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="7St-97-Pdy"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Import..." tag="3" id="QBi-XO-YAQ" userLabel="Import">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="GET-M6-XS5"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Export..." tag="4" id="RRJ-ZN-K2Q" userLabel="Export">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="9sL-Mh-74f"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="Nmz-U7-2LK"/>
-                            <menuItem title="Cleanup" tag="5" id="Txf-8U-czQ">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="rulesMenuHandler:" target="Voe-Tx-rLC" id="3uz-F1-eEm"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
             </items>
             <point key="canvasLocation" x="-59" y="-473"/>
         </menu>
@@ -91,27 +52,43 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="bOQ-2w-DOF"/>
-                <menuItem title="Rules..." tag="102" id="kec-r9-2yd">
+                <menuItem title="Rules" id="UuL-hi-gEf">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Rules" id="vb5-99-ejR">
+                        <items>
+                            <menuItem title="Show..." tag="102" id="0Y1-Pq-6Fc">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="MiV-95-jrU"/>
+                            <menuItem title="Add..." tag="103" id="gXq-yc-QnA">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Export..." tag="104" id="aZa-10-Ir1">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Import..." tag="105" id="39l-3u-dUR">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="wFv-yB-0aF"/>
+                            <menuItem title="Cleanup" tag="106" id="Lse-DT-C0z">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="0od-m3-GN5"/>
+                <menuItem title="Settings..." tag="107" id="4Uv-rm-VzQ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Settings..." tag="103" id="4Uv-rm-VzQ">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Network Monitor..." tag="104" id="VuY-Sy-392" userLabel="Network Monitor...">
+                <menuItem title="Network Monitor..." tag="108" id="VuY-Sy-392" userLabel="Network Monitor...">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="i6W-GD-eRH"/>
-                <menuItem title="Quit LuLu" tag="104" id="QrZ-U2-1Ib">
+                <menuItem title="Quit LuLu" tag="109" id="QrZ-U2-1Ib">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="quit:" target="Voe-Tx-rLC" id="c4F-rG-00H"/>
-                    </connections>
                 </menuItem>
-                <menuItem title="Uninstall LuLu" id="lns-C6-Aa5">
+                <menuItem title="Uninstall LuLu" tag="110" id="lns-C6-Aa5">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="uninstall:" target="Voe-Tx-rLC" id="LPk-AK-PjB"/>
-                    </connections>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="55" y="10"/>

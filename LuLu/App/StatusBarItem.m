@@ -27,9 +27,15 @@ enum menuItems
 {
     status = 100,
     toggle,
-    rules,
+    rulesShow,
+    rulesAdd,
+    rulesExport,
+    rulesImport,
+    rulesCleanup,
     prefs,
     monitor,
+    quit,
+    uninstall,
     end
 };
 
@@ -37,6 +43,7 @@ enum menuItems
 
 @synthesize isDisabled;
 @synthesize statusItem;
+@synthesize rulesMenuController;
 
 //init method
 // set some intial flags, init daemon comms, etc.
@@ -49,6 +56,9 @@ enum menuItems
     self = [super init];
     if(self != nil)
     {
+        //init rules (sub)menu handler
+        rulesMenuController = [[RulesMenuController alloc] init];
+        
         //create item
         [self createStatusItem:menu];
         
@@ -96,17 +106,34 @@ enum menuItems
     //set menu
     self.statusItem.menu = menu;
     
-    //set action handler for all menu items
-    for(int i=toggle; i<end; i++)
+    //set handler for each menu item
+    [self setMenuHandler:menu];
+    
+    return;
+}
+
+//set handler for menu item(s)
+-(void)setMenuHandler:(NSMenu*)menu
+{
+    //iterate over all menu items
+    // add target, enable, and handler for each
+    for(NSMenuItem* menuItem in menu.itemArray)
     {
-        //set action
-        [self.statusItem.menu itemWithTag:i].action = @selector(handler:);
-        
-        //set state
-        [self.statusItem.menu itemWithTag:i].enabled = YES;
-        
         //set target
-        [self.statusItem.menu itemWithTag:i].target = self;
+        menuItem.target = self;
+        
+        //enable
+        menuItem.enabled = YES;
+        
+        //set action, to handler
+        menuItem.action = @selector(handler:);
+        
+        //handle sub-menu(s)
+        if(nil != menuItem.submenu)
+        {
+            // Recursively set actions for submenu items
+            [self setMenuHandler:menuItem.submenu];
+        }
     }
     
     return;
@@ -222,14 +249,65 @@ enum menuItems
             break;
         }
            
-        //rules
-        case rules:
-            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) showRules:nil];
+        //rules: show
+        case rulesShow:
+            [self.rulesMenuController showRules];
             break;
             
+        //rules: add
+        case rulesAdd:
+            [self.rulesMenuController addRule];
+            break;
+            
+        //rules: export
+        case rulesExport:
+            
+            //export
+            if(YES !=[self.rulesMenuController exportRules])
+            {
+                //show alert
+                showAlert(@"ERROR: Failed to export rules", @"See log for (more) details", @[@"OK"]);
+                
+                //bail
+                goto bail;
+            }
+            break;
+        
+        //rules: import
+        case rulesImport:
+            
+            //import
+            if(YES != [self.rulesMenuController importRules])
+            {
+                //show alert
+                showAlert(@"ERROR: Failed to import rules", @"See log for (more) details", @[@"OK"]);
+                
+                //bail
+                goto bail;
+            }
+            
+            //show rules
+            [self.rulesMenuController showRules];
+            
+            break;
+            
+        //rules: cleanup
+        case rulesCleanup:
+            
+            //cleanup
+            if(YES != [self.rulesMenuController cleanupRules])
+            {
+                //show alert
+                showAlert(@"ERROR: Failed to cleanup rules", @"See log for (more) details", @[@"OK"]);
+                
+                //bail
+                goto bail;
+            }
+            break;
+                
         //prefs
         case prefs:
-            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) showPreferences:nil];
+            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) showPreferences:sender];
             break;
             
         //monitor
@@ -259,6 +337,16 @@ enum menuItems
             break;
         }
             
+        //quit
+        case quit:
+            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) quit:sender];
+            break;
+            
+        //uninstall
+        case uninstall:
+            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) uninstall:sender];
+            break;
+        
         default:
             
             break;
