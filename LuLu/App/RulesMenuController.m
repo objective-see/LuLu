@@ -36,7 +36,7 @@ extern XPCDaemonClient* xpcDaemonClient;
 // show rules, then call into app delegate to open add rule window
 -(void)addRule
 {
-    //show rules
+    //first show rules
     [self showRules];
     
     //add rules
@@ -347,11 +347,11 @@ extern XPCDaemonClient* xpcDaemonClient;
     //happy
     imported = YES;
     
-    //show alert
-    showAlert([NSString stringWithFormat:@"Imported %ld rules", count], nil, @[@"OK"]);
-    
     //tell (any) windows rules changed
     [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
+    
+    //show alert
+    showAlert([NSString stringWithFormat:@"Imported %ld rules", count], nil, @[@"OK"]);
     
 bail:
     
@@ -369,6 +369,9 @@ bail:
     
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
+    
+    //first show rules
+    [self showRules];
     
     //show alert
     // if user cancels, just bail
