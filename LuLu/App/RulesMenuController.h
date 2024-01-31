@@ -17,7 +17,7 @@
 
 -(void)addRule;
 -(void)showRules;
--(BOOL)exportRules;
+-(void)exportRules;
 -(BOOL)importRules;
 -(BOOL)cleanupRules;
 

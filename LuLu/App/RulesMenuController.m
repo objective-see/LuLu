@@ -36,9 +36,6 @@ extern XPCDaemonClient* xpcDaemonClient;
 // show rules, then call into app delegate to open add rule window
 -(void)addRule
 {
-    //first show rules
-    [self showRules];
-    
     //add rules
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]).rulesWindowController addRule:nil];
     
@@ -47,11 +44,8 @@ extern XPCDaemonClient* xpcDaemonClient;
 
 //export rules
 // show panel then write out rules
--(BOOL)exportRules
+-(void)exportRules
 {
-    //flag
-    __block BOOL exported = NO;
-    
     //rules
     NSDictionary* rules = nil;
     
@@ -171,16 +165,14 @@ extern XPCDaemonClient* xpcDaemonClient;
             {
                 //err msg
                 os_log_error(logHandle, "ERROR: failed to save rules: %{public}@", error);
-            }
-            //happy
-            else
-            {
-                exported = YES;
+                
+                //show alert
+                showAlert(@"ERROR: Failed to export rules", @"See log for (more) details", @[@"OK"]);     
             }
         }
     }];
     
-    return exported;
+    return;
 }
 
 //import rules
@@ -241,6 +233,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     data = [NSData dataWithContentsOfFile:panel.URL.path options:NSDataReadingMappedIfSafe | NSDataReadingUncached error:&error];
     if(nil == data)
     {
+        //err msg
         os_log_error(logHandle, "ERROR: failed to load (imported) rules from %{public}@ (error: %{public}@)", panel.URL.path, error);
         goto bail;
     }
@@ -331,7 +324,6 @@ extern XPCDaemonClient* xpcDaemonClient;
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to archive rules: %{public}@", error);
-            
     }
     
     //dbg msg

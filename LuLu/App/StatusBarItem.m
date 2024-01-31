@@ -251,26 +251,32 @@ enum menuItems
            
         //rules: show
         case rulesShow:
+            
+            //show
             [self.rulesMenuController showRules];
+            
             break;
             
         //rules: add
         case rulesAdd:
+            
+            //show first
+            [self.rulesMenuController showRules];
+            
+            //add
             [self.rulesMenuController addRule];
+            
             break;
             
         //rules: export
         case rulesExport:
             
+            //show first
+            [self.rulesMenuController showRules];
+            
             //export
-            if(YES !=[self.rulesMenuController exportRules])
-            {
-                //show alert
-                showAlert(@"ERROR: Failed to export rules", @"See log for (more) details", @[@"OK"]);
-                
-                //bail
-                goto bail;
-            }
+            [self.rulesMenuController exportRules];
+            
             break;
         
         //rules: import
@@ -286,7 +292,7 @@ enum menuItems
                 goto bail;
             }
             
-            //show rules
+            //then show rules
             [self.rulesMenuController showRules];
             
             break;
