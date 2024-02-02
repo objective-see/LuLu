@@ -15,6 +15,6 @@ create-dmg \
 
 printf "\nCode signing dmg...\n"
 
-codesign --force --sign "Developer ID Application: Objective-See, LLC (VBG97UB4TA)" LuLu_2.6.0.dmg
+codesign --force --sign "Developer ID Application: Objective-See, LLC (VBG97UB4TA)" LuLu_2.6.1.dmg
 
 printf "Done!\n"
