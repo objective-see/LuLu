@@ -1460,6 +1460,7 @@ void fadeOut(NSWindow* window, float duration)
 }
 
 //matches CS info?
+// with some caveats (e.g. Apple App that was moved to App Store)
 BOOL matchesCSInfo(NSDictionary* csInfo_1, NSDictionary* csInfo_2)
 {
     //match
@@ -1524,11 +1525,22 @@ BOOL matchesCSInfo(NSDictionary* csInfo_1, NSDictionary* csInfo_2)
     // signer mismatch?
     if(signer_1 != signer_2)
     {
-        //dbg msg
-        os_log_error(logHandle, "ERROR: code signing mismatch (signer): %{public}@ / %{public}@", csInfo_1, csInfo_2);
-        
-        //bail
-        goto bail;
+        //but ingore apple apps that have moved
+        if( (signer_1 == Apple && signer_2 == AppStore) ||
+            (signer_1 == AppStore && signer_2 == Apple) )
+        {
+            //dbg msg
+            os_log_error(logHandle, "ignoring case where Apple App moved to/from Mac App Store: %{public}@ / %{public}@", csInfo_1, csInfo_2);
+        }
+        //ok something really changed w/ signers
+        else
+        {
+            //dbg msg
+            os_log_error(logHandle, "ERROR: code signing mismatch (signer): %{public}@ / %{public}@", csInfo_1, csInfo_2);
+            
+            //bail
+            goto bail;
+        }
     }
     
     //extract signing ID #1

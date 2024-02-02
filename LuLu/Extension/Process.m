@@ -164,7 +164,7 @@ bail:
 }
 
 //generate key
-// cs info or path
+// note: this matches rules' generate key algo
 -(NSString*)generateKey
 {
     //id

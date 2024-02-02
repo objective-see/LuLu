@@ -58,7 +58,7 @@
 
 //update an item's cs info
 // and also the cs info of all its rule
--(void)updateCSInfo:(Rule*)rule;
+-(void)updateCSInfo:(Process*)process;
 
 //cleanup rules
 -(NSInteger)cleanup;

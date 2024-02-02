@@ -338,8 +338,7 @@ bail:
     
     //existing rule for process?
     matchingRule = [rules find:process flow:(NEFilterSocketFlow*)flow csChange:&csChange];
-    if( (YES != csChange) &&
-        (nil != matchingRule) )
+    if(nil != matchingRule)
     {
         //dbg msg
         os_log_debug(logHandle, "found matching rule for %d/%{public}@: %{public}@", process.pid, process.binary.name, matchingRule);
@@ -364,17 +363,16 @@ bail:
     /* NO MATCHING RULE FOUND */
     
     //cs change?
-    // update rule with new code signing info
-    // note: user will be alerted, if/when alert is delivered
+    // update item's rules with new code signing info
+    // note: user will be informed about this, if/when alert is delivered
     if(YES == csChange)
     {
         //dbg msg
-        os_log_debug(logHandle, "found matching rule for %d/%{public}@: %{public}@, but code signing info has changed", process.pid, process.binary.name, matchingRule);
+        os_log_debug(logHandle, "found rule set for %d/%{public}@: %{public}@, but code signing info has changed", process.pid, process.binary.name, matchingRule);
         
         //update cs info
-        [rules updateCSInfo:matchingRule];
+        [rules updateCSInfo:process];
     }
-    
     //no matching rule found?
     else
     {
@@ -448,7 +446,14 @@ bail:
                 info = [@{KEY_PATH:process.path, KEY_ACTION:@RULE_STATE_ALLOW, KEY_TYPE:@RULE_TYPE_APPLE} mutableCopy];
                 
                 //add process cs info
-                if(nil != process.csInfo) info[KEY_CS_INFO] = process.csInfo;
+                if(nil != process.csInfo)
+                {
+                    //add
+                    info[KEY_CS_INFO] = process.csInfo;
+                }
+                
+                //add key
+                info[KEY_KEY] = process.key;
                 
                 //add/save
                 if(YES != [rules add:[[Rule alloc] init:info] save:YES])

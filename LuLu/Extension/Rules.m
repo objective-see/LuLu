@@ -455,22 +455,22 @@ bail:
 
 //update an item's cs info
 // and also the cs info of all its rule
--(void)updateCSInfo:(Rule*)rule
+-(void)updateCSInfo:(Process*)process
 {
     //dbg msg
-    os_log_debug(logHandle, "updating code signing information for %{public}@", rule.key);
+    os_log_debug(logHandle, "updating code signing information for %{public}@ and its rules", process);
     
     //sync
     @synchronized(self.rules)
     {
         //update item's cs info
-        self.rules[rule.key][KEY_CS_INFO] = rule.csInfo;
+        self.rules[process.key][KEY_CS_INFO] = process.csInfo;
         
         //update also the cs info of all its rule
-        for(Rule* currentRule in self.rules[rule.key][KEY_RULES])
+        for(Rule* rule in self.rules[process.key][KEY_RULES])
         {
             //update
-            currentRule.csInfo = rule.csInfo;
+            rule.csInfo = process.csInfo;
         }
     }
     

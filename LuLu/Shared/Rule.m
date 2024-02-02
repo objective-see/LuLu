@@ -116,14 +116,24 @@ extern os_log_t logHandle;
         self.action = info[KEY_ACTION];
         
         //now, generate key
-        self.key = [self generateKey];
+        if(nil != info[KEY_KEY])
+        {
+            //set
+            self.key = info[KEY_KEY];
+        }
+        //generate key
+        else
+        {
+            //generate
+            self.key = [self generateKey];
+        }
     }
         
     return self;
 }
 
-//generate id
-// cs info or path
+//generate key
+// note: this matches process' generate key algo
 -(NSString*)generateKey
 {
     //id
