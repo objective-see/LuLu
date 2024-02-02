@@ -83,24 +83,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CD9E1470251348F500DA05C3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CD9E14742513494400DA05C3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CDB2CC4224D61B3900D0EECE /* Embed System Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -440,7 +422,6 @@
 				CDB2CC1424D61A4E00D0EECE /* Sources */,
 				CDB2CC1524D61A4E00D0EECE /* Frameworks */,
 				CDB2CC1624D61A4E00D0EECE /* Resources */,
-				CD9E14742513494400DA05C3 /* CopyFiles */,
 				CDB2CC4224D61B3900D0EECE /* Embed System Extensions */,
 				CDC37930250D66E900314064 /* ShellScript */,
 			);
@@ -461,7 +442,6 @@
 				CDB2CC2C24D61B3900D0EECE /* Sources */,
 				CDB2CC2D24D61B3900D0EECE /* Frameworks */,
 				CDB2CC2E24D61B3900D0EECE /* Resources */,
-				CD9E1470251348F500DA05C3 /* CopyFiles */,
 			);
 			buildRules = (
 			);

@@ -83,7 +83,6 @@
 		CDA6E62C203B674C00C78F91 /* configure.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = configure.sh; sourceTree = "<group>"; };
 		CDA6E632203B6B7800C78F91 /* objectiveSeeText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = objectiveSeeText.png; path = ../../shared/images/objectiveSeeText.png; sourceTree = "<group>"; };
 		CDA6E634203B6B7900C78F91 /* objectiveSeeLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = objectiveSeeLogo.png; path = ../../shared/images/objectiveSeeLogo.png; sourceTree = "<group>"; };
-		CDAFF43F203E971F00F27635 /* com.objective-see.lulu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "com.objective-see.lulu.plist"; path = "Configure/ConfigFiles/com.objective-see.lulu.plist"; sourceTree = "<group>"; };
 		CDC37928250D49A300314064 /* consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = consts.h; sourceTree = "<group>"; };
 		CDC37929250D49A300314064 /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utilities.h; sourceTree = "<group>"; };
 		CDC3792A250D49A300314064 /* utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utilities.m; sourceTree = "<group>"; };
@@ -115,7 +114,6 @@
 		29B97314FDCFA39411CA2CEA /* SMJobBless */ = {
 			isa = PBXGroup;
 			children = (
-				CD17D56120116C2000F798D7 /* SupportingFiles */,
 				CD17D55C201148F900F798D7 /* Script */,
 				CD73DA9C20049158001FFC84 /* Shared */,
 				4BE4904710445D49006BE471 /* Uninstaller */,
@@ -178,14 +176,6 @@
 			);
 			name = Script;
 			path = Uninstaller/Script;
-			sourceTree = "<group>";
-		};
-		CD17D56120116C2000F798D7 /* SupportingFiles */ = {
-			isa = PBXGroup;
-			children = (
-				CDAFF43F203E971F00F27635 /* com.objective-see.lulu.plist */,
-			);
-			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		CD73DA9C20049158001FFC84 /* Shared */ = {
@@ -347,13 +337,14 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2.6.0;
+				CURRENT_PROJECT_VERSION = 2.6.1;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = NO;
 				INFOPLIST_FILE = Helper/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.6.0;
+				MARKETING_VERSION = 2.6.1;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = (
 					"-sectcreate",
@@ -371,7 +362,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
@@ -382,13 +372,13 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2.6.0;
+				CURRENT_PROJECT_VERSION = 2.6.1;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = NO;
 				INFOPLIST_FILE = Helper/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.6.0;
+				MARKETING_VERSION = 2.6.1;
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				OTHER_LDFLAGS = (
 					"-sectcreate",
@@ -406,7 +396,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
@@ -420,7 +409,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.6.0;
+				CURRENT_PROJECT_VERSION = 2.6.1;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -428,7 +417,8 @@
 				INFOPLIST_FILE = Uninstaller/Info.plist;
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.6.0;
+				MARKETING_VERSION = 2.6.1;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.config";
 				PRODUCT_NAME = "LuLu Uninstaller";
@@ -449,7 +439,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.6.0;
+				CURRENT_PROJECT_VERSION = 2.6.1;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -457,7 +447,8 @@
 				INFOPLIST_FILE = Uninstaller/Info.plist;
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 2.6.0;
+				MARKETING_VERSION = 2.6.1;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "-o hard,kill,library";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.config";
 				PRODUCT_NAME = "LuLu Uninstaller";
