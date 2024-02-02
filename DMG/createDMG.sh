@@ -1,7 +1,7 @@
 printf "\nCreating LuLu Disk Image...\n\n"
 
 create-dmg \
-  --volname "LuLu v2.6.0" \
+  --volname "LuLu v2.6.1" \
   --volicon "LuLu.icns" \
   --background "background.png" \
   --window-pos 200 120 \
@@ -10,7 +10,7 @@ create-dmg \
   --icon "LuLu.app" 200 190 \
   --hide-extension "LuLu.app" \
   --app-drop-link 600 190 \
-  "LuLu_2.6.0.dmg" \
+  "LuLu_2.6.1.dmg" \
   "Release/"
 
 printf "\nCode signing dmg...\n"
