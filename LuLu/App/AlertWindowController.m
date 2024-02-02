@@ -327,31 +327,44 @@ bail:
 // depending on state, show/populate the popup, or close it
 -(IBAction)signingInfoButtonHandler:(id)sender
 {
-    //view controller
-    SigningInfoViewController* popover = nil;
-    
-    //open popover
-    if(NSControlStateValueOn == self.signingInfoButton.state)
+    //not open?
+    // show popover
+    if(YES != self.signingInfoPopover.isShown)
     {
-        //grab delegate
-        popover = (SigningInfoViewController*)self.signingInfoPopover.delegate;
-        
-        //set icon image
-        popover.icon.image = self.signingInfoButton.image;
-        
-        //set alert info
-        popover.alert = self.alert;
-        
-        //show popover
-        [self.signingInfoPopover showRelativeToRect:[self.signingInfoButton bounds] ofView:self.signingInfoButton preferredEdge:NSMaxYEdge];
+        //open
+        [self openSigningInfoPopover];
     }
     
-    //close popover
+    //otherwise close it
     else
     {
         //close
         [self.signingInfoPopover close];
     }
+    
+    return;
+}
+
+//open signing info popover
+-(void)openSigningInfoPopover
+{
+    //view controller
+    SigningInfoViewController* popoverDelegate = nil;
+    
+    //set button state
+    self.signingInfoButton.state = NSControlStateValueOn;
+    
+    //grab delegate
+    popoverDelegate = (SigningInfoViewController*)self.signingInfoPopover.delegate;
+    
+    //set icon image
+    popoverDelegate.icon.image = self.signingInfoButton.image;
+    
+    //set alert info
+    popoverDelegate.alert = self.alert;
+    
+    //show popover
+    [self.signingInfoPopover showRelativeToRect:[self.signingInfoButton bounds] ofView:self.signingInfoButton preferredEdge:NSMaxYEdge];
     
     return;
 }

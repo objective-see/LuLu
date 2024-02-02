@@ -36,7 +36,10 @@
 //details
 @property (weak) IBOutlet NSTextField* details;
 
+//signing id
+@property (weak) IBOutlet NSTextField* signingID;
+
 //no signing auths
-@property (weak) IBOutlet NSTextField *noSigningAuths;
+@property (weak) IBOutlet NSTextField* noSigningAuths;
 
 @end

@@ -105,13 +105,8 @@
 
 /* METHODS */
 
-//automatically invoked when user clicks process ancestry button
-// ->depending on state, show/populate the popup, or close it
--(IBAction)vtButtonHandler:(id)sender;
-
-//invoked when user clicks process ancestry button
-// ->depending on state, show/populate the popup, or close it
--(IBAction)ancestryButtonHandler:(id)sender;
+//open signing info popover
+-(void)openSigningInfoPopover;
 
 //button handler
 // ->block/allow, and then close

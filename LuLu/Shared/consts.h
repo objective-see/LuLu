@@ -287,6 +287,8 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 
 #define KEY_ENDPOINT_ADDR_IS_REGEX @"endpointAddrIsRegex"
 
+#define KEY_CS_CHANGE @"csChange"
+
 #define KEY_UUID @"uuid"
 #define KEY_PROCESS_ID @"pid"
 #define KEY_PROCESS_ARGS @"args"

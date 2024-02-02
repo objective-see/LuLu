@@ -225,6 +225,9 @@ bail:
     //process obj
     Process* process = nil;
     
+    //flag
+    BOOL csChange = NO;
+    
     //matching rule obj
     Rule* matchingRule = nil;
     
@@ -334,8 +337,9 @@ bail:
     // check for existing rule
     
     //existing rule for process?
-    matchingRule = [rules find:process flow:(NEFilterSocketFlow*)flow];
-    if(nil != matchingRule)
+    matchingRule = [rules find:process flow:(NEFilterSocketFlow*)flow csChange:&csChange];
+    if( (YES != csChange) &&
+        (nil != matchingRule) )
     {
         //dbg msg
         os_log_debug(logHandle, "found matching rule for %d/%{public}@: %{public}@", process.pid, process.binary.name, matchingRule);
@@ -356,12 +360,28 @@ bail:
         //all set
         goto bail;
     }
-    
+
     /* NO MATCHING RULE FOUND */
     
-    //dbg msg
-    os_log_debug(logHandle, "no (saved) rule found for %d/%{public}@", process.pid, process.binary.name);
+    //cs change?
+    // update rule with new code signing info
+    // note: user will be alerted, if/when alert is delivered
+    if(YES == csChange)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "found matching rule for %d/%{public}@: %{public}@, but code signing info has changed", process.pid, process.binary.name, matchingRule);
+        
+        //update cs info
+        [rules updateCSInfo:matchingRule];
+    }
     
+    //no matching rule found?
+    else
+    {
+        //dbg msg
+        os_log_debug(logHandle, "no (saved) rule found for %d/%{public}@", process.pid, process.binary.name);
+    }
+
     //no client?
 
     //CHECK:
@@ -455,7 +475,7 @@ bail:
                 verdict = [NEFilterNewFlowVerdict pauseVerdict];
                 
                 //create/deliver alert
-                [self alert:(NEFilterSocketFlow*)flow process:process];
+                [self alert:(NEFilterSocketFlow*)flow process:process csChange:NO];
             }
             
             //all set
@@ -470,9 +490,10 @@ bail:
         os_log_debug(logHandle, "'Allow Apple' preference not set, so skipped 'Is Apple' check");
     }
     
-    //if it's a prev installed 3rd-party process and that preference is set; allow!
+    //if it's a prev installed 3rd-party process (w/ no CS change) and that preference is set; allow!
     if( (YES == [preferences.preferences[PREF_ALLOW_INSTALLED] boolValue]) &&
-        (Apple != [process.csInfo[KEY_CS_SIGNER] intValue]))
+        (Apple != [process.csInfo[KEY_CS_SIGNER] intValue]) &&
+        (YES != csChange) )
     {
         //app date
         NSDate* date = nil;
@@ -602,8 +623,8 @@ bail:
         
     //create/deliver alert
     // note: handles response + next/any related flow
-    [self alert:(NEFilterSocketFlow*)flow process:process];
-        
+    [self alert:(NEFilterSocketFlow*)flow process:process csChange:csChange];
+    
 bail:
     
     
@@ -614,13 +635,16 @@ bail:
 
 //1. create and deliver alert
 //2. handle response (and process other shown alerts, etc.)
--(void)alert:(NEFilterSocketFlow*)flow process:(Process*)process
+-(void)alert:(NEFilterSocketFlow*)flow process:(Process*)process csChange:(BOOL)csChange
 {
     //alert
     NSMutableDictionary* alert = nil;
     
     //create alert
     alert = [alerts create:(NEFilterSocketFlow*)flow process:process];
+    
+    //add cs change
+    alert[KEY_CS_CHANGE] = [NSNumber numberWithBool:csChange];
     
     //dbg msg
     os_log_debug(logHandle, "created alert...");

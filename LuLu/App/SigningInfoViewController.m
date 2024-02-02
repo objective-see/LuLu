@@ -46,8 +46,11 @@
         //append to summary
         [summary appendFormat:@" is not validly signed"];
         
-        //set details
+        //details: n/a
         self.details.stringValue = @"not applicable";
+        
+        //signing id: n/a
+        self.signingID.stringValue = @"not applicable";
         
         //bail
         goto bail;
@@ -123,6 +126,13 @@
                 }
             }
             
+            //set signing id
+            if(nil != signingInfo[KEY_CS_ID])
+            {
+                //set
+                self.signingID.stringValue = signingInfo[KEY_CS_ID];
+            }
+            
             break;
             
         //unsigned
@@ -131,8 +141,11 @@
             //append to summary
             [summary appendFormat:@" is not signed"];
             
-            //set details
+            //details: n/a
             self.details.stringValue = @"not applicable";
+            
+            //signing id: n/a
+            self.signingID.stringValue = @"not applicable";
             
             break;
             
@@ -145,6 +158,13 @@
             
             //set details
             self.details.stringValue = [NSMutableString stringWithFormat:@"signing error: %#lx", (long)[signingInfo[KEY_CS_STATUS] integerValue]];
+            
+            //set signing id
+            if(nil != signingInfo[KEY_CS_ID])
+            {
+                //set
+                self.signingID.stringValue = signingInfo[KEY_CS_ID];
+            }
             
             break;
     }

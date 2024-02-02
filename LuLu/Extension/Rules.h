@@ -48,13 +48,17 @@
 -(BOOL)add:(Rule*)rule save:(BOOL)save;
 
 //find (matching) rule
--(Rule*)find:(Process*)process flow:(NEFilterSocketFlow*)flow;
+-(Rule*)find:(Process*)process flow:(NEFilterSocketFlow*)flow csChange:(BOOL*)csChange;
 
 //delete rule
 -(BOOL)delete:(NSString*)key rule:(NSString*)uuid;
 
 //import rules
 -(BOOL)import:(NSData*)rules;
+
+//update an item's cs info
+// and also the cs info of all its rule
+-(void)updateCSInfo:(Rule*)rule;
 
 //cleanup rules
 -(NSInteger)cleanup;

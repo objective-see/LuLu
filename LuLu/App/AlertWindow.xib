@@ -74,7 +74,7 @@
                             <constraint firstAttribute="height" constant="17" id="RIN-W8-UZI"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="virus total" id="h8U-b3-ujA">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" white="0.52269995629999999" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -100,7 +100,7 @@
                             <constraint firstAttribute="width" constant="53" id="gHf-5O-eoT"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ancestry" id="jJh-pj-fqv">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" white="0.52269995629999999" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -118,7 +118,7 @@
                             <constraint firstAttribute="width" constant="93" id="TdO-UU-WIl"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="process path:" id="Gqr-cR-TAF">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -130,7 +130,7 @@
                             <constraint firstAttribute="width" constant="93" id="725-wI-vXi"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="process args:" id="T20-eE-vRR">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -141,7 +141,7 @@
                             <constraint firstAttribute="height" constant="26" id="z9z-0t-k1v"/>
                         </constraints>
                         <textFieldCell key="cell" lineBreakMode="truncatingMiddle" truncatesLastVisibleLine="YES" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" id="BaZ-Jz-Yll">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -165,7 +165,7 @@
                             <constraint firstAttribute="width" constant="82" id="EQY-yh-HwX"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="process id: " id="HZu-Op-XHi">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -173,7 +173,7 @@
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="499" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nf4-ZN-jcK">
                         <rect key="frame" x="140" y="215" width="586" height="13"/>
                         <textFieldCell key="cell" lineBreakMode="truncatingMiddle" truncatesLastVisibleLine="YES" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" id="ezD-RZ-q5S">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -185,7 +185,7 @@
                             <constraint firstAttribute="height" constant="13" id="o6B-Y3-CkO"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="port &amp; protocol:" id="31V-e4-dgv">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -197,7 +197,7 @@
                             <constraint firstAttribute="width" constant="93" id="jJK-SD-E7E"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ip address:" id="vmZ-KS-uuK">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -220,7 +220,7 @@
                             <constraint firstAttribute="height" constant="13" id="Xfu-tH-7WY"/>
                         </constraints>
                         <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" selectable="YES" allowsUndo="NO" id="XV5-p0-Rs5">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -228,7 +228,7 @@
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tWx-YQ-8sP">
                         <rect key="frame" x="140" y="90" width="586" height="13"/>
                         <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" selectable="YES" allowsUndo="NO" placeholderString="resolving..." id="KMj-LZ-EdU">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -310,7 +310,7 @@
                             <constraint firstAttribute="height" constant="13" id="QAh-K9-H2J"/>
                         </constraints>
                         <textFieldCell key="cell" lineBreakMode="truncatingMiddle" truncatesLastVisibleLine="YES" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" id="HEl-Es-GF3">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -332,9 +332,9 @@
                         </constraints>
                     </popUpButton>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aSA-bY-aUV">
-                        <rect key="frame" x="306" y="58" width="72" height="16"/>
+                        <rect key="frame" x="306" y="58" width="84" height="14"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="rule scope:" id="G2Q-QQ-EX7">
-                            <font key="font" metaFont="system"/>
+                            <font key="font" size="12" name="Menlo-Regular"/>
                             <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -346,7 +346,7 @@
                             <constraint firstAttribute="width" constant="163" id="hG3-8J-VRs"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="time stamp" id="ybM-PR-IbA">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -358,7 +358,7 @@
                             <constraint firstAttribute="height" constant="13" id="oH2-f4-nmV"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="reverse dns name:" id="Fxr-aW-bT2">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -369,7 +369,7 @@
                             <constraint firstAttribute="height" constant="13" id="I86-1o-p4T"/>
                         </constraints>
                         <textFieldCell key="cell" lineBreakMode="truncatingMiddle" truncatesLastVisibleLine="YES" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" id="zYo-Ag-S29">
-                            <font key="font" metaFont="fixedUser" size="11"/>
+                            <font key="font" size="11" name="Menlo-Regular"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -411,7 +411,7 @@
                     <constraint firstAttribute="trailing" secondItem="tWx-YQ-8sP" secondAttribute="trailing" constant="21" id="WFn-nR-604"/>
                     <constraint firstAttribute="trailing" secondItem="TtQ-IX-cXS" secondAttribute="trailing" constant="21" id="WQh-LA-LFe"/>
                     <constraint firstItem="3gh-BJ-48m" firstAttribute="top" secondItem="B2m-tX-bhM" secondAttribute="bottom" constant="24" id="WXQ-DV-dE3"/>
-                    <constraint firstAttribute="trailing" secondItem="aSA-bY-aUV" secondAttribute="trailing" constant="369" id="Y1P-7O-WxW"/>
+                    <constraint firstAttribute="trailing" secondItem="aSA-bY-aUV" secondAttribute="trailing" constant="357" id="Y1P-7O-WxW"/>
                     <constraint firstItem="Nf4-ZN-jcK" firstAttribute="top" secondItem="fJv-Iu-3gy" secondAttribute="bottom" constant="28" id="YJ7-sK-mcY"/>
                     <constraint firstItem="fJv-Iu-3gy" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="ZOd-Lr-GPA"/>
                     <constraint firstItem="PJQ-Iq-93l" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="42" id="Ztu-NL-ixs"/>
@@ -454,16 +454,16 @@
             <point key="canvasLocation" x="273.5" y="228"/>
         </window>
         <view id="rai-3Q-8AG" userLabel="SigningInfoView">
-            <rect key="frame" x="0.0" y="0.0" width="547" height="190"/>
+            <rect key="frame" x="0.0" y="0.0" width="547" height="202"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JFu-zg-Xoc">
-                    <rect key="frame" x="20" y="122" width="48" height="48"/>
+                    <rect key="frame" x="20" y="134" width="48" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="q4p-9m-2Jl"/>
                 </imageView>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jNc-sZ-Rpj" userLabel="messageLabel">
-                    <rect key="frame" x="74" y="134" width="393" height="25"/>
+                    <rect key="frame" x="74" y="146" width="393" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="message" id="Ssw-3u-wEC">
                         <font key="font" size="15" name="Menlo-Bold"/>
@@ -472,16 +472,16 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xft-9d-bha">
-                    <rect key="frame" x="18" y="75" width="83" height="18"/>
+                    <rect key="frame" x="18" y="67" width="106" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Signed by:" id="D1C-aK-AFU">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Signing Auths:" id="D1C-aK-AFU">
                         <font key="font" size="12" name="Menlo-Bold"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bdt-6r-ZQN">
-                    <rect key="frame" x="18" y="95" width="62" height="18"/>
+                    <rect key="frame" x="18" y="107" width="62" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Details:" id="b63-At-csb">
                         <font key="font" size="12" name="Menlo-Bold"/>
@@ -489,8 +489,17 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XYv-li-aE6">
+                    <rect key="frame" x="18" y="87" width="84" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Signing ID:" id="2iW-bn-Rov">
+                        <font key="font" size="12" name="Menlo-Bold"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="md4-Vv-ZQL" userLabel="messageLabel">
-                    <rect key="frame" x="79" y="95" width="381" height="18"/>
+                    <rect key="frame" x="79" y="107" width="450" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="m7h-3S-cCv">
                         <font key="font" size="12" name="Menlo-Regular"/>
@@ -499,7 +508,7 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" tag="1" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dkp-Qw-TZb" userLabel="messageLabel">
-                    <rect key="frame" x="18" y="56" width="511" height="18"/>
+                    <rect key="frame" x="18" y="48" width="511" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title=" - signing auth 1" id="Ki9-ld-5Xu">
                         <font key="font" size="12" name="Menlo-Regular"/>
@@ -508,7 +517,7 @@
                     </textFieldCell>
                 </textField>
                 <textField hidden="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UdA-Tk-0fO" userLabel="messageLabel">
-                    <rect key="frame" x="98" y="75" width="431" height="18"/>
+                    <rect key="frame" x="128" y="67" width="401" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="not applicable" id="9Yb-sJ-Kcj">
                         <font key="font" size="12" name="Menlo-Regular"/>
@@ -517,7 +526,7 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" tag="2" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hWl-Gd-eYT" userLabel="messageLabel">
-                    <rect key="frame" x="18" y="38" width="511" height="18"/>
+                    <rect key="frame" x="18" y="30" width="511" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title=" - signing auth 2" id="1zg-95-QM7">
                         <font key="font" size="12" name="Menlo-Regular"/>
@@ -526,7 +535,7 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" tag="3" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jpF-Wn-qHJ" userLabel="messageLabel">
-                    <rect key="frame" x="18" y="20" width="511" height="18"/>
+                    <rect key="frame" x="18" y="12" width="511" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title=" - signing auth 3" id="FLb-1c-otA">
                         <font key="font" size="12" name="Menlo-Regular"/>
@@ -534,8 +543,17 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l6K-9G-Bcx" userLabel="messageLabel">
+                    <rect key="frame" x="103" y="87" width="426" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="signing id" id="HBz-tK-Y6f">
+                        <font key="font" size="12" name="Menlo-Regular"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="-32" y="599"/>
+            <point key="canvasLocation" x="-32.5" y="605"/>
         </view>
         <view id="ZMg-yW-Bgc" userLabel="VirusTotalView">
             <rect key="frame" x="0.0" y="0.0" width="345" height="102"/>
@@ -574,6 +592,7 @@
                 <outlet property="icon" destination="JFu-zg-Xoc" id="eVd-8Z-dDB"/>
                 <outlet property="message" destination="jNc-sZ-Rpj" id="oJk-zm-87b"/>
                 <outlet property="noSigningAuths" destination="UdA-Tk-0fO" id="rU5-L6-Dkf"/>
+                <outlet property="signingID" destination="l6K-9G-Bcx" id="CGK-A9-GCM"/>
                 <outlet property="view" destination="rai-3Q-8AG" id="amJ-ge-paR"/>
             </connections>
         </viewController>

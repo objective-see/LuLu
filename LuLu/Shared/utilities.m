@@ -1459,7 +1459,6 @@ void fadeOut(NSWindow* window, float duration)
     return;
 }
 
-
 //matches CS info?
 BOOL matchesCSInfo(NSDictionary* csInfo_1, NSDictionary* csInfo_2)
 {
@@ -1573,7 +1572,8 @@ BOOL matchesCSInfo(NSDictionary* csInfo_1, NSDictionary* csInfo_2)
     
     //check 0x4
     // signing auths mismatch?
-    if(YES != [signingAuths_1 isEqualToArray:signingAuths_2])
+    if( ((nil != signingAuths_1) && (nil != signingAuths_2)) &&
+        (YES != [signingAuths_1 isEqualToArray:signingAuths_2]) )
     {
         //dbg msg
         os_log_error(logHandle, "ERROR: code signing mismatch (signing auths): %{public}@ / %{public}@", csInfo_1, csInfo_2);

@@ -453,8 +453,32 @@ bail:
     return added;
 }
 
+//update an item's cs info
+// and also the cs info of all its rule
+-(void)updateCSInfo:(Rule*)rule
+{
+    //dbg msg
+    os_log_debug(logHandle, "updating code signing information for %{public}@", rule.key);
+    
+    //sync
+    @synchronized(self.rules)
+    {
+        //update item's cs info
+        self.rules[rule.key][KEY_CS_INFO] = rule.csInfo;
+        
+        //update also the cs info of all its rule
+        for(Rule* currentRule in self.rules[rule.key][KEY_RULES])
+        {
+            //update
+            currentRule.csInfo = rule.csInfo;
+        }
+    }
+    
+    return;
+}
+
 //find (matching) rule
--(Rule*)find:(Process*)process flow:(NEFilterSocketFlow*)flow
+-(Rule*)find:(Process*)process flow:(NEFilterSocketFlow*)flow csChange:(BOOL*)csChange
 {
     //rule's cs info
     NSDictionary* csInfo = nil;
@@ -508,6 +532,9 @@ bail:
             // ignore...
             if(YES != matchesCSInfo(process.csInfo, csInfo))
             {
+                //set
+                *csChange = YES;
+                
                 //err msg
                 os_log_error(logHandle, "ERROR: code signing mismatch: %{public}@ / %{public}@", process.csInfo, csInfo);
                 
