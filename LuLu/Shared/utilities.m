@@ -1547,7 +1547,8 @@ BOOL matchesCSInfo(NSDictionary* csInfo_1, NSDictionary* csInfo_2)
     
     //check 0x3
     // signing ID mismatch?
-    if(YES != [signingID_1 isEqualToString:signingID_2])
+    if( ((nil != signingID_1) || (nil != signingID_1)) &&
+        (YES != [signingID_1 isEqualToString:signingID_2]) )
     {
         //dbg msg
         os_log_error(logHandle, "ERROR: code signing mismatch (signing ID): %{public}@ / %{public}@", csInfo_1, csInfo_2);
@@ -1572,7 +1573,7 @@ BOOL matchesCSInfo(NSDictionary* csInfo_1, NSDictionary* csInfo_2)
     
     //check 0x4
     // signing auths mismatch?
-    if( ((nil != signingAuths_1) && (nil != signingAuths_2)) &&
+    if( ((nil != signingAuths_1) || (nil != signingAuths_2)) &&
         (YES != [signingAuths_1 isEqualToArray:signingAuths_2]) )
     {
         //dbg msg
