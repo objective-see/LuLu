@@ -942,6 +942,11 @@ bail:
                 details = [NSString stringWithFormat:@"%@ (signer: %@)", rule.csInfo[KEY_CS_ID], [rule.csInfo[KEY_CS_AUTHS] firstObject]];
                 break;
                 
+            //ad hoc
+            case AdHoc:
+                details = [NSString stringWithFormat:@"%@ (signer: %@)", rule.csInfo[KEY_CS_ID], @"Ad hoc"];
+                break;
+                
             default:
                 break;
         }
