@@ -7,8 +7,10 @@
 //
 
 #import "consts.h"
-#import "Update.h"
 #import "utilities.h"
+
+#import "Update.h"
+#import "Configure.h"
 #import "Extension.h"
 #import "AppDelegate.h"
 
@@ -59,7 +61,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
         [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
         
         //show alert
-        showAlert([NSString stringWithFormat:@"LuLu must run from:\r\n  %@", [@"/Applications" stringByAppendingPathComponent:APP_NAME]], @"...please copy it to /Applications and re-launch.", @[@"OK"]);
+        showAlert(NSAlertStyleInformational, [NSString stringWithFormat:@"LuLu must run from:\r\n  %@", [@"/Applications" stringByAppendingPathComponent:APP_NAME]], @"...please copy it to /Applications and re-launch.", @[@"OK"]);
         
         //exit
         [NSApplication.sharedApplication terminate:self];
@@ -190,7 +192,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
                             [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
                             
                             //show alert
-                            showAlert(@"ERROR: activation failed", @"failed to activate system/network extension", @[@"OK"]);
+                            showAlert(NSAlertStyleCritical, @"ERROR: activation failed", @"failed to activate system/network extension", @[@"OK"]);
                             
                             //exit
                             [NSApplication.sharedApplication terminate:self];
@@ -214,7 +216,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
                         dispatch_async(dispatch_get_main_queue(),
                         ^{
                             //show alert
-                            showAlert(@"ERROR: activation failed", @"failed to activate network filter", @[@"OK"]);
+                            showAlert(NSAlertStyleCritical, @"ERROR: activation failed", @"failed to activate network filter", @[@"OK"]);
                             
                             //bye
                             [NSApplication.sharedApplication terminate:self];
@@ -335,7 +337,7 @@ bail:
     if(YES != [extension isExtensionRunning])
     {
         //show alert
-        showAlert(@"LuLu's Network Extension Is Not Running", @"Extensions must be manually approved via Security & Privacy System Preferences.", @[@"OK"]);
+        showAlert(NSAlertStyleInformational, @"LuLu's Network Extension Is Not Running", @"Extensions must be manually approved via Security & Privacy System Preferences.", @[@"OK"]);
         
         //bail
         goto bail;
@@ -721,30 +723,15 @@ bail:
 // do any cleanup, then exit
 -(IBAction)quit:(id)sender
 {
-    //(confirmation) alert
-    NSAlert* alert = nil;
+    //response
+    NSModalResponse response = 0;
+    
+    //config obj
+    Configure* configure = nil;
     
     //dbg msg
-    os_log_debug(logHandle, "quitting...");
+    os_log_debug(logHandle, "function '%s' invoked", __PRETTY_FUNCTION__);
     
-    //init alert
-    alert = [[NSAlert alloc] init];
-     
-    //set style
-    alert.alertStyle = NSAlertStyleInformational;
-
-    //main text
-    alert.messageText = @"Quit LuLu?";
-
-    //details
-    alert.informativeText = @"...this will terminated LuLu, until the next time you log in.";
-
-    //add button
-    [alert addButtonWithTitle:@"Quit"];
-
-    //add button
-    [alert addButtonWithTitle:@"Cancel"];
-
     //foreground
     [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
 
@@ -753,10 +740,13 @@ bail:
 
     //make app active
     [NSApp activateIgnoringOtherApps:YES];
-
+    
+    //show alert
+    response = showAlert(NSAlertStyleInformational, @"Quit LuLu?", @"...this will terminated LuLu, until the next time you log in.", @[@"Quit", @"Cancel"]);
+    
     //show alert
     // cancel? ignore
-    if(NSModalResponseCancel == [alert runModal])
+    if(NSModalResponseCancel == response)
     {
          //dbg msg
          os_log_debug(logHandle, "user canceled quitting");
@@ -771,77 +761,14 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "user confirmed quit");
         
-        //deactive network extension
-        // this will also cause the extension to be unloaded
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
-            //extension
-            Extension* extension = nil;
-            
-            //wait semaphore
-            dispatch_semaphore_t semaphore = 0;
-            
-            //init extension object
-            extension = [[Extension alloc] init];
-            
-            //init wait semaphore
-            semaphore = dispatch_semaphore_create(0);
-            
-            //kick off extension deactivation request
-            [extension toggleExtension:ACTION_DEACTIVATE reply:^(BOOL toggled)
-            {
-                //dbg msg
-                os_log_debug(logHandle, "extension 'deactivate' returned...");
-                
-                //error
-                // user likely cancelled
-                if(YES != toggled)
-                {
-                   //err msg
-                   os_log_error(logHandle, "ERROR: failed to deactivate extension (won't quit)");
-                }
-                //happy
-                else
-                {
-                    //terminate network monitor
-                    [self terminateNetworkMonitor];
-                    
-                    //dbg msg
-                    os_log_debug(logHandle, "all done, goodbye!");
-                    
-                    //bye
-                    [NSApplication.sharedApplication terminate:self];
-                }
-                
-                //signal semaphore
-                dispatch_semaphore_signal(semaphore);
-                
-            }];
-            
-            //wait for extension semaphore
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-
-        });
-    }
-    
-    return;
-}
-
-//terminate network monitor
--(void)terminateNetworkMonitor
-{
-    //find match
-    // will check if LuLu's, then will terminate
-    for(NSRunningApplication* networkMonitor in [NSRunningApplication runningApplicationsWithBundleIdentifier:@"com.objective-see.Netiquette"])
-    {
-        //non LuLu instance?
-        if(YES != [networkMonitor.bundleURL.path hasPrefix:NSBundle.mainBundle.resourcePath]) continue;
+        //init
+        configure = [[Configure alloc] init];
         
-        //dbg msg
-        os_log_debug(logHandle, "terminating network monitor: %{public}@", networkMonitor);
+        //quit
+        [configure quit];
         
-        //terminate
-        [networkMonitor terminate];
+        //and terminate
+        [NSApplication.sharedApplication terminate:self];
     }
     
     return;
@@ -851,26 +778,11 @@ bail:
 // cleanup all the thingz!
 -(IBAction)uninstall:(id)sender
 {
-    //(confirmation) alert
-    NSAlert* alert = nil;
+    //response
+    NSModalResponse response = 0;
     
-    //init alert
-    alert = [[NSAlert alloc] init];
-    
-    //set style
-    alert.alertStyle = NSAlertStyleInformational;
-    
-    //main text
-    alert.messageText = @"Uninstall LuLu?";
-    
-    //details
-    alert.informativeText = @"...this will fully remove LuLu from your Mac!";
-    
-    //add button
-    [alert addButtonWithTitle:@"Uninstall"];
-
-    //add button
-    [alert addButtonWithTitle:@"Cancel"];
+    //config obj
+    Configure* configure = nil;
     
     //foreground
     [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
@@ -880,128 +792,45 @@ bail:
     
     //make key and front
     [self.window makeKeyAndOrderFront:self];
-
+    
     //show alert
-    // and if not a 'cancel', uninstall
-    if(NSModalResponseCancel != [alert runModal])
+    response = showAlert(NSAlertStyleInformational, @"Uninstall LuLu?", @"...this will fully remove LuLu from your Mac", @[@"Uninstall", @"Cancel"]);
+    
+    //show alert
+    // cancel? ignore
+    if(NSModalResponseCancel == response)
     {
-        //dbg msg
-        os_log_debug(logHandle, "user confirmed uninstall");
-
-        //tell extension to uninstall
-        // and then deactive network extension
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
-            //extension
-            Extension* extension = nil;
-            
-            //flag
-            __block BOOL deactivated = NO;
-            
-            //wait semaphore
-            dispatch_semaphore_t semaphore = 0;
-            
-            //error
-            NSError* error = nil;
-            
-            //app path
-            NSString* path = nil;
-
-            //init extension object
-            extension = [[Extension alloc] init];
-            
-            //init wait semaphore
-            semaphore = dispatch_semaphore_create(0);
-            
-            //tell ext to uninstall
-            // remove rules, etc, etc
-            if(YES != [xpcDaemonClient uninstall])
-            {
-                //err msg
-                os_log_error(logHandle, "ERROR: daemon's XPC uninstall logic");
-                
-                //but continue onwards
-            }
-            
-            //user has to remove
-            // otherwise we get into a funky state :/
-            while(YES)
-            {
-                //kick off extension activation request
-                [extension toggleExtension:ACTION_DEACTIVATE reply:^(BOOL toggled)
-                {
-                    //save
-                    deactivated = toggled;
-                    
-                    //toggled ok?
-                    if(YES == toggled)
-                    {
-                        //dbg msg
-                        os_log_debug(logHandle, "extension deactivated");
-                    }
-                    //failed?
-                    else
-                    {
-                        //err msg
-                        os_log_error(logHandle, "ERROR: failed to deactivate extension, will reattempt");
-                    }
-                    
-                    //signal semaphore
-                    dispatch_semaphore_signal(semaphore);
-                }];
-                
-                //dbg msg
-                os_log_debug(logHandle, "waiting system extension deactivation...");
-                
-                //wait for extension semaphore
-                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-                
-                //dbg msg
-                os_log_debug(logHandle, "extension event triggered");
-                
-                //deactivated?
-                if(YES == deactivated) break;
-            }
-            
-            //remove login item
-            if(YES != toggleLoginItem(NSBundle.mainBundle.bundleURL, ACTION_UNINSTALL_FLAG))
-            {
-                //err msg
-                os_log_error(logHandle, "ERROR: failed to uninstall login item");
-                
-            } else os_log_debug(logHandle, "uninstalled login item");
-            
-            //init app path
-            path = NSBundle.mainBundle.bundlePath;
-            
-            //remove app
-            if(YES != [NSFileManager.defaultManager removeItemAtPath:path error:&error])
-            {
-                //err msg
-                os_log_error(logHandle, "ERROR: failed to remove %{public}@ (error: %{public}@)", path, error);
-                
-            } else os_log_debug(logHandle, "removed %{public}@", path);
-                  
-            //terminate network monitor
-            [self terminateNetworkMonitor];
-            
-            //exit
-            [NSApplication.sharedApplication terminate:self];
-            
-        });
+         //dbg msg
+         os_log_debug(logHandle, "user canceled uninstalling");
+         
+         //(re)background
+         [self setActivationPolicy];
     }
+    //ok
+    // user wants to uninstall!
     else
     {
         //dbg msg
-        os_log_debug(logHandle, "user canceled uninstall");
-    
-        //(re)background
-        [self setActivationPolicy];
-    }
+        os_log_debug(logHandle, "user confirmed uninstall");
         
+        //init
+        configure = [[Configure alloc] init];
+        
+        //quit
+        if(YES != [configure uninstall])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: uninstall failed");
+        }
+        
+        //and terminate
+        [NSApplication.sharedApplication terminate:self];
+    }
+            
 bail:
     
     return;
 }
+
 
 @end

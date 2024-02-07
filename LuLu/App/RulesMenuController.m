@@ -167,7 +167,7 @@ extern XPCDaemonClient* xpcDaemonClient;
                 os_log_error(logHandle, "ERROR: failed to save rules: %{public}@", error);
                 
                 //show alert
-                showAlert(@"ERROR: Failed to export rules", @"See log for (more) details", @[@"OK"]);     
+                showAlert(NSAlertStyleWarning, @"ERROR: Failed to export rules", @"See log for (more) details", @[@"OK"]);
             }
         }
     }];
@@ -343,7 +343,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
     
     //show alert
-    showAlert([NSString stringWithFormat:@"Imported %ld rules", count], nil, @[@"OK"]);
+    showAlert(NSAlertStyleInformational, [NSString stringWithFormat:@"Imported %ld rules", count], nil, @[@"OK"]);
     
 bail:
     
@@ -367,7 +367,7 @@ bail:
     
     //show alert
     // if user cancels, just bail
-    if(NSAlertSecondButtonReturn == showAlert(@"Cleanup rules that reference (now) deleted items?", nil, @[@"OK", @"Cancel"]))
+    if(NSAlertSecondButtonReturn == showAlert(NSAlertStyleInformational, @"Cleanup rules that reference (now) deleted items?", nil, @[@"OK", @"Cancel"]))
     {
         //dbg msg
         os_log_debug(logHandle, "user cancelled rule cleanup");
@@ -389,7 +389,7 @@ bail:
     [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
     
     //share results w/ user
-    showAlert([NSString stringWithFormat:@"Cleaned up %ld rules", cleanedUpRules], nil, @[@"OK"]);
+    showAlert(NSAlertStyleInformational, [NSString stringWithFormat:@"Cleaned up %ld rules", cleanedUpRules], nil, @[@"OK"]);
     
 bail:
     

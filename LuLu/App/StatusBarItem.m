@@ -286,7 +286,7 @@ enum menuItems
             if(YES != [self.rulesMenuController importRules])
             {
                 //show alert
-                showAlert(@"ERROR: Failed to import rules", @"See log for (more) details", @[@"OK"]);
+                showAlert(NSAlertStyleWarning, @"ERROR: Failed to import rules", @"See log for (more) details", @[@"OK"]);
                 
                 //bail
                 goto bail;
@@ -304,7 +304,7 @@ enum menuItems
             if(YES != [self.rulesMenuController cleanupRules])
             {
                 //show alert
-                showAlert(@"ERROR: Failed to cleanup rules", @"See log for (more) details", @[@"OK"]);
+                showAlert(NSAlertStyleWarning, @"ERROR: Failed to cleanup rules", @"See log for (more) details", @[@"OK"]);
                 
                 //bail
                 goto bail;
@@ -334,7 +334,7 @@ enum menuItems
             
             //launch
             // with args
-            if(nil != [NSWorkspace.sharedWorkspace launchApplicationAtURL:path options:0 configuration:[NSDictionary dictionaryWithObject:@[@"-lulu"] forKey:NSWorkspaceLaunchConfigurationArguments] error:&error])
+            if(nil == [NSWorkspace.sharedWorkspace launchApplicationAtURL:path options:0 configuration:[NSDictionary dictionaryWithObject:@[@"-lulu"] forKey:NSWorkspaceLaunchConfigurationArguments] error:&error])
             {
                 //err msg
                 os_log_error(logHandle, "ERROR: failed to launch network monitor, %{public}@, (error: %{public}@)", path, error);

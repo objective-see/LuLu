@@ -63,6 +63,7 @@
 		CDB2CC3924D61B3900D0EECE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB2CC3824D61B3900D0EECE /* main.m */; };
 		CDB2CC3E24D61B3900D0EECE /* com.objective-see.lulu.extension.systemextension in Embed System Extensions */ = {isa = PBXBuildFile; fileRef = CDB2CC3024D61B3900D0EECE /* com.objective-see.lulu.extension.systemextension */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CDB2CC4424DBE48100D0EECE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB2CC3224D61B3900D0EECE /* NetworkExtension.framework */; };
+		CDB909EB2B72BC230043FEB4 /* Configure.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB909EA2B72BC230043FEB4 /* Configure.m */; };
 		CDC378C7250C66C300314064 /* Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC378C6250C66C300314064 /* Extension.m */; };
 		CDC378CB250C83F200314064 /* Netiquette.app in Resources */ = {isa = PBXBuildFile; fileRef = CDC378C9250C83F100314064 /* Netiquette.app */; };
 		CDC41C412503424800CB302B /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC41C3F2503424800CB302B /* OrderedDictionary.m */; };
@@ -200,6 +201,8 @@
 		CDB2CC3824D61B3900D0EECE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CDB2CC3A24D61B3900D0EECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDB2CC3B24D61B3900D0EECE /* Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Extension.entitlements; sourceTree = "<group>"; };
+		CDB909EA2B72BC230043FEB4 /* Configure.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Configure.m; sourceTree = "<group>"; };
+		CDB909EC2B72BC2E0043FEB4 /* Configure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Configure.h; sourceTree = "<group>"; };
 		CDC378C5250C66C200314064 /* Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Extension.h; sourceTree = "<group>"; };
 		CDC378C6250C66C300314064 /* Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Extension.m; sourceTree = "<group>"; };
 		CDC378C9250C83F100314064 /* Netiquette.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = Netiquette.app; sourceTree = "<group>"; };
@@ -301,6 +304,8 @@
 				CDB2CC1C24D61A4E00D0EECE /* AppDelegate.m */,
 				CDB2CC1E24D61A5000D0EECE /* Assets.xcassets */,
 				CDC378C8250C83F100314064 /* Binaries */,
+				CDB909EC2B72BC2E0043FEB4 /* Configure.h */,
+				CDB909EA2B72BC230043FEB4 /* Configure.m */,
 				CDC378C5250C66C200314064 /* Extension.h */,
 				CDC378C6250C66C300314064 /* Extension.m */,
 				CDB2CC2324D61A5000D0EECE /* Info.plist */,
@@ -569,6 +574,7 @@
 				CDA136C724F0D7C3005AD424 /* utilities.m in Sources */,
 				CDB2CC2524D61A5000D0EECE /* main.m in Sources */,
 				CD9E147D25171BF200DA05C3 /* ItemPathsWindowController.m in Sources */,
+				CDB909EB2B72BC230043FEB4 /* Configure.m in Sources */,
 				CDB2CC1D24D61A4E00D0EECE /* AppDelegate.m in Sources */,
 				CD9F567F252533CE00F3DEB5 /* NSApplicationKeyEvents.m in Sources */,
 				CDC41C412503424800CB302B /* OrderedDictionary.m in Sources */,

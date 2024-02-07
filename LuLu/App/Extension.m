@@ -80,7 +80,7 @@ bail:
 //check if extension is running
 -(BOOL)isExtensionRunning
 {
-    return (-1 != (findProcess(EXT_BUNDLE_ID)));
+    return !![findProcesses(EXT_BUNDLE_ID) count];
 }
 
 //get network extension's status
@@ -294,7 +294,7 @@ bail:
             if(YES != [((AppDelegate*)[[NSApplication sharedApplication] delegate]) isFirstTime])
             {
                 //show alert
-                showAlert(@"LuLu's Network Extension Is Not Running", @"Extensions must be manually approved via\r\nSecurity & Privacy System Preferences.", @[@"OK"]);
+                showAlert(NSAlertStyleInformational, @"LuLu's Network Extension Is Not Running", @"Extensions must be manually approved via\r\nSecurity & Privacy System Preferences.", @[@"OK"]);
             }
         });
     }

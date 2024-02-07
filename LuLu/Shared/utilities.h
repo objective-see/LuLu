@@ -65,8 +65,8 @@ NSImage* getIconForProcess(NSString* path);
 // then make it modal
 void makeModal(NSWindowController* windowController);
 
-//find a process by name
-pid_t findProcess(NSString* processName);
+//find all processes by name
+NSMutableArray* findProcesses(NSString* processName);
 
 //hash a file (sha256)
 NSMutableString* hashFile(NSString* filePath);
@@ -88,7 +88,7 @@ NSString* valueForStringItem(NSString* item);
 NSDate* dateAdded(NSString* file);
 
 //show an alert
-NSModalResponse showAlert(NSString* messageText, NSString* informativeText, NSArray* buttons);
+NSModalResponse showAlert(NSAlertStyle style, NSString* messageText, NSString* informativeText, NSArray* buttons);
 
 //get audit token for pid
 NSData* tokenForPid(pid_t pid);

@@ -673,14 +673,14 @@ void makeModal(NSWindowController* windowController)
     return;
 }
 
-//find a process by name
-pid_t findProcess(NSString* processName)
+//find all processes by name
+NSMutableArray* findProcesses(NSString* processName)
 {
-    //pid
-    pid_t pid = -1;
-    
     //status
     int status = -1;
+    
+    //pids
+    NSMutableArray* processes = nil;
     
     //# of procs
     int numberOfProcesses = 0;
@@ -690,6 +690,9 @@ pid_t findProcess(NSString* processName)
     
     //process path
     NSString* processPath = nil;
+    
+    //init
+    processes = [NSMutableArray array];
     
     //get # of procs
     numberOfProcesses = proc_listpids(PROC_ALL_PIDS, 0, NULL, 0);
@@ -738,10 +741,7 @@ pid_t findProcess(NSString* processName)
         }
             
         //save
-        pid = pids[i];
-        
-        //pau
-        break;
+        [processes addObject:@{KEY_PROCESS_ID:[NSNumber numberWithInt:pids[i]], KEY_PATH:processPath}];
         
     }//all procs
     
@@ -755,7 +755,7 @@ bail:
         pids = NULL;
     }
     
-    return pid;
+    return processes;
 }
 
 //for login item enable/disable
@@ -1105,7 +1105,7 @@ NSString* valueForStringItem(NSString* item)
 }
 
 //show an alert
-NSModalResponse showAlert(NSString* messageText, NSString* informativeText, NSArray* buttons)
+NSModalResponse showAlert(NSAlertStyle style, NSString* messageText, NSString* informativeText, NSArray* buttons)
 {
     //alert
     NSAlert* alert = nil;
@@ -1117,7 +1117,7 @@ NSModalResponse showAlert(NSString* messageText, NSString* informativeText, NSAr
     alert = [[NSAlert alloc] init];
     
     //set style
-    alert.alertStyle = NSAlertStyleWarning;
+    alert.alertStyle = style;
     
     //main text
     alert.messageText = messageText;
@@ -1424,10 +1424,11 @@ BOOL launchedByUser(void)
     //get parent
     parent = getRealParent(getpid());
     
-    //parent dock or finder?
+    //parent dock/finder/terminal
     // ...then assume its user launched
     if( (YES == [parent[@"CFBundleIdentifier"] isEqualTo:@"com.apple.dock"]) ||
-        (YES == [parent[@"CFBundleIdentifier"] isEqualTo:@"com.apple.finder"]) )
+        (YES == [parent[@"CFBundleIdentifier"] isEqualTo:@"com.apple.finder"]) ||
+        (YES == [parent[@"CFBundleIdentifier"] isEqualTo:@"com.apple.Terminal"]) )
     {
         //set flag
         byUser = YES;

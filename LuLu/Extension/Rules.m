@@ -1189,6 +1189,14 @@ bail:
             //dbg msg
             os_log_debug(logHandle, "checking if %{public}@ was deleted", rule.path);
             
+            //skip global rules
+            // ...these don't have paths
+            if(rule.isGlobal)
+            {
+                //skip
+                continue;
+            }
+            
             //path ...gone?
             if(YES != [NSFileManager.defaultManager fileExistsAtPath:rule.path])
             {
