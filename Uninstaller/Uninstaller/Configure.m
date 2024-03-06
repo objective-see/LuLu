@@ -247,6 +247,7 @@ bail:
         [xpcComms uninstall:!action reply:block];
     }
     
+    //error
     else
     {
         //err msg

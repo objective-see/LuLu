@@ -113,4 +113,7 @@ void fadeOut(NSWindow* window, float duration);
 //matches CS info?
 BOOL matchesCSInfo(NSDictionary* csInfo_1, NSDictionary* csInfo_2);
 
+//escape string
+NSString* toEscapedJSON(NSString* input);
+
 #endif

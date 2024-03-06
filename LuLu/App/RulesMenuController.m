@@ -46,6 +46,9 @@ extern XPCDaemonClient* xpcDaemonClient;
 // show panel then write out rules
 -(void)exportRules
 {
+    //count
+    NSUInteger count = 0;
+    
     //rules
     NSDictionary* rules = nil;
     
@@ -120,7 +123,11 @@ extern XPCDaemonClient* xpcDaemonClient;
                 continue;
             }
             
+            //append
             [json appendFormat:@"{%@},", [rule toJSON]];
+            
+            //inc
+            count++;
         }
         
         //remove last ','
@@ -169,9 +176,15 @@ extern XPCDaemonClient* xpcDaemonClient;
                 //show alert
                 showAlert(NSAlertStyleWarning, @"ERROR: Failed to export rules", @"See log for (more) details", @[@"OK"]);
             }
+            //happy
+            else
+            {
+                //show alert
+                showAlert(NSAlertStyleInformational, [NSString stringWithFormat:@"Exported %lu rules", (unsigned long)count], nil, @[@"OK"]);
+            }
         }
     }];
-    
+
     return;
 }
 

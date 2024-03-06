@@ -385,11 +385,11 @@ bail:
 // needed for conversion to JSON
 -(NSMutableString*)toJSON
 {
-    //dbg msg
-    os_log_debug(logHandle, "converting rule to JSON...");
-    
     //json
     NSMutableString* json = nil;
+    
+    //escaped
+    NSString* escaped = nil;
     
     //init
     json = [NSMutableString string];
@@ -402,14 +402,31 @@ bail:
         [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(pid)), self.pid.intValue];
     }
     
-    [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(path)), self.path];
-    [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(name)), self.name];
+    escaped = toEscapedJSON(self.path);
+    if(nil != escaped)
+    {
+        [json appendFormat:@"\"%@\" : %@,", NSStringFromSelector(@selector(path)), escaped];
+    }
     
-    [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(endpointAddr)), self.endpointAddr];
+    escaped = toEscapedJSON(self.name);
+    if(nil != escaped)
+    {
+        [json appendFormat:@"\"%@\" : %@,", NSStringFromSelector(@selector(name)), escaped];
+    }
+    
+    escaped = toEscapedJSON(self.endpointAddr);
+    if(nil != escaped)
+    {
+        [json appendFormat:@"\"%@\" : %@,", NSStringFromSelector(@selector(endpointAddr)), escaped];
+    }
     
     if(nil != self.endpointHost)
     {
-        [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(endpointHost)), self.endpointHost];
+        escaped = toEscapedJSON(self.endpointHost);
+        if(nil != escaped)
+        {
+            [json appendFormat:@"\"%@\" : %@,", NSStringFromSelector(@selector(endpointHost)), escaped];
+        }
     }
     
     [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(endpointPort)), self.endpointPort];
@@ -434,8 +451,12 @@ bail:
             //string?
             if(YES == [value isKindOfClass:[NSString class]])
             {
-                //append
-                [json appendFormat:@"\"%@\" : \"%@\",", key, value];
+                escaped = toEscapedJSON(value);
+                if(nil != escaped)
+                {
+                    //append
+                    [json appendFormat:@"\"%@\" : %@,", key, escaped];
+                }
             }
             
             //number?
@@ -454,7 +475,20 @@ bail:
                 //add each item
                 for(id item in value)
                 {
-                    [json appendFormat:@"\"%@\",", item];
+                    //string?
+                    if(YES == [item isKindOfClass:[NSString class]])
+                    {
+                        escaped = toEscapedJSON(item);
+                        if(nil != escaped)
+                        {
+                            //append
+                            [json appendFormat:@"%@,", escaped];
+                        }
+                    }
+                    else
+                    {
+                        [json appendFormat:@"\"%@\",", item];
+                    }
                 }
                 
                 //remove last ','
@@ -511,7 +545,7 @@ bail:
         if(YES != [self.key isKindOfClass:[NSString class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'key' should be a string");
+            os_log_error(logHandle, "ERROR: 'key' should be a string, not %@", self.key.className);
             
             self = nil;
             goto bail;
@@ -521,19 +555,18 @@ bail:
         if(YES != [self.uuid isKindOfClass:[NSString class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'uuid' should be a string");
+            os_log_error(logHandle, "ERROR: 'uuid' should be a string, not %@", self.uuid.className);
             
             self = nil;
             goto bail;
         }
-        
         
         self.pid = info[NSStringFromSelector(@selector(pid))];
         if( (nil != self.pid) &&
             (YES != [self.pid isKindOfClass:[NSNumber class]]) )
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'pid' should be a number");
+            os_log_error(logHandle, "ERROR: 'pid' should be a number, not %@", self.pid.className);
             
             self = nil;
             goto bail;
@@ -543,7 +576,7 @@ bail:
         if(YES != [self.path isKindOfClass:[NSString class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'path' should be a string");
+            os_log_error(logHandle, "ERROR: 'path' should be a string, not %@", self.path.className);
             
             self = nil;
             goto bail;
@@ -553,7 +586,7 @@ bail:
         if(YES != [self.name isKindOfClass:[NSString class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'name' should be a string");
+            os_log_error(logHandle, "ERROR: 'name' should be a string, not %@", self.name.className);
             
             self = nil;
             goto bail;
@@ -564,7 +597,7 @@ bail:
             (YES != [self.csInfo isKindOfClass:[NSDictionary class]]) )
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'csInfo' should be a dictionary");
+            os_log_error(logHandle, "ERROR: 'csInfo' should be a dictionary, not %@", self.csInfo.className);
             
             self = nil;
             goto bail;
@@ -574,7 +607,7 @@ bail:
         if(YES != [self.endpointAddr isKindOfClass:[NSString class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'endpointAddr' should be a string");
+            os_log_error(logHandle, "ERROR: 'endpointAddr' should be a string, not %@", self.endpointAddr.className);
             
             self = nil;
             goto bail;
@@ -585,7 +618,7 @@ bail:
             (YES != [self.endpointHost isKindOfClass:[NSString class]]) )
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'endpointHost' should be a string");
+            os_log_error(logHandle, "ERROR: 'endpointHost' should be a string, not %@", self.endpointHost.className);
             
             self = nil;
             goto bail;
@@ -595,7 +628,7 @@ bail:
         if(YES != [self.endpointPort isKindOfClass:[NSString class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'endpointPort' should be a string");
+            os_log_error(logHandle, "ERROR: 'endpointPort' should be a string, not %@", self.endpointPort.className);
             
             self = nil;
             goto bail;
@@ -607,7 +640,7 @@ bail:
         if(YES != [self.type isKindOfClass:[NSNumber class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'type' should be a number");
+            os_log_error(logHandle, "ERROR: 'type' should be a number, not %@", self.type.className);
             
             self = nil;
             goto bail;
@@ -617,7 +650,7 @@ bail:
         if(YES != [self.scope isKindOfClass:[NSNumber class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'scope' should be a number");
+            os_log_error(logHandle, "ERROR: 'scope' should be a number, not %@", self.scope.className);
             
             self = nil;
             goto bail;
@@ -627,7 +660,7 @@ bail:
         if(YES != [self.action isKindOfClass:[NSNumber class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'action' should be a number");
+            os_log_error(logHandle, "ERROR: 'action' should be a number, not %@", self.endpointPort.className);
             
             self = nil;
             goto bail;

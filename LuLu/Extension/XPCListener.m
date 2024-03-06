@@ -77,7 +77,7 @@ extern os_log_t logHandle;
         if(@available(macOS 13.0, *)) {
         
             //init requirement
-            // BB helper, v2.0+
+            // LuLu client, v2.0+
             requirement = [NSString stringWithFormat:@"anchor apple generic and identifier \"%@\" and certificate leaf [subject.CN] = \"%@\" and info [CFBundleShortVersionString] >= \"2.0.0\"", APP_ID, SIGNING_AUTH];
             
             //set requirement

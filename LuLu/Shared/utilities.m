@@ -1589,7 +1589,7 @@ BOOL matchesCSInfo(NSDictionary* csInfo_1, NSDictionary* csInfo_2)
     if( ((nil != signingAuths_1) || (nil != signingAuths_2)) &&
         (YES != [signingAuths_1 isEqualToArray:signingAuths_2]) )
     {
-        //dbg msg
+        //err msg
         os_log_error(logHandle, "ERROR: code signing mismatch (signing auths): %{public}@ / %{public}@", csInfo_1, csInfo_2);
         
         //bail
@@ -1603,4 +1603,36 @@ bail:
     
     return matches;
     
+}
+
+//escape string
+NSString* toEscapedJSON(NSString* input)
+{
+    NSData* data = nil;
+    NSError* error = nil;
+    NSString* output = nil;
+    
+    @try {
+    
+        data = [NSJSONSerialization dataWithJSONObject:input options:NSJSONWritingFragmentsAllowed error:&error];
+        if( (nil == data) ||
+            (nil != error) )
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: failed to convert/escape %{public}@ to JSON (error: %{public}@)", input, error);
+            
+            goto bail;
+        }
+    }
+    @catch(NSException* exception)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to convert/escape %{public}@ to JSON (exception: %{public}@)", input, exception);
+        goto bail;
+    }
+    
+    output = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+bail:
+    return output;
 }
