@@ -742,7 +742,7 @@ bail:
     [NSApp activateIgnoringOtherApps:YES];
     
     //show alert
-    response = showAlert(NSAlertStyleInformational, @"Quit LuLu?", @"...this will terminated LuLu, until the next time you log in.", @[@"Quit", @"Cancel"]);
+    response = showAlert(NSAlertStyleInformational, @"Quit LuLu?", @"...this will terminate LuLu, until the next time you log in.", @[@"Quit", @"Cancel"]);
     
     //show alert
     // cancel? ignore
