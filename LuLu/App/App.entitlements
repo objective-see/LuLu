@@ -10,7 +10,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>$(TeamIdentifierPrefix)com.objective-see.lulu</string>
+		<string>$(TeamIdentifierPrefix)com.nufuturo.lulu</string>
 	</array>
 </dict>
 </plist>

@@ -29,7 +29,7 @@
 	<key>NetworkExtension</key>
 	<dict>
 		<key>NEMachServiceName</key>
-		<string>$(TeamIdentifierPrefix)com.objective-see.lulu</string>
+		<string>$(TeamIdentifierPrefix)com.nufuturo.lulu</string>
 		<key>NEProviderClasses</key>
 		<dict>
 			<key>com.apple.networkextension.filter-data</key>

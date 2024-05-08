@@ -6,13 +6,13 @@
 	<array>
 		<string>content-filter-provider-systemextension</string>
 	</array>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>$(TeamIdentifierPrefix)com.nufuturo.lulu</string>
+	</array>
 	<key>com.apple.security.temporary-exception.files.absolute-path.read-write</key>
 	<array>
 		<string>/private/var/db/mds/</string>
-	</array>
-	<key>com.apple.security.application-groups</key>
-	<array>
-		<string>$(TeamIdentifierPrefix)com.objective-see.lulu</string>
 	</array>
 </dict>
 </plist>
