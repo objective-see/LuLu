@@ -390,7 +390,7 @@ bail:
     BOOL added = NO;
     
     //dbg msg
-    os_log_debug(logHandle, "adding rule: %{public}@ -> %{public}@", rule.key, rule);
+    os_log_debug(logHandle, "RULE_ID=%{public}@ adding rule: %{public}@ -> %{public}@", rule.uuid, rule.key, rule);
 
     //sanity check
     if(nil == rule)
@@ -435,14 +435,14 @@ bail:
         if(YES != [self save])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: failed to save rules");
+            os_log_error(logHandle, "RULE_ID=%{public}@ ERROR: failed to save rules", rule.uuid);
             
             //bail
             goto bail;
         }
         
         //dbg msg
-        os_log_debug(logHandle, "saved rule to disk");
+        os_log_debug(logHandle, "RULE_id=%{public}@ saved rule to disk", rule.uuid);
     }
     
     //happy
@@ -498,6 +498,9 @@ bail:
     //canidate rules
     NSMutableArray* candidateRules = nil;
     
+    //flow uuid
+    NSString *flowUUID = flow.identifier.UUIDString;
+    
     //any match
     // item has a '*:*' rule
     Rule* anyMatch = nil;
@@ -513,7 +516,7 @@ bail:
     NWHostEndpoint* remoteEndpoint = nil;
     
     //dbg msg
-    os_log_debug(logHandle, "looking for rule for %{public}@ -> %{public}@", process.key, process.path);
+    os_log_debug(logHandle, "FLOW_ID=%{public}@ looking for rule for %{public}@ -> %{public}@", flowUUID, process.key, process.path);
     
     //sync to access
     @synchronized(self.rules)
@@ -536,7 +539,7 @@ bail:
                 *csChange = YES;
                 
                 //err msg
-                os_log_error(logHandle, "ERROR: code signing mismatch: %{public}@ / %{public}@", process.csInfo, csInfo);
+                os_log_error(logHandle, "FLOW_ID=%{public}@ ERROR: code signing mismatch: %{public}@ / %{public}@", flowUUID, process.csInfo, csInfo);
                 
                 //bail
                 goto bail;
@@ -623,7 +626,7 @@ bail:
                     (YES == [rule.endpointPort isEqualToString:VALUE_ANY]) )
                 {
                     //dbg msg
-                    os_log_debug(logHandle, "rule match: 'any'");
+                    os_log_debug(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ rule match: 'any'", flowUUID, rule.uuid);
                     
                     //any
                     anyMatch = rule;
@@ -637,13 +640,13 @@ bail:
                 else if(YES == [rule.endpointPort isEqualToString:VALUE_ANY])
                 {
                     //dbg msg
-                    os_log_debug(logHandle, "rule port is any ('*'), will check host/url");
+                    os_log_debug(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ rule port is any ('*'), will check host/url", flowUUID, rule.uuid);
                     
                     //check endpoint host/url
                     if(YES == [self endpointAddrMatch:flow rule:rule])
                     {
                         //dbg msg
-                        os_log_debug(logHandle, "rule match: 'partial' (endpoint addr)");
+                        os_log_debug(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ rule match: 'partial' (endpoint addr)", flowUUID, rule.uuid);
                         
                         //partial
                         partialMatch = rule;
@@ -658,14 +661,14 @@ bail:
                 else if(YES == [rule.endpointAddr isEqualToString:VALUE_ANY])
                 {
                     //dbg msg
-                    os_log_debug(logHandle, "rule address is any ('*'), will check port");
+                    os_log_debug(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ rule address is any ('*'), will check port", flowUUID, rule.uuid);
                     
                     //addr is any
                     //so check the port
                     if(YES == [rule.endpointPort isEqualToString:remoteEndpoint.port])
                     {
                         //dbg msg
-                        os_log_debug(logHandle, "rule match: 'partial' (endpoint port)");
+                        os_log_debug(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ rule match: 'partial' (endpoint port)", flowUUID, rule.uuid);
                         
                         //partial
                         partialMatch = rule;
@@ -680,14 +683,14 @@ bail:
                 else
                 {
                     //dbg msg
-                    os_log_debug(logHandle, "address and port set, will check both for match");
+                    os_log_debug(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ address and port set, will check both for match", flowUUID, rule.uuid);
                     
                     //port match?
                     if( (YES == [self endpointAddrMatch:flow rule:rule]) &&
                         (YES == [rule.endpointPort isEqualToString:remoteEndpoint.port]) )
                     {
                         //dbg msg
-                            os_log_debug(logHandle, "rule match: 'exact'");
+                            os_log_debug(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ rule match: 'exact'", flowUUID, rule.uuid);
                             
                             //exact
                             extactMatch = rule;
@@ -736,6 +739,9 @@ bail:
     //remote endpoint
     NWHostEndpoint* remoteEndpoint = nil;
     
+    //flow uuid
+    NSString *flowUUID = flow.identifier.UUIDString;
+    
     //extract remote endpoint
     remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
     
@@ -769,21 +775,21 @@ bail:
     }
     
     //dbg msg
-    os_log_debug(logHandle, "checking %{public}@ against %{public}@ and just %{public}@", rule.endpointAddr, endpointNames, rule.endpointHost);
+    os_log_debug(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ checking %{public}@ against %{public}@ and just %{public}@", flowUUID, rule.uuid, rule.endpointAddr, endpointNames, rule.endpointHost);
     
     //endpoint addr a regex?
     // init regex and check for match
     if(YES == rule.isEndpointAddrRegex)
     {
         //dbg msg
-        os_log_debug(logHandle, "rule's endpoint address is a regex...");
+        os_log_debug(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ rule's endpoint address is a regex...", flowUUID, rule.uuid);
         
         //init regex
         endpointAddrRegex = [NSRegularExpression regularExpressionWithPattern:rule.endpointAddr options:0 error:&error];
         if(nil == endpointAddrRegex)
         {
             //err msg
-            os_log_error(logHandle, "ERROR: failed to created regex from %{public}@ (error: %{public}@)", rule.endpointAddr, error);
+            os_log_error(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ ERROR: failed to created regex from %{public}@ (error: %{public}@)", flowUUID, rule.uuid, rule.endpointAddr, error);
             
             //bail
             goto bail;
@@ -796,7 +802,7 @@ bail:
             if(0 != [endpointAddrRegex numberOfMatchesInString:endpointName options:0 range:NSMakeRange(0, endpointName.length)])
             {
                 //dbg msg
-                os_log_debug(logHandle, "rule match: regex on %{public}@", endpointName);
+                os_log_debug(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ rule match: regex on %{public}@", flowUUID, rule.uuid, endpointName);
                 
                 //match
                 isMatch = YES;
@@ -823,7 +829,7 @@ bail:
             NSString* host = nil;
             
             //dbg msg
-            os_log_debug(logHandle, "checking %{public}@ vs. %{public}@", endpointName, rule.endpointAddr);
+            os_log_debug(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ checking %{public}@ vs. %{public}@", flowUUID, rule.uuid, endpointName, rule.endpointAddr);
             
             //init url
             // add prefix
@@ -843,7 +849,7 @@ bail:
             if(NSOrderedSame == [rule.endpointAddr caseInsensitiveCompare:endpointName])
             {
                 //dbg msg
-                os_log_debug(logHandle, "rule match: %{public}@", endpointName);
+                os_log_debug(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ rule match: %{public}@", flowUUID, rule.uuid, endpointName);
                 
                 //match
                 isMatch = YES;
@@ -853,7 +859,7 @@ bail:
             }
             
             //dbg msg
-            os_log_debug(logHandle, "also checking %{public}@ vs. %{public}@", url.host, rule.endpointHost);
+            os_log_debug(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ also checking %{public}@ vs. %{public}@", flowUUID, rule.uuid, url.host, rule.endpointHost);
         
             //also check (just) host name
             // for example "a.b.c.com" will be checked against "c.com"
@@ -875,7 +881,7 @@ bail:
                 if(NSOrderedSame == [rule.endpointHost caseInsensitiveCompare:host])
                 {
                     //dbg msg
-                    os_log_debug(logHandle, "rule match: (host) %{public}@", rule.endpointHost);
+                    os_log_debug(logHandle, "FLOW_ID=%{public}@ RULE_ID=%{public}@ rule match: (host) %{public}@", flowUUID, rule.uuid, rule.endpointHost);
                     
                     //match
                     isMatch = YES;
