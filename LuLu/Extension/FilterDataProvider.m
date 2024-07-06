@@ -397,7 +397,7 @@ bail:
     os_log_debug(logHandle, "client not in passive mode");
     
     //CHECK:
-    // there a related alert shown (i.e. for same process)
+    // there is related alert shown (i.e. for same process)
     // save this flow, as only want to process once user responds to first alert
     if(YES == [alerts isRelated:process])
     {
@@ -418,11 +418,10 @@ bail:
     os_log_debug(logHandle, "no related alert, currently shown...");
     
     //CHECK:
-    // Apple process and 'PREF_ALLOW_APPLE' is set?
-    // ...allow!
-    
-    //if it's an apple process and that preference is set; allow
-    // unless the binary is something like 'curl' which malware could abuse (then, still alert)
+    // Apple process and 'PREF_ALLOW_APPLE' is set? Allow
+    // Unless:
+    //  a) Its on the 'graylist' (e.g. curl) as these can be (ab)used by malware
+    //  b) There are other rules for this same process (even though they didn't match)
     if(YES == [preferences.preferences[PREF_ALLOW_APPLE] boolValue])
     {
         //dbg msg
@@ -434,9 +433,34 @@ bail:
             //dbg msg
             os_log_debug(logHandle, "is an Apple binary...");
             
-            //though make sure isn't a graylisted binary
-            // such binaries, even if signed by apple, should alert user
-            if(YES != [self.grayList isGrayListed:process])
+            //graylisted item?
+            // pause and alert user
+            if(YES == [self.grayList isGrayListed:process])
+            {
+                //dbg msg
+                os_log_debug(logHandle, "while signed by apple, %d/%{public}@ is gray listed, so will alert", process.pid, process.binary.name);
+                
+                //pause
+                verdict = [NEFilterNewFlowVerdict pauseVerdict];
+                
+                //create/deliver alert
+                [self alert:(NEFilterSocketFlow*)flow process:process csChange:csChange];
+            }
+            //other rules for this process?
+            else if(0 != [rules.rules[process.key][KEY_RULES] count])
+            {
+                //dbg msg
+                os_log_debug(logHandle, "while signed by apple, %d/%{public}@ as other (non-matching) rules, so will alert", process.pid, process.binary.name);
+                
+                //pause
+                verdict = [NEFilterNewFlowVerdict pauseVerdict];
+                
+                //create/deliver alert
+                [self alert:(NEFilterSocketFlow*)flow process:process csChange:csChange];
+            }
+            //otherwise its a apple binary
+            // not on graylist and w/ no other rules, so allow
+            else
             {
                 //dbg msg
                 os_log_debug(logHandle, "due to preferences, allowing (non-graylisted) apple process %d/%{public}@", process.pid, process.path);
@@ -467,20 +491,6 @@ bail:
                 
                 //tell user rules changed
                 [alerts.xpcUserClient rulesChanged];
-            }
-            
-            //graylisted item
-            // pause and alert user
-            else
-            {
-                //dbg msg
-                os_log_debug(logHandle, "while signed by apple, %d/%{public}@ is gray listed, so will alert", process.pid, process.binary.name);
-                
-                //pause
-                verdict = [NEFilterNewFlowVerdict pauseVerdict];
-                
-                //create/deliver alert
-                [self alert:(NEFilterSocketFlow*)flow process:process csChange:NO];
             }
             
             //all set
