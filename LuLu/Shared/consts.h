@@ -263,6 +263,7 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define CMDLINE_FLAG_PREFS @"-prefs"
 #define CMDLINE_FLAG_RULES @"-rules"
 
+#define KEY_PATHS @"paths"
 #define KEY_RULES @"rules"
 
 #define KEY_ID @"id"

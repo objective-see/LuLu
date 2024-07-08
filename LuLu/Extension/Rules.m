@@ -275,7 +275,7 @@ bail:
     }
     
     //unarchive
-    self.rules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [Rule class]]]
+    self.rules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSMutableSet class], [Rule class]]]
                                                        fromData:archivedRules error:&error];
     if(nil == self.rules)
     {
@@ -382,7 +382,7 @@ bail:
     return generated;
 }
 
-//add a rule
+//add a (new) rule
 // and if specified, save to disk
 -(BOOL)add:(Rule*)rule save:(BOOL)save
 {
@@ -421,6 +421,22 @@ bail:
                 //add
                 self.rules[rule.key][KEY_CS_INFO] = rule.csInfo;
             }
+        }
+        
+        //init paths
+        // note: just for UI, but do here do to older rules not having it
+        if(nil == self.rules[rule.key][KEY_PATHS])
+        {
+            //init
+            self.rules[rule.key][KEY_PATHS] = [NSMutableSet set];
+        }
+        
+        //always add path (for UI)
+        // note, insertion into a set is unique
+        if(0 != rule.path.length)
+        {
+            //add
+            [self.rules[rule.key][KEY_PATHS] addObject:rule.path];
         }
         
         //(now) add rule
@@ -495,59 +511,24 @@ bail:
     //item's rules
     NSArray* itemRules = nil;
     
-    //canidate rules
-    NSMutableArray* candidateRules = nil;
-    
-    //any match
-    // item has a '*:*' rule
-    Rule* anyMatch = nil;
-    
-    //partial match
-    // *:port or ip:*
-    Rule* partialMatch = nil;
-    
-    //exact match
-    Rule* extactMatch = nil;
-    
-    //remote endpoint
-    NWHostEndpoint* remoteEndpoint = nil;
-    
     //dbg msg
     os_log_debug(logHandle, "looking for rule for %{public}@ -> %{public}@", process.key, process.path);
     
     //sync to access
     @synchronized(self.rules)
     {
-        //item rules
-        itemRules = self.rules[process.key][KEY_RULES];
-        
-        //extract cs info
-        csInfo = self.rules[process.key][KEY_CS_INFO];
-            
-        //cs info?
-        // make sure it (still) matches
-        if(nil != csInfo)
+        //1st: check global rules
+        globalRules = self.rules[VALUE_ANY][KEY_RULES];
+        if(nil != globalRules)
         {
-            //mismatch?
-            // ignore...
-            if(YES != matchesCSInfo(process.csInfo, csInfo))
+            //match?
+            matchingRule = [self findMatch:process flow:flow candidateRules:globalRules];
+            if(nil != matchingRule)
             {
-                //set
-                *csChange = YES;
-                
-                //err msg
-                os_log_error(logHandle, "ERROR: code signing mismatch: %{public}@ / %{public}@", process.csInfo, csInfo);
-                
-                //bail
+                //done
                 goto bail;
             }
-            
-            //extract item rules
-            itemRules = self.rules[process.key][KEY_RULES];
         }
-       
-        //grab global rules
-        globalRules = self.rules[VALUE_ANY][KEY_RULES];
         
         //init directory rules
         directoryRules = [NSMutableArray array];
@@ -576,143 +557,214 @@ bail:
             }
         }
         
-        //no global, directory, nor item rules
-        // bail, with no match so user is prompted
-        if( (nil == itemRules) &&
-            (nil == globalRules) &&
-            (0 == directoryRules.count) )
+        //2nd: check directory rules
+        if(0 != directoryRules.count)
         {
-            //no match
-            goto bail;
+            //match?
+            matchingRule = [self findMatch:process flow:flow candidateRules:directoryRules];
+            if(nil != matchingRule)
+            {
+                //done
+                goto bail;
+            }
         }
         
-        //init candidate rules
-        candidateRules = [NSMutableArray array];
+        //grab item rules
+        itemRules = self.rules[process.key][KEY_RULES];
         
-        //add global rules first
-        if(nil != globalRules) [candidateRules addObject:globalRules];
-        
-        //add directory rules next
-        if(0 != directoryRules.count) [candidateRules addObject:directoryRules];
-        
-        //add item's rules last...
-        if(nil != itemRules) [candidateRules addObject:itemRules];
-        
-        //extract remote endpoint
-        remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
-        
-        //check each set of rules
-        // set: global, directory, and/or item rules
-        for(NSArray* rules in candidateRules)
+        //grab item cs info
+        csInfo = self.rules[process.key][KEY_CS_INFO];
+            
+        //cs info?
+        // make sure it (still) matches
+        if(nil != csInfo)
         {
-            //check all set of rules
-            // note: * is a wildcard, meaning any match
-            for(Rule* rule in rules)
+            //mismatch?
+            // bail, user will be prompted
+            if(YES != matchesCSInfo(process.csInfo, csInfo))
             {
-                //ingore if rule is temporary
-                // and this pid doesn't match
-                if( (nil != rule.pid) &&
-                    (rule.pid.unsignedIntValue != process.pid) )
+                //set
+                *csChange = YES;
+                
+                //err msg
+                os_log_error(logHandle, "ERROR: code signing mismatch: %{public}@ / %{public}@", process.csInfo, csInfo);
+                
+                //bail
+                goto bail;
+            }
+        }
+        
+        //3rd: check item's specific rules
+        if(nil != itemRules)
+        {
+            //match?
+            matchingRule = [self findMatch:process flow:flow candidateRules:itemRules];
+            if(nil != matchingRule)
+            {
+                //add path as this might be new
+                // older rules might not have this, so make sure to add
+                if(nil == self.rules[process.key][KEY_PATHS])
                 {
-                    //skip
-                    continue;
+                    //init
+                    self.rules[process.key][KEY_PATHS] = [NSMutableSet set];
                 }
                 
-                //any match?
-                if( (YES == [rule.endpointAddr isEqualToString:VALUE_ANY]) &&
-                    (YES == [rule.endpointPort isEqualToString:VALUE_ANY]) )
+                //add path
+                if(nil != process.path)
                 {
-                    //dbg msg
-                    os_log_debug(logHandle, "rule match: 'any'");
-                    
-                    //any
-                    anyMatch = rule;
-                    
-                    //next
-                    continue;
+                    //add
+                    [self.rules[process.key][KEY_PATHS] addObject:process.path];
                 }
                 
-                //port is any?
-                // check for (partial) rule match: endpoint addr
-                else if(YES == [rule.endpointPort isEqualToString:VALUE_ANY])
-                {
-                    //dbg msg
-                    os_log_debug(logHandle, "rule port is any ('*'), will check host/url");
-                    
-                    //check endpoint host/url
-                    if(YES == [self endpointAddrMatch:flow rule:rule])
-                    {
-                        //dbg msg
-                        os_log_debug(logHandle, "rule match: 'partial' (endpoint addr)");
-                        
-                        //partial
-                        partialMatch = rule;
-                        
-                        //next
-                        continue;
-                    }
-                }
-                
-                //endpoint addr is any?
-                // check for (partial) rule match: endpoint port
-                else if(YES == [rule.endpointAddr isEqualToString:VALUE_ANY])
-                {
-                    //dbg msg
-                    os_log_debug(logHandle, "rule address is any ('*'), will check port");
-                    
-                    //addr is any
-                    //so check the port
-                    if(YES == [rule.endpointPort isEqualToString:remoteEndpoint.port])
-                    {
-                        //dbg msg
-                        os_log_debug(logHandle, "rule match: 'partial' (endpoint port)");
-                        
-                        //partial
-                        partialMatch = rule;
-                        
-                        //next
-                        continue;
-                    }
-                }
-                
-                //addr and port both set (not '*')
-                // check that both endpoint addr and port match
-                else
-                {
-                    //dbg msg
-                    os_log_debug(logHandle, "address and port set, will check both for match");
-                    
-                    //port match?
-                    if( (YES == [self endpointAddrMatch:flow rule:rule]) &&
-                        (YES == [rule.endpointPort isEqualToString:remoteEndpoint.port]) )
-                    {
-                        //dbg msg
-                            os_log_debug(logHandle, "rule match: 'exact'");
-                            
-                            //exact
-                            extactMatch = rule;
-                            
-                            //next
-                            continue;
-                    }
-                }
-                    
-            } //all rule set
-        
-        } //all candidate rules
-        
-        //extact match?
-        if(nil != extactMatch) matchingRule = extactMatch;
-        
-        //partial match?
-        else if (nil != partialMatch) matchingRule = partialMatch;
-        
-        //any match?
-        else if (nil != anyMatch) matchingRule = anyMatch;
+                //done
+                goto bail;
+            }
+        }
     
     }//sync
         
 bail:
+    
+    return matchingRule;
+}
+
+//find a match
+-(Rule*)findMatch:(Process*)process flow:(NEFilterSocketFlow*)flow candidateRules:(NSArray*)candidateRules
+{
+    //matching rule
+    Rule* matchingRule = nil;
+    
+    //any match
+    // item has a '*:*' rule
+    Rule* anyMatch = nil;
+    
+    //partial match
+    // *:port or ip:*
+    Rule* partialMatch = nil;
+    
+    //exact match
+    Rule* extactMatch = nil;
+    
+    //remote endpoint
+    NWHostEndpoint* remoteEndpoint = nil;
+    
+    //dbg msg
+    os_log_debug(logHandle, "method '%s' invoked with %{public}@", __PRETTY_FUNCTION__, candidateRules);
+    
+    //extract remote endpoint
+    remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
+    
+    //check candidate rules
+    // note: * is a wildcard, meaning any match
+    for(Rule* rule in candidateRules)
+    {
+        //ingore if rule is temporary
+        // and this pid doesn't match
+        if( (nil != rule.pid) &&
+            (rule.pid.unsignedIntValue != process.pid) )
+        {
+            //skip
+            continue;
+        }
+        
+        //any match?
+        if( (YES == [rule.endpointAddr isEqualToString:VALUE_ANY]) &&
+            (YES == [rule.endpointPort isEqualToString:VALUE_ANY]) )
+        {
+            //dbg msg
+            os_log_debug(logHandle, "rule match: 'any'");
+            
+            //any
+            anyMatch = rule;
+            
+            //next
+            continue;
+        }
+        
+        //port is any?
+        // check for (partial) rule match: endpoint addr
+        else if(YES == [rule.endpointPort isEqualToString:VALUE_ANY])
+        {
+            //dbg msg
+            os_log_debug(logHandle, "rule port is any ('*'), will check host/url");
+            
+            //check endpoint host/url
+            if(YES == [self endpointAddrMatch:flow rule:rule])
+            {
+                //dbg msg
+                os_log_debug(logHandle, "rule match: 'partial' (endpoint addr)");
+                
+                //partial
+                partialMatch = rule;
+                
+                //next
+                continue;
+            }
+        }
+        
+        //endpoint addr is any?
+        // check for (partial) rule match: endpoint port
+        else if(YES == [rule.endpointAddr isEqualToString:VALUE_ANY])
+        {
+            //dbg msg
+            os_log_debug(logHandle, "rule address is any ('*'), will check port");
+            
+            //addr is any
+            //so check the port
+            if(YES == [rule.endpointPort isEqualToString:remoteEndpoint.port])
+            {
+                //dbg msg
+                os_log_debug(logHandle, "rule match: 'partial' (endpoint port)");
+                
+                //partial
+                partialMatch = rule;
+                
+                //next
+                continue;
+            }
+        }
+        
+        //addr and port both set (not '*')
+        // check that both endpoint addr and port match
+        else
+        {
+            //dbg msg
+            os_log_debug(logHandle, "address and port set, will check both for match");
+            
+            //port match?
+            if( (YES == [self endpointAddrMatch:flow rule:rule]) &&
+                (YES == [rule.endpointPort isEqualToString:remoteEndpoint.port]) )
+            {
+                //dbg msg
+                os_log_debug(logHandle, "rule match: 'exact'");
+                    
+                //exact
+                extactMatch = rule;
+                
+                //next
+                continue;
+            }
+        }
+            
+    } //all rule set
+    
+    //extact match?
+    if(nil != extactMatch)
+    {
+        matchingRule = extactMatch;
+    }
+    
+    //partial match?
+    else if(nil != partialMatch)
+    {
+        matchingRule = partialMatch;
+    }
+    
+    //any match?
+    else if(nil != anyMatch) 
+    {
+        matchingRule = anyMatch;
+    }
     
     return matchingRule;
 }
@@ -1046,6 +1098,13 @@ bail:
                     //add
                     persistentRules[key][KEY_CS_INFO] = self.rules[key][KEY_CS_INFO];
                 }
+                
+                //add cs info
+                if(nil != self.rules[key][KEY_PATHS])
+                {
+                    //add
+                    persistentRules[key][KEY_PATHS] = self.rules[key][KEY_PATHS];
+                }
             }
         }
         
@@ -1107,7 +1166,7 @@ bail:
     }
     
     //unarchive
-    unarchivedRules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [Rule class]]] fromData:importedRules error:&error];
+    unarchivedRules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSMutableSet class], [Rule class]]] fromData:importedRules error:&error];
     
     //error?
     if( (nil != error) ||
@@ -1149,84 +1208,125 @@ bail:
 }
 
 //cleanup
-// ...remove any rules that don't match a on-disk
--(NSInteger)cleanup
+// ...remove any rules whose path was deleted
+-(NSUInteger)cleanup
 {
-    //flag
-    NSInteger deletedRules = 0;
+    //count
+    NSUInteger deletedRules = 0;
+    
+    //rules to delete
+    NSMutableArray* rules2Delete = nil;
     
     //dbg msg
     os_log_debug(logHandle, "cleaning up rules");
     
+    //alloc
+    rules2Delete = [NSMutableArray array];
+    
     //sync to access
     @synchronized(self.rules)
     {
-        //iterate over all rules
-        // and path that's gone, delete
+        //gather all rules with deleted paths
         for(NSString* key in self.rules.allKeys)
         {
-            //rules for item
-            NSArray* itemRules = nil;
+            //paths
+            NSArray* paths = nil;
             
-            //item rule
+            //path
+            NSString* path = nil;
+            
+            //rules for item
+            NSArray* rules = nil;
+            
+            //(first) rule
             Rule* rule = nil;
             
+            //flag
+            BOOL allDeleted = YES;
+            
+            //extract 'external' paths
+            paths = self.rules[key][KEY_PATHS];
+            
             //extract rules for item
-            itemRules = self.rules[key][KEY_RULES];
+            rules = self.rules[key][KEY_RULES];
             
-            //grab first process object
-            // should all be the same anyways...
-            rule = itemRules.firstObject;
-            
-            //sanity check(s)
-            if( (nil == rule) ||
-                (0 == rule.path.length) )
-            {
-                //skip
-                continue;
-            }
-            
-            //dbg msg
-            os_log_debug(logHandle, "checking if %{public}@ was deleted", rule.path);
+            //extract (first) rule
+            rule = rules.firstObject;
             
             //skip global rules
-            // ...these don't have paths
-            if(rule.isGlobal)
+            if(YES == rule.isGlobal.boolValue)
             {
                 //skip
                 continue;
             }
             
-            //path ...gone?
-            if(YES != [NSFileManager.defaultManager fileExistsAtPath:rule.path])
+            //directory rule?
+            // check if directory has been deleted
+            if(YES == rule.isDirectory.boolValue)
             {
-                //dbg msg
-                os_log_debug(logHandle, "%{public}@ is gone, will delete rule", rule.path);
+                //directory rules end in /*
+                // so first remove the trailing '*'
+                path = [rule.path substringToIndex:path.length - 1];
                 
-                //delete
-                [self.rules removeObjectForKey:key];
+                //was directory deleted?
+                if(YES != [NSFileManager.defaultManager fileExistsAtPath:path])
+                {
+                    //dbg msg
+                    os_log_debug(logHandle, "%{public}@ is gone, will delete directory rule", path);
+                    
+                    //add to list
+                    [rules2Delete addObject:rule];
+                }
                 
-                //inc
-                // but for all item's rule(s)
-                deletedRules += itemRules.count;
+                //next
+                continue;
+            }
+            
+            //for (normal) item rules
+            // first set flag if all 'external' paths have been deleted
+            for(NSString* path in paths)
+            {
+                //path still there?
+                if(YES == [NSFileManager.defaultManager fileExistsAtPath:path])
+                {
+                    //toggle
+                    allDeleted = NO;
+                    
+                    //done
+                    break;
+                }
+            }
+            
+            //check each rule's 'internal' path
+            for(Rule* rule in rules)
+            {
+                //was path deleted?
+                // and all 'external' paths too?
+                if( (YES == allDeleted) &&
+                    (YES != [NSFileManager.defaultManager fileExistsAtPath:rule.path]))
+                {
+                    //dbg msg
+                    os_log_debug(logHandle, "%{public}@ is gone, will delete rule", rule.path);
+                    
+                    //add to list
+                    [rules2Delete addObject:rule];
+                }
             }
         }
     }
     
+    //save count
+    deletedRules = rules2Delete.count;
+    
+    //now delete each
+    for(Rule* rule in rules2Delete)
+    {
+        //delete
+        [self delete:rule.key rule:rule.uuid];
+    }
+    
     //dbg msg
     os_log_debug(logHandle, "cleaned up/deleted %ld rules", (long)deletedRules);
-    
-bail:
-    
-    //always save to disk
-    if(YES != [self save])
-    {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to save (cleaned up) rules");
-        
-        //set error
-        deletedRules = -1;
-    }
     
     return deletedRules;
 }

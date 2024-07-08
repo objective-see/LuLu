@@ -61,7 +61,7 @@
 -(void)updateCSInfo:(Process*)process;
 
 //cleanup rules
--(NSInteger)cleanup;
+-(NSUInteger)cleanup;
 
 @end
 
