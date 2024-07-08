@@ -15,9 +15,9 @@
 
 /* FUNCTIONS */
 
-//give path to app
+//give path to bundle
 // get full path to its binary
-NSString* getAppBinary(NSString* appPath);
+NSString* getBundleExecutable(NSString* appPath);
 
 //get app's version
 // extracted from Info.plist

@@ -40,9 +40,9 @@ NSString* getAppVersion(void)
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
 
-//give path to app
+//give path to bundle
 // get full path to its binary
-NSString* getAppBinary(NSString* appPath)
+NSString* getBundleExecutable(NSString* appPath)
 {
     //binary path
     NSString* binaryPath = nil;
