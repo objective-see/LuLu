@@ -84,7 +84,7 @@ extern os_log_t logHandle;
     if(YES == [self.itemPath hasSuffix:@".app"])
     {
         //get path
-        path = getAppBinary(self.itemPath);
+        path = getBundleExecutable(self.itemPath);
         
         //dbg msg
         os_log_debug(logHandle, "resolved app's binary: %{public}@", path);
