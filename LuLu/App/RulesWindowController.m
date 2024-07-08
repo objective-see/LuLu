@@ -383,7 +383,7 @@ bail:
     if(YES == [item isKindOfClass:[NSArray class]])
     {
         //show paths
-        [self showItemPaths:((NSArray*)item).firstObject];
+        [self showItemPaths:((Rule*)((NSArray*)item).firstObject).key];
     }
     
     //rule row
@@ -450,16 +450,22 @@ bail:
 }
 
 //show paths in sheet
--(void)showItemPaths:(Rule*)rule
+-(void)showItemPaths:(NSString*)itemKey
 {
+    //current rules (from ext)
+    NSDictionary* currentRules = nil;
+    
     //dbg msg
-    os_log_debug(logHandle, "method '%s' invoked with %{public}@", __PRETTY_FUNCTION__, rule);
+    os_log_debug(logHandle, "method '%s' invoked with %{public}@", __PRETTY_FUNCTION__, itemKey);
     
     //alloc sheet
     self.itemPathsWindowController = [[ItemPathsWindowController alloc] initWithWindowNibName:@"ItemPaths"];
+
+    //get latest rules
+    currentRules = [xpcDaemonClient getRules];
     
-    //set rule
-    self.itemPathsWindowController.rule = rule;
+    //set rules
+    self.itemPathsWindowController.item = currentRules[itemKey];
     
     //show it
     [self.window beginSheet:self.itemPathsWindowController.window completionHandler:^(NSModalResponse returnCode) {
@@ -1158,10 +1164,13 @@ bail:
         case MENU_SHOW_PATHS:
             
             //sanity check
-            if(YES != [item isKindOfClass:[NSArray class]]) goto bail;
+            if(YES != [item isKindOfClass:[NSArray class]]) 
+            {
+                goto bail;
+            }
             
             //show paths
-            [self showItemPaths:((NSArray*)item).firstObject];
+            [self showItemPaths:((Rule*)((NSArray*)item).firstObject).key];
             
             break;
             
