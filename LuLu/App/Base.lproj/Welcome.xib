@@ -139,11 +139,75 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fF2-uN-7GF">
-                    <rect key="frame" x="65" y="61" width="888" height="676"/>
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="gQX-4I-e3r">
+                    <rect key="frame" x="507" y="404" width="441" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="InstallInstructions" id="pE8-8H-3xl"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="0vz-2d-q6y">
+                        <font key="font" size="15" name="AvenirNextCondensed-Regular"/>
+                        <string key="title" base64-UTF8="YES">
+Mi4gSW4gdGhlIOKAnFN5c3RlbSBTZXR0aW5nc+KAnSBhcHAgA2ZpbmQgd2hlcmUgTHVMdSB3YXMgYmxv
+Y2tlZCBhbmQgY2xpY2s6IOKAnEFsbG934oCdIA
+</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="2ap-vV-OZ8">
+                    <rect key="frame" x="28" y="409" width="402" height="33"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="v9d-oL-pht">
+                        <font key="font" size="15" name="AvenirNextCondensed-Regular"/>
+                        <string key="title" base64-UTF8="YES">
+MS4gSW4gdGhlIOKAnFN5c3RlbSBFeHRlbnNpb24gQmxvY2tlZOKAnSADYWxlcnQsIGNsaWNrOiDigJ1P
+cGVuIFN5c3RlbSBTZXR0aW5nc+KAnSA
+</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="Pbk-fI-wNj">
+                    <rect key="frame" x="99" y="83" width="204" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="Vo9-qw-HYm">
+                        <font key="font" size="15" name="AvenirNextCondensed-Regular"/>
+                        <string key="title">3. Authenticate</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JJh-FW-P86">
+                    <rect key="frame" x="71" y="467" width="261" height="261"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="InstallBlocked" id="F3Z-Lx-5ln"/>
                 </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxD-LX-0aN">
+                    <rect key="frame" x="85" y="122" width="261" height="261"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="InstallAuth" id="7KJ-Vr-FCS"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hZ-ai-V42">
+                    <rect key="frame" x="570" y="122" width="261" height="261"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="InstallAllow" id="Y8g-u9-oUy"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VC1-he-DXG">
+                    <rect key="frame" x="492" y="422" width="404" height="365"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="InstallApprove" id="M64-G3-LAa"/>
+                </imageView>
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="GeN-gm-vVh">
+                    <rect key="frame" x="490" y="81" width="402" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="DTb-gB-vym">
+                        <font key="font" size="15" name="AvenirNextCondensed-Regular"/>
+                        <string key="title" base64-UTF8="YES">
+NC4gSW4gdGhlIOKAnEZpbHRlciBOZXR3b3JrIENvbnRlbnTigJ0gA2FsZXJ0LCBjbGljazog4oCcQWxs
+b3figJ0gDQ
+</string>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="-343" y="1566.5"/>
         </customView>
@@ -399,7 +463,10 @@
         <image name="FriendsMalwarebytes" width="2500" height="403"/>
         <image name="FriendsPANW" width="1312" height="240"/>
         <image name="FriendsiVerify" width="500" height="180"/>
-        <image name="InstallInstructions" width="1918" height="1421"/>
+        <image name="InstallAllow" width="520" height="468"/>
+        <image name="InstallApprove" width="1040" height="560"/>
+        <image name="InstallAuth" width="521" height="593"/>
+        <image name="InstallBlocked" width="520" height="560"/>
         <image name="MainAppHeart" width="256" height="256"/>
         <image name="MainAppIcon" width="1276" height="1276"/>
         <image name="MainAppLuLuText" width="1268" height="385"/>
