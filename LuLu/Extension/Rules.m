@@ -511,24 +511,59 @@ bail:
     //item's rules
     NSArray* itemRules = nil;
     
+    //canidate rules
+    NSMutableArray* candidateRules = nil;
+    
+    //any match
+    // item has a '*:*' rule
+    Rule* anyMatch = nil;
+    
+    //partial match
+    // *:port or ip:*
+    Rule* partialMatch = nil;
+    
+    //exact match
+    Rule* extactMatch = nil;
+    
+    //remote endpoint
+    NWHostEndpoint* remoteEndpoint = nil;
+    
     //dbg msg
     os_log_debug(logHandle, "looking for rule for %{public}@ -> %{public}@", process.key, process.path);
     
     //sync to access
     @synchronized(self.rules)
     {
-        //1st: check global rules
-        globalRules = self.rules[VALUE_ANY][KEY_RULES];
-        if(nil != globalRules)
+        //item rules
+        itemRules = self.rules[process.key][KEY_RULES];
+        
+        //extract cs info
+        csInfo = self.rules[process.key][KEY_CS_INFO];
+            
+        //cs info?
+        // make sure it (still) matches
+        if(nil != csInfo)
         {
-            //match?
-            matchingRule = [self findMatch:process flow:flow candidateRules:globalRules];
-            if(nil != matchingRule)
+            //mismatch?
+            // ignore...
+            if(YES != matchesCSInfo(process.csInfo, csInfo))
             {
-                //done
+                //set
+                *csChange = YES;
+                
+                //err msg
+                os_log_error(logHandle, "ERROR: code signing mismatch: %{public}@ / %{public}@", process.csInfo, csInfo);
+                
+                //bail
                 goto bail;
             }
+            
+            //extract item rules
+            itemRules = self.rules[process.key][KEY_RULES];
         }
+       
+        //grab global rules
+        globalRules = self.rules[VALUE_ANY][KEY_RULES];
         
         //init directory rules
         directoryRules = [NSMutableArray array];
@@ -557,52 +592,148 @@ bail:
             }
         }
         
-        //2nd: check directory rules
-        if(0 != directoryRules.count)
+        //no global, directory, nor item rules
+        // bail, with no match so user is prompted
+        if( (nil == itemRules) &&
+            (nil == globalRules) &&
+            (0 == directoryRules.count) )
         {
-            //match?
-            matchingRule = [self findMatch:process flow:flow candidateRules:directoryRules];
-            if(nil != matchingRule)
-            {
-                //done
-                goto bail;
-            }
+            //no match
+            goto bail;
         }
         
-        //grab item rules
-        itemRules = self.rules[process.key][KEY_RULES];
+        //init candidate rules
+        candidateRules = [NSMutableArray array];
         
-        //grab item cs info
-        csInfo = self.rules[process.key][KEY_CS_INFO];
-            
-        //cs info?
-        // make sure it (still) matches
-        if(nil != csInfo)
-        {
-            //mismatch?
-            // bail, user will be prompted
-            if(YES != matchesCSInfo(process.csInfo, csInfo))
-            {
-                //set
-                *csChange = YES;
-                
-                //err msg
-                os_log_error(logHandle, "ERROR: code signing mismatch: %{public}@ / %{public}@", process.csInfo, csInfo);
-                
-                //bail
-                goto bail;
-            }
-        }
+        //add global rules first
+        if(nil != globalRules) [candidateRules addObject:globalRules];
         
-        //3rd: check item's specific rules
-        if(nil != itemRules)
+        //add directory rules next
+        if(0 != directoryRules.count) [candidateRules addObject:directoryRules];
+        
+        //add item's rules last...
+        if(nil != itemRules) [candidateRules addObject:itemRules];
+        
+        //extract remote endpoint
+        remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
+        
+        //check each set of rules
+        // set: global, directory, and/or item rules
+        for(NSArray* rules in candidateRules)
         {
-            //match?
-            matchingRule = [self findMatch:process flow:flow candidateRules:itemRules];
-            if(nil != matchingRule)
+            //check all set of rules
+            // note: * is a wildcard, meaning any match
+            for(Rule* rule in rules)
             {
-                //add path as this might be new
-                // older rules might not have this, so make sure to add
+                //ingore if rule is temporary
+                // and this pid doesn't match
+                if( (YES == [rule isTemporary]) &&
+                    (rule.pid.unsignedIntValue != process.pid) )
+                {
+                    //skip
+                    continue;
+                }
+                
+                //any match?
+                if( (YES == [rule.endpointAddr isEqualToString:VALUE_ANY]) &&
+                    (YES == [rule.endpointPort isEqualToString:VALUE_ANY]) )
+                {
+                    //dbg msg
+                    os_log_debug(logHandle, "rule match: 'any'");
+                    
+                    //any
+                    anyMatch = rule;
+                    
+                    //next
+                    continue;
+                }
+                
+                //port is any?
+                // check for (partial) rule match: endpoint addr
+                else if(YES == [rule.endpointPort isEqualToString:VALUE_ANY])
+                {
+                    //dbg msg
+                    os_log_debug(logHandle, "rule port is any ('*'), will check host/url");
+                    
+                    //check endpoint host/url
+                    if(YES == [self endpointAddrMatch:flow rule:rule])
+                    {
+                        //dbg msg
+                        os_log_debug(logHandle, "rule match: 'partial' (endpoint addr)");
+                        
+                        //partial
+                        partialMatch = rule;
+                        
+                        //next
+                        continue;
+                    }
+                }
+                
+                //endpoint addr is any?
+                // check for (partial) rule match: endpoint port
+                else if(YES == [rule.endpointAddr isEqualToString:VALUE_ANY])
+                {
+                    //dbg msg
+                    os_log_debug(logHandle, "rule address is any ('*'), will check port");
+                    
+                    //addr is any
+                    //so check the port
+                    if(YES == [rule.endpointPort isEqualToString:remoteEndpoint.port])
+                    {
+                        //dbg msg
+                        os_log_debug(logHandle, "rule match: 'partial' (endpoint port)");
+                        
+                        //partial
+                        partialMatch = rule;
+                        
+                        //next
+                        continue;
+                    }
+                }
+                
+                //addr and port both set (not '*')
+                // check that both endpoint addr and port match
+                else
+                {
+                    //dbg msg
+                    os_log_debug(logHandle, "address and port set, will check both for match");
+                    
+                    //port match?
+                    if( (YES == [self endpointAddrMatch:flow rule:rule]) &&
+                        (YES == [rule.endpointPort isEqualToString:remoteEndpoint.port]) )
+                    {
+                        //dbg msg
+                        os_log_debug(logHandle, "rule match: 'exact'");
+                            
+                        //exact
+                        extactMatch = rule;
+                        
+                        //next
+                        continue;
+                    }
+                }
+                    
+            } //all rule set
+        
+        } //all candidate rules
+        
+        //extact match?
+        if(nil != extactMatch) matchingRule = extactMatch;
+        
+        //partial match?
+        else if (nil != partialMatch) matchingRule = partialMatch;
+        
+        //any match?
+        else if (nil != anyMatch) matchingRule = anyMatch;
+        
+        //matching rule !global/!directory
+        // add its 'external' path (as older rules might not have this)
+        if(nil != matchingRule)
+        {
+            if( (YES != matchingRule.isGlobal.boolValue) &&
+                (YES != matchingRule.isDirectory.boolValue) )
+            {
+                //need set for 'external' paths?
                 if(nil == self.rules[process.key][KEY_PATHS])
                 {
                     //init
@@ -615,156 +746,12 @@ bail:
                     //add
                     [self.rules[process.key][KEY_PATHS] addObject:process.path];
                 }
-                
-                //done
-                goto bail;
             }
         }
     
     }//sync
         
 bail:
-    
-    return matchingRule;
-}
-
-//find a match
--(Rule*)findMatch:(Process*)process flow:(NEFilterSocketFlow*)flow candidateRules:(NSArray*)candidateRules
-{
-    //matching rule
-    Rule* matchingRule = nil;
-    
-    //any match
-    // item has a '*:*' rule
-    Rule* anyMatch = nil;
-    
-    //partial match
-    // *:port or ip:*
-    Rule* partialMatch = nil;
-    
-    //exact match
-    Rule* extactMatch = nil;
-    
-    //remote endpoint
-    NWHostEndpoint* remoteEndpoint = nil;
-    
-    //dbg msg
-    os_log_debug(logHandle, "method '%s' invoked with %{public}@", __PRETTY_FUNCTION__, candidateRules);
-    
-    //extract remote endpoint
-    remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
-    
-    //check candidate rules
-    // note: * is a wildcard, meaning any match
-    for(Rule* rule in candidateRules)
-    {
-        //ingore if rule is temporary
-        // and this pid doesn't match
-        if( (nil != rule.pid) &&
-            (rule.pid.unsignedIntValue != process.pid) )
-        {
-            //skip
-            continue;
-        }
-        
-        //any match?
-        if( (YES == [rule.endpointAddr isEqualToString:VALUE_ANY]) &&
-            (YES == [rule.endpointPort isEqualToString:VALUE_ANY]) )
-        {
-            //dbg msg
-            os_log_debug(logHandle, "rule match: 'any'");
-            
-            //any
-            anyMatch = rule;
-            
-            //next
-            continue;
-        }
-        
-        //port is any?
-        // check for (partial) rule match: endpoint addr
-        else if(YES == [rule.endpointPort isEqualToString:VALUE_ANY])
-        {
-            //dbg msg
-            os_log_debug(logHandle, "rule port is any ('*'), will check host/url");
-            
-            //check endpoint host/url
-            if(YES == [self endpointAddrMatch:flow rule:rule])
-            {
-                //dbg msg
-                os_log_debug(logHandle, "rule match: 'partial' (endpoint addr)");
-                
-                //partial
-                partialMatch = rule;
-                
-                //next
-                continue;
-            }
-        }
-        
-        //endpoint addr is any?
-        // check for (partial) rule match: endpoint port
-        else if(YES == [rule.endpointAddr isEqualToString:VALUE_ANY])
-        {
-            //dbg msg
-            os_log_debug(logHandle, "rule address is any ('*'), will check port");
-            
-            //addr is any
-            //so check the port
-            if(YES == [rule.endpointPort isEqualToString:remoteEndpoint.port])
-            {
-                //dbg msg
-                os_log_debug(logHandle, "rule match: 'partial' (endpoint port)");
-                
-                //partial
-                partialMatch = rule;
-                
-                //next
-                continue;
-            }
-        }
-        
-        //addr and port both set (not '*')
-        // check that both endpoint addr and port match
-        else
-        {
-            //dbg msg
-            os_log_debug(logHandle, "address and port set, will check both for match");
-            
-            //port match?
-            if( (YES == [self endpointAddrMatch:flow rule:rule]) &&
-                (YES == [rule.endpointPort isEqualToString:remoteEndpoint.port]) )
-            {
-                //dbg msg
-                os_log_debug(logHandle, "rule match: 'exact'");
-                    
-                //exact
-                extactMatch = rule;
-                
-                //next
-                continue;
-            }
-        }
-            
-    } //all rule set
-    
-    //extact match?
-    if(nil != extactMatch)
-    {
-        matchingRule = extactMatch;
-    }
-    
-    //partial match?
-    else if(nil != partialMatch)
-    {
-        matchingRule = partialMatch;
-    }
-    
-    //any match?
-    else if(nil != anyMatch) 
-    {
-        matchingRule = anyMatch;
-    }
     
     return matchingRule;
 }
