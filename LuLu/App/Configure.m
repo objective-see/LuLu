@@ -153,7 +153,7 @@ bail:
     //first, remove login item
     toggleLoginItem([NSURL fileURLWithPath:app], ACTION_UNINSTALL_FLAG);
 
-    //quit (other) LuLu
+    //quit (other) LuLus, network monitor, extension
     [self quit];
     
     //app found in /Apps?

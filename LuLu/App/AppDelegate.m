@@ -50,8 +50,17 @@ XPCDaemonClient* xpcDaemonClient = nil;
     //don't relaunch
     [NSApp disableRelaunchOnLogin];
     
-    //CHECK 0x1:
-    // must be run from /Applications as LuLu.app
+    //v1.0 version installed?
+    // prompt / exit
+    if(YES == [NSFileManager.defaultManager fileExistsAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:@"LuLu.bundle"]])
+    {
+        //TODO: add alert
+        
+        //exit
+        [NSApplication.sharedApplication terminate:self];
+    }
+    
+    //Apple: item's w/ System Extensions must be run from /Applications 🤷🏻‍♂️
     if(YES != [NSBundle.mainBundle.bundlePath isEqualToString:[@"/Applications" stringByAppendingPathComponent:APP_NAME]])
     {
         //dbg msg
@@ -67,47 +76,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
         [NSApplication.sharedApplication terminate:self];
     }
     
-    //CHECK 0x2:
-    // is v1.* installed?
-    // if so, need to launch uninstaller (to remove kext)
-    if(YES == [self shouldLaunchUninstaller])
-    {
-        //dbg msg
-        os_log_debug(logHandle, "version 1.* detected, will launch (un)installer");
-        
-        //persist as login item
-        // as want to be (re)launched after v1.0 uninstall (which requires reboot)
-        if(YES != toggleLoginItem(NSBundle.mainBundle.bundleURL, ACTION_INSTALL_FLAG))
-        {
-            //err msg
-            os_log_error(logHandle, "ERROR: failed to install self as login item");
-        
-        }
-        //dbg msg
-        else 
-        {
-            os_log_debug(logHandle, "installed self as login item");
-        }
-        
-        //launch (v1.*) uninstaller
-        if(YES != [self launchUninstaller])
-        {
-            //err msg
-            os_log_error(logHandle, "ERROR: failed to launch v1.* uninstaller");
-            
-        }
-        //dbg msg
-        else
-        {
-            os_log_debug(logHandle, "launched v1.* uninstaller");
-        }
-                
-        //exit
-        // on reboot we'll be re-launched to continue...
-        [NSApplication.sharedApplication terminate:self];
-    }
-    
-    //first time
+    //first time?
     // show/walk thru welcome screen(s)
     // ...will call back here to complete initializations
     if(YES == [self isFirstTime])
@@ -284,49 +253,6 @@ bail:
    return (nil == [[NSMutableDictionary dictionaryWithContentsOfFile:[INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE]] objectForKey:PREF_INSTALL_TIMESTAMP]);
 }
 
-//check if v1.* is installed
-// this requires (un)installer to remove
--(BOOL)shouldLaunchUninstaller
-{
-    //check for v1.* launch item (bundle)
-    return [NSFileManager.defaultManager fileExistsAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:@"LuLu.bundle"]];
-}
-
-//launch v1. uninstaller
--(BOOL)launchUninstaller
-{
-    //flag
-    BOOL launched = NO;
-    
-    //error
-    NSError* error = nil;
-    
-    //path
-    NSString* path = nil;
-    
-    //init path
-    path = [NSBundle.mainBundle.resourcePath stringByAppendingPathComponent:UNINSTALLER_V1];
-    
-    //dbg msg
-    os_log_debug(logHandle, "launching v1.* uninstaller (%{public}@)", path);
-
-    //launch
-    if(YES != [NSWorkspace.sharedWorkspace launchApplication:path])
-    {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to launch v1.* uninstaller (%{public}@, error:%{public}@)", path, error);
-        
-        //bail
-        goto bail;
-    }
-    
-    //happy
-    launched = YES;
-    
-bail:
-    
-    return launched;
-}
 
 //handle user double-clicks
 // app is (likely) already running as login item, so show (or) activate window
@@ -342,6 +268,7 @@ bail:
     os_log_debug(logHandle, "method '%s' invoked (hasVisibleWindows: %d)", __PRETTY_FUNCTION__, hasVisibleWindows);
     
     //TODO: wait/check a few times?
+    //TODO: open System Exts?
     //extention isn't running?
     // show alert, otherwise things get confusing
     if(YES != [extension isExtensionRunning])
@@ -806,8 +733,7 @@ bail:
     //show alert
     response = showAlert(NSAlertStyleInformational, NSLocalizedString(@"Uninstall LuLu?", @"Uninstall LuLu?"), NSLocalizedString(@"...this will fully remove LuLu from your Mac", @"...this will fully remove LuLu from your Mac"), @[NSLocalizedString(@"Uninstall", @"Uninstall"), NSLocalizedString(@"Cancel", @"Cancel")]);
     
-    //show alert
-    // cancel? ignore
+    //cancel? ignore
     if(NSModalResponseCancel == response)
     {
          //dbg msg

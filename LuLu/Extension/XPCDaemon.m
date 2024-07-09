@@ -221,7 +221,6 @@ bail:
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to remove %{public}@ (error: %{public}@)", path, error);
-        
     }
     else
     {

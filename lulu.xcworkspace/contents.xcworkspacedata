@@ -4,7 +4,4 @@
    <FileRef
       location = "group:LuLu/LuLu.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Uninstaller/Uninstaller.xcodeproj">
-   </FileRef>
 </Workspace>
