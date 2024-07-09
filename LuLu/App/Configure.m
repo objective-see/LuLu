@@ -170,7 +170,12 @@ bail:
             
             //but continue onwards
             
-        } else os_log_debug(logHandle, "removed %{public}@", app);
+        } 
+        //dbg msg
+        else
+        {
+            os_log_debug(logHandle, "removed %{public}@", app);
+        }
     }
     
     //dbg msg

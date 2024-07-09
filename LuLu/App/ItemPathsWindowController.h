@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ItemPathsWindowController : NSWindowController
 
-//item
-@property(nonatomic, retain)Rule* rule;
+//item's rules
+@property(nonatomic, retain)NSDictionary* item;
 
 //item paths
 @property (weak) IBOutlet NSTextField *itemPaths;

@@ -44,13 +44,13 @@
     if(nil == signingInfo)
     {
         //append to summary
-        [summary appendFormat:@" is not validly signed"];
+        [summary appendFormat:NSLocalizedString(@" is not validly signed", @" is not validly signed")];
         
         //details: n/a
-        self.details.stringValue = @"not applicable";
+        self.details.stringValue = NSLocalizedString(@"not applicable", @"not applicable");
         
         //signing id: n/a
-        self.signingID.stringValue = @"not applicable";
+        self.signingID.stringValue = NSLocalizedString(@"not applicable", @"not applicable");
         
         //bail
         goto bail;
@@ -63,13 +63,13 @@
         case noErr:
             
             //append to summary
-            [summary appendFormat:@" is validly signed"];
+            [summary appendFormat:NSLocalizedString(@" is validly signed", @" is validly signed")];
             
             //item signed by apple
             if(Apple == [signingInfo[KEY_CS_SIGNER] intValue])
             {
                 //set details
-                self.details.stringValue = @"signed by Apple proper";
+                self.details.stringValue = NSLocalizedString(@"signed by Apple proper", @"signed by Apple proper");
             }
             //item signed, third party/ad hoc, etc
             else
@@ -78,25 +78,25 @@
                 if(AppStore == [signingInfo[KEY_CS_SIGNER] intValue])
                 {
                     //set details
-                    self.details.stringValue = @"signed by Mac App Store";
+                    self.details.stringValue = NSLocalizedString(@"signed by Mac App Store", @"signed by Mac App Store");
                 }
                 //developer id?
                 else if(DevID == [signingInfo[KEY_CS_SIGNER] intValue])
                 {
                     //set details
-                    self.details.stringValue = @"signed with an Apple Developer ID";
+                    self.details.stringValue = NSLocalizedString(@"signed with an Apple Developer ID", @"signed with an Apple Developer ID");
                 }
                 //something else
                 // ad hoc? 3rd-party?
                 else if(AdHoc == [signingInfo[KEY_CS_SIGNER] intValue])
                 {
                     //set details
-                    self.details.stringValue = @" signed by 3rd-party/ad hoc";
+                    self.details.stringValue = NSLocalizedString(@" signed by 3rd-party/ad hoc", @" signed by 3rd-party/ad hoc");
                 }
                 else
                 {
                     //set details
-                    self.details.stringValue = @" unknown";
+                    self.details.stringValue = NSLocalizedString(@" unknown", @" unknown");
                 }
             }
             
@@ -105,10 +105,10 @@
             if(0 == [signingInfo[KEY_CS_AUTHS] count])
             {
                 //set details
-                self.details.stringValue = @"signed, but no signing authorities (adhoc?)";
+                self.details.stringValue = NSLocalizedString(@"signed, but no signing authorities (adhoc?)", @"signed, but no signing authorities (adhoc?)");
                 
                 //set signing auth field
-                ((NSTextField*)[self.view viewWithTag:SIGNING_AUTH_1]).stringValue = @"› no signing authorities";
+                ((NSTextField*)[self.view viewWithTag:SIGNING_AUTH_1]).stringValue = NSLocalizedString(@"› no signing authorities", @"› no signing authorities");
             }
             
             //add each signing auth
@@ -139,13 +139,13 @@
         case errSecCSUnsigned:
             
             //append to summary
-            [summary appendFormat:@" is not signed"];
+            [summary appendFormat:NSLocalizedString(@" is not signed", @" is not signed")];
             
             //details: n/a
-            self.details.stringValue = @"not applicable";
+            self.details.stringValue = NSLocalizedString(@"not applicable", @"not applicable");
             
             //signing id: n/a
-            self.signingID.stringValue = @"not applicable";
+            self.signingID.stringValue = NSLocalizedString(@"not applicable", @"not applicable");
             
             break;
             
@@ -154,10 +154,10 @@
         default:
             
             //append to summary
-            [summary appendFormat:@" has a signing issue"];
+            [summary appendFormat:NSLocalizedString(@" has a signing issue", @" has a signing issue")];
             
             //set details
-            self.details.stringValue = [NSMutableString stringWithFormat:@"signing error: %#lx", (long)[signingInfo[KEY_CS_STATUS] integerValue]];
+            self.details.stringValue = [NSMutableString stringWithFormat:NSLocalizedString(@"signing error: %#lx", @"signing error: %#lx"), (long)[signingInfo[KEY_CS_STATUS] integerValue]];
             
             //set signing id
             if(nil != signingInfo[KEY_CS_ID])

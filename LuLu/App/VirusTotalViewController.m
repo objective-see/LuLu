@@ -26,7 +26,7 @@ extern os_log_t logHandle;
 -(void)popoverWillShow:(NSNotification *)notification;
 {
     //set message
-    self.message.stringValue = @"querying virus total...";
+    self.message.stringValue = NSLocalizedString(@"querying Virus Total...", @"querying Virus Total...");
     
     //bg thread for VT
     [self performSelectorInBackground:@selector(queryVT) withObject:nil];
@@ -77,7 +77,7 @@ extern os_log_t logHandle;
     [NSThread sleepForTimeInterval:0.5f];
     
     //dbg msg
-    os_log_debug(logHandle, "querying VirusTotal with %{public}@", self.itemPath);
+    os_log_debug(logHandle, "querying Virus Total with %{public}@", self.itemPath);
     
     //when it's an app
     // get path to app's binary
@@ -118,7 +118,7 @@ extern os_log_t logHandle;
     }
     
     //dbg msg
-    os_log_debug(logHandle, "querying VT with %{public}@", self.itemPath);
+    os_log_debug(logHandle, "querying Virus Total with %{public}@", self.itemPath);
     
     //add name
     item[@"name"] = self.itemName;
@@ -156,7 +156,7 @@ bail:
 -(void)displayResults:(NSMutableDictionary*)item
 {
     //dbg msg
-    os_log_debug(logHandle, "VT response: %{public}@", item);
+    os_log_debug(logHandle, "Virus Total response: %{public}@", item);
     
     //stop spinner
     [self.vtSpinner stopAnimation:nil];
@@ -184,7 +184,7 @@ bail:
     self.vtSpinner.hidden = YES;
     
     //set message
-    self.message.stringValue = @"failed to query virus total :(";
+    self.message.stringValue = NSLocalizedString(@"failed to query Virus Total", @"failed to query Virus Total");
     
     return;
 }
@@ -229,7 +229,7 @@ bail:
         (nil == item[@"vtInfo"][@"found"]) )
     {
         //set
-        [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"received invalid response"]];
+        [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"received invalid response", @"received invalid response")]];
         
         //bail
         goto bail;
@@ -243,7 +243,7 @@ bail:
             (nil == item[@"vtInfo"][@"permalink"]) )
         {
             //set
-            [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"received invalid response"]];
+            [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"received invalid response", @"received invalid response")]];
             
             //bail
             goto bail;
@@ -264,14 +264,14 @@ bail:
         attributes = @{NSFontAttributeName: [NSFont fontWithName:@"Menlo" size:13], NSLinkAttributeName:[NSURL URLWithString:item[@"vtInfo"][@"permalink"]], NSForegroundColorAttributeName:[NSColor linkColor], NSUnderlineStyleAttributeName:[NSNumber numberWithInt:NSUnderlineStyleSingle]};
         
         //add link to full report
-        [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"details" attributes:attributes]];
+        [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"details", @"details") attributes:attributes]];
 
     }
     //file not found on vt
     else
     {
         //add ratio
-        [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"not found" attributes:attributes]];
+        [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"not found", @"not found") attributes:attributes]];
     }
     
 bail:

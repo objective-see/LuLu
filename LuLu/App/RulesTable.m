@@ -62,7 +62,7 @@
     if(YES == [item isKindOfClass:[NSArray class]])
     {
         //add item
-        [menu insertItemWithTitle:@"→ Show path(s)" action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:0];
+        [menu insertItemWithTitle:NSLocalizedString(@"→ Show path(s)", @"→ Show path(s)") action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:0];
         
         //set tag
         menu.itemArray.firstObject.tag = MENU_SHOW_PATHS;
@@ -71,7 +71,7 @@
         menu.itemArray.lastObject.enabled = YES;
         
         //add delete
-        [menu insertItemWithTitle:@"→ Delete rule(s)" action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:1];
+        [menu insertItemWithTitle:NSLocalizedString(@"→ Delete rule(s)", @"→ Delete rule(s)") action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:1];
         
         //set tag
         menu.itemArray.lastObject.tag = MENU_DELETE_RULE;
@@ -84,13 +84,13 @@
     else if(YES == [item isKindOfClass:[Rule class]])
     {
         //set title
-        [menu insertItemWithTitle:@"→ Edit Rule" action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:0];
+        [menu insertItemWithTitle:NSLocalizedString(@"→ Edit Rule", @"→ Edit Rule") action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:0];
         
         //set tag
         menu.itemArray.firstObject.tag = MENU_EDIT_RULE;
         
         //add delete
-        [menu insertItemWithTitle:@"→ Delete Rule" action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:1];
+        [menu insertItemWithTitle:NSLocalizedString(@"→ Delete Rule", @"→ Delete Rule") action:NSSelectorFromString(@"rowMenuHandler:") keyEquivalent:@"" atIndex:1];
         
         //set tag
         menu.itemArray.lastObject.tag = MENU_DELETE_RULE;

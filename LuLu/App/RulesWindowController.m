@@ -164,7 +164,7 @@ extern XPCDaemonClient* xpcDaemonClient;
                 self.toolbar.selectedItemIdentifier = @"all";
             
                 //set table header
-                self.outlineView.tableColumns.firstObject.headerCell.stringValue = @"All Rules";
+                self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"All Rules",@"All Rules");
             }
                     
             //update ui
@@ -278,35 +278,35 @@ bail:
     {
         //all
         case RULE_TYPE_ALL:
-            self.outlineView.tableColumns.firstObject.headerCell.stringValue = @"All Rules";
+            self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"All Rules", @"All Rules");
             break;
             
         //default
         case RULE_TYPE_DEFAULT:
-            self.outlineView.tableColumns.firstObject.headerCell.stringValue = @"Operating System Programs (required for system functionality)";
+            self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"Operating System Programs (required for system functionality)", @"Operating System Programs (required for system functionality)");
             
             break;
             
         //apple
         case RULE_TYPE_APPLE:
-            self.outlineView.tableColumns.firstObject.headerCell.stringValue = @"Apple Programs (automatically allowed & added here if 'allow apple programs' is set)";
+            self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"Apple Programs (automatically allowed & added here if 'allow apple programs' is set)", @"Apple Programs (automatically allowed & added here if 'allow apple programs' is set)");
             
             break;
           
         //baseline
         case RULE_TYPE_BASELINE:
-            self.outlineView.tableColumns.firstObject.headerCell.stringValue = @"Pre-installed 3rd-party Programs (automatically allowed & added here if 'allow installed applications' is set)";
+            self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"Pre-installed 3rd-party Programs (automatically allowed & added here if 'allow installed applications' is set)", @"Pre-installed 3rd-party Programs (automatically allowed & added here if 'allow installed applications' is set)");
             
             break;
             
         //user
         case RULE_TYPE_USER:
-            self.outlineView.tableColumns.firstObject.headerCell.stringValue = @"User-specified Programs (manually added, or in response to an alert)";
+            self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"User-specified Programs (manually added, or in response to an alert)", @"User-specified Programs (manually added, or in response to an alert)");
             break;
             
         //automatic
         case RULE_TYPE_UNCLASSIFIED:
-            self.outlineView.tableColumns.firstObject.headerCell.stringValue = @"Automatically Approved Programs (allowed as user was not logged in)";
+            self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"Automatically Approved Programs (allowed as user was not logged in)", @"Automatically Approved Programs (allowed as user was not logged in)");
             break;
             
         
@@ -416,35 +416,11 @@ bail:
 //warn user the modifying default rules might break things
 -(NSModalResponse)showDefaultRuleAlert:(Rule*)rule action:(NSString*)action
 {
-    //alert
-    NSAlert* alert = nil;
-    
     //response
     NSModalResponse response = 0;
     
-    //init alert
-    alert = [[NSAlert alloc] init];
-    
-    //set style
-    alert.alertStyle = NSAlertStyleWarning;
-    
-    //main text
-    alert.messageText = [NSString stringWithFormat:@"%@ is legitimate macOS process", rule.name];
-    
-    //details
-    alert.informativeText = [NSString stringWithFormat:@"%@ this rule, may impact legitimate system functionalty ...continue?", action];;
-    
-    //add button
-    [alert addButtonWithTitle:@"Continue"];
-    
-    //add button
-    [alert addButtonWithTitle:@"Cancel"];
-    
-    //make app active
-    [NSApp activateIgnoringOtherApps:YES];
-    
-    //show
-    response = [alert runModal];
+    //show alert
+    response = showAlert(NSAlertStyleWarning, [NSString stringWithFormat:NSLocalizedString(@"%@ is legitimate macOS process", @"%@ is legitimate macOS process"), rule.name], [NSString stringWithFormat:NSLocalizedString(@"%@ this rule, may impact legitimate system functionalty ...continue?",@"%@ this rule, may impact legitimate system functionalty ...continue?"), action], @[NSLocalizedString(@"Continue", @"Continue"), NSLocalizedString(@"Cancel", @"Cancel")]);
     
     return response;
 }
@@ -818,7 +794,7 @@ bail:
                 cell.imageView.image = [NSImage imageNamed:@"MainAppRulesBlock"];
                 
                 //set action text
-                action = (nil == rule.pid) ? @"Block" : [NSString stringWithFormat:@"Block (pid: %@)", rule.pid];
+                action = (nil == rule.pid) ? NSLocalizedString(@"Block", @"Block") : [NSString stringWithFormat:NSLocalizedString(@"Block (pid: %@)", @"Block (pid: %@)"), rule.pid];
             }
             //allow?
             else
@@ -827,7 +803,7 @@ bail:
                 cell.imageView.image = [NSImage imageNamed:@"MainAppRulesAllow"];
                 
                 //set action text
-                action = (nil == rule.pid) ? @"Allow" : [NSString stringWithFormat:@"Allow (pid: %@)", rule.pid];
+                action = (nil == rule.pid) ? NSLocalizedString(@"Allow", @"Allow") : [NSString stringWithFormat:NSLocalizedString(@"Allow (pid: %@)",@"Allow (pid: %@)"), rule.pid];
             }
             
             //set text
@@ -879,7 +855,7 @@ bail:
         iconForFileType: NSFileTypeForHFSTypeCode(kGenericHardDiskIcon)];
         
         //set text
-        processCell.textField.stringValue = @"Any program";
+        processCell.textField.stringValue = NSLocalizedString(@"Any program", @"Any program");
         
         //(un)set detailed text
         ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT]).stringValue = @"";
@@ -896,7 +872,7 @@ bail:
         
         //main text
         // last directory
-        processCell.textField.stringValue = [NSString stringWithFormat:@"Programs within \"%@/\"", directory.lastPathComponent];
+        processCell.textField.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Programs within \"%@/\"", @"Programs within \"%@/\""), directory.lastPathComponent];
         
         //details
         // just use path
@@ -935,22 +911,22 @@ bail:
         {
             //apple
             case Apple:
-                details = [NSString stringWithFormat:@"%@ (signer: Apple Proper)", rule.csInfo[KEY_CS_ID]];
+                details = [NSString stringWithFormat:NSLocalizedString(@"%@ (signer: Apple Proper)", @"%@ (signer: Apple Proper)"), rule.csInfo[KEY_CS_ID]];
                 break;
             
             //app store
             case AppStore:
-                details = [NSString stringWithFormat:@"%@ (signer: Apple Mac OS App Store)", rule.csInfo[KEY_CS_ID]];
+                details = [NSString stringWithFormat:NSLocalizedString(@"%@ (signer: Apple Mac OS App Store)", @"%@ (signer: Apple Mac OS App Store)"), rule.csInfo[KEY_CS_ID]];
                 break;
                 
             //dev id
             case DevID:
-                details = [NSString stringWithFormat:@"%@ (signer: %@)", rule.csInfo[KEY_CS_ID], [rule.csInfo[KEY_CS_AUTHS] firstObject]];
+                details = [NSString stringWithFormat:NSLocalizedString(@"%@ (signer: %@)",@"%@ (signer: %@)"), rule.csInfo[KEY_CS_ID], [rule.csInfo[KEY_CS_AUTHS] firstObject]];
                 break;
                 
             //ad hoc
             case AdHoc:
-                details = [NSString stringWithFormat:@"%@ (signer: %@)", rule.csInfo[KEY_CS_ID], @"Ad hoc"];
+                details = [NSString stringWithFormat:NSLocalizedString(@"%@ (signer: %@)", @"%@ (signer: %@)"), rule.csInfo[KEY_CS_ID], NSLocalizedString(@"Ad hoc", @"Ad hoc")];
                 break;
                 
             default:
@@ -963,7 +939,7 @@ bail:
     if(0 == details.length)
     {
         //set
-        details = [NSString stringWithFormat:@"%@ (signer: invalid/unsigned)", rule.path];
+        details = [NSString stringWithFormat:NSLocalizedString(@"%@ (signer: invalid/unsigned)", @"%@ (signer: invalid/unsigned)"), rule.path];
     }
 
     return details;
@@ -988,10 +964,10 @@ bail:
     ((NSTableCellView*)cell).textField.stringValue = @"";
     
     //set endpoint addr
-    address = (YES == [rule.endpointAddr isEqualToString:VALUE_ANY]) ? @"any address" : rule.endpointAddr;
+    address = (YES == [rule.endpointAddr isEqualToString:VALUE_ANY]) ? NSLocalizedString(@"any address",@"any address") : rule.endpointAddr;
     
     //set endpoint port
-    port = (YES == [rule.endpointPort isEqualToString:VALUE_ANY]) ? @"any port" : rule.endpointPort;
+    port = (YES == [rule.endpointPort isEqualToString:VALUE_ANY]) ? NSLocalizedString(@"any port",@"any port") : rule.endpointPort;
     
     //set main text
     cell.textField.stringValue = [NSString stringWithFormat:@"%@:%@", address, port];

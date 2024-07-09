@@ -83,9 +83,9 @@
     NSString* rowValue = nil;
     
     //init string for row
-    // ->process name + pid
-    //   note: if this format changes, also change row width calculation in AlertWindowController!
-    rowValue = [NSString stringWithFormat:@"%@ (pid: %@)", ((NSDictionary*)item)[@"name"], ((NSDictionary*)item)[@"pid"]];
+    // process name + pid
+    //  note: if this format changes, also change row width calculation in AlertWindowController!
+    rowValue = [NSString stringWithFormat:NSLocalizedString(@"%@ (pid: %@)",@"%@ (pid: %@)"), ((NSDictionary*)item)[@"name"], ((NSDictionary*)item)[@"pid"]];
     
     return rowValue;
 }

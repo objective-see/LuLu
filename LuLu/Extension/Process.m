@@ -252,7 +252,7 @@ bail:
         if(nil == (currentName = getProcessPath(currentPID)))
         {
             //default
-            currentName = @"unknown";
+            currentName = NSLocalizedString(@"unknown", @"unknown");
         }
         
         //add

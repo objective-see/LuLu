@@ -145,7 +145,7 @@ extern os_log_t logHandle;
                         dispatch_async(dispatch_get_main_queue(),
                         ^{
                             //show alert
-                            showAlert(NSAlertStyleCritical, @"ERROR: activation failed", @"failed to activate system extension", @[@"OK"]);
+                            showAlert(NSAlertStyleCritical, NSLocalizedString(@"ERROR: activation failed", @"ERROR: activation failed"), NSLocalizedString(@"failed to activate system extension", @"failed to activate system extension"), @[NSLocalizedString(@"OK", @"OK")]);
                             
                             //bye
                             [NSApplication.sharedApplication terminate:self];
@@ -159,7 +159,7 @@ extern os_log_t logHandle;
                     dispatch_sync(dispatch_get_main_queue(),
                     ^{
                         //update UI
-                        self.allowExtMessage.stringValue = @"Waiting for Network Extension Approval";
+                        self.allowExtMessage.stringValue = NSLocalizedString(@"Waiting for Network Extension Approval", @"Waiting for Network Extension Approval");
                     });
                     
                     //activate network extension
@@ -172,7 +172,7 @@ extern os_log_t logHandle;
                         dispatch_async(dispatch_get_main_queue(),
                         ^{
                             //show alert
-                            showAlert(NSAlertStyleCritical, @"ERROR: activation failed", @"failed to activate network extension", @[@"OK"]);
+                            showAlert(NSAlertStyleCritical, NSLocalizedString(@"ERROR: activation failed",@"ERROR: activation failed"), NSLocalizedString(@"failed to activate network extension",@"failed to activate network extension"), @[NSLocalizedString(@"OK", @"OK")]);
                             
                             //bye
                             [NSApplication.sharedApplication terminate:self];

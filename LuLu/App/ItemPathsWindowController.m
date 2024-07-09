@@ -9,6 +9,7 @@
 #import "consts.h"
 #import "signing.h"
 #import "utilities.h"
+#import "XPCDaemonClient.h"
 #import "ItemPathsWindowController.h"
 
 /* GLOBALS */
@@ -16,117 +17,149 @@
 //log handle
 extern os_log_t logHandle;
 
+//xpc for daemon comms
+extern XPCDaemonClient* xpcDaemonClient;
+
 @implementation ItemPathsWindowController
 
-@synthesize rule;
+@synthesize item;
 
+//generate and show paths
 -(void)windowDidLoad {
     
     //super
     [super windowDidLoad];
     
-    //items
-    NSArray* items = nil;
-    
-    //item bundle id
-    NSString* bundleID = nil;
-    
-    //signing info
-    NSMutableDictionary* signingInfo = nil;
+    //unique paths
+    NSMutableSet* paths = nil;
     
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
     
-    //grab bundle id
-    bundleID = self.rule.csInfo[KEY_CS_ID];
+    paths = [self getPaths];
     
-    //budle id?
+    //each rule's path
+    for(NSString* path in paths)
+    {
+        if(0 == self.itemPaths.stringValue.length)
+        {
+            self.itemPaths.stringValue = [NSString stringWithFormat:@"▪ %@", path];
+        }
+        //otherwise
+        // append to existing
+        else
+        {
+            self.itemPaths.stringValue = [NSString stringWithFormat:@"%@\r\n▪ %@", self.itemPaths.stringValue, path];
+        }
+    }
+
+    //make close button first responder
+    [self.window makeFirstResponder:self.closeButton];
+
+    return;
+}
+
+//get all unique paths for item
+// both from rules, but also from system (via bundle ID)
+-(NSMutableSet*)getPaths
+{
+    //(first) rule
+    Rule* rule = nil;
+    
+    //items
+    NSArray* items = nil;
+    
+    //paths
+    NSMutableSet* paths = nil;
+    
+    //item bundle id
+    NSString* bundleID = nil;
+        
+    //signing info
+    NSMutableDictionary* signingInfo = nil;
+    
+    //init
+    paths = [NSMutableSet set];
+    
+    //extract (first) rule
+    rule = [self.item[KEY_RULES] firstObject];
+    
+    //global rule?
+    if(YES == rule.isGlobal.boolValue)
+    {
+        //set message
+        [paths addObject:NSLocalizedString(@"Global Rules apply to all paths", @"Global Rules apply to all paths")];
+        
+        //done
+        goto bail;
+    }
+    
+    //directory rule?
+    else if(YES == rule.isDirectory.boolValue)
+    {
+        //set message
+        [paths addObject:NSLocalizedString(@"Directory Rules apply to all items within the directory", @"Directory Rules apply to all items within the directory")];
+        
+        //done
+        goto bail;
+    }
+    
+    //init with items paths
+    paths = [item[KEY_PATHS] mutableCopy];
+    
+    //grab bundle id
+    bundleID = rule.csInfo[KEY_CS_ID];
+    
+    //add other items on system
+    // with same bundle id *and* cs info, as these will match
     if(nil != bundleID)
     {
-        //dbg msg
-        os_log_debug(logHandle, "looking up apps that match %{public}@", bundleID);
-        
         //get matching apps
         items = (__bridge NSArray *)(LSCopyApplicationURLsForBundleIdentifier((__bridge CFStringRef _Nonnull)(bundleID), nil));
-        if(0 == items.count)
-        {
-            //none found
-            // default to rule's path
-            self.itemPaths.stringValue = [NSString stringWithFormat:@"▪ %@", self.rule.path];
-            
-            //bail
-            goto bail;
-        }
         
-        //dbg msg
-        os_log_debug(logHandle, "matching apps: %{public}@", items);
-        
-        //add each to UI
-        // note: check for cs match
+        //get each item's binary
         for(NSURL* item in items)
         {
             //path
             NSString* path = nil;
             
-            //when it's an app
-            // get path to app's binary
-            if(YES == [item.path hasSuffix:@".app"])
-            {
-                //get path
-                path = getAppBinary(item.path);
-            }
+            //attempt to get path via bundle
+            path = getBundleExecutable(item.path);
             
-            //not app / no app binary?
-            // just use item's path for file
+            //likely not bundle
             if(0 == path.length)
             {
-                //init path
                 path = item.path;
             }
             
-            //extract signing info
+            //sanity check
+            if(0 == path.length)
+            {
+                //skip
+                continue;
+            }
+            
+            //extract signing info and check
             // note: use item's path, to match rule
             signingInfo = extractSigningInfo(0, item.path, kSecCSDefaultFlags);
-            
-            //ingore if cs info doesn't match
-            // can be multiple apps on the system w/ same bundle id
-            if(YES != matchesCSInfo(rule.csInfo, signingInfo))
+            if(YES != matchesCSInfo(self.item[KEY_CS_INFO], signingInfo))
             {
                 //dbg msg
-                os_log_debug(logHandle, "rule's code signing info doesn't match item's");
+                os_log_debug(logHandle, "rule's code signing info %{public}@ doesn't match item's %{public}@", self.item[KEY_CS_INFO], signingInfo);
                 
                 //skip
                 continue;
             }
-           
-            //1st one?
-            // just add
-            if(0 == self.itemPaths.stringValue.length)
-            {
-                self.itemPaths.stringValue = [NSString stringWithFormat:@"▪ %@", path];
-            }
-            //otherwise
-            // append to existing
-            else
-            {
-                self.itemPaths.stringValue = [NSString stringWithFormat:@"%@\r\n▪ %@", self.itemPaths.stringValue, path];
-            }
+            
+            //add
+            [paths addObject:path];
         }
     }
-    //no bundle id
-    // just use path as is
-    else
-    {
-        //add path
-        self.itemPaths.stringValue = [NSString stringWithFormat:@"▪ %@", self.rule.path];
-    }
-    
-    //make close button first responder
-    [self.window makeFirstResponder:self.closeButton];
     
 bail:
     
-    return;
+    return paths;
+    
 }
 
 //close

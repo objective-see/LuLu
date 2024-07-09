@@ -1,0 +1,42 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "2jG-uf-4XV.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"⌃\"; ObjectID = \"2jG-uf-4XV\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "⌃"
+          }
+        }
+      }
+    },
+    "17.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"LuLu up & running!\"; ObjectID = \"17\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "LuLu up & running!"
+          }
+        }
+      }
+    },
+    "22.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"...access it from here anytime.\"; ObjectID = \"22\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "...access it from here anytime."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

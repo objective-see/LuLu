@@ -7,6 +7,7 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
+@import Foundation;
 #import <sys/socket.h>
 
 #import "consts.h"
@@ -93,7 +94,7 @@ extern os_log_t logHandle;
     remoteAddress = (nil != self.alert[KEY_URL]) ? self.alert[KEY_URL] : self.alert[KEY_HOST];
     if(nil == remoteAddress)
     {
-        remoteAddress = @"unknown";
+        remoteAddress = NSLocalizedString(@"unknown", @"unknown");
     }
     
     /* TOP */
@@ -108,11 +109,11 @@ extern os_log_t logHandle;
     self.processName.stringValue = self.alert[KEY_PROCESS_NAME];
     
     //alert message
-    self.alertMessage.stringValue = [NSString stringWithFormat:@"is trying to connect to %@", remoteAddress];
+    self.alertMessage.stringValue = [NSString stringWithFormat:NSLocalizedString(@"is trying to connect to %@", @"is trying to connect to %@"), remoteAddress];
     
     //and set a tool tip
     // as super long URLs can be truncated
-    self.alertMessage.toolTip = [NSString stringWithFormat:@"remote address: %@", remoteAddress];
+    self.alertMessage.toolTip = [NSString stringWithFormat:NSLocalizedString(@"remote address: %@", @"remote address: %@"), remoteAddress];
     
     /* BOTTOM */
     
@@ -124,14 +125,14 @@ extern os_log_t logHandle;
     if(0 == [self.alert[KEY_PROCESS_ARGS] count])
     {
         //unknown
-        self.processArgs.stringValue = @"unknown";
+        self.processArgs.stringValue = NSLocalizedString(@"unknown", @"unknown");
     }
     //process args
     // only one? means, argv[0] and none
     else if(1 == [self.alert[KEY_PROCESS_ARGS] count])
     {
         //none
-        self.processArgs.stringValue = @"none";
+        self.processArgs.stringValue = NSLocalizedString(@"none", @"none");
     }
     
     //process args
@@ -171,7 +172,7 @@ extern os_log_t logHandle;
     }
         
     //ip address
-    self.ipAddress.stringValue = (nil != self.alert[KEY_HOST]) ? self.alert[KEY_HOST] : @"unknown";
+    self.ipAddress.stringValue = (nil != self.alert[KEY_HOST]) ? self.alert[KEY_HOST] : NSLocalizedString(@"unknown", @"unknown");
     
     //port & proto
     self.portProto.stringValue = [NSString stringWithFormat:@"%@ (%@)", self.alert[KEY_ENDPOINT_PORT], [self convertProtocol:self.alert[KEY_PROTOCOL]]];
@@ -183,7 +184,7 @@ extern os_log_t logHandle;
     timeFormat.dateFormat = @"HH:mm:ss";
     
     //add timestamp
-    self.timeStamp.stringValue = [NSString stringWithFormat:@"timestamp: %@", [timeFormat stringFromDate:[[NSDate alloc] init]]];
+    self.timeStamp.stringValue = [NSString stringWithFormat:NSLocalizedString(@"timestamp: %@", @"timestamp: %@"), [timeFormat stringFromDate:[[NSDate alloc] init]]];
     
     //set paragraph style to left
     paragraphStyle.alignment = NSTextAlignmentLeft;
@@ -201,7 +202,7 @@ extern os_log_t logHandle;
     titleAttributes[NSFontAttributeName] = [NSFont fontWithName:@"Menlo-Regular" size:12];
     
     //temp rule button label
-    self.tempRule.attributedTitle = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" temporarily (pid: %@)", [self.alert[KEY_PROCESS_ID] stringValue]] attributes:titleAttributes];
+    self.tempRule.attributedTitle = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedString(@" temporarily (pid: %@)", @" temporarily (pid: %@)"), [self.alert[KEY_PROCESS_ID] stringValue]] attributes:titleAttributes];
     
     //process deleted?
     // check and disable ...always want this a temp rule for this
@@ -254,7 +255,7 @@ bail:
             
         //??
         default:
-            name = [NSString stringWithFormat:@"<unknown (%d)>", [self.alert[KEY_PROTOCOL] intValue]];
+            name = [NSString stringWithFormat:NSLocalizedString(@"<unknown (%d)>", @"<unknown (%d)>"), [self.alert[KEY_PROTOCOL] intValue]];
     }
     
     return name;
@@ -484,7 +485,7 @@ bail:
     for(NSUInteger i=0; i<self.ancestryViewController.processHierarchy.count; i++)
     {
         //generate text of current row
-        currentRow = [NSString stringWithFormat:@"%@ (pid: %@)", self.ancestryViewController.processHierarchy[i][@"name"], [self.ancestryViewController.processHierarchy lastObject][@"pid"]];
+        currentRow = [NSString stringWithFormat:NSLocalizedString(@"%@ (pid: %@)", @"%@ (pid: %@)"), self.ancestryViewController.processHierarchy[i][@"name"], [self.ancestryViewController.processHierarchy lastObject][@"pid"]];
         
         //calculate width
         // ->first w/ indentation

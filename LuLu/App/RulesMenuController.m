@@ -158,7 +158,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     panel.directoryURL = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains (NSDesktopDirectory, NSUserDomainMask, YES) firstObject]];
     
     //suggest file name
-    [panel setNameFieldStringValue:@"rules.json"];
+    [panel setNameFieldStringValue:NSLocalizedString(@"rules.json", @"rules.json")];
     
     //show panel
     // completion handler will invoked when user clicks 'ok'
@@ -174,13 +174,13 @@ extern XPCDaemonClient* xpcDaemonClient;
                 os_log_error(logHandle, "ERROR: failed to save rules: %{public}@", error);
                 
                 //show alert
-                showAlert(NSAlertStyleWarning, @"ERROR: Failed to export rules", @"See log for (more) details", @[@"OK"]);
+                showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: Failed to export rules",@"ERROR: Failed to export rules"), NSLocalizedString(@"See log for (more) details",@"See log for (more) details"), @[NSLocalizedString(@"OK", @"OK")]);
             }
             //happy
             else
             {
                 //show alert
-                showAlert(NSAlertStyleInformational, [NSString stringWithFormat:@"Exported %lu rules", (unsigned long)count], nil, @[@"OK"]);
+                showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"Exported %lu rules",@"Exported %lu rules"), (unsigned long)count], nil, @[NSLocalizedString(@"OK", @"OK")]);
             }
         }
     }];
@@ -356,7 +356,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
     
     //show alert
-    showAlert(NSAlertStyleInformational, [NSString stringWithFormat:@"Imported %ld rules", count], nil, @[@"OK"]);
+    showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"Imported %ld rules",@"Imported %ld rules"), count], nil, @[NSLocalizedString(@"OK", @"OK")]);
     
 bail:
     
@@ -380,7 +380,7 @@ bail:
     
     //show alert
     // if user cancels, just bail
-    if(NSAlertSecondButtonReturn == showAlert(NSAlertStyleInformational, @"Cleanup rules that reference (now) deleted items?", nil, @[@"OK", @"Cancel"]))
+    if(NSAlertSecondButtonReturn == showAlert(NSAlertStyleInformational, NSLocalizedString(@"Cleanup rules that reference (now) deleted items?", @"Cleanup rules that reference (now) deleted items?"), nil, @[NSLocalizedString(@"OK",@"OK"), NSLocalizedString(@"Cancel",@"Cancel")]))
     {
         //dbg msg
         os_log_debug(logHandle, "user cancelled rule cleanup");
@@ -402,7 +402,7 @@ bail:
     [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
     
     //share results w/ user
-    showAlert(NSAlertStyleInformational, [NSString stringWithFormat:@"Cleaned up %ld rules", cleanedUpRules], nil, @[@"OK"]);
+    showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"Cleaned up %ld rules",@"Cleaned up %ld rules"), cleanedUpRules], nil, @[NSLocalizedString(@"OK",@"OK")]);
     
 bail:
     

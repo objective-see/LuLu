@@ -47,19 +47,18 @@
     if(nil == version)
     {
         //default
-        version = @"unknown";
+        version = NSLocalizedString(@"unknown", @"unknown");
     }
     
     //set version sting
     self.versionLabel.stringValue = version;
 
     //load patrons
-    // <3 you guys & girls
     self.patrons.string = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"patrons" ofType:@"txt"] encoding:NSUTF8StringEncoding error:NULL];
     if(nil == self.patrons.string)
     {
         //default
-        self.patrons.string = @"error: failed to load patrons :/";
+        self.patrons.string = NSLocalizedString(@"ERROR: failed to load patrons", @"ERROR: failed to load patrons");
     }
 
     return;

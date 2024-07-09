@@ -286,7 +286,7 @@ enum menuItems
             if(YES != [self.rulesMenuController importRules])
             {
                 //show alert
-                showAlert(NSAlertStyleWarning, @"ERROR: Failed to import rules", @"See log for (more) details", @[@"OK"]);
+                showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: Failed to import rules", @"ERROR: Failed to import rules"), NSLocalizedString(@"See log for (more) details",@"See log for (more) details"), @[NSLocalizedString(@"OK", @"OK")]);
                 
                 //bail
                 goto bail;
@@ -304,7 +304,7 @@ enum menuItems
             if(YES != [self.rulesMenuController cleanupRules])
             {
                 //show alert
-                showAlert(NSAlertStyleWarning, @"ERROR: Failed to cleanup rules", @"See log for (more) details", @[@"OK"]);
+                showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: Failed to cleanup rules", @"ERROR: Failed to cleanup rules"), NSLocalizedString(@"See log for (more) details",@"See log for (more) details"), @[NSLocalizedString(@"OK",@"OK")]);
                 
                 //bail
                 goto bail;
@@ -374,26 +374,26 @@ bail:
     if(YES == self.isDisabled)
     {
         //update status
-        [self.statusItem.menu itemWithTag:status].title = @"LuLu: disabled";
+        [self.statusItem.menu itemWithTag:status].title = NSLocalizedString(@"LuLu: disabled", @"LuLu: disabled");
         
         //set icon
         self.statusItem.button.image = [NSImage imageNamed:@"LoginItemStatusInactive"];
         
         //change toggle text
-        [self.statusItem.menu itemWithTag:toggle].title = @"Enable";
+        [self.statusItem.menu itemWithTag:toggle].title = NSLocalizedString(@"Enable", @"Enable");
     }
     
     //set to enabled
     else
     {
         //update status
-        [self.statusItem.menu itemWithTag:status].title = @"LuLu: enabled";
+        [self.statusItem.menu itemWithTag:status].title = NSLocalizedString(@"LuLu: enabled", @"LuLu: enabled");
         
         //set icon
         self.statusItem.button.image = [NSImage imageNamed:@"LoginItemStatusActive"];
         
         //change toggle text
-        [self.statusItem.menu itemWithTag:toggle].title = @"Disable";
+        [self.statusItem.menu itemWithTag:toggle].title = NSLocalizedString(@"Disable", @"Disable");
     }
     
     return;

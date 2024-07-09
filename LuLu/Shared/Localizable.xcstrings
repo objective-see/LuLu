@@ -1,0 +1,330 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    " has a signing issue" : {
+      "comment" : " has a signing issue"
+    },
+    " is not signed" : {
+      "comment" : " is not signed"
+    },
+    " is not validly signed" : {
+      "comment" : " is not validly signed"
+    },
+    " is validly signed" : {
+      "comment" : " is validly signed"
+    },
+    " signed by 3rd-party/ad hoc" : {
+      "comment" : " signed by 3rd-party/ad hoc"
+    },
+    " temporarily (pid: %@)" : {
+      "comment" : " temporarily (pid: %@)"
+    },
+    " unknown" : {
+      "comment" : " unknown"
+    },
+    "...please copy it to /Applications and re-launch." : {
+      "comment" : "...please copy it to /Applications and re-launch."
+    },
+    "...this will fully remove LuLu from your Mac" : {
+      "comment" : "...this will fully remove LuLu from your Mac"
+    },
+    "...this will terminate LuLu, until the next time you log in." : {
+      "comment" : "...this will terminate LuLu, until the next time you log in."
+    },
+    "› no signing authorities" : {
+      "comment" : "› no signing authorities"
+    },
+    "%@ (pid: %@)" : {
+      "comment" : "%@ (pid: %@)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (pid: %2$@)"
+          }
+        }
+      }
+    },
+    "%@ (signer: %@)" : {
+      "comment" : "%@ (signer: %@)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (signer: %2$@)"
+          }
+        }
+      }
+    },
+    "%@ (signer: Apple Mac OS App Store)" : {
+      "comment" : "%@ (signer: Apple Mac OS App Store)"
+    },
+    "%@ (signer: Apple Proper)" : {
+      "comment" : "%@ (signer: Apple Proper)"
+    },
+    "%@ (signer: invalid/unsigned)" : {
+      "comment" : "%@ (signer: invalid/unsigned)"
+    },
+    "%@ does not exist!" : {
+      "comment" : "%@ does not exist!"
+    },
+    "%@ is legitimate macOS process" : {
+      "comment" : "%@ is legitimate macOS process"
+    },
+    "%@ is not a valid (port) number" : {
+      "comment" : "%@ is not a valid (port) number"
+    },
+    "%@ is not a valid regular expression\r\ndetails: %@" : {
+      "comment" : "%@ is not a valid regular expression\r\ndetails: %@",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ is not a valid regular expression\r\ndetails: %2$@"
+          }
+        }
+      }
+    },
+    "%@ this rule, may impact legitimate system functionalty ...continue?" : {
+      "comment" : "%@ this rule, may impact legitimate system functionalty ...continue?"
+    },
+    "%@'s code signing information has changed" : {
+      "comment" : "%@'s code signing information has changed"
+    },
+    "→ Delete Rule" : {
+      "comment" : "→ Delete Rule"
+    },
+    "→ Delete rule(s)" : {
+      "comment" : "→ Delete rule(s)"
+    },
+    "→ Edit Rule" : {
+      "comment" : "→ Edit Rule"
+    },
+    "→ Show path(s)" : {
+      "comment" : "→ Show path(s)"
+    },
+    "<unknown (%d)>" : {
+      "comment" : "<unknown (%d)>"
+    },
+    "a new version (%@) is available!" : {
+      "comment" : "a new version (%@) is available!"
+    },
+    "Ad hoc" : {
+      "comment" : "Ad hoc"
+    },
+    "All Rules" : {
+      "comment" : "All Rules"
+    },
+    "Allow" : {
+      "comment" : "@Allow\nAllow"
+    },
+    "Allow (pid: %@)" : {
+      "comment" : "Allow (pid: %@)"
+    },
+    "any address" : {
+      "comment" : "any address"
+    },
+    "any port" : {
+      "comment" : "any port"
+    },
+    "Any program" : {
+      "comment" : "Any program"
+    },
+    "Apple Programs (automatically allowed & added here if 'allow apple programs' is set)" : {
+      "comment" : "Apple Programs (automatically allowed & added here if 'allow apple programs' is set)"
+    },
+    "Automatically Approved Programs (allowed as user was not logged in)" : {
+      "comment" : "Automatically Approved Programs (allowed as user was not logged in)"
+    },
+    "Block" : {
+      "comment" : "Block"
+    },
+    "Block (pid: %@)" : {
+      "comment" : "Block (pid: %@)"
+    },
+    "Cancel" : {
+      "comment" : "Cancel"
+    },
+    "Cleaned up %ld rules" : {
+      "comment" : "Cleaned up %ld rules"
+    },
+    "Cleanup rules that reference (now) deleted items?" : {
+      "comment" : "Cleanup rules that reference (now) deleted items?"
+    },
+    "Continue" : {
+      "comment" : "Continue"
+    },
+    "details" : {
+      "comment" : "details"
+    },
+    "Directory Rules apply to all items within the directory" : {
+      "comment" : "Directory Rules apply to all items within the directory"
+    },
+    "Disable" : {
+      "comment" : "Disable"
+    },
+    "Enable" : {
+      "comment" : "Enable"
+    },
+    "ERROR: activation failed" : {
+      "comment" : "ERROR: activation failed"
+    },
+    "ERROR: Failed to cleanup rules" : {
+      "comment" : "ERROR: Failed to cleanup rules"
+    },
+    "ERROR: Failed to export rules" : {
+      "comment" : "ERROR: Failed to export rules"
+    },
+    "ERROR: Failed to import rules" : {
+      "comment" : "ERROR: Failed to import rules"
+    },
+    "ERROR: failed to load patrons" : {
+      "comment" : "ERROR: failed to load patrons"
+    },
+    "ERROR: invalid path" : {
+      "comment" : "ERROR: invalid path"
+    },
+    "ERROR: invalid port" : {
+      "comment" : "ERROR: invalid port"
+    },
+    "ERROR: invalid regex" : {
+      "comment" : "ERROR: invalid regex"
+    },
+    "error: update check failed" : {
+      "comment" : "error: update check failed"
+    },
+    "Exported %lu rules" : {
+      "comment" : "Exported %lu rules"
+    },
+    "Extensions must be manually approved via\r\nSecurity & Privacy System Preferences." : {
+      "comment" : "Extensions must be manually approved via\r\nSecurity & Privacy System Preferences."
+    },
+    "Extensions must be manually approved via Security & Privacy System Preferences." : {
+      "comment" : "Extensions must be manually approved via Security & Privacy System Preferences."
+    },
+    "failed to activate network extension" : {
+      "comment" : "failed to activate network extension"
+    },
+    "failed to activate network filter" : {
+      "comment" : "failed to activate network filter"
+    },
+    "failed to activate system extension" : {
+      "comment" : "failed to activate system extension"
+    },
+    "failed to activate system/network extension" : {
+      "comment" : "failed to activate system/network extension"
+    },
+    "failed to query Virus Total" : {
+      "comment" : "failed to query Virus Total"
+    },
+    "Global Rules apply to all paths" : {
+      "comment" : "Global Rules apply to all paths"
+    },
+    "Imported %ld rules" : {
+      "comment" : "Imported %ld rules"
+    },
+    "Installed version (%@),\r\nis the latest." : {
+      "comment" : "Installed version (%@),\r\nis the latest."
+    },
+    "is trying to connect to %@" : {
+      "comment" : "is trying to connect to %@"
+    },
+    "LuLu must run from:\r\n  %@" : {
+      "comment" : "LuLu must run from:\r\n  %@"
+    },
+    "LuLu: disabled" : {
+      "comment" : "LuLu: disabled"
+    },
+    "LuLu: enabled" : {
+      "comment" : "LuLu: enabled"
+    },
+    "LuLu's Network Extension Is Not Running" : {
+      "comment" : "LuLu's Network Extension Is Not Running"
+    },
+    "none" : {
+      "comment" : "none"
+    },
+    "not applicable" : {
+      "comment" : "not applicable"
+    },
+    "not found" : {
+      "comment" : "not found"
+    },
+    "Note however:\r\n▪ Existing connections will not be impacted.\r\n▪ OS traffic (not routed thru LuLu) will not be blocked." : {
+      "comment" : "Note however:\r\n▪ Existing connections will not be impacted.\r\n▪ OS traffic (not routed thru LuLu) will not be blocked."
+    },
+    "OK" : {
+      "comment" : "OK"
+    },
+    "Operating System Programs (required for system functionality)" : {
+      "comment" : "Operating System Programs (required for system functionality)"
+    },
+    "Outgoing traffic will now be blocked." : {
+      "comment" : "Outgoing traffic will now be blocked."
+    },
+    "Pre-installed 3rd-party Programs (automatically allowed & added here if 'allow installed applications' is set)" : {
+      "comment" : "Pre-installed 3rd-party Programs (automatically allowed & added here if 'allow installed applications' is set)"
+    },
+    "Programs within \"%@/\"" : {
+      "comment" : "Programs within \"%@/\""
+    },
+    "querying Virus Total..." : {
+      "comment" : "querying Virus Total..."
+    },
+    "Quit" : {
+      "comment" : "Quit"
+    },
+    "Quit LuLu?" : {
+      "comment" : "Quit LuLu?"
+    },
+    "received invalid response" : {
+      "comment" : "received invalid response"
+    },
+    "remote address: %@" : {
+      "comment" : "remote address: %@"
+    },
+    "rules.json" : {
+      "comment" : "rules.json"
+    },
+    "See log for (more) details" : {
+      "comment" : "See log for (more) details"
+    },
+    "signed by Apple proper" : {
+      "comment" : "signed by Apple proper"
+    },
+    "signed by Mac App Store" : {
+      "comment" : "signed by Mac App Store"
+    },
+    "signed with an Apple Developer ID" : {
+      "comment" : "signed with an Apple Developer ID"
+    },
+    "signed, but no signing authorities (adhoc?)" : {
+      "comment" : "signed, but no signing authorities (adhoc?)"
+    },
+    "signing error: %#lx" : {
+      "comment" : "signing error: %#lx"
+    },
+    "timestamp: %@" : {
+      "comment" : "timestamp: %@"
+    },
+    "Uninstall" : {
+      "comment" : "Uninstall"
+    },
+    "Uninstall LuLu?" : {
+      "comment" : "Uninstall LuLu?"
+    },
+    "unknown" : {
+      "comment" : "unknown"
+    },
+    "Update" : {
+      "comment" : "Update"
+    },
+    "User-specified Programs (manually added, or in response to an alert)" : {
+      "comment" : "User-specified Programs (manually added, or in response to an alert)"
+    },
+    "Waiting for Network Extension Approval" : {
+      "comment" : "Waiting for Network Extension Approval"
+    }
+  },
+  "version" : "1.0"
+}

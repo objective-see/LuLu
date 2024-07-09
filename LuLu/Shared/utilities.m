@@ -1101,7 +1101,7 @@ BOOL isDarkMode(void)
 // if so, return a default ('unknown') value
 NSString* valueForStringItem(NSString* item)
 {
-    return (nil != item) ? item : @"unknown";
+    return (nil != item) ? item : NSLocalizedString(@"unknown", @"unknown");
 }
 
 //show an alert

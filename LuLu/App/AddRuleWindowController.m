@@ -67,7 +67,7 @@ extern os_log_t logHandle;
         }
         
         //configure 'add' button
-        self.addButton.title = @"Update";
+        self.addButton.title = NSLocalizedString(@"Update", @"Update");
         
         //enable 'add' button
         self.addButton.enabled = YES;
@@ -303,7 +303,7 @@ bail:
         if(YES != [path hasSuffix:VALUE_ANY])
         {
             //show alert
-            showAlert(NSAlertStyleWarning, @"ERROR: invalid path", [NSString stringWithFormat:@"%@ does not exist!", path], @[@"OK"]);
+            showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: invalid path", @"ERROR: invalid path"), [NSString stringWithFormat:NSLocalizedString(@"%@ does not exist!", @"%@ does not exist!"), path], @[NSLocalizedString(@"OK", @"OK")]);
         
             //bail
             goto bail;
@@ -321,7 +321,7 @@ bail:
         (nil == [NSRegularExpression regularExpressionWithPattern:endpointAddr options:0 error:&error]) )
     {
         //show alert
-        showAlert(NSAlertStyleWarning, @"ERROR: invalid regex", [NSString stringWithFormat:@"%@ is not a valid regular expression\r\ndetails: %@", endpointAddr, error.localizedDescription], @[@"OK"]);
+        showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: invalid regex", @"ERROR: invalid regex"), [NSString stringWithFormat:NSLocalizedString(@"%@ is not a valid regular expression\r\ndetails: %@", @"%@ is not a valid regular expression\r\ndetails: %@"), endpointAddr, error.localizedDescription], @[NSLocalizedString(@"OK", @"OK")]);
         
         //bail
         goto bail;
@@ -335,7 +335,7 @@ bail:
         (NSNotFound != [endpointPort rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location) )
     {
         //show alert
-        showAlert(NSAlertStyleWarning, @"ERROR: invalid port", [NSString stringWithFormat:@"%@ is not a valid (port) number", endpointPort], @[@"OK"]);
+        showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: invalid port", @"ERROR: invalid port"), [NSString stringWithFormat:NSLocalizedString(@"%@ is not a valid (port) number", @"%@ is not a valid (port) number"), endpointPort], @[NSLocalizedString(@"OK", @"OK")]);
         
         //bail
         goto bail;

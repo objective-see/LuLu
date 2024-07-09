@@ -61,7 +61,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
         [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
         
         //show alert
-        showAlert(NSAlertStyleInformational, [NSString stringWithFormat:@"LuLu must run from:\r\n  %@", [@"/Applications" stringByAppendingPathComponent:APP_NAME]], @"...please copy it to /Applications and re-launch.", @[@"OK"]);
+        showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"LuLu must run from:\r\n  %@", @"LuLu must run from:\r\n  %@"), [@"/Applications" stringByAppendingPathComponent:APP_NAME]], NSLocalizedString(@"...please copy it to /Applications and re-launch.", @"...please copy it to /Applications and re-launch."), @[NSLocalizedString(@"OK",@"OK")]);
         
         //exit
         [NSApplication.sharedApplication terminate:self];
@@ -84,7 +84,10 @@ XPCDaemonClient* xpcDaemonClient = nil;
         
         }
         //dbg msg
-        else os_log_debug(logHandle, "installed self as login item");
+        else 
+        {
+            os_log_debug(logHandle, "installed self as login item");
+        }
         
         //launch (v1.*) uninstaller
         if(YES != [self launchUninstaller])
@@ -94,7 +97,10 @@ XPCDaemonClient* xpcDaemonClient = nil;
             
         }
         //dbg msg
-        else os_log_debug(logHandle, "launched v1.* uninstaller");
+        else
+        {
+            os_log_debug(logHandle, "launched v1.* uninstaller");
+        }
                 
         //exit
         // on reboot we'll be re-launched to continue...
@@ -126,7 +132,10 @@ XPCDaemonClient* xpcDaemonClient = nil;
             
         }
         //dbg msg
-        else os_log_debug(logHandle, "installed self as login item");
+        else
+        {
+            os_log_debug(logHandle, "installed self as login item");
+        }
     }
     
     //subsequent launches...
@@ -192,7 +201,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
                             [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
                             
                             //show alert
-                            showAlert(NSAlertStyleCritical, @"ERROR: activation failed", @"failed to activate system/network extension", @[@"OK"]);
+                            showAlert(NSAlertStyleCritical, NSLocalizedString(@"ERROR: activation failed", @"ERROR: activation failed"), NSLocalizedString(@"failed to activate system/network extension", @"failed to activate system/network extension"), @[NSLocalizedString(@"OK", @"OK")]);
                             
                             //exit
                             [NSApplication.sharedApplication terminate:self];
@@ -216,7 +225,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
                         dispatch_async(dispatch_get_main_queue(),
                         ^{
                             //show alert
-                            showAlert(NSAlertStyleCritical, @"ERROR: activation failed", @"failed to activate network filter", @[@"OK"]);
+                            showAlert(NSAlertStyleCritical, NSLocalizedString(@"ERROR: activation failed", @"ERROR: activation failed"), NSLocalizedString(@"failed to activate network filter",@"failed to activate network filter"), @[NSLocalizedString(@"OK", @"OK")]);
                             
                             //bye
                             [NSApplication.sharedApplication terminate:self];
@@ -332,12 +341,13 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked (hasVisibleWindows: %d)", __PRETTY_FUNCTION__, hasVisibleWindows);
     
+    //TODO: wait/check a few times?
     //extention isn't running?
     // show alert, otherwise things get confusing
     if(YES != [extension isExtensionRunning])
     {
         //show alert
-        showAlert(NSAlertStyleInformational, @"LuLu's Network Extension Is Not Running", @"Extensions must be manually approved via Security & Privacy System Preferences.", @[@"OK"]);
+        showAlert(NSAlertStyleInformational, NSLocalizedString(@"LuLu's Network Extension Is Not Running", @"LuLu's Network Extension Is Not Running"), NSLocalizedString(@"Extensions must be manually approved via Security & Privacy System Preferences.",@"Extensions must be manually approved via Security & Privacy System Preferences."), @[NSLocalizedString(@"OK", @"OK")]);
         
         //bail
         goto bail;
@@ -695,7 +705,7 @@ bail:
                 self.updateWindowController = [[UpdateWindowController alloc] initWithWindowNibName:@"UpdateWindow"];
                 
                 //configure
-                [self.updateWindowController configure:[NSString stringWithFormat:@"a new version (%@) is available!", newVersion]];
+                [self.updateWindowController configure:[NSString stringWithFormat:NSLocalizedString(@"a new version (%@) is available!",@"a new version (%@) is available!"), newVersion]];
                 
                 //center window
                 [self.updateWindowController.window center];
@@ -742,7 +752,7 @@ bail:
     [NSApp activateIgnoringOtherApps:YES];
     
     //show alert
-    response = showAlert(NSAlertStyleInformational, @"Quit LuLu?", @"...this will terminate LuLu, until the next time you log in.", @[@"Quit", @"Cancel"]);
+    response = showAlert(NSAlertStyleInformational, NSLocalizedString(@"Quit LuLu?", @"Quit LuLu?"), NSLocalizedString(@"...this will terminate LuLu, until the next time you log in.", @"...this will terminate LuLu, until the next time you log in."), @[NSLocalizedString(@"Quit", @"Quit"), NSLocalizedString(@"Cancel", @"Cancel")]);
     
     //show alert
     // cancel? ignore
@@ -794,7 +804,7 @@ bail:
     [self.window makeKeyAndOrderFront:self];
     
     //show alert
-    response = showAlert(NSAlertStyleInformational, @"Uninstall LuLu?", @"...this will fully remove LuLu from your Mac", @[@"Uninstall", @"Cancel"]);
+    response = showAlert(NSAlertStyleInformational, NSLocalizedString(@"Uninstall LuLu?", @"Uninstall LuLu?"), NSLocalizedString(@"...this will fully remove LuLu from your Mac", @"...this will fully remove LuLu from your Mac"), @[NSLocalizedString(@"Uninstall", @"Uninstall"), NSLocalizedString(@"Cancel", @"Cancel")]);
     
     //show alert
     // cancel? ignore

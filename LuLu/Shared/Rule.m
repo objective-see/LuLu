@@ -293,12 +293,12 @@ extern os_log_t logHandle;
     //init w/ allow
     if(RULE_STATE_ALLOW == self.action.integerValue)
     {
-        action = @"Allow";
+        action = NSLocalizedString(@"Allow", "@Allow");
     }
     //init w/ block
     else if(RULE_STATE_BLOCK == self.action.integerValue)
     {
-        action = @"Block";
+        action = NSLocalizedString(@"Block", @"Block");
     }
     
     //check name, path

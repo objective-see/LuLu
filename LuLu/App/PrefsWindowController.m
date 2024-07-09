@@ -249,7 +249,7 @@ bail:
             if(NSControlStateValueOn == state.longValue)
             {
                 //show alert
-                showAlert(NSAlertStyleInformational, @"Outgoing traffic will now be blocked.", @"Note however:\r\n▪ Existing connections will not be impacted.\r\n▪ OS traffic (not routed thru LuLu) will not be blocked.", @[@"OK"]);
+                showAlert(NSAlertStyleInformational, NSLocalizedString(@"Outgoing traffic will now be blocked.",@"Outgoing traffic will now be blocked."), NSLocalizedString(@"Note however:\r\n▪ Existing connections will not be impacted.\r\n▪ OS traffic (not routed thru LuLu) will not be blocked.",@"Note however:\r\n▪ Existing connections will not be impacted.\r\n▪ OS traffic (not routed thru LuLu) will not be blocked."), @[NSLocalizedString(@"OK", @"OK")]);
             }
             
             break;
@@ -384,7 +384,7 @@ bail:
         case -1:
             
             //set label
-            self.updateLabel.stringValue = @"error: update check failed";
+            self.updateLabel.stringValue = NSLocalizedString(@"error: update check failed", @"error: update check failed");
             break;
             
         //no updates
@@ -394,7 +394,7 @@ bail:
             os_log_debug(logHandle, "no updates available");
             
             //set label
-            self.updateLabel.stringValue = [NSString stringWithFormat:@"Installed version (%@),\r\nis the latest.", getAppVersion()];
+            self.updateLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Installed version (%@),\r\nis the latest.",@"Installed version (%@),\r\nis the latest."), getAppVersion()];
            
             break;
          
@@ -409,7 +409,7 @@ bail:
             updateWindowController = [[UpdateWindowController alloc] initWithWindowNibName:@"UpdateWindow"];
             
             //configure
-            [self.updateWindowController configure:[NSString stringWithFormat:@"a new version (%@) is available!", newVersion]];
+            [self.updateWindowController configure:[NSString stringWithFormat:NSLocalizedString(@"a new version (%@) is available!",@"a new version (%@) is available!"), newVersion]];
             
             //center window
             [[self.updateWindowController window] center];

@@ -1,0 +1,18 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "tj8-5e-Vlc.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Now starting up...\"; ObjectID = \"tj8-5e-Vlc\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Now starting up..."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
