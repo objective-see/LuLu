@@ -1,108 +1,171 @@
 //
 //  main.m
-//  Extension
+//  LuLu
 //
 //  Created by Patrick Wardle on 8/1/20.
 //  Copyright (c) 2020 Objective-See. All rights reserved.
 //
 
-//FOR LOGGING:
-// % log stream --level debug --predicate="subsystem='com.objective-see.lulu'"
+#import "consts.h"
+#import "utilities.h"
+#import "Configure.h"
 
-#import "main.h"
-#import <signal.h>
-
+@import Cocoa;
 @import OSLog;
-@import Foundation;
-@import NetworkExtension;
+
 
 /* GLOBALS */
 
 //log handle
 os_log_t logHandle = nil;
 
-// main function
-int main(int argc, char *argv[]) {
-    // Register the signal handler for SIGHUP
-    signal(SIGHUP, handleSignal);
-
-    // Run the daemon initially
-    runDaemon();
-
-    // Enter the dispatch main loop
-    dispatch_main();
+int main(int argc, const char * argv[]) {
     
-    return 0;
-}
-
-
-// Signal handler function
-void handleSignal(int signal) {
-    if (signal == SIGHUP) {
-        // Log the reload event
-        os_log_debug(logHandle, "Received SIGHUP, reloading configuration");
-        
-        // Run the daemon again to reload everything
-        runDaemon();
-    }
-}
-
-// Main daemon logic encapsulated in a function
-void runDaemon(void) {
+    //status
+    int status = -1;
+    
+    //config obj
+    Configure* configure = nil;
+    
+    //pool
     @autoreleasepool {
-        // init log
-        logHandle = os_log_create(BUNDLE_ID, "extension");
-    
-        // dbg msg
+        
+        //init log
+        logHandle = os_log_create(BUNDLE_ID, "application");
+        
+        //dbg msg(s)
         os_log_debug(logHandle, "started: %{public}@ (pid: %d / uid: %d)", NSProcessInfo.processInfo.arguments.firstObject, getpid(), getuid());
+        os_log_debug(logHandle, "arguments: %{public}@", NSProcessInfo.processInfo.arguments);
     
-        // start sysext
-        // Apple notes, "call [this] as early as possible"
-        [NEProvider startSystemExtensionMode];
+        /* cmdline interface - for install/upgrade/uninstall */
         
-        // dbg msg
-        os_log_debug(logHandle, "enabled extension ('startSystemExtensionMode' was called)");
-    
-        // alloc/init/load prefs
-        preferences = [[Preferences alloc] init];
-            
-        // alloc/init alerts object
-        alerts = [[Alerts alloc] init];
-    
-        // alloc/init rules object
-        rules = [[Rules alloc] init];
-    
-        // alloc/init XPC comms object
-        xpcListener = [[XPCListener alloc] init];
-    
-        // dbg msg
-        os_log_debug(logHandle, "created client XPC listener");
-    
-        // need to create
-        // create install directory?
-        if(YES != [[NSFileManager defaultManager] fileExistsAtPath:INSTALL_DIRECTORY]) {
-            // create it
-            if(YES != [[NSFileManager defaultManager] createDirectoryAtPath:INSTALL_DIRECTORY withIntermediateDirectories:YES attributes:nil error:NULL]) {
-                // err msg
-                os_log_error(logHandle, "ERROR: failed to create install directory, %{public}@", INSTALL_DIRECTORY);
-                
-                // bail
-                return;
+        //install?
+        if(YES == [NSProcessInfo.processInfo.arguments containsObject:@"-install"])
+        {
+            //first check root
+            if(0 != geteuid())
+            {
+                //err msg
+                printf("\nLULU ERROR: cmdline interface actions require root\n\n");
+                goto bail;
             }
+            
+            //init
+            configure = [[Configure alloc] init];
+            
+            //dbg msg
+            os_log_debug(logHandle, "performing cmdline install");
+            
+            //install
+            if(YES != [configure install])
+            {
+                //error
+                printf("\nLULU ERROR: install failed (see system log for details)\n\n");
+                goto bail;
+            }
+            
+            //dbg msg
+            printf("\nLULU: installed\n\n");
+            
+            //done
+            goto bail;
         }
         
-        // prep rules
-        // first time? generate defaults rules
-        // upgrade (v1.0)? convert to new format
-        [rules prepare];
-    
-        // load rules
-        if(YES != [rules load]) {
-            // err msg
-            os_log_error(logHandle, "ERROR: failed to load rules from %{public}@", RULES_FILE);
+        //upgrade?
+        else if(YES == [NSProcessInfo.processInfo.arguments containsObject:@"-upgrade"])
+        {
+            //first check root
+            if(0 != geteuid())
+            {
+                //err msg
+                printf("\nLULU ERROR: cmdline interface actions require root\n\n");
+                goto bail;
+            }
             
-            // bail
-            return;
+            //init
+            configure = [[Configure alloc] init];
+            
+            //dbg msg
+            os_log_debug(logHandle, "performing cmdline upgrade");
+            
+            //upgrade
+            if(YES != [configure upgrade])
+            {
+                //error
+                printf("\nLULU ERROR: upgrade failed (see system log for details)\n\n");
+                goto bail;
+            }
+            
+            //dbg msg
+            printf("\nLULU: upgraded\n\n");
+            
+            //done
+            goto bail;
         }
-    } // pool
+        
+        //uninstall?
+        if(YES == [NSProcessInfo.processInfo.arguments containsObject:@"-uninstall"])
+        {
+            //first check root
+            if(0 != geteuid())
+            {
+                //err msg
+                printf("\nLULU ERROR: cmdline interface actions require root\n\n");
+                goto bail;
+            }
+            
+            //init
+            configure = [[Configure alloc] init];
+            
+            //dbg msg
+            os_log_debug(logHandle, "performing cmdline uninstall");
+            
+            //uninstall
+            if(YES != [configure uninstall])
+            {
+                //error
+                printf("\nLULU ERROR: uninstall failed (see system log for details)\n\n");
+                goto bail;
+            }
+            
+            //dbg msg
+            printf("\nLULU: uninstalled\n\n");
+            
+            //done
+            goto bail;
+        }
+        
+        //quit?
+        // this is the copy, to (just) deactivate extension
+        if(YES == [NSProcessInfo.processInfo.arguments containsObject:@"-quit"])
+        {
+            //init
+            configure = [[Configure alloc] init];
+            
+            //dbg msg
+            os_log_debug(logHandle, "performing cmdline quit");
+            
+            //quit
+            [configure quit];
+            
+            //done
+            goto bail;
+        }
+        
+        //invalid args
+        // just print msg, for cmdline case
+        else if(NSProcessInfo.processInfo.arguments.count > 1)
+        {
+            //err msg
+            printf("\nLULU ERROR: %s are not valid args\n\n", NSProcessInfo.processInfo.arguments.description.UTF8String);
+        }
+    
+        //main app interface
+        status = NSApplicationMain(argc, argv);
+        
+    } //pool
+    
+bail:
+    
+    return status;
 }
