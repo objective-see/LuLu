@@ -286,6 +286,32 @@ bail:
         goto bail;
     }
     
+    //make sure all item rules have a set for 'external' paths
+    // older rules did use this, so let's make do it here manually
+    for(NSString* key in self.rules)
+    {
+        //skip global rules
+        if(YES == [key isEqualToString:VALUE_ANY])
+        {
+            continue;
+        }
+        
+        //skip directory rules
+        // grab first/any rule and check
+        if(YES == ((Rule*)[self.rules[key][KEY_RULES] firstObject]).isDirectory.boolValue)
+        {
+            continue;
+        }
+        
+        //paths set nil?
+        // alloc for paths
+        if(nil == self.rules[key][KEY_PATHS])
+        {
+            //alloc
+            self.rules[key][KEY_PATHS] = [NSMutableSet set];
+        }
+    }
+    
     //dbg msg
     os_log_debug(logHandle, "loaded %lu rules", (unsigned long)self.rules.count);
     
@@ -405,8 +431,8 @@ bail:
     //sync to access
     @synchronized(self.rules)
     {
-        //new rule for process
-        // need to init array and cs info
+        //new rule for item
+        // need to init array for rules, paths, & cs info
         if(nil == self.rules[rule.key])
         {
             //init
@@ -421,13 +447,8 @@ bail:
                 //add
                 self.rules[rule.key][KEY_CS_INFO] = rule.csInfo;
             }
-        }
-        
-        //init paths
-        // note: just for UI, but do here do to older rules not having it
-        if(nil == self.rules[rule.key][KEY_PATHS])
-        {
-            //init
+            
+            //init set for all paths
             self.rules[rule.key][KEY_PATHS] = [NSMutableSet set];
         }
         
@@ -725,29 +746,6 @@ bail:
         
         //any match?
         else if (nil != anyMatch) matchingRule = anyMatch;
-        
-        //matching rule !global/!directory
-        // add its 'external' path (as older rules might not have this)
-        if(nil != matchingRule)
-        {
-            if( (YES != matchingRule.isGlobal.boolValue) &&
-                (YES != matchingRule.isDirectory.boolValue) )
-            {
-                //need set for 'external' paths?
-                if(nil == self.rules[process.key][KEY_PATHS])
-                {
-                    //init
-                    self.rules[process.key][KEY_PATHS] = [NSMutableSet set];
-                }
-                
-                //add path
-                if(nil != process.path)
-                {
-                    //add
-                    [self.rules[process.key][KEY_PATHS] addObject:process.path];
-                }
-            }
-        }
     
     }//sync
         
@@ -1086,7 +1084,7 @@ bail:
                     persistentRules[key][KEY_CS_INFO] = self.rules[key][KEY_CS_INFO];
                 }
                 
-                //add cs info
+                //add paths info
                 if(nil != self.rules[key][KEY_PATHS])
                 {
                     //add

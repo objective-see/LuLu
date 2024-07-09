@@ -343,6 +343,19 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "found matching rule for %d/%{public}@: %{public}@", process.pid, process.binary.name, matchingRule);
         
+        //matching rule !global/!directory?
+        // add its 'external' path (as might be different than original)
+        if( (YES != matchingRule.isGlobal.boolValue) &&
+            (YES != matchingRule.isDirectory.boolValue) )
+        {
+            //add path
+            if(nil != process.path)
+            {
+                //add
+                [rules.rules[process.key][KEY_PATHS] addObject:process.path];
+            }
+        }
+        
         //deny?
         // otherwise will default to allow
         if(RULE_STATE_BLOCK == matchingRule.action.intValue)
