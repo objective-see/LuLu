@@ -23,6 +23,7 @@
 		CD2CA17E2C3E9E6700D7BEAA /* AlertWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2CA17D2C3E9E6700D7BEAA /* AlertWindow.xib */; };
 		CD2CA1822C3E9E6C00D7BEAA /* AddRule.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2CA1812C3E9E6C00D7BEAA /* AddRule.xib */; };
 		CD2CA1862C3E9E7000D7BEAA /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2CA1852C3E9E7000D7BEAA /* AboutWindow.xib */; };
+		CD2CA1912C3E9F0A00D7BEAA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2CA1902C3E9F0A00D7BEAA /* MainMenu.xib */; };
 		CD9E04D3254163AF00DB3218 /* patrons.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDA1369624F0D2CF005AD424 /* patrons.txt */; };
 		CD9E147D25171BF200DA05C3 /* ItemPathsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9E147B25171BF200DA05C3 /* ItemPathsWindowController.m */; };
 		CD9F567F252533CE00F3DEB5 /* NSApplicationKeyEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9F567E252533CD00F3DEB5 /* NSApplicationKeyEvents.m */; };
@@ -59,7 +60,6 @@
 		CDA136E524F0DA43005AD424 /* Rule.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136E424F0DA43005AD424 /* Rule.m */; };
 		CDB2CC1D24D61A4E00D0EECE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB2CC1C24D61A4E00D0EECE /* AppDelegate.m */; };
 		CDB2CC1F24D61A5000D0EECE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDB2CC1E24D61A5000D0EECE /* Assets.xcassets */; };
-		CDB2CC2224D61A5000D0EECE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB2CC2024D61A5000D0EECE /* MainMenu.xib */; };
 		CDB2CC2524D61A5000D0EECE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB2CC2424D61A5000D0EECE /* main.m */; };
 		CDB2CC3324D61B3900D0EECE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB2CC3224D61B3900D0EECE /* NetworkExtension.framework */; };
 		CDB2CC3724D61B3900D0EECE /* FilterDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB2CC3624D61B3900D0EECE /* FilterDataProvider.m */; };
@@ -100,7 +100,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CD0070242C39538B0011979F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		CD0070252C3954220011979F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = Shared/Localizable.xcstrings; sourceTree = "<group>"; };
 		CD00702A2C3956F50011979F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Welcome.xib; sourceTree = "<group>"; };
 		CD00702D2C3956F50011979F /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Welcome.xcstrings; sourceTree = "<group>"; };
@@ -124,13 +123,16 @@
 		CD2CA1752C3E9E4300D7BEAA /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Preferences.xcstrings; sourceTree = "<group>"; };
 		CD2CA1762C3E9E5700D7BEAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ItemPaths.xib; sourceTree = "<group>"; };
 		CD2CA1792C3E9E5700D7BEAA /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/ItemPaths.xcstrings; sourceTree = "<group>"; };
-		CD2CA17A2C3E9E6200D7BEAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Base; path = Base.lproj/App.entitlements; sourceTree = "<group>"; };
 		CD2CA17C2C3E9E6700D7BEAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AlertWindow.xib; sourceTree = "<group>"; };
 		CD2CA17F2C3E9E6700D7BEAA /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/AlertWindow.xcstrings; sourceTree = "<group>"; };
 		CD2CA1802C3E9E6C00D7BEAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddRule.xib; sourceTree = "<group>"; };
 		CD2CA1832C3E9E6C00D7BEAA /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/AddRule.xcstrings; sourceTree = "<group>"; };
 		CD2CA1842C3E9E7000D7BEAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutWindow.xib; sourceTree = "<group>"; };
 		CD2CA1872C3E9E7000D7BEAA /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/AboutWindow.xcstrings; sourceTree = "<group>"; };
+		CD2CA18A2C3E9ED700D7BEAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Base; path = Base.lproj/Extension.entitlements; sourceTree = "<group>"; };
+		CD2CA18C2C3E9EF200D7BEAA /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
+		CD2CA18F2C3E9F0A00D7BEAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CD2CA1922C3E9F0A00D7BEAA /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MainMenu.xcstrings; sourceTree = "<group>"; };
 		CD9E147A25171BF200DA05C3 /* ItemPathsWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemPathsWindowController.h; sourceTree = "<group>"; };
 		CD9E147B25171BF200DA05C3 /* ItemPathsWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemPathsWindowController.m; sourceTree = "<group>"; };
 		CD9F567D252533CD00F3DEB5 /* NSApplicationKeyEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSApplicationKeyEvents.h; sourceTree = "<group>"; };
@@ -206,7 +208,6 @@
 		CDB2CC1B24D61A4E00D0EECE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CDB2CC1C24D61A4E00D0EECE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CDB2CC1E24D61A5000D0EECE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CDB2CC2124D61A5000D0EECE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CDB2CC2324D61A5000D0EECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDB2CC2424D61A5000D0EECE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CDB2CC3024D61B3900D0EECE /* com.objective-see.lulu.extension.systemextension */ = {isa = PBXFileReference; explicitFileType = "wrapper.system-extension"; includeInIndex = 0; path = "com.objective-see.lulu.extension.systemextension"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,7 +216,6 @@
 		CDB2CC3624D61B3900D0EECE /* FilterDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterDataProvider.m; sourceTree = "<group>"; };
 		CDB2CC3824D61B3900D0EECE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CDB2CC3A24D61B3900D0EECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CDB2CC3B24D61B3900D0EECE /* Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Extension.entitlements; sourceTree = "<group>"; };
 		CDB909EA2B72BC230043FEB4 /* Configure.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Configure.m; sourceTree = "<group>"; };
 		CDB909EC2B72BC2E0043FEB4 /* Configure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Configure.h; sourceTree = "<group>"; };
 		CDC378C5250C66C200314064 /* Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Extension.h; sourceTree = "<group>"; };
@@ -314,7 +314,7 @@
 				CD2CA17D2C3E9E6700D7BEAA /* AlertWindow.xib */,
 				CDA1367F24F0D268005AD424 /* AlertWindowController.h */,
 				CDA1367224F0D268005AD424 /* AlertWindowController.m */,
-				CD2CA17B2C3E9E6200D7BEAA /* App.entitlements */,
+				CD2CA18C2C3E9EF200D7BEAA /* App.entitlements */,
 				CDB2CC1B24D61A4E00D0EECE /* AppDelegate.h */,
 				CDB2CC1C24D61A4E00D0EECE /* AppDelegate.m */,
 				CDB2CC1E24D61A5000D0EECE /* Assets.xcassets */,
@@ -328,7 +328,7 @@
 				CD9E147A25171BF200DA05C3 /* ItemPathsWindowController.h */,
 				CD9E147B25171BF200DA05C3 /* ItemPathsWindowController.m */,
 				CDB2CC2424D61A5000D0EECE /* main.m */,
-				CDB2CC2024D61A5000D0EECE /* MainMenu.xib */,
+				CD2CA1902C3E9F0A00D7BEAA /* MainMenu.xib */,
 				CD9F567D252533CD00F3DEB5 /* NSApplicationKeyEvents.h */,
 				CD9F567E252533CD00F3DEB5 /* NSApplicationKeyEvents.m */,
 				CDC41C402503424800CB302B /* OrderedDictionary.h */,
@@ -399,7 +399,7 @@
 				CDA1364F24EF4E56005AD424 /* Alerts.m */,
 				CD03F8FA24F8E6BD00723BDC /* Binary.h */,
 				CD03F8F324F8E68300723BDC /* Binary.m */,
-				CDB2CC3B24D61B3900D0EECE /* Extension.entitlements */,
+				CD2CA18B2C3E9ED700D7BEAA /* Extension.entitlements */,
 				CDB2CC3524D61B3900D0EECE /* FilterDataProvider.h */,
 				CDB2CC3624D61B3900D0EECE /* FilterDataProvider.m */,
 				CDA1365D24EF4E57005AD424 /* GrayList.h */,
@@ -527,7 +527,7 @@
 				CD0070262C3954220011979F /* Localizable.xcstrings in Resources */,
 				CD0070382C3959A90011979F /* StatusBarPopover.xib in Resources */,
 				CDB2CC1F24D61A5000D0EECE /* Assets.xcassets in Resources */,
-				CDB2CC2224D61A5000D0EECE /* MainMenu.xib in Resources */,
+				CD2CA1912C3E9F0A00D7BEAA /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,14 +676,6 @@
 			name = ItemPaths.xib;
 			sourceTree = "<group>";
 		};
-		CD2CA17B2C3E9E6200D7BEAA /* App.entitlements */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD2CA17A2C3E9E6200D7BEAA /* Base */,
-			);
-			name = App.entitlements;
-			sourceTree = "<group>";
-		};
 		CD2CA17D2C3E9E6700D7BEAA /* AlertWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -711,11 +703,19 @@
 			name = AboutWindow.xib;
 			sourceTree = "<group>";
 		};
-		CDB2CC2024D61A5000D0EECE /* MainMenu.xib */ = {
+		CD2CA18B2C3E9ED700D7BEAA /* Extension.entitlements */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CDB2CC2124D61A5000D0EECE /* Base */,
-				CD0070242C39538B0011979F /* es */,
+				CD2CA18A2C3E9ED700D7BEAA /* Base */,
+			);
+			name = Extension.entitlements;
+			sourceTree = "<group>";
+		};
+		CD2CA1902C3E9F0A00D7BEAA /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD2CA18F2C3E9F0A00D7BEAA /* Base */,
+				CD2CA1922C3E9F0A00D7BEAA /* mul */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
