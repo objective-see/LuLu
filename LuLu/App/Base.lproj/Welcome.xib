@@ -139,51 +139,10 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="gQX-4I-e3r">
-                    <rect key="frame" x="507" y="404" width="441" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="0vz-2d-q6y">
-                        <font key="font" size="15" name="AvenirNextCondensed-Regular"/>
-                        <string key="title" base64-UTF8="YES">
-Mi4gSW4gdGhlIOKAnFN5c3RlbSBTZXR0aW5nc+KAnSBhcHAgA2ZpbmQgd2hlcmUgTHVMdSB3YXMgYmxv
-Y2tlZCBhbmQgY2xpY2s6IOKAnEFsbG934oCdIA
-</string>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="2ap-vV-OZ8">
-                    <rect key="frame" x="28" y="409" width="402" height="33"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="v9d-oL-pht">
-                        <font key="font" size="15" name="AvenirNextCondensed-Regular"/>
-                        <string key="title" base64-UTF8="YES">
-MS4gSW4gdGhlIOKAnFN5c3RlbSBFeHRlbnNpb24gQmxvY2tlZOKAnSADYWxlcnQsIGNsaWNrOiDigJ1P
-cGVuIFN5c3RlbSBTZXR0aW5nc+KAnSA
-</string>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="Pbk-fI-wNj">
-                    <rect key="frame" x="99" y="83" width="204" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="Vo9-qw-HYm">
-                        <font key="font" size="15" name="AvenirNextCondensed-Regular"/>
-                        <string key="title">3. Authenticate</string>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JJh-FW-P86">
                     <rect key="frame" x="71" y="467" width="261" height="261"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="InstallBlocked" id="F3Z-Lx-5ln"/>
-                </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxD-LX-0aN">
-                    <rect key="frame" x="85" y="122" width="261" height="261"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="InstallAuth" id="7KJ-Vr-FCS"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hZ-ai-V42">
                     <rect key="frame" x="570" y="122" width="261" height="261"/>
@@ -191,23 +150,51 @@ cGVuIFN5c3RlbSBTZXR0aW5nc+KAnSA
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="InstallAllow" id="Y8g-u9-oUy"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VC1-he-DXG">
-                    <rect key="frame" x="492" y="422" width="404" height="365"/>
+                    <rect key="frame" x="492" y="488" width="404" height="219"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="InstallApprove" id="M64-G3-LAa"/>
                 </imageView>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="GeN-gm-vVh">
-                    <rect key="frame" x="490" y="81" width="402" height="32"/>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sZy-xy-LWr">
+                    <rect key="frame" x="57" y="418" width="309" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="DTb-gB-vym">
-                        <font key="font" size="15" name="AvenirNextCondensed-Regular"/>
-                        <string key="title" base64-UTF8="YES">
-NC4gSW4gdGhlIOKAnEZpbHRlciBOZXR3b3JrIENvbnRlbnTigJ0gA2FsZXJ0LCBjbGljazog4oCcQWxs
-b3figJ0gDQ
-</string>
+                    <textFieldCell key="cell" alignment="center" title="1. In the &quot;System Extension Blocked&quot; alert, click: &quot;Open System Settings&quot;" id="C1V-iy-oEo">
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zTC-iG-aS4">
+                    <rect key="frame" x="478" y="434" width="452" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" alignment="center" title="2. In System Settings, scroll to where is mentions &quot;LuLu&quot; and click &quot;Allow&quot;" id="EOD-Hh-8e5">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EE9-oh-Y1l">
+                    <rect key="frame" x="153" y="89" width="96" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="3. Authenticate" id="ZZK-2G-iIB">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dQ7-Ff-Lr3">
+                    <rect key="frame" x="535" y="87" width="338" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" alignment="center" title="4. In the &quot;Filter Network Content&quot; alert, click: &quot;Allow&quot;" id="qYE-G3-j1K">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxD-LX-0aN">
+                    <rect key="frame" x="71" y="122" width="261" height="261"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="InstallAuth" id="7KJ-Vr-FCS"/>
+                </imageView>
             </subviews>
             <point key="canvasLocation" x="-343" y="1566.5"/>
         </customView>

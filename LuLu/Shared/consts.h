@@ -336,9 +336,6 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 //network monitor
 #define NETWORK_MONITOR @"Netiquette.app"
 
-//uninstaller
-#define UNINSTALLER_V1 @"LuLu Uninstaller.app"
-
 //scope for action
 // from dropdown in alert window
 #define ACTION_SCOPE_UNSELECTED -1

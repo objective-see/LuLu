@@ -44,6 +44,9 @@ XPCDaemonClient* xpcDaemonClient = nil;
 //main app interface
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    //alert response
+    NSModalResponse response = 0;
+    
     //dbg msg
     os_log_debug(logHandle, "%s", __PRETTY_FUNCTION__);
     
@@ -51,12 +54,20 @@ XPCDaemonClient* xpcDaemonClient = nil;
     [NSApp disableRelaunchOnLogin];
     
     //v1.0 version installed?
-    // prompt / exit
-    if(YES == [NSFileManager.defaultManager fileExistsAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:@"LuLu.bundle"]])
+    // prompt / provide link to uninstall instructions / exit
+    if(YES != [NSFileManager.defaultManager fileExistsAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:@"LuLu.bundle"]])
     {
-        //TODO: add alert
+        //show alert
+        response = showAlert(NSAlertStyleWarning, NSLocalizedString(@"Old Version of LuLu Installed", @"Old Version of LuLu Installed"), NSLocalizedString(@"This must be uninstalled before continuing. Click 'More Info' to learn how to uninstall it", @"This must be uninstalled before continuing\r\n.Click 'More Info' to learn how to uninstall it."), @[NSLocalizedString(@"More Info", @"More Info"), NSLocalizedString(@"Cancel", @"Cancel")]);
         
-        //exit
+        //open link to uninstall instructions
+        if(response == NSAlertFirstButtonReturn)
+        {
+            //open
+            [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?uninstall_v1", PRODUCT_URL]]];
+        }
+        
+        //(always) exit
         [NSApplication.sharedApplication terminate:self];
     }
     

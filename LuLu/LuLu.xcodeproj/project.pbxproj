@@ -438,7 +438,6 @@
 				CDB2CC1524D61A4E00D0EECE /* Frameworks */,
 				CDB2CC1624D61A4E00D0EECE /* Resources */,
 				CDB2CC4224D61B3900D0EECE /* Embed System Extensions */,
-				CDC37930250D66E900314064 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -536,26 +535,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		CDC37930250D66E900314064 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#archive build\nif [[ $BUILT_PRODUCTS_DIR = *\"ArchiveIntermediates\"* ]]; then\n    cp -R -f \"$PROJECT_TEMP_ROOT/UninstalledProducts/macosx/LuLu Uninstaller.app\" \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Resources\"\n    \n#normal build\nelse\n    cp -R -f \"$BUILT_PRODUCTS_DIR/LuLu Uninstaller.app\" \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Resources\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CDB2CC1424D61A4E00D0EECE /* Sources */ = {

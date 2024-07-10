@@ -31,6 +31,18 @@
         }
       }
     },
+    "C1V-iy-oEo.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"1. In the \\\"System Extension Blocked\\\" alert, click: \\\"Open System Settings\\\"\"; ObjectID = \"C1V-iy-oEo\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "1. In the \"System Extension Blocked\" alert, click: \"Open System Settings\""
+          }
+        }
+      }
+    },
     "Cwe-NI-HiJ.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"First,  allow the LuLu Network Extension:\"; ObjectID = \"Cwe-NI-HiJ\";",
       "extractionState" : "extracted_with_value",
@@ -51,6 +63,18 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "It monitors network activity and alerts you when a program first tries to initiate an outgoing connection, allowing you to permit or deny it."
+          }
+        }
+      }
+    },
+    "EOD-Hh-8e5.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"2. In System Settings, scroll to where is mentions \\\"LuLu\\\" and click \\\"Allow\\\"\"; ObjectID = \"EOD-Hh-8e5\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "2. In System Settings, scroll to where is mentions \"LuLu\" and click \"Allow\""
           }
         }
       }
@@ -99,6 +123,18 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Support LuLu?"
+          }
+        }
+      }
+    },
+    "qYE-G3-j1K.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"4. In the \\\"Filter Network Content\\\" alert, click: \\\"Allow\\\"\"; ObjectID = \"qYE-G3-j1K\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "4. In the \"Filter Network Content\" alert, click: \"Allow\""
           }
         }
       }
@@ -255,6 +291,18 @@
           "stringUnit" : {
             "state" : "new",
             "value" : " Allow Apple Programs"
+          }
+        }
+      }
+    },
+    "ZZK-2G-iIB.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"3. Authenticate\"; ObjectID = \"ZZK-2G-iIB\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "3. Authenticate"
           }
         }
       }

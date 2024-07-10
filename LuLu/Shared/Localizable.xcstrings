@@ -241,6 +241,9 @@
     "LuLu's Network Extension Is Not Running" : {
       "comment" : "LuLu's Network Extension Is Not Running"
     },
+    "More Info" : {
+      "comment" : "More Info"
+    },
     "none" : {
       "comment" : "none"
     },
@@ -255,6 +258,9 @@
     },
     "OK" : {
       "comment" : "OK"
+    },
+    "Old Version of LuLu Installed" : {
+      "comment" : "Old Version of LuLu Installed"
     },
     "Operating System Programs (required for system functionality)" : {
       "comment" : "Operating System Programs (required for system functionality)"
@@ -303,6 +309,9 @@
     },
     "signing error: %#lx" : {
       "comment" : "signing error: %#lx"
+    },
+    "This must be uninstalled before continuing. Click 'More Info' to learn how to uninstall it" : {
+      "comment" : "This must be uninstalled before continuing\r\n.Click 'More Info' to learn how to uninstall it"
     },
     "timestamp: %@" : {
       "comment" : "timestamp: %@"
