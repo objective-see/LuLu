@@ -18,9 +18,13 @@
 		CD03F8F624F8E68300723BDC /* Process.m in Sources */ = {isa = PBXBuildFile; fileRef = CD03F8F424F8E68300723BDC /* Process.m */; };
 		CD21D37A252FE91E001A19A8 /* signing.m in Sources */ = {isa = PBXBuildFile; fileRef = CD21D379252FE91E001A19A8 /* signing.m */; };
 		CD21D37D252FE94F001A19A8 /* signing.m in Sources */ = {isa = PBXBuildFile; fileRef = CD21D37B252FE94F001A19A8 /* signing.m */; };
+		CD2CA1742C3E9E4300D7BEAA /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2CA1732C3E9E4300D7BEAA /* Preferences.xib */; };
+		CD2CA1782C3E9E5700D7BEAA /* ItemPaths.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2CA1772C3E9E5700D7BEAA /* ItemPaths.xib */; };
+		CD2CA17E2C3E9E6700D7BEAA /* AlertWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2CA17D2C3E9E6700D7BEAA /* AlertWindow.xib */; };
+		CD2CA1822C3E9E6C00D7BEAA /* AddRule.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2CA1812C3E9E6C00D7BEAA /* AddRule.xib */; };
+		CD2CA1862C3E9E7000D7BEAA /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2CA1852C3E9E7000D7BEAA /* AboutWindow.xib */; };
 		CD9E04D3254163AF00DB3218 /* patrons.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDA1369624F0D2CF005AD424 /* patrons.txt */; };
 		CD9E147D25171BF200DA05C3 /* ItemPathsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9E147B25171BF200DA05C3 /* ItemPathsWindowController.m */; };
-		CD9E147E25171BF200DA05C3 /* ItemPaths.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9E147C25171BF200DA05C3 /* ItemPaths.xib */; };
 		CD9F567F252533CE00F3DEB5 /* NSApplicationKeyEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9F567E252533CD00F3DEB5 /* NSApplicationKeyEvents.m */; };
 		CDA1364624EF4DA1005AD424 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1363324EF4DA0005AD424 /* utilities.m */; };
 		CDA1364824EF4DA1005AD424 /* Rule.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1363724EF4DA0005AD424 /* Rule.m */; };
@@ -53,10 +57,6 @@
 		CDA136E124F0DA0F005AD424 /* VirusTotal.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367924F0D268005AD424 /* VirusTotal.m */; };
 		CDA136E224F0DA0F005AD424 /* VirusTotalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367D24F0D268005AD424 /* VirusTotalViewController.m */; };
 		CDA136E524F0DA43005AD424 /* Rule.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136E424F0DA43005AD424 /* Rule.m */; };
-		CDA136E724F0F88F005AD424 /* AddRule.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA1369824F0D2CF005AD424 /* AddRule.xib */; };
-		CDA136E824F0F88F005AD424 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA1369F24F0D2D0005AD424 /* Preferences.xib */; };
-		CDA136EB24F0F88F005AD424 /* AlertWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA1367424F0D268005AD424 /* AlertWindow.xib */; };
-		CDA1547824F34BEC00E0AE97 /* AboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA1369024F0D2CF005AD424 /* AboutWindow.xib */; };
 		CDB2CC1D24D61A4E00D0EECE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB2CC1C24D61A4E00D0EECE /* AppDelegate.m */; };
 		CDB2CC1F24D61A5000D0EECE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDB2CC1E24D61A5000D0EECE /* Assets.xcassets */; };
 		CDB2CC2224D61A5000D0EECE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB2CC2024D61A5000D0EECE /* MainMenu.xib */; };
@@ -120,9 +120,19 @@
 		CD21D379252FE91E001A19A8 /* signing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = signing.m; path = Shared/signing.m; sourceTree = SOURCE_ROOT; };
 		CD21D37B252FE94F001A19A8 /* signing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = signing.m; path = Shared/signing.m; sourceTree = SOURCE_ROOT; };
 		CD21D37C252FE94F001A19A8 /* signing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = signing.h; path = Shared/signing.h; sourceTree = SOURCE_ROOT; };
+		CD2CA1722C3E9E4300D7BEAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Preferences.xib; sourceTree = "<group>"; };
+		CD2CA1752C3E9E4300D7BEAA /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Preferences.xcstrings; sourceTree = "<group>"; };
+		CD2CA1762C3E9E5700D7BEAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ItemPaths.xib; sourceTree = "<group>"; };
+		CD2CA1792C3E9E5700D7BEAA /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/ItemPaths.xcstrings; sourceTree = "<group>"; };
+		CD2CA17A2C3E9E6200D7BEAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Base; path = Base.lproj/App.entitlements; sourceTree = "<group>"; };
+		CD2CA17C2C3E9E6700D7BEAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AlertWindow.xib; sourceTree = "<group>"; };
+		CD2CA17F2C3E9E6700D7BEAA /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/AlertWindow.xcstrings; sourceTree = "<group>"; };
+		CD2CA1802C3E9E6C00D7BEAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddRule.xib; sourceTree = "<group>"; };
+		CD2CA1832C3E9E6C00D7BEAA /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/AddRule.xcstrings; sourceTree = "<group>"; };
+		CD2CA1842C3E9E7000D7BEAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutWindow.xib; sourceTree = "<group>"; };
+		CD2CA1872C3E9E7000D7BEAA /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/AboutWindow.xcstrings; sourceTree = "<group>"; };
 		CD9E147A25171BF200DA05C3 /* ItemPathsWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemPathsWindowController.h; sourceTree = "<group>"; };
 		CD9E147B25171BF200DA05C3 /* ItemPathsWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemPathsWindowController.m; sourceTree = "<group>"; };
-		CD9E147C25171BF200DA05C3 /* ItemPaths.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemPaths.xib; sourceTree = "<group>"; };
 		CD9F567D252533CD00F3DEB5 /* NSApplicationKeyEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSApplicationKeyEvents.h; sourceTree = "<group>"; };
 		CD9F567E252533CD00F3DEB5 /* NSApplicationKeyEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSApplicationKeyEvents.m; sourceTree = "<group>"; };
 		CDA1363224EF4DA0005AD424 /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = Shared/utilities.h; sourceTree = SOURCE_ROOT; };
@@ -150,7 +160,6 @@
 		CDA1366E24EF5587005AD424 /* libbsm.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbsm.tbd; path = usr/lib/libbsm.tbd; sourceTree = SDKROOT; };
 		CDA1367224F0D268005AD424 /* AlertWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertWindowController.m; sourceTree = "<group>"; };
 		CDA1367324F0D268005AD424 /* VirusTotal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirusTotal.h; sourceTree = "<group>"; };
-		CDA1367424F0D268005AD424 /* AlertWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertWindow.xib; sourceTree = "<group>"; };
 		CDA1367524F0D268005AD424 /* SigningInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigningInfoViewController.m; sourceTree = "<group>"; };
 		CDA1367724F0D268005AD424 /* StatusBarPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarPopoverController.h; sourceTree = "<group>"; };
 		CDA1367824F0D268005AD424 /* SigningInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigningInfoViewController.h; sourceTree = "<group>"; };
@@ -165,21 +174,18 @@
 		CDA1368324F0D269005AD424 /* VirusTotalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirusTotalViewController.h; sourceTree = "<group>"; };
 		CDA1368E24F0D2CF005AD424 /* PrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsWindowController.m; sourceTree = "<group>"; };
 		CDA1368F24F0D2CF005AD424 /* RulesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesWindowController.h; sourceTree = "<group>"; };
-		CDA1369024F0D2CF005AD424 /* AboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindow.xib; sourceTree = "<group>"; };
 		CDA1369224F0D2CF005AD424 /* PrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsWindowController.h; sourceTree = "<group>"; };
 		CDA1369324F0D2CF005AD424 /* AddRuleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRuleWindowController.h; sourceTree = "<group>"; };
 		CDA1369424F0D2CF005AD424 /* RuleRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleRowCell.h; sourceTree = "<group>"; };
 		CDA1369524F0D2CF005AD424 /* AboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWindowController.m; sourceTree = "<group>"; };
 		CDA1369624F0D2CF005AD424 /* patrons.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = patrons.txt; sourceTree = "<group>"; };
 		CDA1369724F0D2CF005AD424 /* WelcomeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeWindowController.h; sourceTree = "<group>"; };
-		CDA1369824F0D2CF005AD424 /* AddRule.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRule.xib; sourceTree = "<group>"; };
 		CDA1369924F0D2CF005AD424 /* WelcomeWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeWindowController.m; sourceTree = "<group>"; };
 		CDA1369A24F0D2CF005AD424 /* AddRuleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRuleWindowController.m; sourceTree = "<group>"; };
 		CDA1369B24F0D2CF005AD424 /* AboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWindowController.h; sourceTree = "<group>"; };
 		CDA1369C24F0D2CF005AD424 /* RulesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesWindowController.m; sourceTree = "<group>"; };
 		CDA1369D24F0D2CF005AD424 /* RuleRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleRow.h; sourceTree = "<group>"; };
 		CDA1369E24F0D2CF005AD424 /* RuleRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleRow.m; sourceTree = "<group>"; };
-		CDA1369F24F0D2D0005AD424 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		CDA136A024F0D2D0005AD424 /* RuleRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleRowCell.m; sourceTree = "<group>"; };
 		CDA136A224F0D2D0005AD424 /* RulesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesTable.h; sourceTree = "<group>"; };
 		CDA136A324F0D2D0005AD424 /* RulesTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesTable.m; sourceTree = "<group>"; };
@@ -203,7 +209,6 @@
 		CDB2CC2124D61A5000D0EECE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CDB2CC2324D61A5000D0EECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDB2CC2424D61A5000D0EECE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CDB2CC2624D61A5000D0EECE /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
 		CDB2CC3024D61B3900D0EECE /* com.objective-see.lulu.extension.systemextension */ = {isa = PBXFileReference; explicitFileType = "wrapper.system-extension"; includeInIndex = 0; path = "com.objective-see.lulu.extension.systemextension"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDB2CC3224D61B3900D0EECE /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		CDB2CC3524D61B3900D0EECE /* FilterDataProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterDataProvider.h; sourceTree = "<group>"; };
@@ -300,16 +305,16 @@
 		CDB2CC1A24D61A4E00D0EECE /* App */ = {
 			isa = PBXGroup;
 			children = (
-				CDA1369024F0D2CF005AD424 /* AboutWindow.xib */,
+				CD2CA1852C3E9E7000D7BEAA /* AboutWindow.xib */,
 				CDA1369B24F0D2CF005AD424 /* AboutWindowController.h */,
 				CDA1369524F0D2CF005AD424 /* AboutWindowController.m */,
-				CDA1369824F0D2CF005AD424 /* AddRule.xib */,
+				CD2CA1812C3E9E6C00D7BEAA /* AddRule.xib */,
 				CDA1369324F0D2CF005AD424 /* AddRuleWindowController.h */,
 				CDA1369A24F0D2CF005AD424 /* AddRuleWindowController.m */,
-				CDA1367424F0D268005AD424 /* AlertWindow.xib */,
+				CD2CA17D2C3E9E6700D7BEAA /* AlertWindow.xib */,
 				CDA1367F24F0D268005AD424 /* AlertWindowController.h */,
 				CDA1367224F0D268005AD424 /* AlertWindowController.m */,
-				CDB2CC2624D61A5000D0EECE /* App.entitlements */,
+				CD2CA17B2C3E9E6200D7BEAA /* App.entitlements */,
 				CDB2CC1B24D61A4E00D0EECE /* AppDelegate.h */,
 				CDB2CC1C24D61A4E00D0EECE /* AppDelegate.m */,
 				CDB2CC1E24D61A5000D0EECE /* Assets.xcassets */,
@@ -319,7 +324,7 @@
 				CDC378C5250C66C200314064 /* Extension.h */,
 				CDC378C6250C66C300314064 /* Extension.m */,
 				CDB2CC2324D61A5000D0EECE /* Info.plist */,
-				CD9E147C25171BF200DA05C3 /* ItemPaths.xib */,
+				CD2CA1772C3E9E5700D7BEAA /* ItemPaths.xib */,
 				CD9E147A25171BF200DA05C3 /* ItemPathsWindowController.h */,
 				CD9E147B25171BF200DA05C3 /* ItemPathsWindowController.m */,
 				CDB2CC2424D61A5000D0EECE /* main.m */,
@@ -331,7 +336,7 @@
 				CDA1367A24F0D268005AD424 /* ParentsWindowController.h */,
 				CDA1367E24F0D268005AD424 /* ParentsWindowController.m */,
 				CDA1369624F0D2CF005AD424 /* patrons.txt */,
-				CDA1369F24F0D2D0005AD424 /* Preferences.xib */,
+				CD2CA1732C3E9E4300D7BEAA /* Preferences.xib */,
 				CDA1369224F0D2CF005AD424 /* PrefsWindowController.h */,
 				CDA1368E24F0D2CF005AD424 /* PrefsWindowController.m */,
 				CDA1369D24F0D2CF005AD424 /* RuleRow.h */,
@@ -511,14 +516,14 @@
 				CD9E04D3254163AF00DB3218 /* patrons.txt in Resources */,
 				CD0070342C39599E0011979F /* StartupWindowController.xib in Resources */,
 				CDC378CB250C83F200314064 /* Netiquette.app in Resources */,
-				CD9E147E25171BF200DA05C3 /* ItemPaths.xib in Resources */,
-				CDA1547824F34BEC00E0AE97 /* AboutWindow.xib in Resources */,
+				CD2CA1782C3E9E5700D7BEAA /* ItemPaths.xib in Resources */,
+				CD2CA1862C3E9E7000D7BEAA /* AboutWindow.xib in Resources */,
 				CD00703C2C3959B90011979F /* UpdateWindow.xib in Resources */,
-				CDA136E724F0F88F005AD424 /* AddRule.xib in Resources */,
-				CDA136E824F0F88F005AD424 /* Preferences.xib in Resources */,
+				CD2CA1822C3E9E6C00D7BEAA /* AddRule.xib in Resources */,
+				CD2CA1742C3E9E4300D7BEAA /* Preferences.xib in Resources */,
 				CD0070302C3959970011979F /* Rules.xib in Resources */,
 				CD00702C2C3956F50011979F /* Welcome.xib in Resources */,
-				CDA136EB24F0F88F005AD424 /* AlertWindow.xib in Resources */,
+				CD2CA17E2C3E9E6700D7BEAA /* AlertWindow.xib in Resources */,
 				CD0070262C3954220011979F /* Localizable.xcstrings in Resources */,
 				CD0070382C3959A90011979F /* StatusBarPopover.xib in Resources */,
 				CDB2CC1F24D61A5000D0EECE /* Assets.xcassets in Resources */,
@@ -651,6 +656,59 @@
 				CD00703D2C3959B90011979F /* mul */,
 			);
 			name = UpdateWindow.xib;
+			sourceTree = "<group>";
+		};
+		CD2CA1732C3E9E4300D7BEAA /* Preferences.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD2CA1722C3E9E4300D7BEAA /* Base */,
+				CD2CA1752C3E9E4300D7BEAA /* mul */,
+			);
+			name = Preferences.xib;
+			sourceTree = "<group>";
+		};
+		CD2CA1772C3E9E5700D7BEAA /* ItemPaths.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD2CA1762C3E9E5700D7BEAA /* Base */,
+				CD2CA1792C3E9E5700D7BEAA /* mul */,
+			);
+			name = ItemPaths.xib;
+			sourceTree = "<group>";
+		};
+		CD2CA17B2C3E9E6200D7BEAA /* App.entitlements */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD2CA17A2C3E9E6200D7BEAA /* Base */,
+			);
+			name = App.entitlements;
+			sourceTree = "<group>";
+		};
+		CD2CA17D2C3E9E6700D7BEAA /* AlertWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD2CA17C2C3E9E6700D7BEAA /* Base */,
+				CD2CA17F2C3E9E6700D7BEAA /* mul */,
+			);
+			name = AlertWindow.xib;
+			sourceTree = "<group>";
+		};
+		CD2CA1812C3E9E6C00D7BEAA /* AddRule.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD2CA1802C3E9E6C00D7BEAA /* Base */,
+				CD2CA1832C3E9E6C00D7BEAA /* mul */,
+			);
+			name = AddRule.xib;
+			sourceTree = "<group>";
+		};
+		CD2CA1852C3E9E7000D7BEAA /* AboutWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD2CA1842C3E9E7000D7BEAA /* Base */,
+				CD2CA1872C3E9E7000D7BEAA /* mul */,
+			);
+			name = AboutWindow.xib;
 			sourceTree = "<group>";
 		};
 		CDB2CC2024D61A5000D0EECE /* MainMenu.xib */ = {

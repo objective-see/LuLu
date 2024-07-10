@@ -1,0 +1,54 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "6g3-Pg-x3P.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Support Us!\"; ObjectID = \"6g3-Pg-x3P\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Support Us!"
+          }
+        }
+      }
+    },
+    "bBK-v0-ypq.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Version:\"; ObjectID = \"bBK-v0-ypq\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Version:"
+          }
+        }
+      }
+    },
+    "fJg-qw-wDf.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Supporters/Patrons:\"; ObjectID = \"fJg-qw-wDf\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Supporters/Patrons:"
+          }
+        }
+      }
+    },
+    "J9x-sM-h9S.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"More Info\"; ObjectID = \"J9x-sM-h9S\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "More Info"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

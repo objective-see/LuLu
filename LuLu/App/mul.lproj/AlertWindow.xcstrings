@@ -1,0 +1,378 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "1zg-95-QM7.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \" - signing auth 2\"; ObjectID = \"1zg-95-QM7\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : " - signing auth 2"
+          }
+        }
+      }
+    },
+    "2iW-bn-Rov.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Signing ID:\"; ObjectID = \"2iW-bn-Rov\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Signing ID:"
+          }
+        }
+      }
+    },
+    "8eV-Ag-i7n.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Network Info\"; ObjectID = \"8eV-Ag-i7n\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Network Info"
+          }
+        }
+      }
+    },
+    "9sX-aC-eeQ.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"9sX-aC-eeQ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Text Cell"
+          }
+        }
+      }
+    },
+    "9Yb-sJ-Kcj.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"not applicable\"; ObjectID = \"9Yb-sJ-Kcj\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "not applicable"
+          }
+        }
+      }
+    },
+    "31V-e4-dgv.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"port & protocol:\"; ObjectID = \"31V-e4-dgv\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "port & protocol:"
+          }
+        }
+      }
+    },
+    "b63-At-csb.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Details:\"; ObjectID = \"b63-At-csb\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Details:"
+          }
+        }
+      }
+    },
+    "BdA-oU-RlF.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \" temporarily (pid: 12345)\"; ObjectID = \"BdA-oU-RlF\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : " temporarily (pid: 12345)"
+          }
+        }
+      }
+    },
+    "D1C-aK-AFU.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Signing Auths:\"; ObjectID = \"D1C-aK-AFU\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Signing Auths:"
+          }
+        }
+      }
+    },
+    "F0z-JX-Cv5.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"LuLu Alert\"; ObjectID = \"F0z-JX-Cv5\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "LuLu Alert"
+          }
+        }
+      }
+    },
+    "FLb-1c-otA.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \" - signing auth 3\"; ObjectID = \"FLb-1c-otA\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : " - signing auth 3"
+          }
+        }
+      }
+    },
+    "Fxr-aW-bT2.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"reverse dns name:\"; ObjectID = \"Fxr-aW-bT2\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "reverse dns name:"
+          }
+        }
+      }
+    },
+    "G2Q-QQ-EX7.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"rule scope:\"; ObjectID = \"G2Q-QQ-EX7\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "rule scope:"
+          }
+        }
+      }
+    },
+    "Gqr-cR-TAF.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"process path:\"; ObjectID = \"Gqr-cR-TAF\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "process path:"
+          }
+        }
+      }
+    },
+    "h8U-b3-ujA.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"virus total\"; ObjectID = \"h8U-b3-ujA\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "virus total"
+          }
+        }
+      }
+    },
+    "HBz-tK-Y6f.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"signing id\"; ObjectID = \"HBz-tK-Y6f\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "signing id"
+          }
+        }
+      }
+    },
+    "HZu-Op-XHi.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"process id: \"; ObjectID = \"HZu-Op-XHi\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "process id: "
+          }
+        }
+      }
+    },
+    "Iys-aY-OZ4.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Process\"; ObjectID = \"Iys-aY-OZ4\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Process"
+          }
+        }
+      }
+    },
+    "JFW-5C-nvy.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Name\"; ObjectID = \"JFW-5C-nvy\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "jJh-pj-fqv.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"ancestry\"; ObjectID = \"jJh-pj-fqv\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "ancestry"
+          }
+        }
+      }
+    },
+    "Ki9-ld-5Xu.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \" - signing auth 1\"; ObjectID = \"Ki9-ld-5Xu\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : " - signing auth 1"
+          }
+        }
+      }
+    },
+    "KMj-LZ-EdU.placeholderString" : {
+      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"resolving...\"; ObjectID = \"KMj-LZ-EdU\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "resolving..."
+          }
+        }
+      }
+    },
+    "N6E-eT-Q39.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Remote Endpoint\"; ObjectID = \"N6E-eT-Q39\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Remote Endpoint"
+          }
+        }
+      }
+    },
+    "nFi-bu-Okm.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"querying virus total...\"; ObjectID = \"nFi-bu-Okm\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "querying virus total..."
+          }
+        }
+      }
+    },
+    "Pp2-2W-YkT.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Process Info\"; ObjectID = \"Pp2-2W-YkT\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Process Info"
+          }
+        }
+      }
+    },
+    "Ssw-3u-wEC.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"message\"; ObjectID = \"Ssw-3u-wEC\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "message"
+          }
+        }
+      }
+    },
+    "T20-eE-vRR.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"process args:\"; ObjectID = \"T20-eE-vRR\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "process args:"
+          }
+        }
+      }
+    },
+    "vmZ-KS-uuK.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"ip address:\"; ObjectID = \"vmZ-KS-uuK\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "ip address:"
+          }
+        }
+      }
+    },
+    "W18-Ba-X7J.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Block\"; ObjectID = \"W18-Ba-X7J\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Block"
+          }
+        }
+      }
+    },
+    "ybM-PR-IbA.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"time stamp\"; ObjectID = \"ybM-PR-IbA\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "time stamp"
+          }
+        }
+      }
+    },
+    "Zk5-p6-VV3.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Allow\"; ObjectID = \"Zk5-p6-VV3\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Allow"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

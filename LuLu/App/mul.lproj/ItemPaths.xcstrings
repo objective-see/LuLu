@@ -1,0 +1,42 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "F0z-JX-Cv5.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Window\"; ObjectID = \"F0z-JX-Cv5\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Window"
+          }
+        }
+      }
+    },
+    "NhE-Zh-Scd.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Path(s):\"; ObjectID = \"NhE-Zh-Scd\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Path(s):"
+          }
+        }
+      }
+    },
+    "ox8-oX-X3s.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Close\"; ObjectID = \"ox8-oX-X3s\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Close"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
