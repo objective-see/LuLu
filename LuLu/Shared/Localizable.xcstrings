@@ -311,7 +311,7 @@
       "comment" : "signing error: %#lx"
     },
     "This must be uninstalled before continuing. Click 'More Info' to learn how to uninstall it" : {
-      "comment" : "This must be uninstalled before continuing\r\n.Click 'More Info' to learn how to uninstall it"
+      "comment" : "This must be uninstalled before continuing\r\n.Click 'More Info' to learn how to uninstall it."
     },
     "timestamp: %@" : {
       "comment" : "timestamp: %@"
