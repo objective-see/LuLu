@@ -55,7 +55,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
     
     //v1.0 version installed?
     // prompt / provide link to uninstall instructions / exit
-    if(YES != [NSFileManager.defaultManager fileExistsAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:@"LuLu.bundle"]])
+    if(YES == [NSFileManager.defaultManager fileExistsAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:@"LuLu.bundle"]])
     {
         //show alert
         response = showAlert(NSAlertStyleWarning, NSLocalizedString(@"Old Version of LuLu Installed", @"Old Version of LuLu Installed"), NSLocalizedString(@"This must be uninstalled before continuing. Click 'More Info' to learn how to uninstall it", @"This must be uninstalled before continuing\r\n.Click 'More Info' to learn how to uninstall it."), @[NSLocalizedString(@"More Info", @"More Info"), NSLocalizedString(@"Cancel", @"Cancel")]);
