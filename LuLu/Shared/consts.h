@@ -71,7 +71,7 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define RULE_STATE_ALLOW 1
 
 //product version url
-#define PRODUCT_VERSIONS_URL @"https://objective-see.com/products.json"
+#define PRODUCT_VERSIONS_URL @"https://api.github.com/repos/objective-see/LuLu/releases/latest"
 
 //product key
 #define PRODUCT_KEY @"LuLu"
