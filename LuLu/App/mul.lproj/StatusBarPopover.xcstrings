@@ -10,6 +10,12 @@
             "state" : "new",
             "value" : "⌃"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌃"
+          }
         }
       }
     },
@@ -22,6 +28,12 @@
             "state" : "new",
             "value" : "LuLu up & running!"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡LuLu en funcionamiento!"
+          }
         }
       }
     },
@@ -33,6 +45,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "...access it from here anytime."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...acceda desde aquí en cualquier momento."
           }
         }
       }

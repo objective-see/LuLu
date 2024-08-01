@@ -584,7 +584,7 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "running in 'no icon' mode (so no need for status bar)");
     }
-
+    
     //automatically check for updates?
     // skipped if launched by user (e.g. first time run)
     if( (YES != launchedByUser()) &&
@@ -623,18 +623,18 @@ bail:
         switch(result)
         {
             //error
-            case -1:
+            case UPDATE_ERROR:
                 os_log_error(logHandle, "ERROR: update check failed");
                 break;
                 
             //no updates
-            case 0:
+            case UPDATE_NOTHING_NEW:
                 os_log_debug(logHandle, "no updates available");
                 break;
                 
             //new version
             // show update window
-            case 1:
+            case UPDATE_NEW_VERSION:
                 
                 //dbg msg
                 os_log_debug(logHandle, "a new version (%@) is available", newVersion);

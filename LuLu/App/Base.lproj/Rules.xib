@@ -184,10 +184,10 @@
                         </tableHeaderView>
                     </scrollView>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eUD-fD-sWd">
-                        <rect key="frame" x="894" y="10" width="78" height="20"/>
+                        <rect key="frame" x="829" y="14" width="149" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="74" id="Mxq-DQ-euD"/>
-                            <constraint firstAttribute="height" constant="20" id="eie-Hn-5SE"/>
+                            <constraint firstAttribute="width" constant="145" id="Mxq-DQ-euD"/>
+                            <constraint firstAttribute="height" constant="15" id="eie-Hn-5SE"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Add Rule" id="wLE-Rk-GOf">
                             <font key="font" size="13" name="Menlo-Bold"/>
@@ -203,7 +203,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FKP-Dh-JqV" userLabel="loading data">
-                                <rect key="frame" x="162" y="46" width="177" height="30"/>
+                                <rect key="frame" x="44" y="44" width="413" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="(re)loading rules..." id="vD6-Bk-elz">
                                     <font key="font" size="13" name="Menlo-Bold"/>
@@ -247,9 +247,9 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="eUD-fD-sWd" secondAttribute="bottom" constant="10" id="8Ef-ds-Jg0"/>
+                    <constraint firstAttribute="bottom" secondItem="eUD-fD-sWd" secondAttribute="bottom" constant="14" id="8Ef-ds-Jg0"/>
                     <constraint firstItem="VUa-5Z-QAG" firstAttribute="centerY" secondItem="se5-gp-TjO" secondAttribute="centerY" id="DAy-mh-4L6"/>
-                    <constraint firstItem="XnJ-SV-lDg" firstAttribute="leading" secondItem="eUD-fD-sWd" secondAttribute="trailing" constant="14" id="M9P-GI-0H0"/>
+                    <constraint firstItem="XnJ-SV-lDg" firstAttribute="leading" secondItem="eUD-fD-sWd" secondAttribute="trailing" constant="8" id="M9P-GI-0H0"/>
                     <constraint firstAttribute="bottom" secondItem="XnJ-SV-lDg" secondAttribute="bottom" constant="12" id="ONy-4k-MUE"/>
                     <constraint firstAttribute="bottom" secondItem="QQG-tM-Qn1" secondAttribute="bottom" constant="3" id="co7-PF-80H"/>
                     <constraint firstItem="VUa-5Z-QAG" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="hpP-ol-ynU"/>
@@ -306,9 +306,9 @@
                     <toolbarItem implicitItemIdentifier="6A861BC3-0977-42BD-857D-D0D8C06EB403" label="" paletteLabel="" tag="5" id="laZ-lE-1iU">
                         <nil key="toolTip"/>
                         <size key="minSize" width="96" height="22"/>
-                        <size key="maxSize" width="155" height="22"/>
+                        <size key="maxSize" width="207" height="22"/>
                         <searchField key="view" identifier="abc" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" tag="5" textCompletion="NO" id="6hG-3v-G35">
-                            <rect key="frame" x="0.0" y="14" width="145" height="22"/>
+                            <rect key="frame" x="0.0" y="14" width="189" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" identifier="def" placeholderString="Filter Rules" usesSingleLineMode="YES" bezelStyle="round" id="DWG-ck-lDk">
                                 <font key="font" metaFont="system"/>

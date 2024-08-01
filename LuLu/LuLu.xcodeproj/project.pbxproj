@@ -73,6 +73,7 @@
 		CDCAA9692B677AFC00FE27DD /* StartupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCAA9662B677AFC00FE27DD /* StartupWindowController.m */; };
 		CDCAA96C2B69DC3700FE27DD /* RulesMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCAA96B2B69DC3700FE27DD /* RulesMenuController.m */; };
 		CDD7853D255609AC001BB0BE /* BlockList.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD7853C255609AC001BB0BE /* BlockList.m */; };
+		CDD992D72C4EC30000A1B406 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CDD992D62C4EC30000A1B406 /* InfoPlist.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +230,7 @@
 		CDCAA96D2B69DC4500FE27DD /* RulesMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RulesMenuController.h; sourceTree = "<group>"; };
 		CDD7853B255609AC001BB0BE /* BlockList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockList.h; sourceTree = "<group>"; };
 		CDD7853C255609AC001BB0BE /* BlockList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockList.m; sourceTree = "<group>"; };
+		CDD992D62C4EC30000A1B406 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +309,7 @@
 			children = (
 				CD2CA1852C3E9E7000D7BEAA /* AboutWindow.xib */,
 				CDA1369B24F0D2CF005AD424 /* AboutWindowController.h */,
+				CDD992D62C4EC30000A1B406 /* InfoPlist.xcstrings */,
 				CDA1369524F0D2CF005AD424 /* AboutWindowController.m */,
 				CD2CA1812C3E9E6C00D7BEAA /* AddRule.xib */,
 				CDA1369324F0D2CF005AD424 /* AddRuleWindowController.h */,
@@ -527,6 +530,7 @@
 				CD0070262C3954220011979F /* Localizable.xcstrings in Resources */,
 				CD0070382C3959A90011979F /* StatusBarPopover.xib in Resources */,
 				CDB2CC1F24D61A5000D0EECE /* Assets.xcassets in Resources */,
+				CDD992D72C4EC30000A1B406 /* InfoPlist.xcstrings in Resources */,
 				CD2CA1912C3E9F0A00D7BEAA /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

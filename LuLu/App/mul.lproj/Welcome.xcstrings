@@ -10,6 +10,12 @@
             "state" : "new",
             "value" : "This option will allow any 3rd-party app that is already installed, to access the network without generating an alert."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta opción permitirá que cualquier aplicación de terceros que ya esté instalada acceda a la red sin generar una alerta."
+          }
         }
       }
     },
@@ -40,6 +46,12 @@
             "state" : "new",
             "value" : "1. In the \"System Extension Blocked\" alert, click: \"Open System Settings\""
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. En la alerta \"Extensión de Sistema Bloqueada\", haga click en: \"Abrir Configuración del Sistema\""
+          }
         }
       }
     },
@@ -51,6 +63,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "First,  allow the LuLu Network Extension:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primero, permite la Extensión de Red de LuLu:"
           }
         }
       }
@@ -64,6 +82,12 @@
             "state" : "new",
             "value" : "It monitors network activity and alerts you when a program first tries to initiate an outgoing connection, allowing you to permit or deny it."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monitorea la actividad de la red y alerta cuando un programa intenta iniciar por primera vez una conexión saliente, permitiéndote permitirla o denegarla.  "
+          }
         }
       }
     },
@@ -76,6 +100,12 @@
             "state" : "new",
             "value" : "2. In System Settings, scroll to where is mentions \"LuLu\" and click \"Allow\""
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. En Configuración del Sistema, deslice hasta \"LuLu\" y haga click en \"Permitir\""
+          }
         }
       }
     },
@@ -86,6 +116,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "LuLu"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "LuLu"
           }
         }
@@ -100,6 +136,12 @@
             "state" : "new",
             "value" : "LuLu is a free open-source firewall for macOS."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu es un firewall gratuito y open-source para macOS."
+          }
         }
       }
     },
@@ -110,6 +152,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "No"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "No"
           }
         }
@@ -124,6 +172,12 @@
             "state" : "new",
             "value" : "Support LuLu?"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Apoyas a LuLu?"
+          }
         }
       }
     },
@@ -135,6 +189,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "4. In the \"Filter Network Content\" alert, click: \"Allow\""
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. En la alerta \"Filtrar Contenido de Red\", haga click en: \"Permitir\""
           }
         }
       }
@@ -148,6 +208,12 @@
             "state" : "new",
             "value" : "Welcome to"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenido a "
+          }
         }
       }
     },
@@ -159,6 +225,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "This option will allow any Apple-signed binary to access the network without generating an alert."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta opción permitirá que cualquier código binario firmado por Apple acceda a la red sin generar una alerta."
           }
         }
       }
@@ -172,6 +244,12 @@
             "state" : "new",
             "value" : "Yes!"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Sí!"
+          }
         }
       }
     },
@@ -183,6 +261,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "This option will allow any (UDP) traffic over port 53."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta opción permitirá cualquier tráfico (UDP) sobre el puerto 53. "
           }
         }
       }
@@ -196,6 +280,12 @@
             "state" : "new",
             "value" : " Allow DNS Traffic"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir Tráfico DNS"
+          }
         }
       }
     },
@@ -207,6 +297,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "It's free, open-source, and written by a single (Mac-loving) coder!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin cargo, open-source y desarrollado por un único programador (amante de Mac)!  "
           }
         }
       }
@@ -220,6 +316,12 @@
             "state" : "new",
             "value" : "Waiting for System Extension Approval"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esperando Aprobación de la Extensión del Sistema"
+          }
         }
       }
     },
@@ -231,6 +333,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Show some love? "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Nos das tu apoyo?"
           }
         }
       }
@@ -244,6 +352,12 @@
             "state" : "new",
             "value" : "Next"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente"
+          }
         }
       }
     },
@@ -255,6 +369,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Now, let's configure LuLu:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahora, configuremos LuLu:"
           }
         }
       }
@@ -268,6 +388,12 @@
             "state" : "new",
             "value" : " Allow Already Installed Applications"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir Aplicaciones Ya Instaladas"
+          }
         }
       }
     },
@@ -279,6 +405,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Next"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente"
           }
         }
       }
@@ -292,6 +424,12 @@
             "state" : "new",
             "value" : " Allow Apple Programs"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir Programas de Apple"
+          }
         }
       }
     },
@@ -303,6 +441,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "3. Authenticate"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Autenticar"
           }
         }
       }

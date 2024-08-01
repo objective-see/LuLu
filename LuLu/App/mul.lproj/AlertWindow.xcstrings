@@ -10,6 +10,12 @@
             "state" : "new",
             "value" : " - signing auth 2"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- autorización de firma 2"
+          }
         }
       }
     },
@@ -21,6 +27,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Signing ID:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ID de firma:"
           }
         }
       }
@@ -34,6 +46,12 @@
             "state" : "new",
             "value" : "Network Info"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información de Red"
+          }
         }
       }
     },
@@ -45,6 +63,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Text Cell"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celda de Texto"
           }
         }
       }
@@ -58,6 +82,12 @@
             "state" : "new",
             "value" : "not applicable"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "no aplica"
+          }
         }
       }
     },
@@ -69,6 +99,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "port & protocol:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "puerto & protocolo:"
           }
         }
       }
@@ -82,6 +118,12 @@
             "state" : "new",
             "value" : "Details:"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalles:"
+          }
         }
       }
     },
@@ -93,6 +135,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : " temporarily (pid: 12345)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "temporalmente (pid: 12345)"
           }
         }
       }
@@ -106,6 +154,12 @@
             "state" : "new",
             "value" : "Signing Auths:"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autorizaciones de Firma:"
+          }
         }
       }
     },
@@ -117,6 +171,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "LuLu Alert"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alerta de LuLu"
           }
         }
       }
@@ -130,6 +190,12 @@
             "state" : "new",
             "value" : " - signing auth 3"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- autorización de firma 3"
+          }
         }
       }
     },
@@ -141,6 +207,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "reverse dns name:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nombre de dns inverso:"
           }
         }
       }
@@ -154,6 +226,12 @@
             "state" : "new",
             "value" : "rule scope:"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "alcance de la regla:"
+          }
         }
       }
     },
@@ -166,6 +244,12 @@
             "state" : "new",
             "value" : "process path:"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ruta del proceso:"
+          }
         }
       }
     },
@@ -176,6 +260,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "virus total"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "virus total"
           }
         }
@@ -190,6 +280,12 @@
             "state" : "new",
             "value" : "signing id"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "id de firma"
+          }
         }
       }
     },
@@ -201,6 +297,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "process id: "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "id de proceso:"
           }
         }
       }
@@ -214,6 +316,12 @@
             "state" : "new",
             "value" : "Process"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proceso"
+          }
         }
       }
     },
@@ -225,6 +333,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Name"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre"
           }
         }
       }
@@ -238,6 +352,12 @@
             "state" : "new",
             "value" : "ancestry"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ascendencia"
+          }
         }
       }
     },
@@ -249,6 +369,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : " - signing auth 1"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- autorización de firma 1"
           }
         }
       }
@@ -262,6 +388,12 @@
             "state" : "new",
             "value" : "resolving..."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "resolviendo..."
+          }
         }
       }
     },
@@ -273,6 +405,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Remote Endpoint"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Endpoint Remoto"
           }
         }
       }
@@ -286,6 +424,12 @@
             "state" : "new",
             "value" : "querying virus total..."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "consultando a virus total..."
+          }
         }
       }
     },
@@ -297,6 +441,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Process Info"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información del Proceso"
           }
         }
       }
@@ -310,6 +460,12 @@
             "state" : "new",
             "value" : "message"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mensaje"
+          }
         }
       }
     },
@@ -321,6 +477,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "process args:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "argumentos del proceso:"
           }
         }
       }
@@ -334,6 +496,12 @@
             "state" : "new",
             "value" : "ip address:"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dirección ip:"
+          }
         }
       }
     },
@@ -345,6 +513,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Block"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquear"
           }
         }
       }
@@ -358,6 +532,12 @@
             "state" : "new",
             "value" : "time stamp"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "marca de tiempo"
+          }
         }
       }
     },
@@ -369,6 +549,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Allow"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir"
           }
         }
       }

@@ -394,4 +394,13 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define MENU_RULES_EXPORT  4
 #define MENU_RULES_CLEANUP 5
 
+//update error
+#define UPDATE_ERROR -1
+
+//update no new version
+#define UPDATE_NOTHING_NEW 0
+
+//update new version
+#define UPDATE_NEW_VERSION 1
+
 #endif /* const_h */

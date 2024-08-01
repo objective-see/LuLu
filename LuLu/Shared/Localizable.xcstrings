@@ -2,37 +2,125 @@
   "sourceLanguage" : "en",
   "strings" : {
     " has a signing issue" : {
-      "comment" : " has a signing issue"
+      "comment" : " has a signing issue",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tiene un problema de firma"
+          }
+        }
+      }
     },
     " is not signed" : {
-      "comment" : " is not signed"
+      "comment" : " is not signed",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "no está firmado"
+          }
+        }
+      }
     },
     " is not validly signed" : {
-      "comment" : " is not validly signed"
+      "comment" : " is not validly signed",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "no está válidamente firmado"
+          }
+        }
+      }
     },
     " is validly signed" : {
-      "comment" : " is validly signed"
+      "comment" : " is validly signed",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "válidamente firmado"
+          }
+        }
+      }
     },
     " signed by 3rd-party/ad hoc" : {
-      "comment" : " signed by 3rd-party/ad hoc"
+      "comment" : " signed by 3rd-party/ad hoc",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "firmado por un tercero/ad hoc"
+          }
+        }
+      }
     },
     " temporarily (pid: %@)" : {
-      "comment" : " temporarily (pid: %@)"
+      "comment" : " temporarily (pid: %@)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " temporalmente (pid: %@)"
+          }
+        }
+      }
     },
     " unknown" : {
-      "comment" : " unknown"
+      "comment" : " unknown",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "desconocido"
+          }
+        }
+      }
     },
     "...please copy it to /Applications and re-launch." : {
-      "comment" : "...please copy it to /Applications and re-launch."
+      "comment" : "...please copy it to /Applications and re-launch.",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...por favor cópialo a /Aplicaciones y vuelve a abrirlo. "
+          }
+        }
+      }
     },
     "...this will fully remove LuLu from your Mac" : {
-      "comment" : "...this will fully remove LuLu from your Mac"
+      "comment" : "...this will fully remove LuLu from your Mac",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...esto eliminará completamente LuLu de tu Mac"
+          }
+        }
+      }
     },
     "...this will terminate LuLu, until the next time you log in." : {
-      "comment" : "...this will terminate LuLu, until the next time you log in."
+      "comment" : "...this will terminate LuLu, until the next time you log in.",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...esto terminará LuLu, hasta la próxima vez que inicies sesión."
+          }
+        }
+      }
     },
     "› no signing authorities" : {
-      "comment" : "› no signing authorities"
+      "comment" : "› no signing authorities",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "› no hay autoridades de firma"
+          }
+        }
+      }
     },
     "%@ (pid: %@)" : {
       "comment" : "%@ (pid: %@)",
@@ -40,6 +128,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "%1$@ (pid: %2$@)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "%1$@ (pid: %2$@)"
           }
         }
@@ -53,26 +147,80 @@
             "state" : "new",
             "value" : "%1$@ (signer: %2$@)"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (firmante: %2$@)"
+          }
         }
       }
     },
     "%@ (signer: Apple Mac OS App Store)" : {
-      "comment" : "%@ (signer: Apple Mac OS App Store)"
+      "comment" : "%@ (signer: Apple Mac OS App Store)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (firmante: Apple Mac OS App Store)"
+          }
+        }
+      }
     },
     "%@ (signer: Apple Proper)" : {
-      "comment" : "%@ (signer: Apple Proper)"
+      "comment" : "%@ (signer: Apple Proper)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (firmante: Apple Original)"
+          }
+        }
+      }
     },
     "%@ (signer: invalid/unsigned)" : {
-      "comment" : "%@ (signer: invalid/unsigned)"
+      "comment" : "%@ (signer: invalid/unsigned)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (firmante: no válido/no firmado)"
+          }
+        }
+      }
     },
     "%@ does not exist!" : {
-      "comment" : "%@ does not exist!"
+      "comment" : "%@ does not exist!",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ no existe!"
+          }
+        }
+      }
     },
     "%@ is legitimate macOS process" : {
-      "comment" : "%@ is legitimate macOS process"
+      "comment" : "%@ is legitimate macOS process",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ es un proceso legítimo de macOS "
+          }
+        }
+      }
     },
     "%@ is not a valid (port) number" : {
-      "comment" : "%@ is not a valid (port) number"
+      "comment" : "%@ is not a valid (port) number",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ no es un número válido (de puerto)"
+          }
+        }
+      }
     },
     "%@ is not a valid regular expression\r\ndetails: %@" : {
       "comment" : "%@ is not a valid regular expression\r\ndetails: %@",
@@ -82,257 +230,938 @@
             "state" : "new",
             "value" : "%1$@ is not a valid regular expression\r\ndetails: %2$@"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ no es una expresión regular válida\r\ndetalles: %2$@"
+          }
         }
       }
     },
     "%@ this rule, may impact legitimate system functionalty ...continue?" : {
-      "comment" : "%@ this rule, may impact legitimate system functionalty ...continue?"
+      "comment" : "%@ this rule, may impact legitimate system functionalty ...continue?",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ esta regla, puede impactar la funcionalidad legítima del sistema...¿continuar?"
+          }
+        }
+      }
     },
     "%@'s code signing information has changed" : {
-      "comment" : "%@'s code signing information has changed"
+      "comment" : "%@'s code signing information has changed",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "la información de firma de código de %@ ha cambiado"
+          }
+        }
+      }
     },
     "→ Delete Rule" : {
-      "comment" : "→ Delete Rule"
+      "comment" : "→ Delete Rule",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Eliminar Regla"
+          }
+        }
+      }
     },
     "→ Delete rule(s)" : {
-      "comment" : "→ Delete rule(s)"
+      "comment" : "→ Delete rule(s)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Eliminar regla(s)"
+          }
+        }
+      }
     },
     "→ Edit Rule" : {
-      "comment" : "→ Edit Rule"
+      "comment" : "→ Edit Rule",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Editar Regla"
+          }
+        }
+      }
     },
     "→ Show path(s)" : {
-      "comment" : "→ Show path(s)"
+      "comment" : "→ Show path(s)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Mostrar ruta(s)"
+          }
+        }
+      }
     },
     "<unknown (%d)>" : {
-      "comment" : "<unknown (%d)>"
+      "comment" : "<unknown (%d)>",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<desconocido (%d)>"
+          }
+        }
+      }
     },
     "a new version (%@) is available!" : {
-      "comment" : "a new version (%@) is available!"
+      "comment" : "a new version (%@) is available!",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡una nueva versión (%@) está disponible!"
+          }
+        }
+      }
     },
     "Ad hoc" : {
-      "comment" : "Ad hoc"
+      "comment" : "Ad hoc",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ad hoc"
+          }
+        }
+      }
     },
     "All Rules" : {
-      "comment" : "All Rules"
+      "comment" : "All Rules",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todas las Reglas"
+          }
+        }
+      }
     },
     "Allow" : {
-      "comment" : "@Allow\nAllow"
+      "comment" : "@Allow\nAllow",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir"
+          }
+        }
+      }
     },
     "Allow (pid: %@)" : {
-      "comment" : "Allow (pid: %@)"
+      "comment" : "Allow (pid: %@)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir (pid: %@)"
+          }
+        }
+      }
     },
     "any address" : {
-      "comment" : "any address"
+      "comment" : "any address",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cualquier dirección"
+          }
+        }
+      }
     },
     "any port" : {
-      "comment" : "any port"
+      "comment" : "any port",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cualquier puerto"
+          }
+        }
+      }
     },
     "Any program" : {
-      "comment" : "Any program"
+      "comment" : "Any program",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cualquier programa"
+          }
+        }
+      }
     },
     "Apple Programs (automatically allowed & added here if 'allow apple programs' is set)" : {
-      "comment" : "Apple Programs (automatically allowed & added here if 'allow apple programs' is set)"
+      "comment" : "Apple Programs (automatically allowed & added here if 'allow apple programs' is set)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programas de Apple (permitidos automáticamente y agregados aquí si está configurado 'permitir programas de Apple')"
+          }
+        }
+      }
     },
     "Automatically Approved Programs (allowed as user was not logged in)" : {
-      "comment" : "Automatically Approved Programs (allowed as user was not logged in)"
+      "comment" : "Automatically Approved Programs (allowed as user was not logged in)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programas Aprobados Automáticamente (permitidos porque el usuario no estaba conectado)"
+          }
+        }
+      }
     },
     "Block" : {
-      "comment" : "Block"
+      "comment" : "Block",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquear"
+          }
+        }
+      }
     },
     "Block (pid: %@)" : {
-      "comment" : "Block (pid: %@)"
+      "comment" : "Block (pid: %@)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquear (pid: %@)"
+          }
+        }
+      }
     },
     "Cancel" : {
-      "comment" : "Cancel"
+      "comment" : "Cancel",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        }
+      }
     },
     "Cleaned up %ld rules" : {
-      "comment" : "Cleaned up %ld rules"
+      "comment" : "Cleaned up %ld rules",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se limpiaron %ld reglas"
+          }
+        }
+      }
     },
     "Cleanup rules that reference (now) deleted items?" : {
-      "comment" : "Cleanup rules that reference (now) deleted items?"
+      "comment" : "Cleanup rules that reference (now) deleted items?",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Limpiar reglas que hacen referencia a (ahora) elementos eliminados?"
+          }
+        }
+      }
     },
     "Continue" : {
-      "comment" : "Continue"
+      "comment" : "Continue",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        }
+      }
     },
     "details" : {
-      "comment" : "details"
+      "comment" : "details",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "detalles"
+          }
+        }
+      }
     },
     "Directory Rules apply to all items within the directory" : {
-      "comment" : "Directory Rules apply to all items within the directory"
+      "comment" : "Directory Rules apply to all items within the directory",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las Reglas de Directorio se aplican a todos los elementos dentro del directorio"
+          }
+        }
+      }
     },
     "Disable" : {
-      "comment" : "Disable"
+      "comment" : "Disable",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desactivado"
+          }
+        }
+      }
     },
     "Enable" : {
-      "comment" : "Enable"
+      "comment" : "Enable",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activado"
+          }
+        }
+      }
     },
     "ERROR: activation failed" : {
-      "comment" : "ERROR: activation failed"
+      "comment" : "ERROR: activation failed",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERROR: activación fallida"
+          }
+        }
+      }
     },
     "ERROR: Failed to cleanup rules" : {
-      "comment" : "ERROR: Failed to cleanup rules"
+      "comment" : "ERROR: Failed to cleanup rules",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERROR: Fallo al limpiar las reglas"
+          }
+        }
+      }
     },
     "ERROR: Failed to export rules" : {
-      "comment" : "ERROR: Failed to export rules"
+      "comment" : "ERROR: Failed to export rules",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERROR: Fallo al exportar las reglas"
+          }
+        }
+      }
     },
     "ERROR: Failed to import rules" : {
-      "comment" : "ERROR: Failed to import rules"
+      "comment" : "ERROR: Failed to import rules",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERROR: Fallo al importar las reglas"
+          }
+        }
+      }
     },
     "ERROR: failed to load patrons" : {
-      "comment" : "ERROR: failed to load patrons"
+      "comment" : "ERROR: failed to load patrons",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERROR: fallo al cargar patrones"
+          }
+        }
+      }
     },
     "ERROR: invalid path" : {
-      "comment" : "ERROR: invalid path"
+      "comment" : "ERROR: invalid path",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERROR: ruta no válida"
+          }
+        }
+      }
     },
     "ERROR: invalid port" : {
-      "comment" : "ERROR: invalid port"
+      "comment" : "ERROR: invalid port",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERROR: puerto no válido"
+          }
+        }
+      }
     },
     "ERROR: invalid regex" : {
-      "comment" : "ERROR: invalid regex"
+      "comment" : "ERROR: invalid regex",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERROR: regex no válido"
+          }
+        }
+      }
     },
     "error: update check failed" : {
-      "comment" : "error: update check failed"
+      "comment" : "error: update check failed",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "error: falló la verificación de actualización"
+          }
+        }
+      }
     },
     "Exported %lu rules" : {
-      "comment" : "Exported %lu rules"
+      "comment" : "Exported %lu rules",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se exportaron %lu reglas"
+          }
+        }
+      }
     },
     "Extensions must be manually approved via\r\nSecurity & Privacy System Preferences." : {
-      "comment" : "Extensions must be manually approved via\r\nSecurity & Privacy System Preferences."
+      "comment" : "Extensions must be manually approved via\r\nSecurity & Privacy System Preferences.",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las extensiones deben ser aprobadas manualmente a través de las Preferencias del Sistema de Seguridad y Privacidad."
+          }
+        }
+      }
     },
     "Extensions must be manually approved via Security & Privacy System Preferences." : {
-      "comment" : "Extensions must be manually approved via Security & Privacy System Preferences."
+      "comment" : "Extensions must be manually approved via Security & Privacy System Preferences.",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las extensiones deben ser aprobadas manualmente a través de las Preferencias del Sistema de Seguridad y Privacidad."
+          }
+        }
+      }
     },
     "failed to activate network extension" : {
-      "comment" : "failed to activate network extension"
+      "comment" : "failed to activate network extension",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "falló al activar la extensión de red"
+          }
+        }
+      }
     },
     "failed to activate network filter" : {
-      "comment" : "failed to activate network filter"
+      "comment" : "failed to activate network filter",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "falló al activar el filtro de red"
+          }
+        }
+      }
     },
     "failed to activate system extension" : {
-      "comment" : "failed to activate system extension"
+      "comment" : "failed to activate system extension",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "falló al activar la extensión del sistema"
+          }
+        }
+      }
     },
     "failed to activate system/network extension" : {
-      "comment" : "failed to activate system/network extension"
+      "comment" : "failed to activate system/network extension",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "falló al activar la extensión del sistema/red"
+          }
+        }
+      }
     },
     "failed to query Virus Total" : {
-      "comment" : "failed to query Virus Total"
+      "comment" : "failed to query Virus Total",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "falló al consultar Virus Total"
+          }
+        }
+      }
     },
     "Global Rules apply to all paths" : {
-      "comment" : "Global Rules apply to all paths"
+      "comment" : "Global Rules apply to all paths",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las Reglas Globales se aplican a todas las rutas"
+          }
+        }
+      }
     },
     "Imported %ld rules" : {
-      "comment" : "Imported %ld rules"
+      "comment" : "Imported %ld rules",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reglas %ld importadas"
+          }
+        }
+      }
     },
     "Installed version (%@),\r\nis the latest." : {
-      "comment" : "Installed version (%@),\r\nis the latest."
+      "comment" : "Installed version (%@),\r\nis the latest.",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La versión instalada (%@), es la más reciente."
+          }
+        }
+      }
     },
     "is trying to connect to %@" : {
-      "comment" : "is trying to connect to %@"
+      "comment" : "is trying to connect to %@",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "está intentando conectarse a %@"
+          }
+        }
+      }
     },
     "LuLu must run from:\r\n  %@" : {
-      "comment" : "LuLu must run from:\r\n  %@"
+      "comment" : "LuLu must run from:\r\n  %@",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu debe ejecutarse desde: %@"
+          }
+        }
+      }
     },
     "LuLu: disabled" : {
-      "comment" : "LuLu: disabled"
+      "comment" : "LuLu: disabled",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: desactivado"
+          }
+        }
+      }
     },
     "LuLu: enabled" : {
-      "comment" : "LuLu: enabled"
+      "comment" : "LuLu: enabled",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: activado"
+          }
+        }
+      }
     },
     "LuLu's Network Extension Is Not Running" : {
-      "comment" : "LuLu's Network Extension Is Not Running"
+      "comment" : "LuLu's Network Extension Is Not Running",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Extensión de Red de LuLu no está en ejecución"
+          }
+        }
+      }
     },
     "More Info" : {
-      "comment" : "More Info"
+      "comment" : "More Info",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Más Información"
+          }
+        }
+      }
     },
     "none" : {
-      "comment" : "none"
+      "comment" : "none",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ninguno"
+          }
+        }
+      }
     },
     "not applicable" : {
-      "comment" : "not applicable"
+      "comment" : "not applicable",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "no aplica"
+          }
+        }
+      }
     },
     "not found" : {
-      "comment" : "not found"
+      "comment" : "not found",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "no encontrado"
+          }
+        }
+      }
     },
     "Note however:\r\n▪ Existing connections will not be impacted.\r\n▪ OS traffic (not routed thru LuLu) will not be blocked." : {
-      "comment" : "Note however:\r\n▪ Existing connections will not be impacted.\r\n▪ OS traffic (not routed thru LuLu) will not be blocked."
+      "comment" : "Note however:\r\n▪ Existing connections will not be impacted.\r\n▪ OS traffic (not routed thru LuLu) will not be blocked.",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin embargo, ten en cuenta:\n▪ Las conexiones existentes no se verán afectadas.\n▪ El tráfico del sistema operativo (que no es ruteado a través de LuLu) no será bloqueado."
+          }
+        }
+      }
     },
     "OK" : {
-      "comment" : "OK"
+      "comment" : "OK",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
     },
     "Old Version of LuLu Installed" : {
-      "comment" : "Old Version of LuLu Installed"
+      "comment" : "Old Version of LuLu Installed",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión antigua de LuLu instalada"
+          }
+        }
+      }
     },
     "Operating System Programs (required for system functionality)" : {
-      "comment" : "Operating System Programs (required for system functionality)"
+      "comment" : "Operating System Programs (required for system functionality)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programas del Sistema Operativo (necesarios para la funcionalidad del sistema)"
+          }
+        }
+      }
     },
     "Outgoing traffic will now be blocked." : {
-      "comment" : "Outgoing traffic will now be blocked."
+      "comment" : "Outgoing traffic will now be blocked.",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tráfico saliente será bloqueado ahora. "
+          }
+        }
+      }
     },
     "Pre-installed 3rd-party Programs (automatically allowed & added here if 'allow installed applications' is set)" : {
-      "comment" : "Pre-installed 3rd-party Programs (automatically allowed & added here if 'allow installed applications' is set)"
+      "comment" : "Pre-installed 3rd-party Programs (automatically allowed & added here if 'allow installed applications' is set)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programas de terceros preinstalados (permitidos automáticamente y agregados aquí si está configurado 'permitir aplicaciones instaladas')"
+          }
+        }
+      }
     },
     "Programs within \"%@/\"" : {
-      "comment" : "Programs within \"%@/\""
+      "comment" : "Programs within \"%@/\"",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programas dentro de \"%@/\""
+          }
+        }
+      }
     },
     "querying Virus Total..." : {
-      "comment" : "querying Virus Total..."
+      "comment" : "querying Virus Total...",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "consultando Virus Total..."
+          }
+        }
+      }
     },
     "Quit" : {
-      "comment" : "Quit"
+      "comment" : "Quit",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        }
+      }
     },
     "Quit LuLu?" : {
-      "comment" : "Quit LuLu?"
+      "comment" : "Quit LuLu?",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar LuLu?"
+          }
+        }
+      }
     },
     "received invalid response" : {
-      "comment" : "received invalid response"
+      "comment" : "received invalid response",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "respuesta no válida recibida"
+          }
+        }
+      }
     },
     "remote address: %@" : {
-      "comment" : "remote address: %@"
+      "comment" : "remote address: %@",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dirección remota: %@"
+          }
+        }
+      }
     },
     "rules.json" : {
-      "comment" : "rules.json"
+      "comment" : "rules.json",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "reglas.json"
+          }
+        }
+      }
     },
     "See log for (more) details" : {
-      "comment" : "See log for (more) details"
+      "comment" : "See log for (more) details",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consulta el registro para más detalles"
+          }
+        }
+      }
     },
     "signed by Apple proper" : {
-      "comment" : "signed by Apple proper"
+      "comment" : "signed by Apple proper",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "firmado por Apple oficialmente"
+          }
+        }
+      }
     },
     "signed by Mac App Store" : {
-      "comment" : "signed by Mac App Store"
+      "comment" : "signed by Mac App Store",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "firmado por Mac App store"
+          }
+        }
+      }
     },
     "signed with an Apple Developer ID" : {
-      "comment" : "signed with an Apple Developer ID"
+      "comment" : "signed with an Apple Developer ID",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "firmado con un ID de Desarrollador de Apple"
+          }
+        }
+      }
     },
     "signed, but no signing authorities (adhoc?)" : {
-      "comment" : "signed, but no signing authorities (adhoc?)"
+      "comment" : "signed, but no signing authorities (adhoc?)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "firmado, pero sin autorización de firma (¿adhoc?)"
+          }
+        }
+      }
     },
     "signing error: %#lx" : {
-      "comment" : "signing error: %#lx"
+      "comment" : "signing error: %#lx",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "error de firma: %#lx"
+          }
+        }
+      }
     },
     "This must be uninstalled before continuing. Click 'More Info' to learn how to uninstall it" : {
-      "comment" : "This must be uninstalled before continuing\r\n.Click 'More Info' to learn how to uninstall it."
+      "comment" : "This must be uninstalled before continuing\r\n.Click 'More Info' to learn how to uninstall it.",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esto debe desinstalarse antes de continuar. Haz click en 'Más información' para saber cómo desinstalarlo"
+          }
+        }
+      }
     },
     "timestamp: %@" : {
-      "comment" : "timestamp: %@"
+      "comment" : "timestamp: %@",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "marca de tiempo: %@"
+          }
+        }
+      }
     },
     "Uninstall" : {
-      "comment" : "Uninstall"
+      "comment" : "Uninstall",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desinstalar"
+          }
+        }
+      }
     },
     "Uninstall LuLu?" : {
-      "comment" : "Uninstall LuLu?"
+      "comment" : "Uninstall LuLu?",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desinstalar LuLu?"
+          }
+        }
+      }
     },
     "unknown" : {
-      "comment" : "unknown"
+      "comment" : "unknown",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "desconocido"
+          }
+        }
+      }
     },
     "Update" : {
-      "comment" : "Update"
+      "comment" : "Update",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar"
+          }
+        }
+      }
     },
     "User-specified Programs (manually added, or in response to an alert)" : {
-      "comment" : "User-specified Programs (manually added, or in response to an alert)"
+      "comment" : "User-specified Programs (manually added, or in response to an alert)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programas especificados por el usuario (agregados manualmente, o en respuesta a una alerta)"
+          }
+        }
+      }
+    },
+    "Version: %@" : {
+      "comment" : "Version: %@",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión: %@"
+          }
+        }
+      }
     },
     "Waiting for Network Extension Approval" : {
-      "comment" : "Waiting for Network Extension Approval"
+      "comment" : "Waiting for Network Extension Approval",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esperando la aprobación de la Extensión de Red"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

@@ -10,6 +10,12 @@
             "state" : "new",
             "value" : "Now starting up..."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniciando ahora..."
+          }
         }
       }
     }

@@ -10,6 +10,12 @@
             "state" : "new",
             "value" : "Check Now"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verificar Ahora"
+          }
         }
       }
     },
@@ -21,6 +27,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Block Mode"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo Bloqueo"
           }
         }
       }
@@ -34,6 +46,12 @@
             "state" : "new",
             "value" : "Previously installed, 3rd-party programs will be allowed."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se permitirán los programas de terceros previamente instalados."
+          }
         }
       }
     },
@@ -45,6 +63,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Run without showing an icon in the status menu bar."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ejecutar sin mostrar un ícono en la barra de menú de estado."
           }
         }
       }
@@ -58,6 +82,12 @@
             "state" : "new",
             "value" : "View Rules"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver Reglas"
+          }
         }
       }
     },
@@ -69,6 +99,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Silently run without alerts, applying existing rules. New connections will be automatically allowed."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ejecutar en silencio sin alertas, aplicando las reglas existentes.\nLas nuevas conexiones se permitirán automáticamente."
           }
         }
       }
@@ -82,6 +118,12 @@
             "state" : "new",
             "value" : "Applications running within the simulator will be allowed."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se permitirán las aplicaciones que se ejecuten dentro del simulador."
+          }
         }
       }
     },
@@ -93,6 +135,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "LuLu's Settings"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración de LuLu"
           }
         }
       }
@@ -106,17 +154,11 @@
             "state" : "new",
             "value" : "Block List:"
           }
-        }
-      }
-    },
-    "Gr4-eN-arK.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Limitations apply, see documentation for details.\"; ObjectID = \"Gr4-eN-arK\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
+        },
+        "es" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Limitations apply, see documentation for details."
+            "state" : "translated",
+            "value" : "Lista de Bloqueo:"
           }
         }
       }
@@ -130,6 +172,12 @@
             "state" : "new",
             "value" : "No Icon Mode"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo Sin Ícono"
+          }
         }
       }
     },
@@ -141,6 +189,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "All (UDP) traffic on port 53 will be allowed."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo el tráfico (UDP) en el puerto 53 será permitido. "
           }
         }
       }
@@ -154,6 +208,12 @@
             "state" : "new",
             "value" : "Do not automatically check for new versions."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No verificar automáticamente nuevas versiones. "
+          }
         }
       }
     },
@@ -165,6 +225,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Passive Mode"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo Pasivo"
           }
         }
       }
@@ -178,6 +244,12 @@
             "state" : "new",
             "value" : "Allow Installed Programs"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir Programas Instalados"
+          }
         }
       }
     },
@@ -189,6 +261,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "mode"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "modo"
           }
         }
       }
@@ -202,17 +280,29 @@
             "state" : "new",
             "value" : "mode"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "modo"
+          }
         }
       }
     },
     "L7x-uU-rth.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"List of endpoints (ips/urls) to always block. \"; ObjectID = \"L7x-uU-rth\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"List of endpoints (ips/urls) to always block. (Limitations apply, see documentation for details)\"; ObjectID = \"L7x-uU-rth\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "List of endpoints (ips/urls) to always block. "
+            "value" : "List of endpoints (ips/urls) to always block. (Limitations apply, see documentation for details)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista de endpoints (ips/urls) para bloquear siempre. (Aplican limitaciones, consulte la documentación para más detalles)"
           }
         }
       }
@@ -226,6 +316,12 @@
             "state" : "new",
             "value" : "Apple-signed binaries will be allowed."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se permitirán los binarios firmados por Apple."
+          }
         }
       }
     },
@@ -237,6 +333,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "update"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "actualizar"
           }
         }
       }
@@ -250,6 +352,12 @@
             "state" : "new",
             "value" : "update"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "actualizar"
+          }
         }
       }
     },
@@ -261,6 +369,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "All traffic (routed thru LuLu) will be blocked."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo el tráfico (ruteado a través de LuLu) será bloqueado. "
           }
         }
       }
@@ -274,6 +388,12 @@
             "state" : "new",
             "value" : "Allow Apple Programs"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir Programas de Apple"
+          }
         }
       }
     },
@@ -285,6 +405,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "rules"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "reglas"
           }
         }
       }
@@ -298,6 +424,12 @@
             "state" : "new",
             "value" : "rules"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "reglas"
+          }
         }
       }
     },
@@ -309,6 +441,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Browse"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navegar"
           }
         }
       }
@@ -322,6 +460,12 @@
             "state" : "new",
             "value" : "Allow Simulator Applications"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir Aplicaciones del Simulador"
+          }
         }
       }
     },
@@ -334,6 +478,12 @@
             "state" : "new",
             "value" : "Allow DNS Traffic"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir Tráfico DNS"
+          }
         }
       }
     },
@@ -345,6 +495,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Disable Update Checks"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deshabilitar Verificación de Actualizaciones"
           }
         }
       }
