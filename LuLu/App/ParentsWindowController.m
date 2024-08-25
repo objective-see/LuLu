@@ -7,6 +7,7 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
+#import "consts.h"
 #import "ParentsWindowController.h"
 
 @implementation ParentsWindowController
@@ -22,7 +23,7 @@
     //for last item
     // no more kids...
     if( (1 != self.processHierarchy.count) &&
-        ([((NSDictionary*)item)[@"index"] integerValue] == self.processHierarchy.count-1) )
+        ([((NSDictionary*)item)[KEY_INDEX] integerValue] == self.processHierarchy.count-1) )
     {
         //no kids
         kidCount = 0;
@@ -40,8 +41,8 @@
     BOOL isExpandable = YES;
     
     //for last item
-    // ->no kids, so obv. no expandable
-    if([((NSDictionary*)item)[@"index"] integerValue] == self.processHierarchy.count-1)
+    // no kids, so obv. no expandable
+    if([((NSDictionary*)item)[KEY_INDEX] integerValue] == self.processHierarchy.count-1)
     {
         //last one
         isExpandable = NO;
@@ -57,7 +58,7 @@
     id itemForRow = nil;
     
     //item is nil for root
-    // ->just provide root item
+    // just provide root item
     if(nil == item)
     {
         //first item
@@ -65,11 +66,11 @@
     }
     
     //other items
-    // ->return *their* child!
+    // return *their* child!
     else
     {
         //child at index
-        itemForRow = self.processHierarchy[[((NSDictionary*)item)[@"index"] integerValue]+1];
+        itemForRow = self.processHierarchy[[((NSDictionary*)item)[KEY_INDEX] integerValue]+1];
     }
     
     return itemForRow;
@@ -85,7 +86,7 @@
     //init string for row
     // process name + pid
     //  note: if this format changes, also change row width calculation in AlertWindowController!
-    rowValue = [NSString stringWithFormat:NSLocalizedString(@"%@ (pid: %@)",@"%@ (pid: %@)"), ((NSDictionary*)item)[@"name"], ((NSDictionary*)item)[@"pid"]];
+    rowValue = [NSString stringWithFormat:NSLocalizedString(@"%@ (pid: %@)",@"%@ (pid: %@)"), ((NSDictionary*)item)[KEY_PROCESS_NAME], ((NSDictionary*)item)[@"pid"]];
     
     return rowValue;
 }

@@ -40,7 +40,7 @@ extern os_log_t logHandle;
     return self;
 }
 
-//create an alert object
+//create an alert dictionary
 -(NSMutableDictionary*)create:(NEFilterSocketFlow*)flow process:(Process*)process
 {
     //event for alert
@@ -80,6 +80,7 @@ extern os_log_t logHandle;
     //add process state
     if(YES == process.deleted)
     {
+        //add
         alert[KEY_PROCESS_DELETED] = @YES;
     }
     

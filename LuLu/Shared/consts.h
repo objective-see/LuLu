@@ -281,7 +281,8 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 
 #define KEY_SCOPE @"scope"
 #define KEY_ACTION @"action"
-#define KEY_TEMPORARY @"temporary"
+#define KEY_DURATION_PROCESS @"durationProcess"
+#define KEY_DURATION_EXPIRATION @"durationExpiration"
 
 #define KEY_ENDPOINT_ADDR @"endpointAddr"
 #define KEY_ENDPOINT_PORT @"endpointPort"
@@ -294,6 +295,7 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define KEY_PROCESS_ID @"pid"
 #define KEY_PROCESS_ARGS @"args"
 #define KEY_PROCESS_NAME @"name"
+#define KEY_PROCESS_PATH @"path"
 
 #define KEY_PROCESS_DELETED @"deleted"
 

@@ -743,6 +743,9 @@ bail:
 // return new cell for row
 -(NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
+    //date formatter
+    NSDateFormatter *dateFormatter = nil;
+    
     //view
     NSTableCellView* cell = nil;
     
@@ -793,8 +796,32 @@ bail:
                 //set image
                 cell.imageView.image = [NSImage imageNamed:@"MainAppRulesBlock"];
                 
-                //set action text
-                action = (nil == rule.pid) ? NSLocalizedString(@"Block", @"Block") : [NSString stringWithFormat:NSLocalizedString(@"Block (pid: %@)", @"Block (pid: %@)"), rule.pid];
+                //duration: process
+                if(nil != rule.pid)
+                {
+                    //set msg
+                    action = [NSString stringWithFormat:NSLocalizedString(@"Block (pid: %@)", @"Block (pid: %@)"), rule.pid];
+                }
+                
+                //duration: expiration
+                else if(nil != rule.expiration)
+                {
+                    //init date formatter
+                    dateFormatter = [[NSDateFormatter alloc] init];
+                    [dateFormatter setDateStyle:NSDateFormatterNoStyle];
+                    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+                    
+                    //set msg
+                    action = [NSString stringWithFormat:NSLocalizedString(@"Block (until: %@)", @"Block (until: %@)"), [dateFormatter stringFromDate:rule.expiration]];
+                }
+                
+                //normal
+                else
+                {
+                    //set action text
+                    action = NSLocalizedString(@"Block", @"Block");
+                }
+                
             }
             //allow?
             else
@@ -802,8 +829,31 @@ bail:
                 //set image
                 cell.imageView.image = [NSImage imageNamed:@"MainAppRulesAllow"];
                 
-                //set action text
-                action = (nil == rule.pid) ? NSLocalizedString(@"Allow", @"Allow") : [NSString stringWithFormat:NSLocalizedString(@"Allow (pid: %@)",@"Allow (pid: %@)"), rule.pid];
+                //duration: process
+                if(nil != rule.pid)
+                {
+                    //set msg
+                    action = [NSString stringWithFormat:NSLocalizedString(@"Allow (pid: %@)", @"Allow (pid: %@)"), rule.pid];
+                }
+                
+                //duration: expiration
+                else if(nil != rule.expiration)
+                {
+                    //init date formatter
+                    dateFormatter = [[NSDateFormatter alloc] init];
+                    [dateFormatter setDateStyle:NSDateFormatterNoStyle];
+                    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+                    
+                    //set msg
+                    action = [NSString stringWithFormat:NSLocalizedString(@"Allow (until: %@)", @"Allow (until: %@)"), [dateFormatter stringFromDate:rule.expiration]];
+                }
+                
+                //normal
+                else
+                {
+                    //set action text
+                    action = NSLocalizedString(@"Allow", @"Allow");
+                }
             }
             
             //set text

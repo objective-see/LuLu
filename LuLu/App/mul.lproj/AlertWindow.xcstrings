@@ -38,19 +38,31 @@
       }
     },
     "8eV-Ag-i7n.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Network Info\"; ObjectID = \"8eV-Ag-i7n\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Connection\"; ObjectID = \"8eV-Ag-i7n\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Network Info"
+            "value" : "Connection"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Información de Red"
+          }
+        }
+      }
+    },
+    "9OD-rL-0J2.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Rule Duration:\"; ObjectID = \"9OD-rL-0J2\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Rule Duration:"
           }
         }
       }
@@ -92,19 +104,49 @@
       }
     },
     "31V-e4-dgv.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"port & protocol:\"; ObjectID = \"31V-e4-dgv\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"port/protocol:\"; ObjectID = \"31V-e4-dgv\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "port & protocol:"
+            "value" : "port/protocol:"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "puerto & protocolo:"
+            "value" : "puerto/protocolo:"
+          }
+        }
+      }
+    },
+    "80z-6q-eWC.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Process lifetime\"; ObjectID = \"80z-6q-eWC\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Process lifetime"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Del proceso"
+          }
+        }
+      }
+    },
+    "abH-g6-95w.placeholderString" : {
+      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"HH:mm\"; ObjectID = \"abH-g6-95w\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "HH:mm"
           }
         }
       }
@@ -123,24 +165,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detalles:"
-          }
-        }
-      }
-    },
-    "BdA-oU-RlF.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \" temporarily (pid: 12345)\"; ObjectID = \"BdA-oU-RlF\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : " temporarily (pid: 12345)"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "temporalmente (pid: 12345)"
           }
         }
       }
@@ -200,62 +224,74 @@
       }
     },
     "Fxr-aW-bT2.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"reverse dns name:\"; ObjectID = \"Fxr-aW-bT2\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"(reverse) dns:\"; ObjectID = \"Fxr-aW-bT2\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "reverse dns name:"
+            "value" : "(reverse) dns:"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "nombre de dns inverso:"
+            "state" : "needs_review",
+            "value" : "dns inverso:"
+          }
+        }
+      }
+    },
+    "FYF-6N-pro.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Details & Options\"; ObjectID = \"FYF-6N-pro\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Details & Options"
           }
         }
       }
     },
     "G2Q-QQ-EX7.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"rule scope:\"; ObjectID = \"G2Q-QQ-EX7\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Rule Scope:\"; ObjectID = \"G2Q-QQ-EX7\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "rule scope:"
+            "value" : "Rule Scope:"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "alcance de la regla:"
+            "value" : "Alcance de la regla:"
           }
         }
       }
     },
     "Gqr-cR-TAF.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"process path:\"; ObjectID = \"Gqr-cR-TAF\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"path:\"; ObjectID = \"Gqr-cR-TAF\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "process path:"
+            "value" : "path:"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "ruta del proceso:"
+            "state" : "needs_review",
+            "value" : "ruta:"
           }
         }
       }
     },
     "h8U-b3-ujA.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"virus total\"; ObjectID = \"h8U-b3-ujA\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -265,7 +301,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "virus total"
           }
         }
@@ -289,20 +325,32 @@
         }
       }
     },
-    "HZu-Op-XHi.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"process id: \"; ObjectID = \"HZu-Op-XHi\";",
+    "hoJ-mx-qEO.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"is trying to connect to ...\"; ObjectID = \"hoJ-mx-qEO\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "process id: "
+            "value" : "is trying to connect to ..."
+          }
+        }
+      }
+    },
+    "HZu-Op-XHi.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"pid:\"; ObjectID = \"HZu-Op-XHi\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "pid:"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "id de proceso:"
+            "state" : "needs_review",
+            "value" : "identificador:"
           }
         }
       }
@@ -321,6 +369,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Proceso"
+          }
+        }
+      }
+    },
+    "JEi-1U-vkU.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Process Name\"; ObjectID = \"JEi-1U-vkU\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Process Name"
           }
         }
       }
@@ -345,7 +405,7 @@
     },
     "jJh-pj-fqv.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"ancestry\"; ObjectID = \"jJh-pj-fqv\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -355,7 +415,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "ascendencia"
           }
         }
@@ -397,6 +457,24 @@
         }
       }
     },
+    "med-2h-1mb.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Rule Duration:\"; ObjectID = \"med-2h-1mb\";",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Rule Duration:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duración de la regla:"
+          }
+        }
+      }
+    },
     "N6E-eT-Q39.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Remote Endpoint\"; ObjectID = \"N6E-eT-Q39\";",
       "extractionState" : "extracted_with_value",
@@ -433,20 +511,56 @@
         }
       }
     },
-    "Pp2-2W-YkT.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Process Info\"; ObjectID = \"Pp2-2W-YkT\";",
-      "extractionState" : "extracted_with_value",
+    "pFc-dB-SHZ.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Rule Action:\"; ObjectID = \"pFc-dB-SHZ\";",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Process Info"
+            "value" : "Rule Action:"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Acción de la regla:"
+          }
+        }
+      }
+    },
+    "Pp2-2W-YkT.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Process\"; ObjectID = \"Pp2-2W-YkT\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Process"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "Información del Proceso"
+          }
+        }
+      }
+    },
+    "S8m-FH-qke.placeholderString" : {
+      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"5 minutes\"; ObjectID = \"S8m-FH-qke\";",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "5 minutes"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 minutos"
           }
         }
       }
@@ -470,19 +584,37 @@
       }
     },
     "T20-eE-vRR.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"process args:\"; ObjectID = \"T20-eE-vRR\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"args:\"; ObjectID = \"T20-eE-vRR\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "process args:"
+            "value" : "args:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "argumentos:"
+          }
+        }
+      }
+    },
+    "Ubf-5c-Fd2.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Always\"; ObjectID = \"Ubf-5c-Fd2\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Always"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "argumentos del proceso:"
+            "value" : "Siempre"
           }
         }
       }
@@ -519,6 +651,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloquear"
+          }
+        }
+      }
+    },
+    "Wn5-T5-boq.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Valid until time:\"; ObjectID = \"Wn5-T5-boq\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Valid until time:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Personalizado:"
           }
         }
       }

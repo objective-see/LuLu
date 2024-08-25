@@ -116,4 +116,7 @@ BOOL matchesCSInfo(NSDictionary* csInfo_1, NSDictionary* csInfo_2);
 //escape string
 NSString* toEscapedJSON(NSString* input);
 
+//convert date to absolute
+NSDate* absoluteDate(NSDate* date);
+
 #endif

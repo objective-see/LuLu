@@ -7,10 +7,10 @@
 //  copyright (c) 2017 Objective-See. All rights reserved.
 //
 
-#import "consts.h"
-
 #import "Rule.h"
 #import "Rules.h"
+#import "Alerts.h"
+#import "consts.h"
 #import "Process.h"
 #import "utilities.h"
 #import "Preferences.h"
@@ -45,6 +45,9 @@ NSString* const DEFAULT_RULES[] =
 
 //log handle
 extern os_log_t logHandle;
+
+//alerts obj
+extern Alerts* alerts;
 
 //prefs obj
 extern Preferences* preferences;
@@ -257,6 +260,12 @@ bail:
     //archived rules
     NSData* archivedRules = nil;
     
+    //item rules
+    NSArray* itemRules = nil;
+    
+    //interval for expirations
+    NSTimeInterval timeInterval = 0;
+    
     //init path to rule's file
     rulesFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE];
     
@@ -275,7 +284,7 @@ bail:
     }
     
     //unarchive
-    self.rules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSMutableSet class], [Rule class]]]
+    self.rules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSMutableSet class], [NSDate class], [Rule class]]]
                                                        fromData:archivedRules error:&error];
     if(nil == self.rules)
     {
@@ -287,7 +296,7 @@ bail:
     }
     
     //make sure all item rules have a set for 'external' paths
-    // older rules did use this, so let's make do it here manually
+    // older rules didn't use this, so let's make do it here manually
     for(NSString* key in self.rules)
     {
         //skip global rules
@@ -309,6 +318,56 @@ bail:
         {
             //alloc
             self.rules[key][KEY_PATHS] = [NSMutableSet set];
+        }
+    }
+    
+    //setup deletion for any rules that have an expiration
+    for(NSString* key in self.rules)
+    {
+        //item rules
+        itemRules = self.rules[key][KEY_RULES];
+        
+        //check each
+        for(Rule* rule in itemRules)
+        {
+            //skip
+            if(nil == rule.expiration)
+            {
+                continue;
+            }
+            
+            //dbg msg
+            os_log_debug(logHandle, "loaded rule has an expiration date set: %{public}@", rule.expiration);
+            
+            timeInterval = [rule.expiration timeIntervalSinceNow];
+            
+            //already expired?
+            // just go ahead and delete
+            if(timeInterval <= 0)
+            {
+                //delete
+                [self delete:rule.key rule:rule.uuid];
+            }
+            
+            //setup dispatch to delete
+            else
+            {
+                //dbg msg
+                os_log_debug(logHandle, "setting up dispatch to delete one expiration is hit");
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                    //dbg msg
+                    os_log_debug(logHandle, "rule expiration hit, will delete!");
+                    
+                    //delete
+                    [self delete:rule.key rule:rule.uuid];
+                    
+                    //tell user rules changed
+                    [alerts.xpcUserClient rulesChanged];
+                    
+                });
+            }
         }
     }
     
@@ -415,6 +474,9 @@ bail:
     //result
     BOOL added = NO;
     
+    //interval for expirations
+    NSTimeInterval timeInterval = 0;
+    
     //dbg msg
     os_log_debug(logHandle, "adding rule: %{public}@ -> %{public}@", rule.key, rule);
 
@@ -465,6 +527,34 @@ bail:
 
     } //sync
     
+    //handle expirations
+    // setup dispatch to delete once it hit
+    if(nil != rule.expiration)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "rule has an expiration date set: %{public}@", rule.expiration);
+        
+        timeInterval = [rule.expiration timeIntervalSinceNow];
+        if(timeInterval > 0) {
+            
+            //dbg msg
+            os_log_debug(logHandle, "setting up dispatch to delete one expiration is hit");
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                //dbg msg
+                os_log_debug(logHandle, "rule expiration hit, will delete!");
+                
+                //delete
+                [self delete:rule.key rule:rule.uuid];
+                
+                //tell user rules changed
+                [alerts.xpcUserClient rulesChanged];
+                
+            });
+        }
+    }
+
     //save
     if(YES == save)
     {
@@ -646,11 +736,27 @@ bail:
             // note: * is a wildcard, meaning any match
             for(Rule* rule in rules)
             {
-                //ingore if rule is temporary
-                // and this pid doesn't match
-                if( (YES == [rule isTemporary]) &&
-                    (rule.pid.unsignedIntValue != process.pid) )
+                //checks for temp rules
+                if(YES == [rule isTemporary])
                 {
+                    //process?
+                    // check process's pid matches rule's pid
+                    if( (nil != rule.pid) &&
+                        (rule.pid.unsignedIntValue != process.pid) )
+                    {
+                        //skip
+                        continue;
+                    }
+                }
+                
+                //expiration?
+                // double check if 'now' is after expiration
+                if( (nil != rule.expiration) &&
+                    ([[NSDate date] compare:rule.expiration] == NSOrderedDescending) )
+                {
+                    //err msg
+                    os_log_error(logHandle, "ERROR: rule %{public}@ has expired, should already have been removed", rule);
+                    
                     //skip
                     continue;
                 }
@@ -1151,7 +1257,7 @@ bail:
     }
     
     //unarchive
-    unarchivedRules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSMutableSet class], [Rule class]]] fromData:importedRules error:&error];
+    unarchivedRules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSMutableSet class],  [NSDate class], [Rule class]]] fromData:importedRules error:&error];
     
     //error?
     if( (nil != error) ||

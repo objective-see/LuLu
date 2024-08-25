@@ -36,6 +36,8 @@ extern os_log_t logHandle;
 @synthesize signingInfoButton;
 @synthesize virusTotalPopover;
 
+#define DEFAULT_WINDOW_HEIGHT 244
+
 //center window
 // also, transparency
 -(void)awakeFromNib
@@ -51,6 +53,15 @@ extern os_log_t logHandle;
     
     //move via background
     self.window.movableByWindowBackground = YES;
+    
+    //init formatter for rule expiration
+    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setDateFormat:@"HH:mm"];
+    [timeFormatter setLocale:[NSLocale currentLocale]];
+    [timeFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+
+    //add formatter to input
+    self.ruleDurationCustomAmount.formatter = timeFormatter;
     
     return;
 }
@@ -77,6 +88,12 @@ extern os_log_t logHandle;
     //width
     NSUInteger width = 0;
     
+    //height
+    NSUInteger height = 0;
+    
+    //url
+    NSURL* url = nil;
+    
     //init paragraph style
     paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     
@@ -87,11 +104,30 @@ extern os_log_t logHandle;
     self.processHierarchy = alert[KEY_PROCESS_ANCESTORS];
     
     //disable ancestory button if no ancestors
-    if(0 == self.processHierarchy.count) self.ancestryButton.enabled = NO;
+    if(0 == self.processHierarchy.count) 
+    {
+        self.ancestryButton.enabled = NO;
+    }
     
-    //host name?
-    // or if nil, use host (ip address)
-    remoteAddress = (nil != self.alert[KEY_URL]) ? self.alert[KEY_URL] : self.alert[KEY_HOST];
+    //default to using url
+    // though we trim as we don't want the whole URL
+    if(nil != self.alert[KEY_URL])
+    {
+        //init url
+        url = [NSURL URLWithString:self.alert[KEY_URL]];
+        
+        //extract host
+        remoteAddress = url.host;
+        
+        //TODO: show full url ...via mouse over? in details pane?
+    }
+    //use IP address
+    else
+    {
+        remoteAddress = self.alert[KEY_HOST];
+    }
+    
+    //sanity check
     if(nil == remoteAddress)
     {
         remoteAddress = NSLocalizedString(@"unknown", @"unknown");
@@ -115,7 +151,7 @@ extern os_log_t logHandle;
     // as super long URLs can be truncated
     self.alertMessage.toolTip = [NSString stringWithFormat:NSLocalizedString(@"remote address: %@", @"remote address: %@"), remoteAddress];
     
-    /* BOTTOM */
+    /* BOTTOM (DETAILS) */
     
     //process pid
     self.processID.stringValue = [self.alert[KEY_PROCESS_ID] stringValue];
@@ -221,13 +257,23 @@ extern os_log_t logHandle;
         
     //show touch bar
     [self initTouchBar];
+
+    height = DEFAULT_WINDOW_HEIGHT;
     
     //width of alert
     // max of standard window size, or size of alert msg + padding for addition items
     width = MAX(self.window.frame.size.width, self.alertMessage.intrinsicContentSize.width+400);
     
     //resize to handle size of alert
-    [self.window setFrame:NSMakeRect(self.window.frame.origin.x, self.window.frame.origin.y, width, NSHeight(self.window.frame)) display:YES];
+    [self.window setFrame:NSMakeRect(self.window.frame.origin.x, self.window.frame.origin.y, width, height) display:YES];
+    
+    //make 'allow' button first responder
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (100 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+        
+        //set first responder
+        [self.window makeFirstResponder:self.allowButton];
+        
+    });
     
 bail:
     
@@ -410,12 +456,14 @@ bail:
     //open popover
     if(NSControlStateValueOn == self.ancestryButton.state)
     {
+        //processName =
+        
         //add the index value to each process in the hierarchy
         // used to populate outline/table
-        for(NSUInteger i = 0; i<processHierarchy.count; i++)
+        for(NSUInteger i = 0; i<self.processHierarchy.count; i++)
         {
             //set index
-            processHierarchy[i][@"index"] = [NSNumber numberWithInteger:i];
+            self.processHierarchy[i][@"index"] = [NSNumber numberWithInteger:i];
         }
 
         //set process hierarchy
@@ -559,6 +607,9 @@ bail:
 // close popups and stop modal with response
 -(IBAction)handleUserResponse:(id)sender
 {
+    //rule expiration
+    NSDate* expiration = nil;
+    
     //response to daemon
     NSMutableDictionary* alertResponse = nil;
     
@@ -584,8 +635,25 @@ bail:
     //and save it for next alert
     lastActionScope = self.actionScope.indexOfSelectedItem;
     
-    //temporary?
-    alertResponse[KEY_TEMPORARY] = [NSNumber numberWithBool:(BOOL)self.tempRule.state];
+    //rule duration temporary (pid)?
+    if(NSControlStateValueOn == self.ruleDurationProcess.state)
+    {
+        //set flag
+        alertResponse[KEY_DURATION_PROCESS] = @1;
+    }
+    
+    //rule duration temporary (expiration)?
+    else if(NSControlStateValueOn == self.ruleDurationCustom.state)
+    {
+        //get expiration
+        expiration = absoluteDate([self.ruleDurationCustomAmount.formatter dateFromString:self.ruleDurationCustomAmount.stringValue]);
+        
+        //dbg msg
+        os_log_debug(logHandle, "rule expiration: %@", expiration);
+        
+        //add
+        alertResponse[KEY_DURATION_EXPIRATION] = expiration;
+    }
     
     //set endpoint addr
     // either url, or if nil, host (ip addr)
@@ -720,6 +788,67 @@ bail:
     }
     
     return touchBarItem;
+}
+
+//groups radio buttons
+-(IBAction)ruleDurationHandler:(id)sender {
+   
+    //TODO: anything here?
+    
+}
+
+-(IBAction)toggleOptionsView:(id)sender {
+    
+    //frame
+    NSRect origin = {0};
+    
+    //dbg msg
+    os_log_debug(logHandle, "toggling option's view, state: %ld", (long)self.showOptions.state);
+    
+    NSRect windowFrame = self.window.frame;
+    
+    os_log_debug(logHandle, "window frame: %{public}@", NSStringFromRect(windowFrame));
+    os_log_debug(logHandle, "options frame: %{public}@", NSStringFromRect(self.showOptions.frame));
+    
+    if(NSControlStateValueOn == self.showOptions.state)
+    {
+        origin = self.window.contentView.frame;
+        origin.origin.y = self.window.contentView.frame.size.height;
+        
+        windowFrame.size.height += NSHeight(self.options.frame); //NSHeight(self.options.frame);
+        windowFrame.origin.y -= NSHeight(self.options.frame);
+        
+        //[self.window.contentView addSubview:self.options];
+        
+        [self.options setHidden:NO];
+        
+        [self.window layoutIfNeeded];
+        [self.window displayIfNeeded];
+        
+        os_log_debug(logHandle, "added option view to window");
+    }
+    else
+    {
+        //[self.options removeFromSuperview];
+        [self.options setHidden:YES];
+        
+        os_log_debug(logHandle, "removed option view from window");
+        
+        windowFrame.size.height -= NSHeight(self.options.frame);
+        windowFrame.origin.y += NSHeight(self.options.frame);
+    }
+        
+    // Animate the changes
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+            context.duration = 0.10; // Set animation duration
+            
+            //resize to handle size of alert
+            [self.window setFrame:windowFrame display:YES animate:YES];
+            
+            os_log_debug(logHandle, "frame: %{public}@", NSStringFromRect(windowFrame));
+            
+            
+    }];
 }
 
 @end

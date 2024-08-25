@@ -167,20 +167,21 @@ extern XPCDaemonClient* xpcDaemonClient;
         //only need to handle 'ok'
         if(NSModalResponseOK == result)
         {
-            //write out (converted) rules to user selected file
-            if(YES != [json writeToURL:panel.URL atomically:NO encoding:NSUTF8StringEncoding error:&error])
+            //write out (converted) rules
+            // then activate Finder and select file
+            if(YES == [json writeToURL:panel.URL atomically:NO encoding:NSUTF8StringEncoding error:&error])
+            {
+                //activate Finder
+                [NSWorkspace.sharedWorkspace selectFile:panel.URL.path inFileViewerRootedAtPath:@""];
+            }
+            //error
+            else
             {
                 //err msg
                 os_log_error(logHandle, "ERROR: failed to save rules: %{public}@", error);
                 
                 //show alert
                 showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: Failed to export rules",@"ERROR: Failed to export rules"), NSLocalizedString(@"See log for (more) details",@"See log for (more) details"), @[NSLocalizedString(@"OK", @"OK")]);
-            }
-            //happy
-            else
-            {
-                //show alert
-                showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"Exported %lu rules",@"Exported %lu rules"), (unsigned long)count], nil, @[NSLocalizedString(@"OK", @"OK")]);
             }
         }
     }];

@@ -29,8 +29,12 @@
 // PROCESS/BINARY INFO
 
 //rule pid
-// only set if rule is temporary
+// only set if rule's duration is set to process lifetime
 @property(nonatomic, retain)NSNumber* pid;
+
+//rule expiration
+// only set if rule's duration is set to expire
+@property(nonatomic, retain)NSDate* expiration;
 
 //path
 @property(nonatomic, retain)NSString* path;

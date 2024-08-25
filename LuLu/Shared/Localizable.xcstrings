@@ -371,6 +371,9 @@
         }
       }
     },
+    "Allow (until: %@)" : {
+      "comment" : "Allow (until: %@)"
+    },
     "any address" : {
       "comment" : "any address",
       "localizations" : {
@@ -447,6 +450,9 @@
           }
         }
       }
+    },
+    "Block (until: %@)" : {
+      "comment" : "Block (until: %@)"
     },
     "Cancel" : {
       "comment" : "Cancel",
@@ -637,6 +643,7 @@
     },
     "Exported %lu rules" : {
       "comment" : "Exported %lu rules",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {

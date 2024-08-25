@@ -64,8 +64,9 @@
 //process ancestry
 @property (nonatomic, retain)NSMutableArray* processHierarchy;
 
+@property (weak) IBOutlet NSButton *allowButton;
 
-/* BOTTOM */
+/* BOTTOM (DETAILS) */
 
 //process id
 @property (weak) IBOutlet NSTextField *processID;
@@ -103,6 +104,19 @@
 //check box for temp rule
 @property (weak) IBOutlet NSButton *tempRule;
 
+//rule durations
+@property (weak) IBOutlet NSButton *ruleDurationAlways;
+@property (weak) IBOutlet NSButton *ruleDurationProcess;
+@property (weak) IBOutlet NSButton *ruleDurationCustom;
+@property (weak) IBOutlet NSTextField *ruleDurationCustomAmount;
+
+
+//options view
+@property (assign) BOOL optionsVisible;
+@property (weak) IBOutlet NSView *options;
+
+@property (weak) IBOutlet NSLayoutConstraint *optionsHeightConstraint;
+
 /* METHODS */
 
 //open signing info popover
@@ -111,5 +125,8 @@
 //button handler
 // ->block/allow, and then close
 -(IBAction)handleUserResponse:(id)sender;
+
+//show options button
+@property (weak) IBOutlet NSButton *showOptions;
 
 @end

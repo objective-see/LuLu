@@ -661,12 +661,15 @@ bail:
     return verdict;
 }
 
-//1. create and deliver alert
-//2. handle response (and process other shown alerts, etc.)
+//1. Create and deliver alert
+//2. Handle response (and process other shown alerts, etc.)
 -(void)alert:(NEFilterSocketFlow*)flow process:(Process*)process csChange:(BOOL)csChange
 {
     //alert
     NSMutableDictionary* alert = nil;
+    
+    //rule
+    __block Rule* rule = nil;
     
     //create alert
     alert = [alerts create:(NEFilterSocketFlow*)flow process:process];
@@ -681,9 +684,6 @@ bail:
     // and process user response
     if(YES != [alerts deliver:alert reply:^(NSDictionary* alert)
     {
-        //flag
-        BOOL shouldSave = YES;
-        
         //verdict
         NEFilterNewFlowVerdict* verdict = nil;
         
@@ -705,12 +705,12 @@ bail:
         //resume flow w/ verdict
         [self resumeFlow:flow withVerdict:verdict];
         
-        //save ...if not temporary
-        shouldSave = ![alert[KEY_TEMPORARY] boolValue];
-        
-        //add/save rules
-        [rules add:[[Rule alloc] init:alert] save:shouldSave];
-        
+        //init rule
+        rule = [[Rule alloc] init:alert];
+
+        //add / save
+        [rules add:rule save:[rule isTemporary]];
+
         //remove from 'shown'
         [alerts removeShown:alert];
         

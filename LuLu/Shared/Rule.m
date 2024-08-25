@@ -39,12 +39,16 @@ extern os_log_t logHandle;
         self.uuid = [[NSUUID UUID] UUIDString];
         
         //init pid
-        // only set for temporary rules
-        if(YES == [info[KEY_TEMPORARY] boolValue])
+        // note: only set for temporary rules
+        if(YES == [info[KEY_DURATION_PROCESS] boolValue])
         {
             //set
             self.pid = info[KEY_PROCESS_ID];
         }
+        
+        //init expiration
+        // though this won't (usually) be set
+        self.expiration = info[KEY_DURATION_EXPIRATION];
         
         //init path
         self.path = info[KEY_PATH];
@@ -199,7 +203,8 @@ extern os_log_t logHandle;
     return _isGlobal;
 }
 
-//is rule temporary
+//is rule temporary?
+// ...just if its duration is set to process lifetime (e.g. has a pid)
 -(BOOL)isTemporary
 {
     return (nil != self.pid);
@@ -250,6 +255,7 @@ extern os_log_t logHandle;
         self.scope = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(scope))];
         self.action = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(action))];
         
+        self.expiration = [decoder decodeObjectOfClass:[NSDate class] forKey:NSStringFromSelector(@selector(expiration))];
     }
     
     return self;
@@ -276,6 +282,8 @@ extern os_log_t logHandle;
     [encoder encodeObject:self.type forKey:NSStringFromSelector(@selector(type))];
     [encoder encodeObject:self.scope forKey:NSStringFromSelector(@selector(scope))];
     [encoder encodeObject:self.action forKey:NSStringFromSelector(@selector(action))];
+    
+    [encoder encodeObject:self.expiration forKey:NSStringFromSelector(@selector(expiration))];
     
     return;
 }
@@ -374,15 +382,28 @@ bail:
     //pid
     id pid = @"all";
     
-    //temp, has pid?
-    if(nil != self.pid) pid = self.pid;
-        
+    //expiration
+    id expiration = @"never";
+    
+    //has pid?
+    if(nil != self.pid)
+    {
+        pid = self.pid;
+    }
+    
+    //has expiration?
+    if(nil != self.expiration)
+    {
+        expiration = self.expiration;
+    }
+    
     //just serialize
-    return [NSString stringWithFormat:@"RULE: pid: %@, path: %@, name: %@, code signing info: %@, endpoint addr: %@, endpoint port: %@, action: %@, type: %@", pid, self.path, self.name, self.csInfo, self.endpointAddr, self.endpointPort, self.action, self.type];
+    return [NSString stringWithFormat:@"RULE: pid: %@, path: %@, name: %@, code signing info: %@, endpoint addr: %@, endpoint port: %@, action: %@, type: %@, expiration: %@", pid, self.path, self.name, self.csInfo, self.endpointAddr, self.endpointPort, self.action, self.type, self.expiration];
 }
 
 //covert rule to dictionary
 // needed for conversion to JSON
+// note: temporary properties (such as pid / expiration) not included
 -(NSMutableString*)toJSON
 {
     //json
@@ -396,11 +417,6 @@ bail:
     
     [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(key)), self.key];
     [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(uuid)), self.uuid];
-    
-    if(nil != self.pid)
-    {
-        [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(pid)), self.pid.intValue];
-    }
     
     escaped = toEscapedJSON(self.path);
     if(nil != escaped)
@@ -556,17 +572,6 @@ bail:
         {
             //err msg
             os_log_error(logHandle, "ERROR: 'uuid' should be a string, not %@", self.uuid.className);
-            
-            self = nil;
-            goto bail;
-        }
-        
-        self.pid = info[NSStringFromSelector(@selector(pid))];
-        if( (nil != self.pid) &&
-            (YES != [self.pid isKindOfClass:[NSNumber class]]) )
-        {
-            //err msg
-            os_log_error(logHandle, "ERROR: 'pid' should be a number, not %@", self.pid.className);
             
             self = nil;
             goto bail;

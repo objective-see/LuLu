@@ -222,6 +222,9 @@ bail:
     //current process id
     pid_t currentPID = -1;
     
+    //current path
+    NSString* currentPath = nil;
+    
     //current name
     NSString* currentName = nil;
     
@@ -248,15 +251,23 @@ bail:
     
     do {
         
+        //get path
+        if(nil == (currentPath = getProcessPath(currentPID)))
+        {
+            //default
+            currentPath = NSLocalizedString(@"unknown", @"unknown");
+        }
+        
         //get name
-        if(nil == (currentName = getProcessPath(currentPID)))
+        currentName = getProcessName(0, currentPath);
+        if(nil == currentName)
         {
             //default
             currentName = NSLocalizedString(@"unknown", @"unknown");
         }
         
         //add
-        [self.ancestors insertObject:[@{KEY_PROCESS_ID:[NSNumber numberWithInt:currentPID], KEY_PROCESS_NAME:currentName} mutableCopy] atIndex:0];
+        [self.ancestors insertObject:[@{KEY_PROCESS_ID:[NSNumber numberWithInt:currentPID], KEY_PROCESS_PATH:currentPath,  KEY_PROCESS_NAME:currentName} mutableCopy] atIndex:0];
         
         //for parent
         // first try via rPID
