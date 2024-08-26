@@ -40,6 +40,7 @@ extern os_log_t logHandle;
 @synthesize virusTotalPopover;
 
 #define DEFAULT_WINDOW_HEIGHT 244
+#define DEFAULT_WINDOW_HEIGHT_EXPANDED 452
 
 //center window
 // also, transparency
@@ -87,9 +88,6 @@ extern os_log_t logHandle;
     
     //title attributes (for temporary label)
     NSMutableDictionary* titleAttributes = nil;
-    
-    //width
-    NSUInteger width = 0;
     
     //height
     NSUInteger height = 0;
@@ -263,12 +261,8 @@ extern os_log_t logHandle;
 
     height = DEFAULT_WINDOW_HEIGHT;
     
-    //width of alert
-    // max of standard window size, or size of alert msg + padding for addition items
-    width = MAX(self.window.frame.size.width, self.alertMessage.intrinsicContentSize.width+400);
-    
     //resize to handle size of alert
-    [self.window setFrame:NSMakeRect(self.window.frame.origin.x, self.window.frame.origin.y, width, height) display:YES];
+    [self.window setFrame:NSMakeRect(self.window.frame.origin.x, self.window.frame.origin.y, self.window.frame.size.width, height) display:YES];
     
     //make 'allow' button first responder
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (100 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
@@ -287,6 +281,11 @@ extern os_log_t logHandle;
         
         //toggle, to show options
         [self toggleOptionsView:self.showOptions];
+    }
+    else
+    {
+        [self.window setContentMinSize:NSMakeSize(self.window.frame.size.width, DEFAULT_WINDOW_HEIGHT)];
+        [self.window setContentMaxSize:NSMakeSize(self.window.frame.size.width, DEFAULT_WINDOW_HEIGHT)];
     }
     
 bail:
@@ -834,6 +833,9 @@ bail:
         windowFrame.size.height += NSHeight(self.options.frame); //NSHeight(self.options.frame);
         windowFrame.origin.y -= NSHeight(self.options.frame);
         
+        [self.window setContentMinSize:NSMakeSize(self.window.frame.size.width, DEFAULT_WINDOW_HEIGHT_EXPANDED)];
+        [self.window setContentMaxSize:NSMakeSize(self.window.frame.size.width, DEFAULT_WINDOW_HEIGHT_EXPANDED)];
+        
         [self.options setHidden:NO];
         
         [self.window layoutIfNeeded];
@@ -856,9 +858,12 @@ bail:
         
         windowFrame.size.height -= NSHeight(self.options.frame);
         windowFrame.origin.y += NSHeight(self.options.frame);
+        
+        [self.window setContentMinSize:NSMakeSize(self.window.frame.size.width, DEFAULT_WINDOW_HEIGHT)];
+        [self.window setContentMaxSize:NSMakeSize(self.window.frame.size.width, DEFAULT_WINDOW_HEIGHT)];
     }
         
-    //resize to handle size of alert
+    //resize
     [self.window setFrame:windowFrame display:YES animate:YES];
     
     return;
