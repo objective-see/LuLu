@@ -338,8 +338,8 @@
         }
       }
     },
-    "Added since reboot" : {
-      "comment" : "Added since reboot"
+    "Added in last 24 hours" : {
+      "comment" : "Added in last 24 hours"
     },
     "All Rules" : {
       "comment" : "All Rules",
@@ -423,6 +423,7 @@
     },
     "Automatically Approved Programs (allowed as user was not logged in)" : {
       "comment" : "Automatically Approved Programs (allowed as user was not logged in)",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {

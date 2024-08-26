@@ -294,14 +294,7 @@
                             <action selector="toolbarHandler:" target="-2" id="rRC-E1-zCg"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="251B3000-D328-44CD-B4E2-A55168BA871C" explicitItemIdentifier="unclassified" label="Unclassified" paletteLabel="Unclassified" tag="4" image="rulesUnknown" selectable="YES" id="uL1-gQ-Sc7">
-                        <size key="minSize" width="22" height="22"/>
-                        <size key="maxSize" width="22" height="22"/>
-                        <connections>
-                            <action selector="toolbarHandler:" target="-2" id="zmU-xj-PzD"/>
-                        </connections>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="8E2C2957-8CD1-4B22-A881-391231E4310B" explicitItemIdentifier="recent" label="Recent" paletteLabel="Recent" tag="5" image="rulesRecent" selectable="YES" id="YA5-FD-5ss">
+                    <toolbarItem implicitItemIdentifier="8E2C2957-8CD1-4B22-A881-391231E4310B" explicitItemIdentifier="recent" label="Recent" paletteLabel="Recent" tag="4" image="rulesRecent" selectable="YES" id="YA5-FD-5ss">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
@@ -310,11 +303,11 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="1EK-dM-lw3"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="csB-HX-Bm6"/>
-                    <toolbarItem implicitItemIdentifier="6A861BC3-0977-42BD-857D-D0D8C06EB403" label="" paletteLabel="" tag="6" id="laZ-lE-1iU">
+                    <toolbarItem implicitItemIdentifier="6A861BC3-0977-42BD-857D-D0D8C06EB403" label="" paletteLabel="" tag="5" id="laZ-lE-1iU">
                         <nil key="toolTip"/>
                         <size key="minSize" width="96" height="22"/>
                         <size key="maxSize" width="207" height="22"/>
-                        <searchField key="view" identifier="abc" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" tag="6" textCompletion="NO" id="6hG-3v-G35">
+                        <searchField key="view" identifier="abc" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" tag="5" textCompletion="NO" id="6hG-3v-G35">
                             <rect key="frame" x="0.0" y="14" width="189" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" identifier="def" placeholderString="Filter Rules" usesSingleLineMode="YES" bezelStyle="round" id="DWG-ck-lDk">
@@ -341,8 +334,6 @@
                     <toolbarItem reference="IhL-Bt-OuB"/>
                     <toolbarItem reference="1EK-dM-lw3"/>
                     <toolbarItem reference="8lN-Ti-cWt"/>
-                    <toolbarItem reference="1EK-dM-lw3"/>
-                    <toolbarItem reference="uL1-gQ-Sc7"/>
                     <toolbarItem reference="1EK-dM-lw3"/>
                     <toolbarItem reference="YA5-FD-5ss"/>
                     <toolbarItem reference="csB-HX-Bm6"/>
@@ -377,6 +368,5 @@
         <image name="NSColorPanel" width="32" height="32"/>
         <image name="NSStopProgressFreestandingTemplate" width="19" height="19"/>
         <image name="rulesRecent" width="128" height="128"/>
-        <image name="rulesUnknown" width="128" height="128"/>
     </resources>
 </document>

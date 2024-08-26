@@ -624,7 +624,7 @@ bail:
         os_log_debug(logHandle, "no active user or no connect client, will allow (and create rule)...");
         
         //init info for rule creation
-        info = [@{KEY_PATH:process.path, KEY_ACTION:@RULE_STATE_ALLOW, KEY_TYPE:@RULE_TYPE_UNCLASSIFIED} mutableCopy];
+        info = [@{KEY_PATH:process.path, KEY_ACTION:@RULE_STATE_ALLOW, KEY_TYPE:@RULE_TYPE_ALL} mutableCopy];
 
         //add process cs info?
         if(nil != process.csInfo) info[KEY_CS_INFO] = process.csInfo;

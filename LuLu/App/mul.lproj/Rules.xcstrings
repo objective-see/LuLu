@@ -327,7 +327,7 @@
     },
     "uL1-gQ-Sc7.label" : {
       "comment" : "Class = \"NSToolbarItem\"; label = \"Unclassified\"; ObjectID = \"uL1-gQ-Sc7\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -345,7 +345,7 @@
     },
     "uL1-gQ-Sc7.paletteLabel" : {
       "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Unclassified\"; ObjectID = \"uL1-gQ-Sc7\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

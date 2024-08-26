@@ -305,15 +305,8 @@ bail:
             
             break;
             
-        //automatic
-        case RULE_TYPE_UNCLASSIFIED:
-            self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"Automatically Approved Programs (allowed as user was not logged in)", @"Automatically Approved Programs (allowed as user was not logged in)");
-            
-            break;
-            
         case RULE_TYPE_RECENT:
-            self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"Added since reboot", @"Added since reboot");
-            
+            self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"Added in last 24 hours", @"Added in last 24 hours");
             break;
             
         
@@ -703,8 +696,8 @@ bail:
 // any that are after boot time
 -(NSMutableArray*)recentRules:(NSArray*)itemRules
 {
-    //boot time
-    NSDate* bootTime = nil;
+    //24 hrs ago
+    NSDate* cutoff = nil;
     
     //recent
     NSMutableArray* recentRules = nil;
@@ -712,14 +705,8 @@ bail:
     //alloc/init
     recentRules = [NSMutableArray array];
     
-    //get boot time (for recent rules)
-    bootTime = systemBootTime();
-    if(nil == bootTime)
-    {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to get system boot time");
-        goto bail;
-    }
+    //init
+    cutoff = [[NSDate date] dateByAddingTimeInterval:-(24 * 60 * 60)];
     
     //check each rule(s)
     for(Rule* rule in itemRules)
@@ -732,7 +719,7 @@ bail:
         }
         
         //not after
-        if(NSOrderedDescending != [rule.creation compare:bootTime])
+        if(NSOrderedDescending != [rule.creation compare:cutoff])
         {
             continue;
         }
