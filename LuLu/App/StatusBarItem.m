@@ -167,8 +167,8 @@ enum menuItems
     self.popover.contentViewController = [[StatusBarPopoverController alloc] initWithNibName:@"StatusBarPopover" bundle:nil];
     
     //set behavior
-    // auto-close if user clicks button in status bar
-    self.popover.behavior = NSPopoverBehaviorTransient;
+    // don't want it close before timeout (unless user clicks '^')
+    self.popover.behavior = NSPopoverBehaviorApplicationDefined;
     
     //set delegate
     self.popover.delegate = self;
@@ -180,7 +180,7 @@ enum menuItems
         //show
         [self.popover showRelativeToRect:self.statusItem.button.bounds ofView:self.statusItem.button preferredEdge:NSMinYEdge];
     });
-    
+
     //wait a bit
     // then automatically hide popup if user has not closed it
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(),

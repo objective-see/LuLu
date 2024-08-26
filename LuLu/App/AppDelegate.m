@@ -503,6 +503,7 @@ bail:
         //visible window?
         // that's not status bar?
         if( (YES == window.isVisible) &&
+            (YES != [window.className isEqualToString:@"_NSPopoverWindow"]) &&
             (YES != [window.className isEqualToString:@"NSStatusBarWindow"]) )
         {
             //set flag
@@ -737,9 +738,6 @@ bail:
     
     //make app active
     [NSApp activateIgnoringOtherApps:YES];
-    
-    //make key and front
-    [self.window makeKeyAndOrderFront:self];
     
     //show alert
     response = showAlert(NSAlertStyleInformational, NSLocalizedString(@"Uninstall LuLu?", @"Uninstall LuLu?"), NSLocalizedString(@"...this will fully remove LuLu from your Mac", @"...this will fully remove LuLu from your Mac"), @[NSLocalizedString(@"Uninstall", @"Uninstall"), NSLocalizedString(@"Cancel", @"Cancel")]);

@@ -48,7 +48,7 @@ extern os_log_t logHandle;
     
     //when supported
     // indicate title bar is transparent (too)
-    if ([self.window respondsToSelector:@selector(titlebarAppearsTransparent)])
+    if(YES == [self.window respondsToSelector:@selector(titlebarAppearsTransparent)])
     {
         //set transparency
         self.window.titlebarAppearsTransparent = YES;
@@ -249,6 +249,8 @@ extern os_log_t logHandle;
             
             //finally set app's background/foreground state
             [((AppDelegate*)[[NSApplication sharedApplication] delegate]) setActivationPolicy];
+            
+            break;
             
         default:
             break;

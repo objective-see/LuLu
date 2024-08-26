@@ -75,14 +75,14 @@
 }
 
 //automatically invoked when user clicks any of the buttons
-// ->perform actions, such as loading patreon or products URL
+// perform actions, such as loading patreon or products URL
 -(IBAction)buttonHandler:(id)sender
 {
     //support us button
     if(((NSButton*)sender).tag == BUTTON_SUPPORT_US)
     {
         //open URL
-        // ->invokes user's default browser
+        // invokes user's default browser
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:PATREON_URL]];
     }
     
@@ -90,7 +90,7 @@
     else if(((NSButton*)sender).tag == BUTTON_MORE_INFO)
     {
         //open URL
-        // ->invokes user's default browser
+        // invokes user's default browser
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:PRODUCT_URL]];
     }
 
