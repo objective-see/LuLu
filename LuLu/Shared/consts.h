@@ -332,8 +332,10 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 // just all, but leave unclass
 #define RULE_TYPE_UNCLASSIFIED 4
 
+#define RULE_TYPE_RECENT 5
+
 //search (filter) field
-#define RULE_SEARCH_FIELD 5
+#define RULE_SEARCH_FIELD 6
 
 //network monitor
 #define NETWORK_MONITOR @"Netiquette.app"

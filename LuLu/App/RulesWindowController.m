@@ -302,11 +302,18 @@ bail:
         //user
         case RULE_TYPE_USER:
             self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"User-specified Programs (manually added, or in response to an alert)", @"User-specified Programs (manually added, or in response to an alert)");
+            
             break;
             
         //automatic
         case RULE_TYPE_UNCLASSIFIED:
             self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"Automatically Approved Programs (allowed as user was not logged in)", @"Automatically Approved Programs (allowed as user was not logged in)");
+            
+            break;
+            
+        case RULE_TYPE_RECENT:
+            self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"Added since reboot", @"Added since reboot");
+            
             break;
             
         
@@ -577,7 +584,7 @@ bail:
     //all/no filter
     // don't need to filter
     if( (RULE_TYPE_ALL == selectedItem.tag) &&
-        (0 == self.filterBox.stringValue.length) )
+        (0 == filter.length) )
     {
         //dbg msg
         os_log_debug(logHandle, "selected toolbar item is 'all' and filter box is empty ...no need to filter");
@@ -588,46 +595,81 @@ bail:
         //bail
         goto bail;
     }
-          
-    //dbg msg
-    os_log_debug(logHandle, "filtering on '%{public}@'", filter);
-    
+        
     //scan all rules
-    // add any that match toolbar and filter string
+    // add any that match toolbar tab and filter string
     {[self.rules enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL* stop) {
         
         //item
         // cs info, rules, etc
         NSMutableDictionary* item = nil;
         
+        //(item') recent rules
+        NSMutableArray* recentRules = nil;
+        
         //(item's) rules that match
         NSMutableArray* matchedRules = nil;
         
-        //not on 'all' tab?
-        // and no match on selected toolbar tab? ...skip
+        //make copy
+        item = [value mutableCopy];
+        
+        //not on 'all'/'recent' tab?
+        // skip rules if they don't match selected toolbar type
         if( (RULE_TYPE_ALL != selectedItem.tag) &&
-            (selectedItem.tag != ((Rule*)[value[KEY_RULES] firstObject]).type.intValue) )
+            (RULE_TYPE_RECENT != selectedItem.tag) )
         {
-            //skip
-            return;
+            //skip if mismatch between selected tab/rule tpye
+            if(selectedItem.tag != ((Rule*)[value[KEY_RULES] firstObject]).type.intValue)
+            {
+                //skip
+                return;
+            }
         }
         
-        //no filter string?
-        // it's a 'match, add, and continue
+        //recent?
+        if(RULE_TYPE_RECENT == selectedItem.tag)
+        {
+            //get (item's) recent rules
+            recentRules = [self recentRules:value[KEY_RULES]];
+            
+            os_log_debug(logHandle, "OMG: recentRules: %{public}@", recentRules);
+            
+            //item doesn't have any recent rules
+            if(0 == recentRules.count)
+            {
+                //skip
+                return;
+            }
+            
+            //make copy
+            item = [value mutableCopy];
+            
+            //update item's rules
+            item[KEY_RULES] = recentRules;
+        }
+        
+        //no filter?
+        // we're done
         if(0 == filter.length)
         {
             //append
-            [results insertObject:value forKey:key atIndex:results.count];
-            
+            [results insertObject:item forKey:key atIndex:results.count];
+                        
             //next
             return;
         }
         
+        /* now filter */
+        
+        //dbg msg
+        os_log_debug(logHandle, "filtering on '%{public}@'", filter);
+        
+        
         //init matched (process) rules
         matchedRules = [NSMutableArray array];
         
-        //check each rule(s)
-        for(Rule* rule in value[KEY_RULES])
+        //check each rule(s) on filter string
+        for(Rule* rule in item[KEY_RULES])
         {
             //match?
             // save rule
@@ -642,9 +684,6 @@ bail:
         // update item rule array and add item
         if(0 != matchedRules.count)
         {
-            //make copy
-            item = [value mutableCopy];
-            
             //update item's rules
             item[KEY_RULES] = matchedRules;
             
@@ -662,6 +701,52 @@ bail:
     return results;
 }
 
+//item's recent rules
+// any that are after boot time
+-(NSMutableArray*)recentRules:(NSArray*)itemRules
+{
+    //boot time
+    NSDate* bootTime = nil;
+    
+    //recent
+    NSMutableArray* recentRules = nil;
+    
+    //alloc/init
+    recentRules = [NSMutableArray array];
+    
+    //get boot time (for recent rules)
+    bootTime = systemBootTime();
+    if(nil == bootTime)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to get system boot time");
+        goto bail;
+    }
+    
+    //check each rule(s)
+    for(Rule* rule in itemRules)
+    {
+        //skip older rules
+        // ...didn't have creation time
+        if(nil == rule.creation)
+        {
+            continue;
+        }
+        
+        //not after
+        if(NSOrderedDescending != [rule.creation compare:bootTime])
+        {
+            continue;
+        }
+
+        //add
+        [recentRules addObject:rule];
+    }
+    
+bail:
+    
+    return recentRules;
+}
 
 #pragma mark -
 #pragma mark outline delegate methods

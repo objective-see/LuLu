@@ -46,6 +46,9 @@ extern os_log_t logHandle;
             self.pid = info[KEY_PROCESS_ID];
         }
         
+        //set creation
+        self.creation = [NSDate date];
+        
         //init expiration
         // though this won't (usually) be set
         self.expiration = info[KEY_DURATION_EXPIRATION];
@@ -255,6 +258,7 @@ extern os_log_t logHandle;
         self.scope = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(scope))];
         self.action = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(action))];
         
+        self.creation = [decoder decodeObjectOfClass:[NSDate class] forKey:NSStringFromSelector(@selector(creation))];
         self.expiration = [decoder decodeObjectOfClass:[NSDate class] forKey:NSStringFromSelector(@selector(expiration))];
     }
     
@@ -282,9 +286,10 @@ extern os_log_t logHandle;
     [encoder encodeObject:self.type forKey:NSStringFromSelector(@selector(type))];
     [encoder encodeObject:self.scope forKey:NSStringFromSelector(@selector(scope))];
     [encoder encodeObject:self.action forKey:NSStringFromSelector(@selector(action))];
-    
+
+    [encoder encodeObject:self.creation forKey:NSStringFromSelector(@selector(creation))];
     [encoder encodeObject:self.expiration forKey:NSStringFromSelector(@selector(expiration))];
-    
+
     return;
 }
 
@@ -398,7 +403,7 @@ bail:
     }
     
     //just serialize
-    return [NSString stringWithFormat:@"RULE: pid: %@, path: %@, name: %@, code signing info: %@, endpoint addr: %@, endpoint port: %@, action: %@, type: %@, expiration: %@", pid, self.path, self.name, self.csInfo, self.endpointAddr, self.endpointPort, self.action, self.type, self.expiration];
+    return [NSString stringWithFormat:@"RULE: pid: %@, path: %@, name: %@, code signing info: %@, endpoint addr: %@, endpoint port: %@, action: %@, type: %@, creation: %@, expiration: %@", pid, self.path, self.name, self.csInfo, self.endpointAddr, self.endpointPort, self.action, self.type, self.creation, self.expiration];
 }
 
 //covert rule to dictionary
@@ -411,6 +416,14 @@ bail:
     
     //escaped
     NSString* escaped = nil;
+    
+    //date formatter
+    NSDateFormatter* dateFormatter = nil;
+    
+    //init formatter
+    // format: ISO 8601 format
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
     
     //init
     json = [NSMutableString string];
@@ -445,6 +458,18 @@ bail:
         }
     }
     
+    //creation
+    if(nil != self.creation)
+    {
+        [json appendFormat:@"\"%@\" : %@,", NSStringFromSelector(@selector(creation)), [dateFormatter stringFromDate:self.creation]];
+    }
+    
+    //expiration
+    if(nil != self.expiration)
+    {
+        [json appendFormat:@"\"%@\" : %@,", NSStringFromSelector(@selector(creation)), [dateFormatter stringFromDate:self.expiration]];
+    }
+
     [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(endpointPort)), self.endpointPort];
     [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(isEndpointAddrRegex)), self.isEndpointAddrRegex];
 
@@ -543,12 +568,20 @@ bail:
 //make a rule obj from a dictioanary
 -(id)initFromJSON:(NSDictionary*)info
 {
-    //formatter
-    NSNumberFormatter* formatter = nil;
+    //date formatter
+    NSDateFormatter* dateFormatter = nil;
+    
+    //number formatter
+    NSNumberFormatter* numberFormatter = nil;
+    
+    //init formatter
+    // format: ISO 8601 format
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
     
     //init
-    formatter = [[NSNumberFormatter alloc] init];
-    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
     
     //dbg msg
     //os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
@@ -641,7 +674,7 @@ bail:
         
         self.isEndpointAddrRegex = [info[NSStringFromSelector(@selector(isEndpointAddrRegex))] boolValue];
         
-        self.type = [formatter numberFromString:info[NSStringFromSelector(@selector(type))]];
+        self.type = [numberFormatter numberFromString:info[NSStringFromSelector(@selector(type))]];
         if(YES != [self.type isKindOfClass:[NSNumber class]])
         {
             //err msg
@@ -651,7 +684,7 @@ bail:
             goto bail;
         }
         
-        self.scope = [formatter numberFromString:info[NSStringFromSelector(@selector(scope))]];
+        self.scope = [numberFormatter numberFromString:info[NSStringFromSelector(@selector(scope))]];
         if(YES != [self.scope isKindOfClass:[NSNumber class]])
         {
             //err msg
@@ -661,7 +694,7 @@ bail:
             goto bail;
         }
         
-        self.action = [formatter numberFromString:info[NSStringFromSelector(@selector(action))]];
+        self.action = [numberFormatter numberFromString:info[NSStringFromSelector(@selector(action))]];
         if(YES != [self.action isKindOfClass:[NSNumber class]])
         {
             //err msg
@@ -670,6 +703,13 @@ bail:
             self = nil;
             goto bail;
         }
+        
+        //creation (date)
+        self.creation = [dateFormatter dateFromString:info[NSStringFromSelector(@selector(creation))]];
+        
+        //expiration
+        self.expiration = [dateFormatter dateFromString:info[NSStringFromSelector(@selector(expiration))]];
+        
     }
     
 bail:

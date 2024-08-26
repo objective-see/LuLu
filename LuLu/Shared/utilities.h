@@ -119,4 +119,7 @@ NSString* toEscapedJSON(NSString* input);
 //convert date to absolute
 NSDate* absoluteDate(NSDate* date);
 
+//get boot time
+NSDate* systemBootTime(void);
+
 #endif

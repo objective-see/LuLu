@@ -14,20 +14,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8D1107260486CEB800E47090"
-               BuildableName = "LuLu Uninstaller.app"
-               BlueprintName = "Uninstaller"
-               ReferencedContainer = "container:../Uninstaller/Uninstaller.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "CDB2CC1724D61A4E00D0EECE"
                BuildableName = "LuLu.app"
                BlueprintName = "LuLu"

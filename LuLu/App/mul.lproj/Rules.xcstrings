@@ -397,6 +397,30 @@
         }
       }
     },
+    "YA5-FD-5ss.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Recent\"; ObjectID = \"YA5-FD-5ss\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Recent"
+          }
+        }
+      }
+    },
+    "YA5-FD-5ss.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Recent\"; ObjectID = \"YA5-FD-5ss\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Recent"
+          }
+        }
+      }
+    },
     "zq7-2E-zbT.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"zq7-2E-zbT\";",
       "extractionState" : "extracted_with_value",

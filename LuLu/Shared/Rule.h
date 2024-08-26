@@ -32,10 +32,6 @@
 // only set if rule's duration is set to process lifetime
 @property(nonatomic, retain)NSNumber* pid;
 
-//rule expiration
-// only set if rule's duration is set to expire
-@property(nonatomic, retain)NSDate* expiration;
-
 //path
 @property(nonatomic, retain)NSString* path;
 
@@ -69,6 +65,15 @@
 
 //protocol
 @property(nonatomic, retain)NSNumber* protocol;
+
+// TIMESTAMPS
+
+//rule creation
+@property(nonatomic, retain)NSDate* creation;
+
+//rule expiration
+// only set if rule's duration is set to expire
+@property(nonatomic, retain)NSDate* expiration;
 
 
 // ACTION

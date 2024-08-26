@@ -266,21 +266,21 @@
                             <action selector="toolbarHandler:" target="-2" id="KU4-im-DdS"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="17D5DFCB-B79D-4FBA-8336-AB8E66D6387D" label="Default" paletteLabel="Default" image="MainAppRulesSystem" selectable="YES" id="gc6-AZ-l8V">
+                    <toolbarItem implicitItemIdentifier="17D5DFCB-B79D-4FBA-8336-AB8E66D6387D" explicitItemIdentifier="default" label="Default" paletteLabel="Default" image="MainAppRulesSystem" selectable="YES" id="gc6-AZ-l8V">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="toolbarHandler:" target="-2" id="qTF-1F-7cS"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="E8F6F4D2-B7D0-47AB-9045-F7524F2A6E23" label="Apple" paletteLabel="Apple" tag="1" image="MainAppRulesApple" selectable="YES" id="B1u-bW-fb1">
+                    <toolbarItem implicitItemIdentifier="E8F6F4D2-B7D0-47AB-9045-F7524F2A6E23" explicitItemIdentifier="apple" label="Apple" paletteLabel="Apple" tag="1" image="MainAppRulesApple" selectable="YES" id="B1u-bW-fb1">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="toolbarHandler:" target="-2" id="ZfS-Ds-cYK"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="F277D773-ED53-4D39-A773-4AD19A56CECD" label="3rd-Party" paletteLabel="3rd-Party" tag="2" image="MainAppRulesApps" selectable="YES" id="IhL-Bt-OuB">
+                    <toolbarItem implicitItemIdentifier="F277D773-ED53-4D39-A773-4AD19A56CECD" explicitItemIdentifier="3rdparty" label="3rd-Party" paletteLabel="3rd-Party" tag="2" image="MainAppRulesApps" selectable="YES" id="IhL-Bt-OuB">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
@@ -294,20 +294,27 @@
                             <action selector="toolbarHandler:" target="-2" id="rRC-E1-zCg"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="251B3000-D328-44CD-B4E2-A55168BA871C" explicitItemIdentifier="Auto" label="Unclassified" paletteLabel="Unclassified" tag="4" image="rulesUnknown" selectable="YES" id="uL1-gQ-Sc7">
+                    <toolbarItem implicitItemIdentifier="251B3000-D328-44CD-B4E2-A55168BA871C" explicitItemIdentifier="unclassified" label="Unclassified" paletteLabel="Unclassified" tag="4" image="rulesUnknown" selectable="YES" id="uL1-gQ-Sc7">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
                             <action selector="toolbarHandler:" target="-2" id="zmU-xj-PzD"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="8E2C2957-8CD1-4B22-A881-391231E4310B" explicitItemIdentifier="recent" label="Recent" paletteLabel="Recent" tag="5" image="rulesRecent" selectable="YES" id="YA5-FD-5ss">
+                        <size key="minSize" width="22" height="22"/>
+                        <size key="maxSize" width="22" height="22"/>
+                        <connections>
+                            <action selector="toolbarHandler:" target="-2" id="hWW-Ym-XvE"/>
+                        </connections>
+                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="1EK-dM-lw3"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="csB-HX-Bm6"/>
-                    <toolbarItem implicitItemIdentifier="6A861BC3-0977-42BD-857D-D0D8C06EB403" label="" paletteLabel="" tag="5" id="laZ-lE-1iU">
+                    <toolbarItem implicitItemIdentifier="6A861BC3-0977-42BD-857D-D0D8C06EB403" label="" paletteLabel="" tag="6" id="laZ-lE-1iU">
                         <nil key="toolTip"/>
                         <size key="minSize" width="96" height="22"/>
                         <size key="maxSize" width="207" height="22"/>
-                        <searchField key="view" identifier="abc" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" tag="5" textCompletion="NO" id="6hG-3v-G35">
+                        <searchField key="view" identifier="abc" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" tag="6" textCompletion="NO" id="6hG-3v-G35">
                             <rect key="frame" x="0.0" y="14" width="189" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" identifier="def" placeholderString="Filter Rules" usesSingleLineMode="YES" bezelStyle="round" id="DWG-ck-lDk">
@@ -336,6 +343,8 @@
                     <toolbarItem reference="8lN-Ti-cWt"/>
                     <toolbarItem reference="1EK-dM-lw3"/>
                     <toolbarItem reference="uL1-gQ-Sc7"/>
+                    <toolbarItem reference="1EK-dM-lw3"/>
+                    <toolbarItem reference="YA5-FD-5ss"/>
                     <toolbarItem reference="csB-HX-Bm6"/>
                     <toolbarItem reference="laZ-lE-1iU"/>
                 </defaultToolbarItems>
@@ -367,6 +376,7 @@
         <image name="NSAddTemplate" width="18" height="16"/>
         <image name="NSColorPanel" width="32" height="32"/>
         <image name="NSStopProgressFreestandingTemplate" width="19" height="19"/>
+        <image name="rulesRecent" width="128" height="128"/>
         <image name="rulesUnknown" width="128" height="128"/>
     </resources>
 </document>

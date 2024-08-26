@@ -338,6 +338,9 @@
         }
       }
     },
+    "Added since reboot" : {
+      "comment" : "Added since reboot"
+    },
     "All Rules" : {
       "comment" : "All Rules",
       "localizations" : {

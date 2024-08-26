@@ -1683,3 +1683,26 @@ NSDate* absoluteDate(NSDate* date)
 
     return absoluteDate;
 }
+
+//get boot time
+NSDate* systemBootTime(void)
+{
+    NSDate* startTime = nil;
+
+    struct timeval bootTime = {0};
+    size_t size = sizeof(bootTime);
+    int mib[2] = {CTL_KERN, KERN_BOOTTIME};
+
+    //get boot time
+    if(0 != sysctl(mib, 2, &bootTime, &size, NULL, 0))
+    {
+        goto bail;
+    }
+    
+    //convert to date
+    startTime = [NSDate dateWithTimeIntervalSince1970:bootTime.tv_sec];
+    
+bail:
+    
+    return startTime;
+}
