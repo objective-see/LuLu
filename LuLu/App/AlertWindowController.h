@@ -110,9 +110,7 @@
 @property (weak) IBOutlet NSButton *ruleDurationCustom;
 @property (weak) IBOutlet NSTextField *ruleDurationCustomAmount;
 
-
 //options view
-@property (assign) BOOL optionsVisible;
 @property (weak) IBOutlet NSView *options;
 
 @property (weak) IBOutlet NSLayoutConstraint *optionsHeightConstraint;
@@ -127,6 +125,6 @@
 -(IBAction)handleUserResponse:(id)sender;
 
 //show options button
-@property (weak) IBOutlet NSButton *showOptions;
+@property (weak) IBOutlet NSButton* showOptions;
 
 @end

@@ -632,8 +632,6 @@ bail:
             //get (item's) recent rules
             recentRules = [self recentRules:value[KEY_RULES]];
             
-            os_log_debug(logHandle, "OMG: recentRules: %{public}@", recentRules);
-            
             //item doesn't have any recent rules
             if(0 == recentRules.count)
             {

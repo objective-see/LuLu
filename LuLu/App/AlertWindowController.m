@@ -18,6 +18,9 @@
 
 /* GLOBALS */
 
+//options view shown?
+BOOL optionsVisible = NO;
+
 //(last) action scope
 NSInteger lastActionScope = 0;
 
@@ -274,6 +277,17 @@ extern os_log_t logHandle;
         [self.window makeFirstResponder:self.allowButton];
         
     });
+    
+    //show details?
+    // if user expanded them on the last alert
+    if(YES == optionsVisible)
+    {
+        //set 'options' button state to on
+        self.showOptions.state = NSControlStateValueOn;
+        
+        //toggle, to show options
+        [self toggleOptionsView:self.showOptions];
+    }
     
 bail:
     
@@ -793,10 +807,10 @@ bail:
 //groups radio buttons
 -(IBAction)ruleDurationHandler:(id)sender {
    
-    //TODO: anything here?
-    
+    //need this method so radio buttons are mutually exclusive
 }
 
+//show / hide option view
 -(IBAction)toggleOptionsView:(id)sender {
     
     //frame
@@ -804,51 +818,50 @@ bail:
     
     //dbg msg
     os_log_debug(logHandle, "toggling option's view, state: %ld", (long)self.showOptions.state);
-    
+
+    //frame
     NSRect windowFrame = self.window.frame;
-    
-    os_log_debug(logHandle, "window frame: %{public}@", NSStringFromRect(windowFrame));
-    os_log_debug(logHandle, "options frame: %{public}@", NSStringFromRect(self.showOptions.frame));
-    
+
+    //on
     if(NSControlStateValueOn == self.showOptions.state)
     {
+        //set (global) flag
+        optionsVisible = YES;
+        
         origin = self.window.contentView.frame;
         origin.origin.y = self.window.contentView.frame.size.height;
         
         windowFrame.size.height += NSHeight(self.options.frame); //NSHeight(self.options.frame);
         windowFrame.origin.y -= NSHeight(self.options.frame);
         
-        //[self.window.contentView addSubview:self.options];
-        
         [self.options setHidden:NO];
         
         [self.window layoutIfNeeded];
         [self.window displayIfNeeded];
         
+        //dbg msg
         os_log_debug(logHandle, "added option view to window");
     }
+    //off
     else
     {
+        //unset (global) flag
+        optionsVisible = NO;
+        
         //[self.options removeFromSuperview];
         [self.options setHidden:YES];
         
+        //dbg msg
         os_log_debug(logHandle, "removed option view from window");
         
         windowFrame.size.height -= NSHeight(self.options.frame);
         windowFrame.origin.y += NSHeight(self.options.frame);
     }
         
-    // Animate the changes
-        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-            context.duration = 0.10; // Set animation duration
-            
-            //resize to handle size of alert
-            [self.window setFrame:windowFrame display:YES animate:YES];
-            
-            os_log_debug(logHandle, "frame: %{public}@", NSStringFromRect(windowFrame));
-            
-            
-    }];
+    //resize to handle size of alert
+    [self.window setFrame:windowFrame display:YES animate:YES];
+    
+    return;
 }
 
 @end
