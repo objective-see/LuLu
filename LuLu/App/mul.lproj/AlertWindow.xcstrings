@@ -326,13 +326,13 @@
       }
     },
     "hoJ-mx-qEO.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"is trying to connect to ...\"; ObjectID = \"hoJ-mx-qEO\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"is connecting to ...\"; ObjectID = \"hoJ-mx-qEO\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "is trying to connect to ..."
+            "value" : "is connecting to ..."
           }
         }
       }

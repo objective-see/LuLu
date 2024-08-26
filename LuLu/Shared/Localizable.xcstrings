@@ -421,18 +421,6 @@
         }
       }
     },
-    "Automatically Approved Programs (allowed as user was not logged in)" : {
-      "comment" : "Automatically Approved Programs (allowed as user was not logged in)",
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Programas Aprobados Automáticamente (permitidos porque el usuario no estaba conectado)"
-          }
-        }
-      }
-    },
     "Block" : {
       "comment" : "Block",
       "localizations" : {
@@ -645,18 +633,6 @@
         }
       }
     },
-    "Exported %lu rules" : {
-      "comment" : "Exported %lu rules",
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Se exportaron %lu reglas"
-          }
-        }
-      }
-    },
     "Extensions must be manually approved via\r\nSecurity & Privacy System Preferences." : {
       "comment" : "Extensions must be manually approved via\r\nSecurity & Privacy System Preferences.",
       "localizations" : {
@@ -767,16 +743,8 @@
         }
       }
     },
-    "is trying to connect to %@" : {
-      "comment" : "is trying to connect to %@",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "está intentando conectarse a %@"
-          }
-        }
-      }
+    "is connecting to %@" : {
+      "comment" : "is connecting to %@"
     },
     "LuLu must run from:\r\n  %@" : {
       "comment" : "LuLu must run from:\r\n  %@",

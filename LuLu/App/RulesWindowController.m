@@ -588,6 +588,12 @@ bail:
         //bail
         goto bail;
     }
+    
+    //dbg msg
+    if(0 != filter.length)
+    {
+        os_log_debug(logHandle, "filtering on '%{public}@'", filter);
+    }
         
     //scan all rules
     // add any that match toolbar tab and filter string
@@ -651,10 +657,6 @@ bail:
         }
         
         /* now filter */
-        
-        //dbg msg
-        os_log_debug(logHandle, "filtering on '%{public}@'", filter);
-        
         
         //init matched (process) rules
         matchedRules = [NSMutableArray array];

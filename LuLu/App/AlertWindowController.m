@@ -146,7 +146,7 @@ extern os_log_t logHandle;
     self.processName.stringValue = self.alert[KEY_PROCESS_NAME];
     
     //alert message
-    self.alertMessage.stringValue = [NSString stringWithFormat:NSLocalizedString(@"is trying to connect to %@", @"is trying to connect to %@"), remoteAddress];
+    self.alertMessage.stringValue = [NSString stringWithFormat:NSLocalizedString(@"is connecting to %@", @"is connecting to %@"), remoteAddress];
     
     //and set a tool tip
     // as super long URLs can be truncated
