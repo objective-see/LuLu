@@ -57,6 +57,10 @@ extern XPCDaemonClient* xpcDaemonClient;
 //'update mode' button
 #define BUTTON_NO_UPDATE_MODE 9
 
+//'passive mode' actions
+#define BUTTON_PASSIVE_MODE_ACTION_ALLOW 0
+#define BUTTON_PASSIVE_MODE_ACTION_BLOCK 1
+
 //init 'general' view
 // add it, and make it selected
 -(void)awakeFromNib
@@ -136,7 +140,10 @@ extern XPCDaemonClient* xpcDaemonClient;
             //set 'passive mode' button state
             ((NSButton*)[view viewWithTag:BUTTON_PASSIVE_MODE]).state = [self.preferences[PREF_PASSIVE_MODE] boolValue];
             
-            //set 'block mode' button
+            //set 'passive mode' action
+            [self.passiveModeAction selectItemAtIndex: [self.preferences[PREF_PASSIVE_MODE_ACTION] integerValue]];
+            
+            //set 'block mode' button state
             ((NSButton*)[view viewWithTag:BUTTON_BLOCK_MODE]).state = [self.preferences[PREF_BLOCK_MODE] boolValue];
             
             //set 'no icon' button state
@@ -174,7 +181,7 @@ bail:
 }
 
 //invoked when user toggles button
-// update preferences for that button
+// update preferences for that button/item
 -(IBAction)togglePreference:(id)sender
 {
     //preferences
@@ -237,7 +244,13 @@ bail:
             
         //passive mode
         case BUTTON_PASSIVE_MODE:
+            
+            //grab state
             updatedPreferences[PREF_PASSIVE_MODE] = state;
+            
+            //also grab selected item of action
+            updatedPreferences[PREF_PASSIVE_MODE_ACTION] = [NSNumber numberWithInteger:self.passiveModeAction.indexOfSelectedItem];
+            
             break;
             
         //block mode
@@ -266,6 +279,13 @@ bail:
             
         default:
             break;
+    }
+    
+    //logic for 'passive mode' action
+    if(YES == [sender isEqualTo:self.passiveModeAction])
+    {
+        //grab selected index
+        updatedPreferences[PREF_PASSIVE_MODE_ACTION] = [NSNumber numberWithInteger:self.passiveModeAction.indexOfSelectedItem];
     }
     
     //send XPC msg to daemon to update prefs

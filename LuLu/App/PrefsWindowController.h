@@ -35,31 +35,34 @@
 @property(nonatomic, retain)NSDictionary* preferences;
 
 //toolbar
-@property (weak) IBOutlet NSToolbar *toolbar;
+@property (weak) IBOutlet NSToolbar* toolbar;
 
 //rules prefs view
-@property (weak) IBOutlet NSView *rulesView;
+@property (weak) IBOutlet NSView* rulesView;
 
 //block list
-@property (weak) IBOutlet NSTextField *blockList;
+@property (weak) IBOutlet NSTextField* blockList;
 
 //select block list button
-@property (weak) IBOutlet NSButton *selectBlockListButton;
+@property (weak) IBOutlet NSButton* selectBlockListButton;
 
 //modes view
-@property (strong) IBOutlet NSView *modesView;
+@property (strong) IBOutlet NSView* modesView;
+
+//passive mode action ...allow/block
+@property (weak) IBOutlet NSPopUpButton* passiveModeAction;
 
 //update view
-@property (weak) IBOutlet NSView *updateView;
+@property (weak) IBOutlet NSView* updateView;
 
 //update button
-@property (weak) IBOutlet NSButton *updateButton;
+@property (weak) IBOutlet NSButton* updateButton;
 
 //update indicator (spinner)
-@property (weak) IBOutlet NSProgressIndicator *updateIndicator;
+@property (weak) IBOutlet NSProgressIndicator* updateIndicator;
 
 //update label
-@property (weak) IBOutlet NSTextField *updateLabel;
+@property (weak) IBOutlet NSTextField* updateLabel;
 
 //update window controller
 @property(nonatomic, retain)UpdateWindowController* updateWindowController;

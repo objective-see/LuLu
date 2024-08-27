@@ -393,21 +393,40 @@ bail:
         os_log_debug(logHandle, "no (saved) rule found for %d/%{public}@", process.pid, process.binary.name);
     }
 
-    //no client?
-
     //CHECK:
-    // client in passive mode? ...allow
+    // client in passive mode?
+    // take action based on user's settting ...allow/block
     if(YES == [preferences.preferences[PREF_PASSIVE_MODE] boolValue])
     {
         //dbg msg
-        os_log_debug(logHandle, "client in passive mode, so allowing %d/%{public}@", process.pid, process.binary.name);
+        os_log_debug(logHandle, "client in passive mode...");
+        
+        //user action: allow?
+        if(PREF_PASSIVE_MODE_ALLOW == [preferences.preferences[PREF_PASSIVE_MODE_ACTION] intValue])
+        {
+            //dbg msg
+            os_log_debug(logHandle, "passive mode: 'allow', so allowing %d/%{public}@", process.pid, process.binary.name);
+            
+            //allow
+            verdict = [NEFilterNewFlowVerdict allowVerdict];
+        }
+        
+        //user action: block?
+        else
+        {
+            //dbg msg
+            os_log_debug(logHandle, "passive mode: 'block', so blocking %d/%{public}@", process.pid, process.binary.name);
+            
+            //block
+            verdict = [NEFilterNewFlowVerdict dropVerdict];
+        }
         
         //all set
         goto bail;
     }
     
     //dbg msg
-    os_log_debug(logHandle, "client not in passive mode");
+    os_log_debug(logHandle, "client not in passive mode...");
     
     //CHECK:
     // there is related alert shown (i.e. for same process)

@@ -153,7 +153,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="TlQ-zK-g5h"/>
                         </constraints>
-                        <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Process Name" id="JEi-1U-vkU">
+                        <textFieldCell key="cell" lineBreakMode="truncatingMiddle" truncatesLastVisibleLine="YES" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Process Name" id="JEi-1U-vkU">
                             <font key="font" size="23" name="Menlo-Bold"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -412,7 +412,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField focusRingType="none" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbn-rf-Xhf">
+                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hbn-rf-Xhf">
                                 <rect key="frame" x="385" y="17" width="73" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="73" id="19K-rE-psF"/>
@@ -425,8 +425,8 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-SE-uh0">
-                                <rect key="frame" x="495" y="16" width="167" height="17"/>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-SE-uh0">
+                                <rect key="frame" x="556" y="16" width="93" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="Dg0-Hg-VkC"/>
                                     <constraint firstAttribute="width" constant="163" id="hG3-8J-VRs"/>
@@ -439,9 +439,9 @@
                             </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="hbn-rf-Xhf" secondAttribute="bottom" constant="17" id="3x9-Uk-UM8"/>
                             <constraint firstItem="FV9-wU-TBa" firstAttribute="leading" secondItem="xge-2z-T9l" secondAttribute="leading" constant="232" id="5Wi-47-a3c"/>
                             <constraint firstItem="aSA-bY-aUV" firstAttribute="leading" secondItem="xge-2z-T9l" secondAttribute="leading" constant="41" id="7Pm-xl-fsH"/>
-                            <constraint firstAttribute="bottom" secondItem="hbn-rf-Xhf" secondAttribute="bottom" constant="10" id="AeJ-bW-6WE"/>
                             <constraint firstItem="Xf4-RL-C1a" firstAttribute="leading" secondItem="xge-2z-T9l" secondAttribute="leading" constant="232" id="UE6-1O-GTy"/>
                             <constraint firstAttribute="trailing" secondItem="qWw-SE-uh0" secondAttribute="trailing" constant="7" id="h2T-oE-ztQ"/>
                             <constraint firstItem="hbn-rf-Xhf" firstAttribute="leading" secondItem="Xf4-RL-C1a" secondAttribute="trailing" constant="3" id="hCi-Oy-lMk"/>

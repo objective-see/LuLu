@@ -91,19 +91,31 @@
         }
       }
     },
-    "E0T-Ug-P8f.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Silently run without alerts, applying existing rules. New connections will be automatically allowed.\"; ObjectID = \"E0T-Ug-P8f\";",
+    "CqC-4v-5d3.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Allowed\"; ObjectID = \"CqC-4v-5d3\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Silently run without alerts, applying existing rules. New connections will be automatically allowed."
+            "value" : "Allowed"
+          }
+        }
+      }
+    },
+    "E0T-Ug-P8f.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Silently run without alerts, applying existing rules.\"; ObjectID = \"E0T-Ug-P8f\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Silently run without alerts, applying existing rules."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Ejecutar en silencio sin alertas, aplicando las reglas existentes.\nLas nuevas conexiones se permitirán automáticamente."
           }
         }
@@ -159,6 +171,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lista de Bloqueo:"
+          }
+        }
+      }
+    },
+    "gYL-Qw-lFZ.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"New connections should be automatically: \"; ObjectID = \"gYL-Qw-lFZ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "New connections should be automatically: "
           }
         }
       }
@@ -321,6 +345,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se permitirán los binarios firmados por Apple."
+          }
+        }
+      }
+    },
+    "mCn-AV-g9h.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Blocked\"; ObjectID = \"mCn-AV-g9h\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Blocked"
           }
         }
       }
