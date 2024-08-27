@@ -37,6 +37,18 @@
         }
       }
     },
+    "5Wo-JL-Khb.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Rules for new connections should be created:\"; ObjectID = \"5Wo-JL-Khb\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Rules for new connections should be created:"
+          }
+        }
+      }
+    },
     "6gH-HW-CFe.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Previously installed, 3rd-party programs will be allowed.\"; ObjectID = \"6gH-HW-CFe\";",
       "extractionState" : "extracted_with_value",
@@ -121,6 +133,18 @@
         }
       }
     },
+    "e5A-iH-fS4.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Yes\"; ObjectID = \"e5A-iH-fS4\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Yes"
+          }
+        }
+      }
+    },
     "e6s-dd-HG6.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Applications running within the simulator will be allowed.\"; ObjectID = \"e6s-dd-HG6\";",
       "extractionState" : "extracted_with_value",
@@ -175,14 +199,14 @@
         }
       }
     },
-    "gYL-Qw-lFZ.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"New connections should be automatically: \"; ObjectID = \"gYL-Qw-lFZ\";",
+    "GsR-9d-5N8.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"New connections should be be:\"; ObjectID = \"GsR-9d-5N8\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "New connections should be automatically: "
+            "value" : "New connections should be be:"
           }
         }
       }
@@ -273,6 +297,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir Programas Instalados"
+          }
+        }
+      }
+    },
+    "JwN-0v-5Uh.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"No\"; ObjectID = \"JwN-0v-5Uh\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No"
           }
         }
       }

@@ -281,7 +281,7 @@
                     </textFieldCell>
                 </textField>
                 <button tag="7" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bog-hz-gcd">
-                    <rect key="frame" x="39" y="176" width="29" height="18"/>
+                    <rect key="frame" x="39" y="106" width="29" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Aaw-XT-TEt">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -292,7 +292,7 @@
                     </connections>
                 </button>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kjh-jc-STu">
-                    <rect key="frame" x="72" y="174" width="510" height="19"/>
+                    <rect key="frame" x="72" y="104" width="510" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Block Mode" id="4EN-j2-enV">
                         <font key="font" size="13" name="Menlo-Bold"/>
@@ -301,7 +301,7 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="xaO-g8-rdS">
-                    <rect key="frame" x="72" y="145" width="510" height="30"/>
+                    <rect key="frame" x="72" y="75" width="510" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="All traffic (routed thru LuLu) will be blocked." id="SG5-YM-BoV">
                         <font key="font" size="12" name="Menlo-Regular"/>
@@ -309,49 +309,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="tFB-E4-zbp">
-                    <rect key="frame" x="72" y="248" width="387" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Silently run without alerts, applying existing rules." id="E0T-Ug-P8f">
-                        <font key="font" size="12" name="Menlo-Regular"/>
-                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="cBQ-pR-ew9">
-                    <rect key="frame" x="73" y="225" width="301" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="New connections should be automatically: " id="gYL-Qw-lFZ">
-                        <font key="font" size="12" name="Menlo-Regular"/>
-                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <popUpButton springLoaded="YES" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CBy-MH-fsc">
-                    <rect key="frame" x="370" y="218" width="114" height="25"/>
-                    <popUpButtonCell key="cell" type="push" title="Allowed" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CqC-4v-5d3" id="ssl-E3-3tL">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="Ned-2Z-nv8">
-                            <items>
-                                <menuItem title="Allowed" state="on" id="CqC-4v-5d3">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Blocked" id="mCn-AV-g9h">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="161" id="oYr-vD-9fC"/>
-                    </constraints>
-                    <connections>
-                        <action selector="togglePreference:" target="-2" id="4on-EY-CRn"/>
-                    </connections>
-                </popUpButton>
                 <button tag="8" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HeI-XQ-T5H">
-                    <rect key="frame" x="39" y="115" width="29" height="18"/>
+                    <rect key="frame" x="39" y="45" width="29" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="r4E-e7-bG0">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -362,7 +321,7 @@
                     </connections>
                 </button>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jD1-tF-SsA">
-                    <rect key="frame" x="72" y="113" width="160" height="19"/>
+                    <rect key="frame" x="72" y="43" width="160" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="No Icon Mode" id="iOJ-Bc-hxG">
                         <font key="font" size="13" name="Menlo-Bold"/>
@@ -371,7 +330,7 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="xXU-nn-zh9">
-                    <rect key="frame" x="72" y="85" width="510" height="30"/>
+                    <rect key="frame" x="72" y="15" width="510" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Run without showing an icon in the status menu bar." id="bYB-s1-S3f">
                         <font key="font" size="12" name="Menlo-Regular"/>
@@ -379,7 +338,104 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="tFB-E4-zbp">
+                    <rect key="frame" x="72" y="247" width="387" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Silently run without alerts, applying existing rules." id="E0T-Ug-P8f">
+                        <font key="font" size="12" name="Menlo-Regular"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="9ri-c7-k9x">
+                    <rect key="frame" x="71" y="153" width="445" height="92"/>
+                    <view key="contentView" id="7g5-qR-YSr">
+                        <rect key="frame" x="4" y="5" width="437" height="84"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <popUpButton springLoaded="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CBy-MH-fsc">
+                                <rect key="frame" x="340" y="49" width="88" height="25"/>
+                                <popUpButtonCell key="cell" type="push" title="Allowed" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CqC-4v-5d3" id="ssl-E3-3tL">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="Ned-2Z-nv8">
+                                        <items>
+                                            <menuItem title="Allowed" state="on" id="CqC-4v-5d3">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="Blocked" id="mCn-AV-g9h">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="TM7-bg-q1n"/>
+                                    <constraint firstAttribute="width" constant="81" id="oYr-vD-9fC"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="togglePreference:" target="-2" id="4on-EY-CRn"/>
+                                </connections>
+                            </popUpButton>
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="t22-Z1-Pfw">
+                                <rect key="frame" x="12" y="50" width="330" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="New connections should be be:" id="GsR-9d-5N8">
+                                    <font key="font" size="12" name="Menlo-Regular"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton springLoaded="YES" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="24D-f1-OZB">
+                                <rect key="frame" x="367" y="11" width="61" height="25"/>
+                                <popUpButtonCell key="cell" type="push" title="No" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JwN-0v-5Uh" id="yFL-Lw-hGA">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="MzQ-EA-xSp">
+                                        <items>
+                                            <menuItem title="No" state="on" id="JwN-0v-5Uh">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="Yes" id="e5A-iH-fS4">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="vBZ-M6-eTd"/>
+                                    <constraint firstAttribute="height" constant="20" id="vLT-LV-61j"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="togglePreference:" target="-2" id="mIe-8k-8HD"/>
+                                </connections>
+                            </popUpButton>
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="7Lm-Wv-aXo">
+                                <rect key="frame" x="12" y="18" width="335" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Rules for new connections should be created:" id="5Wo-JL-Khb">
+                                    <font key="font" size="12" name="Menlo-Regular"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="CBy-MH-fsc" secondAttribute="trailing" constant="13" id="j7q-cS-CZ7"/>
+                            <constraint firstItem="CBy-MH-fsc" firstAttribute="top" secondItem="7g5-qR-YSr" secondAttribute="top" constant="11" id="rM8-Yl-CCl"/>
+                        </constraints>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="86" id="rme-hY-C3n"/>
+                        <constraint firstAttribute="width" constant="439" id="vMB-pD-F2d"/>
+                    </constraints>
+                </box>
             </subviews>
+            <constraints>
+                <constraint firstItem="9ri-c7-k9x" firstAttribute="top" secondItem="K6i-xr-27e" secondAttribute="top" constant="122" id="iBW-dD-vo1"/>
+                <constraint firstAttribute="trailing" secondItem="9ri-c7-k9x" secondAttribute="trailing" constant="87" id="sNO-up-o0t"/>
+                <constraint firstItem="9ri-c7-k9x" firstAttribute="leading" secondItem="K6i-xr-27e" secondAttribute="leading" constant="74" id="xZX-QD-sgA"/>
+            </constraints>
             <point key="canvasLocation" x="502" y="513.5"/>
         </customView>
         <customView id="1OV-sl-cSe" userLabel="Update">
