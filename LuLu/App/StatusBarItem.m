@@ -103,11 +103,26 @@ enum menuItems
     //init status item
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
     
-    //set menu
+    //set menu / delegate
     self.statusItem.menu = menu;
+    self.statusItem.menu.delegate = self;
     
     //set handler for each menu item
     [self setMenuHandler:menu];
+    
+    return;
+}
+
+//menu 'will open' delegate
+// make sure popover is closed
+-(void)menuWillOpen:(NSMenu *)menu
+{
+    //make sure to close popover first
+    if(YES == self.popover.shown)
+    {
+        //close
+        [self.popover performClose:nil];
+    }
     
     return;
 }

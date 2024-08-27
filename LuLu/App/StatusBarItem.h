@@ -13,7 +13,7 @@
 
 #import "RulesMenuController.h"
 
-@interface StatusBarItem : NSObject <NSPopoverDelegate>
+@interface StatusBarItem : NSObject <NSPopoverDelegate, NSMenuDelegate>
 {
 
 }
