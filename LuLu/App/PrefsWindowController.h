@@ -49,8 +49,11 @@
 //modes view
 @property (strong) IBOutlet NSView* modesView;
 
-//passive mode action ...allow/block
+//passive mode action ...allow or block?
 @property (weak) IBOutlet NSPopUpButton* passiveModeAction;
+
+//passive mode rules ...create, or not?
+@property (weak) IBOutlet NSPopUpButton* passiveModeRules;
 
 //update view
 @property (weak) IBOutlet NSView* updateView;

@@ -38,13 +38,13 @@
       }
     },
     "5Wo-JL-Khb.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Rules for new connections should be created:\"; ObjectID = \"5Wo-JL-Khb\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Rules for new connections should be created?\"; ObjectID = \"5Wo-JL-Khb\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Rules for new connections should be created:"
+            "value" : "Rules for new connections should be created?"
           }
         }
       }

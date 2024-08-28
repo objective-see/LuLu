@@ -143,6 +143,9 @@ extern XPCDaemonClient* xpcDaemonClient;
             //set 'passive mode' action
             [self.passiveModeAction selectItemAtIndex: [self.preferences[PREF_PASSIVE_MODE_ACTION] integerValue]];
             
+            //set 'passive mode' rules
+            [self.passiveModeRules selectItemAtIndex: [self.preferences[PREF_PASSIVE_MODE_RULES] integerValue]];
+            
             //set 'block mode' button state
             ((NSButton*)[view viewWithTag:BUTTON_BLOCK_MODE]).state = [self.preferences[PREF_BLOCK_MODE] boolValue];
             
@@ -248,8 +251,11 @@ bail:
             //grab state
             updatedPreferences[PREF_PASSIVE_MODE] = state;
             
-            //also grab selected item of action
+            //grab selected item of action
             updatedPreferences[PREF_PASSIVE_MODE_ACTION] = [NSNumber numberWithInteger:self.passiveModeAction.indexOfSelectedItem];
+            
+            //grab selected item of rules
+            updatedPreferences[PREF_PASSIVE_MODE_RULES] = [NSNumber numberWithInteger:self.passiveModeRules.indexOfSelectedItem];
             
             break;
             
@@ -286,6 +292,12 @@ bail:
     {
         //grab selected index
         updatedPreferences[PREF_PASSIVE_MODE_ACTION] = [NSNumber numberWithInteger:self.passiveModeAction.indexOfSelectedItem];
+    }
+    //logic for 'passive mode' rules
+    else if(YES == [sender isEqualTo:self.passiveModeRules])
+    {
+        //grab selected index
+        updatedPreferences[PREF_PASSIVE_MODE_RULES] = [NSNumber numberWithInteger:self.passiveModeRules.indexOfSelectedItem];
     }
     
     //send XPC msg to daemon to update prefs

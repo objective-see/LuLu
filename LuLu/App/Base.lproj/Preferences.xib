@@ -11,6 +11,7 @@
                 <outlet property="blockList" destination="UL1-ci-HRm" id="bvz-Cl-NA0"/>
                 <outlet property="modesView" destination="K6i-xr-27e" id="DOb-L3-eeR"/>
                 <outlet property="passiveModeAction" destination="CBy-MH-fsc" id="EwM-q6-3ff"/>
+                <outlet property="passiveModeRules" destination="24D-f1-OZB" id="PdK-Ez-f7h"/>
                 <outlet property="rulesView" destination="378-bj-fYw" id="10Z-g6-I1q"/>
                 <outlet property="selectBlockListButton" destination="zXj-H3-PHp" id="fsL-1k-LRx"/>
                 <outlet property="toolbar" destination="V8g-Ya-LK4" id="SH2-6E-QST"/>
@@ -413,7 +414,7 @@
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="7Lm-Wv-aXo">
                                 <rect key="frame" x="12" y="18" width="335" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Rules for new connections should be created:" id="5Wo-JL-Khb">
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Rules for new connections should be created?" id="5Wo-JL-Khb">
                                     <font key="font" size="12" name="Menlo-Regular"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

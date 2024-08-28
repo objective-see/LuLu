@@ -121,13 +121,18 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define PREF_IS_DISABLED @"disabled"
 
 //prefs
-// passive mode / action
+// passive mode, & rules/action
 #define PREF_PASSIVE_MODE @"passiveMode"
+#define PREF_PASSIVE_MODE_RULES @"passiveModeRules"
 #define PREF_PASSIVE_MODE_ACTION @"passiveModeAction"
 
-//index of allow/bloc in passive mode action
+//index of allow/block in passive mode action
 #define PREF_PASSIVE_MODE_ALLOW 0
 #define PREF_PASSIVE_MODE_BLOCK 1
+
+//index of no/yes in passive mode action
+#define PREF_PASSIVE_MODE_RULES_NO 0
+#define PREF_PASSIVE_MODE_RULES_YES 1
 
 //prefs
 // block mode

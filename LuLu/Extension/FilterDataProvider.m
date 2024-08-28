@@ -402,10 +402,10 @@ bail:
         os_log_debug(logHandle, "client in passive mode...");
         
         //user action: allow?
-        if(PREF_PASSIVE_MODE_ALLOW == [preferences.preferences[PREF_PASSIVE_MODE_ACTION] intValue])
+        if(PREF_PASSIVE_MODE_ALLOW == [preferences.preferences[PREF_PASSIVE_MODE_ACTION] integerValue])
         {
             //dbg msg
-            os_log_debug(logHandle, "passive mode: 'allow', so allowing %d/%{public}@", process.pid, process.binary.name);
+            os_log_debug(logHandle, "passive mode: action is 'allow', so allowing %d/%{public}@", process.pid, process.binary.name);
             
             //allow
             verdict = [NEFilterNewFlowVerdict allowVerdict];
@@ -415,10 +415,61 @@ bail:
         else
         {
             //dbg msg
-            os_log_debug(logHandle, "passive mode: 'block', so blocking %d/%{public}@", process.pid, process.binary.name);
+            os_log_debug(logHandle, "passive mode: action is 'block', so blocking %d/%{public}@", process.pid, process.binary.name);
             
             //block
             verdict = [NEFilterNewFlowVerdict dropVerdict];
+        }
+        
+        //create rule?
+        if(PREF_PASSIVE_MODE_RULES_YES == [preferences.preferences[PREF_PASSIVE_MODE_RULES] integerValue])
+        {
+            //dbg msg
+            os_log_debug(logHandle, "passive mode: create rules is set, so creating rule for new connection");
+            
+            //init info for rule creation
+            info = [@{KEY_PATH:process.path, KEY_TYPE:@RULE_TYPE_ALL} mutableCopy];
+
+            //add process cs info?
+            if(nil != process.csInfo) info[KEY_CS_INFO] = process.csInfo;
+            
+            //add action: allow
+            if(PREF_PASSIVE_MODE_ALLOW == [preferences.preferences[PREF_PASSIVE_MODE_ACTION] integerValue])
+            {
+                //dbg msg
+                os_log_debug(logHandle, "passive mode: creating rule with 'allow'");
+                
+                //allow
+                info[KEY_ACTION] = @RULE_STATE_ALLOW;
+            }
+            //add action: block
+            else
+            {
+                //dbg msg
+                os_log_debug(logHandle, "passive mode: creating rule with 'block'");
+                
+                //block
+                info[KEY_ACTION] = @RULE_STATE_BLOCK;
+            }
+            
+            //create and add rule
+            if(YES != [rules add:[[Rule alloc] init:info] save:YES])
+            {
+                //err msg
+                os_log_error(logHandle, "ERROR: failed to add (passive) rule for %{public}@", info[KEY_PATH]);
+                 
+                //bail
+                goto bail;
+            }
+            
+            //tell user rules changed
+            [alerts.xpcUserClient rulesChanged];
+        }
+        //no rule creation needed
+        else
+        {
+            //dbg msg
+            os_log_debug(logHandle, "passive mode: create rules is not set...");
         }
         
         //all set
