@@ -30,7 +30,8 @@
 }
 
 /* METHODS */
-- (void)insertObject:(id)anObject forKey:(id)aKey atIndex:(NSUInteger)anIndex;
-- (id)keyAtIndex:(NSUInteger)anIndex;
+-(void)reverse;
+-(id)keyAtIndex:(NSUInteger)anIndex;
+-(void)insertObject:(id)anObject forKey:(id)aKey atIndex:(NSUInteger)anIndex;
 
 @end

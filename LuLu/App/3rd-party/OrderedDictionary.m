@@ -76,6 +76,11 @@ NSString *DescriptionForObject(NSObject *object, id locale, NSUInteger indent)
     return copy;
 }
 
+-(void)reverse
+{
+    [array setArray:[[array reverseObjectEnumerator] allObjects]];
+}
+
 -(void)setObject:(id)anObject forKey:(id)aKey
 {
 	if(![dictionary objectForKey:aKey])

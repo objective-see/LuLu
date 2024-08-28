@@ -91,6 +91,18 @@
         }
       }
     },
+    "b9m-wt-VZa.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Recent Rules\"; ObjectID = \"b9m-wt-VZa\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Recent Rules"
+          }
+        }
+      }
+    },
     "BsU-Gh-mch.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"BsU-Gh-mch\";",
       "extractionState" : "extracted_with_value",
@@ -105,6 +117,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Celda de Texto"
+          }
+        }
+      }
+    },
+    "cvb-ds-FcC.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"User Rules\"; ObjectID = \"cvb-ds-FcC\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "User Rules"
           }
         }
       }
@@ -271,6 +295,18 @@
         }
       }
     },
+    "omZ-DL-6R7.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"All Rules\"; ObjectID = \"omZ-DL-6R7\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "All Rules"
+          }
+        }
+      }
+    },
     "pch-yV-NXy.title" : {
       "comment" : "Class = \"NSWindow\"; title = \"Window\"; ObjectID = \"pch-yV-NXy\";",
       "extractionState" : "extracted_with_value",
@@ -303,6 +339,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detalles de ítem..."
+          }
+        }
+      }
+    },
+    "qNT-HP-XkH.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Apple Rules\"; ObjectID = \"qNT-HP-XkH\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Apple Rules"
+          }
+        }
+      }
+    },
+    "rEm-hF-r0T.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Default Rules\"; ObjectID = \"rEm-hF-r0T\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Default Rules"
           }
         }
       }
@@ -417,6 +477,18 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Recent"
+          }
+        }
+      }
+    },
+    "YzL-Xb-QI1.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"3rd-party Rules\"; ObjectID = \"YzL-Xb-QI1\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "3rd-party Rules"
           }
         }
       }

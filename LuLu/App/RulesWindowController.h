@@ -72,6 +72,9 @@
 //window toolbar
 @property (weak) IBOutlet NSToolbar *toolbar;
 
+//selected tab in toolbar
+@property NSInteger selectedToolbarItem;
+
 //show item path(s) popup contoller
 @property(strong) ItemPathsWindowController *itemPathsWindowController;
 
@@ -89,6 +92,9 @@
 
 //(last) added rule
 @property(nonatomic,retain)NSString* addedRule;
+
+//flag
+@property BOOL isReversed;
 
 /* METHODS */
 

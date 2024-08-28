@@ -39,11 +39,21 @@ extern XPCDaemonClient* xpcDaemonClient;
 //init some settings
 -(void)awakeFromNib
 {
+    //sort method
+    NSSortDescriptor *sortDescriptor = nil;
+    
     //set target
     self.outlineView.target = self;
     
     //set 2x click handler
     self.outlineView.doubleAction = @selector(doubleClickHandler:);
+    
+    //set sort descriptor for the first column
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
+    [self.outlineView.tableColumns.firstObject setSortDescriptorPrototype:sortDescriptor];
+    
+    //init
+    self.isReversed = NO;
     
     return;
 }
@@ -67,6 +77,9 @@ extern XPCDaemonClient* xpcDaemonClient;
 // get rules and listen for new ones
 -(void)windowDidLoad
 {
+    //set selected tab
+    self.selectedToolbarItem = RULE_TYPE_ALL;
+    
     //set indentation level for outline view
     self.outlineView.indentationPerLevel = 42;
     
@@ -207,6 +220,13 @@ extern XPCDaemonClient* xpcDaemonClient;
         //always filter
         self.rulesFiltered = [self filter];
         
+        //reverse?
+        if(YES == self.isReversed)
+        {
+            //reverse
+            [self.rulesFiltered reverse];
+        }
+        
         //begin updates
         [self.outlineView beginUpdates];
         
@@ -264,17 +284,14 @@ bail:
 // generate filtered rules and reload table
 -(IBAction)toolbarHandler:(id)sender
 {
-    //toolbar item tag
-    NSInteger tag = -1;
-    
-    //grab tag
-    tag = ((NSToolbarItem*)sender).tag;
+    //save
+    self.selectedToolbarItem = ((NSToolbarItem*)sender).tag;
     
     //dbg msg
-    os_log_debug(logHandle, "user clicked toolbar item, %{public}@ (tag: %ld)", ((NSToolbarItem*)sender).label, (long)tag);
+    os_log_debug(logHandle, "user clicked toolbar item, %{public}@ (tag: %ld)", ((NSToolbarItem*)sender).label, (long)self.selectedToolbarItem);
     
     //set column title
-    switch (tag)
+    switch(self.selectedToolbarItem)
     {
         //all
         case RULE_TYPE_ALL:
@@ -321,8 +338,8 @@ bail:
     [self update];
     
     //'add rules' only allowed for 'all' and 'user' views
-    if( (tag == RULE_TYPE_ALL) ||
-        (tag == RULE_TYPE_USER) )
+    if( (self.selectedToolbarItem == RULE_TYPE_ALL) ||
+        (self.selectedToolbarItem == RULE_TYPE_USER) )
     {
         //change label color to default
         self.addRuleLabel.textColor = [NSColor labelColor];
@@ -410,7 +427,6 @@ bail:
 bail:
     
     return;
-
 }
 
 //warn user the modifying default rules might break things
@@ -542,11 +558,14 @@ bail:
     //filtered items
     OrderedDictionary* results = nil;
     
+    //sorted keys
+    NSArray* sortedKeys = nil;
+    
+    //sorted rules
+    OrderedDictionary* sortedRules = nil;
+    
     //filter string
     NSString* filter = nil;
-
-    //selected toolbar item
-    NSToolbarItem* selectedItem = nil;
     
     //dbg msg
     os_log_debug(logHandle, "filtering rules...");
@@ -557,26 +576,12 @@ bail:
     //grab filter string
     filter = self.filterBox.stringValue;
     
-    //find selected toolbar item
-    for(NSToolbarItem* toolbarItem in self.toolbar.items)
-    {
-        //find
-        if(YES == [toolbarItem.itemIdentifier isEqualToString:self.toolbar.selectedItemIdentifier])
-        {
-            //found match
-            selectedItem = toolbarItem;
-            
-            //all done
-            break;
-        }
-    }
-    
     //dbg msg
-    os_log_debug(logHandle, "selected toolbar item: %{public}@ %ld", selectedItem.itemIdentifier, (long)selectedItem.tag);
+    os_log_debug(logHandle, "selected toolbar item: %ld", self.selectedToolbarItem);
     
     //all/no filter
     // don't need to filter
-    if( (RULE_TYPE_ALL == selectedItem.tag) &&
+    if( (RULE_TYPE_ALL == self.selectedToolbarItem) &&
         (0 == filter.length) )
     {
         //dbg msg
@@ -614,11 +619,11 @@ bail:
         
         //not on 'all'/'recent' tab?
         // skip rules if they don't match selected toolbar type
-        if( (RULE_TYPE_ALL != selectedItem.tag) &&
-            (RULE_TYPE_RECENT != selectedItem.tag) )
+        if( (RULE_TYPE_ALL != self.selectedToolbarItem) &&
+            (RULE_TYPE_RECENT != self.selectedToolbarItem) )
         {
             //skip if mismatch between selected tab/rule tpye
-            if(selectedItem.tag != ((Rule*)[value[KEY_RULES] firstObject]).type.intValue)
+            if(self.selectedToolbarItem != ((Rule*)[value[KEY_RULES] firstObject]).type.intValue)
             {
                 //skip
                 return;
@@ -626,7 +631,7 @@ bail:
         }
         
         //recent?
-        if(RULE_TYPE_RECENT == selectedItem.tag)
+        if(RULE_TYPE_RECENT == self.selectedToolbarItem)
         {
             //get (item's) recent rules
             recentRules = [self recentRules:value[KEY_RULES]];
@@ -685,6 +690,35 @@ bail:
         }
         
     }];}
+    
+    //sort recent rules
+    if(RULE_TYPE_RECENT == self.selectedToolbarItem)
+    {
+        //nap for UI (loading msg)
+        [NSThread sleepForTimeInterval:0.5f];
+        
+        //dbg msg
+        os_log_debug(logHandle, "sorting (recent) rules by creation timestamp...");
+        
+        //init
+        sortedRules = [[OrderedDictionary alloc] init];
+        
+        //sort by (rule) timestamp
+        sortedKeys = [results keysSortedByValueUsingComparator:^NSComparisonResult(id _Nonnull obj1, id  _Nonnull obj2)
+        {
+            //compare/return
+            return [((Rule*)[((NSDictionary*)obj2)[KEY_RULES] firstObject]).creation compare:((Rule*)[((NSDictionary*)obj1)[KEY_RULES] firstObject]).creation];
+        }];
+        
+        //add sorted rules
+        for(NSInteger i = 0; i<sortedKeys.count; i++)
+        {
+            //add to ordered dictionary
+            [sortedRules insertObject:results[sortedKeys[i]] forKey:sortedKeys[i] atIndex:i];
+        }
+        
+        results = sortedRules;
+    }
             
 bail:
     
@@ -731,6 +765,12 @@ bail:
     }
     
 bail:
+    
+    //sort from newest to oldest
+    [recentRules sortUsingComparator:^NSComparisonResult(Rule *rule1, Rule *rule2) {
+        //compare the creation dates
+        return [rule2.creation compare:rule1.creation];
+    }];
     
     return recentRules;
 }
@@ -952,8 +992,32 @@ bail:
 bail:
     
     return cell;
-
 }
+
+//sort
+// really for now, just reverse
+-(void)outlineView:(NSOutlineView *)outlineView sortDescriptorsDidChange:(NSArray<NSSortDescriptor *> *)oldDescriptors
+{
+    //dbg msg
+    os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
+    
+    //only sort on first column
+    if(YES != [outlineView.sortDescriptors.firstObject.key isEqualToString:@"sort"])
+    {
+        goto bail;
+    }
+    
+    //toggle
+    self.isReversed = !self.isReversed;
+    
+    //refresh table
+    [self update];
+    
+bail:
+    
+    return;
+}
+
 
 //create & customize process cell
 // these are the root cells, that hold the item (process)
@@ -1079,11 +1143,45 @@ bail:
     //item cell
     NSTableCellView* cell = nil;
     
+    //contents
+    NSMutableString* contents = nil;
+    
+    //time stamp
+    NSString* timestamp = nil;
+    
+    //contents + time stamp
+    NSMutableAttributedString* contentsWithTimestamp = nil;
+    
+    //date formatter
+    static NSDateFormatter *dateFormatter = nil;
+    
+    //string attributes
+    static NSDictionary *attributes = nil;
+    
+    //token
+    static dispatch_once_t onceToken = 0;
+    
+    //only once
+    // init requirements
+    dispatch_once(&onceToken, ^{
+        
+        //init
+        dateFormatter = [[NSDateFormatter alloc] init];
+        
+        //config
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        
+        //set (string) attributes
+        attributes = @{NSForegroundColorAttributeName:NSColor.lightGrayColor, NSFontAttributeName:[NSFont fontWithName:@"Menlo-Regular" size:11]};
+        
+    });
+
     //create cell
     cell = [self.outlineView makeViewWithIdentifier:@"simpleCell" owner:self];
     
     //reset text
     ((NSTableCellView*)cell).textField.stringValue = @"";
+    ((NSTableCellView*)cell).textField.attributedStringValue = [[NSAttributedString alloc] initWithString:@""];
     
     //set endpoint addr
     address = (YES == [rule.endpointAddr isEqualToString:VALUE_ANY]) ? NSLocalizedString(@"any address",@"any address") : rule.endpointAddr;
@@ -1091,8 +1189,29 @@ bail:
     //set endpoint port
     port = (YES == [rule.endpointPort isEqualToString:VALUE_ANY]) ? NSLocalizedString(@"any port",@"any port") : rule.endpointPort;
     
-    //set main text
-    cell.textField.stringValue = [NSString stringWithFormat:@"%@:%@", address, port];
+    //init addr/port
+    contents = [NSMutableString stringWithFormat:@"%@:%@", address, port];
+    
+    //in "recents" view, add creation timestamp
+    if(RULE_TYPE_RECENT == self.selectedToolbarItem)
+    {
+        //init contents
+        contentsWithTimestamp = [[NSMutableAttributedString alloc] initWithString:contents];
+        
+        //init (formatted) timestamp
+        timestamp = [NSString stringWithFormat:@" (created at: %@)", [dateFormatter stringFromDate:rule.creation]];
+        
+        //combine
+        [contentsWithTimestamp appendAttributedString:[[NSAttributedString alloc] initWithString:timestamp attributes:attributes]];
+    
+        //set contents
+        cell.textField.attributedStringValue = contentsWithTimestamp;
+    }
+    //no timestamp
+    else
+    {
+        cell.textField.stringValue = contents;
+    }
 
     return cell;
 }
