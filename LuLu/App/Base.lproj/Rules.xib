@@ -15,6 +15,7 @@
                 <outlet property="loadingRules" destination="VUa-5Z-QAG" id="aLz-sm-xVQ"/>
                 <outlet property="loadingRulesSpinner" destination="XFi-AG-WZ4" id="aaT-3y-LEG"/>
                 <outlet property="outlineView" destination="ass-Hi-FMe" id="VsR-Ac-HKo"/>
+                <outlet property="rulesViewSelector" destination="mfH-zV-Que" id="xcX-Sf-HLy"/>
                 <outlet property="toolbar" destination="VgN-2b-k77" id="SSB-SZ-3tL"/>
                 <outlet property="view" destination="se5-gp-TjO" id="wqw-Gz-fhe"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -64,7 +65,7 @@
                                                     <rect key="frame" x="1" y="1" width="780" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkx-JF-q5i">
+                                                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkx-JF-q5i">
                                                             <rect key="frame" x="41" y="20" width="767" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Item Name" id="7zm-Uo-lwv">
@@ -78,7 +79,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSColorPanel" id="qD1-Wa-myu"/>
                                                         </imageView>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" tag="101" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eh8-4j-zJP">
+                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" tag="101" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eh8-4j-zJP">
                                                             <rect key="frame" x="41" y="5" width="767" height="13"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingMiddle" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="item details..." id="qbv-z3-4PI">
@@ -97,7 +98,7 @@
                                                     <rect key="frame" x="1" y="53" width="780" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpF-QT-jfh">
+                                                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpF-QT-jfh">
                                                             <rect key="frame" x="-1" y="13" width="809" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="connection info" id="tZf-9e-yHh">
@@ -140,7 +141,7 @@
                                                                 <action selector="deleteRule:" target="-2" id="q9O-IU-kzL"/>
                                                             </connections>
                                                         </button>
-                                                        <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="100" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GQ2-Ny-NHf">
+                                                        <textField focusRingType="none" horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="100" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GQ2-Ny-NHf">
                                                             <rect key="frame" x="30" y="15" width="164" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" id="fZ4-hz-z9B">
@@ -183,7 +184,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eUD-fD-sWd">
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eUD-fD-sWd">
                         <rect key="frame" x="829" y="14" width="149" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="145" id="Mxq-DQ-euD"/>
@@ -202,7 +203,7 @@
                                 <rect key="frame" x="234" y="84" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FKP-Dh-JqV" userLabel="loading data">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FKP-Dh-JqV" userLabel="loading data">
                                 <rect key="frame" x="44" y="44" width="413" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="(re)loading rules..." id="vD6-Bk-elz">
@@ -259,55 +260,13 @@
             </view>
             <toolbar key="toolbar" implicitIdentifier="BAC88DC5-D2D2-4ADF-B070-99F6A091AAC8" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="VgN-2b-k77">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="30F01156-553F-47BA-8CF6-5DFEC71D307D" explicitItemIdentifier="all" label="All" paletteLabel="All" tag="-1" image="LoginItemIcon" selectable="YES" id="Nav-wg-Vxe">
-                        <size key="minSize" width="22" height="22"/>
-                        <size key="maxSize" width="22" height="22"/>
-                        <connections>
-                            <action selector="toolbarHandler:" target="-2" id="KU4-im-DdS"/>
-                        </connections>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="17D5DFCB-B79D-4FBA-8336-AB8E66D6387D" explicitItemIdentifier="default" label="Default" paletteLabel="Default" image="MainAppRulesSystem" selectable="YES" id="gc6-AZ-l8V">
-                        <size key="minSize" width="22" height="22"/>
-                        <size key="maxSize" width="22" height="22"/>
-                        <connections>
-                            <action selector="toolbarHandler:" target="-2" id="qTF-1F-7cS"/>
-                        </connections>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="E8F6F4D2-B7D0-47AB-9045-F7524F2A6E23" explicitItemIdentifier="apple" label="Apple" paletteLabel="Apple" tag="1" image="MainAppRulesApple" selectable="YES" id="B1u-bW-fb1">
-                        <size key="minSize" width="22" height="22"/>
-                        <size key="maxSize" width="22" height="22"/>
-                        <connections>
-                            <action selector="toolbarHandler:" target="-2" id="ZfS-Ds-cYK"/>
-                        </connections>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="F277D773-ED53-4D39-A773-4AD19A56CECD" explicitItemIdentifier="3rdparty" label="3rd-Party" paletteLabel="3rd-Party" tag="2" image="MainAppRulesApps" selectable="YES" id="IhL-Bt-OuB">
-                        <size key="minSize" width="22" height="22"/>
-                        <size key="maxSize" width="22" height="22"/>
-                        <connections>
-                            <action selector="toolbarHandler:" target="-2" id="NWO-Br-baO"/>
-                        </connections>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="27153586-AB2F-46C4-8DD4-2A015973C4B5" explicitItemIdentifier="user" label="User" paletteLabel="User" tag="3" image="MainAppRulesUser" selectable="YES" id="8lN-Ti-cWt">
-                        <size key="minSize" width="22" height="22"/>
-                        <size key="maxSize" width="22" height="22"/>
-                        <connections>
-                            <action selector="toolbarHandler:" target="-2" id="rRC-E1-zCg"/>
-                        </connections>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="8E2C2957-8CD1-4B22-A881-391231E4310B" explicitItemIdentifier="recent" label="Recent" paletteLabel="Recent" tag="4" image="rulesRecent" selectable="YES" id="YA5-FD-5ss">
-                        <size key="minSize" width="22" height="22"/>
-                        <size key="maxSize" width="22" height="22"/>
-                        <connections>
-                            <action selector="toolbarHandler:" target="-2" id="hWW-Ym-XvE"/>
-                        </connections>
-                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="1EK-dM-lw3"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="csB-HX-Bm6"/>
                     <toolbarItem implicitItemIdentifier="6A861BC3-0977-42BD-857D-D0D8C06EB403" label="" paletteLabel="" tag="5" id="laZ-lE-1iU">
                         <nil key="toolTip"/>
                         <size key="minSize" width="96" height="22"/>
                         <size key="maxSize" width="207" height="22"/>
-                        <searchField key="view" identifier="abc" wantsLayer="YES" verticalHuggingPriority="750" tag="5" textCompletion="NO" id="6hG-3v-G35">
+                        <searchField key="view" identifier="abc" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" tag="5" textCompletion="NO" id="6hG-3v-G35">
                             <rect key="frame" x="0.0" y="14" width="189" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" identifier="def" placeholderString="Filter Rules" usesSingleLineMode="YES" bezelStyle="round" id="DWG-ck-lDk">
@@ -325,8 +284,8 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="D6A4E192-28DB-485F-B968-54E2C252CF2F" label="" paletteLabel="" title="All Rules" sizingBehavior="auto" id="2FE-FA-0jJ">
                         <nil key="toolTip"/>
-                        <popUpButton key="view" verticalHuggingPriority="750" id="mfH-zV-Que">
-                            <rect key="frame" x="0.0" y="14" width="116" height="25"/>
+                        <popUpButton key="view" verticalHuggingPriority="750" id="mfH-zV-Que" userLabel="Rule View Selector">
+                            <rect key="frame" x="0.0" y="14" width="131" height="25"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <popUpButtonCell key="cell" type="roundTextured" title="All Rules" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="omZ-DL-6R7" id="qeh-fO-uzj">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -351,23 +310,27 @@
                                         <menuItem title="Recent Rules" id="b9m-wt-VZa"/>
                                     </items>
                                 </menu>
+                                <connections>
+                                    <action selector="rulesViewSelectorHandler:" target="-2" id="GJq-H1-tUn"/>
+                                </connections>
                             </popUpButtonCell>
                         </popUpButton>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="09995CD8-BDB2-42E3-8A29-F4F79BEBE790" label="Custom View" paletteLabel="Custom View" sizingBehavior="auto" id="F7G-1t-415">
+                        <nil key="toolTip"/>
+                        <textField key="view" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="RyV-HD-obr">
+                            <rect key="frame" x="20" y="14" width="37" height="16"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="2yS-Gr-1bI">
+                                <font key="font" usesAppearanceFont="YES"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
                     </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="2FE-FA-0jJ"/>
-                    <toolbarItem reference="Nav-wg-Vxe"/>
-                    <toolbarItem reference="1EK-dM-lw3"/>
-                    <toolbarItem reference="gc6-AZ-l8V"/>
-                    <toolbarItem reference="1EK-dM-lw3"/>
-                    <toolbarItem reference="B1u-bW-fb1"/>
-                    <toolbarItem reference="1EK-dM-lw3"/>
-                    <toolbarItem reference="IhL-Bt-OuB"/>
-                    <toolbarItem reference="1EK-dM-lw3"/>
-                    <toolbarItem reference="8lN-Ti-cWt"/>
-                    <toolbarItem reference="1EK-dM-lw3"/>
-                    <toolbarItem reference="YA5-FD-5ss"/>
                     <toolbarItem reference="csB-HX-Bm6"/>
                     <toolbarItem reference="laZ-lE-1iU"/>
                 </defaultToolbarItems>
@@ -390,15 +353,9 @@
         </window>
     </objects>
     <resources>
-        <image name="LoginItemIcon" width="144" height="144"/>
         <image name="MainAppLuLuText" width="1268" height="385"/>
-        <image name="MainAppRulesApple" width="72" height="72"/>
-        <image name="MainAppRulesApps" width="72" height="72"/>
-        <image name="MainAppRulesSystem" width="72" height="72"/>
-        <image name="MainAppRulesUser" width="72" height="72"/>
         <image name="NSAddTemplate" width="18" height="16"/>
         <image name="NSColorPanel" width="32" height="32"/>
         <image name="NSStopProgressFreestandingTemplate" width="19" height="19"/>
-        <image name="rulesRecent" width="128" height="128"/>
     </resources>
 </document>

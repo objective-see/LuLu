@@ -1,6 +1,18 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "2yS-Gr-1bI.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Label\"; ObjectID = \"2yS-Gr-1bI\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
     "7zm-Uo-lwv.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Item Name\"; ObjectID = \"7zm-Uo-lwv\";",
       "extractionState" : "extracted_with_value",
@@ -21,7 +33,7 @@
     },
     "8lN-Ti-cWt.label" : {
       "comment" : "Class = \"NSToolbarItem\"; label = \"User\"; ObjectID = \"8lN-Ti-cWt\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -39,7 +51,7 @@
     },
     "8lN-Ti-cWt.paletteLabel" : {
       "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"User\"; ObjectID = \"8lN-Ti-cWt\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -57,7 +69,7 @@
     },
     "B1u-bW-fb1.label" : {
       "comment" : "Class = \"NSToolbarItem\"; label = \"Apple\"; ObjectID = \"B1u-bW-fb1\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -75,7 +87,7 @@
     },
     "B1u-bW-fb1.paletteLabel" : {
       "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Apple\"; ObjectID = \"B1u-bW-fb1\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -169,9 +181,33 @@
         }
       }
     },
+    "F7G-1t-415.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Custom View\"; ObjectID = \"F7G-1t-415\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Custom View"
+          }
+        }
+      }
+    },
+    "F7G-1t-415.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Custom View\"; ObjectID = \"F7G-1t-415\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Custom View"
+          }
+        }
+      }
+    },
     "gc6-AZ-l8V.label" : {
       "comment" : "Class = \"NSToolbarItem\"; label = \"Default\"; ObjectID = \"gc6-AZ-l8V\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -189,7 +225,7 @@
     },
     "gc6-AZ-l8V.paletteLabel" : {
       "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Default\"; ObjectID = \"gc6-AZ-l8V\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -207,7 +243,7 @@
     },
     "IhL-Bt-OuB.label" : {
       "comment" : "Class = \"NSToolbarItem\"; label = \"3rd-Party\"; ObjectID = \"IhL-Bt-OuB\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -225,7 +261,7 @@
     },
     "IhL-Bt-OuB.paletteLabel" : {
       "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"3rd-Party\"; ObjectID = \"IhL-Bt-OuB\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -261,7 +297,7 @@
     },
     "Nav-wg-Vxe.label" : {
       "comment" : "Class = \"NSToolbarItem\"; label = \"All\"; ObjectID = \"Nav-wg-Vxe\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -279,7 +315,7 @@
     },
     "Nav-wg-Vxe.paletteLabel" : {
       "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"All\"; ObjectID = \"Nav-wg-Vxe\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -453,30 +489,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Agregar Regla"
-          }
-        }
-      }
-    },
-    "YA5-FD-5ss.label" : {
-      "comment" : "Class = \"NSToolbarItem\"; label = \"Recent\"; ObjectID = \"YA5-FD-5ss\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Recent"
-          }
-        }
-      }
-    },
-    "YA5-FD-5ss.paletteLabel" : {
-      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Recent\"; ObjectID = \"YA5-FD-5ss\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Recent"
           }
         }
       }

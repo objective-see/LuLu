@@ -59,6 +59,9 @@
 //table items
 @property(nonatomic, retain)OrderedDictionary* rules;
 
+//rules view selector
+@property (weak) IBOutlet NSPopUpButton *rulesViewSelector;
+
 //table items
 // ...but filtered
 @property(nonatomic, retain)OrderedDictionary* rulesFiltered;
@@ -72,8 +75,8 @@
 //window toolbar
 @property (weak) IBOutlet NSToolbar *toolbar;
 
-//selected tab in toolbar
-@property NSInteger selectedToolbarItem;
+//selected index in rule view selector
+@property NSInteger selectedRuleView;
 
 //show item path(s) popup contoller
 @property(strong) ItemPathsWindowController *itemPathsWindowController;
@@ -94,15 +97,12 @@
 @property(nonatomic,retain)NSString* addedRule;
 
 //flag
-@property BOOL isReversed;
+@property BOOL isAscending;
 
 /* METHODS */
 
 //configure (UI)
 -(void)configure;
-
-//handle tool bar icon clicks
--(IBAction)toolbarHandler:(id)sender;
 
 //add a rule
 -(IBAction)addRule:(id)sender;
