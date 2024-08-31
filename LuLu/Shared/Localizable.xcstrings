@@ -338,8 +338,8 @@
         }
       }
     },
-    "Added in last 24 hours" : {
-      "comment" : "Added in last 24 hours"
+    "Added in last 24 hours (sorted by creation time)" : {
+      "comment" : "Added in last 24 hours (sorted by creation time)"
     },
     "All Rules" : {
       "comment" : "All Rules",

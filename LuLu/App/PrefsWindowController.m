@@ -388,14 +388,18 @@ bail:
     //init update obj
     update = [[Update alloc] init];
     
-    //check for update
-    // 'updateResponse newVersion:' method will be called when check is done
-    [update checkForUpdate:^(NSUInteger result, NSString* newVersion) {
-        
-        //process response
-        [self updateResponse:result newVersion:newVersion];
-        
-    }];
+    //check
+    // but after a delay for UI
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.75 * NSEC_PER_SEC), dispatch_get_main_queue(),
+    ^{
+        //check for update
+        [update checkForUpdate:^(NSUInteger result, NSString* newVersion) {
+            
+            //process response
+            [self updateResponse:result newVersion:newVersion];
+            
+        }];
+    });
     
     return;
 }

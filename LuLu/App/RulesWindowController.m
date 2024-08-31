@@ -16,6 +16,8 @@
 #import "AddRuleWindowController.h"
 #import "3rd-party/OrderedDictionary.h"
 
+#define SORT_DESCRIPTOR_COLUMN_0 @"sort_0"
+
 /* GLOBALS */
 
 //log handle
@@ -67,8 +69,6 @@ extern XPCDaemonClient* xpcDaemonClient;
 // get rules and listen for new ones
 -(void)windowDidLoad
 {
-    NSSortDescriptor* sortDescriptor = nil;
-    
     //set default rule's view
     self.selectedRuleView = RULE_TYPE_ALL;
     
@@ -87,17 +87,14 @@ extern XPCDaemonClient* xpcDaemonClient;
     //set overlay's view material
     self.loadingRules.material = NSVisualEffectMaterialHUDWindow;
     
-    //set table header
+    //set initial table header
     self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"All Rules",@"All Rules");
     
-    //init sort descriptor
-    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
-    
-    //set sort descriptor
-    [self.outlineView.tableColumns.firstObject setSortDescriptorPrototype:sortDescriptor];
+    //set sort descriptor for first column
+    [self.outlineView.tableColumns[0] setSortDescriptorPrototype:[[NSSortDescriptor alloc] initWithKey:SORT_DESCRIPTOR_COLUMN_0 ascending:YES]];
     
     //set it to whole too...
-    [self.outlineView setSortDescriptors:@[sortDescriptor]];
+    [self.outlineView setSortDescriptors:@[self.outlineView.tableColumns[0].sortDescriptorPrototype]];
     
     //set flag
     self.isAscending = YES;
@@ -202,7 +199,6 @@ extern XPCDaemonClient* xpcDaemonClient;
     //selected row
     __block NSInteger selectedRow = -1;
     
-    //TODO: (reselect)
     //item's (new?) row
     //__block NSInteger itemRow = -1;
     
@@ -267,9 +263,6 @@ extern XPCDaemonClient* xpcDaemonClient;
         // just default to select last row...
         selectedRow = MIN(selectedRow, (self.outlineView.numberOfRows-1));
         
-        //TODO: rem
-        //os_log_debug(logHandle, "selected row: %ld", selectedRow);
-        
         //(re)select & scroll
         dispatch_async(dispatch_get_main_queue(),
         ^{
@@ -333,7 +326,7 @@ bail:
             
         case RULE_TYPE_RECENT:
             
-            self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"Added in last 24 hours", @"Added in last 24 hours");
+            self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"Added in last 24 hours (sorted by creation time)", @"Added in last 24 hours (sorted by creation time)");
             break;
             
         
@@ -538,19 +531,14 @@ bail:
             // save path, and toggle to user tab
             if(nil == rule)
             {
-                //TODO:
-                //user tab
-                //self.toolbar.selectedItemIdentifier = @"user";
-                
                 //save into iVar
                 // allows table to select/scroll to this new rule
                 self.addedRule = self.addRuleWindowController.info[KEY_PATH];
             }
                     
             //reload
-            [self loadRules];
-            
-        } //NSModalResponseOK
+            [self loadRules];  
+        }
 
         //unset add rule window controller
         self.addRuleWindowController = nil;
@@ -563,7 +551,7 @@ bail:
 }
 
 //init array of filtered rules
-// determines what toolbar item is selected, then sort based on that and also what's in search box
+// determines what rule view is selected, then sort based on that and also what's in search box
 -(OrderedDictionary*)filter
 {
     //filtered items
@@ -616,9 +604,15 @@ bail:
     // add any that match rule view and filter string
     {[self.rules enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL* stop) {
         
+        //match
+        BOOL match = NO;
+        
         //item
         // cs info, rules, etc
         NSMutableDictionary* item = nil;
+        
+        //item's rules
+        NSArray* itemRules = nil;
         
         //(item') recent rules
         NSMutableArray* recentRules = nil;
@@ -629,24 +623,47 @@ bail:
         //make copy
         item = [value mutableCopy];
         
-        //not on 'all'/'recent' tab?
+        //item's rules
+        itemRules = item[KEY_RULES];
+        
+        //init
+        matchedRules = [NSMutableArray array];
+        
+        //not on 'all'/'recent' view?
         // skip rules if they don't match selected toolbar type
         if( (RULE_TYPE_ALL != self.selectedRuleView) &&
             (RULE_TYPE_RECENT != self.selectedRuleView) )
         {
-            //skip if mismatch between selected rule view/rule tpye
-            if(self.selectedRuleView != ((Rule*)[value[KEY_RULES] firstObject]).type.intValue)
+            //check all item's rule for match
+            for(Rule* itemRule in itemRules)
             {
-                //skip
+                //match?
+                if(self.selectedRuleView == itemRule.type.intValue)
+                {
+                    //add
+                    [matchedRules addObject:itemRule];
+                }
+            }
+            
+            //done if no item rules match
+            if(0 == matchedRules.count)
+            {
                 return;
             }
+            
+            //update
+            item[KEY_RULES] = [matchedRules mutableCopy];
+            
+            //reset
+            // as we reuse this in filtering
+            [matchedRules removeAllObjects];
         }
         
         //recent?
         if(RULE_TYPE_RECENT == self.selectedRuleView)
         {
             //get (item's) recent rules
-            recentRules = [self recentRules:value[KEY_RULES]];
+            recentRules = [self recentRules:itemRules];
             
             //item doesn't have any recent rules
             if(0 == recentRules.count)
@@ -673,10 +690,7 @@ bail:
             return;
         }
         
-        /* now filter */
-        
-        //init matched (process) rules
-        matchedRules = [NSMutableArray array];
+        /* NOW FILTER */
         
         //check each rule(s) on filter string
         for(Rule* rule in item[KEY_RULES])
@@ -1040,27 +1054,22 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
     
-    //only sort on first column
-    if(YES != [outlineView.sortDescriptors.firstObject.key isEqualToString:@"sort"])
+    //only sort first column: rule name
+    if(YES == [outlineView.sortDescriptors.firstObject.key isEqualToString:SORT_DESCRIPTOR_COLUMN_0])
     {
-        //ignore
-        goto bail;
-    }
-    
-    //reverse
-    [self.rules reverse];
-    
-    //toggle
-    self.isAscending = !self.isAscending;
-    
-    //unselect row
-    // want top row to be selected after reverse
-    [self.outlineView deselectAll:nil];
+        //reverse
+        [self.rules reverse];
+        
+        //toggle
+        self.isAscending = !self.isAscending;
+        
+        //unselect row
+        // want top row to be selected after reverse
+        [self.outlineView deselectAll:nil];
 
-    //refresh table
-    [self update];
-    
-bail:
+        //refresh table
+        [self update];
+    }
     
     return;
 }

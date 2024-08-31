@@ -252,9 +252,6 @@ bail:
     //(remote) endpoint addr
     NSString* endpointPort = nil;
     
-    //type
-    NSNumber* type = nil;
-    
     //action
     NSNumber* action = nil;
     
@@ -341,10 +338,6 @@ bail:
         goto bail;
     }
 
-    //init type
-    // existing rule? use that type, otherwise default to 'user'
-    type = (nil != self.rule) ? self.rule.type : @RULE_TYPE_USER;
-    
     //set action
     action = (self.blockButton.state == NSControlStateValueOn) ? @RULE_STATE_BLOCK : @RULE_STATE_ALLOW;
     
@@ -353,7 +346,7 @@ bail:
                   KEY_ENDPOINT_ADDR:endpointAddr,
                   KEY_ENDPOINT_ADDR_IS_REGEX:endpointAddrRegex,
                   KEY_ENDPOINT_PORT:endpointPort,
-                  KEY_TYPE:type,
+                  KEY_TYPE:@RULE_TYPE_USER,
                   KEY_ACTION:action};
     
     //ok happy

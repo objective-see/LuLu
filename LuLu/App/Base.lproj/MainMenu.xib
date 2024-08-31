@@ -77,9 +77,7 @@
                     </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="0od-m3-GN5"/>
-                <menuItem title="Settings..." tag="107" id="4Uv-rm-VzQ">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
+                <menuItem title="Settings..." tag="107" keyEquivalent="," id="4Uv-rm-VzQ"/>
                 <menuItem title="Network Monitor..." tag="108" id="VuY-Sy-392" userLabel="Network Monitor...">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
