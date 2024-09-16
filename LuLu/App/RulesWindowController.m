@@ -505,7 +505,10 @@ bail:
     
     //show it
     // on close/OK, invoke XPC to add rule, then reload
-    {[self.window beginSheet:self.addRuleWindowController.window completionHandler:^(NSModalResponse returnCode) {
+    NSModalResponse response = [NSApp runModalForWindow:self.addRuleWindowController.window];
+    {
+        
+        
         
         //(existing) rule
         Rule* rule = nil;
@@ -514,7 +517,7 @@ bail:
         os_log_debug(logHandle, "add/edit rule window closed...");
         
         //on OK, add rule via XPC
-        if(returnCode == NSModalResponseOK)
+        if(response == NSModalResponseOK)
         {
             //was an update to an existing rule?
             // delete it first, then go ahead and add
@@ -535,15 +538,15 @@ bail:
                 // allows table to select/scroll to this new rule
                 self.addedRule = self.addRuleWindowController.info[KEY_PATH];
             }
-                    
+            
             //reload
-            [self loadRules];  
+            [self loadRules];
         }
-
+        
         //unset add rule window controller
         self.addRuleWindowController = nil;
         
-    }];}
+    }
     
 bail:
     

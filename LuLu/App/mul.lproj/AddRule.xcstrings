@@ -37,6 +37,18 @@
         }
       }
     },
+    "F0z-JX-Cv5.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Add Rule (for outgoing connections)\"; ObjectID = \"F0z-JX-Cv5\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add Rule (for outgoing connections)"
+          }
+        }
+      }
+    },
     "FCA-Cv-yT3.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"regex?\"; ObjectID = \"FCA-Cv-yT3\";",
       "extractionState" : "extracted_with_value",

@@ -156,9 +156,6 @@ bail:
 // just needed so buttons will toggle
 -(IBAction)radioButtonsHandler:(id)sender
 {
-    //dbg msg
-    os_log_debug(logHandle, "radio toggle: %{public}@", sender);
-    
     return;
 }
 
@@ -221,8 +218,11 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "user clicked: %{public}@", ((NSButton*)sender).title);
     
-    //close & return NSModalResponseCancel
-    [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseCancel];
+    //stop/cancel
+    [NSApp stopModalWithCode:NSModalResponseCancel];
+    
+    //close
+    [self.window close];
     
     return;
 }
@@ -352,10 +352,13 @@ bail:
     //ok happy
     response = NSModalResponseOK;
 
-    //close & return
-    [self.window.sheetParent endSheet:self.window returnCode:response];
-    
 bail:
+    
+    //stop w/ response
+    [NSApp stopModalWithCode:response];
+    
+    //close
+    [self.window close];
     
     return;
 }
