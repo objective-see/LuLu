@@ -10,6 +10,12 @@
             "state" : "new",
             "value" : "Label"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etiqueta"
+          }
         }
       }
     },
@@ -31,78 +37,6 @@
         }
       }
     },
-    "8lN-Ti-cWt.label" : {
-      "comment" : "Class = \"NSToolbarItem\"; label = \"User\"; ObjectID = \"8lN-Ti-cWt\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "User"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Usuario"
-          }
-        }
-      }
-    },
-    "8lN-Ti-cWt.paletteLabel" : {
-      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"User\"; ObjectID = \"8lN-Ti-cWt\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "User"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Usuario"
-          }
-        }
-      }
-    },
-    "B1u-bW-fb1.label" : {
-      "comment" : "Class = \"NSToolbarItem\"; label = \"Apple\"; ObjectID = \"B1u-bW-fb1\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Apple"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple"
-          }
-        }
-      }
-    },
-    "B1u-bW-fb1.paletteLabel" : {
-      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Apple\"; ObjectID = \"B1u-bW-fb1\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Apple"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple"
-          }
-        }
-      }
-    },
     "b9m-wt-VZa.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Recent Rules\"; ObjectID = \"b9m-wt-VZa\";",
       "extractionState" : "extracted_with_value",
@@ -111,6 +45,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Recent Rules"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reglas Recientes"
           }
         }
       }
@@ -141,6 +81,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "User Rules"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reglas del Usuario"
           }
         }
       }
@@ -190,6 +136,12 @@
             "state" : "new",
             "value" : "Custom View"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vista Personalizada"
+          }
         }
       }
     },
@@ -202,77 +154,11 @@
             "state" : "new",
             "value" : "Custom View"
           }
-        }
-      }
-    },
-    "gc6-AZ-l8V.label" : {
-      "comment" : "Class = \"NSToolbarItem\"; label = \"Default\"; ObjectID = \"gc6-AZ-l8V\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Default"
-          }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Predeterminado"
-          }
-        }
-      }
-    },
-    "gc6-AZ-l8V.paletteLabel" : {
-      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Default\"; ObjectID = \"gc6-AZ-l8V\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Default"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Predeterminado"
-          }
-        }
-      }
-    },
-    "IhL-Bt-OuB.label" : {
-      "comment" : "Class = \"NSToolbarItem\"; label = \"3rd-Party\"; ObjectID = \"IhL-Bt-OuB\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "3rd-Party"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Terceros"
-          }
-        }
-      }
-    },
-    "IhL-Bt-OuB.paletteLabel" : {
-      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"3rd-Party\"; ObjectID = \"IhL-Bt-OuB\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "3rd-Party"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Terceros"
+            "value" : "Vista Personalizada"
           }
         }
       }
@@ -295,42 +181,6 @@
         }
       }
     },
-    "Nav-wg-Vxe.label" : {
-      "comment" : "Class = \"NSToolbarItem\"; label = \"All\"; ObjectID = \"Nav-wg-Vxe\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "All"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Todos"
-          }
-        }
-      }
-    },
-    "Nav-wg-Vxe.paletteLabel" : {
-      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"All\"; ObjectID = \"Nav-wg-Vxe\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "All"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Todos"
-          }
-        }
-      }
-    },
     "omZ-DL-6R7.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"All Rules\"; ObjectID = \"omZ-DL-6R7\";",
       "extractionState" : "extracted_with_value",
@@ -339,6 +189,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "All Rules"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todas las Reglas"
           }
         }
       }
@@ -388,6 +244,12 @@
             "state" : "new",
             "value" : "Apple Rules"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reglas de Apple"
+          }
         }
       }
     },
@@ -399,6 +261,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Default Rules"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reglas Predeterminadas"
           }
         }
       }
@@ -417,42 +285,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "información de conexión"
-          }
-        }
-      }
-    },
-    "uL1-gQ-Sc7.label" : {
-      "comment" : "Class = \"NSToolbarItem\"; label = \"Unclassified\"; ObjectID = \"uL1-gQ-Sc7\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Unclassified"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No clasificado"
-          }
-        }
-      }
-    },
-    "uL1-gQ-Sc7.paletteLabel" : {
-      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Unclassified\"; ObjectID = \"uL1-gQ-Sc7\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Unclassified"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No clasificado"
           }
         }
       }
@@ -501,6 +333,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "3rd-party Rules"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reglas de terceros"
           }
         }
       }

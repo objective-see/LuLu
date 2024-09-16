@@ -46,6 +46,12 @@
             "state" : "new",
             "value" : "Rules for new connections should be created?"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Se deben crear reglas para nuevas conexiones?"
+          }
         }
       }
     },
@@ -112,6 +118,12 @@
             "state" : "new",
             "value" : "Allowed"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitido"
+          }
         }
       }
     },
@@ -127,8 +139,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ejecutar en silencio sin alertas, aplicando las reglas existentes.\nLas nuevas conexiones se permitirán automáticamente."
+            "state" : "translated",
+            "value" : "Ejecutar silenciosamente sin alertas, aplicando reglas existentes."
           }
         }
       }
@@ -141,6 +153,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Yes"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sí"
           }
         }
       }
@@ -194,7 +212,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lista de Bloqueo:"
+            "value" : "Lista de Bloqueados:"
           }
         }
       }
@@ -207,6 +225,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "New connections should be be:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las nuevas conexiones deben ser:"
           }
         }
       }
@@ -310,6 +334,12 @@
             "state" : "new",
             "value" : "No"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
         }
       }
     },
@@ -393,6 +423,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Blocked"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloqueado"
           }
         }
       }

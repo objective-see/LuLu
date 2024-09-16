@@ -339,7 +339,15 @@
       }
     },
     "Added in last 24 hours (sorted by creation time)" : {
-      "comment" : "Added in last 24 hours (sorted by creation time)"
+      "comment" : "Added in last 24 hours (sorted by creation time)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregado en las últimas 24 horas (ordenado por hora de creación)"
+          }
+        }
+      }
     },
     "All Rules" : {
       "comment" : "All Rules",
@@ -375,7 +383,15 @@
       }
     },
     "Allow (until: %@)" : {
-      "comment" : "Allow (until: %@)"
+      "comment" : "Allow (until: %@)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir (hasta: %@)"
+          }
+        }
+      }
     },
     "any address" : {
       "comment" : "any address",
@@ -444,7 +460,15 @@
       }
     },
     "Block (until: %@)" : {
-      "comment" : "Block (until: %@)"
+      "comment" : "Block (until: %@)",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquear (hasta: %@)"
+          }
+        }
+      }
     },
     "Cancel" : {
       "comment" : "Cancel",
@@ -744,7 +768,15 @@
       }
     },
     "is connecting to %@" : {
-      "comment" : "is connecting to %@"
+      "comment" : "is connecting to %@",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "se está conectando a %@"
+          }
+        }
+      }
     },
     "LuLu must run from:\r\n  %@" : {
       "comment" : "LuLu must run from:\r\n  %@",

@@ -1,8 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "auth.png",
       "idiom" : "universal",
+      "filename" : "auth.png",
       "scale" : "1x"
     },
     {
@@ -14,9 +14,9 @@
       "scale" : "3x"
     },
     {
-      "filename" : "auth_es.png",
-      "idiom" : "universal",
       "locale" : "es",
+      "idiom" : "universal",
+      "filename" : "auth_es.png",
       "scale" : "1x"
     },
     {
@@ -31,8 +31,8 @@
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   },
   "properties" : {
     "localizable" : true

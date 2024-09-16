@@ -49,8 +49,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Información de Red"
+            "state" : "translated",
+            "value" : "Conexión"
           }
         }
       }
@@ -63,6 +63,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Rule Duration:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duración de la Regla:"
           }
         }
       }
@@ -134,7 +140,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Del proceso"
+            "value" : "Duración del proceso"
           }
         }
       }
@@ -146,6 +152,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "HH:mm"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "HH:mm"
           }
         }
@@ -235,8 +247,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "dns inverso:"
+            "state" : "translated",
+            "value" : "dns (inverso):"
           }
         }
       }
@@ -249,6 +261,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Details & Options"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalles & Opciones"
           }
         }
       }
@@ -283,7 +301,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "ruta:"
           }
         }
@@ -301,7 +319,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "virus total"
           }
         }
@@ -334,6 +352,12 @@
             "state" : "new",
             "value" : "is connecting to ..."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "se está conectando a..."
+          }
         }
       }
     },
@@ -349,8 +373,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "identificador:"
+            "state" : "translated",
+            "value" : "pid:"
           }
         }
       }
@@ -381,6 +405,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Process Name"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre del Proceso"
           }
         }
       }
@@ -415,7 +445,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "ascendencia"
           }
         }
@@ -541,8 +571,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Información del Proceso"
+            "state" : "translated",
+            "value" : "Proceso"
           }
         }
       }
@@ -595,7 +625,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "argumentos:"
           }
         }
@@ -667,8 +697,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Personalizado:"
+            "state" : "translated",
+            "value" : "Válido hasta:"
           }
         }
       }

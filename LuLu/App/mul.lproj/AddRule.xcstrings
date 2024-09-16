@@ -46,6 +46,12 @@
             "state" : "new",
             "value" : "Add Rule (for outgoing connections)"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar Regla (para conexiones salientes)"
+          }
         }
       }
     },
