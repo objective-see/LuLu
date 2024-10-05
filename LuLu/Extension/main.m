@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     
     //alloc/init XPC comms object
     xpcListener = [[XPCListener alloc] init];
-    
+        
     //dbg msg
     os_log_debug(logHandle, "created client XPC listener");
     
@@ -82,6 +82,26 @@ int main(int argc, char *argv[])
         
         //bail
         goto bail;
+    }
+    
+    //allow list?
+    if(0 != preferences.preferences[PREF_USE_ALLOW_LIST])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "init'ing allowing list");
+        
+        //alloc/init/load allow list
+        allowList = [[BlockOrAllowList alloc] init:preferences.preferences[PREF_ALLOW_LIST]];
+    }
+        
+    //block list?
+    if(0 != preferences.preferences[PREF_USE_BLOCK_LIST])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "init'ing block list");
+        
+        //alloc/init/load block list
+        blockList = [[BlockOrAllowList alloc] init:preferences.preferences[PREF_BLOCK_LIST]];
     }
     
     }//pool

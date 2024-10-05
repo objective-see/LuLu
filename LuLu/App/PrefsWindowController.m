@@ -251,6 +251,8 @@ bail:
             
         //use block list
         case BUTTON_USE_ALLOW_LIST:
+            
+            //set state
             updatedPreferences[PREF_USE_ALLOW_LIST] = state;
             
             //disable?
@@ -274,6 +276,8 @@ bail:
             
         //use block list
         case BUTTON_USE_BLOCK_LIST:
+            
+            //set
             updatedPreferences[PREF_USE_BLOCK_LIST] = state;
             
             //disable?
@@ -362,7 +366,7 @@ bail:
 }
 
 //browse for select list
--(IBAction)selectBlockList:(id)sender
+-(IBAction)selectBlockOrAllowList:(id)sender
 {
     //'browse' panel
     NSOpenPanel *panel = nil;
@@ -383,15 +387,36 @@ bail:
     // and wait for response
     if(NSModalResponseOK == [panel runModal])
     {
-        //update ui
-        self.blockList.stringValue = panel.URL.path;
-        
-        //dbg msg
-        os_log_debug(logHandle, "user selected block list: %{public}@", self.blockList.stringValue);
-        
-        //send XPC msg to daemon to update prefs
-        // returns (all/latest) prefs, which is what we want
-        self.preferences = [xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:panel.URL.path}];
+        //allow list
+        if(sender == self.selectAllowListButton)
+        {
+            //update ui
+            self.allowList.stringValue = panel.URL.path;
+            
+            //dbg msg
+            os_log_debug(logHandle, "user selected allow list: %{public}@", self.allowList.stringValue);
+            
+            //send XPC msg to daemon to update prefs
+            self.preferences = [xpcDaemonClient updatePreferences:@{PREF_ALLOW_LIST:panel.URL.path}];
+        }
+        //block list
+        else if(sender == self.selectBlockListButton)
+        {
+            //update ui
+            self.blockList.stringValue = panel.URL.path;
+            
+            //dbg msg
+            os_log_debug(logHandle, "user selected block list: %{public}@", self.blockList.stringValue);
+            
+            //send XPC msg to daemon to update prefs
+            self.preferences = [xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:panel.URL.path}];
+        }
+        //error
+        else
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: %{public}@ is an invalid sender", sender);
+        }
     }
     
     return;

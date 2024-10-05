@@ -63,6 +63,7 @@ extern
         
         //alloc related flows
         self.relatedFlows = [NSMutableDictionary dictionary];
+        
     }
     
     return self;
@@ -146,9 +147,6 @@ extern
     //verdict
     NEFilterNewFlowVerdict* verdict = nil;
     
-    //token
-    static dispatch_once_t onceToken = 0;
-    
     //log msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
     
@@ -173,30 +171,6 @@ extern
     //log msg
     //os_log_debug(logHandle, "flow: %{public}@", flow);
     
-    //only once
-    // load init allow & block list(s)
-    // ...early it may fail for remote lists, as network isn't up
-    dispatch_once(&onceToken, ^{
-        
-        //dbg msg
-        os_log_debug(logHandle, "init'ing block list");
-        
-        //allow list?
-        if(0 != preferences.preferences[PREF_USE_ALLOW_LIST])
-        {
-            //alloc/init/load allow list
-            allowList = [[BlockOrAllowList alloc] init:preferences.preferences[PREF_ALLOW_LIST]];
-        }
-        
-        //block list?
-        if(0 != preferences.preferences[PREF_USE_BLOCK_LIST])
-        {
-            //alloc/init/load block list
-            blockList = [[BlockOrAllowList alloc] init:preferences.preferences[PREF_BLOCK_LIST]];
-        }
-        
-    });
-
     //extract remote endpoint
     remoteEndpoint = (NWHostEndpoint*)socketFlow.remoteEndpoint;
     
@@ -314,10 +288,25 @@ bail:
     
     //CHECK:
     // client in (full) block mode? ...block!
+    // unless there is an allow list set, which we'll check
     if(YES == [preferences.preferences[PREF_BLOCK_MODE] boolValue])
     {
+        //but allow list set?
+        if( (YES == [preferences.preferences[PREF_USE_ALLOW_LIST] boolValue]) &&
+            (YES == [allowList isMatch:(NEFilterSocketFlow*)flow]) )
+        {
+            //dbg msg
+            os_log_debug(logHandle, "client in block mode, but flow matches item in allow list, so allowing");
+                
+            //allow
+            verdict = [NEFilterNewFlowVerdict allowVerdict];
+                
+            //all set
+            goto bail;
+        }
+        
         //dbg msg
-        os_log_debug(logHandle, "client in block mode, so disallowing %d/%{public}@", process.pid, process.binary.name);
+        os_log_debug(logHandle, "client in block mode (and item not on allow list), so disallowing %d/%{public}@", process.pid, process.binary.name);
         
         //deny
         verdict = [NEFilterNewFlowVerdict dropVerdict];
@@ -328,8 +317,7 @@ bail:
         
     //CHECK:
     // client using (global) block list
-    if( (YES == [preferences.preferences[PREF_USE_BLOCK_LIST] boolValue]) &&
-        (0 != [preferences.preferences[PREF_BLOCK_LIST] length]) )
+    if(YES == [preferences.preferences[PREF_USE_BLOCK_LIST] boolValue])
     {
         //dbg msg
         os_log_debug(logHandle, "client is using block list '%{public}@' (%lu items) ...will check for match", preferences.preferences[PREF_BLOCK_LIST], (unsigned long)blockList.items.count);
@@ -352,13 +340,12 @@ bail:
     
     //CHECK:
     // client using (global) allow list
-    if( (YES == [preferences.preferences[PREF_USE_ALLOW_LIST] boolValue]) &&
-        (0 != [preferences.preferences[PREF_ALLOW_LIST] length]) )
+    if(YES == [preferences.preferences[PREF_USE_ALLOW_LIST] boolValue])
     {
         //dbg msg
         os_log_debug(logHandle, "client is using allow list '%{public}@' (%lu items) ...will check for match", preferences.preferences[PREF_ALLOW_LIST], (unsigned long)allowList.items.count);
         
-        //match in block list?
+        //match in allow list?
         if(YES == [allowList isMatch:(NEFilterSocketFlow*)flow])
         {
             //dbg msg

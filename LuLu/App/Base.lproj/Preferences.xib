@@ -263,7 +263,7 @@
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="xaO-g8-rdS">
                     <rect key="frame" x="72" y="75" width="510" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="All traffic (routed thru LuLu) will be blocked." id="SG5-YM-BoV">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="All traffic routed thru LuLu will be blocked (unless the endpoint is explicitly on the 'Allow' list)." id="SG5-YM-BoV">
                         <font key="font" size="12" name="Menlo-Regular"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -430,7 +430,7 @@
                         <font key="font" size="13" name="Menlo-Bold"/>
                     </buttonCell>
                     <connections>
-                        <action selector="selectBlockList:" target="-2" id="vJp-rf-wVE"/>
+                        <action selector="selectBlockOrAllowList:" target="-2" id="vJp-rf-wVE"/>
                     </connections>
                 </button>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4CH-OQ-Fxj">
@@ -523,7 +523,7 @@
                         <font key="font" size="13" name="Menlo-Bold"/>
                     </buttonCell>
                     <connections>
-                        <action selector="selectBlockList:" target="-2" id="M7o-ZO-hj3"/>
+                        <action selector="selectBlockOrAllowList:" target="-2" id="M7o-ZO-hj3"/>
                     </connections>
                 </button>
             </subviews>

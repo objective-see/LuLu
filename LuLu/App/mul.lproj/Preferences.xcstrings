@@ -566,18 +566,18 @@
       }
     },
     "SG5-YM-BoV.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"All traffic (routed thru LuLu) will be blocked.\"; ObjectID = \"SG5-YM-BoV\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"All traffic routed thru LuLu will be blocked (unless the endpoint is explicitly on the 'Allow' list).\"; ObjectID = \"SG5-YM-BoV\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "All traffic (routed thru LuLu) will be blocked."
+            "value" : "All traffic routed thru LuLu will be blocked (unless the endpoint is explicitly on the 'Allow' list)."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Todo el tráfico (ruteado a través de LuLu) será bloqueado. "
           }
         }
