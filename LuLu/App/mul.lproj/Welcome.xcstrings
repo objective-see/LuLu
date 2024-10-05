@@ -92,22 +92,23 @@
       }
     },
     "EOD-Hh-8e5.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"2. In System Settings, scroll to where is mentions \\\"LuLu\\\" and click \\\"Allow\\\"\"; ObjectID = \"EOD-Hh-8e5\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"...\"; ObjectID = \"EOD-Hh-8e5\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "2. In System Settings, scroll to where is mentions \"LuLu\" and click \"Allow\""
+            "value" : "..."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "2. En Configuración del Sistema, deslice hasta \"LuLu\" y haga click en \"Permitir\""
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "F0z-JX-Cv5.title" : {
       "comment" : "Class = \"NSWindow\"; title = \"LuLu\"; ObjectID = \"F0z-JX-Cv5\";",

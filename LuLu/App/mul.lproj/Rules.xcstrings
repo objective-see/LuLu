@@ -57,7 +57,7 @@
     },
     "BsU-Gh-mch.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"BsU-Gh-mch\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -201,7 +201,7 @@
     },
     "pch-yV-NXy.title" : {
       "comment" : "Class = \"NSWindow\"; title = \"Window\"; ObjectID = \"pch-yV-NXy\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -345,7 +345,7 @@
     },
     "zq7-2E-zbT.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"zq7-2E-zbT\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

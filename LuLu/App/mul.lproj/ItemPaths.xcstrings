@@ -3,7 +3,7 @@
   "strings" : {
     "F0z-JX-Cv5.title" : {
       "comment" : "Class = \"NSWindow\"; title = \"Window\"; ObjectID = \"F0z-JX-Cv5\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

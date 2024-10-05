@@ -316,6 +316,28 @@
         }
       }
     },
+    "2. In System Settings, scroll to where it mentions 'LuLu' and click 'Allow'" : {
+      "comment" : "2. In System Settings, scroll to where it mentions 'LuLu' and click 'Allow'",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. En Configuración del Sistema, deslice hasta 'LuLu' y haga click en 'Permitir'"
+          }
+        }
+      }
+    },
+    "2. In System Settings, toggle on the LuLu extension" : {
+      "comment" : "2. In System Settings, toggle on the LuLu extension",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. En Configuración del Sistema, active la extensión LuLu"
+          }
+        }
+      }
+    },
     "a new version (%@) is available!" : {
       "comment" : "a new version (%@) is available!",
       "localizations" : {

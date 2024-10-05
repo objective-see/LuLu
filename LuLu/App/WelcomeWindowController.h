@@ -30,6 +30,12 @@
 //allow extension message
 @property (weak) IBOutlet NSTextField *allowExtMessage;
 
+//approve extension image
+@property (weak) IBOutlet NSImageView *approveExt;
+
+//approve extension message
+@property (weak) IBOutlet NSTextField *approveExtMessage;
+
 //config view
 @property (strong) IBOutlet NSView *configureView;
 

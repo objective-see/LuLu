@@ -75,7 +75,7 @@
     },
     "9sX-aC-eeQ.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"9sX-aC-eeQ\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

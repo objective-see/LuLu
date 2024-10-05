@@ -1,0 +1,40 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "approve.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "locale" : "es",
+      "idiom" : "universal",
+      "filename" : "approve_es.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "locale" : "es",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "locale" : "es",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}

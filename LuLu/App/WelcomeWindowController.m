@@ -104,6 +104,27 @@ extern os_log_t logHandle;
             //show view
             [self showView:self.allowExtensionView firstResponder:-1];
             
+            //macOS 15
+            // set image and instructions
+            if(@available(macOS 15.0, *)) {
+                
+                //set image
+                self.approveExt.image = [NSImage imageNamed:@"InstallApprove"];
+                
+                //set instructions
+                self.approveExtMessage.stringValue = NSLocalizedString(@"2. In System Settings, toggle on the LuLu extension", @"2. In System Settings, toggle on the LuLu extension");
+            }
+            //pre-macOS 15
+            // set (older) image and (older) instructions
+            else
+            {
+                //set image
+                self.approveExt.image = [NSImage imageNamed:@"InstallApprove_OLD"];
+                
+                //set instructions
+                self.approveExtMessage.stringValue = NSLocalizedString(@"2. In System Settings, scroll to where it mentions 'LuLu' and click 'Allow'", @"2. In System Settings, scroll to where it mentions 'LuLu' and click 'Allow'");
+            }
+            
             //show message
             self.allowExtMessage.hidden = NO;
             
