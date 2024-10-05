@@ -1,5 +1,5 @@
 //
-//  BlockList.h
+//  BlockOrAllowList.h
 //  Extension
 //
 //  Created by Patrick Wardle on 11/6/20.
@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BlockList : NSObject
+@interface BlockOrAllowList : NSObject
 
 /* PROPERTIES */
 
@@ -28,12 +28,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 /* METHODS */
 
+//init
+// with a path
+-(id)init:(NSString*)path;
+
 //(re)load from disk
 -(void)load:(NSString*)path;
 
 //should reload
 // checks file modification time
--(BOOL)shouldReload:(NSString*)path;
+-(BOOL)shouldReload;
 
 //check if flow matches item on block list
 -(BOOL)isMatch:(NEFilterSocketFlow*)flow;

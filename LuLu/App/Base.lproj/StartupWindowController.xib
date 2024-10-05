@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23094"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -31,14 +31,14 @@
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fgM-lv-GeJ">
                         <rect key="frame" x="20" y="57" width="114" height="123"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="MainAppIcon" id="bCU-0f-ff8"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Icon" id="bCU-0f-ff8"/>
                     </imageView>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K52-9g-sjn">
                         <rect key="frame" x="177" y="85" width="184" height="67"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="MainAppLuLuText" id="WRg-I2-vkK"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LuLuText" id="WRg-I2-vkK"/>
                     </imageView>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="10s-e1-hEh">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="10s-e1-hEh">
                         <rect key="frame" x="216" y="36" width="242" height="33"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Now starting up..." id="tj8-5e-Vlc">
@@ -56,7 +56,7 @@
         </window>
     </objects>
     <resources>
-        <image name="MainAppIcon" width="1276" height="1276"/>
-        <image name="MainAppLuLuText" width="1268" height="385"/>
+        <image name="Icon" width="144" height="144"/>
+        <image name="LuLuText" width="1268" height="385"/>
     </resources>
 </document>

@@ -21,7 +21,7 @@
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="14">
                     <rect key="frame" x="20" y="20" width="48" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LoginItemIcon" id="15"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Icon" id="15"/>
                 </imageView>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16">
                     <rect key="frame" x="78" y="46" width="224" height="20"/>
@@ -57,6 +57,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="LoginItemIcon" width="144" height="144"/>
+        <image name="Icon" width="144" height="144"/>
     </resources>
 </document>

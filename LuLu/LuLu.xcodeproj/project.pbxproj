@@ -72,7 +72,7 @@
 		CDC41C412503424800CB302B /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC41C3F2503424800CB302B /* OrderedDictionary.m */; };
 		CDCAA9692B677AFC00FE27DD /* StartupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCAA9662B677AFC00FE27DD /* StartupWindowController.m */; };
 		CDCAA96C2B69DC3700FE27DD /* RulesMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCAA96B2B69DC3700FE27DD /* RulesMenuController.m */; };
-		CDD7853D255609AC001BB0BE /* BlockList.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD7853C255609AC001BB0BE /* BlockList.m */; };
+		CDD7853D255609AC001BB0BE /* BlockOrAllowList.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD7853C255609AC001BB0BE /* BlockOrAllowList.m */; };
 		CDD992D72C4EC30000A1B406 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CDD992D62C4EC30000A1B406 /* InfoPlist.xcstrings */; };
 /* End PBXBuildFile section */
 
@@ -228,8 +228,8 @@
 		CDCAA9672B677AFC00FE27DD /* StartupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupWindowController.h; sourceTree = "<group>"; };
 		CDCAA96B2B69DC3700FE27DD /* RulesMenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RulesMenuController.m; sourceTree = "<group>"; };
 		CDCAA96D2B69DC4500FE27DD /* RulesMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RulesMenuController.h; sourceTree = "<group>"; };
-		CDD7853B255609AC001BB0BE /* BlockList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockList.h; sourceTree = "<group>"; };
-		CDD7853C255609AC001BB0BE /* BlockList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockList.m; sourceTree = "<group>"; };
+		CDD7853B255609AC001BB0BE /* BlockOrAllowList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockOrAllowList.h; sourceTree = "<group>"; };
+		CDD7853C255609AC001BB0BE /* BlockOrAllowList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockOrAllowList.m; sourceTree = "<group>"; };
 		CDD992D62C4EC30000A1B406 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -397,8 +397,8 @@
 			isa = PBXGroup;
 			children = (
 				CDA1365A24EF4E56005AD424 /* Alerts.h */,
-				CDD7853B255609AC001BB0BE /* BlockList.h */,
-				CDD7853C255609AC001BB0BE /* BlockList.m */,
+				CDD7853B255609AC001BB0BE /* BlockOrAllowList.h */,
+				CDD7853C255609AC001BB0BE /* BlockOrAllowList.m */,
 				CDA1364F24EF4E56005AD424 /* Alerts.m */,
 				CD03F8FA24F8E6BD00723BDC /* Binary.h */,
 				CD03F8F324F8E68300723BDC /* Binary.m */,
@@ -597,7 +597,7 @@
 				CDB2CC3924D61B3900D0EECE /* main.m in Sources */,
 				CDA1366724EF4E57005AD424 /* XPCDaemon.m in Sources */,
 				CDA1366324EF4E57005AD424 /* Alerts.m in Sources */,
-				CDD7853D255609AC001BB0BE /* BlockList.m in Sources */,
+				CDD7853D255609AC001BB0BE /* BlockOrAllowList.m in Sources */,
 				CDB2CC3724D61B3900D0EECE /* FilterDataProvider.m in Sources */,
 				CDA1366224EF4E57005AD424 /* XPCUserClient.m in Sources */,
 				CDA1366D24EF4F89005AD424 /* Rules.m in Sources */,

@@ -11,7 +11,7 @@
 #import "Alerts.h"
 #import "consts.h"
 #import "GrayList.h"
-#import "BlockList.h"
+#import "BlockOrAllowList.h"
 #import "utilities.h"
 #import "Preferences.h"
 #import "XPCUserProto.h"
@@ -31,8 +31,14 @@ extern Rules* rules;
 //preferences
 extern Preferences* preferences;
 
+//allow list
+extern BlockOrAllowList* allowList;
+
 //block list
-extern BlockList* blockList;
+extern BlockOrAllowList* blockList;
+
+//allow list
+extern
 
 @implementation FilterDataProvider
 
@@ -168,15 +174,26 @@ extern BlockList* blockList;
     //os_log_debug(logHandle, "flow: %{public}@", flow);
     
     //only once
-    // load init block list
+    // load init allow & block list(s)
     // ...early it may fail for remote lists, as network isn't up
     dispatch_once(&onceToken, ^{
         
         //dbg msg
         os_log_debug(logHandle, "init'ing block list");
         
-        //alloc/init/load block list
-        blockList = [[BlockList alloc] init];
+        //allow list?
+        if(0 != preferences.preferences[PREF_USE_ALLOW_LIST])
+        {
+            //alloc/init/load allow list
+            allowList = [[BlockOrAllowList alloc] init:preferences.preferences[PREF_ALLOW_LIST]];
+        }
+        
+        //block list?
+        if(0 != preferences.preferences[PREF_USE_BLOCK_LIST])
+        {
+            //alloc/init/load block list
+            blockList = [[BlockOrAllowList alloc] init:preferences.preferences[PREF_BLOCK_LIST]];
+        }
         
     });
 
@@ -331,6 +348,31 @@ bail:
         }
         //dbg msg
         else os_log_debug(logHandle, "remote endpoint/URL not on block list...");
+    }
+    
+    //CHECK:
+    // client using (global) allow list
+    if( (YES == [preferences.preferences[PREF_USE_ALLOW_LIST] boolValue]) &&
+        (0 != [preferences.preferences[PREF_ALLOW_LIST] length]) )
+    {
+        //dbg msg
+        os_log_debug(logHandle, "client is using allow list '%{public}@' (%lu items) ...will check for match", preferences.preferences[PREF_ALLOW_LIST], (unsigned long)allowList.items.count);
+        
+        //match in block list?
+        if(YES == [allowList isMatch:(NEFilterSocketFlow*)flow])
+        {
+            //dbg msg
+            os_log_debug(logHandle, "flow matches item in allow list, so allowing");
+            
+            //allow
+            verdict = [NEFilterNewFlowVerdict allowVerdict];
+            
+            //all set
+            goto bail;
+        }
+        
+        //dbg msg
+        else os_log_debug(logHandle, "remote endpoint/URL not on allow list...");
     }
         
     //CHECK:

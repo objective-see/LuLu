@@ -11,7 +11,7 @@
 #import "Alerts.h"
 #import "consts.h"
 #import "utilities.h"
-#import "BlockList.h"
+#import "BlockOrAllowList.h"
 #import "Preferences.h"
 #import "XPCListener.h"
 
@@ -26,8 +26,11 @@ Rules* rules = nil;
 //alerts obj
 Alerts* alerts = nil;
 
+//allow list
+BlockOrAllowList* allowList = nil;
+
 //block list
-BlockList* blockList = nil;
+BlockOrAllowList* blockList = nil;
 
 //XPC listener obj
 XPCListener* xpcListener = nil;

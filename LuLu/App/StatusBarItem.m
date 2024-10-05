@@ -392,7 +392,7 @@ bail:
         [self.statusItem.menu itemWithTag:status].title = NSLocalizedString(@"LuLu: disabled", @"LuLu: disabled");
         
         //set icon
-        self.statusItem.button.image = [NSImage imageNamed:@"LoginItemStatusInactive"];
+        self.statusItem.button.image = [NSImage imageNamed:@"StatusInactive"];
         
         //change toggle text
         [self.statusItem.menu itemWithTag:toggle].title = NSLocalizedString(@"Enable", @"Enable");
@@ -405,7 +405,7 @@ bail:
         [self.statusItem.menu itemWithTag:status].title = NSLocalizedString(@"LuLu: enabled", @"LuLu: enabled");
         
         //set icon
-        self.statusItem.button.image = [NSImage imageNamed:@"LoginItemStatusActive"];
+        self.statusItem.button.image = [NSImage imageNamed:@"StatusActive"];
         
         //change toggle text
         [self.statusItem.menu itemWithTag:toggle].title = NSLocalizedString(@"Disable", @"Disable");

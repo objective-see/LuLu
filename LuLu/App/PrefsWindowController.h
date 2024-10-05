@@ -22,10 +22,13 @@
 #define TOOLBAR_MODES 1
 
 //update view
-#define TOOLBAR_UPDATE 2
+#define TOOLBAR_LISTS 2
+
+//update view
+#define TOOLBAR_UPDATE 3
 
 //to select, need string ID
-#define TOOLBAR_RULES_ID @"rules"
+#define TOOLBAR_RULES_ID @"Rules"
 
 @interface PrefsWindowController : NSWindowController <NSWindowDelegate>
 
@@ -40,12 +43,6 @@
 //rules prefs view
 @property (weak) IBOutlet NSView* rulesView;
 
-//block list
-@property (weak) IBOutlet NSTextField* blockList;
-
-//select block list button
-@property (weak) IBOutlet NSButton* selectBlockListButton;
-
 //modes view
 @property (strong) IBOutlet NSView* modesView;
 
@@ -54,6 +51,22 @@
 
 //passive mode rules ...create, or not?
 @property (weak) IBOutlet NSPopUpButton* passiveModeRules;
+
+//(block/allow) lists view
+@property (strong) IBOutlet NSView *listsView;
+
+//allow list
+@property (weak) IBOutlet NSTextField *allowList;
+
+//select allow list button
+@property (weak) IBOutlet NSButton *selectAllowListButton;
+
+//block list
+@property (weak) IBOutlet NSTextField* blockList;
+
+//select block list button
+@property (weak) IBOutlet NSButton* selectBlockListButton;
+
 
 //update view
 @property (weak) IBOutlet NSView* updateView;

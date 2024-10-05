@@ -759,7 +759,7 @@ bail:
         iconView.layer.cornerRadius = 3.0;
         
         //load icon image
-        icon = [NSImage imageNamed:@"LoginItemIcon"];
+        icon = [NSImage imageNamed:@"Icon"];
         
         //set size
         icon.size = CGSizeMake(30, 30);

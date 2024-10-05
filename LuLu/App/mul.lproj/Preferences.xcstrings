@@ -73,6 +73,42 @@
         }
       }
     },
+    "6vU-GO-opk.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Note: When a new connection is made, sometimes only the IP address may be available. In such cases, domains on the allow or block list cannot be matched, which may impact whether a request is blocked or allowed.\"; ObjectID = \"6vU-GO-opk\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Note: When a new connection is made, sometimes only the IP address may be available. In such cases, domains on the allow or block list cannot be matched, which may impact whether a request is blocked or allowed."
+          }
+        }
+      }
+    },
+    "7iJ-xR-xDI.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Local or remote file, containing endpoints to always allow.\"; ObjectID = \"7iJ-xR-xDI\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Local or remote file, containing endpoints to always allow."
+          }
+        }
+      }
+    },
+    "Bdp-Z8-BhB.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Local or remote file, containing endpoints to always block.\"; ObjectID = \"Bdp-Z8-BhB\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Local or remote file, containing endpoints to always block."
+          }
+        }
+      }
+    },
     "bYB-s1-S3f.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Run without showing an icon in the status menu bar.\"; ObjectID = \"bYB-s1-S3f\";",
       "extractionState" : "extracted_with_value",
@@ -181,6 +217,18 @@
         }
       }
     },
+    "Emd-wS-UQh.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Block List:\"; ObjectID = \"Emd-wS-UQh\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Block List:"
+          }
+        }
+      }
+    },
     "F0z-JX-Cv5.title" : {
       "comment" : "Class = \"NSWindow\"; title = \"LuLu's Settings\"; ObjectID = \"F0z-JX-Cv5\";",
       "extractionState" : "extracted_with_value",
@@ -199,9 +247,33 @@
         }
       }
     },
+    "FE3-Li-d3K.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Allow List:\"; ObjectID = \"FE3-Li-d3K\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Allow List:"
+          }
+        }
+      }
+    },
+    "Fut-ad-zCW.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Browse\"; ObjectID = \"Fut-ad-zCW\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Browse"
+          }
+        }
+      }
+    },
     "GIK-ti-aku.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Block List:\"; ObjectID = \"GIK-ti-aku\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -344,36 +416,36 @@
       }
     },
     "k0w-Oi-kwd.label" : {
-      "comment" : "Class = \"NSToolbarItem\"; label = \"mode\"; ObjectID = \"k0w-Oi-kwd\";",
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Mode\"; ObjectID = \"k0w-Oi-kwd\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "mode"
+            "value" : "Mode"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "modo"
           }
         }
       }
     },
     "k0w-Oi-kwd.paletteLabel" : {
-      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"mode\"; ObjectID = \"k0w-Oi-kwd\";",
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Mode\"; ObjectID = \"k0w-Oi-kwd\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "mode"
+            "value" : "Mode"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "modo"
           }
         }
@@ -381,7 +453,7 @@
     },
     "L7x-uU-rth.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"List of endpoints (ips/urls) to always block. (Limitations apply, see documentation for details)\"; ObjectID = \"L7x-uU-rth\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -433,37 +505,61 @@
         }
       }
     },
-    "rrF-xj-cXp.label" : {
-      "comment" : "Class = \"NSToolbarItem\"; label = \"update\"; ObjectID = \"rrF-xj-cXp\";",
+    "pGG-dq-qkU.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Update\"; ObjectID = \"pGG-dq-qkU\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "update"
+            "value" : "Update"
+          }
+        }
+      }
+    },
+    "pGG-dq-qkU.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Update\"; ObjectID = \"pGG-dq-qkU\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Update"
+          }
+        }
+      }
+    },
+    "rrF-xj-cXp.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Lists\"; ObjectID = \"rrF-xj-cXp\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Lists"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "actualizar"
           }
         }
       }
     },
     "rrF-xj-cXp.paletteLabel" : {
-      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"update\"; ObjectID = \"rrF-xj-cXp\";",
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Lists\"; ObjectID = \"rrF-xj-cXp\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "update"
+            "value" : "Lists"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "actualizar"
           }
         }
@@ -506,36 +602,36 @@
       }
     },
     "Twx-TJ-y2Q.label" : {
-      "comment" : "Class = \"NSToolbarItem\"; label = \"rules\"; ObjectID = \"Twx-TJ-y2Q\";",
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Rules\"; ObjectID = \"Twx-TJ-y2Q\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "rules"
+            "value" : "Rules"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "reglas"
           }
         }
       }
     },
     "Twx-TJ-y2Q.paletteLabel" : {
-      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"rules\"; ObjectID = \"Twx-TJ-y2Q\";",
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Rules\"; ObjectID = \"Twx-TJ-y2Q\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "rules"
+            "value" : "Rules"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "reglas"
           }
         }
@@ -543,7 +639,7 @@
     },
     "u9V-ny-Cia.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Browse\"; ObjectID = \"u9V-ny-Cia\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -573,6 +669,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir Aplicaciones del Simulador"
+          }
+        }
+      }
+    },
+    "W6X-IU-31r.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Browse\"; ObjectID = \"W6X-IU-31r\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Browse"
           }
         }
       }

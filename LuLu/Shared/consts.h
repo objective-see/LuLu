@@ -165,6 +165,12 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 //use global block list
 #define PREF_USE_BLOCK_LIST @"useBlockList"
 
+//use global allow list
+#define PREF_USE_ALLOW_LIST @"useAllowList"
+
+//global allow list
+#define PREF_ALLOW_LIST @"allowList"
+
 //global block list
 #define PREF_BLOCK_LIST @"blockList"
 

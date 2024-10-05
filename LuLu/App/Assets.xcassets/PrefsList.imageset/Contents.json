@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "mac",
-      "filename" : "rulesApps Light-2.pdf"
+      "filename" : "icon.png"
     },
     {
       "idiom" : "mac",
-      "filename" : "rulesApps Light.pdf",
+      "filename" : "icon.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -16,7 +16,7 @@
     },
     {
       "idiom" : "mac",
-      "filename" : "rulesApps Light-1.pdf",
+      "filename" : "icon.png",
       "appearances" : [
         {
           "appearance" : "luminosity",

@@ -42,20 +42,23 @@ extern XPCDaemonClient* xpcDaemonClient;
 //'allow iOS simulator apps' mode button
 #define BUTTON_ALLOW_SIMULATOR 4
 
-//'use blocklist' button
-#define BUTTON_USE_BLOCK_LIST 5
-
 //'passive mode' button
-#define BUTTON_PASSIVE_MODE 6
+#define BUTTON_PASSIVE_MODE 5
 
 //'block mode' button
-#define BUTTON_BLOCK_MODE 7
+#define BUTTON_BLOCK_MODE 6
 
 //'no-icon mode' button
-#define BUTTON_NO_ICON_MODE 8
+#define BUTTON_NO_ICON_MODE 7
+
+//'use allow list' button
+#define BUTTON_USE_ALLOW_LIST 8
+
+//'use block list' button
+#define BUTTON_USE_BLOCK_LIST 9
 
 //'update mode' button
-#define BUTTON_NO_UPDATE_MODE 9
+#define BUTTON_NO_UPDATE_MODE 10
 
 //'passive mode' actions
 #define BUTTON_PASSIVE_MODE_ACTION_ALLOW 0
@@ -113,22 +116,6 @@ extern XPCDaemonClient* xpcDaemonClient;
             //set 'allow simulator apps' button
             ((NSButton*)[view viewWithTag:BUTTON_ALLOW_SIMULATOR]).state = [self.preferences[PREF_ALLOW_SIMULATOR] boolValue];
 
-            //set 'block list' button state
-            ((NSButton*)[view viewWithTag:BUTTON_USE_BLOCK_LIST]).state = [self.preferences[PREF_USE_BLOCK_LIST] boolValue];
-            
-            //is there a block list? ...set!
-            if(0 != [self.preferences[PREF_BLOCK_LIST] length])
-            {
-                //set
-                self.blockList.stringValue = self.preferences[PREF_BLOCK_LIST];
-            }
-            
-            //set 'browse' button state
-            self.selectBlockListButton.enabled = [self.preferences[PREF_USE_BLOCK_LIST] boolValue];
-            
-            //set block list input state
-            self.blockList.enabled = [self.preferences[PREF_USE_BLOCK_LIST] boolValue];
-            
             break;
             
         //modes
@@ -151,6 +138,46 @@ extern XPCDaemonClient* xpcDaemonClient;
             
             //set 'no icon' button state
             ((NSButton*)[view viewWithTag:BUTTON_NO_ICON_MODE]).state = [self.preferences[PREF_NO_ICON_MODE] boolValue];
+            
+            break;
+            
+        //lists
+        case TOOLBAR_LISTS:
+            
+            //set view
+            view = self.listsView;
+            
+            //set 'allow list' button state
+            ((NSButton*)[view viewWithTag:BUTTON_USE_ALLOW_LIST]).state = [self.preferences[PREF_USE_ALLOW_LIST] boolValue];
+            
+            //is there a allow list? ...set!
+            if(0 != [self.preferences[PREF_ALLOW_LIST] length])
+            {
+                //set
+                self.allowList.stringValue = self.preferences[PREF_ALLOW_LIST];
+            }
+            
+            //set 'browse' button state
+            self.selectAllowListButton.enabled = [self.preferences[PREF_USE_ALLOW_LIST] boolValue];
+            
+            //set allow list input state
+            self.allowList.enabled = [self.preferences[PREF_USE_ALLOW_LIST] boolValue];
+            
+            //set 'block list' button state
+            ((NSButton*)[view viewWithTag:BUTTON_USE_BLOCK_LIST]).state = [self.preferences[PREF_USE_BLOCK_LIST] boolValue];
+            
+            //is there a block list? ...set!
+            if(0 != [self.preferences[PREF_BLOCK_LIST] length])
+            {
+                //set
+                self.blockList.stringValue = self.preferences[PREF_BLOCK_LIST];
+            }
+            
+            //set 'browse' button state
+            self.selectBlockListButton.enabled = [self.preferences[PREF_USE_BLOCK_LIST] boolValue];
+            
+            //set block list input state
+            self.blockList.enabled = [self.preferences[PREF_USE_BLOCK_LIST] boolValue];
             
             break;
             
@@ -223,11 +250,34 @@ bail:
             break;
             
         //use block list
+        case BUTTON_USE_ALLOW_LIST:
+            updatedPreferences[PREF_USE_ALLOW_LIST] = state;
+            
+            //disable?
+            // remove allow list too
+            if(NSControlStateValueOff == state.longValue)
+            {
+                //unset
+                updatedPreferences[PREF_ALLOW_LIST] = @"";
+                
+                //clear
+                self.allowList.stringValue = @"";
+            }
+            
+            //set allow list input state
+            self.allowList.enabled = (NSControlStateValueOn == state.longValue);
+            
+            //set 'browse' button state
+            self.selectAllowListButton.enabled = (NSControlStateValueOn == state.longValue);
+            
+            break;
+            
+        //use block list
         case BUTTON_USE_BLOCK_LIST:
             updatedPreferences[PREF_USE_BLOCK_LIST] = state;
             
             //disable?
-            // remove list too
+            // remove block list too
             if(NSControlStateValueOff == state.longValue)
             {
                 //unset
@@ -481,12 +531,40 @@ bail:
 // update prefs/set activation policy
 -(void)windowWillClose:(NSNotification *)notification
 {
+    //blank allow list?
+    // uncheck 'enabled' and update prefs
+    if(0 == self.allowList.stringValue.length)
+    {
+        //uncheck 'allow list' radio button
+        ((NSButton*)[self.listsView viewWithTag:BUTTON_USE_ALLOW_LIST]).state = NSControlStateValueOff;
+        
+        //disable 'browse' button
+        self.selectAllowListButton.enabled = NSControlStateValueOff;
+        
+        //clear allow list
+        self.allowList.stringValue = @"";
+        
+        //disable allow list input
+        self.allowList.enabled = NSControlStateValueOff;
+        
+        //send XPC msg to daemon to update prefs
+        self.preferences = [xpcDaemonClient updatePreferences:@{PREF_USE_ALLOW_LIST:@0, PREF_ALLOW_LIST:@""}];
+    }
+    
+    //allow list changed? capture!
+    // this logic is needed, as window can be closed when text field still has focus and 'end edit' won't have fired
+    else if(YES != [self.preferences[PREF_ALLOW_LIST] isEqualToString:self.allowList.stringValue])
+    {
+        //send XPC msg to daemon to update prefs
+        self.preferences = [xpcDaemonClient updatePreferences:@{PREF_ALLOW_LIST:self.allowList.stringValue}];
+    }
+    
     //blank block list?
     // uncheck 'enabled' and update prefs
     if(0 == self.blockList.stringValue.length)
     {
         //uncheck 'blocklist' radio button
-        ((NSButton*)[self.rulesView viewWithTag:BUTTON_USE_BLOCK_LIST]).state = NSControlStateValueOff;
+        ((NSButton*)[self.listsView viewWithTag:BUTTON_USE_BLOCK_LIST]).state = NSControlStateValueOff;
         
         //disable 'browse' button
         self.selectBlockListButton.enabled = NSControlStateValueOff;
@@ -498,7 +576,6 @@ bail:
         self.blockList.enabled = NSControlStateValueOff;
         
         //send XPC msg to daemon to update prefs
-        // returns (all/latest) prefs, which is what we want
         self.preferences = [xpcDaemonClient updatePreferences:@{PREF_USE_BLOCK_LIST:@0, PREF_BLOCK_LIST:@""}];
     }
         

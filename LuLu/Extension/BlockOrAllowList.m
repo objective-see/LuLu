@@ -1,5 +1,5 @@
 //
-//  BlockList.m
+//  BlockOrAllowList.m
 //  Extension
 //
 //  Created by Patrick Wardle on 11/6/20.
@@ -7,8 +7,8 @@
 //
 
 #import "consts.h"
-#import "BlockList.h"
 #import "Preferences.h"
+#import "BlockOrAllowList.h"
 
 /* GLOBALS */
 
@@ -18,32 +18,35 @@ extern os_log_t logHandle;
 //preferences
 extern Preferences* preferences;
 
-@implementation BlockList
+@implementation BlockOrAllowList
 
--(id)init
+-(id)init:(NSString*)path
 {
     //init super
     self = [super init];
     if(nil != self)
     {
+        //save list
+        self.path = path;
+        
         //load
-        [self load:preferences.preferences[PREF_BLOCK_LIST]];
+        [self load:self.path];
     }
-
+    
     return self;
 }
 
 //was specified block list remote
 // ...just checks if prefixed with http:// || https://
--(BOOL)isRemote:(NSString*)path
+-(BOOL)isRemote
 {
     //specified path a URL?
-    return ((YES == [path hasPrefix:@"http://"]) || (YES == [path hasPrefix:@"https://"]));
+    return ((YES == [self.path hasPrefix:@"http://"]) || (YES == [self.path hasPrefix:@"https://"]));
 }
 
 //should reload
 // checks file modification time
--(BOOL)shouldReload:(NSString*)path
+-(BOOL)shouldReload
 {
     //flag
     BOOL shouldReload = NO;
@@ -53,14 +56,14 @@ extern Preferences* preferences;
     
     //if it's remote
     // can't tell, so default to no
-    if(YES == [self isRemote:path])
+    if(YES == [self isRemote])
     {
         //bail
         goto bail;
     }
     
     //get modified timestamp
-    modified = [[NSFileManager.defaultManager attributesOfItemAtPath:path error:nil] objectForKey:NSFileModificationDate];
+    modified = [[NSFileManager.defaultManager attributesOfItemAtPath:self.path error:nil] objectForKey:NSFileModificationDate];
 
     //was file modified?
     if(NSOrderedDescending == [modified compare:self.lastModified])
@@ -77,17 +80,20 @@ bail:
     return shouldReload;
 }
 
-//load
--(void)load:(NSString*)path
+//(re)load
+-(void)load:(NSString*)path;
 {
     //error
     NSError* error = nil;
     
     //file contents
-    NSString* blockList = nil;
+    NSString* list = nil;
     
     //sync
     @synchronized (self) {
+        
+    //update path
+    self.path = path;
         
     //reset list
     [self.items removeAllObjects];
@@ -97,10 +103,10 @@ bail:
     
     //check
     // path?
-    if(0 == path.length)
+    if(0 == self.path.length)
     {
         //dbg msg
-        os_log_debug(logHandle, "no block list specified...");
+        os_log_debug(logHandle, "no list specified...");
         
         //bail
         goto bail;
@@ -108,72 +114,80 @@ bail:
         
     //remote?
     // load via URL
-    if(YES == [self isRemote:path])
+    if(YES == [self isRemote])
     {
         //dbg msg
-        os_log_debug(logHandle, "loading (remote) block list");
+        os_log_debug(logHandle, "(re)loading (remote) list");
         
         //load
-        blockList = [NSString stringWithContentsOfURL:[NSURL URLWithString:path] encoding:NSUTF8StringEncoding error:&error];
+        list = [NSString stringWithContentsOfURL:[NSURL URLWithString:self.path] encoding:NSUTF8StringEncoding error:&error];
         if(nil != error)
         {
             //err msg
-            os_log_error(logHandle, "ERROR: failed to load (remote) block list, %{public}@ (error: %{public}@)", path, error);
+            os_log_error(logHandle, "ERROR: failed to (re)load (remote) list, %{public}@ (error: %{public}@)", self.path, error);
             
             //bail
             goto bail;
         }
+        
+        //(re)load remote URL once a day
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(24 * 60 * 60 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            
+            //dbg msg
+            os_log_debug(logHandle, "(re)loading (remote) list");
+            
+            //(re)load
+            [self load:self.path];
+            
+        });
     }
     
     //local file
     // check and load
     else
     {
-        if(YES != [NSFileManager.defaultManager fileExistsAtPath:path])
-        {
-            //dbg msg
-            os_log_error(logHandle, "ERROR: specified block list path, %{public}@ doesn't exist", path);
-            
-            //bail
-            goto bail;
-        }
-        
         //dbg msg
-        os_log_debug(logHandle, "(re)loading (local) block list, %{public}@", path);
+        os_log_debug(logHandle, "(re)loading (local) list, %{public}@", self.path);
             
-        //load
-        blockList = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+        //(re)load
+        list = [NSString stringWithContentsOfFile:self.path encoding:NSUTF8StringEncoding error:&error];
         if(nil != error)
         {
             //err msg
-            os_log_error(logHandle, "ERROR: failed to load (local) block list, %{public}@ (error: %{public}@)", path, error);
+            os_log_error(logHandle, "ERROR: failed to (re)load (local) list, %{public}@ (error: %{public}@)", self.path, error);
             
             //bail
             goto bail;
         }
         
         //save timestamp
-        self.lastModified = [[NSFileManager.defaultManager attributesOfItemAtPath:path error:nil] objectForKey:NSFileModificationDate];
+        self.lastModified = [[NSFileManager.defaultManager attributesOfItemAtPath:self.path error:nil] objectForKey:NSFileModificationDate];
     }
      
     //now alloc
     self.items = [NSMutableArray array];
     
     //parse/check each
-    for(NSString* item in [blockList componentsSeparatedByString:@"\n"])
+    for(NSString* item in [list componentsSeparatedByString:@"\n"])
     {
         //skip empty items
-        if(0 == item.length) continue;
+        if(0 == item.length)
+        {
+            continue;
+        }
         
         //skip commands
-        if(YES == [item hasPrefix:@"#"]) continue;
+        if(YES == [item hasPrefix:@"#"])
+        {
+            continue;
+        }
         
         //add
         [self.items addObject:item];
     }
     
     //dbg msg
-    os_log_debug(logHandle, "loaded %lu block list items", (unsigned long)self.items.count);
+    os_log_debug(logHandle, "(re)loaded %lu list items", (unsigned long)self.items.count);
     
     } //sync
 
@@ -188,27 +202,21 @@ bail:
     //match
     BOOL isMatch = NO;
     
-    //path
-    NSString* path = nil;
-    
     //remote endpoint
     NWHostEndpoint* remoteEndpoint = nil;
     
     //endpoint url/hosts
     NSMutableArray* endpointNames = nil;
     
-    //extact path
-    path = preferences.preferences[PREF_BLOCK_LIST];
-    
     //extract remote endpoint
     remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
     
     //need to reload list?
     // checks timestamp to see if modified
-    if(YES == [self shouldReload:path])
+    if(YES == [self shouldReload])
     {
-        //reload list
-        [self load:path];
+        //(re)load list
+        [self load:self.path];
     }
     
     //sync
@@ -253,7 +261,7 @@ bail:
             if(NSOrderedSame == [item caseInsensitiveCompare:endpointName])
             {
                 //dbg msg
-                os_log_debug(logHandle, "block listed item '%{public}@' matches %{public}@", item, endpointNames);
+                os_log_debug(logHandle, "listed item '%{public}@' matches %{public}@", item, endpointNames);
                 
                 //happy
                 isMatch = YES;

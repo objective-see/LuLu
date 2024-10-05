@@ -7,7 +7,7 @@
 //
 
 #import "consts.h"
-#import "BlockList.h"
+#import "BlockOrAllowList.h"
 #import "Preferences.h"
 
 /* GLOBALS */
@@ -15,8 +15,11 @@
 //log handle
 extern os_log_t logHandle;
 
+//allow list
+extern BlockOrAllowList* allowList;
+
 //block list
-extern BlockList* blockList;
+extern BlockOrAllowList* blockList;
 
 @implementation Preferences
 
@@ -111,6 +114,14 @@ bail:
         
         //bail
         goto bail;
+    }
+    
+    //(new) allow list?
+    // now, trigger reload
+    if(0 != [updates[PREF_ALLOW_LIST] length])
+    {
+        //(re)load
+        [allowList load:updates[PREF_ALLOW_LIST]];
     }
     
     //(new) block list?
