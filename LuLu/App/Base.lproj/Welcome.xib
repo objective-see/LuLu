@@ -53,7 +53,7 @@
                     <color key="fillColor" red="0.57793885469999995" green="0.75859862570000003" blue="0.2368842065" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </box>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="NEo-Sr-1a0">
-                    <rect key="frame" x="149" y="276" width="338" height="54"/>
+                    <rect key="frame" x="149" y="274" width="338" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Welcome to" id="Qyh-uK-Afv">
                         <font key="font" size="32" name="AvenirNextCondensed-Regular"/>
@@ -73,12 +73,12 @@
                     </connections>
                 </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rNc-Xa-Jqh">
-                    <rect key="frame" x="151" y="202" width="238" height="90"/>
+                    <rect key="frame" x="151" y="201" width="238" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="MainAppLuLuText" id="zfH-MI-2vJ"/>
                 </imageView>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="rIh-lu-sTu">
-                    <rect key="frame" x="34" y="163" width="648" height="36"/>
+                    <rect key="frame" x="34" y="162" width="648" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="LuLu is a free open-source firewall for macOS." id="pMo-Yj-XKY">
                         <font key="font" size="26" name="AvenirNextCondensed-Regular"/>
@@ -92,9 +92,9 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="MainAppIcon" id="vEL-Yw-xip"/>
                 </imageView>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="cpq-67-lQt">
-                    <rect key="frame" x="34" y="70" width="635" height="72"/>
+                    <rect key="frame" x="34" y="63" width="647" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="eic-lg-Ln7">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="eic-lg-Ln7">
                         <font key="font" size="21" name="AvenirNextCondensed-Regular"/>
                         <string key="title">It monitors network activity and alerts you when a program first tries to initiate an outgoing connection, allowing you to permit or deny it.</string>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>

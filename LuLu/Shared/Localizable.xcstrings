@@ -333,7 +333,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "2. En Configuración del Sistema, active la extensión LuLu"
+            "value" : "2. En Configuración del Sistema, active la extensión de Lulu"
           }
         }
       }
@@ -1108,13 +1108,13 @@
         }
       }
     },
-    "timestamp: %@" : {
-      "comment" : "timestamp: %@",
+    "Time stamp: %@" : {
+      "comment" : "Time stamp: %@",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "marca de tiempo: %@"
+            "value" : "Marca de tiempo: %@"
           }
         }
       }

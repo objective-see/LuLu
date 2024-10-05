@@ -221,7 +221,7 @@ extern os_log_t logHandle;
     timeFormat.dateFormat = @"HH:mm:ss";
     
     //add timestamp
-    self.timeStamp.stringValue = [NSString stringWithFormat:NSLocalizedString(@"timestamp: %@", @"timestamp: %@"), [timeFormat stringFromDate:[[NSDate alloc] init]]];
+    self.timeStamp.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Time stamp: %@", @"Time stamp: %@"), [timeFormat stringFromDate:[[NSDate alloc] init]]];
     
     //set paragraph style to left
     paragraphStyle.alignment = NSTextAlignmentLeft;

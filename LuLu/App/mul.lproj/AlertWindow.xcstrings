@@ -38,19 +38,19 @@
       }
     },
     "8eV-Ag-i7n.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Connection\"; ObjectID = \"8eV-Ag-i7n\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Connection:\"; ObjectID = \"8eV-Ag-i7n\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Connection"
+            "value" : "Connection:"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conexión"
+            "value" : "Conexión:"
           }
         }
       }
@@ -69,24 +69,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Duración de la Regla:"
-          }
-        }
-      }
-    },
-    "9sX-aC-eeQ.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"9sX-aC-eeQ\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Celda de Texto"
           }
         }
       }
@@ -122,7 +104,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "puerto/protocolo:"
+            "value" : "puerto/proto:"
           }
         }
       }
@@ -307,24 +289,6 @@
         }
       }
     },
-    "h8U-b3-ujA.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"virus total\"; ObjectID = \"h8U-b3-ujA\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "virus total"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "virus total"
-          }
-        }
-      }
-    },
     "HBz-tK-Y6f.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"signing id\"; ObjectID = \"HBz-tK-Y6f\";",
       "extractionState" : "extracted_with_value",
@@ -433,24 +397,6 @@
         }
       }
     },
-    "jJh-pj-fqv.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"ancestry\"; ObjectID = \"jJh-pj-fqv\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "ancestry"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ascendencia"
-          }
-        }
-      }
-    },
     "Ki9-ld-5Xu.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \" - signing auth 1\"; ObjectID = \"Ki9-ld-5Xu\";",
       "extractionState" : "extracted_with_value",
@@ -483,24 +429,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "resolviendo..."
-          }
-        }
-      }
-    },
-    "med-2h-1mb.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Rule Duration:\"; ObjectID = \"med-2h-1mb\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Rule Duration:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Duración de la regla:"
           }
         }
       }
@@ -541,56 +469,20 @@
         }
       }
     },
-    "pFc-dB-SHZ.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Rule Action:\"; ObjectID = \"pFc-dB-SHZ\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Rule Action:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Acción de la regla:"
-          }
-        }
-      }
-    },
     "Pp2-2W-YkT.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Process\"; ObjectID = \"Pp2-2W-YkT\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Process:\"; ObjectID = \"Pp2-2W-YkT\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Process"
+            "value" : "Process:"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Proceso"
-          }
-        }
-      }
-    },
-    "S8m-FH-qke.placeholderString" : {
-      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"5 minutes\"; ObjectID = \"S8m-FH-qke\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "5 minutes"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "5 minutos"
+            "value" : "Proceso:"
           }
         }
       }
@@ -626,7 +518,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "argumentos:"
+            "value" : "args:"
           }
         }
       }
@@ -686,13 +578,13 @@
       }
     },
     "Wn5-T5-boq.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"Valid until time:\"; ObjectID = \"Wn5-T5-boq\";",
+      "comment" : "Class = \"NSButtonCell\"; title = \"Valid until:\"; ObjectID = \"Wn5-T5-boq\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Valid until time:"
+            "value" : "Valid until:"
           }
         },
         "es" : {
@@ -704,19 +596,19 @@
       }
     },
     "ybM-PR-IbA.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"time stamp\"; ObjectID = \"ybM-PR-IbA\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Time stamp: \"; ObjectID = \"ybM-PR-IbA\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "time stamp"
+            "value" : "Time stamp: "
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "marca de tiempo"
+            "value" : "Marca de tiempo:"
           }
         }
       }

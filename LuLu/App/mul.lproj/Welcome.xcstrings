@@ -103,8 +103,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "2. En Configuración del Sistema, deslice hasta \"LuLu\" y haga click en \"Permitir\""
+            "state" : "translated",
+            "value" : "…"
           }
         }
       },

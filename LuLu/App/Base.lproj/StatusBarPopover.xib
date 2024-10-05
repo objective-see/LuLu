@@ -15,7 +15,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="1">
-            <rect key="frame" x="0.0" y="0.0" width="338" height="88"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="14">
@@ -33,7 +33,7 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21">
-                    <rect key="frame" x="78" y="8" width="259" height="30"/>
+                    <rect key="frame" x="78" y="8" width="242" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Access it from here anytime." id="22">
                         <font key="font" metaFont="smallSystem"/>
@@ -42,7 +42,7 @@
                     </textFieldCell>
                 </textField>
                 <button tag="2" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hL7-ZY-bJK">
-                    <rect key="frame" x="303" y="56" width="32" height="32"/>
+                    <rect key="frame" x="288" y="56" width="32" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="bevel" title="⌃" bezelStyle="rounded" alignment="center" inset="2" id="2jG-uf-4XV">
                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
@@ -53,7 +53,7 @@
                     </connections>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="267" y="142"/>
+            <point key="canvasLocation" x="258" y="142"/>
         </customView>
     </objects>
     <resources>
