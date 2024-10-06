@@ -133,15 +133,29 @@ extern NSMutableDictionary* alerts;
                         //update window on main thread
                         dispatch_async(dispatch_get_main_queue(), ^{
                             
-                            //update
-                            alertWindow.reverseDNS.stringValue = (0 != [responses.firstObject length]) ? responses.firstObject : NSLocalizedString(@"unknown", @"unknown");
+                            //response
+                            NSString* response = nil;
+                            
+                            //set
+                            response = responses.firstObject;
+                            
+                            //error/not found?
+                            if(0 == response.length)
+                            {
+                                //set default
+                                response = NSLocalizedString(@"unknown", @"unknown");
+                            }
+                            
+                            //set text
+                            alertWindow.reverseDNS.string = response;
+                            
+                            //set tooltip
+                            alertWindow.reverseDNS.toolTip = alertWindow.reverseDNS.string;
                             
                         });
                     }
-                    
                 }];
             }
-            
         });
     }
     

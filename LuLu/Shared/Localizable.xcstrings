@@ -1009,17 +1009,6 @@
         }
       }
     },
-    "remote address: %@" : {
-      "comment" : "remote address: %@",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "dirección remota: %@"
-          }
-        }
-      }
-    },
     "rules.json" : {
       "comment" : "rules.json",
       "localizations" : {

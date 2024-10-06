@@ -75,7 +75,7 @@
 @property (weak) IBOutlet NSTextField *processArgs;
 
 //process path
-@property (weak) IBOutlet NSTextField *processPath;
+@property (unsafe_unretained) IBOutlet NSTextView *processPath;
 
 //ip address
 @property (weak) IBOutlet NSTextField *ipAddress;
@@ -84,7 +84,7 @@
 @property (weak) IBOutlet NSTextField *portProto;
 
 //reverse dns name
-@property (weak) IBOutlet NSTextField *reverseDNS;
+@property (unsafe_unretained) IBOutlet NSTextView *reverseDNS;
 
 //ancestry view
 @property (strong) IBOutlet NSView *ancestryView;

@@ -97,7 +97,11 @@ extern os_log_t logHandle;
     
     //add (remote) host
     // as string though, since XPC doesn't like NSURLs
-    if(nil != flow.URL) alert[KEY_URL] = flow.URL.absoluteString;
+    if(nil != flow.URL)
+    {
+        //add
+        alert[KEY_URL] = flow.URL.absoluteString;
+    }
         
     //add (remote) port
     alert[KEY_ENDPOINT_PORT] = remoteEndpoint.port;

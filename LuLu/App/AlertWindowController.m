@@ -83,8 +83,11 @@ extern os_log_t logHandle;
     //timestamp formatter
     NSDateFormatter *timeFormat = nil;
     
-    //paragraph style (for temporary label)
+    //paragraph style
     NSMutableParagraphStyle* paragraphStyle = nil;
+    
+    //paragraph still for scroll views
+    NSMutableParagraphStyle* scrollStyle = nil;
     
     //title attributes (for temporary label)
     NSMutableDictionary* titleAttributes = nil;
@@ -98,6 +101,9 @@ extern os_log_t logHandle;
     //init paragraph style
     paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     
+    //init paragraph style
+    scrollStyle = [[NSMutableParagraphStyle alloc] init];
+    
     //init dictionary for title attributes
     titleAttributes = [NSMutableDictionary dictionary];
     
@@ -107,6 +113,7 @@ extern os_log_t logHandle;
     //disable ancestory button if no ancestors
     if(0 == self.processHierarchy.count) 
     {
+        //disable
         self.ancestryButton.enabled = NO;
     }
     
@@ -119,18 +126,18 @@ extern os_log_t logHandle;
         
         //extract host
         remoteAddress = url.host;
-        
-        //TODO: show full url ...via mouse over? in details pane?
     }
     //use IP address
     else
     {
+        //set
         remoteAddress = self.alert[KEY_HOST];
     }
     
     //sanity check
     if(nil == remoteAddress)
     {
+        //set
         remoteAddress = NSLocalizedString(@"unknown", @"unknown");
     }
     
@@ -148,9 +155,12 @@ extern os_log_t logHandle;
     //alert message
     self.alertMessage.stringValue = [NSString stringWithFormat:NSLocalizedString(@"is connecting to %@", @"is connecting to %@"), remoteAddress];
     
-    //and set a tool tip
-    // as super long URLs can be truncated
-    self.alertMessage.toolTip = [NSString stringWithFormat:NSLocalizedString(@"remote address: %@", @"remote address: %@"), remoteAddress];
+    //set tooltip to full URL
+    if(nil != url)
+    {
+        //use (full) URLs
+        self.alertMessage.toolTip = url.absoluteString;
+    }
     
     /* BOTTOM (DETAILS) */
     
@@ -194,25 +204,42 @@ extern os_log_t logHandle;
         self.processArgs.stringValue = arguments;
     }
     
+    //set tooltip
+    self.processArgs.toolTip = self.processArgs.stringValue;
+
+    //set wrapping
+    scrollStyle.lineBreakMode = NSLineBreakByCharWrapping;
+    self.processPath.defaultParagraphStyle = scrollStyle;
+    
     //process path for normal processes
     if(YES != [self.alert[KEY_PROCESS_DELETED] boolValue])
     {
         //add as is
-        self.processPath.stringValue = self.alert[KEY_PATH];
+        self.processPath.string = self.alert[KEY_PATH];
     }
     //deleted processes
     // strike thru, so user knows
     else
     {
         //strike thru
-        self.processPath.attributedStringValue = [[NSAttributedString alloc] initWithString:self.alert[KEY_PATH] attributes:@{NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle)}];
+        [self.processPath.textStorage setAttributedString: [[NSAttributedString alloc] initWithString:self.alert[KEY_PATH] attributes:@{NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle)}]];
     }
+    
+    //set tooltip
+    self.processPath.toolTip = self.processPath.string;
+    
+    //ensure process path clips
+    self.processPath.wantsLayer = YES;
+    self.processPath.layer.masksToBounds = YES;
         
     //ip address
     self.ipAddress.stringValue = (nil != self.alert[KEY_HOST]) ? self.alert[KEY_HOST] : NSLocalizedString(@"unknown", @"unknown");
     
     //port & proto
     self.portProto.stringValue = [NSString stringWithFormat:@"%@ (%@)", self.alert[KEY_ENDPOINT_PORT], [self convertProtocol:self.alert[KEY_PROTOCOL]]];
+    
+    //wrapping for (reverse) DNS
+    self.reverseDNS.defaultParagraphStyle = scrollStyle;
     
     //alloc time formatter
     timeFormat = [[NSDateFormatter alloc] init];
@@ -282,9 +309,14 @@ extern os_log_t logHandle;
         //toggle, to show options
         [self toggleOptionsView:self.showOptions];
     }
+    //otherwise
+    // back to defaults
     else
     {
+        //default min
         [self.window setContentMinSize:NSMakeSize(self.window.frame.size.width, DEFAULT_WINDOW_HEIGHT)];
+        
+        //default max
         [self.window setContentMaxSize:NSMakeSize(self.window.frame.size.width, DEFAULT_WINDOW_HEIGHT)];
     }
     
@@ -446,7 +478,7 @@ bail:
         popoverVC.itemName = self.processName.stringValue;
         
         //set path
-        popoverVC.itemPath = self.processPath.stringValue;
+        popoverVC.itemPath = self.processPath.string;
         
         //show popover
         [self.virusTotalPopover showRelativeToRect:[self.virusTotalButton bounds] ofView:self.virusTotalButton preferredEdge:NSMaxYEdge];

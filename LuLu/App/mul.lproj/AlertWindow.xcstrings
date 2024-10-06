@@ -415,24 +415,6 @@
         }
       }
     },
-    "KMj-LZ-EdU.placeholderString" : {
-      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"resolving...\"; ObjectID = \"KMj-LZ-EdU\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "resolving..."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "resolviendo..."
-          }
-        }
-      }
-    },
     "N6E-eT-Q39.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Remote Endpoint\"; ObjectID = \"N6E-eT-Q39\";",
       "extractionState" : "extracted_with_value",
