@@ -1,6 +1,18 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "\r\nDetection Ratio: " : {
+      "comment" : "\r\nDetection Ratio: "
+    },
+    "\r\nnot found on VirusTotal" : {
+      "comment" : "\r\nnot found on VirusTotal"
+    },
+    "\r\nReceived invalid response" : {
+      "comment" : "\r\nReceived invalid response"
+    },
+    "\r\nView VirusTotal's " : {
+      "comment" : "\r\nView VirusTotal's "
+    },
     " has a signing issue" : {
       "comment" : " has a signing issue",
       "localizations" : {
@@ -538,6 +550,7 @@
     },
     "details" : {
       "comment" : "details",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -747,6 +760,7 @@
     },
     "failed to query Virus Total" : {
       "comment" : "failed to query Virus Total",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -755,6 +769,12 @@
           }
         }
       }
+    },
+    "Failed to query VirusTotal" : {
+      "comment" : "Failed to query VirusTotal"
+    },
+    "findings" : {
+      "comment" : "findings"
     },
     "Global Rules apply to all paths" : {
       "comment" : "Global Rules apply to all paths",
@@ -879,6 +899,7 @@
     },
     "not found" : {
       "comment" : "not found",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -967,6 +988,7 @@
     },
     "querying Virus Total..." : {
       "comment" : "querying Virus Total...",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -975,6 +997,9 @@
           }
         }
       }
+    },
+    "Querying VirusTotal..." : {
+      "comment" : "Querying VirusTotal..."
     },
     "Quit" : {
       "comment" : "Quit",
@@ -1000,6 +1025,7 @@
     },
     "received invalid response" : {
       "comment" : "received invalid response",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {

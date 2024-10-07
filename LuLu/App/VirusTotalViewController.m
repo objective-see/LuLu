@@ -26,7 +26,7 @@ extern os_log_t logHandle;
 -(void)popoverWillShow:(NSNotification *)notification;
 {
     //set message
-    self.message.stringValue = NSLocalizedString(@"querying Virus Total...", @"querying Virus Total...");
+    self.message.string = NSLocalizedString(@"Querying VirusTotal...", @"Querying VirusTotal...");
     
     //bg thread for VT
     [self performSelectorInBackground:@selector(queryVT) withObject:nil];
@@ -164,12 +164,8 @@ bail:
     //hide spinner
     self.vtSpinner.hidden = YES;
     
-    //
-    [self.message setAllowsEditingTextAttributes: YES];
-    [self.message setSelectable: YES];
-    
     //format/set info
-    self.message.attributedStringValue = [self formatVTInfo:item];
+    [self.message.textStorage setAttributedString:[self formatVTInfo:item]];
     
     return;
 }
@@ -184,7 +180,7 @@ bail:
     self.vtSpinner.hidden = YES;
     
     //set message
-    self.message.stringValue = NSLocalizedString(@"failed to query Virus Total", @"failed to query Virus Total");
+    self.message.string = NSLocalizedString(@"Failed to query VirusTotal", @"Failed to query VirusTotal");
     
     return;
 }
@@ -199,14 +195,17 @@ bail:
     NSDictionary* attributes = nil;
     
     //name
-    // ->handles truncations, etc
+    // handles truncations, etc
     NSString* name = nil;
     
     //init string
     info = [[NSMutableAttributedString alloc] initWithString:@""];
     
     //init string attributes
-    attributes = @{NSFontAttributeName: [NSFont fontWithName:@"Menlo-Bold" size:13]};
+    attributes = @{
+        NSForegroundColorAttributeName: [NSColor controlTextColor],
+        NSFontAttributeName: [NSFont fontWithName:@"Menlo-Bold" size:12]
+    };
 
     //grab name
     name = item[@"name"];
@@ -219,17 +218,20 @@ bail:
     }
     
     //add name
-    [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@: ", name] attributes:attributes]];
+    [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", name] attributes:attributes]];
     
     //un-set bold attributes
-    attributes = @{NSFontAttributeName: [NSFont fontWithName:@"Menlo" size:13]};
+    attributes = @{
+        NSForegroundColorAttributeName: [NSColor controlTextColor],
+        NSFontAttributeName: [NSFont fontWithName:@"Menlo" size:12]
+    };
     
     //sanity check
     if( (nil == item[@"vtInfo"]) ||
         (nil == item[@"vtInfo"][@"found"]) )
     {
         //set
-        [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"received invalid response", @"received invalid response")]];
+        [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"\r\nReceived invalid response", @"\r\nReceived invalid response") attributes:attributes]];
         
         //bail
         goto bail;
@@ -243,35 +245,46 @@ bail:
             (nil == item[@"vtInfo"][@"permalink"]) )
         {
             //set
-            [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"received invalid response", @"received invalid response")]];
+            [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"\r\nReceived invalid response", @"\r\nReceived invalid response") attributes:attributes]];
             
             //bail
             goto bail;
         }
+        
+        //add newline/ratio
+        [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"\r\nDetection Ratio: ", @"\r\nDetection Ratio: ") attributes:attributes]];
         
         //make ratio red if there are positives
         if( (nil != item[@"vtInfo"][@"positives"]) &&
             (0 != [item[@"vtInfo"][@"positives"] intValue]) )
         {
             //red
-            attributes = @{NSFontAttributeName: [NSFont fontWithName:@"Menlo" size:13], NSForegroundColorAttributeName:[NSColor systemRedColor]};
+            attributes = @{NSFontAttributeName: [NSFont fontWithName:@"Menlo" size:12], NSForegroundColorAttributeName:[NSColor systemRedColor]};
         }
         
         //add ratio
         [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ", item[@"vtInfo"][@"detection_ratio"]] attributes:attributes]];
         
+        //reset attributes
+        attributes = @{
+            NSForegroundColorAttributeName: [NSColor controlTextColor],
+            NSFontAttributeName: [NSFont fontWithName:@"Menlo" size:12]
+        };
+        
+        //add newline/view
+        [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"\r\nView VirusTotal's ", @"\r\nView VirusTotal's ") attributes:attributes]];
+        
         //set attributes to for html link for report
-        attributes = @{NSFontAttributeName: [NSFont fontWithName:@"Menlo" size:13], NSLinkAttributeName:[NSURL URLWithString:item[@"vtInfo"][@"permalink"]], NSForegroundColorAttributeName:[NSColor linkColor], NSUnderlineStyleAttributeName:[NSNumber numberWithInt:NSUnderlineStyleSingle]};
+        attributes = @{NSFontAttributeName: [NSFont fontWithName:@"Menlo" size:12], NSLinkAttributeName:[NSURL URLWithString:item[@"vtInfo"][@"permalink"]], NSForegroundColorAttributeName:[NSColor linkColor], NSUnderlineStyleAttributeName:[NSNumber numberWithInt:NSUnderlineStyleSingle]};
         
         //add link to full report
-        [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"details", @"details") attributes:attributes]];
-
+        [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"findings", @"findings") attributes:attributes]];
     }
-    //file not found on vt
+    //file not found on VT
     else
     {
-        //add ratio
-        [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"not found", @"not found") attributes:attributes]];
+        //not found
+        [info appendAttributedString:[[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"\r\nnot found on VirusTotal", @"\r\nnot found on VirusTotal") attributes:attributes]];
     }
     
 bail:

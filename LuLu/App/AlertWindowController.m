@@ -152,8 +152,12 @@ extern os_log_t logHandle;
     //set name
     self.processName.stringValue = self.alert[KEY_PROCESS_NAME];
     
+    //ensure process name clips
+    self.processName.wantsLayer = YES;
+    self.processName.layer.masksToBounds = YES;
+    
     //alert message
-    self.alertMessage.stringValue = [NSString stringWithFormat:NSLocalizedString(@"is connecting to %@", @"is connecting to %@"), remoteAddress];
+    self.alertMessage.string = [NSString stringWithFormat:NSLocalizedString(@"is connecting to %@", @"is connecting to %@"), remoteAddress];
     
     //set tooltip to full URL
     if(nil != url)
@@ -501,8 +505,6 @@ bail:
     //open popover
     if(NSControlStateValueOn == self.ancestryButton.state)
     {
-        //processName =
-        
         //add the index value to each process in the hierarchy
         // used to populate outline/table
         for(NSUInteger i = 0; i<self.processHierarchy.count; i++)
@@ -807,7 +809,7 @@ bail:
     else if(YES == [identifier isEqualToString:@".label"])
     {
         //item label
-        touchBarItem.view = [NSTextField labelWithString:[NSString stringWithFormat:@"%@ %@", self.processName.stringValue,self.alertMessage.stringValue]];
+        touchBarItem.view = [NSTextField labelWithString:[NSString stringWithFormat:@"%@ %@", self.processName.stringValue,self.alertMessage.string]];
     }
     
     //block button

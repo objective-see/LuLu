@@ -228,6 +228,9 @@ bail:
     //current name
     NSString* currentName = nil;
     
+    //parent
+    NSDictionary* parent = nil;
+    
     //parent pid
     pid_t parentPID = -1;
     
@@ -269,12 +272,22 @@ bail:
         //add
         [self.ancestors insertObject:[@{KEY_PROCESS_ID:[NSNumber numberWithInt:currentPID], KEY_PROCESS_PATH:currentPath,  KEY_PROCESS_NAME:currentName} mutableCopy] atIndex:0];
         
-        //for parent
-        // first try via rPID
-        if(NULL != getRPID)
+        //for apps
+        // try application services pid
+        parent = getRealParent(currentPID);
+        parentPID = [parent[@"pid"] intValue];
+        
+        //not found
+        // try via responsible pid
+        if(0 == parentPID)
         {
-            //get rpid
-            parentPID = getRPID(currentPID);
+            //for parent
+            // first try via rPID
+            if(NULL != getRPID)
+            {
+                //get rpid
+                parentPID = getRPID(currentPID);
+            }
         }
         
         //couldn't find/get rPID?

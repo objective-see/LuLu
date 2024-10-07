@@ -37,7 +37,7 @@
 @property (weak) IBOutlet NSTextField *processName;
 
 //general alert message
-@property (weak) IBOutlet NSTextField *alertMessage;
+@property (unsafe_unretained) IBOutlet NSTextView *alertMessage;
 
 //signing info button
 @property (weak) IBOutlet NSButton *signingInfoButton;

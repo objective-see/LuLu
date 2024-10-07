@@ -71,16 +71,16 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define RULE_STATE_ALLOW 1
 
 //product version url
-#define PRODUCT_VERSIONS_URL @"https://objective-see.com/products.json"
+#define PRODUCT_VERSIONS_URL @"https://objective-see.org/products.json"
 
 //product key
 #define PRODUCT_KEY @"LuLu"
 
 //product url
-#define PRODUCT_URL @"https://objective-see.com/products/lulu.html"
+#define PRODUCT_URL @"https://objective-see.org/products/lulu.html"
 
 //error(s) url
-#define ERRORS_URL @"https://objective-see.com/errors.html"
+#define ERRORS_URL @"https://objective-see.org/errors.html"
 
 //support us button tag
 #define BUTTON_SUPPORT_US 100

@@ -325,19 +325,10 @@
             <rect key="frame" x="0.0" y="0.0" width="812" height="454"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="NeU-Pi-VDr">
-                    <rect key="frame" x="520" y="186" width="274" height="57"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Show some love? " id="XBE-gW-YkK">
-                        <font key="font" size="40" name="AvenirNextCondensed-Regular"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0L0-vQ-k5x">
                     <rect key="frame" x="23" y="245" width="128" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="MainAppHeart" id="NdE-ks-tao"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Heart" id="NdE-ks-tao"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="NuI-gL-I9N">
                     <rect key="frame" x="153" y="257" width="636" height="110"/>
@@ -439,6 +430,15 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="NeU-Pi-VDr">
+                    <rect key="frame" x="515" y="192" width="274" height="57"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Show some love? " id="XBE-gW-YkK">
+                        <font key="font" size="40" name="AvenirNextCondensed-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="685" y="1355"/>
         </customView>
@@ -452,12 +452,12 @@
         <image name="FriendsMalwarebytes" width="2500" height="403"/>
         <image name="FriendsPANW" width="1312" height="240"/>
         <image name="FriendsiVerify" width="500" height="180"/>
+        <image name="Heart" width="256" height="256"/>
         <image name="Icon" width="144" height="144"/>
         <image name="InstallAllow" width="520" height="468"/>
         <image name="InstallApprove" width="901" height="305"/>
         <image name="InstallAuth" width="521" height="593"/>
         <image name="InstallBlocked" width="520" height="560"/>
         <image name="LuLuText" width="1268" height="385"/>
-        <image name="MainAppHeart" width="256" height="256"/>
     </resources>
 </document>

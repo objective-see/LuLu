@@ -220,7 +220,7 @@
                     </customView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QQG-tM-Qn1" userLabel="LuLu Button">
                         <rect key="frame" x="453" y="3" width="110" height="38"/>
-                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="MainAppLuLuText" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="L9P-uv-Ruu">
+                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="LuLuText" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="L9P-uv-Ruu">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -343,17 +343,17 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="pch-yV-NXy" userLabel="Add Rule" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="272" y="172" width="276" height="378"/>
+            <rect key="contentRect" x="272" y="172" width="471" height="353"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
             <view key="contentView" id="cna-Y1-PEc">
-                <rect key="frame" x="0.0" y="0.0" width="276" height="378"/>
+                <rect key="frame" x="0.0" y="0.0" width="471" height="353"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
-            <point key="canvasLocation" x="-659" y="1043"/>
+            <point key="canvasLocation" x="-561.5" y="1030.5"/>
         </window>
     </objects>
     <resources>
-        <image name="MainAppLuLuText" width="1268" height="385"/>
+        <image name="LuLuText" width="1268" height="385"/>
         <image name="NSAddTemplate" width="18" height="17"/>
         <image name="NSColorPanel" width="32" height="32"/>
         <image name="NSStopProgressFreestandingTemplate" width="20" height="20"/>

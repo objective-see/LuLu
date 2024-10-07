@@ -30,7 +30,8 @@
 @property(weak)IBOutlet NSProgressIndicator *vtSpinner;
 
 //query msg
-@property(weak)IBOutlet NSTextField *message;
+@property (unsafe_unretained) IBOutlet NSTextView *message;
+
 
 @end
 
