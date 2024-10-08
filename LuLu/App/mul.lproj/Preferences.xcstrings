@@ -82,6 +82,12 @@
             "state" : "new",
             "value" : "Note: When a new connection is made, sometimes only the IP address may be available. In such cases, domains on the allow or block list cannot be matched, which may impact whether a request is blocked or allowed."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nota: cuando se hace una nueva conexión, a veces solo la dirección IP estará disponible. En esos casos, los dominios en la lista de permitidos o bloqueados no coincidirán, lo cual impactará si un pedido es bloqueado o permitido. "
+          }
         }
       }
     },
@@ -94,6 +100,12 @@
             "state" : "new",
             "value" : "Local or remote file, containing endpoints to always allow."
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archivo local o remoto, que contiene endpoints para bloquear siempre. "
+          }
         }
       }
     },
@@ -105,6 +117,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Local or remote file, containing endpoints to always block."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archivo local o remoto, que contiene endpoints para bloquear siempre. "
           }
         }
       }
@@ -226,6 +244,12 @@
             "state" : "new",
             "value" : "Block List:"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista de Bloqueados:"
+          }
         }
       }
     },
@@ -256,6 +280,12 @@
             "state" : "new",
             "value" : "Allow List:"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista de Permitidos:"
+          }
         }
       }
     },
@@ -268,23 +298,11 @@
             "state" : "new",
             "value" : "Browse"
           }
-        }
-      }
-    },
-    "GIK-ti-aku.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Block List:\"; ObjectID = \"GIK-ti-aku\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Block List:"
-          }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lista de Bloqueados:"
+            "value" : "Navegar"
           }
         }
       }
@@ -427,8 +445,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "modo"
+            "state" : "translated",
+            "value" : "Modo"
           }
         }
       }
@@ -445,26 +463,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "modo"
-          }
-        }
-      }
-    },
-    "L7x-uU-rth.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"List of endpoints (ips/urls) to always block. (Limitations apply, see documentation for details)\"; ObjectID = \"L7x-uU-rth\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "List of endpoints (ips/urls) to always block. (Limitations apply, see documentation for details)"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
             "state" : "translated",
-            "value" : "Lista de endpoints (ips/urls) para bloquear siempre. (Aplican limitaciones, consulte la documentación para más detalles)"
+            "value" : "Modo"
           }
         }
       }
@@ -514,6 +514,12 @@
             "state" : "new",
             "value" : "Update"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar"
+          }
         }
       }
     },
@@ -525,6 +531,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Update"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar"
           }
         }
       }
@@ -541,8 +553,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "actualizar"
+            "state" : "translated",
+            "value" : "Listas"
           }
         }
       }
@@ -559,8 +571,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "actualizar"
+            "state" : "translated",
+            "value" : "Listas"
           }
         }
       }
@@ -577,8 +589,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Todo el tráfico (ruteado a través de LuLu) será bloqueado. "
+            "state" : "translated",
+            "value" : "Todo el tráfico ruteado a través de LuLu será bloqueado (a menos que el endpoint esté explícito en la lista de 'Permitidos')."
           }
         }
       }
@@ -613,8 +625,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "reglas"
+            "state" : "translated",
+            "value" : "Reglas"
           }
         }
       }
@@ -631,26 +643,8 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "reglas"
-          }
-        }
-      }
-    },
-    "u9V-ny-Cia.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"Browse\"; ObjectID = \"u9V-ny-Cia\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Browse"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
             "state" : "translated",
-            "value" : "Navegar"
+            "value" : "Reglas"
           }
         }
       }
@@ -681,6 +675,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Browse"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navegar"
           }
         }
       }

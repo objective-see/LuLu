@@ -199,24 +199,6 @@
         }
       }
     },
-    "pch-yV-NXy.title" : {
-      "comment" : "Class = \"NSWindow\"; title = \"Window\"; ObjectID = \"pch-yV-NXy\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Window"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ventana"
-          }
-        }
-      }
-    },
     "qbv-z3-4PI.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"item details...\"; ObjectID = \"qbv-z3-4PI\";",
       "extractionState" : "extracted_with_value",
@@ -339,24 +321,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reglas de terceros"
-          }
-        }
-      }
-    },
-    "zq7-2E-zbT.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"zq7-2E-zbT\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Celda de Texto"
           }
         }
       }

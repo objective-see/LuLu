@@ -1,24 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "F0z-JX-Cv5.title" : {
-      "comment" : "Class = \"NSWindow\"; title = \"Window\"; ObjectID = \"F0z-JX-Cv5\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Window"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ventana"
-          }
-        }
-      }
-    },
     "NhE-Zh-Scd.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Path(s):\"; ObjectID = \"NhE-Zh-Scd\";",
       "extractionState" : "extracted_with_value",

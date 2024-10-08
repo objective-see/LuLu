@@ -163,7 +163,7 @@ extern os_log_t logHandle;
     if(nil != url)
     {
         //use (full) URLs
-        self.alertMessage.toolTip = url.absoluteString;
+        self.alertMessage.toolTip = [NSString stringWithFormat:NSLocalizedString(@"Full URL: %@", @"Full URL: %@"), url.absoluteString];
     }
     
     /* BOTTOM (DETAILS) */
@@ -209,8 +209,8 @@ extern os_log_t logHandle;
     }
     
     //set tooltip
-    self.processArgs.toolTip = self.processArgs.stringValue;
-
+    self.processArgs.toolTip = [NSString stringWithFormat:NSLocalizedString(@"Process Arguments: %@", @"Process Arguments: %@"), self.processArgs.stringValue];
+    
     //set wrapping
     scrollStyle.lineBreakMode = NSLineBreakByCharWrapping;
     self.processPath.defaultParagraphStyle = scrollStyle;
@@ -230,7 +230,7 @@ extern os_log_t logHandle;
     }
     
     //set tooltip
-    self.processPath.toolTip = self.processPath.string;
+    self.processPath.toolTip = [NSString stringWithFormat:NSLocalizedString(@"Process Path: %@", @"Process Path: %@"), self.processPath.string];
     
     //ensure process path clips
     self.processPath.wantsLayer = YES;

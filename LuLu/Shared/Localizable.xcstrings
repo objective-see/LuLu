@@ -2,16 +2,48 @@
   "sourceLanguage" : "en",
   "strings" : {
     "\r\nDetection Ratio: " : {
-      "comment" : "\r\nDetection Ratio: "
+      "comment" : "\r\nDetection Ratio: ",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ratio de Detección:"
+          }
+        }
+      }
     },
     "\r\nnot found on VirusTotal" : {
-      "comment" : "\r\nnot found on VirusTotal"
+      "comment" : "\r\nnot found on VirusTotal",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "no encontrado en VirusTotal"
+          }
+        }
+      }
     },
     "\r\nReceived invalid response" : {
-      "comment" : "\r\nReceived invalid response"
+      "comment" : "\r\nReceived invalid response",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Respuesta inválida recibida"
+          }
+        }
+      }
     },
     "\r\nView VirusTotal's " : {
-      "comment" : "\r\nView VirusTotal's "
+      "comment" : "\r\nView VirusTotal's ",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver los de VirusTotal"
+          }
+        }
+      }
     },
     " has a signing issue" : {
       "comment" : " has a signing issue",
@@ -548,18 +580,6 @@
         }
       }
     },
-    "details" : {
-      "comment" : "details",
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "detalles"
-          }
-        }
-      }
-    },
     "Directory Rules apply to all items within the directory" : {
       "comment" : "Directory Rules apply to all items within the directory",
       "localizations" : {
@@ -758,23 +778,38 @@
         }
       }
     },
-    "failed to query Virus Total" : {
-      "comment" : "failed to query Virus Total",
-      "extractionState" : "stale",
+    "Failed to query VirusTotal" : {
+      "comment" : "Failed to query VirusTotal",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "falló al consultar Virus Total"
+            "value" : "Falló al consultar con VirusTotal"
           }
         }
       }
     },
-    "Failed to query VirusTotal" : {
-      "comment" : "Failed to query VirusTotal"
-    },
     "findings" : {
-      "comment" : "findings"
+      "comment" : "findings",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "encontrados"
+          }
+        }
+      }
+    },
+    "Full URL: %@" : {
+      "comment" : "Full URL: %@",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL completo: %@"
+          }
+        }
+      }
     },
     "Global Rules apply to all paths" : {
       "comment" : "Global Rules apply to all paths",
@@ -897,18 +932,6 @@
         }
       }
     },
-    "not found" : {
-      "comment" : "not found",
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "no encontrado"
-          }
-        }
-      }
-    },
     "Note however:\r\n▪ Existing connections will not be impacted.\r\n▪ OS traffic (not routed thru LuLu) will not be blocked." : {
       "comment" : "Note however:\r\n▪ Existing connections will not be impacted.\r\n▪ OS traffic (not routed thru LuLu) will not be blocked.",
       "localizations" : {
@@ -975,6 +998,28 @@
         }
       }
     },
+    "Process Arguments: %@" : {
+      "comment" : "Process Arguments: %@",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Argumentos Procesados: %@"
+          }
+        }
+      }
+    },
+    "Process Path: %@" : {
+      "comment" : "Process Path: %@",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruta del Proceso: %@"
+          }
+        }
+      }
+    },
     "Programs within \"%@/\"" : {
       "comment" : "Programs within \"%@/\"",
       "localizations" : {
@@ -986,20 +1031,16 @@
         }
       }
     },
-    "querying Virus Total..." : {
-      "comment" : "querying Virus Total...",
-      "extractionState" : "stale",
+    "Querying VirusTotal..." : {
+      "comment" : "Querying VirusTotal...",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "consultando Virus Total..."
+            "value" : "Consultando a VirusTotal…"
           }
         }
       }
-    },
-    "Querying VirusTotal..." : {
-      "comment" : "Querying VirusTotal..."
     },
     "Quit" : {
       "comment" : "Quit",
@@ -1023,14 +1064,13 @@
         }
       }
     },
-    "received invalid response" : {
-      "comment" : "received invalid response",
-      "extractionState" : "stale",
+    "Reverse Domain: %@" : {
+      "comment" : "Reverse Domain %@",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "respuesta no válida recibida"
+            "value" : "Dominio Inverso: %@"
           }
         }
       }

@@ -320,8 +320,6 @@ extern os_log_t logHandle;
     {
         //match
         matches = YES;
-        
-        //bail
         goto bail;
     }
     
@@ -331,8 +329,6 @@ extern os_log_t logHandle;
     {
         //match
         matches = YES;
-        
-        //bail
         goto bail;
     }
     
@@ -342,8 +338,6 @@ extern os_log_t logHandle;
     {
         //match
         matches = YES;
-        
-        //bail
         goto bail;
     }
     
@@ -353,8 +347,24 @@ extern os_log_t logHandle;
     {
         //match
         matches = YES;
-        
-        //bail
+        goto bail;
+    }
+    
+    //endpoint addr ('any')
+    if( (YES == [self.endpointAddr isEqualToString:VALUE_ANY]) &&
+        (YES == [match isEqualToString:NSLocalizedString(@"any address", @"any address")]) )
+    {
+        //match
+        matches = YES;
+        goto bail;
+    }
+    
+    //endpoint port ('any')
+    if( (YES == [self.endpointPort isEqualToString:VALUE_ANY]) &&
+        (YES == [match isEqualToString:NSLocalizedString(@"any port", @"any port")]) )
+    {
+        //match
+        matches = YES;
         goto bail;
     }
     
@@ -364,8 +374,6 @@ extern os_log_t logHandle;
     {
         //match
         matches = YES;
-        
-        //bail
         goto bail;
     }
     

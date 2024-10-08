@@ -307,24 +307,6 @@
         }
       }
     },
-    "hoJ-mx-qEO.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"is connecting to ...\"; ObjectID = \"hoJ-mx-qEO\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "is connecting to ..."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "se está conectando a..."
-          }
-        }
-      }
-    },
     "HZu-Op-XHi.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"pid:\"; ObjectID = \"HZu-Op-XHi\";",
       "extractionState" : "extracted_with_value",
@@ -429,24 +411,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Endpoint Remoto"
-          }
-        }
-      }
-    },
-    "nFi-bu-Okm.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"querying virus total...\"; ObjectID = \"nFi-bu-Okm\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "querying virus total..."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "consultando a virus total..."
           }
         }
       }

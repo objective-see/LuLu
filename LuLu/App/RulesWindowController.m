@@ -607,9 +607,6 @@ bail:
     // add any that match rule view and filter string
     {[self.rules enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL* stop) {
         
-        //match
-        BOOL match = NO;
-        
         //item
         // cs info, rules, etc
         NSMutableDictionary* item = nil;
@@ -962,7 +959,7 @@ bail:
             if(RULE_STATE_BLOCK == rule.action.integerValue)
             {
                 //set image
-                cell.imageView.image = [NSImage imageNamed:@"MainAppRulesBlock"];
+                cell.imageView.image = [NSImage imageNamed:@"RulesBlock"];
                 
                 //duration: process
                 if(nil != rule.pid)
@@ -995,7 +992,7 @@ bail:
             else
             {
                 //set image
-                cell.imageView.image = [NSImage imageNamed:@"MainAppRulesAllow"];
+                cell.imageView.image = [NSImage imageNamed:@"RulesAllow"];
                 
                 //duration: process
                 if(nil != rule.pid)
