@@ -314,7 +314,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <popUpButton springLoaded="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CBy-MH-fsc">
-                                <rect key="frame" x="340" y="49" width="88" height="25"/>
+                                <rect key="frame" x="325" y="49" width="103" height="25"/>
                                 <popUpButtonCell key="cell" type="push" title="Allowed" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CqC-4v-5d3" id="ssl-E3-3tL">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="message"/>
@@ -331,7 +331,7 @@
                                 </popUpButtonCell>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="TM7-bg-q1n"/>
-                                    <constraint firstAttribute="width" constant="81" id="oYr-vD-9fC"/>
+                                    <constraint firstAttribute="width" constant="96" id="oYr-vD-9fC"/>
                                 </constraints>
                                 <connections>
                                     <action selector="togglePreference:" target="-2" id="4on-EY-CRn"/>
@@ -496,14 +496,14 @@
                     </textFieldCell>
                 </textField>
                 <box fixedFrame="YES" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ASu-W7-Cac">
-                    <rect key="frame" x="38" y="23" width="530" height="71"/>
+                    <rect key="frame" x="17" y="16" width="566" height="78"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="lb7-fh-vLA">
-                        <rect key="frame" x="4" y="5" width="522" height="63"/>
+                        <rect key="frame" x="4" y="5" width="558" height="70"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="heq-3o-XOl">
-                                <rect key="frame" x="8" y="-4" width="507" height="56"/>
+                                <rect key="frame" x="8" y="3" width="543" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="justified" id="6vU-GO-opk">
                                     <font key="font" size="12" name="Menlo-Regular"/>

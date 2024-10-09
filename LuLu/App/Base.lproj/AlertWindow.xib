@@ -65,20 +65,6 @@
                             <action selector="signingInfoButtonHandler:" target="-2" id="wdK-FI-wn5"/>
                         </connections>
                     </button>
-                    <button tag="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yg5-Dg-d1n">
-                        <rect key="frame" x="521" y="247" width="132" height="44"/>
-                        <buttonCell key="cell" type="push" title="Allow" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zk5-p6-VV3">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="15" name="Menlo-Bold"/>
-                        </buttonCell>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="120" id="hEJ-it-TPc"/>
-                            <constraint firstAttribute="height" constant="32" id="pLT-UN-ptY"/>
-                        </constraints>
-                        <connections>
-                            <action selector="handleUserResponse:" target="-2" id="gbD-4o-vfb"/>
-                        </connections>
-                    </button>
                     <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QJt-zQ-EMG">
                         <rect key="frame" x="29" y="222" width="13" height="13"/>
                         <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="only" alignment="left" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eTb-0U-yh9">
@@ -141,14 +127,14 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Aix-a5-CPT">
-                        <rect key="frame" x="374" y="247" width="132" height="44"/>
+                        <rect key="frame" x="334" y="247" width="147" height="44"/>
                         <buttonCell key="cell" type="push" title="Block" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="W18-Ba-X7J">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="15" name="Menlo-Bold"/>
                         </buttonCell>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="ExL-7P-xXi"/>
-                            <constraint firstAttribute="width" constant="120" id="PSu-sb-mSm"/>
+                            <constraint firstAttribute="width" constant="135" id="PSu-sb-mSm"/>
                         </constraints>
                         <connections>
                             <action selector="handleUserResponse:" target="-2" id="M1m-yw-PMX"/>
@@ -519,6 +505,20 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <button tag="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yg5-Dg-d1n">
+                        <rect key="frame" x="504" y="247" width="149" height="44"/>
+                        <buttonCell key="cell" type="push" title="Allow" bezelStyle="rounded" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zk5-p6-VV3">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="15" name="Menlo-Bold"/>
+                        </buttonCell>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="137" id="hEJ-it-TPc"/>
+                            <constraint firstAttribute="height" constant="32" id="pLT-UN-ptY"/>
+                        </constraints>
+                        <connections>
+                            <action selector="handleUserResponse:" target="-2" id="gbD-4o-vfb"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="aVD-pe-6gz" firstAttribute="bottom" secondItem="fJv-Iu-3gy" secondAttribute="bottom" id="4BY-1I-w7e"/>
@@ -541,7 +541,7 @@
                     <constraint firstItem="PJQ-Iq-93l" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="166" id="gL0-hA-FPT"/>
                     <constraint firstAttribute="trailing" secondItem="yg5-Dg-d1n" secondAttribute="trailing" constant="20" symbolic="YES" id="hW0-Qb-Jw8"/>
                     <constraint firstItem="aVD-pe-6gz" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="173" id="lH6-ol-jKl"/>
-                    <constraint firstAttribute="trailing" secondItem="Aix-a5-CPT" secondAttribute="trailing" constant="167" id="lkJ-sh-BUN"/>
+                    <constraint firstAttribute="trailing" secondItem="Aix-a5-CPT" secondAttribute="trailing" constant="192" id="lkJ-sh-BUN"/>
                     <constraint firstItem="tWx-6z-uXa" firstAttribute="leading" secondItem="QJt-zQ-EMG" secondAttribute="trailing" constant="3" id="oDW-WI-pwM"/>
                     <constraint firstItem="FqM-TW-r0o" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="26" id="uQI-s0-RzI"/>
                     <constraint firstItem="fJv-Iu-3gy" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="yoL-Uz-mlH"/>
