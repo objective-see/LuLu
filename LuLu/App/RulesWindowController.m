@@ -57,7 +57,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
     
     //load rules
-    [self loadRules];
+    [self loadRules:YES];
     
     //select first row
     [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
@@ -104,7 +104,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     self.rulesObserver = [[NSNotificationCenter defaultCenter] addObserverForName:RULES_CHANGED object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
     {
         //get new rules
-        [self loadRules];
+        [self loadRules:YES];
     }];
     
     return;
@@ -112,16 +112,20 @@ extern XPCDaemonClient* xpcDaemonClient;
 
 //get rules from daemon
 // then, re-load rules table
--(void)loadRules
+-(void)loadRules:(BOOL)showOverlay
 {
     //dbg msg
     os_log_debug(logHandle, "loading rules...");
     
     //show overlay
-    self.loadingRules.hidden = NO;
-    
-    //start progress indicator
-    [self.loadingRulesSpinner startAnimation:nil];
+    if(YES == showOverlay)
+    {
+        //show overlay
+        self.loadingRules.hidden = NO;
+        
+        //start progress indicator
+        [self.loadingRulesSpinner startAnimation:nil];
+    }
     
     //in background get rules
     // ...then load rule table table
@@ -133,8 +137,12 @@ extern XPCDaemonClient* xpcDaemonClient;
         //sorted keys
         NSArray* sortedKeys = nil;
         
-        //nap for UI (loading msg)
-        [NSThread sleepForTimeInterval:0.5f];
+        //show overlay
+        if(YES == showOverlay)
+        {
+            //nap for UI (loading msg)
+            [NSThread sleepForTimeInterval:0.5f];
+        }
         
         //get rules
         currentRules = [xpcDaemonClient getRules];
@@ -180,8 +188,12 @@ extern XPCDaemonClient* xpcDaemonClient;
         //show rules in UI
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            //hide overlay
-            self.loadingRules.hidden = YES;
+            //show overlay
+            if(YES == showOverlay)
+            {
+                //hide overlay
+                self.loadingRules.hidden = YES;
+            }
             
             //update ui
             [self update];
@@ -508,8 +520,6 @@ bail:
     NSModalResponse response = [NSApp runModalForWindow:self.addRuleWindowController.window];
     {
         
-        
-        
         //(existing) rule
         Rule* rule = nil;
         
@@ -540,7 +550,7 @@ bail:
             }
             
             //reload
-            [self loadRules];
+            [self loadRules:YES];
         }
         
         //unset add rule window controller
@@ -1346,7 +1356,8 @@ bail:
     [xpcDaemonClient deleteRule:rule.key rule:uuid];
     
     //(re)load rules
-    [self loadRules];
+    // but no need to show overlay
+    [self loadRules:NO];
     
 bail:
     

@@ -823,9 +823,9 @@ bail:
                 else
                 {
                     //dbg msg
-                    os_log_debug(logHandle, "address and port set, will check both for match");
+                    os_log_debug(logHandle, "address and port set (%{public}@:%{public}@), will check both for match", rule.endpointAddr, rule.endpointPort);
                     
-                    //port match?
+                    //match?
                     if( (YES == [self endpointAddrMatch:flow rule:rule]) &&
                         (YES == [rule.endpointPort isEqualToString:remoteEndpoint.port]) )
                     {
@@ -878,6 +878,9 @@ bail:
     
     //remote endpoint
     NWHostEndpoint* remoteEndpoint = nil;
+    
+    //dbg msg
+    os_log_debug(logHandle, "%s", __PRETTY_FUNCTION__);
     
     //extract remote endpoint
     remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
@@ -951,7 +954,7 @@ bail:
     }
     
     //not regex
-    // check each (plus host) for exact match
+    // check each (plus host!) for exact match
     else
     {
         //check each
@@ -960,6 +963,7 @@ bail:
             //url
             NSURL* url = nil;
             
+            //host components
             NSArray* hostComponents = nil;
             
             //host
@@ -1001,7 +1005,7 @@ bail:
             //also check (just) host name
             // for example "a.b.c.com" will be checked against "c.com"
             if( (nil != url.host) &&
-                     (nil != rule.endpointHost) )
+                (nil != rule.endpointHost) )
             {
                 //split
                 hostComponents = [url.host componentsSeparatedByString:@"."];

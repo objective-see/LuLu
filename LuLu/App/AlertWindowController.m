@@ -76,10 +76,7 @@ extern os_log_t logHandle;
 {
     //process args
     NSMutableString* arguments = nil;
-    
-    //remote addr
-    NSString* remoteAddress = nil;
-    
+
     //timestamp formatter
     NSDateFormatter *timeFormat = nil;
     
@@ -125,20 +122,20 @@ extern os_log_t logHandle;
         url = [NSURL URLWithString:self.alert[KEY_URL]];
         
         //extract host
-        remoteAddress = url.host;
+        self.endpoint = url.host;
     }
     //use IP address
     else
     {
         //set
-        remoteAddress = self.alert[KEY_HOST];
+        self.endpoint = self.alert[KEY_HOST];
     }
     
     //sanity check
-    if(nil == remoteAddress)
+    if(nil == self.endpoint)
     {
         //set
-        remoteAddress = NSLocalizedString(@"unknown", @"unknown");
+        self.endpoint = NSLocalizedString(@"unknown", @"unknown");
     }
     
     /* TOP */
@@ -157,7 +154,7 @@ extern os_log_t logHandle;
     self.processName.layer.masksToBounds = YES;
     
     //alert message
-    self.alertMessage.string = [NSString stringWithFormat:NSLocalizedString(@"is connecting to %@", @"is connecting to %@"), remoteAddress];
+    self.alertMessage.string = [NSString stringWithFormat:NSLocalizedString(@"is connecting to %@", @"is connecting to %@"), self.endpoint];
     
     //set tooltip to full URL
     if(nil != url)
@@ -257,9 +254,6 @@ extern os_log_t logHandle;
     //set paragraph style to left
     paragraphStyle.alignment = NSTextAlignmentLeft;
     
-    //set baseline attribute for temporary label
-    titleAttributes[NSBaselineOffsetAttributeName] = [NSNumber numberWithDouble:((self.tempRule.font.xHeight/2.0) - 1.0)];
-    
     //set paragraph attribute for temporary label
     titleAttributes[NSParagraphStyleAttributeName] = paragraphStyle;
     
@@ -269,18 +263,23 @@ extern os_log_t logHandle;
     //set font
     titleAttributes[NSFontAttributeName] = [NSFont fontWithName:@"Menlo-Regular" size:12];
     
-    //temp rule button label
-    self.tempRule.attributedTitle = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedString(@" temporarily (pid: %@)", @" temporarily (pid: %@)"), [self.alert[KEY_PROCESS_ID] stringValue]] attributes:titleAttributes];
-    
     //process deleted?
-    // check and disable ...always want this a temp rule for this
+    // rule scope can only be temporary (as we don't have a path)
     if(YES == [self.alert[KEY_PROCESS_DELETED] boolValue])
     {
         //on
-        self.tempRule.state = NSControlStateValueOn;
+        self.ruleDurationProcess.state = NSControlStateValueOn;
         
-        //disable
-        self.tempRule.enabled = NO;
+        //disable others
+        self.ruleDurationAlways.enabled = NO;
+        self.ruleDurationCustom.enabled = NO;
+    }
+    //otherwise make sure others are (always) enabled
+    else
+    {
+        //enable
+        self.ruleDurationAlways.enabled = YES;
+        self.ruleDurationCustom.enabled = YES;
     }
     
     //set action scope
@@ -290,6 +289,7 @@ extern os_log_t logHandle;
     //show touch bar
     [self initTouchBar];
 
+    //default height
     height = DEFAULT_WINDOW_HEIGHT;
     
     //resize to handle size of alert
@@ -314,7 +314,7 @@ extern os_log_t logHandle;
         [self toggleOptionsView:self.showOptions];
     }
     //otherwise
-    // back to defaults
+    // (re)set back to defaults
     else
     {
         //default min
@@ -322,6 +322,12 @@ extern os_log_t logHandle;
         
         //default max
         [self.window setContentMaxSize:NSMakeSize(self.window.frame.size.width, DEFAULT_WINDOW_HEIGHT)];
+        
+        //(re)set action scope
+        [self.actionScope selectItemAtIndex:ACTION_SCOPE_PROCESS];
+        
+        //(re)set rule scope
+        self.ruleDurationAlways.state = NSControlStateValueOn;
     }
     
 bail:
@@ -703,8 +709,7 @@ bail:
     }
     
     //set endpoint addr
-    // either url, or if nil, host (ip addr)
-    alertResponse[KEY_ENDPOINT_ADDR] = (self.alert[KEY_URL]) ? self.alert[KEY_URL] : self.alert[KEY_HOST];
+    alertResponse[KEY_ENDPOINT_ADDR] = self.endpoint;
     
     //close popups
     [self closePopups];

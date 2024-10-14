@@ -320,6 +320,7 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define KEY_HOST @"host"
 #define KEY_URL @"url"
 #define KEY_PROTOCOL @"protocol"
+#define KEY_ENDPOINT @"endpoint"
 
 #define KEY_INDEX @"index"
 
@@ -356,8 +357,6 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define ACTION_SCOPE_UNSELECTED -1
 #define ACTION_SCOPE_PROCESS 0
 #define ACTION_SCOPE_ENDPOINT 1
-
-#define RULE_TEMPORARY @1
 
 //signing info (from ESF)
 #define CS_FLAGS @"csFlags"

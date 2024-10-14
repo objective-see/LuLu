@@ -278,8 +278,6 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked (hasVisibleWindows: %d)", __PRETTY_FUNCTION__, hasVisibleWindows);
     
-    //TODO: wait/check a few times?
-    //TODO: open System Exts?
     //extention isn't running?
     // show alert, otherwise things get confusing
     if(YES != [extension isExtensionRunning])

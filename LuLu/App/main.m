@@ -13,7 +13,6 @@
 @import Cocoa;
 @import OSLog;
 
-
 /* GLOBALS */
 
 //log handle

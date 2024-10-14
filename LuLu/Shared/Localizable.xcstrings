@@ -7,7 +7,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ratio de Detección:"
+            "value" : "\r\nRatio de Detección: "
           }
         }
       }
@@ -18,7 +18,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "no encontrado en VirusTotal"
+            "value" : "\r\nno encontrado en VirusTotal"
           }
         }
       }
@@ -29,7 +29,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Respuesta inválida recibida"
+            "value" : "\r\nRespuesta inválida recibida"
           }
         }
       }
@@ -40,7 +40,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ver los de VirusTotal"
+            "value" : "\r\nVer los de VirusTotal "
           }
         }
       }
@@ -102,6 +102,7 @@
     },
     " temporarily (pid: %@)" : {
       "comment" : " temporarily (pid: %@)",
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {

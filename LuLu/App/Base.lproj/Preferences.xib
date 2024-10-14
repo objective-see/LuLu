@@ -399,11 +399,11 @@
             <point key="canvasLocation" x="502" y="513.5"/>
         </customView>
         <customView id="Nkz-5s-cqG" userLabel="Lists">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="380"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="387"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button tag="8" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NkT-YS-mX8">
-                    <rect key="frame" x="39" y="278" width="29" height="18"/>
+                    <rect key="frame" x="39" y="285" width="29" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="5NX-ao-MtB">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -414,7 +414,7 @@
                     </connections>
                 </button>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2kS-8f-CMi">
-                    <rect key="frame" x="72" y="276" width="159" height="19"/>
+                    <rect key="frame" x="72" y="283" width="159" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Allow List:" id="FE3-Li-d3K">
                         <font key="font" size="13" name="Menlo-Bold"/>
@@ -423,7 +423,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S67-V3-uih">
-                    <rect key="frame" x="446" y="223" width="126" height="32"/>
+                    <rect key="frame" x="446" y="230" width="126" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fut-ad-zCW">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -434,7 +434,7 @@
                     </connections>
                 </button>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4CH-OQ-Fxj">
-                    <rect key="frame" x="74" y="229" width="360" height="21"/>
+                    <rect key="frame" x="74" y="236" width="360" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="jch-z4-HaH">
                         <font key="font" size="13" name="Menlo-Regular"/>
@@ -446,7 +446,7 @@
                     </connections>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="RXk-GO-rzE">
-                    <rect key="frame" x="72" y="254" width="510" height="21"/>
+                    <rect key="frame" x="72" y="261" width="510" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Local or remote file, containing endpoints to always allow." id="7iJ-xR-xDI">
                         <font key="font" size="12" name="Menlo-Regular"/>
@@ -455,7 +455,7 @@
                     </textFieldCell>
                 </textField>
                 <button tag="9" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jMU-Gf-0go">
-                    <rect key="frame" x="39" y="175" width="29" height="18"/>
+                    <rect key="frame" x="39" y="182" width="29" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Xbf-ok-FRs">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -466,7 +466,7 @@
                     </connections>
                 </button>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AKI-AF-OVq">
-                    <rect key="frame" x="72" y="173" width="159" height="19"/>
+                    <rect key="frame" x="72" y="180" width="159" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Block List:" id="Emd-wS-UQh">
                         <font key="font" size="13" name="Menlo-Bold"/>
@@ -475,7 +475,7 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n5J-8K-UDy">
-                    <rect key="frame" x="74" y="126" width="360" height="21"/>
+                    <rect key="frame" x="74" y="133" width="360" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="cOM-J9-h2z">
                         <font key="font" size="13" name="Menlo-Regular"/>
@@ -487,7 +487,7 @@
                     </connections>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="Mkz-oL-YMZ">
-                    <rect key="frame" x="72" y="155" width="510" height="17"/>
+                    <rect key="frame" x="72" y="162" width="510" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Local or remote file, containing endpoints to always block." id="Bdp-Z8-BhB">
                         <font key="font" size="12" name="Menlo-Regular"/>
@@ -496,14 +496,14 @@
                     </textFieldCell>
                 </textField>
                 <box fixedFrame="YES" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ASu-W7-Cac">
-                    <rect key="frame" x="17" y="16" width="566" height="78"/>
+                    <rect key="frame" x="17" y="16" width="566" height="85"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="lb7-fh-vLA">
-                        <rect key="frame" x="4" y="5" width="558" height="70"/>
+                        <rect key="frame" x="4" y="5" width="558" height="77"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="heq-3o-XOl">
-                                <rect key="frame" x="8" y="3" width="543" height="56"/>
+                                <rect key="frame" x="18" y="0.0" width="522" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="justified" id="6vU-GO-opk">
                                     <font key="font" size="12" name="Menlo-Regular"/>
@@ -516,7 +516,7 @@
                     </view>
                 </box>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OwS-Bs-2O3">
-                    <rect key="frame" x="446" y="120" width="126" height="32"/>
+                    <rect key="frame" x="446" y="127" width="126" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="W6X-IU-31r">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -527,7 +527,7 @@
                     </connections>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="502" y="939"/>
+            <point key="canvasLocation" x="502" y="942.5"/>
         </customView>
         <customView id="1OV-sl-cSe" userLabel="Update">
             <rect key="frame" x="0.0" y="0.0" width="600" height="297"/>

@@ -45,7 +45,6 @@
 //signing info: popover
 @property (strong) IBOutlet NSPopover *signingInfoPopover;
 
-
 //virus total: button
 @property (weak) IBOutlet NSButton *virusTotalButton;
 
@@ -101,9 +100,6 @@
 //action (rule) scope
 @property (weak) IBOutlet NSPopUpButton *actionScope;
 
-//check box for temp rule
-@property (weak) IBOutlet NSButton *tempRule;
-
 //rule durations
 @property (weak) IBOutlet NSButton *ruleDurationAlways;
 @property (weak) IBOutlet NSButton *ruleDurationProcess;
@@ -113,7 +109,11 @@
 //options view
 @property (weak) IBOutlet NSView *options;
 
-@property (weak) IBOutlet NSLayoutConstraint *optionsHeightConstraint;
+//show options button
+@property (weak) IBOutlet NSButton* showOptions;
+
+//endpoint (e.g. domain)
+@property(nonatomic, retain)NSString* endpoint;
 
 /* METHODS */
 
@@ -124,7 +124,5 @@
 // ->block/allow, and then close
 -(IBAction)handleUserResponse:(id)sender;
 
-//show options button
-@property (weak) IBOutlet NSButton* showOptions;
 
 @end

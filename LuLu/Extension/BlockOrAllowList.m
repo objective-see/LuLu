@@ -228,10 +228,17 @@ bail:
     //add url
     if(nil != flow.URL.absoluteString)
     {
-        //add
+        //add full url
         [endpointNames addObject:flow.URL.absoluteString];
     }
     
+    //add host
+    if(nil != flow.URL.host)
+    {
+        //add full url
+        [endpointNames addObject:flow.URL.host];
+    }
+        
     //add host name
     if(nil != remoteEndpoint.hostname)
     {
