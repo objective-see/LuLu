@@ -119,4 +119,7 @@ NSString* toEscapedJSON(NSString* input);
 //convert date to absolute
 NSDate* absoluteDate(NSDate* date);
 
+//generate list of ancestors
+NSMutableArray* generateProcessHierarchy(pid_t child);
+
 #endif

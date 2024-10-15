@@ -137,7 +137,7 @@ extern os_log_t logHandle;
         [self getArgs];
         
         //enum ancestors
-        [self enumerateAncestors];
+        self.ancestors = generateProcessHierarchy(self.pid);
         
         //grab current (audit) token
         currentToken = tokenForPid(self.pid);
@@ -214,113 +214,6 @@ bail:
     os_log_debug(logHandle, "generated process key: %{public}@", key);
 
     return key;
-}
-
-//generate list of ancestors
--(void)enumerateAncestors
-{
-    //current process id
-    pid_t currentPID = -1;
-    
-    //current path
-    NSString* currentPath = nil;
-    
-    //current name
-    NSString* currentName = nil;
-    
-    //parent
-    NSDictionary* parent = nil;
-    
-    //parent pid
-    pid_t parentPID = -1;
-    
-    //rpid function
-    static pid_t (*getRPID)(pid_t pid) = NULL;
-    
-    //token
-    static dispatch_once_t onceToken = 0;
-    
-    //only once
-    // init requirements
-    dispatch_once(&onceToken, ^{
-        
-        //get function pointer
-        getRPID = dlsym(RTLD_NEXT, "responsibility_get_pid_responsible_for_pid");
-        
-    });
-    
-    //start w/ self
-    currentPID = self.pid;
-    
-    do {
-        
-        //get path
-        if(nil == (currentPath = getProcessPath(currentPID)))
-        {
-            //default
-            currentPath = NSLocalizedString(@"unknown", @"unknown");
-        }
-        
-        //get name
-        currentName = getProcessName(0, currentPath);
-        if(nil == currentName)
-        {
-            //default
-            currentName = NSLocalizedString(@"unknown", @"unknown");
-        }
-        
-        //add
-        [self.ancestors insertObject:[@{KEY_PROCESS_ID:[NSNumber numberWithInt:currentPID], KEY_PROCESS_PATH:currentPath,  KEY_PROCESS_NAME:currentName} mutableCopy] atIndex:0];
-        
-        //for apps
-        // try application services pid
-        parent = getRealParent(currentPID);
-        parentPID = [parent[@"pid"] intValue];
-        
-        //not found
-        // try via responsible pid
-        if(0 == parentPID)
-        {
-            //for parent
-            // first try via rPID
-            if(NULL != getRPID)
-            {
-                //get rpid
-                parentPID = getRPID(currentPID);
-            }
-        }
-        
-        //couldn't find/get rPID?
-        // default back to using standard method
-        if( (parentPID <= 0) ||
-            (currentPID == parentPID) )
-        {
-            //get parent pid
-            parentPID = getParent(currentPID);
-        }
-        
-        //done?
-        if( (parentPID <= 0) ||
-            (currentPID == parentPID) )
-        {
-            //bail
-            break;
-        }
-        
-        //update
-        currentPID = parentPID;
-        
-    } while(YES);
-    
-    //now, will all items added
-    // add each item's index for UI purposes
-    for(NSUInteger i = 0; i < self.ancestors.count; i++)
-    {
-        //set index
-        self.ancestors[i][KEY_INDEX] = [NSNumber numberWithInteger:i];
-    }
-
-    return;
 }
 
 //set process's path

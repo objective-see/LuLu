@@ -64,9 +64,6 @@
 // method will then (try) fill out rest of object
 -(id _Nullable)init:(audit_token_t* _Nonnull)token;
 
-//generate list of ancestors
--(void)enumerateAncestors;
-
 @end
 
 #endif /* Process_h */

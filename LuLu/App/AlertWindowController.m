@@ -74,6 +74,9 @@ extern os_log_t logHandle;
 // populate/configure alert window
 -(void)windowDidLoad
 {
+    //process pid
+    pid_t processID = 0;
+    
     //process args
     NSMutableString* arguments = nil;
 
@@ -104,8 +107,24 @@ extern os_log_t logHandle;
     //init dictionary for title attributes
     titleAttributes = [NSMutableDictionary dictionary];
     
-    //extract
-    self.processHierarchy = alert[KEY_PROCESS_ANCESTORS];
+    //extract process ID
+    processID = [self.alert[KEY_PROCESS_ID] intValue];
+    
+    //do we have access?
+    // build hierarchy here
+    if(0 == kill(processID, 0))
+    {
+        //extract
+        self.processHierarchy = generateProcessHierarchy(processID);
+        
+        //dbg msg
+        os_log_debug(logHandle, "(re)generated process hierarchy: %{public}@", self.processHierarchy);
+    }
+    else
+    {
+        //extract
+        self.processHierarchy = alert[KEY_PROCESS_ANCESTORS];
+    }
     
     //disable ancestory button if no ancestors
     if(0 == self.processHierarchy.count) 
