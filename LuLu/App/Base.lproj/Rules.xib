@@ -65,9 +65,8 @@
                                                     <rect key="frame" x="1" y="1" width="780" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkx-JF-q5i">
-                                                            <rect key="frame" x="41" y="20" width="767" height="20"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" tag="100" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkx-JF-q5i">
+                                                            <rect key="frame" x="41" y="20" width="738" height="20"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Item Name" id="7zm-Uo-lwv">
                                                                 <font key="font" size="17" name="Menlo-Bold"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -75,13 +74,12 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N20-23-Uhm">
-                                                            <rect key="frame" x="3" y="9" width="32" height="32"/>
+                                                            <rect key="frame" x="3" y="8" width="32" height="32"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSColorPanel" id="qD1-Wa-myu"/>
                                                         </imageView>
-                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" tag="101" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eh8-4j-zJP">
-                                                            <rect key="frame" x="41" y="5" width="767" height="13"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="101" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eh8-4j-zJP">
+                                                            <rect key="frame" x="41" y="5" width="738" height="13"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingMiddle" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="item details..." id="qbv-z3-4PI">
                                                                 <font key="font" size="11" name="Menlo-Regular"/>
                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -89,6 +87,16 @@
                                                             </textFieldCell>
                                                         </textField>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="Eh8-4j-zJP" secondAttribute="bottom" constant="5" id="4HF-9l-vFE"/>
+                                                        <constraint firstAttribute="trailing" secondItem="bkx-JF-q5i" secondAttribute="trailing" constant="3" id="DK8-7A-WGn"/>
+                                                        <constraint firstItem="Eh8-4j-zJP" firstAttribute="top" secondItem="bkx-JF-q5i" secondAttribute="bottom" constant="2" id="MBl-IV-KYy"/>
+                                                        <constraint firstItem="bkx-JF-q5i" firstAttribute="leading" secondItem="hYC-a4-Gp3" secondAttribute="leading" constant="43" id="Mbc-nL-eRZ"/>
+                                                        <constraint firstItem="Eh8-4j-zJP" firstAttribute="leading" secondItem="hYC-a4-Gp3" secondAttribute="leading" constant="43" id="NLQ-rO-LG8"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Eh8-4j-zJP" secondAttribute="trailing" constant="3" id="ZdC-qM-pHV"/>
+                                                        <constraint firstItem="bkx-JF-q5i" firstAttribute="top" secondItem="hYC-a4-Gp3" secondAttribute="top" constant="10" id="bOf-Op-7zO"/>
+                                                        <constraint firstItem="Eh8-4j-zJP" firstAttribute="top" secondItem="bkx-JF-q5i" secondAttribute="bottom" constant="2" id="udt-0d-MNx"/>
+                                                    </constraints>
                                                     <connections>
                                                         <outlet property="imageView" destination="N20-23-Uhm" id="wZA-z1-x7L"/>
                                                         <outlet property="textField" destination="bkx-JF-q5i" id="cbO-X8-NpB"/>

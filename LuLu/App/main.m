@@ -13,6 +13,9 @@
 @import Cocoa;
 @import OSLog;
 
+//TODO:
+// new pref: allow apple programs, unless has args + parent is untrusted
+
 /* GLOBALS */
 
 //log handle
