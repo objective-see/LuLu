@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PrefsWindowController">
             <connections>
                 <outlet property="allowList" destination="4CH-OQ-Fxj" id="axT-m4-YDv"/>
+                <outlet property="blockList" destination="n5J-8K-UDy" id="BmA-b5-ppb"/>
                 <outlet property="listsView" destination="Nkz-5s-cqG" id="Ji5-bu-0Vr"/>
                 <outlet property="modesView" destination="K6i-xr-27e" id="DOb-L3-eeR"/>
                 <outlet property="passiveModeAction" destination="CBy-MH-fsc" id="EwM-q6-3ff"/>

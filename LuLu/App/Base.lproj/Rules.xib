@@ -106,9 +106,8 @@
                                                     <rect key="frame" x="1" y="53" width="780" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpF-QT-jfh">
-                                                            <rect key="frame" x="-1" y="13" width="809" height="20"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpF-QT-jfh">
+                                                            <rect key="frame" x="1" y="13" width="778" height="20"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" title="connection info" id="tZf-9e-yHh">
                                                                 <font key="font" size="17" name="Menlo-Regular"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -116,6 +115,11 @@
                                                             </textFieldCell>
                                                         </textField>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="jpF-QT-jfh" secondAttribute="trailing" constant="3" id="Mf6-7V-C48"/>
+                                                        <constraint firstItem="jpF-QT-jfh" firstAttribute="leading" secondItem="Tec-Zl-6cm" secondAttribute="leading" constant="3" id="emp-cE-Z8y"/>
+                                                        <constraint firstItem="jpF-QT-jfh" firstAttribute="top" secondItem="Tec-Zl-6cm" secondAttribute="top" constant="17" id="opg-Gi-wb1"/>
+                                                    </constraints>
                                                     <connections>
                                                         <outlet property="textField" destination="jpF-QT-jfh" id="NNr-pk-0TP"/>
                                                     </connections>
