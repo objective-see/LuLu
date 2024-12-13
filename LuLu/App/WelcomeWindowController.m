@@ -63,8 +63,14 @@ extern os_log_t logHandle;
     //make key and front
     [self.window makeKeyAndOrderFront:self];
     
-    //make app active
-    [NSApp activateIgnoringOtherApps:YES];
+    //activate
+    if(@available(macOS 14.0, *)) {
+        [NSApp activate];
+    }
+    else
+    {
+        [NSApp activateIgnoringOtherApps:YES];
+    }
     
     return;
 }
@@ -218,8 +224,14 @@ extern os_log_t logHandle;
                         //make it key window
                         [self.window makeKeyAndOrderFront:self];
                         
-                        //make window front
-                        [NSApp activateIgnoringOtherApps:YES];
+                        //activate
+                        if(@available(macOS 14.0, *)) {
+                            [NSApp activate];
+                        }
+                        else
+                        {
+                            [NSApp activateIgnoringOtherApps:YES];
+                        }
                         
                     });
                     

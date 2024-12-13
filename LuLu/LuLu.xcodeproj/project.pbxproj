@@ -309,7 +309,6 @@
 			children = (
 				CD2CA1852C3E9E7000D7BEAA /* AboutWindow.xib */,
 				CDA1369B24F0D2CF005AD424 /* AboutWindowController.h */,
-				CDD992D62C4EC30000A1B406 /* InfoPlist.xcstrings */,
 				CDA1369524F0D2CF005AD424 /* AboutWindowController.m */,
 				CD2CA1812C3E9E6C00D7BEAA /* AddRule.xib */,
 				CDA1369324F0D2CF005AD424 /* AddRuleWindowController.h */,
@@ -327,6 +326,7 @@
 				CDC378C5250C66C200314064 /* Extension.h */,
 				CDC378C6250C66C300314064 /* Extension.m */,
 				CDB2CC2324D61A5000D0EECE /* Info.plist */,
+				CDD992D62C4EC30000A1B406 /* InfoPlist.xcstrings */,
 				CD2CA1772C3E9E5700D7BEAA /* ItemPaths.xib */,
 				CD9E147A25171BF200DA05C3 /* ItemPathsWindowController.h */,
 				CD9E147B25171BF200DA05C3 /* ItemPathsWindowController.m */,

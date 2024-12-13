@@ -20,7 +20,6 @@ extern os_log_t logHandle;
 @synthesize spinner;
 
 //automatically called when nib is loaded
-// just center window
 -(void)awakeFromNib
 {
     //center
@@ -43,8 +42,14 @@ extern os_log_t logHandle;
     //make it key window
     [self.window makeKeyAndOrderFront:self];
     
-    //make window front
-    [NSApp activateIgnoringOtherApps:YES];
+    //activate
+    if(@available(macOS 14.0, *)) {
+        [NSApp activate];
+    }
+    else
+    {
+        [NSApp activateIgnoringOtherApps:YES];
+    }
     
     return;
 }

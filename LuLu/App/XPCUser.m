@@ -72,8 +72,17 @@ extern NSMutableDictionary* alerts;
         // note: this will stop the dock bouncing...
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-            //make window front
-            [NSApp activateIgnoringOtherApps:YES];
+            //activate
+            if(@available(macOS 14.0, *)) {
+                [NSApp activate];
+            }
+            else
+            {
+                [NSApp activateIgnoringOtherApps:YES];
+            }
+            
+            //make it modal(ish)
+            [alertWindow.window setLevel:NSPopUpMenuWindowLevel];
             
             //code sign change?
             // show code signing popover

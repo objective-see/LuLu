@@ -1252,8 +1252,16 @@ NSModalResponse showAlert(NSAlertStyle style, NSString* messageText, NSString* i
     //make first button, first responder
     alert.buttons[0].keyEquivalent = @"\r";
     
-    //make app active
-    [NSApp activateIgnoringOtherApps:YES];
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+    
+    //activate
+    if(@available(macOS 14.0, *)) {
+        [NSApp activate];
+    }
+    else
+    {
+        [NSApp activateIgnoringOtherApps:YES];
+    }
     
     //show
     response = [alert runModal];

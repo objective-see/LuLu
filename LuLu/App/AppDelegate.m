@@ -430,8 +430,14 @@ bail:
     //make it key window
     [[windowController window] makeKeyAndOrderFront:self];
     
-    //make window front
-    [NSApp activateIgnoringOtherApps:YES];
+    //activate
+    if(@available(macOS 14.0, *)) {
+        [NSApp activate];
+    }
+    else
+    {
+        [NSApp activateIgnoringOtherApps:YES];
+    }
     
     return;
 }
@@ -681,12 +687,6 @@ bail:
     
     //foreground
     [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
-
-    //make key and front
-    [self.window makeKeyAndOrderFront:self];
-
-    //make app active
-    [NSApp activateIgnoringOtherApps:YES];
     
     //show alert
     response = showAlert(NSAlertStyleInformational, NSLocalizedString(@"Quit LuLu?", @"Quit LuLu?"), NSLocalizedString(@"...this will terminate LuLu, until the next time you log in.", @"...this will terminate LuLu, until the next time you log in."), @[NSLocalizedString(@"Quit", @"Quit"), NSLocalizedString(@"Cancel", @"Cancel")]);
@@ -732,10 +732,7 @@ bail:
     Configure* configure = nil;
     
     //foreground
-    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
-    
-    //make app active
-    [NSApp activateIgnoringOtherApps:YES];
+    //[NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
     
     //show alert
     response = showAlert(NSAlertStyleInformational, NSLocalizedString(@"Uninstall LuLu?", @"Uninstall LuLu?"), NSLocalizedString(@"...this will fully remove LuLu from your Mac", @"...this will fully remove LuLu from your Mac"), @[NSLocalizedString(@"Uninstall", @"Uninstall"), NSLocalizedString(@"Cancel", @"Cancel")]);
