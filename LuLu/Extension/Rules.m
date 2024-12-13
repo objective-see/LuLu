@@ -571,6 +571,12 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "saved rule to disk");
     }
+    //no need to save
+    else
+    {
+        //dbg msg
+        os_log_debug(logHandle, "'save' not set (rule is temporary), so no need to write it out to disk");
+    }
     
     //happy
     added = YES;

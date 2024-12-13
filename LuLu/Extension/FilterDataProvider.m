@@ -808,7 +808,7 @@ bail:
         rule = [[Rule alloc] init:alert];
 
         //add / save
-        [rules add:rule save:[rule isTemporary]];
+        [rules add:rule save:![rule isTemporary]];
 
         //remove from 'shown'
         [alerts removeShown:alert];
