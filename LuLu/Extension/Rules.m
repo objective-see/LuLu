@@ -921,7 +921,7 @@ bail:
     }
     
     //dbg msg
-    os_log_debug(logHandle, "checking %{public}@ against %{public}@ and just %{public}@", rule.endpointAddr, endpointNames, rule.endpointHost);
+    os_log_debug(logHandle, "checking rule's endpoint address (%{public}@) and rule's endpoint host %{public}@ against %{public}@", rule.endpointAddr, rule.endpointHost, endpointNames);
     
     //endpoint addr a regex?
     // init regex and check for match
@@ -960,82 +960,35 @@ bail:
     }
     
     //not regex
-    // check each (plus host!) for exact match
+    // check rule's endpoint address and host for (exact) match
     else
     {
         //check each
         for(NSString* endpointName in endpointNames)
         {
-            //url
-            NSURL* url = nil;
-            
-            //host components
-            NSArray* hostComponents = nil;
-            
-            //host
-            NSString* host = nil;
-            
             //dbg msg
-            os_log_debug(logHandle, "checking %{public}@ vs. %{public}@", endpointName, rule.endpointAddr);
+            os_log_debug(logHandle, "checking %{public}@ vs. %{public}@", rule.endpointAddr, endpointName);
             
-            //init url
-            // add prefix
-            if(YES != [endpointName hasPrefix:@"http"])
-            {
-                //init url
-                url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", endpointName]];
-            }
-            //no prefix needed
-            else
-            {
-                //init url
-                url = [NSURL URLWithString:endpointName];
-            }
-            
-            //match?
+            //check against rule's endpoint address
             if(NSOrderedSame == [rule.endpointAddr caseInsensitiveCompare:endpointName])
             {
                 //dbg msg
-                os_log_debug(logHandle, "rule match: %{public}@", endpointName);
+                os_log_debug(logHandle, "rule match (endpoint address): %{public}@", endpointName);
                 
                 //match
                 isMatch = YES;
-                
-                //bail
                 goto bail;
             }
             
-            //dbg msg
-            os_log_debug(logHandle, "also checking %{public}@ vs. %{public}@", url.host, rule.endpointHost);
-        
-            //also check (just) host name
-            // for example "a.b.c.com" will be checked against "c.com"
-            if( (nil != url.host) &&
-                (nil != rule.endpointHost) )
+            //(also) check against rule's endpoint host
+            if(NSOrderedSame == [rule.endpointHost caseInsensitiveCompare:endpointName])
             {
-                //split
-                hostComponents = [url.host componentsSeparatedByString:@"."];
-                if(hostComponents.count < 2)
-                {
-                    //skip
-                    continue;
-                }
+                //dbg msg
+                os_log_debug(logHandle, "rule match: (endpoint host) %{public}@", endpointName);
                 
-                //build host from last two componets
-                host = [NSString stringWithFormat:@"%@.%@", [hostComponents objectAtIndex:hostComponents.count - 2], hostComponents.lastObject];
-                
-                //match?
-                if(NSOrderedSame == [rule.endpointHost caseInsensitiveCompare:host])
-                {
-                    //dbg msg
-                    os_log_debug(logHandle, "rule match: (host) %{public}@", rule.endpointHost);
-                    
-                    //match
-                    isMatch = YES;
-                    
-                    //bail
-                    goto bail;
-                }
+                //match
+                isMatch = YES;
+                goto bail;
             }
         }
     }

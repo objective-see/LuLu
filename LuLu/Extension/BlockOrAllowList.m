@@ -196,7 +196,7 @@ bail:
     return;
 }
 
-//check if flow matches item on block list
+//check if flow matches item on block or allow list
 -(BOOL)isMatch:(NEFilterSocketFlow*)flow
 {
     //match

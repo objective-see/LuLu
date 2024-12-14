@@ -92,24 +92,24 @@ extern os_log_t logHandle;
             self.endpointPort = (nil != info[KEY_ENDPOINT_PORT]) ? info[KEY_ENDPOINT_PORT] : VALUE_ANY;
         }
         
-        //init url
+        //init URL obj (w/ scheme)
+        // so we can extract a host
         if(YES != [self.endpointAddr isEqualToString:VALUE_ANY])
         {
-            //init url
-            // add prefix
+            //init url w/ scheme
             if(YES != [self.endpointAddr hasPrefix:@"http"])
             {
                 //init url
-                remoteURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://%@", self.endpointAddr]];
+                remoteURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@", self.endpointAddr]];
             }
-            //no prefix needed
+            //no scheme needed
             else
             {
                 //init url
                 remoteURL = [NSURL URLWithString:self.endpointAddr];
             }
             
-            //get host name
+            //now with URL obj, get host name
             self.endpointHost = remoteURL.host;
         }
         
