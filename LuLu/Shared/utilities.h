@@ -122,4 +122,7 @@ NSDate* absoluteDate(NSDate* date);
 //generate list of ancestors
 NSMutableArray* generateProcessHierarchy(pid_t child);
 
+//center a window
+void centerWindow(NSWindow* window);
+
 #endif

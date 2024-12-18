@@ -77,9 +77,6 @@ XPCDaemonClient* xpcDaemonClient = nil;
         //dbg msg
         os_log_debug(logHandle, "LuLu running from %{public}@, not from within /Applications", NSBundle.mainBundle.bundlePath);
         
-        //foreground
-        [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
-        
         //show alert
         showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"LuLu must run from:\r\n  %@", @"LuLu must run from:\r\n  %@"), [@"/Applications" stringByAppendingPathComponent:APP_NAME]], NSLocalizedString(@"...please copy it to /Applications and re-launch.", @"...please copy it to /Applications and re-launch."), @[NSLocalizedString(@"OK",@"OK")]);
         
@@ -135,9 +132,20 @@ XPCDaemonClient* xpcDaemonClient = nil;
             //alloc/init
             startupWindowController = [[StartupWindowController alloc] initWithWindowNibName:@"StartupWindowController"];
             
+            //activate
+            if(@available(macOS 14.0, *)) {
+                [NSApp activate];
+            }
+            else
+            {
+                [NSApp activateIgnoringOtherApps:YES];
+            }
+            
+            //make window front
+            [self.startupWindowController.window makeKeyAndOrderFront:nil];
+    
             //show window
             [self.startupWindowController showWindow:nil];
-           
         }
         
         //wait 1 second, so that startup window can show...
@@ -176,9 +184,6 @@ XPCDaemonClient* xpcDaemonClient = nil;
                         
                         //show error on main thread
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            
-                            //foreground
-                            [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
                             
                             //show alert
                             showAlert(NSAlertStyleCritical, NSLocalizedString(@"ERROR: activation failed", @"ERROR: activation failed"), NSLocalizedString(@"failed to activate system/network extension", @"failed to activate system/network extension"), @[NSLocalizedString(@"OK", @"OK")]);
@@ -685,9 +690,6 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "function '%s' invoked", __PRETTY_FUNCTION__);
     
-    //foreground
-    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
-    
     //show alert
     response = showAlert(NSAlertStyleInformational, NSLocalizedString(@"Quit LuLu?", @"Quit LuLu?"), NSLocalizedString(@"...this will terminate LuLu, until the next time you log in.", @"...this will terminate LuLu, until the next time you log in."), @[NSLocalizedString(@"Quit", @"Quit"), NSLocalizedString(@"Cancel", @"Cancel")]);
     
@@ -730,9 +732,6 @@ bail:
     
     //config obj
     Configure* configure = nil;
-    
-    //foreground
-    //[NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
     
     //show alert
     response = showAlert(NSAlertStyleInformational, NSLocalizedString(@"Uninstall LuLu?", @"Uninstall LuLu?"), NSLocalizedString(@"...this will fully remove LuLu from your Mac", @"...this will fully remove LuLu from your Mac"), @[NSLocalizedString(@"Uninstall", @"Uninstall"), NSLocalizedString(@"Cancel", @"Cancel")]);

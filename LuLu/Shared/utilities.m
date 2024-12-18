@@ -9,6 +9,7 @@
 
 #import "consts.h"
 #import "utilities.h"
+#import "AppDelegate.h"
 
 @import OSLog;
 @import Carbon;
@@ -1252,6 +1253,7 @@ NSModalResponse showAlert(NSAlertStyle style, NSString* messageText, NSString* i
     //make first button, first responder
     alert.buttons[0].keyEquivalent = @"\r";
     
+    //foreground
     [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
     
     //activate
@@ -1263,10 +1265,36 @@ NSModalResponse showAlert(NSAlertStyle style, NSString* messageText, NSString* i
         [NSApp activateIgnoringOtherApps:YES];
     }
     
+    //make alert window front
+    [alert.window makeKeyAndOrderFront:nil];
+    
+    //center
+    centerWindow(alert.window);
+    
     //show
     response = [alert runModal];
     
+    //(re)set activation policy
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) setActivationPolicy];
+    
     return response;
+}
+
+//center a window
+void centerWindow(NSWindow* window)
+{
+    //frames
+    NSRect windowFrame = window.frame;
+    NSRect screenFrame = [NSScreen mainScreen].frame;
+    
+    //center
+    CGFloat centerX = NSMidX(screenFrame) - (windowFrame.size.width / 2);
+    CGFloat centerY = NSMidY(screenFrame) - (windowFrame.size.height / 2);
+
+    //set
+    [window setFrame:NSMakeRect(centerX, centerY, windowFrame.size.width, windowFrame.size.height) display:YES];
+    
+    return;
 }
 
 //get audit token for pid
