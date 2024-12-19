@@ -426,15 +426,6 @@ bail:
     //make foreground
     [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
     
-    //center
-    [windowController.window center];
-
-    //show it
-    [windowController showWindow:self];
-    
-    //make it key window
-    [[windowController window] makeKeyAndOrderFront:self];
-    
     //activate
     if(@available(macOS 14.0, *)) {
         [NSApp activate];
@@ -443,6 +434,15 @@ bail:
     {
         [NSApp activateIgnoringOtherApps:YES];
     }
+    
+    //make it key window
+    [windowController.window makeKeyAndOrderFront:self];
+    
+    //center
+    [windowController.window center];
+
+    //show it
+    [windowController showWindow:self];
     
     return;
 }

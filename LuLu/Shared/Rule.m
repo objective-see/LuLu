@@ -469,13 +469,13 @@ bail:
     //creation
     if(nil != self.creation)
     {
-        [json appendFormat:@"\"%@\" : %@,", NSStringFromSelector(@selector(creation)), [dateFormatter stringFromDate:self.creation]];
+        [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(creation)), [dateFormatter stringFromDate:self.creation]];
     }
     
     //expiration
     if(nil != self.expiration)
     {
-        [json appendFormat:@"\"%@\" : %@,", NSStringFromSelector(@selector(creation)), [dateFormatter stringFromDate:self.expiration]];
+        [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(creation)), [dateFormatter stringFromDate:self.expiration]];
     }
 
     [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(endpointPort)), self.endpointPort];
