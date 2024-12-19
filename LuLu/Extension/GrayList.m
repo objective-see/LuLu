@@ -17,23 +17,29 @@ NSString* const GRAYLISTED_BINARIES[] =
 {
     @"com.apple.nc",
     @"com.apple.ftp",
+    @"com.apple.zsh",
     @"com.apple.ksh",
     @"com.apple.php",
     @"com.apple.scp",
+    @"com.apple.ssh",
+    @"com.apple.bash",
+    @"com.apple.tcsh",
     @"com.apple.curl",
     @"com.apple.perl",
     @"com.apple.ruby",
     @"com.apple.sftp",
-    @"com.tcltk.tclsh"
+    @"com.tcltk.tclsh",
     @"com.apple.perl5",
     @"com.apple.whois",
     @"com.apple.python",
     @"com.apple.telnet",
     @"com.apple.openssh",
     @"com.apple.python2",
+    @"com.apple.python3",
     @"org.python.python",
     @"com.apple.pythonw",
     @"com.apple.osascript",
+    
 };
 
 /* GLOBALS */
