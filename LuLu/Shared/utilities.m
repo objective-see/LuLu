@@ -1269,7 +1269,7 @@ NSModalResponse showAlert(NSAlertStyle style, NSString* messageText, NSString* i
     [alert.window makeKeyAndOrderFront:nil];
     
     //center
-    centerWindow(alert.window);
+    [alert.window center];
     
     //show
     response = [alert runModal];
@@ -1278,23 +1278,6 @@ NSModalResponse showAlert(NSAlertStyle style, NSString* messageText, NSString* i
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) setActivationPolicy];
     
     return response;
-}
-
-//center a window
-void centerWindow(NSWindow* window)
-{
-    //frames
-    NSRect windowFrame = window.frame;
-    NSRect screenFrame = [NSScreen mainScreen].frame;
-    
-    //center
-    CGFloat centerX = NSMidX(screenFrame) - (windowFrame.size.width / 2);
-    CGFloat centerY = NSMidY(screenFrame) - (windowFrame.size.height / 2);
-
-    //set
-    [window setFrame:NSMakeRect(centerX, centerY, windowFrame.size.width, windowFrame.size.height) display:YES];
-    
-    return;
 }
 
 //get audit token for pid
