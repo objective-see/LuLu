@@ -104,8 +104,15 @@ extern XPCDaemonClient* xpcDaemonClient;
         goto bail;
     }
     
-    //init with items paths
-    paths = [item[KEY_PATHS] mutableCopy];
+    //first add rule's path
+    if(nil != rule.path)
+    {
+        //add
+        [paths addObject:rule.path];
+    }
+
+    //add any external paths
+    [paths unionSet:item[KEY_PATHS]];
     
     //grab bundle id
     bundleID = rule.csInfo[KEY_CS_ID];

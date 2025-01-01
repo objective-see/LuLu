@@ -339,6 +339,7 @@ bail:
             //dbg msg
             os_log_debug(logHandle, "loaded rule has an expiration date set: %{public}@", rule.expiration);
             
+            //interval
             timeInterval = [rule.expiration timeIntervalSinceNow];
             
             //already expired?
@@ -1251,6 +1252,7 @@ bail:
         goto bail;
     }
     
+    //dbg msg
     os_log_debug(logHandle, "saved (imported) rules");
     
     //happy

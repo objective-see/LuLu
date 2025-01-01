@@ -436,15 +436,20 @@ bail:
     //init
     json = [NSMutableString string];
     
+    //key
     [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(key)), self.key];
+    
+    //uuid
     [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(uuid)), self.uuid];
     
+    //path
     escaped = toEscapedJSON(self.path);
     if(nil != escaped)
     {
         [json appendFormat:@"\"%@\" : %@,", NSStringFromSelector(@selector(path)), escaped];
     }
     
+    //name
     escaped = toEscapedJSON(self.name);
     if(nil != escaped)
     {
@@ -478,11 +483,19 @@ bail:
         [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(creation)), [dateFormatter stringFromDate:self.expiration]];
     }
 
+    //port
     [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(endpointPort)), self.endpointPort];
+    
+    //is regex
     [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(isEndpointAddrRegex)), self.isEndpointAddrRegex];
 
+    //type
     [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(type)), self.type.intValue];
+    
+    //scope
     [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(scope)), self.scope.intValue];
+    
+    //action
     [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(action)), self.action.intValue];
     
     //cs info
