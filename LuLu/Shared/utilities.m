@@ -1265,6 +1265,9 @@ NSModalResponse showAlert(NSAlertStyle style, NSString* messageText, NSString* i
         [NSApp activateIgnoringOtherApps:YES];
     }
     
+    //(re)make front
+    [[NSRunningApplication currentApplication] activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
+    
     //make alert window front
     [alert.window makeKeyAndOrderFront:nil];
     

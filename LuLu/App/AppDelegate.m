@@ -95,11 +95,17 @@ XPCDaemonClient* xpcDaemonClient = nil;
         //alloc window controller
         welcomeWindowController = [[WelcomeWindowController alloc] initWithWindowNibName:@"Welcome"];
         
+        //set activation policy
+        [self setActivationPolicy];
+        
         //show window
         [self.welcomeWindowController showWindow:self];
         
-        //set activation policy
-        [self setActivationPolicy];
+        //make front
+        [[NSRunningApplication currentApplication] activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
+        
+        //make window front
+        [self.startupWindowController.window makeKeyAndOrderFront:nil];
         
         //install (self as) login item
         if(YES != toggleLoginItem(NSBundle.mainBundle.bundleURL, ACTION_INSTALL_FLAG))
@@ -143,7 +149,10 @@ XPCDaemonClient* xpcDaemonClient = nil;
             
             //make window front
             [self.startupWindowController.window makeKeyAndOrderFront:nil];
-    
+            
+            //make it modal(ish)
+            [self.startupWindowController.window setLevel:NSPopUpMenuWindowLevel];
+            
             //show window
             [self.startupWindowController showWindow:nil];
         }

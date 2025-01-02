@@ -51,6 +51,9 @@ extern os_log_t logHandle;
         [NSApp activateIgnoringOtherApps:YES];
     }
     
+    //(re)make front
+    [[NSRunningApplication currentApplication] activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
+    
     return;
 }
 

@@ -72,6 +72,9 @@ extern os_log_t logHandle;
         [NSApp activateIgnoringOtherApps:YES];
     }
     
+    //(re)make front
+    [[NSRunningApplication currentApplication] activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
+    
     return;
 }
 
@@ -233,6 +236,9 @@ extern os_log_t logHandle;
                             [NSApp activateIgnoringOtherApps:YES];
                         }
                         
+                        //(re)make front
+                        [[NSRunningApplication currentApplication] activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
+                        
                     });
                     
                     //signal semaphore
@@ -250,7 +256,10 @@ extern os_log_t logHandle;
             
         //show configure view
         case SHOW_CONFIGURE:
+            
+            //show
             [self showView:self.configureView firstResponder:SHOW_SUPPORT];
+            
             break;
             
         //show "support us" view

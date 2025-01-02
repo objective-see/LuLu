@@ -68,6 +68,9 @@
         [NSApp activateIgnoringOtherApps:YES];
     }
     
+    //(re)make front
+    [[NSRunningApplication currentApplication] activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
+    
     return;
 }
 
