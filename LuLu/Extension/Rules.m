@@ -982,7 +982,8 @@ bail:
             }
             
             //(also) check against rule's endpoint host
-            if(NSOrderedSame == [rule.endpointHost caseInsensitiveCompare:endpointName])
+            if( (nil != rule.endpointHost) &&
+                (NSOrderedSame == [rule.endpointHost caseInsensitiveCompare:endpointName]) )
             {
                 //dbg msg
                 os_log_debug(logHandle, "rule match: (endpoint host) %{public}@", endpointName);

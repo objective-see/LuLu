@@ -100,18 +100,6 @@
         }
       }
     },
-    " temporarily (pid: %@)" : {
-      "comment" : " temporarily (pid: %@)",
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " temporalmente (pid: %@)"
-          }
-        }
-      }
-    },
     " unknown" : {
       "comment" : " unknown",
       "localizations" : {

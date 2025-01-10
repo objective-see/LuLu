@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23094"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -455,7 +455,7 @@
         <image name="Heart" width="256" height="256"/>
         <image name="Icon" width="144" height="144"/>
         <image name="InstallAllow" width="520" height="468"/>
-        <image name="InstallApprove" width="901" height="305"/>
+        <image name="InstallApprove" width="894" height="317"/>
         <image name="InstallAuth" width="521" height="593"/>
         <image name="InstallBlocked" width="520" height="560"/>
         <image name="LuLuText" width="1268" height="385"/>

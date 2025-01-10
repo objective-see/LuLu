@@ -562,7 +562,7 @@ bail:
             else if(0 != [rules.rules[process.key][KEY_RULES] count])
             {
                 //dbg msg
-                os_log_debug(logHandle, "while signed by apple, %d/%{public}@ as other (non-matching) rules, so will alert", process.pid, process.binary.name);
+                os_log_debug(logHandle, "while signed by apple, %d/%{public}@ has other (non-matching) rules, so will alert", process.pid, process.binary.name);
                 
                 //pause
                 verdict = [NEFilterNewFlowVerdict pauseVerdict];

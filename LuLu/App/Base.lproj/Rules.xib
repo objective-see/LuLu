@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23094"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,9 +26,9 @@
         <window identifier="Rules" title="LuLu Rules" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="913" y="419" width="1015" height="574"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
             <value key="minSize" type="size" width="1020" height="550"/>
-            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
+            <view key="contentView" wantsLayer="YES" misplaced="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="1015" height="574"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <userGuides>
@@ -197,7 +197,7 @@
                         </tableHeaderView>
                     </scrollView>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eUD-fD-sWd">
-                        <rect key="frame" x="829" y="14" width="149" height="15"/>
+                        <rect key="frame" x="-171" y="14" width="149" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="145" id="Mxq-DQ-euD"/>
                             <constraint firstAttribute="height" constant="15" id="eie-Hn-5SE"/>
@@ -209,7 +209,7 @@
                         </textFieldCell>
                     </textField>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="VUa-5Z-QAG" userLabel="Overlay" customClass="NSVisualEffectView">
-                        <rect key="frame" x="258" y="187" width="500" height="200"/>
+                        <rect key="frame" x="-242" y="175" width="500" height="200"/>
                         <subviews>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="XFi-AG-WZ4">
                                 <rect key="frame" x="234" y="84" width="32" height="32"/>
@@ -231,7 +231,7 @@
                         </constraints>
                     </customView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QQG-tM-Qn1" userLabel="LuLu Button">
-                        <rect key="frame" x="453" y="3" width="110" height="38"/>
+                        <rect key="frame" x="-47" y="3" width="110" height="38"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="LuLuText" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="L9P-uv-Ruu">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -245,7 +245,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XnJ-SV-lDg">
-                        <rect key="frame" x="984" y="11" width="21" height="21"/>
+                        <rect key="frame" x="-16" y="11" width="21" height="21"/>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w4Y-Vg-33Z">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -356,7 +356,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="272" y="172" width="471" height="353"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
             <view key="contentView" id="cna-Y1-PEc">
                 <rect key="frame" x="0.0" y="0.0" width="471" height="353"/>
                 <autoresizingMask key="autoresizingMask"/>
