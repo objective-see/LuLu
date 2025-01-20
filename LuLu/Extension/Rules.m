@@ -896,10 +896,14 @@ bail:
     endpointNames = [NSMutableArray array];
     
     //add url
+    // and just host (as this is what is shown in alert)
     if(nil != flow.URL.absoluteString)
     {
-        //add
+        //add full url
         [endpointNames addObject:flow.URL.absoluteString];
+        
+        //add host
+        [endpointNames addObject:flow.URL.host];
     }
     
     //add host name
