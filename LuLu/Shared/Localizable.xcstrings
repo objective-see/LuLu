@@ -224,6 +224,12 @@
             "state" : "translated",
             "value" : "› no hay autoridades de firma"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "› non firmato"
+          }
         }
       }
     },
@@ -240,6 +246,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ (pid: %2$@)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (pid: %@)"
           }
         }
       }
@@ -258,6 +270,12 @@
             "state" : "translated",
             "value" : "%1$@ (firmante: %2$@)"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (firmato da: %2$@)"
+          }
         }
       }
     },
@@ -268,6 +286,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (firmante: Apple Mac OS App Store)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (firmato da: Apple Mac OS App Store)"
           }
         }
       }
@@ -280,6 +304,12 @@
             "state" : "translated",
             "value" : "%@ (firmante: Apple Original)"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (firmato da: Apple Proper)"
+          }
         }
       }
     },
@@ -290,6 +320,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (firmante: no válido/no firmado)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (firmato da: Non Valido/Non Firmato)"
           }
         }
       }
@@ -359,6 +395,12 @@
             "state" : "translated",
             "value" : "%1$@ no es una expresión regular válida\r\ndetalles: %2$@"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ non è un’espressione regolare valida\ndettagli: %@"
+          }
         }
       }
     },
@@ -370,6 +412,12 @@
             "state" : "translated",
             "value" : "%@ esta regla, puede impactar la funcionalidad legítima del sistema...¿continuar?"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ questa regola potrebbe impattare alcune funzionalità di sistema ...continuare?"
+          }
         }
       }
     },
@@ -380,6 +428,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "la información de firma de código de %@ ha cambiado"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La firma di %@ è cambiata"
           }
         }
       }
