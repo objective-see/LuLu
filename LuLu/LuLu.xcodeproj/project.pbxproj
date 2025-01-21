@@ -499,6 +499,7 @@
 				en,
 				Base,
 				es,
+				de,
 				it,
 				fr,
 			);
