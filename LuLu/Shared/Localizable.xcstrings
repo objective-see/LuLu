@@ -2025,7 +2025,10 @@
         },
 
         "it" : {
- }
+            "stringUnit" : {
+              "state" : "translated",
+              "value" : "OK"
+            }
         },
         "fr" : {
 
