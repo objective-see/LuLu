@@ -7,7 +7,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\nErkennungsquote:"
+            "value" : "\r\nErkennungsquote:"
           }
         },
         "es" : {
@@ -24,7 +24,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\nnicht bei VirusTotal gefunden"
+            "value" : "\r\nnicht bei VirusTotal gefunden"
           }
         },
         "es" : {
@@ -41,7 +41,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\nUngültige Antwort erhalten"
+            "value" : "\r\nUngültige Antwort erhalten"
           }
         },
         "es" : {
@@ -58,7 +58,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\nVirusTotal anzeigen"
+            "value" : "\r\nVirusTotal anzeigen"
           }
         },
         "es" : {
@@ -393,7 +393,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@ ist kein gültiger regulärer Ausdruck\nEinzelheiten: %2$@"
+            "value" : "%1$@ ist kein gültiger regulärer Ausdruck\r\nEinzelheiten: %2$@"
           }
         },
         "en" : {
@@ -1079,7 +1079,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erweiterungen müssen manuell in den Systemeinstellungen\nunter Datenschutz & Sicherheit freigegeben werden."
+            "value" : "Erweiterungen müssen manuell in den Systemeinstellungen\r\nunter Datenschutz & Sicherheit freigegeben werden."
           }
         },
         "es" : {
@@ -1266,7 +1266,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Installierte Version (%@) ist aktuell."
+            "value" : "Installierte Version (%@)\r\n ist aktuell."
           }
         },
         "es" : {
@@ -1300,7 +1300,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu muss von einem anderen Pfad ausgeführt werden:\n  %@"
+            "value" : "LuLu muss von einem anderen Pfad ausgeführt werden:\r\n  %@"
           }
         },
         "es" : {
@@ -1419,7 +1419,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hinweis:\r\n▪ Bestehende Verbindungen werden nicht beeinträchtig.\r\n▪ Verbindungen des Betriebssystems (außerhalb von LuLu) werden nicht blockiert.\n"
+            "value" : "Hinweis:\r\n▪ Bestehende Verbindungen werden nicht beeinträchtig.\r\n▪ Verbindungen des Betriebssystems (außerhalb von LuLu) werden nicht blockiert."
           }
         },
         "es" : {
@@ -1759,7 +1759,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dies muss zuerst deinstalliert werden. Klicke auf 'Weitere Informationen', um zu erfahren, wie du es deinstallieren kannst."
+            "value" : "Dies muss zuerst deinstalliert werden.\r\nKlicke auf 'Weitere Informationen', um zu erfahren, wie du es deinstallieren kannst."
           }
         },
         "es" : {
