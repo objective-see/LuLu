@@ -499,6 +499,7 @@
 				en,
 				Base,
 				es,
+				it,
 				fr,
 			);
 			mainGroup = CDB2CC0F24D61A4E00D0EECE;
