@@ -5,6 +5,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Check Now\"; ObjectID = \"2qr-2x-A3U\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jetzt überprüfen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -23,6 +29,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Block Mode\"; ObjectID = \"4EN-j2-enV\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blockierungsmodus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -41,6 +53,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Rules for new connections should be created?\"; ObjectID = \"5Wo-JL-Khb\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sollen Regeln für neue Verbindungen erstellt werden?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -59,6 +77,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Previously installed, 3rd-party programs will be allowed.\"; ObjectID = \"6gH-HW-CFe\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereit installierte Drittanbieterprogramme werden blockiert."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -77,6 +101,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Note: When a new connection is made, sometimes only the IP address may be available. In such cases, domains on the allow or block list cannot be matched, which may impact whether a request is blocked or allowed.\"; ObjectID = \"6vU-GO-opk\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweis: Wenn eine neue Verbindung hergestellt wird, ist manchmal nur die IP-Adresse verfügbar. In solchen Fällen können die Domains auf der Zulassungs- oder Sperrliste nicht abgeglichen werden, was sich darauf auswirken kann, ob eine Anfrage gesperrt oder zugelassen wird."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -95,6 +125,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Local or remote file, containing endpoints to always allow.\"; ObjectID = \"7iJ-xR-xDI\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokale oder externe Datei, die Endpunkte enthält, die immer zugelassen werden sollen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -113,6 +149,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Local or remote file, containing endpoints to always block.\"; ObjectID = \"Bdp-Z8-BhB\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokale oder externe Datei, die Endpunkte enthält, die immer blockiert werden sollen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -131,6 +173,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Run without showing an icon in the status menu bar.\"; ObjectID = \"bYB-s1-S3f\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausführen, ohne ein Statussymbol in der Menüleiste anzuzeigen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -149,6 +197,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"View Rules\"; ObjectID = \"Cfj-2E-dIA\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regeln anzeigen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -167,6 +221,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Allowed\"; ObjectID = \"CqC-4v-5d3\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erlauben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -185,6 +245,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Silently run without alerts, applying existing rules.\"; ObjectID = \"E0T-Ug-P8f\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stille ausführen ohne Mitteilungen unter Anwendung bestehender Regeln."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -203,6 +269,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Yes\"; ObjectID = \"e5A-iH-fS4\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ja"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -221,6 +293,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Applications running within the simulator will be allowed.\"; ObjectID = \"e6s-dd-HG6\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programme in einem Simulator laufen, sind erlaubt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -239,6 +317,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Block List:\"; ObjectID = \"Emd-wS-UQh\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blockierungs-Liste:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -257,6 +341,12 @@
       "comment" : "Class = \"NSWindow\"; title = \"LuLu's Settings\"; ObjectID = \"F0z-JX-Cv5\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu-Einstellungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -275,6 +365,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Allow List:\"; ObjectID = \"FE3-Li-d3K\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erlauben-Liste"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -293,6 +389,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Browse\"; ObjectID = \"Fut-ad-zCW\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durchsuchen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -311,6 +413,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"New connections should be be:\"; ObjectID = \"GsR-9d-5N8\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Verbindungen sollten:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -329,6 +437,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"No Icon Mode\"; ObjectID = \"iOJ-Bc-hxG\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein-Statussymbol-Modus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -347,6 +461,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"All (UDP) traffic on port 53 will be allowed.\"; ObjectID = \"iYm-DO-gHs\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle (UDP-)Verbindungen auf Port 53 sind erlaubt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -365,6 +485,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Do not automatically check for new versions.\"; ObjectID = \"JV5-cY-ff4\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht automatisch nach Aktualisierungen suchen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -383,6 +509,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Passive Mode\"; ObjectID = \"JVI-Or-h0u\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passiver Modus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -401,6 +533,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Allow Installed Programs\"; ObjectID = \"jvT-uI-uNq\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereits installierte Programme erlauben."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -419,6 +557,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"No\"; ObjectID = \"JwN-0v-5Uh\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nein"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -437,6 +581,12 @@
       "comment" : "Class = \"NSToolbarItem\"; label = \"Mode\"; ObjectID = \"k0w-Oi-kwd\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -455,6 +605,12 @@
       "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Mode\"; ObjectID = \"k0w-Oi-kwd\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -473,6 +629,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Apple-signed binaries will be allowed.\"; ObjectID = \"M8X-n4-v2d\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Von Apple signierte Programme sind erlaubt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -491,6 +653,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Blocked\"; ObjectID = \"mCn-AV-g9h\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blockiert"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -509,6 +677,12 @@
       "comment" : "Class = \"NSToolbarItem\"; label = \"Update\"; ObjectID = \"pGG-dq-qkU\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualiseren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -527,6 +701,12 @@
       "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Update\"; ObjectID = \"pGG-dq-qkU\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualiseren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -545,6 +725,12 @@
       "comment" : "Class = \"NSToolbarItem\"; label = \"Lists\"; ObjectID = \"rrF-xj-cXp\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -563,6 +749,12 @@
       "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Lists\"; ObjectID = \"rrF-xj-cXp\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -581,6 +773,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"All traffic routed thru LuLu will be blocked (unless the endpoint is explicitly on the 'Allow' list).\"; ObjectID = \"SG5-YM-BoV\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle über LuLu geleiteten Verbindungen werden blockiert (es sei denn, der Endpunkt ist ausdrücklich in der Liste „Erlauben“ aufgeführt)."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -599,6 +797,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Allow Apple Programs\"; ObjectID = \"Shu-Wz-4ax\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple-Programme erlauben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -617,6 +821,12 @@
       "comment" : "Class = \"NSToolbarItem\"; label = \"Rules\"; ObjectID = \"Twx-TJ-y2Q\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regeln"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -635,6 +845,12 @@
       "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Rules\"; ObjectID = \"Twx-TJ-y2Q\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regeln"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -653,6 +869,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Allow Simulator Applications\"; ObjectID = \"Uqq-dW-xf2\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulator-Programme erlauben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -671,6 +893,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Browse\"; ObjectID = \"W6X-IU-31r\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durchsuchen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -689,6 +917,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Allow DNS Traffic\"; ObjectID = \"wED-Z0-197\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DNS-Verbindungen erlauben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -707,6 +941,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Disable Update Checks\"; ObjectID = \"z5b-fA-WCk\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualisierungsprüfung deaktivieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
