@@ -5,6 +5,12 @@
       "comment" : "Bundle name",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLU"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -23,6 +29,12 @@
       "comment" : "Copyright (human-readable)",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright (c) 2020 Objective-See. Alle Rechte vorbehalten."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
