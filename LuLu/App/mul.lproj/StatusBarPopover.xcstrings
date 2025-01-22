@@ -16,6 +16,12 @@
             "state" : "translated",
             "value" : "⌃"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌃"
+          }
         }
       }
     },
@@ -34,6 +40,12 @@
             "state" : "translated",
             "value" : "¡LuLu en funcionamiento!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu açık ve çalışıyor!"
+          }
         }
       }
     },
@@ -51,6 +63,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Acceda desde aquí en cualquier momento."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ona buradan istediğiniz zaman erişebilirsiniz."
           }
         }
       }

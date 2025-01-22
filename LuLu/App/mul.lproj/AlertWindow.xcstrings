@@ -16,6 +16,12 @@
             "state" : "translated",
             "value" : "- autorización de firma 2"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- imzalama otoritesi 2"
+          }
         }
       }
     },
@@ -33,6 +39,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ID de firma:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İmzalama kimliği:"
           }
         }
       }
@@ -52,6 +64,12 @@
             "state" : "translated",
             "value" : "Conexión:"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağlantı:"
+          }
         }
       }
     },
@@ -69,6 +87,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Duración de la Regla:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kural süresi:"
           }
         }
       }
@@ -88,6 +112,12 @@
             "state" : "translated",
             "value" : "no aplica"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "uygulanabilir değil"
+          }
         }
       }
     },
@@ -105,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "puerto/proto:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kapı/protokol"
           }
         }
       }
@@ -124,6 +160,12 @@
             "state" : "translated",
             "value" : "Duración del proceso"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İşlem yaşam süresi boyunca"
+          }
         }
       }
     },
@@ -141,6 +183,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "HH:mm"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SS:dd"
           }
         }
       }
@@ -160,6 +208,12 @@
             "state" : "translated",
             "value" : "Detalles:"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayrıntılar:"
+          }
         }
       }
     },
@@ -177,6 +231,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autorizaciones de Firma:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İmzalama otoriteleri:"
           }
         }
       }
@@ -196,6 +256,12 @@
             "state" : "translated",
             "value" : "Alerta de LuLu"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu İkâzı"
+          }
         }
       }
     },
@@ -213,6 +279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "- autorización de firma 3"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- imzalama otoritesi 3"
           }
         }
       }
@@ -232,6 +304,12 @@
             "state" : "translated",
             "value" : "dns (inverso):"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(ters) dns:"
+          }
         }
       }
     },
@@ -249,6 +327,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detalles & Opciones"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayrıntılar ve Seçenekler"
           }
         }
       }
@@ -268,6 +352,12 @@
             "state" : "translated",
             "value" : "Alcance de la regla:"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kural kapsamı:"
+          }
         }
       }
     },
@@ -285,6 +375,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ruta:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yol:"
           }
         }
       }
@@ -304,6 +400,12 @@
             "state" : "translated",
             "value" : "id de firma"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "imzalama kimliği"
+          }
         }
       }
     },
@@ -318,6 +420,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pid:"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "pid:"
@@ -340,6 +448,12 @@
             "state" : "translated",
             "value" : "Proceso"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İşlem"
+          }
         }
       }
     },
@@ -357,6 +471,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre del Proceso"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İşlem Adı"
           }
         }
       }
@@ -376,6 +496,12 @@
             "state" : "translated",
             "value" : "Nombre"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ad"
+          }
         }
       }
     },
@@ -393,6 +519,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "- autorización de firma 1"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- imzalama otoritesi 1"
           }
         }
       }
@@ -412,6 +544,12 @@
             "state" : "translated",
             "value" : "Endpoint Remoto"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzak bitiş noktası"
+          }
         }
       }
     },
@@ -429,6 +567,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Proceso:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İşlem:"
           }
         }
       }
@@ -448,6 +592,12 @@
             "state" : "translated",
             "value" : "mensaje"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mesaj"
+          }
         }
       }
     },
@@ -465,6 +615,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "args:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "argümanlar:"
           }
         }
       }
@@ -484,6 +640,12 @@
             "state" : "translated",
             "value" : "Siempre"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her zaman"
+          }
         }
       }
     },
@@ -501,6 +663,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "dirección ip:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ip adresi:"
           }
         }
       }
@@ -520,6 +688,12 @@
             "state" : "translated",
             "value" : "Bloquear"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engelle"
+          }
         }
       }
     },
@@ -537,6 +711,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Válido hasta:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şu tarihe dek:"
           }
         }
       }
@@ -556,6 +736,12 @@
             "state" : "translated",
             "value" : "Marca de tiempo:"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaman damgası:"
+          }
         }
       }
     },
@@ -573,6 +759,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzin Ver"
           }
         }
       }

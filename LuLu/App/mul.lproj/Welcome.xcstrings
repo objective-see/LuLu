@@ -16,6 +16,12 @@
             "state" : "translated",
             "value" : "Esta opción permitirá que cualquier aplicación de terceros que ya esté instalada acceda a la red sin generar una alerta."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu seçenek, halihazırda kurulu olan herhangi bir 3. parti uygulamanın bir ikâz oluşturmadan ağa erişimine izin verir."
+          }
         }
       }
     },
@@ -33,6 +39,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gracias a los \"Friends of Objective-See\""
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Objective-See” Arkadaşlarına Mahalo"
           }
         }
       }
@@ -52,6 +64,12 @@
             "state" : "translated",
             "value" : "1. En la alerta \"Extensión de Sistema Bloqueada\", haga click en: \"Abrir Configuración del Sistema\""
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. “Sistem Genişletmesi Engellendi” ikâzında “Sistem Ayarları’nı Aç”a tıklayın."
+          }
         }
       }
     },
@@ -70,6 +88,12 @@
             "state" : "translated",
             "value" : "Primero, permite la Extensión de Red de LuLu:"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öncelikle, LuLu ağ genişletmesine izin verin:"
+          }
         }
       }
     },
@@ -87,6 +111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Monitorea la actividad de la red y alerta cuando un programa intenta iniciar por primera vez una conexión saliente, permitiéndote permitirla o denegarla.  "
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ağ etkinliğinizi izler ve bir program ilk kez dışarıya bir bağlantı sağlamaya çalıştığında sizi ikâz eder ve izin vermenizi veya engellemenizi ister."
           }
         }
       }
@@ -125,6 +155,12 @@
             "state" : "translated",
             "value" : "LuLu"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
         }
       }
     },
@@ -142,6 +178,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu es un firewall gratuito y open-source para macOS."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu, macOS için ücretsiz ve açık kaynak bir güvenlik duvarıdır."
           }
         }
       }
@@ -161,6 +203,12 @@
             "state" : "translated",
             "value" : "No"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayır"
+          }
         }
       }
     },
@@ -178,6 +226,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Apoyas a LuLu?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu’yu desteklemek ister misiniz?"
           }
         }
       }
@@ -197,6 +251,12 @@
             "state" : "translated",
             "value" : "4. En la alerta \"Filtrar Contenido de Red\", haga click en: \"Permitir\""
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. “Ağ İçeriğini Filtrele” ikâzında “İzin Ver”e tıklayın."
+          }
         }
       }
     },
@@ -214,6 +274,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bienvenido a "
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoş Geldiniz"
           }
         }
       }
@@ -233,6 +299,12 @@
             "state" : "translated",
             "value" : "Esta opción permitirá que cualquier código binario firmado por Apple acceda a la red sin generar una alerta."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu seçenek, Apple tarafından imzalanmış herhangi bir ikilinin, bir ikâz oluşturmadan ağa erişimine izin verecektir."
+          }
         }
       }
     },
@@ -250,6 +322,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡Sí!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evet!"
           }
         }
       }
@@ -269,6 +347,12 @@
             "state" : "translated",
             "value" : "Esta opción permitirá cualquier tráfico (UDP) sobre el puerto 53. "
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu seçenek, 53. kapı üzerinden herhangi bir UDP trafiğine izin verecektir."
+          }
         }
       }
     },
@@ -286,6 +370,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir Tráfico DNS"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DNS trafiğine izin ver"
           }
         }
       }
@@ -305,6 +395,12 @@
             "state" : "translated",
             "value" : "Sin cargo, open-source y desarrollado por un único programador (amante de Mac)!  "
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ücretsizdir, açık kaynaktır ve tek bir (Mac hastası) kodcu tarafından yazılmıştır!"
+          }
         }
       }
     },
@@ -322,6 +418,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Esperando Aprobación de la Extensión del Sistema"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem Genişletmesi Onayı Bekleniyor"
           }
         }
       }
@@ -341,6 +443,12 @@
             "state" : "translated",
             "value" : "¿Nos das tu apoyo?"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biraz sevgi gösterseniz?"
+          }
         }
       }
     },
@@ -358,6 +466,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Siguiente"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonraki"
           }
         }
       }
@@ -377,6 +491,12 @@
             "state" : "translated",
             "value" : "Ahora, configuremos LuLu:"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haydi LuLu’yu yapılandıralım:"
+          }
         }
       }
     },
@@ -394,6 +514,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir Aplicaciones Ya Instaladas"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halihazırda kurulu uygulamalara izin ver"
           }
         }
       }
@@ -413,6 +539,12 @@
             "state" : "translated",
             "value" : "Siguiente"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonraki"
+          }
         }
       }
     },
@@ -431,6 +563,12 @@
             "state" : "translated",
             "value" : "Permitir Programas de Apple"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple programlarına izin ver"
+          }
         }
       }
     },
@@ -448,6 +586,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3. Autenticar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Yetkilendirin."
           }
         }
       }

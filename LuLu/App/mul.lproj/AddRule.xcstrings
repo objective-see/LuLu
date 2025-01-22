@@ -16,6 +16,12 @@
             "state" : "translated",
             "value" : "Puerto remoto"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzak kapı"
+          }
         }
       }
     },
@@ -33,6 +39,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dirección remota/dominio"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzak adres/Etki alanı"
           }
         }
       }
@@ -52,6 +64,12 @@
             "state" : "translated",
             "value" : "Agregar Regla (para conexiones salientes)"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kural Ekle (Dışarı Giden Bağlantılar)"
+          }
         }
       }
     },
@@ -69,6 +87,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "regex?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düzenli ifade"
           }
         }
       }
@@ -88,6 +112,12 @@
             "state" : "translated",
             "value" : "Cancelar"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vazgeç"
+          }
         }
       }
     },
@@ -106,6 +136,12 @@
             "state" : "translated",
             "value" : "Bloquear"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engelle"
+          }
         }
       }
     },
@@ -120,6 +156,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "*"
@@ -142,6 +184,12 @@
             "state" : "translated",
             "value" : "Permitir"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzin ver"
+          }
         }
       }
     },
@@ -160,6 +208,12 @@
             "state" : "translated",
             "value" : "Navegar"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Göz At"
+          }
         }
       }
     },
@@ -174,6 +228,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "*"
@@ -196,6 +256,12 @@
             "state" : "translated",
             "value" : "Ruta del programa"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Program yolu"
+          }
         }
       }
     },
@@ -213,6 +279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Agregar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekle"
           }
         }
       }
