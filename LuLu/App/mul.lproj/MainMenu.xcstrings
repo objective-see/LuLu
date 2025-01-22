@@ -5,6 +5,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Show...\"; ObjectID = \"0Y1-Pq-6Fc\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anzeigen…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -29,6 +35,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Settings...\"; ObjectID = \"4Uv-rm-VzQ\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -53,6 +65,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Import...\"; ObjectID = \"39l-3u-dUR\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importieren…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -77,6 +95,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"LuLu\"; ObjectID = \"aJV-EX-6bj\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -101,6 +125,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Export...\"; ObjectID = \"aZa-10-Ir1\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportieren…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -125,6 +155,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Quit LuLu\"; ObjectID = \"DEa-wY-se7\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu beenden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -149,6 +185,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Add...\"; ObjectID = \"gXq-yc-QnA\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinzufügen…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -173,6 +215,12 @@
       "comment" : "Class = \"NSMenu\"; title = \"LuLu\"; ObjectID = \"J1I-fS-R65\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -197,6 +245,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Uninstall LuLu\"; ObjectID = \"lns-C6-Aa5\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu deinstallieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -221,6 +275,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Cleanup\"; ObjectID = \"Lse-DT-C0z\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufräumen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -245,6 +305,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Disable\"; ObjectID = \"mxA-q2-fvN\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deaktivieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -269,6 +335,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"About LuLu\"; ObjectID = \"q1D-fP-yr1\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über LuLu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -293,6 +365,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Quit LuLu\"; ObjectID = \"QrZ-U2-1Ib\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu beenden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -317,6 +395,12 @@
       "comment" : "Class = \"NSMenu\"; title = \"Main Menu\"; ObjectID = \"uhX-d8-iZM\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hauptmenü"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -341,6 +425,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Rules\"; ObjectID = \"UuL-hi-gEf\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regeln"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -365,6 +455,12 @@
       "comment" : "Class = \"NSMenu\"; title = \"Rules\"; ObjectID = \"vb5-99-ejR\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regeln"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -389,6 +485,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Network Monitor...\"; ObjectID = \"VuY-Sy-392\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netzwerkmonitor…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -413,6 +515,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"LULU: enabled\"; ObjectID = \"w99-Wo-epe\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LULU: aktiviert"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",

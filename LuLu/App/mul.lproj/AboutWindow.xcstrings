@@ -5,6 +5,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Support Us!\"; ObjectID = \"6g3-Pg-x3P\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unterstütze uns!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -29,6 +35,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Version:\"; ObjectID = \"bBK-v0-ypq\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -53,6 +65,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Patrons & Friends\"; ObjectID = \"fJg-qw-wDf\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unterstützer & Freunde:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -77,6 +95,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"More Information\"; ObjectID = \"J9x-sM-h9S\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mehr Informationen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",

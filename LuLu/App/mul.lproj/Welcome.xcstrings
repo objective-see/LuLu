@@ -5,6 +5,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"This option will allow any 3rd-party app that is already installed, to access the network without generating an alert.\"; ObjectID = \"3aO-AI-YtY\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Option erlaub allen bereits installierten Drittanbieterprogrammen auf das Netzwerk zugreifen, ohne eine Mitteilung auszulösen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -29,6 +35,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Mahalo to the \\\"Friends Objective-See\\\"\"; ObjectID = \"7pD-BH-c8i\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahalo an die \"Friends Objective-See\""
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -53,6 +65,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"1. In the \\\"System Extension Blocked\\\" alert, click: \\\"Open System Settings\\\"\"; ObjectID = \"C1V-iy-oEo\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Auf der „Systemerweiterung blockiert“-Meldung: drücke „Systemeinstellungen öffnen“."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -77,6 +95,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"First,  allow the LuLu Network Extension:\"; ObjectID = \"Cwe-NI-HiJ\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zuerst muss die LuLu Netzwerkerweiterung zugelassen werden:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -101,6 +125,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"It monitors network activity and alerts you when a program first tries to initiate an outgoing connection, allowing you to permit or deny it.\"; ObjectID = \"eic-lg-Ln7\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es beobachtet die Netzwerkaktivität und warnt, wenn ein Programm zum ersten Mal versucht, eine ausgehende Verbindung herzustellen, so dass diese zugelassen oder abgelehnt werden kann."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -144,6 +174,12 @@
       "comment" : "Class = \"NSWindow\"; title = \"LuLu\"; ObjectID = \"F0z-JX-Cv5\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -168,6 +204,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"LuLu is a free open-source firewall for macOS.\"; ObjectID = \"pMo-Yj-XKY\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lulu ist eine frei quelloffene Firewall für macOS"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -192,6 +234,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"No\"; ObjectID = \"QA3-Ww-PeC\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nein"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -216,6 +264,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Support LuLu?\"; ObjectID = \"qNj-Zh-8FW\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu unterstützen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -240,6 +294,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"4. In the \\\"Filter Network Content\\\" alert, click: \\\"Allow\\\"\"; ObjectID = \"qYE-G3-j1K\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Klicke in der Meldung „Netzwerkinhalte filtern“ auf: „Erlauben“"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -264,6 +324,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Welcome to\"; ObjectID = \"Qyh-uK-Afv\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Willkommen zu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -288,6 +354,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"This option will allow any Apple-signed binary to access the network without generating an alert.\"; ObjectID = \"r1b-Nl-Ii7\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Option erlaubt allen von Apple signierten Programmen auf das Netzwerk  zugreifen, ohne eine Mitteilung auszulösen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -312,6 +384,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Yes!\"; ObjectID = \"Re5-aD-QVR\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ja!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -336,6 +414,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"This option will allow any (UDP) traffic over port 53.\"; ObjectID = \"sAE-Mf-3fz\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Option erlaubt alle (UDP-) Verbindungen über Port 53"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -360,6 +444,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \" Allow DNS Traffic\"; ObjectID = \"SWc-iv-oN4\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DNS-Verbindungen erlauben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -384,6 +474,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"It's free, open-source, and written by a single (Mac-loving) coder!\"; ObjectID = \"Uzd-7P-dzG\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es ist frei, quelloffen und von einem einzigen (Mac-liebenden) Entwickler geschrieben! "
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -408,6 +504,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Waiting for System Extension Approval\"; ObjectID = \"VIe-9o-Kc7\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warten auf die Genehmigung der Systemerweiterung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -432,6 +534,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Show some love? \"; ObjectID = \"XBE-gW-YkK\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein bisschen Liebe zeigen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -456,6 +564,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Next\"; ObjectID = \"xbU-XH-hYT\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -480,6 +594,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Now, let's configure LuLu:\"; ObjectID = \"XHD-XH-wR0\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nun konfigurieren wir LuLu:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -504,6 +624,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \" Allow Already Installed Applications\"; ObjectID = \"ymJ-tB-qiA\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereits installierte Programme erlauben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -528,6 +654,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Next\"; ObjectID = \"YXa-F3-XSG\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -552,6 +684,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \" Allow Apple Programs\"; ObjectID = \"zo1-a0-tPg\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple-Programme erlauben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -576,6 +714,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"3. Authenticate\"; ObjectID = \"ZZK-2G-iIB\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Authentifiziere"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",

@@ -5,6 +5,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Remote port\"; ObjectID = \"5ic-Om-d8g\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Externer Port"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -29,6 +35,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Remote address/domain\"; ObjectID = \"7yf-wW-FZC\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Externe address/domain"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -53,6 +65,12 @@
       "comment" : "Class = \"NSWindow\"; title = \"Add Rule (for outgoing connections)\"; ObjectID = \"F0z-JX-Cv5\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regel hinzufügen (für ausgehende Verbidungen)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -77,6 +95,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"regex?\"; ObjectID = \"FCA-Cv-yT3\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "regex?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -101,6 +125,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Cancel\"; ObjectID = \"fX0-Jq-Okq\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -125,6 +155,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \" Block\"; ObjectID = \"JJl-Lz-apr\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blockieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -149,6 +185,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"*\"; ObjectID = \"kXW-Xv-Fc4\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -173,6 +215,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \" Allow\"; ObjectID = \"oCK-aR-Ek4\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erlauben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -197,6 +245,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Browse\"; ObjectID = \"OoX-aE-Hgf\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durchsuchen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -221,6 +275,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"*\"; ObjectID = \"QWe-2U-lfn\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -245,6 +305,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Program path\"; ObjectID = \"tc1-pS-Wns\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programmpfad"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -269,6 +335,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Add\"; ObjectID = \"V5P-DF-wCP\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",

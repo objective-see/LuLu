@@ -5,6 +5,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Label\"; ObjectID = \"2yS-Gr-1bI\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bezeichnung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -29,6 +35,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Item Name\"; ObjectID = \"7zm-Uo-lwv\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Objektname"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -53,6 +65,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Recent Rules\"; ObjectID = \"b9m-wt-VZa\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuste Regeln"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -77,6 +95,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"BsU-Gh-mch\";",
       "extractionState" : "stale",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Textzelle"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -101,6 +125,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"User Rules\"; ObjectID = \"cvb-ds-FcC\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzerregeln"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -125,6 +155,12 @@
       "comment" : "Class = \"NSSearchFieldCell\"; placeholderString = \"Filter Rules\"; ObjectID = \"DWG-ck-lDk\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regeln filtern"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -149,6 +185,12 @@
       "comment" : "Class = \"NSWindow\"; title = \"LuLu Rules\"; ObjectID = \"F0z-JX-Cv5\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu Regeln"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -173,6 +215,12 @@
       "comment" : "Class = \"NSToolbarItem\"; label = \"Custom View\"; ObjectID = \"F7G-1t-415\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzerdefinierte Ansicht"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -197,6 +245,12 @@
       "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Custom View\"; ObjectID = \"F7G-1t-415\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzerdefinierte Ansicht"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -221,6 +275,12 @@
       "comment" : "Class = \"NSTableColumn\"; headerCell.title = \" Rule\"; ObjectID = \"mQo-bf-aNx\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regel"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -245,6 +305,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"All Rules\"; ObjectID = \"omZ-DL-6R7\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Regeln"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -269,6 +335,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"item details...\"; ObjectID = \"qbv-z3-4PI\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Objektdetails…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -293,6 +365,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Apple Rules\"; ObjectID = \"qNT-HP-XkH\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple-Regeln"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -317,6 +395,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Default Rules\"; ObjectID = \"rEm-hF-r0T\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standardregeln"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -341,6 +425,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"connection info\"; ObjectID = \"tZf-9e-yHh\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbindungsinfos"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -365,6 +455,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"(re)loading rules...\"; ObjectID = \"vD6-Bk-elz\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regeln (neu)laden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -389,6 +485,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Add Rule\"; ObjectID = \"wLE-Rk-GOf\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regeln hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -413,6 +515,12 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"3rd-party Rules\"; ObjectID = \"YzL-Xb-QI1\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drittanbieterregeln"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
