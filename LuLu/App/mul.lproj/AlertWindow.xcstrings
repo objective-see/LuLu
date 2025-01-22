@@ -16,6 +16,12 @@
             "state" : "translated",
             "value" : "- autorización de firma 2"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " - autorité de signature 2"
+          }
         }
       }
     },
@@ -33,6 +39,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ID de firma:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ID de signature : "
           }
         }
       }
@@ -52,6 +64,12 @@
             "state" : "translated",
             "value" : "Conexión:"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connection : "
+          }
         }
       }
     },
@@ -69,6 +87,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Duración de la Regla:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durée de la règle : "
           }
         }
       }
@@ -88,6 +112,12 @@
             "state" : "translated",
             "value" : "no aplica"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "non applicable"
+          }
         }
       }
     },
@@ -105,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "puerto/proto:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "port/protocole : "
           }
         }
       }
@@ -124,6 +160,12 @@
             "state" : "translated",
             "value" : "Duración del proceso"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durée de vie du processus"
+          }
         }
       }
     },
@@ -138,6 +180,12 @@
           }
         },
         "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HH:mm"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "HH:mm"
@@ -160,6 +208,12 @@
             "state" : "translated",
             "value" : "Detalles:"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Détails : "
+          }
         }
       }
     },
@@ -177,6 +231,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autorizaciones de Firma:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autorités de signature : "
           }
         }
       }
@@ -196,6 +256,12 @@
             "state" : "translated",
             "value" : "Alerta de LuLu"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alert LuLu"
+          }
         }
       }
     },
@@ -213,6 +279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "- autorización de firma 3"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " - autorité de signature 3"
           }
         }
       }
@@ -232,6 +304,12 @@
             "state" : "translated",
             "value" : "dns (inverso):"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dns (inverse) : "
+          }
         }
       }
     },
@@ -249,6 +327,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detalles & Opciones"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Détails et options"
           }
         }
       }
@@ -268,6 +352,12 @@
             "state" : "translated",
             "value" : "Alcance de la regla:"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Champ d’application de la règle : "
+          }
         }
       }
     },
@@ -285,6 +375,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ruta:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "chemin : "
           }
         }
       }
@@ -304,6 +400,12 @@
             "state" : "translated",
             "value" : "id de firma"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "id de signature"
+          }
         }
       }
     },
@@ -321,6 +423,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "pid:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pid : "
           }
         }
       }
@@ -340,6 +448,12 @@
             "state" : "translated",
             "value" : "Proceso"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Processus"
+          }
         }
       }
     },
@@ -357,6 +471,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre del Proceso"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom du processus"
           }
         }
       }
@@ -376,6 +496,12 @@
             "state" : "translated",
             "value" : "Nombre"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom"
+          }
         }
       }
     },
@@ -393,6 +519,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "- autorización de firma 1"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " - autorité de signature 1"
           }
         }
       }
@@ -412,6 +544,12 @@
             "state" : "translated",
             "value" : "Endpoint Remoto"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Point d’accès distant"
+          }
         }
       }
     },
@@ -429,6 +567,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Proceso:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Processus : "
           }
         }
       }
@@ -448,6 +592,12 @@
             "state" : "translated",
             "value" : "mensaje"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "message"
+          }
         }
       }
     },
@@ -465,6 +615,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "args:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "arguments : "
           }
         }
       }
@@ -484,6 +640,12 @@
             "state" : "translated",
             "value" : "Siempre"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toujours"
+          }
         }
       }
     },
@@ -501,6 +663,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "dirección ip:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "adresse ip : "
           }
         }
       }
@@ -520,6 +688,12 @@
             "state" : "translated",
             "value" : "Bloquear"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquer"
+          }
         }
       }
     },
@@ -537,6 +711,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Válido hasta:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valide jusque : "
           }
         }
       }
@@ -556,6 +736,12 @@
             "state" : "translated",
             "value" : "Marca de tiempo:"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Horodatage : "
+          }
         }
       }
     },
@@ -573,6 +759,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser"
           }
         }
       }
