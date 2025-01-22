@@ -16,6 +16,12 @@
             "state" : "translated",
             "value" : "Verificar Ahora"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vérifier maintenant"
+          }
         }
       }
     },
@@ -33,6 +39,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modo Bloqueo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode blocage"
           }
         }
       }
@@ -52,6 +64,12 @@
             "state" : "translated",
             "value" : "¿Se deben crear reglas para nuevas conexiones?"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les règles pour les nouvelles connections doivent être créées ?"
+          }
         }
       }
     },
@@ -69,6 +87,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se permitirán los programas de terceros previamente instalados."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programmes précédemment installées, les programmes de tierce-partie seront autorisés."
           }
         }
       }
@@ -88,6 +112,12 @@
             "state" : "translated",
             "value" : "Nota: cuando se hace una nueva conexión, a veces solo la dirección IP estará disponible. En esos casos, los dominios en la lista de permitidos o bloqueados no coincidirán, lo cual impactará si un pedido es bloqueado o permitido. "
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note : Quand une nouvelle connection est réalisée, parfois seule l’adresse IP est disponible. Dans ces cas, les domaines sur la liste d’autorisation ou de blocage ne peuvent pas être utilisés, ce qui peut impacter le blocage ou l’autorisation d’une requête."
+          }
         }
       }
     },
@@ -105,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Archivo local o remoto, que contiene endpoints para bloquear siempre. "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fichier local ou distant, contenant les points d’accès à toujours autoriser."
           }
         }
       }
@@ -124,6 +160,12 @@
             "state" : "translated",
             "value" : "Archivo local o remoto, que contiene endpoints para bloquear siempre. "
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fichier local ou distant, contenant les points d’accès à toujours bloquer."
+          }
         }
       }
     },
@@ -141,6 +183,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ejecutar sin mostrar un ícono en la barra de menú de estado."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exécuter sans afficher d'icône dans la barre de menu."
           }
         }
       }
@@ -160,6 +208,12 @@
             "state" : "translated",
             "value" : "Ver Reglas"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voir les règles."
+          }
         }
       }
     },
@@ -177,6 +231,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autorisé"
           }
         }
       }
@@ -196,6 +256,12 @@
             "state" : "translated",
             "value" : "Ejecutar silenciosamente sin alertas, aplicando reglas existentes."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exécution silencieuse sans alerte, en appliquant les règles existantes."
+          }
         }
       }
     },
@@ -213,6 +279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sí"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oui"
           }
         }
       }
@@ -232,6 +304,12 @@
             "state" : "translated",
             "value" : "Se permitirán las aplicaciones que se ejecuten dentro del simulador."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les applications fonctionnant dans le simulateur sont autorisées."
+          }
         }
       }
     },
@@ -249,6 +327,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lista de Bloqueados:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liste de blocage :"
           }
         }
       }
@@ -268,6 +352,12 @@
             "state" : "translated",
             "value" : "Configuración de LuLu"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réglages de LuLu"
+          }
         }
       }
     },
@@ -285,6 +375,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lista de Permitidos:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liste d’autorisation :"
           }
         }
       }
@@ -304,6 +400,12 @@
             "state" : "translated",
             "value" : "Navegar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parcourir"
+          }
         }
       }
     },
@@ -321,6 +423,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Las nuevas conexiones deben ser:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les nouvelles connections doivent être :"
           }
         }
       }
@@ -340,6 +448,12 @@
             "state" : "translated",
             "value" : "Modo Sin Ícono"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode sans icône"
+          }
         }
       }
     },
@@ -357,6 +471,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Todo el tráfico (UDP) en el puerto 53 será permitido. "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout le trafic (UDP) sur le port 53 sera autorisé."
           }
         }
       }
@@ -376,6 +496,12 @@
             "state" : "translated",
             "value" : "No verificar automáticamente nuevas versiones. "
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ne pas vérifier automatiquement les nouvelles versions."
+          }
         }
       }
     },
@@ -393,6 +519,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modo Pasivo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode passif"
           }
         }
       }
@@ -412,6 +544,12 @@
             "state" : "translated",
             "value" : "Permitir Programas Instalados"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser les programmes installés"
+          }
         }
       }
     },
@@ -429,6 +567,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non"
           }
         }
       }
@@ -448,6 +592,12 @@
             "state" : "translated",
             "value" : "Modo"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode"
+          }
         }
       }
     },
@@ -465,6 +615,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode"
           }
         }
       }
@@ -484,6 +640,12 @@
             "state" : "translated",
             "value" : "Se permitirán los binarios firmados por Apple."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les binaires signés par Apple seront autorisés"
+          }
         }
       }
     },
@@ -501,6 +663,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloqueado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloqué"
           }
         }
       }
@@ -520,6 +688,12 @@
             "state" : "translated",
             "value" : "Actualizar"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mise à jour"
+          }
         }
       }
     },
@@ -537,6 +711,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Actualizar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mise à jour"
           }
         }
       }
@@ -556,6 +736,12 @@
             "state" : "translated",
             "value" : "Listas"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listes"
+          }
         }
       }
     },
@@ -573,6 +759,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Listas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listes"
           }
         }
       }
@@ -592,6 +784,12 @@
             "state" : "translated",
             "value" : "Todo el tráfico ruteado a través de LuLu será bloqueado (a menos que el endpoint esté explícito en la lista de 'Permitidos')."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout le trafic acheminé par LuLu sera bloqué (à moins que le point d’accès ne figure explicitement sur la liste 'Autoriser')."
+          }
         }
       }
     },
@@ -609,6 +807,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir Programas de Apple"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser les programmes Apple"
           }
         }
       }
@@ -628,6 +832,12 @@
             "state" : "translated",
             "value" : "Reglas"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Règles"
+          }
         }
       }
     },
@@ -645,6 +855,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reglas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Règles"
           }
         }
       }
@@ -664,6 +880,12 @@
             "state" : "translated",
             "value" : "Permitir Aplicaciones del Simulador"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser les applications du simulateur"
+          }
         }
       }
     },
@@ -681,6 +903,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Navegar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parcourir"
           }
         }
       }
@@ -700,6 +928,12 @@
             "state" : "translated",
             "value" : "Permitir Tráfico DNS"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser le trafic DNS"
+          }
         }
       }
     },
@@ -717,6 +951,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deshabilitar Verificación de Actualizaciones"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Désactiver les contrôles de mise à jour"
           }
         }
       }

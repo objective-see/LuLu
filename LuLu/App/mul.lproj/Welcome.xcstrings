@@ -16,6 +16,12 @@
             "state" : "translated",
             "value" : "Esta opción permitirá que cualquier aplicación de terceros que ya esté instalada acceda a la red sin generar una alerta."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette option permet à toute application tierce déjà installée d'accéder au réseau sans générer d'alerte."
+          }
         }
       }
     },
@@ -33,6 +39,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gracias a los \"Friends of Objective-See\""
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahalo aux « Amis Objectif-See »"
           }
         }
       }
@@ -52,6 +64,12 @@
             "state" : "translated",
             "value" : "1. En la alerta \"Extensión de Sistema Bloqueada\", haga click en: \"Abrir Configuración del Sistema\""
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Dans l'alerte « Extension du système bloquée », cliquez sur : « Ouvrir les Réglages Système »"
+          }
         }
       }
     },
@@ -70,6 +88,12 @@
             "state" : "translated",
             "value" : "Primero, permite la Extensión de Red de LuLu:"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout d'abord, autorisez l'extension de réseau LuLu :"
+          }
         }
       }
     },
@@ -87,6 +111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Monitorea la actividad de la red y alerta cuando un programa intenta iniciar por primera vez una conexión saliente, permitiéndote permitirla o denegarla.  "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il surveille l'activité du réseau et vous avertit lorsqu'un programme tente pour la première fois d'établir une connexion sortante, ce qui vous permet de l'autoriser ou de la refuser."
           }
         }
       }
@@ -125,6 +155,12 @@
             "state" : "translated",
             "value" : "LuLu"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
         }
       }
     },
@@ -142,6 +178,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu es un firewall gratuito y open-source para macOS."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu est un pare-feu libre et gratuit pour macOS."
           }
         }
       }
@@ -161,6 +203,12 @@
             "state" : "translated",
             "value" : "No"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non"
+          }
         }
       }
     },
@@ -178,6 +226,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Apoyas a LuLu?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soutenir LuLu ?"
           }
         }
       }
@@ -197,6 +251,12 @@
             "state" : "translated",
             "value" : "4. En la alerta \"Filtrar Contenido de Red\", haga click en: \"Permitir\""
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Dans l'alerte « Filtrer le contenu du réseau », cliquez sur : « Autoriser »"
+          }
         }
       }
     },
@@ -214,6 +274,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bienvenido a "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenue sur"
           }
         }
       }
@@ -233,6 +299,12 @@
             "state" : "translated",
             "value" : "Esta opción permitirá que cualquier código binario firmado por Apple acceda a la red sin generar una alerta."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette option permet à tout binaire signé par Apple d'accéder au réseau sans générer d'alerte."
+          }
         }
       }
     },
@@ -250,6 +322,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¡Sí!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oui !"
           }
         }
       }
@@ -269,6 +347,12 @@
             "state" : "translated",
             "value" : "Esta opción permitirá cualquier tráfico (UDP) sobre el puerto 53. "
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette option autorise tout trafic (UDP) sur le port 53."
+          }
         }
       }
     },
@@ -286,6 +370,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir Tráfico DNS"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser le trafic DNS"
           }
         }
       }
@@ -305,6 +395,12 @@
             "state" : "translated",
             "value" : "Sin cargo, open-source y desarrollado por un único programador (amante de Mac)!  "
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C’est gratuit, open-source et écrit par un seul codeur (amoureux du Mac) !"
+          }
         }
       }
     },
@@ -322,6 +418,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Esperando Aprobación de la Extensión del Sistema"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En attente de l'approbation de l'extension du système"
           }
         }
       }
@@ -341,6 +443,12 @@
             "state" : "translated",
             "value" : "¿Nos das tu apoyo?"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Montrer un peu d’amour ?"
+          }
         }
       }
     },
@@ -358,6 +466,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Siguiente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant"
           }
         }
       }
@@ -377,6 +491,12 @@
             "state" : "translated",
             "value" : "Ahora, configuremos LuLu:"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenant, configurons LuLu :"
+          }
         }
       }
     },
@@ -394,6 +514,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir Aplicaciones Ya Instaladas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser les applications déjà installées"
           }
         }
       }
@@ -413,6 +539,12 @@
             "state" : "translated",
             "value" : "Siguiente"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant"
+          }
         }
       }
     },
@@ -431,6 +563,12 @@
             "state" : "translated",
             "value" : "Permitir Programas de Apple"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser les programmes Apple"
+          }
         }
       }
     },
@@ -448,6 +586,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3. Autenticar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. S’authentifier"
           }
         }
       }

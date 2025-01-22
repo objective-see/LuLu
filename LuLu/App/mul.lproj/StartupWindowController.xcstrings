@@ -16,6 +16,12 @@
             "state" : "translated",
             "value" : "Iniciando ahora..."
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Démarrage en cours …"
+          }
         }
       }
     }
