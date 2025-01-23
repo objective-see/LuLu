@@ -21,6 +21,12 @@
             "state" : "translated",
             "value" : "Ratio de détection:"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Algılama oranı:"
+          }
         }
       }
     },
@@ -49,6 +55,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "non trovato su VirusTotal"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal’da bulunamadı"
           }
         }
       }
@@ -79,6 +91,12 @@
             "state" : "translated",
             "value" : "Ricevuta risposta non valida"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçersiz yanıt alındı"
+          }
         }
       }
     },
@@ -108,6 +126,12 @@
             "state" : "translated",
             "value" : "Vedi VirusTotal"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal’de görüntüle:"
+          }
         }
       }
     },
@@ -127,6 +151,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "a un problème de signature"
@@ -136,6 +161,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ha un problema con la firma"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "imzalama sorunu var"
           }
         }
       }
@@ -156,6 +187,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "n’est pas signé"
@@ -165,6 +197,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "non è firmato"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "imzalı değil"
+
           }
         }
       }
@@ -185,6 +224,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "n’est pas valablement signé"
@@ -194,6 +234,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "non ha una firma valida"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "geçerli bir biçimde imzalanmamış"
+
           }
         }
       }
@@ -214,6 +261,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "est valablement signé"
@@ -223,6 +271,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ha una firma valida"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "geçerli bir biçimde imzalanmış"
+
           }
         }
       }
@@ -243,6 +298,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "signé par une tierce-partie/ad hoc"
@@ -252,6 +308,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "è firmato da "
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. kişiler/geçici kişi tarafından imzalanmış"
+
           }
         }
       }
@@ -272,6 +335,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "inconnu"
@@ -281,6 +345,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "sconosciuto"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " bilinmiyor"
+
           }
         }
       }
@@ -301,6 +372,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "… merci de le copier vers /Applications et de relancer"
@@ -310,6 +382,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "…copia l’Applicazione in /Applications e riavviala"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…lütfen /Applications’a kopyalayın ve yeniden başlatın "
+
           }
         }
       }
@@ -330,6 +409,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "… ceci retirera Lulu complètement de votre Mac"
@@ -339,6 +419,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "…questo rimuoverà completamente LuLu dal tuo Mac"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…bu, LuLu’yu Mac’inizden tümüyle kaldıracaktır"
+
           }
         }
       }
@@ -359,6 +446,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "… ceci arrêtera Lulu, jusqu’à la prochaine connection."
@@ -368,6 +456,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "…questo arresterà LuLu, fino al prossimo accesso"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…bu, bir sonraki oturum açışınıza dek LuLu’yu sonlandıracaktır"
+
           }
         }
       }
@@ -388,6 +483,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "> pas d’autorité de signature"
@@ -397,6 +493,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "› non firmato"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "› imzalama otoritesi yok"
           }
         }
       }
@@ -423,6 +525,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ (pid : %2$@)"
@@ -432,6 +535,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (pid: %@)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (pid: %2$@)"
+
           }
         }
       }
@@ -458,6 +568,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ (signataire : %2$@)"
@@ -467,6 +578,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ (firmato da: %2$@)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (imzalayan: %2$@)"
+
           }
         }
       }
@@ -487,6 +605,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (signataire : Apple Mac OS App Store)"
@@ -496,6 +615,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (firmato da: Apple Mac OS App Store)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (imzalayan: Apple macOS App Store)"
           }
         }
       }
@@ -516,6 +641,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (signataire : Apple)"
@@ -525,6 +651,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (firmato da: Apple Proper)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (imzalayan: Apple Proper)"
           }
         }
       }
@@ -545,6 +677,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (signataire : invalide/non signé)"
@@ -554,6 +687,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (firmato da: Non Valido/Non Firmato)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (imzalayan: Geçersiz/İmzasız)"
           }
         }
       }
@@ -574,6 +713,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ n'existe pas !"
@@ -583,6 +723,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ non esiste!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ yok!"
           }
         }
       }
@@ -603,6 +749,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ est un processus macOS légitime"
@@ -612,6 +759,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ è un processo legittimo di macOS"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ geçerli bir macOS işlemi"
           }
         }
       }
@@ -632,6 +785,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ n'est un numéro (de port) valide"
@@ -641,6 +795,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ non è un numero (di porta) valido"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ geçerli bir kapı numarası değil"
           }
         }
       }
@@ -667,6 +827,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "%#$@ n’est pas une expression régulière valide\ndetails : %2$@"
@@ -676,6 +837,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ non è un’espressione regolare valida\ndettagli: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ geçerli bir düzenli ifade değil\nayrıntılar: %2$@"
           }
         }
       }
@@ -696,6 +863,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ cette règle, peut impacter le fonctionnement légitime du système ... continuer ?"
@@ -705,6 +873,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ questa regola potrebbe impattare alcune funzionalità di sistema ...continuare?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bu kuralı %@ yapmak, geçerli sistem işlevselliğini etkileyebilir... sürdürülsün mü?"
           }
         }
       }
@@ -725,6 +899,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les informations de signature de %@ ont changé"
@@ -734,6 +909,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La firma di %@ è cambiata"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ öğesinin kod imzalama bilgisi değiştirildi"
           }
         }
       }
@@ -754,6 +935,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "→ Supprimer la règle"
@@ -763,6 +945,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancella Regola"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Kuralı Sil"
           }
         }
       }
@@ -783,6 +971,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "→ Supprimer les règles"
@@ -792,6 +981,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancella Regola/e"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Kuralları Sil"
           }
         }
       }
@@ -812,6 +1007,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "→ Éditer la règle"
@@ -821,6 +1017,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modifica Regola"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Kuralı Düzenle"
           }
         }
       }
@@ -841,6 +1043,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "→ Montrer le(s) chemin(s)"
@@ -850,6 +1053,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mostra percorso/i"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Yolları Göster"
           }
         }
       }
@@ -874,6 +1083,12 @@
             "state" : "translated",
             "value" : "<(%d) inconnu>"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<bilinmeyen (%d)>"
+          }
         }
       }
     },
@@ -893,6 +1108,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "2. Dans Réglages Systèmes, descendez jusqu’à 'LuLu' et cliquez sur 'Approuver'"
@@ -902,6 +1118,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2. Nelle Impostazioni di Sistema, scorri fino alla voce “LuLu” e clicca su “Consenti”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Sistem Ayarları’nda, “LuLu”dan söz ettiği yere sarın ve “İzin Ver”e tıklayın"
           }
         }
       }
@@ -922,6 +1144,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "2. Dans Réglages Systèmes, activer l’extension LuLu"
@@ -931,6 +1154,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2. Nelle Impostazioni di Sistema, abilita l’estensione LuLu"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Sistem Ayarları’nda, LuLu genişletmesini açın"
           }
         }
       }
@@ -951,6 +1180,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "une nouvelle version (%@) est disponible !"
@@ -960,6 +1190,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "una nuova versione (%@) è disponibile!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yeni bir sürüm (%@) kullanılabilir!"
           }
         }
       }
@@ -984,6 +1220,12 @@
             "state" : "translated",
             "value" : "Ad hoc"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçici"
+          }
         }
       }
     },
@@ -1003,6 +1245,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajoutés ces dernières 24 heures (trié par date de création)"
@@ -1012,6 +1255,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aggiunte nelle ultime 24 ore (ordinate per data di creazione)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son 24 saat içinde eklendi (oluşturulma zamanına göre sıralı)"
           }
         }
       }
@@ -1032,6 +1281,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toute les règles"
@@ -1041,6 +1291,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tutte le Regole"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm Kurallar"
           }
         }
       }
@@ -1061,6 +1317,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser"
@@ -1070,6 +1327,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consenti"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzin Ver"
           }
         }
       }
@@ -1090,6 +1353,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser (pid : %@)"
@@ -1099,6 +1363,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consenti (pid: %@)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzin Ver (PID: %@)"
           }
         }
       }
@@ -1119,6 +1389,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser (jusqu’à : %@)"
@@ -1128,6 +1399,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consenti (fino a: %@)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzin Ver (Şuna dek: %@)"
           }
         }
       }
@@ -1148,6 +1425,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "toute adresse"
@@ -1157,6 +1435,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ogni indirizzo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "herhangi bir adres"
           }
         }
       }
@@ -1177,6 +1461,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "tout port"
@@ -1186,6 +1471,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ogni porta"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "herhangi bir kapı"
           }
         }
       }
@@ -1206,6 +1497,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tout programme"
@@ -1215,6 +1507,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ogni programma"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "herhangi bir program"
           }
         }
       }
@@ -1238,6 +1536,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programmes Apple (automatiquement approuvé et ajouté ici si 'Autoriser les programmes Apple' est activé)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Programları (“Apple programlarına izin ver” ayarlıysa buraya kendiliğinden eklenir ve izin verilir)"
           }
         }
       }
@@ -1267,6 +1571,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Blocca"
+
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engelle"
           }
         }
       }
@@ -1287,6 +1598,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloquer (pid : %@)"
@@ -1296,6 +1608,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Blocca (pid: %@)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engelle (PID: %@)"
           }
         }
       }
@@ -1316,6 +1634,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloquer (jusqu’à : %@)"
@@ -1325,6 +1644,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Blocca (fino a: %@)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engelle (Şuna dek: %@)"
           }
         }
       }
@@ -1345,6 +1670,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Annuler"
@@ -1354,6 +1680,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancella"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vazgeç"
           }
         }
       }
@@ -1374,6 +1706,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "%ld règles nettoyées"
@@ -1383,6 +1716,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%ld regole pulite"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%ld kural temizlendi"
           }
         }
       }
@@ -1406,6 +1745,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles de nettoyage faisant référence à des éléments (désormais) supprimés ?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silinen öğelere başvuran kurallar temizlensin mi?"
           }
         }
       }
@@ -1431,10 +1776,17 @@
             "value" : "Continuer"
           }
         },
+
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Continua"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sürdür"
           }
         }
       }
@@ -1459,6 +1811,12 @@
             "state" : "translated",
             "value" : "Les règles de répertoire s'appliquent à tous les éléments du répertoire"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dizin kuralları, dizindeki tüm öğelere uygulanır"
+          }
         }
       }
     },
@@ -1478,6 +1836,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Désactiver"
@@ -1487,6 +1846,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Disabilita"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devre Dışı Bırak"
           }
         }
       }
@@ -1507,6 +1872,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Activer"
@@ -1516,6 +1882,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Abilita"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engelle"
           }
         }
       }
@@ -1536,6 +1908,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERREUR: échec de l’activation"
@@ -1545,6 +1918,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Attivazione fallita"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HATA: Etkinleştirme başarısız"
           }
         }
       }
@@ -1565,6 +1944,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERREUR : Échec du nettoyage des règles"
@@ -1574,6 +1954,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Pulizia regole non completata"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HATA: Kurallar temizlenemedi"
           }
         }
       }
@@ -1594,6 +1980,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERREUR : Échec de l'exportation des règles"
@@ -1603,6 +1990,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Esportazione delle regole non completata"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HATA: Kurallar dışa aktarılamadı"
           }
         }
       }
@@ -1623,6 +2016,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERREUR : Échec de l'importation des règles"
@@ -1632,6 +2026,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Importazione delle regole non completata"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HATA: Kurallar içe aktarılamadı"
           }
         }
       }
@@ -1652,6 +2052,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERREUR : échec du chargement des patrons"
@@ -1661,6 +2062,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Caricamento patrons non completato"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HATA: Aboneler yüklenemedi"
           }
         }
       }
@@ -1681,6 +2088,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERREUR : Chemin invalide"
@@ -1690,6 +2098,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Percorso non valido"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HATA: Geçersiz yol"
           }
         }
       }
@@ -1710,6 +2124,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERREUR : port invalide"
@@ -1719,6 +2134,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Porta non valida"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HATA: Geçersiz kapı"
           }
         }
       }
@@ -1739,6 +2160,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERREUR : regex invalide"
@@ -1748,6 +2170,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Espressione regolare non corretta"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HATA: Geçersiz düzenli ifade"
           }
         }
       }
@@ -1768,6 +2196,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERREUR : échec du contrôle de la mise à jour"
@@ -1777,6 +2206,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "errore: impossibile controllare la disponibilità di aggiornamenti"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HATA: Güncelleme denetimi başarısız"
           }
         }
       }
@@ -1797,6 +2232,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les extensions doivent être approuvées manuellement via\nPréférences du système de sécurité et de confidentialité."
@@ -1806,6 +2242,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Le estensioni devono essere manualmente abilitate tramite il menù Sicurezza e Privacy delle Impostazioni di Sistema"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genişletmeler, Güvenlik ve Gizlilik sistem tercihlerinden elle onaylanmalıdır."
           }
         }
       }
@@ -1826,6 +2268,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les extensions doivent être approuvées manuellement via Sécurité et confidentialité Préférences du système."
@@ -1835,6 +2278,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Le estensioni devono essere manualmente abilitate tramite il menù Sicurezza e Privacy delle Impostazioni di Sistema"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genişletmeler, Güvenlik ve Gizlilik sistem tercihlerinden elle onaylanmalıdır."
           }
         }
       }
@@ -1855,6 +2304,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "échec de l’activation de l’extension du réseau"
@@ -1864,6 +2314,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impossibile attivare l’estensione di rete"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ağ genişletmesi etkinleştirilemedi"
           }
         }
       }
@@ -1884,6 +2340,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "échec de l’activation du filtre réseau"
@@ -1893,6 +2350,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impossibile attivare il filtro di rete"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ağ süzgeci etkinleştirilemedi"
           }
         }
       }
@@ -1913,6 +2376,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "échec de l’activation de l’extension système"
@@ -1922,6 +2386,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impossibile attivare l’estensione di sistema"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sistem genişletmesi etkinleştirilemedi"
           }
         }
       }
@@ -1942,6 +2412,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "échec de l’activation de l’extension système/réseau"
@@ -1951,6 +2422,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impossibile attivare l’estensione di sistema/rete"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sistem/ağ genişletmesi etkinleştirilemedi"
           }
         }
       }
@@ -1971,6 +2448,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Échec de l’interrogation de VirusTotal"
@@ -1980,6 +2458,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impossibile contattare VirusTotal"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal sorgusu yapılamadı"
           }
         }
       }
@@ -2004,6 +2488,12 @@
             "state" : "translated",
             "value" : "résultats"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bulunanlar"
+          }
         }
       }
     },
@@ -2023,6 +2513,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL complète: %@"
@@ -2032,6 +2523,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL Completo: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tam URL: %@"
           }
         }
       }
@@ -2052,6 +2549,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les Règles Globales s’appliquent à tous les chemins"
@@ -2061,6 +2559,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Le Regole Globali sono valide per tutti i percorsi"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Global kurallar tüm yollara uygulanır"
           }
         }
       }
@@ -2081,6 +2585,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "%ld règles importées"
@@ -2090,6 +2595,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%ld regole importate"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%ld kural içe aktarıldı"
           }
         }
       }
@@ -2110,6 +2621,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "La version installée (%@), est la dernière"
@@ -2119,6 +2631,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La versione installata (%@) è l’ultima disponibile"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kurulu sürüm (%@), günceldir"
           }
         }
       }
@@ -2148,6 +2666,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "si sta connettendo a %@"
+
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ konumuna bağlanıyor"
           }
         }
       }
@@ -2172,6 +2697,12 @@
             "state" : "translated",
             "value" : "LuLu doit être lancé depuis : %@"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu şuradan çalıştırılmalıdır:\n  %@"
+          }
         }
       }
     },
@@ -2191,6 +2722,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu : désactivé"
@@ -2200,6 +2732,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu: Disabilitato"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: Devre dışı"
           }
         }
       }
@@ -2220,6 +2758,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu : activé"
@@ -2229,6 +2768,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu: Abilitato"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: Etkin"
           }
         }
       }
@@ -2249,6 +2794,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "L’extension réseau de LuLu ne fonctionne pas"
@@ -2258,6 +2804,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "L’estensione di rete di LuLu non è attiva"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu’nun ağ genişletmesi çalışmıyor"
           }
         }
       }
@@ -2283,10 +2835,17 @@
             "value" : "Plus d’infos"
           }
         },
+
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Più informazioni"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daha Fazla Bilgi"
           }
         }
       }
@@ -2311,6 +2870,12 @@
             "state" : "translated",
             "value" : "aucun"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yok"
+          }
         }
       }
     },
@@ -2334,6 +2899,12 @@
             "state" : "translated",
             "value" : "non applicable"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "uygulanabilir değil"
+          }
         }
       }
     },
@@ -2353,6 +2924,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "A noter cependant :\n▪ Les connexions existantes ne seront pas affectées.\n▪ Le trafic OS (non acheminé par LuLu) ne sera pas bloqué."
@@ -2362,6 +2934,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tieni a mente:\n * Le connessioni esistente non verranno impattate.\n * Il traffico di rete del Sistema Operativo (che non passa tramite LuLu) non verrà bloccato."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ancak şuna dikkat edin:\n ▪ Var olan bağlantılar bundan etkilenmez.\n▪ İşletim sistemi trafiği (LuLu tarafından yönetilmeyen) engellenmez."
           }
         }
       }
@@ -2392,6 +2970,12 @@
             "state" : "translated",
             "value" : "OK"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
         }
       }
     },
@@ -2411,6 +2995,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ancienne version de LuLu installée"
@@ -2420,6 +3005,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "È installata una vecchia versione di LuLu"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu’nun eski sürümü kurulu"
           }
         }
       }
@@ -2440,6 +3031,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programmes du système d'exploitation (nécessaires au fonctionnement du système)"
@@ -2449,6 +3041,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programmi del Sistema Operativo (Richiesti per le funzionalità di sistema)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İşletim sistemi programları (sistem işlevselliği için gerekli)"
           }
         }
       }
@@ -2469,6 +3067,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Le trafic sortant est désormais bloqué."
@@ -2478,6 +3077,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Il traffico in uscita non verrà bloccato"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dışarı giden trafik artık engellenecek."
           }
         }
       }
@@ -2498,6 +3103,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programmes tiers préinstallés (automatiquement autorisés et ajoutés ici si l'option « autoriser les applications installées » est activée)"
@@ -2507,6 +3113,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programmi di terze parti pre-installati (approvati automaticamente e mostrati qui se “Abilita applicazioni installate” è attivo)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önceden kurulu 3. parti uygulamalar (“Kurulu uygulamalara izin ver” ayarlıysa kendiliğinden eklenir ve izin verilir)"
+
           }
         }
       }
@@ -2527,6 +3140,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Arguments de processus : %@"
@@ -2536,6 +3150,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Argomenti del processo: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İşlem argümanları: %@"
           }
         }
       }
@@ -2556,6 +3176,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chemin du processus : %@"
@@ -2565,6 +3186,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Percorso del processo: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İşlem yolu: %@"
+
           }
         }
       }
@@ -2589,6 +3217,12 @@
             "state" : "translated",
             "value" : "Programmes dans \"%@/\""
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@/\" içindeki uygulamalar"
+          }
         }
       }
     },
@@ -2612,6 +3246,12 @@
             "state" : "translated",
             "value" : "Interrogation de VirusTotal"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal sorgusu yapılıyor…"
+          }
         }
       }
     },
@@ -2631,6 +3271,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quitter"
@@ -2640,6 +3281,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Termina"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çık"
+
           }
         }
       }
@@ -2660,6 +3308,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quitter LuLu ?"
@@ -2669,6 +3318,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terminare LuLu?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu’dan çıkılsın mı?"
+
           }
         }
       }
@@ -2689,6 +3345,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Domaine inversé : %@"
@@ -2698,6 +3355,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dominio inverso: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ters etki alanı: %@"
           }
         }
       }
@@ -2722,6 +3385,12 @@
             "state" : "translated",
             "value" : "rules.json"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "rules.json"
+          }
         }
       }
     },
@@ -2741,6 +3410,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Voir le journal pour (plus) de détails"
@@ -2750,6 +3420,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vedi i log per altre informazioni"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayrıntılar için günlüğe bakın"
+
           }
         }
       }
@@ -2770,6 +3447,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "signé par Apple"
@@ -2779,6 +3457,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "firmato correttamente da Apple"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Proper tarafından imzalanmış"
+
           }
         }
       }
@@ -2799,6 +3484,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "signé par le Mac App Store"
@@ -2808,6 +3494,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "firmato da Mac App Store"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac App Store tarafından imzalanmış"
+
           }
         }
       }
@@ -2828,6 +3521,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "signé avec un Apple Developer ID"
@@ -2837,6 +3531,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "firmato da un Apple Developer ID"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bir Apple Geliştirici Kimliği ile imzalanmış"
+
           }
         }
       }
@@ -2857,6 +3558,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "signé, mais pas d’autorité de signature (ad hoc ?)"
@@ -2866,6 +3568,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "firmata da "
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "imzalanmış; ancak bir imza otoritesi yok (geçici?)"
+
           }
         }
       }
@@ -2886,6 +3595,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "erreur de signature : %#lx"
@@ -2895,6 +3605,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "errore di firma: %#lx"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "imzalama hatası: %#lx"
+
           }
         }
       }
@@ -2915,6 +3632,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ceci doit être désinstallé avant de continuer. Cliquez sur « Plus d'informations » pour savoir comment le désinstaller."
@@ -2924,6 +3642,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prima di continuare, il programma deve essere disinstallato. Clicca “Più informazioni” per scoprire come"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sürdürme öncesi bunun kaldırılması gerekiyor. Nasıl kaldıracağınızı öğrenmek için “Daha Fazla Bilgi”ye tıklayın."
+
           }
         }
       }
@@ -2948,6 +3673,12 @@
             "state" : "translated",
             "value" : "Horodatage : %@"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaman damgası: %@"
+          }
         }
       }
     },
@@ -2967,6 +3698,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Désinstaller"
@@ -2976,6 +3708,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Disinstalla"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaldır"
+
           }
         }
       }
@@ -2996,6 +3735,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Désinstaller LuLu ?"
@@ -3005,6 +3745,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Disinstalla LuLu?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu kaldırılsın mı?"
+
           }
         }
       }
@@ -3025,6 +3772,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "inconnu"
@@ -3034,6 +3782,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "sconosciuto"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bilinmiyor"
+
           }
         }
       }
@@ -3054,6 +3809,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mise à jour"
@@ -3063,6 +3819,13 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aggiorna"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güncelle"
+
           }
         }
       }
@@ -3087,6 +3850,12 @@
             "state" : "translated",
             "value" : "Programmes spécifiés par l'utilisateur (ajoutés manuellement ou en réponse à une alerte)"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kullanıcı tanımlı programlar (elle veya bir ikâza yönelik eklenir)"
+          }
         }
       }
     },
@@ -3106,6 +3875,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version : :@"
@@ -3115,6 +3885,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Versione: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sürüm: %@"
           }
         }
       }
@@ -3135,6 +3911,7 @@
           }
         },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "En attente de l'approbation de l'extension réseau"
@@ -3144,6 +3921,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "In attesa di approvazione per l’estensione di rete"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ağ genişletmesi onayı bekleniyor"
           }
         }
       }

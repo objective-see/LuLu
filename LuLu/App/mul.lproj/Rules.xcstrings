@@ -1,546 +1,654 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "2yS-Gr-1bI.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Label\"; ObjectID = \"2yS-Gr-1bI\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bezeichnung"
-          }
+    "sourceLanguage": "en",
+    "strings": {
+        "2yS-Gr-1bI.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Label\"; ObjectID = \"2yS-Gr-1bI\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Bezeichnung"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Label"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Etiqueta"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Etiket"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Label"
+                    }
+                }
+            }
         },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Label"
-          }
+        "7zm-Uo-lwv.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Item Name\"; ObjectID = \"7zm-Uo-lwv\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Objektname"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Item Name"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nombre de Ítem"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Öge Adı"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nom d’item"
+                    }
+                }
+            }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Etiqueta"
-          }
+        "b9m-wt-VZa.title": {
+            "comment": "Class = \"NSMenuItem\"; title = \"Recent Rules\"; ObjectID = \"b9m-wt-VZa\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Neuste Regeln"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Recent Rules"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Reglas Recientes"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Son Kullanılan Kurallar"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Règles récentes"
+                    }
+                }
+            }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Label"
-          }
+        "BsU-Gh-mch.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"BsU-Gh-mch\";",
+            "extractionState": "stale",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Textzelle"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Text Cell"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Celda de Texto"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Metin Hücresi"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Cellule texte"
+                    }
+                }
+            }
+        },
+        "cvb-ds-FcC.title": {
+            "comment": "Class = \"NSMenuItem\"; title = \"User Rules\"; ObjectID = \"cvb-ds-FcC\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Benutzerregeln"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "User Rules"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Reglas del Usuario"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Kullanıcı Kuralları"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Règles utilisateur"
+                    }
+                }
+            }
+        },
+        "DWG-ck-lDk.placeholderString": {
+            "comment": "Class = \"NSSearchFieldCell\"; placeholderString = \"Filter Rules\"; ObjectID = \"DWG-ck-lDk\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Regeln filtern"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Filter Rules"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Filtrar Reglas"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Kuralları süz…"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Règles de filtre"
+                    }
+                }
+            }
+        },
+        "F0z-JX-Cv5.title": {
+            "comment": "Class = \"NSWindow\"; title = \"LuLu Rules\"; ObjectID = \"F0z-JX-Cv5\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "LuLu-Regeln"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "LuLu Rules"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Reglas de LuLu"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "LuLu Kuralları"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Règles LuLu"
+                    }
+                }
+            }
+        },
+        "F7G-1t-415.label": {
+            "comment": "Class = \"NSToolbarItem\"; label = \"Custom View\"; ObjectID = \"F7G-1t-415\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Benutzerdefinierte Ansicht"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Custom View"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Vista Personalizada"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Özel Görünüm"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Vue personnalisée"
+                    }
+                }
+            }
+        },
+        "F7G-1t-415.paletteLabel": {
+            "comment": "Class = \"NSToolbarItem\"; paletteLabel = \"Custom View\"; ObjectID = \"F7G-1t-415\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Benutzerdefinierte Ansicht"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Custom View"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Vista Personalizada"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Özel Görünüm"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Vue personnalisée"
+                    }
+                }
+            }
+        },
+        "mQo-bf-aNx.headerCell.title": {
+            "comment": "Class = \"NSTableColumn\"; headerCell.title = \" Rule\"; ObjectID = \"mQo-bf-aNx\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": " Regel"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": " Rule"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Regla"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Kural"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Règle"
+                    }
+                }
+            }
+        },
+        "omZ-DL-6R7.title": {
+            "comment": "Class = \"NSMenuItem\"; title = \"All Rules\"; ObjectID = \"omZ-DL-6R7\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Alle Regeln"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "All Rules"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Todas las Reglas"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Tüm Kurallar"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Toutes les règles"
+                    }
+                }
+            }
+        },
+        "qbv-z3-4PI.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"item details...\"; ObjectID = \"qbv-z3-4PI\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Objektdetails..."
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "item details..."
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Detalles de ítem..."
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Öğe ayrıntıları…"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Détails de l'item"
+                    }
+                }
+            }
+        },
+        "qNT-HP-XkH.title": {
+            "comment": "Class = \"NSMenuItem\"; title = \"Apple Rules\"; ObjectID = \"qNT-HP-XkH\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Apple-Regeln"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Apple Rules"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Reglas de Apple"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Apple Kuralları"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Règles Apple"
+                    }
+                }
+            }
+        },
+        "rEm-hF-r0T.title": {
+            "comment": "Class = \"NSMenuItem\"; title = \"Default Rules\"; ObjectID = \"rEm-hF-r0T\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Standardregeln"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Default Rules"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Reglas Predeterminadas"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Saptanmış Kurallar"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Règles par défaut"
+                    }
+                }
+            }
+        },
+        "tZf-9e-yHh.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"connection info\"; ObjectID = \"tZf-9e-yHh\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Verbindungsinfo"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "connection info"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "información de conexión"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "bağlantı bilgisi"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "information de connection"
+                    }
+                }
+            }
+        },
+        "vD6-Bk-elz.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"(re)loading rules...\"; ObjectID = \"vD6-Bk-elz\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Regeln (neu)laden..."
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "(re)loading rules..."
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "(re)cargando reglas..."
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "kurallar (yeniden) yükleniyor…"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "(re)chargement des règles ..."
+                    }
+                }
+            }
+        },
+        "wLE-Rk-GOf.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Add Rule\"; ObjectID = \"wLE-Rk-GOf\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Regel hinzufügen"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Add Rule"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Agregar Regla"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Kural Ekle"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ajouter règle"
+                    }
+                }
+            }
+        },
+        "YzL-Xb-QI1.title": {
+            "comment": "Class = \"NSMenuItem\"; title = \"3rd-party Rules\"; ObjectID = \"YzL-Xb-QI1\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Drittanbieterregeln"
+                    }
+                },
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "3rd-party Rules"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Reglas de terceros"
+                    }
+                },
+                "tr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "3. Parti Kurallar"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Règles tierce-partie"
+                    }
+                }
+            }
         }
-      }
     },
-    "7zm-Uo-lwv.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Item Name\"; ObjectID = \"7zm-Uo-lwv\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Objektname"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Item Name"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nombre de Ítem"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nom d’item"
-          }
-        }
-      }
-    },
-    "b9m-wt-VZa.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Recent Rules\"; ObjectID = \"b9m-wt-VZa\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neuste Regeln"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Recent Rules"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reglas Recientes"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Règles récentes"
-          }
-        }
-      }
-    },
-    "BsU-Gh-mch.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"BsU-Gh-mch\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Textzelle"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Celda de Texto"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cellule texte"
-          }
-        }
-      }
-    },
-    "cvb-ds-FcC.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"User Rules\"; ObjectID = \"cvb-ds-FcC\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Benutzerregeln"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "User Rules"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reglas del Usuario"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Règles utilisateur"
-          }
-        }
-      }
-    },
-    "DWG-ck-lDk.placeholderString" : {
-      "comment" : "Class = \"NSSearchFieldCell\"; placeholderString = \"Filter Rules\"; ObjectID = \"DWG-ck-lDk\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Regeln filtern"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Filter Rules"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Filtrar Reglas"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Règles de filtre"
-          }
-        }
-      }
-    },
-    "F0z-JX-Cv5.title" : {
-      "comment" : "Class = \"NSWindow\"; title = \"LuLu Rules\"; ObjectID = \"F0z-JX-Cv5\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "LuLu-Regeln"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "LuLu Rules"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reglas de LuLu"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Règles LuLu"
-          }
-        }
-      }
-    },
-    "F7G-1t-415.label" : {
-      "comment" : "Class = \"NSToolbarItem\"; label = \"Custom View\"; ObjectID = \"F7G-1t-415\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Benutzerdefinierte Ansicht"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Custom View"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vista Personalizada"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vue personnalisée"
-          }
-        }
-      }
-    },
-    "F7G-1t-415.paletteLabel" : {
-      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Custom View\"; ObjectID = \"F7G-1t-415\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Benutzerdefinierte Ansicht"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Custom View"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vista Personalizada"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vue personnalisée"
-          }
-        }
-      }
-    },
-    "mQo-bf-aNx.headerCell.title" : {
-      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \" Rule\"; ObjectID = \"mQo-bf-aNx\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Regel"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : " Rule"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Regla"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Règle"
-          }
-        }
-      }
-    },
-    "omZ-DL-6R7.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"All Rules\"; ObjectID = \"omZ-DL-6R7\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alle Regeln"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "All Rules"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Todas las Reglas"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toutes les règles"
-          }
-        }
-      }
-    },
-    "qbv-z3-4PI.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"item details...\"; ObjectID = \"qbv-z3-4PI\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Objektdetails..."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "item details..."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Detalles de ítem..."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Détails de l'item"
-          }
-        }
-      }
-    },
-    "qNT-HP-XkH.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Apple Rules\"; ObjectID = \"qNT-HP-XkH\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple-Regeln"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Apple Rules"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reglas de Apple"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Règles Apple"
-          }
-        }
-      }
-    },
-    "rEm-hF-r0T.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Default Rules\"; ObjectID = \"rEm-hF-r0T\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Standardregeln"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Default Rules"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reglas Predeterminadas"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Règles par défaut"
-          }
-        }
-      }
-    },
-    "tZf-9e-yHh.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"connection info\"; ObjectID = \"tZf-9e-yHh\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verbindungsinfo"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "connection info"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "información de conexión"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "information de connection"
-          }
-        }
-      }
-    },
-    "vD6-Bk-elz.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"(re)loading rules...\"; ObjectID = \"vD6-Bk-elz\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Regeln (neu)laden..."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "(re)loading rules..."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "(re)cargando reglas..."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "(re)chargement des règles ..."
-          }
-        }
-      }
-    },
-    "wLE-Rk-GOf.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Add Rule\"; ObjectID = \"wLE-Rk-GOf\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Regel hinzufügen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Add Rule"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Agregar Regla"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ajouter règle"
-          }
-        }
-      }
-    },
-    "YzL-Xb-QI1.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"3rd-party Rules\"; ObjectID = \"YzL-Xb-QI1\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Drittanbieterregeln"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "3rd-party Rules"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reglas de terceros"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Règles tierce-partie"
-          }
-        }
-      }
-    }
-  },
-  "version" : "1.0"
+    "version": "1.0"
 }

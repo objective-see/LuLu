@@ -23,6 +23,12 @@
             "value" : "Actualizar LuLu"
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu’yu Güncelle"
+ }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -52,6 +58,12 @@
             "state" : "translated",
             "value" : "Actualizar"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güncelle"
+ }
         },
         "fr" : {
           "stringUnit" : {

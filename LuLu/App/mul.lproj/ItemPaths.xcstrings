@@ -23,10 +23,18 @@
             "value" : "Ruta(s):"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yollar:"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chemin(s) : "
+
           }
         }
       }
@@ -53,10 +61,18 @@
             "value" : "Cerrar"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapat"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fermer"
+
           }
         }
       }

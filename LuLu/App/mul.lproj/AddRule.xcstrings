@@ -23,10 +23,18 @@
             "value" : "Puerto remoto"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzak kapı"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Port distant"
+
           }
         }
       }
@@ -53,10 +61,18 @@
             "value" : "Dirección remota/dominio"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzak adres/Etki alanı"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Adresse/domaine distant"
+
           }
         }
       }
@@ -83,10 +99,18 @@
             "value" : "Agregar Regla (para conexiones salientes)"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kural Ekle (Dışarı Giden Bağlantılar)"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajouter une règle (pour connections sortantes)"
+
           }
         }
       }
@@ -113,10 +137,18 @@
             "value" : "regex?"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düzenli ifade"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "regex ?"
+
           }
         }
       }
@@ -143,10 +175,18 @@
             "value" : "Cancelar"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vazgeç"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Annuler"
+
           }
         }
       }
@@ -173,10 +213,18 @@
             "value" : "Bloquear"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engelle"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloquer"
+
           }
         }
       }
@@ -203,7 +251,15 @@
             "value" : "*"
           }
         },
+
+        "tr" : {
+        "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "*"
@@ -233,10 +289,18 @@
             "value" : "Permitir"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzin ver"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser"
+
           }
         }
       }
@@ -263,10 +327,18 @@
             "value" : "Navegar"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Göz At"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Parcourir"
+
           }
         }
       }
@@ -293,7 +365,15 @@
             "value" : "*"
           }
         },
+
+        "tr" : {
+        "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "*"
@@ -323,10 +403,18 @@
             "value" : "Ruta del programa"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Program yolu"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chemin du programme"
+
           }
         }
       }
@@ -353,10 +441,18 @@
             "value" : "Agregar"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekle"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajouter"
+
           }
         }
       }

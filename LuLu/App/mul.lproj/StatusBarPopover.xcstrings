@@ -23,10 +23,18 @@
             "value" : "⌃"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌃"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "^"
+
           }
         }
       }
@@ -53,10 +61,18 @@
             "value" : "¡LuLu en funcionamiento!"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu açık ve çalışıyor!"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu est opérationnel !"
+
           }
         }
       }
@@ -83,10 +99,18 @@
             "value" : "Acceda desde aquí en cualquier momento."
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ona buradan istediğiniz zaman erişebilirsiniz."
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Accédez-y ici à tout moment"
+
           }
         }
       }

@@ -23,10 +23,18 @@
             "value" : "¡Apóyanos!"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bizi Destekleyin!"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Soutenez nous !"
+
           }
         }
       }
@@ -53,10 +61,18 @@
             "value" : "Versión:"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sürüm:"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version : "
+
           }
         }
       }
@@ -83,10 +99,18 @@
             "value" : "Patrons & Friends"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aboneler ve Arkadaşlar"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mécènes et amis"
+
           }
         }
       }
@@ -113,10 +137,18 @@
             "value" : "Más Información"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daha Fazla Bilgi"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plus d’information"
+
           }
         }
       }

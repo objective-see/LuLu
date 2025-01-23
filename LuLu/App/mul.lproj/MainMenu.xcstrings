@@ -23,10 +23,18 @@
             "value" : "Mostrar..."
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Göster…"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Afficher …"
+
           }
         }
       }
@@ -53,10 +61,18 @@
             "value" : "Configuración..."
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar…"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réglages ..."
+
           }
         }
       }
@@ -83,10 +99,18 @@
             "value" : "Importar..."
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İçe Aktar…"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importer ..."
+
           }
         }
       }
@@ -113,7 +137,15 @@
             "value" : "LuLu"
           }
         },
+
+        "tr" : {
+        "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu"
@@ -143,10 +175,18 @@
             "value" : "Exportar..."
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dışa Aktar…"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exporter …"
+
           }
         }
       }
@@ -173,10 +213,18 @@
             "value" : "Cerrar LuLu"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu’dan Çık"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quitter LuLu"
+
           }
         }
       }
@@ -203,10 +251,18 @@
             "value" : "Agregar..."
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekle… "
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajouter ..."
+
           }
         }
       }
@@ -233,7 +289,15 @@
             "value" : "LuLu"
           }
         },
+
+        "tr" : {
+"stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
         "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu"
@@ -263,10 +327,18 @@
             "value" : "Desinstalar LuLu"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu’yu Kaldır"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Désinstaller LuLu"
+
           }
         }
       }
@@ -293,10 +365,18 @@
             "value" : "Limpiar"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temizle"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nettoyage"
+
           }
         }
       }
@@ -323,10 +403,18 @@
             "value" : "Deshabilitar"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devre Dışı Bırak"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Désactiver"
+
           }
         }
       }
@@ -353,10 +441,18 @@
             "value" : "Acerca de LuLu"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu Hakkında"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "À propos de LuLu"
+
           }
         }
       }
@@ -383,10 +479,18 @@
             "value" : "Cerrar LuLu"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu’dan Çık"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quitter LuLu"
+
           }
         }
       }
@@ -413,10 +517,18 @@
             "value" : "Menú Principal"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana Menü"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Menu Principal"
+
           }
         }
       }
@@ -443,10 +555,18 @@
             "value" : "Reglas"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurallar"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles"
+
           }
         }
       }
@@ -473,10 +593,18 @@
             "value" : "Reglas"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurallar"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles"
+
           }
         }
       }
@@ -503,10 +631,18 @@
             "value" : "Monitor de Red..."
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ağ Monitörü…"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Moniteur réseau ..."
+
           }
         }
       }
@@ -533,10 +669,18 @@
             "value" : "LULU: habilitado"
           }
         },
+
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: Etkin"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "LULU : activé"
+
           }
         }
       }

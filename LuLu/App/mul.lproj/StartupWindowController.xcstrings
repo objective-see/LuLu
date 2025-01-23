@@ -23,6 +23,12 @@
             "value" : "Iniciando ahora..."
           }
         },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "şimdi başlatılıyor…"
+}
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
