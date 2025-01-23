@@ -8,7 +8,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Zertifizierungsinstanz 2"
+            "value" : " - Zertifizierungsinstanz 2"
           }
         },
         "en" : {
@@ -98,7 +98,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Regellänge:"
+            "value" : "Regeldauer:"
           }
         },
         "en" : {
@@ -248,7 +248,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Details"
+            "value" : "Details:"
           }
         },
         "en" : {
@@ -278,7 +278,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zertifizierungsinstanz"
+            "value" : "Zertifizierungsinstanzen:"
           }
         },
         "en" : {
@@ -338,7 +338,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Zertifizierungsinstanz 3"
+            "value" : " - Zertifizierungsinstanz 3"
           }
         },
         "en" : {
@@ -368,7 +368,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "(Umgekehrte) DNS: "
+            "value" : "(Reverse) DNS: "
           }
         },
         "en" : {
@@ -638,7 +638,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Zertifizierungsinstanz 1"
+            "value" : " - Zertifizierungsinstanz 1"
           }
         },
         "en" : {
@@ -668,7 +668,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "entfernter Endpunkt"
+            "value" : "Remote-Endpunkt"
           }
         },
         "en" : {
@@ -698,7 +698,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prozess"
+            "value" : "Prozess:"
           }
         },
         "en" : {
@@ -908,7 +908,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uhrzeit:"
+            "value" : "Zeitstempel:"
           }
         },
         "en" : {

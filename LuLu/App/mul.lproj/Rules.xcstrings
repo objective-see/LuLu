@@ -188,7 +188,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu Regeln"
+            "value" : "LuLu-Regeln"
           }
         },
         "en" : {
@@ -278,7 +278,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Regel"
+            "value" : " Regel"
           }
         },
         "en" : {
@@ -338,7 +338,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Objektdetails…"
+            "value" : "Objektdetails..."
           }
         },
         "en" : {
@@ -428,7 +428,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verbindungsinfos"
+            "value" : "Verbindungsinfo"
           }
         },
         "en" : {
@@ -458,7 +458,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Regeln (neu)laden"
+            "value" : "Regeln (neu)laden..."
           }
         },
         "en" : {
@@ -488,7 +488,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Regeln hinzufügen"
+            "value" : "Regel hinzufügen"
           }
         },
         "en" : {

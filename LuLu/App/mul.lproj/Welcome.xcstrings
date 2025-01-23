@@ -8,7 +8,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Option erlaub allen bereits installierten Drittanbieterprogrammen auf das Netzwerk zugreifen, ohne eine Mitteilung auszulösen"
+            "value" : "Diese Option erlaub allen bereits installierten Drittanbieterprogrammen auf das Netzwerk zugreifen, ohne eine Mitteilung auszulösen."
           }
         },
         "en" : {
@@ -68,7 +68,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "1. Auf der „Systemerweiterung blockiert“-Meldung: drücke „Systemeinstellungen öffnen“."
+            "value" : "1. Auf der „Systemerweiterung blockiert“-Meldung drücke: „Systemeinstellungen öffnen“."
           }
         },
         "en" : {
@@ -128,7 +128,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Es beobachtet die Netzwerkaktivität und warnt, wenn ein Programm zum ersten Mal versucht, eine ausgehende Verbindung herzustellen, so dass diese zugelassen oder abgelehnt werden kann."
+            "value" : "Überwacht die Netzwerkaktivität und warnt, wenn ein Programm zum ersten Mal versucht, eine ausgehende Verbindung herzustellen, sodass diese erlaubt oder blockiert werden kann."
           }
         },
         "en" : {
@@ -207,7 +207,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lulu ist eine frei quelloffene Firewall für macOS"
+            "value" : "Lulu ist eine freie quelloffene Firewall für macOS"
           }
         },
         "en" : {
@@ -297,7 +297,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "4. Klicke in der Meldung „Netzwerkinhalte filtern“ auf: „Erlauben“"
+            "value" : "4. Klicke in dem Hinweis „Netzwerkinhalte filtern“ auf: „Erlauben“"
           }
         },
         "en" : {
@@ -357,7 +357,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Option erlaubt allen von Apple signierten Programmen auf das Netzwerk  zugreifen, ohne eine Mitteilung auszulösen"
+            "value" : "Diese Option erlaubt allen von Apple signierten Programmen auf das Netzwerk zuzugreifen, ohne eine Mitteilung auszulösen."
           }
         },
         "en" : {
@@ -417,7 +417,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Option erlaubt alle (UDP-) Verbindungen über Port 53"
+            "value" : "Diese Option erlaubt alle (UDP-) Verbindungen auf Port 53."
           }
         },
         "en" : {
@@ -447,7 +447,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "DNS-Verbindungen erlauben"
+            "value" : " DNS-Verbindungen erlauben"
           }
         },
         "en" : {
@@ -597,7 +597,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nun konfigurieren wir LuLu:"
+            "value" : "Nun wollen wir LuLu konfigurieren:"
           }
         },
         "en" : {
@@ -627,7 +627,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bereits installierte Programme erlauben"
+            "value" : " Bereits installierte Anwendungen erlauben"
           }
         },
         "en" : {
@@ -687,7 +687,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apple-Programme erlauben"
+            "value" : " Apple-Programme erlauben"
           }
         },
         "en" : {
