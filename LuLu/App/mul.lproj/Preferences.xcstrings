@@ -8,7 +8,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jetzt überprüfen"
+            "value" : "Jetzt prüfen"
           }
         },
         "en" : {
@@ -98,7 +98,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bereit installierte Drittanbieterprogramme werden blockiert."
+            "value" : "Bereits installierte Drittanbieterprogramme werden erlaubt."
           }
         },
         "en" : {
@@ -128,7 +128,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hinweis: Wenn eine neue Verbindung hergestellt wird, ist manchmal nur die IP-Adresse verfügbar. In solchen Fällen können die Domains auf der Zulassungs- oder Sperrliste nicht abgeglichen werden, was sich darauf auswirken kann, ob eine Anfrage gesperrt oder zugelassen wird."
+            "value" : "Hinweis: Wenn eine neue Verbindung hergestellt wird, ist manchmal nur die IP-Adresse verfügbar. In solchen Fällen können die Domains in der Erlauben- oder Blockieren-Liste nicht abgeglichen werden, was sich darauf auswirken kann, ob eine Anfrage blockiert oder erlaubt wird."
           }
         },
         "en" : {
@@ -158,7 +158,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lokale oder externe Datei, die Endpunkte enthält, die immer zugelassen werden sollen."
+            "value" : "Lokale oder externe Datei, die Endpunkte enthält, die immer erlaubt werden sollen."
           }
         },
         "en" : {
@@ -308,7 +308,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stille ausführen ohne Mitteilungen unter Anwendung bestehender Regeln."
+            "value" : "Stille Ausführung ohne Mitteilungen unter Anwendung bestehender Regeln."
           }
         },
         "en" : {
@@ -368,7 +368,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Programme in einem Simulator laufen, sind erlaubt."
+            "value" : "Programme, welche in einem Simulator laufen, werden erlaubt."
           }
         },
         "en" : {
@@ -398,7 +398,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Blockierungs-Liste:"
+            "value" : "Blockieren-Liste:"
           }
         },
         "en" : {
@@ -428,7 +428,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu-Einstellungen"
+            "value" : "LuLus Einstellungen"
           }
         },
         "en" : {
@@ -458,7 +458,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erlauben-Liste"
+            "value" : "Erlauben-Liste:"
           }
         },
         "en" : {
@@ -578,7 +578,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle (UDP-)Verbindungen auf Port 53 sind erlaubt."
+            "value" : "Alle (UDP-)Verbindungen auf Port 53 werden erlaubt."
           }
         },
         "en" : {
@@ -608,7 +608,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nicht automatisch nach Aktualisierungen suchen."
+            "value" : "Nicht automatisch nach Updates suchen."
           }
         },
         "en" : {
@@ -788,7 +788,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Von Apple signierte Programme sind erlaubt."
+            "value" : "Von Apple signierte Programme werden erlaubt."
           }
         },
         "en" : {
@@ -848,7 +848,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aktualiseren"
+            "value" : "Update"
           }
         },
         "en" : {
@@ -878,7 +878,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aktualiseren"
+            "value" : "Update"
           }
         },
         "en" : {
@@ -968,7 +968,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle über LuLu geleiteten Verbindungen werden blockiert (es sei denn, der Endpunkt ist ausdrücklich in der Liste „Erlauben“ aufgeführt)."
+            "value" : "Alle über LuLu geleiteten Verbindungen werden blockiert (es sei denn, der Endpunkt ist ausdrücklich in der „Erlauben“-Liste aufgeführt)."
           }
         },
         "en" : {
@@ -1088,7 +1088,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Simulator-Programme erlauben"
+            "value" : "Simulator-Anwendungen erlauben"
           }
         },
         "en" : {
@@ -1178,7 +1178,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aktualisierungsprüfung deaktivieren"
+            "value" : "Update-Prüfungen deaktivieren"
           }
         },
         "en" : {
