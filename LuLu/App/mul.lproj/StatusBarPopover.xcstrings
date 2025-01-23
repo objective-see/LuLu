@@ -5,6 +5,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"⌃\"; ObjectID = \"2jG-uf-4XV\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌃"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -17,10 +23,18 @@
             "value" : "⌃"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "⌃"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "^"
+
           }
         }
       }
@@ -29,6 +43,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"LuLu up & running!\"; ObjectID = \"17\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu läuft!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -41,10 +61,18 @@
             "value" : "¡LuLu en funcionamiento!"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu açık ve çalışıyor!"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu est opérationnel !"
+
           }
         }
       }
@@ -53,6 +81,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Access it from here anytime.\"; ObjectID = \"22\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Greife jederzeit von hier aus darauf zu."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -65,10 +99,18 @@
             "value" : "Acceda desde aquí en cualquier momento."
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ona buradan istediğiniz zaman erişebilirsiniz."
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accédez-y ici à tout moment"
+
           }
         }
       }

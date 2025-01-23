@@ -5,6 +5,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"This option will allow any 3rd-party app that is already installed, to access the network without generating an alert.\"; ObjectID = \"3aO-AI-YtY\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Option erlaub allen bereits installierten Drittanbieterprogrammen auf das Netzwerk zugreifen, ohne eine Mitteilung auszulösen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -17,10 +23,18 @@
             "value" : "Esta opción permitirá que cualquier aplicación de terceros que ya esté instalada acceda a la red sin generar una alerta."
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bu seçenek, halihazırda kurulu olan herhangi bir 3. parti uygulamanın bir ikâz oluşturmadan ağa erişimine izin verir."
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette option permet à toute application tierce déjà installée d'accéder au réseau sans générer d'alerte."
+
           }
         }
       }
@@ -29,6 +43,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Mahalo to the \\\"Friends Objective-See\\\"\"; ObjectID = \"7pD-BH-c8i\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahalo an die \"Friends Objective-See\""
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -41,10 +61,18 @@
             "value" : "Gracias a los \"Friends of Objective-See\""
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "“Objective-See” Arkadaşlarına Mahalo"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahalo aux « Amis Objectif-See »"
+
           }
         }
       }
@@ -53,6 +81,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"1. In the \\\"System Extension Blocked\\\" alert, click: \\\"Open System Settings\\\"\"; ObjectID = \"C1V-iy-oEo\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Auf der „Systemerweiterung blockiert“-Meldung drücke: „Systemeinstellungen öffnen“."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -65,10 +99,18 @@
             "value" : "1. En la alerta \"Extensión de Sistema Bloqueada\", haga click en: \"Abrir Configuración del Sistema\""
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "1. “Sistem Genişletmesi Engellendi” ikâzında “Sistem Ayarları’nı Aç”a tıklayın."
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Dans l'alerte « Extension du système bloquée », cliquez sur : « Ouvrir les Réglages Système »"
+
           }
         }
       }
@@ -77,6 +119,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"First,  allow the LuLu Network Extension:\"; ObjectID = \"Cwe-NI-HiJ\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zuerst muss die LuLu Netzwerkerweiterung zugelassen werden:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -89,10 +137,18 @@
             "value" : "Primero, permite la Extensión de Red de LuLu:"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Öncelikle, LuLu ağ genişletmesine izin verin:"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout d'abord, autorisez l'extension de réseau LuLu :"
+
           }
         }
       }
@@ -101,6 +157,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"It monitors network activity and alerts you when a program first tries to initiate an outgoing connection, allowing you to permit or deny it.\"; ObjectID = \"eic-lg-Ln7\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überwacht die Netzwerkaktivität und warnt, wenn ein Programm zum ersten Mal versucht, eine ausgehende Verbindung herzustellen, sodass diese erlaubt oder blockiert werden kann."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -113,10 +175,18 @@
             "value" : "Monitorea la actividad de la red y alerta cuando un programa intenta iniciar por primera vez una conexión saliente, permitiéndote permitirla o denegarla.  "
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ağ etkinliğinizi izler ve bir program ilk kez dışarıya bir bağlantı sağlamaya çalıştığında sizi ikâz eder ve izin vermenizi veya engellemenizi ister."
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il surveille l'activité du réseau et vous avertit lorsqu'un programme tente pour la première fois d'établir une connexion sortante, ce qui vous permet de l'autoriser ou de la refuser."
+
           }
         }
       }
@@ -144,6 +214,12 @@
       "comment" : "Class = \"NSWindow\"; title = \"LuLu\"; ObjectID = \"F0z-JX-Cv5\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -156,7 +232,15 @@
             "value" : "LuLu"
           }
         },
+
         "tr" : {
+"stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
+        "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu"
@@ -168,6 +252,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"LuLu is a free open-source firewall for macOS.\"; ObjectID = \"pMo-Yj-XKY\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lulu ist eine freie quelloffene Firewall für macOS"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -180,10 +270,18 @@
             "value" : "LuLu es un firewall gratuito y open-source para macOS."
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu, macOS için ücretsiz ve açık kaynak bir güvenlik duvarıdır."
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu est un pare-feu libre et gratuit pour macOS."
+
           }
         }
       }
@@ -192,6 +290,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"No\"; ObjectID = \"QA3-Ww-PeC\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nein"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -204,10 +308,18 @@
             "value" : "No"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hayır"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non"
+
           }
         }
       }
@@ -216,6 +328,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Support LuLu?\"; ObjectID = \"qNj-Zh-8FW\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu unterstützen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -228,10 +346,18 @@
             "value" : "¿Apoyas a LuLu?"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu’yu desteklemek ister misiniz?"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soutenir LuLu ?"
+
           }
         }
       }
@@ -240,6 +366,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"4. In the \\\"Filter Network Content\\\" alert, click: \\\"Allow\\\"\"; ObjectID = \"qYE-G3-j1K\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Klicke in dem Hinweis „Netzwerkinhalte filtern“ auf: „Erlauben“"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -252,10 +384,18 @@
             "value" : "4. En la alerta \"Filtrar Contenido de Red\", haga click en: \"Permitir\""
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "4. “Ağ İçeriğini Filtrele” ikâzında “İzin Ver”e tıklayın."
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Dans l'alerte « Filtrer le contenu du réseau », cliquez sur : « Autoriser »"
+
           }
         }
       }
@@ -264,6 +404,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Welcome to\"; ObjectID = \"Qyh-uK-Afv\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Willkommen zu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -276,10 +422,18 @@
             "value" : "Bienvenido a "
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hoş Geldiniz"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenue sur"
+
           }
         }
       }
@@ -288,6 +442,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"This option will allow any Apple-signed binary to access the network without generating an alert.\"; ObjectID = \"r1b-Nl-Ii7\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Option erlaubt allen von Apple signierten Programmen auf das Netzwerk zuzugreifen, ohne eine Mitteilung auszulösen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -300,10 +460,18 @@
             "value" : "Esta opción permitirá que cualquier código binario firmado por Apple acceda a la red sin generar una alerta."
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bu seçenek, Apple tarafından imzalanmış herhangi bir ikilinin, bir ikâz oluşturmadan ağa erişimine izin verecektir."
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette option permet à tout binaire signé par Apple d'accéder au réseau sans générer d'alerte."
+
           }
         }
       }
@@ -312,6 +480,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Yes!\"; ObjectID = \"Re5-aD-QVR\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ja!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -324,10 +498,18 @@
             "value" : "¡Sí!"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Evet!"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oui !"
+
           }
         }
       }
@@ -336,6 +518,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"This option will allow any (UDP) traffic over port 53.\"; ObjectID = \"sAE-Mf-3fz\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Option erlaubt alle (UDP-) Verbindungen auf Port 53."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -348,10 +536,18 @@
             "value" : "Esta opción permitirá cualquier tráfico (UDP) sobre el puerto 53. "
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bu seçenek, 53. kapı üzerinden herhangi bir UDP trafiğine izin verecektir."
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette option autorise tout trafic (UDP) sur le port 53."
+
           }
         }
       }
@@ -360,6 +556,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \" Allow DNS Traffic\"; ObjectID = \"SWc-iv-oN4\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " DNS-Verbindungen erlauben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -372,10 +574,18 @@
             "value" : "Permitir Tráfico DNS"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "DNS trafiğine izin ver"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser le trafic DNS"
+
           }
         }
       }
@@ -384,6 +594,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"It's free, open-source, and written by a single (Mac-loving) coder!\"; ObjectID = \"Uzd-7P-dzG\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es ist frei, quelloffen und von einem einzigen (Mac-liebenden) Entwickler geschrieben! "
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -396,10 +612,18 @@
             "value" : "Sin cargo, open-source y desarrollado por un único programador (amante de Mac)!  "
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ücretsizdir, açık kaynaktır ve tek bir (Mac hastası) kodcu tarafından yazılmıştır!"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C’est gratuit, open-source et écrit par un seul codeur (amoureux du Mac) !"
+
           }
         }
       }
@@ -408,6 +632,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Waiting for System Extension Approval\"; ObjectID = \"VIe-9o-Kc7\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warten auf die Genehmigung der Systemerweiterung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -420,10 +650,18 @@
             "value" : "Esperando Aprobación de la Extensión del Sistema"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sistem Genişletmesi Onayı Bekleniyor"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En attente de l'approbation de l'extension du système"
+
           }
         }
       }
@@ -432,6 +670,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Show some love? \"; ObjectID = \"XBE-gW-YkK\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein bisschen Liebe zeigen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -444,10 +688,18 @@
             "value" : "¿Nos das tu apoyo?"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Biraz sevgi gösterseniz?"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Montrer un peu d’amour ?"
+
           }
         }
       }
@@ -456,6 +708,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Next\"; ObjectID = \"xbU-XH-hYT\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -468,10 +726,18 @@
             "value" : "Siguiente"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sonraki"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant"
+
           }
         }
       }
@@ -480,6 +746,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Now, let's configure LuLu:\"; ObjectID = \"XHD-XH-wR0\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nun wollen wir LuLu konfigurieren:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -492,10 +764,18 @@
             "value" : "Ahora, configuremos LuLu:"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Haydi LuLu’yu yapılandıralım:"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenant, configurons LuLu :"
+
           }
         }
       }
@@ -504,6 +784,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \" Allow Already Installed Applications\"; ObjectID = \"ymJ-tB-qiA\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Bereits installierte Anwendungen erlauben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -516,10 +802,18 @@
             "value" : "Permitir Aplicaciones Ya Instaladas"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Halihazırda kurulu uygulamalara izin ver"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser les applications déjà installées"
+
           }
         }
       }
@@ -528,6 +822,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Next\"; ObjectID = \"YXa-F3-XSG\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -540,10 +840,18 @@
             "value" : "Siguiente"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sonraki"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant"
+
           }
         }
       }
@@ -552,6 +860,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \" Allow Apple Programs\"; ObjectID = \"zo1-a0-tPg\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Apple-Programme erlauben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -564,10 +878,18 @@
             "value" : "Permitir Programas de Apple"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apple programlarına izin ver"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser les programmes Apple"
+
           }
         }
       }
@@ -576,6 +898,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"3. Authenticate\"; ObjectID = \"ZZK-2G-iIB\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Authentifiziere"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -588,10 +916,18 @@
             "value" : "3. Autenticar"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "3. Yetkilendirin."
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. S’authentifier"
+
           }
         }
       }

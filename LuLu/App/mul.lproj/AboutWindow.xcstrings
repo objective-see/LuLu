@@ -5,6 +5,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Support Us!\"; ObjectID = \"6g3-Pg-x3P\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unterstütze uns!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -17,10 +23,18 @@
             "value" : "¡Apóyanos!"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bizi Destekleyin!"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soutenez nous !"
+
           }
         }
       }
@@ -29,6 +43,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Version:\"; ObjectID = \"bBK-v0-ypq\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -41,10 +61,18 @@
             "value" : "Versión:"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sürüm:"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version : "
+
           }
         }
       }
@@ -53,6 +81,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Patrons & Friends\"; ObjectID = \"fJg-qw-wDf\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unterstützer & Freunde:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -65,10 +99,18 @@
             "value" : "Patrons & Friends"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aboneler ve Arkadaşlar"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mécènes et amis"
+
           }
         }
       }
@@ -77,6 +119,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"More Information\"; ObjectID = \"J9x-sM-h9S\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weitere Informationen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -89,10 +137,18 @@
             "value" : "Más Información"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Daha Fazla Bilgi"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus d’information"
+
           }
         }
       }

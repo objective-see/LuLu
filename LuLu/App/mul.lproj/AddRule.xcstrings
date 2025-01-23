@@ -5,6 +5,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Remote port\"; ObjectID = \"5ic-Om-d8g\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remote Port"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -17,10 +23,18 @@
             "value" : "Puerto remoto"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uzak kapı"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Port distant"
+
           }
         }
       }
@@ -29,6 +43,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Remote address/domain\"; ObjectID = \"7yf-wW-FZC\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remote Adresse/Domain"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -41,10 +61,18 @@
             "value" : "Dirección remota/dominio"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uzak adres/Etki alanı"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresse/domaine distant"
+
           }
         }
       }
@@ -53,6 +81,12 @@
       "comment" : "Class = \"NSWindow\"; title = \"Add Rule (for outgoing connections)\"; ObjectID = \"F0z-JX-Cv5\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regel hinzufügen (für ausgehende Verbidungen)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -65,10 +99,18 @@
             "value" : "Agregar Regla (para conexiones salientes)"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kural Ekle (Dışarı Giden Bağlantılar)"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter une règle (pour connections sortantes)"
+
           }
         }
       }
@@ -77,6 +119,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"regex?\"; ObjectID = \"FCA-Cv-yT3\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "regex?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -89,10 +137,18 @@
             "value" : "regex?"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Düzenli ifade"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "regex ?"
+
           }
         }
       }
@@ -101,6 +157,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Cancel\"; ObjectID = \"fX0-Jq-Okq\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -113,10 +175,18 @@
             "value" : "Cancelar"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vazgeç"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+
           }
         }
       }
@@ -125,6 +195,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \" Block\"; ObjectID = \"JJl-Lz-apr\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Blockieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -137,10 +213,18 @@
             "value" : "Bloquear"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Engelle"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquer"
+
           }
         }
       }
@@ -149,6 +233,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"*\"; ObjectID = \"kXW-Xv-Fc4\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -161,7 +251,15 @@
             "value" : "*"
           }
         },
+
         "tr" : {
+        "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
+        "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "*"
@@ -173,6 +271,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \" Allow\"; ObjectID = \"oCK-aR-Ek4\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Erlauben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -185,10 +289,18 @@
             "value" : "Permitir"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "İzin ver"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser"
+
           }
         }
       }
@@ -197,6 +309,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Browse\"; ObjectID = \"OoX-aE-Hgf\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durchsuchen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -209,10 +327,18 @@
             "value" : "Navegar"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Göz At"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parcourir"
+
           }
         }
       }
@@ -221,6 +347,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"*\"; ObjectID = \"QWe-2U-lfn\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -233,7 +365,15 @@
             "value" : "*"
           }
         },
+
         "tr" : {
+        "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
+        "fr" : {
+
           "stringUnit" : {
             "state" : "translated",
             "value" : "*"
@@ -245,6 +385,12 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Program path\"; ObjectID = \"tc1-pS-Wns\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programmpfad"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -257,10 +403,18 @@
             "value" : "Ruta del programa"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Program yolu"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chemin du programme"
+
           }
         }
       }
@@ -269,6 +423,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Add\"; ObjectID = \"V5P-DF-wCP\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -281,10 +441,18 @@
             "value" : "Agregar"
           }
         },
+
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ekle"
+}
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter"
+
           }
         }
       }

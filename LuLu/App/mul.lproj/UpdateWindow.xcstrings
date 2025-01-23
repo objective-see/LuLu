@@ -5,6 +5,12 @@
       "comment" : "Class = \"NSWindow\"; title = \"LuLu Update\"; ObjectID = \"F0z-JX-Cv5\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu Update"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -21,6 +27,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu’yu Güncelle"
+ }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mise à jour LuLu"
           }
         }
       }
@@ -29,6 +41,12 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Update\"; ObjectID = \"nMV-1f-RyK\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -45,6 +63,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Güncelle"
+ }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mise à jour"
           }
         }
       }
