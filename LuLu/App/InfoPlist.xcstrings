@@ -22,6 +22,12 @@
             "state" : "translated",
             "value" : "LuLu"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
         }
       }
     },
@@ -45,6 +51,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Copyright (c) 2020 Objective-See. Todos los derechos reservados."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telif hakkı © 2020 Objective-See. Tüm hakları saklıdır."
           }
         }
       }
