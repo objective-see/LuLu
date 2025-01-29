@@ -29,6 +29,12 @@
             "value" : "Label"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etykieta"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -69,6 +75,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nom d’item"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa elementu"
           }
         },
         "pt-BR" : {
@@ -113,6 +125,12 @@
             "value" : "Règles récentes"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Najnowsze reguły"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -153,6 +171,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cellule texte"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Komórka tekstowa"
           }
         },
         "pt-BR" : {
@@ -197,6 +221,12 @@
             "value" : "Règles utilisateur"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reguły użytkownika"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -237,6 +267,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles de filtre"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reguły filtrowania"
           }
         },
         "pt-BR" : {
@@ -281,6 +317,12 @@
             "value" : "Règles LuLu"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reguły LuLu"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -321,6 +363,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vue personnalisée"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widok niestandardowy"
           }
         },
         "pt-BR" : {
@@ -365,6 +413,12 @@
             "value" : "Vue personnalisée"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widok niestandardowy"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -405,6 +459,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règle"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reguła"
           }
         },
         "pt-BR" : {
@@ -449,6 +509,12 @@
             "value" : "Toutes les règles"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wszystkie reguły"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -489,6 +555,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Détails de l'item"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "szczegóły elementu…"
           }
         },
         "pt-BR" : {
@@ -533,6 +605,12 @@
             "value" : "Règles Apple"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reguły Apple"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -573,6 +651,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles par défaut"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reguły domyślne"
           }
         },
         "pt-BR" : {
@@ -617,6 +701,12 @@
             "value" : "information de connection"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "informacje o połączeniu"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -657,6 +747,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "(re)chargement des règles ..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(ponowne) ładowanie reguł…"
           }
         },
         "pt-BR" : {
@@ -701,6 +797,12 @@
             "value" : "Ajouter règle"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaj regułę"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -741,6 +843,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles tierce-partie"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reguły stron trzecich"
           }
         },
         "pt-BR" : {

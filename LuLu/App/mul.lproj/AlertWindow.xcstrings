@@ -29,6 +29,12 @@
             "value" : " - autorité de signature 2"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- podpisanie autoryzacji 2"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -63,6 +69,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ID de signature : "
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podpis ID:"
           }
         },
         "pt-BR" : {
@@ -107,6 +119,12 @@
             "value" : "Connection : "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Połączenie:"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -147,6 +165,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Durée de la règle : "
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czas trwania reguły:"
           }
         },
         "pt-BR" : {
@@ -191,6 +215,12 @@
             "value" : "non applicable"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nie dotyczy"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -231,6 +261,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "port/protocole : "
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "port/protokół:"
           }
         },
         "pt-BR" : {
@@ -275,6 +311,12 @@
             "value" : "Durée de vie du processus"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czas życia procesu"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -312,6 +354,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HH:mm"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "HH:mm"
@@ -359,6 +407,12 @@
             "value" : "Détails : "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szczegóły:"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -401,6 +455,12 @@
             "value" : "Autorités de signature : "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uwierzytelnianie podpisów:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -432,6 +492,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alert LuLu"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alert LuLu"
@@ -479,6 +545,12 @@
             "value" : " - autorité de signature 3"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- podpisanie autoryzacji 3"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -513,6 +585,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "dns (inverse) : "
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(reverse) dns:"
           }
         },
         "pt-BR" : {
@@ -557,6 +635,12 @@
             "value" : "Détails et options"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szczegóły i opcje"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -597,6 +681,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Champ d’application de la règle : "
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zakres reguły:"
           }
         },
         "pt-BR" : {
@@ -641,6 +731,12 @@
             "value" : "chemin : "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ścieżka:"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -681,6 +777,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "id de signature"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "podpis id"
           }
         },
         "pt-BR" : {
@@ -725,6 +827,12 @@
             "value" : "pid : "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pid:"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -765,6 +873,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Processus"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proces"
           }
         },
         "pt-BR" : {
@@ -809,6 +923,12 @@
             "value" : "Nom du processus"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa procesu"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -849,6 +969,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nom"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa"
           }
         },
         "pt-BR" : {
@@ -893,6 +1019,12 @@
             "value" : " - autorité de signature 1"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- podpisanie autoryzacji 1"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -927,6 +1059,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Point d’accès distant"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zdalny punkt końcowy"
           }
         },
         "pt-BR" : {
@@ -971,6 +1109,12 @@
             "value" : "Processus : "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proces:"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1011,6 +1155,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "message"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "wiadomość"
           }
         },
         "pt-BR" : {
@@ -1055,6 +1205,12 @@
             "value" : "arguments : "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "argumenty:"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1095,6 +1251,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toujours"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zawsze"
           }
         },
         "pt-BR" : {
@@ -1139,6 +1301,12 @@
             "value" : "adresse ip : "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "adres IP:"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1179,6 +1347,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloquer"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blokuj"
           }
         },
         "pt-BR" : {
@@ -1223,6 +1397,12 @@
             "value" : "Valide jusque : "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ważne do:"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1265,6 +1445,12 @@
             "value" : "Horodatage : "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sygnatura czasowa:"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1305,6 +1491,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pozwól"
           }
         },
         "pt-BR" : {

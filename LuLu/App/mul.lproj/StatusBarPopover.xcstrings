@@ -29,6 +29,12 @@
             "value" : "^"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌃"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -71,6 +77,12 @@
             "value" : "LuLu est opérationnel !"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu jest uruchomiona!"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +123,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Accédez-y ici à tout moment"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dostęp możesz uzyskać w dowolnym momencie stąd."
           }
         },
         "pt-BR" : {
