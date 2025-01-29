@@ -23,18 +23,22 @@
             "value" : "Verificar Ahora"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Şimdi Denetle"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vérifier maintenant"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verificar Agora"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şimdi Denetle"
           }
         }
       }
@@ -61,18 +65,22 @@
             "value" : "Modo Bloqueo"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Engelleme kipi"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode blocage"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquear Modo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engelleme kipi"
           }
         }
       }
@@ -99,18 +107,22 @@
             "value" : "¿Se deben crear reglas para nuevas conexiones?"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeni bağlantılar için kurallar oluşturulmalı mı?"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les règles pour les nouvelles connections doivent être créées ?"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Criar regras para novas conexões?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni bağlantılar için kurallar oluşturulmalı mı?"
           }
         }
       }
@@ -137,18 +149,22 @@
             "value" : "Se permitirán los programas de terceros previamente instalados."
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Daha önceden kurulmuş, 3. parti uygulamalara izin verilecektir."
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programmes précédemment installées, les programmes de tierce-partie seront autorisés."
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programas terceirizados previamente instalados serão permitidos."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daha önceden kurulmuş, 3. parti uygulamalara izin verilecektir."
           }
         }
       }
@@ -175,18 +191,22 @@
             "value" : "Nota: cuando se hace una nueva conexión, a veces solo la dirección IP estará disponible. En esos casos, los dominios en la lista de permitidos o bloqueados no coincidirán, lo cual impactará si un pedido es bloqueado o permitido. "
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not: Yeni bir bağlantı yapıldığında, bazen yalnızca IP adresi kullanılabilir olabilir. Bu tür durumlarda, izin verilenler veya engellenenler listesindeki etki alanları eşleştirilemez; bu, bir bağlantının engellenip engellenmeyeceğine etki edebilir."
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Note : Quand une nouvelle connection est réalisée, parfois seule l’adresse IP est disponible. Dans ces cas, les domaines sur la liste d’autorisation ou de blocage ne peuvent pas être utilisés, ce qui peut impacter le blocage ou l’autorisation d’une requête."
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nota: quando uma nova conexão é feita, às vezes somente o endereço de IP estará disponível. Nestes casos, os domínios nas listas de permissão ou bloqueio não conseguirão ser encontrados, o que pode impactar se a solicitação será bloqueada ou permitida."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not: Yeni bir bağlantı yapıldığında, bazen yalnızca IP adresi kullanılabilir olabilir. Bu tür durumlarda, izin verilenler veya engellenenler listesindeki etki alanları eşleştirilemez; bu, bir bağlantının engellenip engellenmeyeceğine etki edebilir."
           }
         }
       }
@@ -213,18 +233,22 @@
             "value" : "Archivo local o remoto, que contiene endpoints para bloquear siempre. "
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yerel veya uzak dosya, her zaman izin verilecek içeren bitiş noktaları."
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fichier local ou distant, contenant les points d’accès à toujours autoriser."
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arquivo local ou remoto, contendo endpoints para sempre permitir."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yerel veya uzak dosya, her zaman izin verilecek içeren bitiş noktaları."
           }
         }
       }
@@ -251,18 +275,22 @@
             "value" : "Archivo local o remoto, que contiene endpoints para bloquear siempre. "
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yerel veya uzak dosya, her zaman engellenecek içeren bitiş noktaları."
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fichier local ou distant, contenant les points d’accès à toujours bloquer."
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arquivo local ou remoto, contendo endpoints para sempre bloquear."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yerel veya uzak dosya, her zaman engellenecek içeren bitiş noktaları."
           }
         }
       }
@@ -289,18 +317,22 @@
             "value" : "Ejecutar sin mostrar un ícono en la barra de menú de estado."
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Menü çubuğunda bir simge göstermeden çalıştırın."
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exécuter sans afficher d'icône dans la barre de menu."
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rodar sem mostrar ícone de staus na barra do menu."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menü çubuğunda bir simge göstermeden çalıştırın."
           }
         }
       }
@@ -327,18 +359,22 @@
             "value" : "Ver Reglas"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kuralları Görüntüle"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Voir les règles."
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver Regras"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kuralları Görüntüle"
           }
         }
       }
@@ -365,18 +401,22 @@
             "value" : "Permitido"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İzin ver"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autorisé"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitido"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzin ver"
           }
         }
       }
@@ -403,18 +443,22 @@
             "value" : "Ejecutar silenciosamente sin alertas, aplicando reglas existentes."
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İkâz olmadan sessizce çalıştırın ve var olan kuralları uygulayın."
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exécution silencieuse sans alerte, en appliquant les règles existantes."
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rodar silenciado sem alertas, aplicando regras existentes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İkâz olmadan sessizce çalıştırın ve var olan kuralları uygulayın."
           }
         }
       }
@@ -441,18 +485,22 @@
             "value" : "Sí"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Evet"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oui"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sim"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evet"
           }
         }
       }
@@ -479,18 +527,22 @@
             "value" : "Se permitirán las aplicaciones que se ejecuten dentro del simulador."
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Simülatörde çalışan uygulamalara izin verilecektir."
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les applications fonctionnant dans le simulateur sont autorisées."
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplicações rodando no simulador serão permitidas."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simülatörde çalışan uygulamalara izin verilecektir."
           }
         }
       }
@@ -517,18 +569,22 @@
             "value" : "Lista de Bloqueados:"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Engel listesi:"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Liste de blocage :"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista de Bloqueio:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engel listesi:"
           }
         }
       }
@@ -555,18 +611,22 @@
             "value" : "Configuración de LuLu"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "LuLu’nun Ayarları"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réglages de LuLu"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configurações LuLu:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu’nun Ayarları"
           }
         }
       }
@@ -593,18 +653,22 @@
             "value" : "Lista de Permitidos:"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İzin listesi:"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Liste d’autorisation :"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista de Permissões:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzin listesi:"
           }
         }
       }
@@ -631,18 +695,22 @@
             "value" : "Navegar"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Göz At"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Parcourir"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Göz At"
           }
         }
       }
@@ -669,18 +737,22 @@
             "value" : "Las nuevas conexiones deben ser:"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeni bağlantılara:"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les nouvelles connections doivent être :"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novas conexões devem ser:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni bağlantılara:"
           }
         }
       }
@@ -707,18 +779,22 @@
             "value" : "Modo Sin Ícono"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Simgesiz kip"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode sans icône"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo Sem Ícone"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simgesiz kip"
           }
         }
       }
@@ -745,18 +821,22 @@
             "value" : "Todo el tráfico (UDP) en el puerto 53 será permitido. "
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "53. kapıdaki tüm (UDP) trafiğe izin verilecektir."
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tout le trafic (UDP) sur le port 53 sera autorisé."
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo tráfego (UDP) na porta 53 será permitido."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "53. kapıdaki tüm (UDP) trafiğe izin verilecektir."
           }
         }
       }
@@ -783,18 +863,22 @@
             "value" : "No verificar automáticamente nuevas versiones. "
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeni sürümleri kendiliğinden denetlemeyin."
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ne pas vérifier automatiquement les nouvelles versions."
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não verifique novas atualizações  automaticamente."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni sürümleri kendiliğinden denetlemeyin."
           }
         }
       }
@@ -821,18 +905,22 @@
             "value" : "Modo Pasivo"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pasif kip"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode passif"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo Passivo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pasif kip"
           }
         }
       }
@@ -859,18 +947,22 @@
             "value" : "Permitir Programas Instalados"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kurulu programlara izin ver"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser les programmes installés"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir Programas Instalados"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurulu programlara izin ver"
           }
         }
       }
@@ -897,18 +989,22 @@
             "value" : "No"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hayır"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Non"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayır"
           }
         }
       }
@@ -935,18 +1031,22 @@
             "value" : "Modo"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kip"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kip"
           }
         }
       }
@@ -973,18 +1073,22 @@
             "value" : "Modo"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kip"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kip"
           }
         }
       }
@@ -1011,18 +1115,22 @@
             "value" : "Se permitirán los binarios firmados por Apple."
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple tarafından imzalanan ikililere izin verilir."
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les binaires signés par Apple seront autorisés"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Binários assinados pela Apple serão permitidos."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple tarafından imzalanan ikililere izin verilir."
           }
         }
       }
@@ -1049,18 +1157,22 @@
             "value" : "Bloqueado"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Engelle"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloqué"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloqueado"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engelle"
           }
         }
       }
@@ -1087,18 +1199,22 @@
             "value" : "Actualizar"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Güncelle"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mise à jour"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atualizar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güncelle"
           }
         }
       }
@@ -1125,18 +1241,22 @@
             "value" : "Actualizar"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Güncelle"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mise à jour"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atualizar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güncelle"
           }
         }
       }
@@ -1163,18 +1283,22 @@
             "value" : "Listas"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Listeler"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Listes"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listas"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listeler"
           }
         }
       }
@@ -1201,18 +1325,22 @@
             "value" : "Listas"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Listeler"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Listes"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listas"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listeler"
           }
         }
       }
@@ -1239,18 +1367,22 @@
             "value" : "Todo el tráfico ruteado a través de LuLu será bloqueado (a menos que el endpoint esté explícito en la lista de 'Permitidos')."
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "LuLu üzerinden aktarılan tüm trafik engellenir (bitiş noktası açıkça “İzin Ver” listesinde değilse)."
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tout le trafic acheminé par LuLu sera bloqué (à moins que le point d’accès ne figure explicitement sur la liste 'Autoriser')."
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo tráfego roteado pelo LuLu será bloqueado (a menos que o endpoint esteja explicitamente na lista de ‘Permissões’)."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu üzerinden aktarılan tüm trafik engellenir (bitiş noktası açıkça “İzin Ver” listesinde değilse)."
           }
         }
       }
@@ -1277,18 +1409,22 @@
             "value" : "Permitir Programas de Apple"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple programlarına izin ver"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser les programmes Apple"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir Programas Apple"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple programlarına izin ver"
           }
         }
       }
@@ -1315,18 +1451,22 @@
             "value" : "Reglas"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kurallar"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regras"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurallar"
           }
         }
       }
@@ -1353,18 +1493,22 @@
             "value" : "Reglas"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kurallar"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regras"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurallar"
           }
         }
       }
@@ -1391,18 +1535,22 @@
             "value" : "Permitir Aplicaciones del Simulador"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Simülatör uygulamalarına izin ver"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser les applications du simulateur"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir Aplicações do Simulador"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simülatör uygulamalarına izin ver"
           }
         }
       }
@@ -1429,18 +1577,22 @@
             "value" : "Navegar"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Göz At"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Parcourir"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Göz At"
           }
         }
       }
@@ -1467,18 +1619,22 @@
             "value" : "Permitir Tráfico DNS"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "DNS trafiğine izin ver"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser le trafic DNS"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir Tráfego DNS"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DNS trafiğine izin ver"
           }
         }
       }
@@ -1505,18 +1661,22 @@
             "value" : "Deshabilitar Verificación de Actualizaciones"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Güncelleme denetimlerini devre dışı bırak"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Désactiver les contrôles de mise à jour"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desabilitar Verificação de Atualizações"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güncelleme denetimlerini devre dışı bırak"
           }
         }
       }

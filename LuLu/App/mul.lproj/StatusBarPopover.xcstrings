@@ -23,18 +23,22 @@
             "value" : "⌃"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⌃"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "^"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "^"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌃"
           }
         }
       }
@@ -61,18 +65,22 @@
             "value" : "¡LuLu en funcionamiento!"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "LuLu açık ve çalışıyor!"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu est opérationnel !"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu está rodando!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu açık ve çalışıyor!"
           }
         }
       }
@@ -99,18 +107,22 @@
             "value" : "Acceda desde aquí en cualquier momento."
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ona buradan istediğiniz zaman erişebilirsiniz."
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Accédez-y ici à tout moment"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acesse-o daqui quando quiser."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ona buradan istediğiniz zaman erişebilirsiniz."
           }
         }
       }

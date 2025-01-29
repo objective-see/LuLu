@@ -23,18 +23,22 @@
             "value" : "¡Apóyanos!"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bizi Destekleyin!"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Soutenez nous !"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suporte-nos!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bizi Destekleyin!"
           }
         }
       }
@@ -61,18 +65,22 @@
             "value" : "Versión:"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sürüm:"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version : "
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versão:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sürüm:"
           }
         }
       }
@@ -99,18 +107,22 @@
             "value" : "Patrons & Friends"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aboneler ve Arkadaşlar"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mécènes et amis"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patrocinadores e Amigos"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aboneler ve Arkadaşlar"
           }
         }
       }
@@ -137,18 +149,22 @@
             "value" : "Más Información"
           }
         },
-
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Daha Fazla Bilgi"
-}
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plus d’information"
-
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mais Informações"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daha Fazla Bilgi"
           }
         }
       }

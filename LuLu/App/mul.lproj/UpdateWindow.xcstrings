@@ -23,16 +23,22 @@
             "value" : "Actualizar LuLu"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "LuLu’yu Güncelle"
- }
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mise à jour LuLu"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atualização LuLu"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu’yu Güncelle"
           }
         }
       }
@@ -59,16 +65,22 @@
             "value" : "Actualizar"
           }
         },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Güncelle"
- }
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mise à jour"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atializar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güncelle"
           }
         }
       }
