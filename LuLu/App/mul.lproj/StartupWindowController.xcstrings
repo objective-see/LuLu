@@ -29,6 +29,12 @@
             "value" : "Démarrage en cours …"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uruchamianie…"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",

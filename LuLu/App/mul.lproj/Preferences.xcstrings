@@ -29,6 +29,12 @@
             "value" : "Vérifier maintenant"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprawdź teraz"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -69,6 +75,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode blocage"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryb blokady"
           }
         },
         "pt-BR" : {
@@ -113,6 +125,12 @@
             "value" : "Les règles pour les nouvelles connections doivent être créées ?"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czy należy stworzyć reguły dla nowych połączeń?"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -153,6 +171,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programmes précédemment installées, les programmes de tierce-partie seront autorisés."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wcześniej zainstalowane programy innych firm będą dozwolone."
           }
         },
         "pt-BR" : {
@@ -197,6 +221,12 @@
             "value" : "Note : Quand une nouvelle connection est réalisée, parfois seule l’adresse IP est disponible. Dans ces cas, les domaines sur la liste d’autorisation ou de blocage ne peuvent pas être utilisés, ce qui peut impacter le blocage ou l’autorisation d’une requête."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uwaga: Kiedy nawiązywane jest nowe połączenie, czasami dostępny może być tylko adres IP. W takich przypadkach domeny na liście dozwolonych lub blokowanych nie mogą zostać dopasowane, co może mieć wpływ na to, czy żądanie zostanie zablokowane, czy dozwolone."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -237,6 +267,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fichier local ou distant, contenant les points d’accès à toujours autoriser."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plik lokalny lub zdalny, zawierający punkty końcowe, na które zawsze należy zezwolić."
           }
         },
         "pt-BR" : {
@@ -281,6 +317,12 @@
             "value" : "Fichier local ou distant, contenant les points d’accès à toujours bloquer."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plik lokalny lub zdalny, zawierający punkty końcowe, które należy zawsze blokować."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -321,6 +363,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exécuter sans afficher d'icône dans la barre de menu."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uruchom bez wyświetlania ikony na pasku menu stanu."
           }
         },
         "pt-BR" : {
@@ -365,6 +413,12 @@
             "value" : "Voir les règles."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobacz reguły"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -405,6 +459,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autorisé"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dozwolone"
           }
         },
         "pt-BR" : {
@@ -449,6 +509,12 @@
             "value" : "Exécution silencieuse sans alerte, en appliquant les règles existantes."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Działa w trybie cichym, bez alertów, stosując istniejące reguły."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -489,6 +555,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oui"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tak"
           }
         },
         "pt-BR" : {
@@ -533,6 +605,12 @@
             "value" : "Les applications fonctionnant dans le simulateur sont autorisées."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikacje działające w symulatorze będą dozwolone."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -573,6 +651,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Liste de blocage :"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista zablokowanych:"
           }
         },
         "pt-BR" : {
@@ -617,6 +701,12 @@
             "value" : "Réglages de LuLu"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawienia LuLu"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -657,6 +747,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Liste d’autorisation :"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista dozwolonych:"
           }
         },
         "pt-BR" : {
@@ -701,6 +797,12 @@
             "value" : "Parcourir"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przeglądaj"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -741,6 +843,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les nouvelles connections doivent être :"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nowe połączenia powinny być:"
           }
         },
         "pt-BR" : {
@@ -785,6 +893,12 @@
             "value" : "Mode sans icône"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryb bez ikony"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -825,6 +939,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tout le trafic (UDP) sur le port 53 sera autorisé."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cały ruch (UDP) na porcie 53 będzie dozwolony."
           }
         },
         "pt-BR" : {
@@ -869,6 +989,12 @@
             "value" : "Ne pas vérifier automatiquement les nouvelles versions."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie sprawdzaj automatycznie dostępności nowych wersji."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -909,6 +1035,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode passif"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryb pasywny"
           }
         },
         "pt-BR" : {
@@ -953,6 +1085,12 @@
             "value" : "Autoriser les programmes installés"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwalaj na zainstalowane programy"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -993,6 +1131,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Non"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie"
           }
         },
         "pt-BR" : {
@@ -1037,6 +1181,12 @@
             "value" : "Mode"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryb"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1077,6 +1227,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryb"
           }
         },
         "pt-BR" : {
@@ -1121,6 +1277,12 @@
             "value" : "Les binaires signés par Apple seront autorisés"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dozwolone będą pliki binarne podpisane przez Apple."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1161,6 +1323,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloqué"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zablokowany"
           }
         },
         "pt-BR" : {
@@ -1205,6 +1373,12 @@
             "value" : "Mise à jour"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualizacja"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1245,6 +1419,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mise à jour"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualizacja"
           }
         },
         "pt-BR" : {
@@ -1289,6 +1469,12 @@
             "value" : "Listes"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listy"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1329,6 +1515,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Listes"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listy"
           }
         },
         "pt-BR" : {
@@ -1373,6 +1565,12 @@
             "value" : "Tout le trafic acheminé par LuLu sera bloqué (à moins que le point d’accès ne figure explicitement sur la liste 'Autoriser')."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cały ruch kierowany przez LuLu zostanie zablokowany (chyba że punkt końcowy znajduje się wyraźnie na liście „Zezwól”)."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1413,6 +1611,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser les programmes Apple"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwalaj na programy Apple"
           }
         },
         "pt-BR" : {
@@ -1457,6 +1661,12 @@
             "value" : "Règles"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reguły"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1497,6 +1707,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reguły"
           }
         },
         "pt-BR" : {
@@ -1541,6 +1757,12 @@
             "value" : "Autoriser les applications du simulateur"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwalaj na aplikacje symulacyjne"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1581,6 +1803,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Parcourir"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przeglądaj"
           }
         },
         "pt-BR" : {
@@ -1625,6 +1853,12 @@
             "value" : "Autoriser le trafic DNS"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwól na ruch DNS"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1665,6 +1899,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Désactiver les contrôles de mise à jour"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyłącz sprawdzanie aktualizacji"
           }
         },
         "pt-BR" : {

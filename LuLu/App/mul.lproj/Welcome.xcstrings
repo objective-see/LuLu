@@ -29,6 +29,12 @@
             "value" : "Cette option permet à toute application tierce déjà installée d'accéder au réseau sans générer d'alerte."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opcja ta umożliwi każdej zainstalowanej już aplikacji innej firmy dostęp do sieci bez generowania alertu."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -69,6 +75,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mahalo aux « Amis Objectif-See »"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahalo do „Przyjaciół Objective-See”"
           }
         },
         "pt-BR" : {
@@ -113,6 +125,12 @@
             "value" : "1. Dans l'alerte « Extension du système bloquée », cliquez sur : « Ouvrir les Réglages Système »"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. W alercie „Zablokowane rozszerzenie systemu” kliknij: „Otwórz ustawienia systemu”"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -155,6 +173,12 @@
             "value" : "Tout d'abord, autorisez l'extension de réseau LuLu :"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Najpierw zezwól na rozszerzenie sieciowe LuLu:"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -195,6 +219,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Il surveille l'activité du réseau et vous avertit lorsqu'un programme tente pour la première fois d'établir une connexion sortante, ce qui vous permet de l'autoriser ou de la refuser."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monitoruje aktywność sieciową i powiadamia Cię, gdy program po raz pierwszy próbuje zainicjować połączenie wychodzące, umożliwiając Ci zezwolenie na nie lub jego zablokowanie."
           }
         },
         "pt-BR" : {
@@ -258,6 +288,12 @@
             "value" : "LuLu"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -298,6 +334,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu est un pare-feu libre et gratuit pour macOS."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu to darmowa zapora sieciowa typu open source dla systemu macOS."
           }
         },
         "pt-BR" : {
@@ -342,6 +384,12 @@
             "value" : "Non"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -382,6 +430,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Soutenir LuLu ?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wesprze\u0003ć LuLu?"
           }
         },
         "pt-BR" : {
@@ -426,6 +480,12 @@
             "value" : "4. Dans l'alerte « Filtrer le contenu du réseau », cliquez sur : « Autoriser »"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. W alercie „Filtruj zawartość sieciową” kliknij: „Zezwól”"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -466,6 +526,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bienvenue sur"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Witamy w"
           }
         },
         "pt-BR" : {
@@ -510,6 +576,12 @@
             "value" : "Cette option permet à tout binaire signé par Apple d'accéder au réseau sans générer d'alerte."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ta opcja umożliwi dostęp do sieci każdemu plikowi binarnemu podpisanemu przez Apple bez generowania alertu."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -550,6 +622,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oui !"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tak!"
           }
         },
         "pt-BR" : {
@@ -594,6 +672,12 @@
             "value" : "Cette option autorise tout trafic (UDP) sur le port 53."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opcja ta zezwoli na cały ruch (UDP) przez port 53."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -634,6 +718,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser le trafic DNS"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwól na ruch DNS"
           }
         },
         "pt-BR" : {
@@ -678,6 +768,12 @@
             "value" : "C’est gratuit, open-source et écrit par un seul codeur (amoureux du Mac) !"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jest darmowy, ma otwarte oprogramowanie i został napisany przez jednego (miłośnika Maców) programistę!"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -718,6 +814,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "En attente de l'approbation de l'extension du système"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oczekiwanie na zatwierdzenie rozszerzenia systemu"
           }
         },
         "pt-BR" : {
@@ -762,6 +864,12 @@
             "value" : "Montrer un peu d’amour ?"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okażesz trochę miłości?"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -802,6 +910,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suivant"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dalej"
           }
         },
         "pt-BR" : {
@@ -846,6 +960,12 @@
             "value" : "Maintenant, configurons LuLu :"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teraz skonfigurujmy LuLu:"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -886,6 +1006,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser les applications déjà installées"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwalaj na już zainstalowane aplikacje"
           }
         },
         "pt-BR" : {
@@ -930,6 +1056,12 @@
             "value" : "Suivant"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dalej"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -972,6 +1104,12 @@
             "value" : "Autoriser les programmes Apple"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwalaj na programy Apple"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1012,6 +1150,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3. S’authentifier"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Uwierzytelnij"
           }
         },
         "pt-BR" : {

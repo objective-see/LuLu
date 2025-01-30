@@ -28,6 +28,12 @@
             "value" : "\nRapporto di rilevamento:"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Współczynnik wykrywania:"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -67,6 +73,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "non trovato su VirusTotal"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nie znaleziono w VirusTotal"
           }
         },
         "pt-BR" : {
@@ -110,6 +122,12 @@
             "value" : "Ricevuta risposta non valida"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otrzymano nieprawidłową odpowiedź"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -149,6 +167,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vedi VirusTotal"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobacz w WirusTotal"
           }
         },
         "pt-BR" : {
@@ -192,6 +216,12 @@
             "value" : "ha un problema con la firma"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ma problem z podpisem"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -231,6 +261,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "non è firmato"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nie jest podpisany"
           }
         },
         "pt-BR" : {
@@ -274,6 +310,12 @@
             "value" : "non ha una firma valida"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nie jest podpisany prawidłowo"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -313,6 +355,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ha una firma valida"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "jest prawidłowo podpisany"
           }
         },
         "pt-BR" : {
@@ -356,6 +404,12 @@
             "value" : "è firmato da "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "podpisane przez stronę trzecią/doraźnie"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -395,6 +449,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "sconosciuto"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nieznany"
           }
         },
         "pt-BR" : {
@@ -438,6 +498,12 @@
             "value" : "…copia l’Applicazione in /Applications e riavviala"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...proszę skopiować do /Aplikacje i uruchomić ponownie."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -477,6 +543,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "…questo rimuoverà completamente LuLu dal tuo Mac"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...spowoduje to całkowite usunięcie LuLu z Twojego Maca"
           }
         },
         "pt-BR" : {
@@ -520,6 +592,12 @@
             "value" : "…questo arresterà LuLu, fino al prossimo accesso"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...spowoduje to zamknięcie LuLu, do czasu ponownego zalogowania."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -559,6 +637,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "› non firmato"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "> brak upoważnień do podpisywania"
           }
         },
         "pt-BR" : {
@@ -608,6 +692,12 @@
             "value" : "%@ (pid: %@)"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (pid: %2$@)"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -655,6 +745,12 @@
             "value" : "%1$@ (firmato da: %2$@)"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (sygnatariusz: %2$@)"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -694,6 +790,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (firmato da: Apple Mac OS App Store)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (sygnatariusz: Sklep Aplikacji Apple Mac OS)"
           }
         },
         "pt-BR" : {
@@ -737,6 +839,12 @@
             "value" : "%@ (firmato da: Apple Proper)"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (sygnatariusz: firma Apple)"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -776,6 +884,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (firmato da: Non Valido/Non Firmato)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (sygnatariusz: nieprawidłowy/nieprzypisany)"
           }
         },
         "pt-BR" : {
@@ -819,6 +933,12 @@
             "value" : "%@ non esiste!"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ nie istnieje!"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -860,6 +980,12 @@
             "value" : "%@ è un processo legittimo di macOS"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ jest prawidłowym procesem macOS"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -899,6 +1025,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ non è un numero (di porta) valido"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ nie jest prawidłowym numerem (portu)"
           }
         },
         "pt-BR" : {
@@ -948,6 +1080,12 @@
             "value" : "%@ non è un’espressione regolare valida\ndettagli: %@"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ nie jest prawidłowym wyrażeniem regularnym szczegóły: %2$@"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -987,6 +1125,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ questa regola potrebbe impattare alcune funzionalità di sistema ...continuare?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ta reguła, może mieć wpływ na prawidłowe funkcjonowanie systemu...kontynuować?"
           }
         },
         "pt-BR" : {
@@ -1030,6 +1174,12 @@
             "value" : "La firma di %@ è cambiata"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Informacje o podpisie kodu uległy zmianie"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1069,6 +1219,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancella Regola"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Usuń regułę"
           }
         },
         "pt-BR" : {
@@ -1112,6 +1268,12 @@
             "value" : "Cancella Regola/e"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Usuń regułę(y)"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1151,6 +1313,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modifica Regola"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Edytuj regułę"
           }
         },
         "pt-BR" : {
@@ -1194,6 +1362,12 @@
             "value" : "Mostra percorso/i"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Pokaż ścieżkę(i)"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1233,6 +1407,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "<sconosciuto (%d)>"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<nieznany (%d)>"
           }
         },
         "pt-BR" : {
@@ -1276,6 +1456,12 @@
             "value" : "2. Nelle Impostazioni di Sistema, scorri fino alla voce “LuLu” e clicca su “Consenti”"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. W Ustawieniach systemowych przewiń do miejsca, w którym wspomniano o „LuLu” i kliknij „Zezwól”"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1315,6 +1501,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2. Nelle Impostazioni di Sistema, abilita l’estensione LuLu"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. W Ustawieniach systemowych włącz rozszerzenie LuLu"
           }
         },
         "pt-BR" : {
@@ -1358,6 +1550,12 @@
             "value" : "una nuova versione (%@) è disponibile!"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dostępna jest nowa wersja (%@)!"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1397,6 +1595,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "A questo"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doraźnie"
           }
         },
         "pt-BR" : {
@@ -1440,6 +1644,12 @@
             "value" : "Aggiunte nelle ultime 24 ore (ordinate per data di creazione)"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodano w ciągu ostatnich 24 godzin (posortowane według czasu utworzenia)"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1479,6 +1689,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tutte le Regole"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wszystkie reguły"
           }
         },
         "pt-BR" : {
@@ -1522,6 +1738,12 @@
             "value" : "Consenti"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwól"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1561,6 +1783,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consenti (pid: %@)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwól (pid: %@)"
           }
         },
         "pt-BR" : {
@@ -1604,6 +1832,12 @@
             "value" : "Consenti (fino a: %@)"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwól (do: %@)"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1643,6 +1877,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ogni indirizzo"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dowolny adres"
           }
         },
         "pt-BR" : {
@@ -1686,6 +1926,12 @@
             "value" : "ogni porta"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dowolny port"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1725,6 +1971,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ogni programma"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jakikolwiek program"
           }
         },
         "pt-BR" : {
@@ -1768,6 +2020,12 @@
             "value" : "Programmi Apple (autorizzati e aggiunti qui automaticamente se è impostato \"Consenti programmi Apple\")"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programy Apple (automatycznie dozwolone i dodawane tutaj, jeśli ustawiono opcję „zezwól programom Apple”)"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1807,6 +2065,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Blocca"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blokuj"
           }
         },
         "pt-BR" : {
@@ -1850,6 +2114,12 @@
             "value" : "Blocca (pid: %@)"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blokuj (pid: %@)"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1889,6 +2159,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Blocca (fino a: %@)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blokuj (do: %@)"
           }
         },
         "pt-BR" : {
@@ -1932,6 +2208,12 @@
             "value" : "Cancella"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anuluj"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1971,6 +2253,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%ld regole pulite"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyczyszczono %ld reguł"
           }
         },
         "pt-BR" : {
@@ -2014,6 +2302,12 @@
             "value" : "Regole di pulizia che fanno riferimento agli elementi (ora) eliminati?"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reguły czyszczenia odnoszące się do (aktualnie) usuniętych elementów?"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2053,6 +2347,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Continua"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontynuuj"
           }
         },
         "pt-BR" : {
@@ -2096,6 +2396,12 @@
             "value" : "Le regole della directory si applicano a tutti gli elementi all'interno della directory"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reguły katalogu dotyczą wszystkich elementów w katalogu"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2135,6 +2441,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Disabilita"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyłącz"
           }
         },
         "pt-BR" : {
@@ -2178,6 +2490,12 @@
             "value" : "Abilita"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włącz"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2217,6 +2535,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Attivazione fallita"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BŁĄD: aktywacja nie powiodła się"
           }
         },
         "pt-BR" : {
@@ -2260,6 +2584,12 @@
             "value" : "ERRORE: Pulizia regole non completata"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BŁĄD: Nie udało się wyczyścić reguł"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2299,6 +2629,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Esportazione delle regole non completata"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BŁĄD: Nie udało się wyeksportować reguł"
           }
         },
         "pt-BR" : {
@@ -2342,6 +2678,12 @@
             "value" : "ERRORE: Importazione delle regole non completata"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BŁĄD: Nie udało się zaimportować reguł"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2381,6 +2723,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Caricamento patrons non completato"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BŁĄD: nie udało się załadować patronów"
           }
         },
         "pt-BR" : {
@@ -2424,6 +2772,12 @@
             "value" : "ERRORE: Percorso non valido"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BŁĄD: nieprawidłowa ścieżka"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2463,6 +2817,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Porta non valida"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BŁĄD: nieprawidłowy port"
           }
         },
         "pt-BR" : {
@@ -2506,6 +2866,12 @@
             "value" : "ERRORE: Espressione regolare non corretta"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BŁĄD: nieprawidłowe wyrażenie regularne"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2545,6 +2911,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "errore: impossibile controllare la disponibilità di aggiornamenti"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "błąd: nie udało się sprawdzić aktualizacji"
           }
         },
         "pt-BR" : {
@@ -2588,6 +2960,12 @@
             "value" : "Le estensioni devono essere manualmente abilitate tramite il menù Sicurezza e Privacy delle Impostazioni di Sistema"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozszerzenia muszą zostać zatwierdzone ręcznie za pośrednictwem\nPreferencji systemowych dotyczących bezpieczeństwa i prywatności."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2627,6 +3005,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Le estensioni devono essere manualmente abilitate tramite il menù Sicurezza e Privacy delle Impostazioni di Sistema"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozszerzenia muszą zostać zatwierdzone ręcznie w Preferencjach systemowych dotyczących bezpieczeństwa i prywatności."
           }
         },
         "pt-BR" : {
@@ -2670,6 +3054,12 @@
             "value" : "Impossibile attivare l’estensione di rete"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nie udało się aktywować rozszerzenia sieciowego"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2709,6 +3099,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impossibile attivare il filtro di rete"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nie udało się aktywować filtra sieciowego"
           }
         },
         "pt-BR" : {
@@ -2752,6 +3148,12 @@
             "value" : "Impossibile attivare l’estensione di sistema"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nie udało się aktywować rozszerzenia systemu"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2791,6 +3193,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impossibile attivare l’estensione di sistema/rete"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nie udało się aktywować rozszerzenia systemowego/sieciowego"
           }
         },
         "pt-BR" : {
@@ -2834,6 +3242,12 @@
             "value" : "Impossibile contattare VirusTotal"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się wykonać zapytania do VirusTotal"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2873,6 +3287,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "risultati"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ustalenia"
           }
         },
         "pt-BR" : {
@@ -2916,6 +3336,12 @@
             "value" : "URL Completo: %@"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pełny adres URL: %@"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2955,6 +3381,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Le Regole Globali sono valide per tutti i percorsi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reguły globalne dotyczą wszystkich ścieżek"
           }
         },
         "pt-BR" : {
@@ -2998,6 +3430,12 @@
             "value" : "%ld regole importate"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaimportowano %ld reguł"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3037,6 +3475,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La versione installata (%@) è l’ultima disponibile"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zainstalowana wersja (%@),\njest najnowsza."
           }
         },
         "pt-BR" : {
@@ -3080,6 +3524,12 @@
             "value" : "si sta connettendo a %@"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "łączy się z %@"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3119,6 +3569,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu deve essere eseguito da:\n%@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu musi działać z:\n%@"
           }
         },
         "pt-BR" : {
@@ -3162,6 +3618,12 @@
             "value" : "LuLu: Disabilitato"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: wyłączona"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3201,6 +3663,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu: Abilitato"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: włączona"
           }
         },
         "pt-BR" : {
@@ -3244,6 +3712,12 @@
             "value" : "L’estensione di rete di LuLu non è attiva"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozszerzenie sieciowe LuLu nie działa"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3283,6 +3757,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Più informazioni"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Więcej informacji"
           }
         },
         "pt-BR" : {
@@ -3326,6 +3806,12 @@
             "value" : "nessuno"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nic"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3365,6 +3851,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "non applicabile"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nie dotyczy"
           }
         },
         "pt-BR" : {
@@ -3408,6 +3900,12 @@
             "value" : "Tieni a mente:\n * Le connessioni esistente non verranno impattate.\n * Il traffico di rete del Sistema Operativo (che non passa tramite LuLu) non verrà bloccato."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Należy pamiętać że:\n▪ Istniejące połączenia nie zostaną naruszone.\n▪ Ruch systemu operacyjnego (niekierowany przez LuLu) nie zostanie zablokowany."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3444,6 +3942,12 @@
           }
         },
         "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
@@ -3490,6 +3994,12 @@
             "value" : "È installata una vecchia versione di LuLu"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zainstalowano starą wersję LuLu"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3529,6 +4039,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programmi del Sistema Operativo (Richiesti per le funzionalità di sistema)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programy systemu operacyjnego (wymagane do prawidłowego działania systemu)"
           }
         },
         "pt-BR" : {
@@ -3572,6 +4088,12 @@
             "value" : "Il traffico in uscita non verrà bloccato"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruch wychodzący będzie teraz blokowany."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3611,6 +4133,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programmi di terze parti pre-installati (approvati automaticamente e mostrati qui se “Abilita applicazioni installate” è attivo)"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wstępnie zainstalowane programy innych firm (automatycznie dozwolone i dodawane tutaj, jeśli ustawiono opcję „zezwalaj na zainstalowane aplikacje”)"
           }
         },
         "pt-BR" : {
@@ -3654,6 +4182,12 @@
             "value" : "Argomenti del processo: %@"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Argumenty procesu: %@"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3693,6 +4227,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Percorso del processo: %@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ścieżka procesu: %@"
           }
         },
         "pt-BR" : {
@@ -3736,6 +4276,12 @@
             "value" : "Programmi all'interno di \"%@/\""
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programy w \"%@/\""
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3775,6 +4321,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Interrogazione di VirusTotal..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przeszukiwanie VirusTotal..."
           }
         },
         "pt-BR" : {
@@ -3818,6 +4370,12 @@
             "value" : "Termina"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyjdź"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3859,6 +4417,12 @@
             "value" : "Terminare LuLu?"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyjść z LuLu?"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3898,6 +4462,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dominio inverso: %@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reverse Domain: %@"
           }
         },
         "pt-BR" : {
@@ -3971,6 +4541,12 @@
             "value" : "Vedi i log per altre informazioni"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobacz dziennik, aby uzyskać (więcej) szczegółów"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4010,6 +4586,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "firmato correttamente da Apple"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "podpisane przez firmę Apple"
           }
         },
         "pt-BR" : {
@@ -4053,6 +4635,12 @@
             "value" : "firmato da Mac App Store"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "podpisane przez Mac App Store"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4092,6 +4680,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "firmato da un Apple Developer ID"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "podpisano za pomocą Apple Developer ID"
           }
         },
         "pt-BR" : {
@@ -4135,6 +4729,12 @@
             "value" : "firmata da "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "podpisano, ale nie ma upoważnienia do podpisania (doraźnie?)"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4174,6 +4774,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "errore di firma: %#lx"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "błąd podpisywania: %#lx"
           }
         },
         "pt-BR" : {
@@ -4217,6 +4823,12 @@
             "value" : "Prima di continuare, il programma deve essere disinstallato. Clicca “Più informazioni” per scoprire come"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Należy odinstalować przed kontynuowaniem. Kliknij „Więcej informacji”, aby dowiedzieć się, jak odinstalować"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4256,6 +4868,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Marca temporale: %@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sygnatura czasowa: %@"
           }
         },
         "pt-BR" : {
@@ -4299,6 +4917,12 @@
             "value" : "Disinstalla"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odinstaluj"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4338,6 +4962,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Disinstalla LuLu?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odinstalować LuLu?"
           }
         },
         "pt-BR" : {
@@ -4381,6 +5011,12 @@
             "value" : "sconosciuto"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nieznany"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4420,6 +5056,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aggiorna"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualizacja"
           }
         },
         "pt-BR" : {
@@ -4463,6 +5105,12 @@
             "value" : "Programmi specificati dall'utente (aggiunti manualmente o in risposta a un avviso)"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programy określone przez użytkownika (dodane ręcznie lub w odpowiedzi na alert)"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4504,6 +5152,12 @@
             "value" : "Versione: %@"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wersja: %@"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4543,6 +5197,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "In attesa di approvazione per l’estensione di rete"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oczekiwanie na zatwierdzenie rozszerzenia sieci"
           }
         },
         "pt-BR" : {
