@@ -617,58 +617,70 @@ bail:
         os_log_debug(logHandle, "'Allow Apple' preference not set, so skipped 'Is Apple' check");
     }
     
-    //if it's a prev installed 3rd-party process (w/ no CS change) and that preference is set; allow!
+    //'allow installed' check
+    // if preference is enabled, item is 3rd-party, internal, and hasn't had its CS changed ...allow!
     if( (YES == [preferences.preferences[PREF_ALLOW_INSTALLED] boolValue]) &&
         (Apple != [process.csInfo[KEY_CS_SIGNER] intValue]) &&
         (YES != csChange) )
     {
-        //app date
-        NSDate* date = nil;
-        
-        //dbg msg
-        os_log_debug(logHandle, "3rd-party app, plus 'PREF_ALLOW_INSTALLED' is set...");
-        
-        //only once
-        // get install date
-        dispatch_once(&onceToken, ^{
-            
-            //get LuLu's install date
-            installDate = preferences.preferences[PREF_INSTALL_TIMESTAMP];
-            
-            //dbg msg
-            os_log_debug(logHandle, "LuLu's install date: %{public}@", installDate);
-            
-        });
-        
-        //get item's date added
-        date = dateAdded(process.path);
-        if( (nil != date) &&
-            (NSOrderedAscending == [date compare:installDate]) )
+        //only check internal processes
+        // so, like ignore ones from DMGs, external drives, etc.
+        if(YES == isInternalProcess(process.path))
         {
+            //app date
+            NSDate* date = nil;
+            
             //dbg msg
-            os_log_debug(logHandle, "3rd-party item was installed prior, allowing & adding rule");
+            os_log_debug(logHandle, "3rd-party app, plus 'PREF_ALLOW_INSTALLED' is set...");
             
-            //init info for rule creation
-            info = [@{KEY_PATH:process.path, KEY_ACTION:@RULE_STATE_ALLOW, KEY_TYPE:@RULE_TYPE_BASELINE} mutableCopy];
+            //only once
+            // get install date
+            dispatch_once(&onceToken, ^{
+                
+                //get LuLu's install date
+                installDate = preferences.preferences[PREF_INSTALL_TIMESTAMP];
+                
+                //dbg msg
+                os_log_debug(logHandle, "LuLu's install date: %{public}@", installDate);
+                
+            });
             
-            //add process cs info
-            if(nil != process.csInfo) info[KEY_CS_INFO] = process.csInfo;
-            
-            //create and add rule
-            if(YES != [rules add:[[Rule alloc] init:info] save:YES])
+            //get item's date added
+            date = dateAdded(process.path);
+            if( (nil != date) &&
+                (NSOrderedAscending == [date compare:installDate]) )
             {
-                //err msg
-                os_log_error(logHandle, "ERROR: failed to add rule for %{public}@", info[KEY_PATH]);
-                 
-                //bail
+                //dbg msg
+                os_log_debug(logHandle, "3rd-party item was installed prior, allowing & adding rule");
+                
+                //init info for rule creation
+                info = [@{KEY_PATH:process.path, KEY_ACTION:@RULE_STATE_ALLOW, KEY_TYPE:@RULE_TYPE_BASELINE} mutableCopy];
+                
+                //add process cs info
+                if(nil != process.csInfo) info[KEY_CS_INFO] = process.csInfo;
+                
+                //create and add rule
+                if(YES != [rules add:[[Rule alloc] init:info] save:YES])
+                {
+                    //err msg
+                    os_log_error(logHandle, "ERROR: failed to add rule for %{public}@", info[KEY_PATH]);
+                     
+                    //bail
+                    goto bail;
+                }
+                
+                //tell user rules changed
+                [alerts.xpcUserClient rulesChanged];
+                
+                //all set
                 goto bail;
             }
-            
-            //tell user rules changed
-            [alerts.xpcUserClient rulesChanged];
-            
-            //all set
-            goto bail;
+        }
+        
+        //check for external processes
+        else
+        {
+            os_log_debug(logHandle, "%{public}@ is external, so skipping 'allow installed' check", process.path);
         }
     }
     

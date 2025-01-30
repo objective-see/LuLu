@@ -1818,3 +1818,22 @@ NSDate* absoluteDate(NSDate* date)
 
     return absoluteDate;
 }
+
+//if process is internal drive
+BOOL isInternalProcess(NSString *path)
+{
+    NSError* error = nil;
+    NSNumber* isInternal = nil;
+    
+    if(YES != [[NSURL fileURLWithPath:path] getResourceValue:&isInternal forKey:NSURLVolumeIsInternalKey error:&error] || (nil != error))
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: 'getResourceValue'/'NSURLVolumeIsInternalKey' failed with %@", error);
+        
+        goto bail;
+    }
+    
+bail:
+    
+    return isInternal.boolValue;
+}

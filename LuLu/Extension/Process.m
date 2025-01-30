@@ -80,8 +80,6 @@ extern os_log_t logHandle;
             
             //unset
             self = nil;
-            
-            //bail
             goto bail;
         }
         
@@ -95,8 +93,6 @@ extern os_log_t logHandle;
             
             //unset
             self = nil;
-            
-            //bail
             goto bail;
         }
         
@@ -141,19 +137,22 @@ extern os_log_t logHandle;
         
         //grab current (audit) token
         currentToken = tokenForPid(self.pid);
+        if(0 == currentToken.length)
+        {
+            //unset
+            self = nil;
+            goto bail;
+        }
         
         //check!
         // if it's changed, means pid points to new process, so unset parent, args, etc as these may be invalid!
-        if( (0 == currentToken.length) ||
-            (audit_token_to_pidversion(*token) != audit_token_to_pidversion(*(audit_token_t*)currentToken.bytes)) )
+        if( audit_token_to_pidversion(*token) != audit_token_to_pidversion(*(audit_token_t*)currentToken.bytes) )
         {
             //err msg
             os_log_error(logHandle, "ERROR: audit token mismatch ...pid re-used?");
             
             //unset
             arguments = nil;
-            
-            //alloc array for parents
             ancestors = nil;
         }
     }
