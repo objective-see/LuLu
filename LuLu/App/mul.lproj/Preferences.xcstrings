@@ -1873,6 +1873,30 @@
         }
       }
     },
+    "wka-xk-z2g.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"No VirusTotal Mode\"; ObjectID = \"wka-xk-z2g\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No VirusTotal Mode"
+          }
+        }
+      }
+    },
+    "XTD-vf-hNE.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Disable integration with VirusTotal.\"; ObjectID = \"XTD-vf-hNE\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Disable integration with VirusTotal."
+          }
+        }
+      }
+    },
     "z5b-fA-WCk.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Disable Update Checks\"; ObjectID = \"z5b-fA-WCk\";",
       "extractionState" : "extracted_with_value",

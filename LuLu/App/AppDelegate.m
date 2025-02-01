@@ -297,7 +297,7 @@ bail:
     if(YES != [extension isExtensionRunning])
     {
         //show alert
-        showAlert(NSAlertStyleInformational, NSLocalizedString(@"LuLu's Network Extension Is Not Running", @"LuLu's Network Extension Is Not Running"), NSLocalizedString(@"Extensions must be manually approved via Security & Privacy System Preferences.",@"Extensions must be manually approved via Security & Privacy System Preferences."), @[NSLocalizedString(@"OK", @"OK")]);
+        showAlert(NSAlertStyleInformational, NSLocalizedString(@"LuLu's Network Extension Is Not Running", @"LuLu's Network Extension Is Not Running"), NSLocalizedString(@"Extensions must be manually approved via Security Settings (General > Login Items & Extensions > Network Extensions).",@"Extensions must be manually approved via Security Settings (General > Login Items & Extensions > Network Extensions)."), @[NSLocalizedString(@"OK", @"OK")]);
         
         //bail
         goto bail;

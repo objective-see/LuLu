@@ -122,7 +122,7 @@ NSDate* absoluteDate(NSDate* date);
 //generate list of ancestors
 NSMutableArray* generateProcessHierarchy(pid_t child);
 
-//if process is internal drive
+//is process on internal drive?
 BOOL isInternalProcess(NSString *path);
 
 #endif

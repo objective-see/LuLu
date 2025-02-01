@@ -143,6 +143,10 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define PREF_NO_ICON_MODE @"noIconMode"
 
 //prefs
+// no VT mode
+#define PREF_NO_VT_MODE @"noVTMode"
+
+//prefs
 // update mode
 #define PREF_NO_UPDATE_MODE @"noupdateMode"
 

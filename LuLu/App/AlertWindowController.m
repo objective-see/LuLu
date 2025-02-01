@@ -27,6 +27,9 @@ NSInteger lastActionScope = 0;
 //log handle
 extern os_log_t logHandle;
 
+//xpc for daemon comms
+extern XPCDaemonClient* xpcDaemonClient;
+
 @implementation AlertWindowController
 
 @synthesize alert;
@@ -52,7 +55,7 @@ extern os_log_t logHandle;
     //full size content view for translucency
     self.window.styleMask = self.window.styleMask | NSWindowStyleMaskFullSizeContentView;
     
-    //title bar; translucency
+    //title bar translucency
     self.window.titlebarAppearsTransparent = YES;
     
     //move via background
@@ -92,6 +95,9 @@ extern os_log_t logHandle;
     //title attributes (for temporary label)
     NSMutableDictionary* titleAttributes = nil;
     
+    //preferences
+    NSDictionary* preferences = nil;
+    
     //height
     NSUInteger height = 0;
     
@@ -109,6 +115,9 @@ extern os_log_t logHandle;
     
     //extract process ID
     processID = [self.alert[KEY_PROCESS_ID] intValue];
+    
+    //get preferences
+    preferences = [xpcDaemonClient getPreferences];
     
     //do we have access?
     // build hierarchy here
@@ -131,6 +140,17 @@ extern os_log_t logHandle;
     {
         //disable
         self.ancestryButton.enabled = NO;
+    }
+    
+    //disable VirusTotal button if preference is set
+    // this is enough, as all VT integration only occurs when user interacts with button
+    if(YES == [preferences[PREF_NO_VT_MODE] boolValue])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "user has disabled VirusTotal integrations, so disabling VT button");
+        
+        //disable
+        self.virusTotalButton.enabled = NO;
     }
     
     //default to using url
@@ -642,7 +662,7 @@ bail:
 //close any open popups
 -(void)closePopups
 {
-    //virus total popup
+    //VirusTotal popup
     if(NSControlStateValueOn == self.virusTotalButton.state)
     {
         //close

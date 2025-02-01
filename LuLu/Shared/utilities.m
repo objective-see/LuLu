@@ -1819,7 +1819,7 @@ NSDate* absoluteDate(NSDate* date)
     return absoluteDate;
 }
 
-//if process is internal drive
+//is process on internal drive?
 BOOL isInternalProcess(NSString *path)
 {
     NSError* error = nil;
