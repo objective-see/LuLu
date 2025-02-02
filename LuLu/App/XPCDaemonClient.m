@@ -184,8 +184,8 @@ extern NSMutableDictionary* alerts;
 //cleanup rules
 -(NSInteger)cleanupRules
 {
-    //flag
-    __block NSInteger deletedRules = NO;
+    //result
+    __block NSInteger deletedRules = -1;
     
     //dbg msg
     os_log_debug(logHandle, "invoking daemon XPC method, '%s'", __PRETTY_FUNCTION__);
@@ -201,7 +201,7 @@ extern NSMutableDictionary* alerts;
         //dbg msg
         os_log_debug(logHandle, "daemon XPC method, '%s', done! (returned %ld)", __PRETTY_FUNCTION__, (long)deletedRules);
          
-        //set flag
+        //save result
         deletedRules = result;
          
     }];

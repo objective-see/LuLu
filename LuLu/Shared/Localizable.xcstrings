@@ -2228,6 +2228,9 @@
         }
       }
     },
+    "Clean up rules referencing deleted items or non-existent processes?" : {
+      "comment" : "Clean up rules referencing deleted items or non-existent processes?"
+    },
     "Cleaned up %ld rules" : {
       "comment" : "Cleaned up %ld rules",
       "localizations" : {
@@ -2277,6 +2280,7 @@
     },
     "Cleanup rules that reference (now) deleted items?" : {
       "comment" : "Cleanup rules that reference (now) deleted items?",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2982,6 +2986,7 @@
     },
     "Extensions must be manually approved via Security & Privacy System Preferences." : {
       "comment" : "Extensions must be manually approved via Security & Privacy System Preferences.",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3026,6 +3031,9 @@
           }
         }
       }
+    },
+    "Extensions must be manually approved via Security Settings (General > Login Items & Extensions > Network Extensions)." : {
+      "comment" : "Extensions must be manually approved via Security Settings (General > Login Items & Extensions > Network Extensions)."
     },
     "failed to activate network extension" : {
       "comment" : "failed to activate network extension",

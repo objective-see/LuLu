@@ -365,13 +365,10 @@ bail:
 }
 
 //cleanup rules
--(BOOL)cleanupRules
+-(NSInteger)cleanupRules
 {
-    //flag
-    BOOL cleanedUp = NO;
-    
-    //cleaned up rules
-    NSInteger cleanedUpRules = 0;
+    //result
+    NSInteger cleanedUp = -1;
     
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
@@ -381,29 +378,32 @@ bail:
     
     //show alert
     // if user cancels, just bail
-    if(NSAlertSecondButtonReturn == showAlert(NSAlertStyleInformational, NSLocalizedString(@"Cleanup rules that reference (now) deleted items?", @"Cleanup rules that reference (now) deleted items?"), nil, @[NSLocalizedString(@"OK",@"OK"), NSLocalizedString(@"Cancel",@"Cancel")]))
+    if(NSAlertSecondButtonReturn == showAlert(NSAlertStyleInformational, NSLocalizedString(@"Clean up rules referencing deleted, expired, or terminated items?", @"Clean up rules referencing deleted, expired, or terminated items?"), nil, @[NSLocalizedString(@"OK",@"OK"), NSLocalizedString(@"Cancel",@"Cancel")]))
     {
         //dbg msg
         os_log_debug(logHandle, "user cancelled rule cleanup");
+        
+        //not an error though
+        cleanedUp = 0;
+        
+        //bail
         goto bail;
     }
     
     //call into daemon to cleanup
-    cleanedUpRules = [xpcDaemonClient cleanupRules];
-    if(-1 == cleanedUpRules)
+    // returns number or deleted rules
+    cleanedUp = [xpcDaemonClient cleanupRules];
+    if(cleanedUp < 0)
     {
         //bail
         goto bail;
     }
     
-    //happy
-    cleanedUp = YES;
-    
     //tell (any) windows rules changed
     [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
     
     //share results w/ user
-    showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"Cleaned up %ld rules",@"Cleaned up %ld rules"), cleanedUpRules], nil, @[NSLocalizedString(@"OK",@"OK")]);
+    showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"Cleaned up %ld rules",@"Cleaned up %ld rules"), cleanedUp], nil, @[NSLocalizedString(@"OK",@"OK")]);
     
 bail:
     

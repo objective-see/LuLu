@@ -1269,7 +1269,9 @@ bail:
 }
 
 //cleanup
-// ...remove any rules whose path was deleted
+// a) rule expired
+// a) path was deleted
+// b) point to non-existent processes (temp rule)
 -(NSUInteger)cleanup
 {
     //count
@@ -1304,6 +1306,9 @@ bail:
             
             //flag
             BOOL allDeleted = YES;
+            
+            //interval for expiration check
+            NSTimeInterval timeInterval = 0;
             
             //extract 'external' paths
             paths = self.rules[key][KEY_PATHS];
@@ -1359,6 +1364,7 @@ bail:
             }
             
             //check each rule's 'internal' path
+            // and expiration, and process id (temp rules)
             for(Rule* rule in rules)
             {
                 //was path deleted?
@@ -1367,10 +1373,46 @@ bail:
                     (YES != [NSFileManager.defaultManager fileExistsAtPath:rule.path]))
                 {
                     //dbg msg
-                    os_log_debug(logHandle, "%{public}@ is gone, will delete rule", rule.path);
+                    os_log_debug(logHandle, "%{public}@ is gone - will delete rule", rule.path);
                     
                     //add to list
                     [rules2Delete addObject:rule];
+                    
+                    //next
+                    continue;
+                }
+                
+                //did process (for temp rule) exit?
+                if( (YES == [rule isTemporary]) &&
+                    (YES != isAlive(rule.pid.intValue)) )
+                {
+                    //dbg msg
+                    os_log_debug(logHandle, "process-level (temporary) rule's process (%@) has exited - will delete rule", rule.pid);
+                    
+                    //add to list
+                    [rules2Delete addObject:rule];
+                    
+                    //next
+                    continue;
+                }
+                
+                //did rule expire?
+                if(nil != rule.expiration)
+                {
+                    //compute interval
+                    // and check if it expired
+                    timeInterval = [rule.expiration timeIntervalSinceNow];
+                    if(timeInterval <= 0)
+                    {
+                        //dbg msg
+                        os_log_debug(logHandle, "rule's expiration has hit (%@) - will delete rule", rule.expiration);
+                        
+                        //add to list
+                        [rules2Delete addObject:rule];
+                        
+                        //next
+                        continue;
+                    }
                 }
             }
         }

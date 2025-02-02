@@ -19,7 +19,7 @@
 -(void)showRules;
 -(void)exportRules;
 -(BOOL)importRules;
--(BOOL)cleanupRules;
+-(NSInteger)cleanupRules;
 
 @end
 

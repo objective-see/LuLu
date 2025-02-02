@@ -316,7 +316,7 @@ enum menuItems
         case rulesCleanup:
             
             //cleanup
-            if(YES != [self.rulesMenuController cleanupRules])
+            if([self.rulesMenuController cleanupRules] < 0)
             {
                 //show alert
                 showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: Failed to cleanup rules", @"ERROR: Failed to cleanup rules"), NSLocalizedString(@"See log for (more) details",@"See log for (more) details"), @[NSLocalizedString(@"OK",@"OK")]);
