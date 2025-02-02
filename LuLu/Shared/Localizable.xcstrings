@@ -2228,8 +2228,8 @@
         }
       }
     },
-    "Clean up rules referencing deleted items or non-existent processes?" : {
-      "comment" : "Clean up rules referencing deleted items or non-existent processes?"
+    "Clean up rules referencing deleted, expired, or terminated items?" : {
+      "comment" : "Clean up rules referencing deleted, expired, or terminated items?"
     },
     "Cleaned up %ld rules" : {
       "comment" : "Cleaned up %ld rules",

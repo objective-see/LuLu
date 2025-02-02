@@ -124,5 +124,7 @@
 // ->block/allow, and then close
 -(IBAction)handleUserResponse:(id)sender;
 
+//set wrapping
+-(void)setWrapping:(NSTextView *)textView;
 
 @end

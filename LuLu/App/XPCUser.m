@@ -158,6 +158,9 @@ extern NSMutableDictionary* alerts;
                             //set text
                             alertWindow.reverseDNS.string = response;
                             
+                            //wrapping
+                            [alertWindow setWrapping:alertWindow.reverseDNS];
+                            
                             //set tooltip
                             alertWindow.reverseDNS.toolTip = [NSString stringWithFormat:NSLocalizedString(@"Reverse Domain: %@", @"Reverse Domain %@"), alertWindow.reverseDNS.string];
                         });

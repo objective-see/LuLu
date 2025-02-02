@@ -89,9 +89,6 @@ extern XPCDaemonClient* xpcDaemonClient;
     //paragraph style
     NSMutableParagraphStyle* paragraphStyle = nil;
     
-    //paragraph still for scroll views
-    NSMutableParagraphStyle* scrollStyle = nil;
-    
     //title attributes (for temporary label)
     NSMutableDictionary* titleAttributes = nil;
     
@@ -106,9 +103,6 @@ extern XPCDaemonClient* xpcDaemonClient;
     
     //init paragraph style
     paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    
-    //init paragraph style
-    scrollStyle = [[NSMutableParagraphStyle alloc] init];
     
     //init dictionary for title attributes
     titleAttributes = [NSMutableDictionary dictionary];
@@ -247,10 +241,6 @@ extern XPCDaemonClient* xpcDaemonClient;
     //set tooltip
     self.processArgs.toolTip = [NSString stringWithFormat:NSLocalizedString(@"Process Arguments: %@", @"Process Arguments: %@"), self.processArgs.stringValue];
     
-    //set wrapping
-    scrollStyle.lineBreakMode = NSLineBreakByCharWrapping;
-    self.processPath.defaultParagraphStyle = scrollStyle;
-    
     //process path for normal processes
     if(YES != [self.alert[KEY_PROCESS_DELETED] boolValue])
     {
@@ -265,6 +255,9 @@ extern XPCDaemonClient* xpcDaemonClient;
         [self.processPath.textStorage setAttributedString: [[NSAttributedString alloc] initWithString:self.alert[KEY_PATH] attributes:@{NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle)}]];
     }
     
+    //set wrapping
+    [self setWrapping:self.processPath];
+    
     //set tooltip
     self.processPath.toolTip = [NSString stringWithFormat:NSLocalizedString(@"Process Path: %@", @"Process Path: %@"), self.processPath.string];
     
@@ -277,10 +270,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     
     //port & proto
     self.portProto.stringValue = [NSString stringWithFormat:@"%@ (%@)", self.alert[KEY_ENDPOINT_PORT], [self convertProtocol:self.alert[KEY_PROTOCOL]]];
-    
-    //wrapping for (reverse) DNS
-    self.reverseDNS.defaultParagraphStyle = scrollStyle;
-    
+
     //alloc time formatter
     timeFormat = [[NSDateFormatter alloc] init];
     
@@ -943,6 +933,43 @@ bail:
         
     //resize
     [self.window setFrame:windowFrame display:YES animate:YES];
+    
+    return;
+}
+
+//set wrapping
+-(void)setWrapping:(NSTextView*)textView {
+    
+    NSRange fullRange = {0,0};
+    NSMutableAttributedString* mutableAttrString = nil;
+    
+    mutableAttrString = [textView.textStorage mutableCopy];
+    fullRange = NSMakeRange(0, mutableAttrString.length);
+
+    [mutableAttrString enumerateAttributesInRange:fullRange
+                                            options:0
+                                         usingBlock:^(NSDictionary* attrs, NSRange range, BOOL *stop) {
+        
+        NSMutableParagraphStyle* mutableParagraphStyle = nil;
+        
+        NSParagraphStyle* existingStyle = attrs[NSParagraphStyleAttributeName];
+        if(nil != existingStyle)
+        {
+            mutableParagraphStyle = [existingStyle mutableCopy];
+        }
+        else
+        {
+            mutableParagraphStyle = [[NSMutableParagraphStyle alloc] init];
+        }
+        
+        mutableParagraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
+        
+        NSMutableDictionary* newAttrs = [attrs mutableCopy];
+        newAttrs[NSParagraphStyleAttributeName] = mutableParagraphStyle;
+        [mutableAttrString setAttributes:newAttrs range:range];
+    }];
+    
+    [textView.textStorage setAttributedString:mutableAttrString];
     
     return;
 }
