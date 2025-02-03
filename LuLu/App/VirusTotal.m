@@ -9,6 +9,7 @@
 
 #import "VirusTotal.h"
 #import "AppDelegate.h"
+#import "../Shared/utilities.h"
 
 /* GLOBALS */
 
@@ -43,6 +44,12 @@ extern os_log_t logHandle;
     //error var
     NSError* error = nil;
     
+    //current user
+    NSString* currentUser = nil;
+    
+    //sanitized path
+    NSString* sanitizedPath = nil;
+    
     //init
     itemData = [NSMutableDictionary dictionary];
 
@@ -52,8 +59,14 @@ extern os_log_t logHandle;
     //get file attributes
     attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:item[@"path"] error:nil];
     
+    //get current user
+    currentUser = getConsoleUser();
+    
+    //sanitize path
+    sanitizedPath = [item[@"path"] stringByReplacingOccurrencesOfString:currentUser withString:@"user"];
+    
     //set item path
-    itemData[@"image_path"] = item[@"path"];
+    itemData[@"image_path"] = sanitizedPath;
     
     //set hash
     itemData[@"hash"] = item[@"hash"];
@@ -98,7 +111,7 @@ extern os_log_t logHandle;
     }
     
     //dbg msg
-    os_log_debug(logHandle, "posting request (%{public}@) to %{public}@", queryURL, postData);
+    os_log_debug(logHandle, "posting request (%{public}@) to %{public}@", itemData, queryURL);
 
     //make query to VT
     response = [self postRequest:queryURL postData:postData];

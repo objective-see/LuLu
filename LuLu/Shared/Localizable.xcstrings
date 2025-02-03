@@ -2229,7 +2229,51 @@
       }
     },
     "Clean up rules referencing deleted, expired, or terminated items?" : {
-      "comment" : "Clean up rules referencing deleted, expired, or terminated items?"
+      "comment" : "Clean up rules referencing deleted, expired, or terminated items?",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regeln bereinigen, die auf gelöschte, abgelaufene oder beendete Elemente verweisen?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Reglas de limpieza que hacen referencia a elementos eliminados, vencidos o finalizados?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nettoyer les règles référençant les éléments supprimés, expirés ou terminés ?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuoi pulire le regole che fanno riferimento agli elementi eliminati, scaduti o terminati?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czy reguły czyszczenia odnoszą się do elementów usuniętych, wygasłych lub zamkniętych?"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limpar regras que fazem referência a itens excluídos, expirados ou encerrados?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silinen, süresi dolan veya sonlandırılan öğelere atıfta bulunan temizleme kurallarını mı istiyorsunuz?"
+          }
+        }
+      }
     },
     "Cleaned up %ld rules" : {
       "comment" : "Cleaned up %ld rules",
@@ -2274,54 +2318,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%ld kural temizlendi"
-          }
-        }
-      }
-    },
-    "Cleanup rules that reference (now) deleted items?" : {
-      "comment" : "Cleanup rules that reference (now) deleted items?",
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Regeln entfernen, die auf (inzwischen) gelöschte Objekte verweisen? "
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Limpiar reglas que hacen referencia a (ahora) elementos eliminados?"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Règles de nettoyage faisant référence à des éléments (désormais) supprimés ?"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Regole di pulizia che fanno riferimento agli elementi (ora) eliminati?"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reguły czyszczenia odnoszące się do (aktualnie) usuniętych elementów?"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Limpar regras que fazem referências à itens (agora) deletados?"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Silinen öğelere başvuran kurallar temizlensin mi?"
           }
         }
       }
@@ -2984,56 +2980,52 @@
         }
       }
     },
-    "Extensions must be manually approved via Security & Privacy System Preferences." : {
-      "comment" : "Extensions must be manually approved via Security & Privacy System Preferences.",
-      "extractionState" : "stale",
+    "Extensions must be manually approved via Security Settings (General > Login Items & Extensions > Network Extensions)." : {
+      "comment" : "Extensions must be manually approved via Security Settings (General > Login Items & Extensions > Network Extensions).",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erweiterungen müssen manuell in den Systemeinstellungen unter Datenschutz & Sicherheit genehmigt werden."
+            "value" : "Erweiterungen müssen manuell über die Sicherheitseinstellungen (Allgemein > Anmeldeobjekte und Erweiterungen > Netzwerkerweiterungen) genehmigt werden."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Las extensiones deben ser aprobadas manualmente a través de las Preferencias del Sistema de Seguridad y Privacidad."
+            "value" : "Las extensiones deben aprobarse manualmente a través de Configuración de seguridad (General > Elementos de inicio de sesión y extensiones > Extensiones de red)."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les extensions doivent être approuvées manuellement via Sécurité et confidentialité Préférences du système."
+            "value" : "Les extensions doivent être approuvées manuellement via les paramètres de sécurité (Général > Éléments de connexion et extensions > Extensions réseau)."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le estensioni devono essere manualmente abilitate tramite il menù Sicurezza e Privacy delle Impostazioni di Sistema"
+            "value" : "Le estensioni devono essere approvate manualmente tramite Impostazioni di sicurezza (Generale > Elementi di accesso ed estensioni > Estensioni di rete)."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rozszerzenia muszą zostać zatwierdzone ręcznie w Preferencjach systemowych dotyczących bezpieczeństwa i prywatności."
+            "value" : "Rozszerzenia muszą zostać zatwierdzone ręcznie w Ustawieniach zabezpieczeń (Ogólne > Elementy logowania i rozszerzenia > Rozszerzenia sieciowe)."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Extensões devem ser manualmente aprovadas através do menu de Segurança e Privacidade nas Preferências do Sistema"
+            "value" : "As extensões devem ser aprovadas manualmente por meio das Configurações de segurança (Geral > Itens de login e extensões > Extensões de rede)."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Genişletmeler, Güvenlik ve Gizlilik sistem tercihlerinden elle onaylanmalıdır."
+            "value" : "Uzantılar, Güvenlik Ayarları (Genel > Oturum Açma Öğeleri ve Uzantılar > Ağ Uzantıları) üzerinden manuel olarak onaylanmalıdır."
           }
         }
       }
-    },
-    "Extensions must be manually approved via Security Settings (General > Login Items & Extensions > Network Extensions)." : {
-      "comment" : "Extensions must be manually approved via Security Settings (General > Login Items & Extensions > Network Extensions)."
     },
     "failed to activate network extension" : {
       "comment" : "failed to activate network extension",
