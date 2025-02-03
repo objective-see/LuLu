@@ -631,7 +631,7 @@ bail:
             NSDate* date = nil;
             
             //dbg msg
-            os_log_debug(logHandle, "3rd-party app, plus 'PREF_ALLOW_INSTALLED' is set...");
+            os_log_debug(logHandle, "3rd-party (internal) app, plus 'PREF_ALLOW_INSTALLED' is set...");
             
             //only once
             // get install date
@@ -651,13 +651,16 @@ bail:
                 (NSOrderedAscending == [date compare:installDate]) )
             {
                 //dbg msg
-                os_log_debug(logHandle, "3rd-party item was installed prior, allowing & adding rule");
+                os_log_debug(logHandle, "3rd-party item was installed prior (%@) to LuLu (%@), allowing & adding rule", date, installDate);
                 
                 //init info for rule creation
                 info = [@{KEY_PATH:process.path, KEY_ACTION:@RULE_STATE_ALLOW, KEY_TYPE:@RULE_TYPE_BASELINE} mutableCopy];
                 
                 //add process cs info
-                if(nil != process.csInfo) info[KEY_CS_INFO] = process.csInfo;
+                if(nil != process.csInfo)
+                {
+                    info[KEY_CS_INFO] = process.csInfo;
+                }
                 
                 //create and add rule
                 if(YES != [rules add:[[Rule alloc] init:info] save:YES])
@@ -675,9 +678,14 @@ bail:
                 //all set
                 goto bail;
             }
+            //newer
+            else
+            {
+                //dbg msg
+                os_log_debug(logHandle, "3rd-party item date (%@), is after LuLu's install date (%@)", date, installDate);
+            }
         }
-        
-        //check for external processes
+        //item is external
         else
         {
             os_log_debug(logHandle, "%{public}@ is external, so skipping 'allow installed' check", process.path);

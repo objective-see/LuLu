@@ -1036,7 +1036,10 @@ NSDate* dateAdded(NSString* file)
     {
         //init item with app's path
         item = MDItemCreateWithURL(NULL, (__bridge CFURLRef)appBundle.bundleURL);
-        if(NULL == item) goto bail;
+        if(NULL == item)
+        {
+            goto bail;
+        }
     }
     //no app bundle
     // just use item/path as it
@@ -1044,16 +1047,25 @@ NSDate* dateAdded(NSString* file)
     {
         //init item with path
         item = MDItemCreateWithURL(NULL, (__bridge CFURLRef)[NSURL fileURLWithPath:file]);
-        if(NULL == item) goto bail;
+        if(NULL == item)
+        {
+            goto bail;
+        }
     }
     
     //get attribute names
     attributeNames = MDItemCopyAttributeNames(item);
-    if(NULL == attributeNames) goto bail;
+    if(NULL == attributeNames)
+    {
+        goto bail;
+    }
     
     //get attributes
     attributes = MDItemCopyAttributes(item, attributeNames);
-    if(NULL == attributes) goto bail;
+    if(NULL == attributes)
+    {
+        goto bail;
+    }
     
     //grab date added
     date = CFBridgingRelease(MDItemCopyAttribute(item, kMDItemDateAdded));
@@ -1067,18 +1079,27 @@ NSDate* dateAdded(NSString* file)
     }
     
     //dbg msg
-    os_log_debug(logHandle, "extacted date, %{public}@, for %{public}@", date, item);
+    os_log_debug(logHandle, "extacted date, %{public}@, for %{public}@", date, file);
 
 bail:
     
     //free attributes
-    if(NULL != attributes) CFRelease(attributes);
+    if(NULL != attributes)
+    {
+        CFRelease(attributes);
+    }
     
     //free attribute names
-    if(NULL != attributeNames) CFRelease(attributeNames);
+    if(NULL != attributeNames)
+    {
+        CFRelease(attributeNames);
+    }
     
     //free item
-    if(NULL != item) CFRelease(item);
+    if(NULL != item)
+    {
+        CFRelease(item);
+    }
     
     return date;
 }
