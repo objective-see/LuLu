@@ -15,6 +15,7 @@
 
 //TODO:
 // new pref: allow apple programs, unless has args + parent is untrusted
+// add rule option: args
 
 /* GLOBALS */
 

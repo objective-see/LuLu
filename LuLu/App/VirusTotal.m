@@ -61,9 +61,16 @@ extern os_log_t logHandle;
     
     //get current user
     currentUser = getConsoleUser();
-    
-    //sanitize path
-    sanitizedPath = [item[@"path"] stringByReplacingOccurrencesOfString:currentUser withString:@"user"];
+    if(nil != currentUser)
+    {
+        //sanitize path
+        sanitizedPath = [item[@"path"] stringByReplacingOccurrencesOfString:currentUser withString:@"user"];
+    }
+    else
+    {
+        //default to as is
+        sanitizedPath = item[@"path"];
+    }
     
     //set item path
     itemData[@"image_path"] = sanitizedPath;
