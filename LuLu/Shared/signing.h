@@ -10,6 +10,7 @@
 #ifndef Signing_h
 #define Signing_h
 
+@import OSLog;
 @import Foundation;
 
 /* FUNCTIONS */

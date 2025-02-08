@@ -77,10 +77,7 @@ extern os_log_t logHandle;
         {
             //err msg
             os_log_error(logHandle, "ERROR: 'audit_token_to_pid' returned NULL\n");
-            
-            //unset
-            self = nil;
-            goto bail;
+            return nil;
         }
         
         //get path
@@ -90,10 +87,7 @@ extern os_log_t logHandle;
         {
             //err msg
             os_log_error(logHandle, "ERROR: failed to find path for process %d\n", self.pid);
-            
-            //unset
-            self = nil;
-            goto bail;
+            return nil;
         }
         
         //set name
@@ -137,28 +131,31 @@ extern os_log_t logHandle;
         
         //grab current (audit) token
         currentToken = tokenForPid(self.pid);
-        if(0 == currentToken.length)
+        if(0 != currentToken.length)
         {
-            //unset
-            self = nil;
-            goto bail;
+            //check!
+            // if it's changed, means pid points to new process, so unset parent, args, etc as these may be invalid!
+            if(audit_token_to_pidversion(*token) != audit_token_to_pidversion(*(audit_token_t*)currentToken.bytes))
+            {
+                //err msg
+                os_log_error(logHandle, "ERROR: audit token mismatch ...pid re-used?");
+                
+                //unset
+                arguments = nil;
+                ancestors = nil;
+            }
         }
         
-        //check!
-        // if it's changed, means pid points to new process, so unset parent, args, etc as these may be invalid!
-        if( audit_token_to_pidversion(*token) != audit_token_to_pidversion(*(audit_token_t*)currentToken.bytes) )
+        //process exited?
+        // extracted info may be invalid
+        if(YES != isAlive(self.pid))
         {
             //err msg
-            os_log_error(logHandle, "ERROR: audit token mismatch ...pid re-used?");
-            
-            //unset
-            arguments = nil;
-            ancestors = nil;
+            os_log_error(logHandle, "ERROR: process (%d)%{public}@ has already exited", self.pid, self.path);
+            return nil;
         }
     }
-    
-bail:
-    
+        
     return self;
 }
 
@@ -475,8 +472,6 @@ bail:
     return;
 }
 
-
-
 //generate signing info
 -(void)generateSigningInfo:(audit_token_t*)token
 {
@@ -494,8 +489,12 @@ bail:
         //save
         self.csInfo = extractedSigningInfo;
     }
-    //dbg msg
-    else os_log_debug(logHandle, "invalid code signing information for %{public}@: %{public}@", self.path, extractedSigningInfo);
+    //invalid
+    else
+    {
+        //error msg
+        os_log_error(logHandle, "ERROR: invalid code signing information for %{public}@: %{public}@", self.path, extractedSigningInfo);
+    }
 
     return;
 }

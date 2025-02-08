@@ -13,6 +13,11 @@
 @import Security;
 @import SystemConfiguration;
 
+/* GLOBALS */
+
+//log handle
+extern os_log_t logHandle;
+
 //get the signing info of a item
 // audit token: extract dynamic code signing info
 // path on disk: generate static code signing info
@@ -47,17 +52,23 @@ NSMutableDictionary* extractSigningInfo(audit_token_t* token, NSString* path, Se
         status = SecCodeCopyGuestWithAttributes(NULL, (__bridge CFDictionaryRef _Nullable)(@{(__bridge NSString *)kSecGuestAttributeAudit:[NSData dataWithBytes:token length:sizeof(audit_token_t)]}), kSecCSDefaultFlags, &dynamicCode);
         if(errSecSuccess != status)
         {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'SecCodeCopyGuestWithAttributes' failed with %d/%#x", status, status);
+            
             //set error
             signingInfo[KEY_CS_STATUS] = [NSNumber numberWithInt:status];
             
             //bail
             goto bail;
         }
-    
+        
         //validate code
         status = SecCodeCheckValidity(dynamicCode, flags, NULL);
         if(errSecSuccess != status)
         {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'SecCodeCheckValidity' failed with %d/%#x", status, status);
+            
             //set error
             signingInfo[KEY_CS_STATUS] = [NSNumber numberWithInt:status];
             
@@ -76,6 +87,12 @@ NSMutableDictionary* extractSigningInfo(audit_token_t* token, NSString* path, Se
         status = SecCodeCopySigningInformation(dynamicCode, kSecCSSigningInformation, &signingDetails);
         if(errSecSuccess != status)
         {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'SecCodeCopySigningInformation' failed with %d/%#x", status, status);
+            
+            //set error
+            signingInfo[KEY_CS_STATUS] = [NSNumber numberWithInt:status];
+            
             //bail
             goto bail;
         }
@@ -88,6 +105,9 @@ NSMutableDictionary* extractSigningInfo(audit_token_t* token, NSString* path, Se
         status = SecStaticCodeCreateWithPath((__bridge CFURLRef)([NSURL fileURLWithPath:path]), kSecCSDefaultFlags, &staticCode);
         if(errSecSuccess != status)
         {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'SecStaticCodeCreateWithPath' failed with %d/%#x", status, status);
+            
             //set error
             signingInfo[KEY_CS_STATUS] = [NSNumber numberWithInt:status];
             
@@ -99,6 +119,9 @@ NSMutableDictionary* extractSigningInfo(audit_token_t* token, NSString* path, Se
         status = SecStaticCodeCheckValidity(staticCode, flags, NULL);
         if(errSecSuccess != status)
         {
+            //err msg
+            os_log_error(logHandle, "'SecStaticCodeCheckValidity' failed with %d/%#x", status, status);
+            
             //set error
             signingInfo[KEY_CS_STATUS] = [NSNumber numberWithInt:status];
             
@@ -117,6 +140,12 @@ NSMutableDictionary* extractSigningInfo(audit_token_t* token, NSString* path, Se
         status = SecCodeCopySigningInformation(staticCode, kSecCSSigningInformation, &signingDetails);
         if(errSecSuccess != status)
         {
+            //err msg
+            os_log_error(logHandle, "'SecCodeCopySigningInformation' failed with %d/%#x", status, status);
+            
+            //set error
+            signingInfo[KEY_CS_STATUS] = [NSNumber numberWithInt:status];
+            
             //bail
             goto bail;
         }
