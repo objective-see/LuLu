@@ -1,10 +1,9 @@
 //
 //  File: Signing.m
-//  Project: Proc Info
+//  Project: LuLu
 //
 //  Created by: Patrick Wardle
 //  Copyright:  2017 Objective-See
-//  License:    Creative Commons Attribution-NonCommercial 4.0 International
 
 #import "consts.h"
 #import "signing.h"
