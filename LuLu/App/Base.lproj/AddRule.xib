@@ -56,7 +56,7 @@
                             <action selector="browseButtonHandler:" target="-2" id="PT1-Ty-Np7"/>
                         </connections>
                     </button>
-                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TMj-aG-iTU">
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TMj-aG-iTU">
                         <rect key="frame" x="103" y="248" width="385" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="mOR-Su-gK2"/>
@@ -78,7 +78,7 @@
                             <action selector="radioButtonsHandler:" target="-2" id="Si1-r7-F3A"/>
                         </connections>
                     </button>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lP5-by-JA2">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lP5-by-JA2">
                         <rect key="frame" x="101" y="272" width="389" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="FPl-4Y-c6j"/>
@@ -90,7 +90,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6aQ-uZ-MQT">
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6aQ-uZ-MQT">
                         <rect key="frame" x="103" y="147" width="385" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="azV-rq-4Id"/>
@@ -101,7 +101,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wLJ-6S-WeA">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wLJ-6S-WeA">
                         <rect key="frame" x="101" y="171" width="307" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="303" id="DTb-Uw-Iws"/>
@@ -113,7 +113,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SsU-Va-Vcn">
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SsU-Va-Vcn">
                         <rect key="frame" x="103" y="93" width="385" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="rzM-Fb-Vh0"/>
@@ -124,7 +124,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3qP-ad-9Fq">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3qP-ad-9Fq">
                         <rect key="frame" x="101" y="117" width="389" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="385" id="jwv-kR-E8V"/>
