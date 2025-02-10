@@ -212,6 +212,9 @@ NSNumber* extractSigner(SecStaticCodeRef code, SecCSFlags flags, BOOL isDynamic)
     //"Apple iPhone OS Application Signing"
     static SecRequirementRef isiOSAppStore = nil;
     
+    //Apple's app store team ids
+    static NSSet* appleTeamIDs = nil;
+    
     //signing details
     CFDictionaryRef signingDetails = NULL;
     
@@ -236,6 +239,9 @@ NSNumber* extractSigner(SecStaticCodeRef code, SecCSFlags flags, BOOL isDynamic)
         
         //init (iOS) app store signing requirement
         SecRequirementCreateWithString(CFSTR("anchor apple generic and certificate leaf [subject.CN] = \"Apple iPhone OS Application Signing\""), kSecCSDefaultFlags, &isiOSAppStore);
+        
+        //init Apple's App Store team IDs
+        appleTeamIDs = [NSSet setWithArray:@[@"K36BKF7T3D", @"74J34U3R6X", @"59GAB85EFG", @"APPLECOMPUTER"]];
     });
     
     //check 1: "is apple" (proper)
@@ -259,8 +265,8 @@ NSNumber* extractSigner(SecStaticCodeRef code, SecCSFlags flags, BOOL isDynamic)
             //extract team id
             // and check if it belongs to apple
             teamID = [(__bridge NSDictionary*)signingDetails objectForKey:(__bridge NSString*)kSecCodeInfoTeamIdentifier];
-            if( (YES == [teamID isEqualToString:@"K36BKF7T3D"]) ||
-                (YES == [teamID isEqualToString:@"APPLECOMPUTER"]) )
+            if( (nil != teamID) &&
+                (YES == [appleTeamIDs containsObject:teamID]))
             {
                //set signer to apple
                signer = [NSNumber numberWithInt:Apple];
