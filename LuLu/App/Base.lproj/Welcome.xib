@@ -52,7 +52,7 @@
                     </view>
                     <color key="fillColor" red="0.57793885469999995" green="0.75859862570000003" blue="0.2368842065" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </box>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="NEo-Sr-1a0">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="NEo-Sr-1a0">
                     <rect key="frame" x="149" y="274" width="338" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Welcome to" id="Qyh-uK-Afv">
@@ -77,7 +77,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="LuLuText" id="zfH-MI-2vJ"/>
                 </imageView>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="rIh-lu-sTu">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="rIh-lu-sTu">
                     <rect key="frame" x="34" y="162" width="648" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="LuLu is a free open-source firewall for macOS." id="pMo-Yj-XKY">
@@ -91,7 +91,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Icon" id="vEL-Yw-xip"/>
                 </imageView>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="cpq-67-lQt">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="cpq-67-lQt">
                     <rect key="frame" x="34" y="63" width="647" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="eic-lg-Ln7">
@@ -115,7 +115,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1018" height="48"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField hidden="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="osh-aW-f6g">
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="osh-aW-f6g">
                                 <rect key="frame" x="303" y="15" width="419" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Waiting for System Extension Approval" id="VIe-9o-Kc7">
@@ -132,7 +132,7 @@
                     </view>
                     <color key="fillColor" red="0.57793885469999995" green="0.75859862570000003" blue="0.2368842065" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </box>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="bh2-5d-3yL">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="bh2-5d-3yL">
                     <rect key="frame" x="18" y="742" width="664" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="First,  allow the LuLu Network Extension:" id="Cwe-NI-HiJ">
@@ -156,7 +156,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="InstallApprove" id="M64-G3-LAa"/>
                 </imageView>
-                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sZy-xy-LWr">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sZy-xy-LWr">
                     <rect key="frame" x="57" y="418" width="309" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" alignment="center" title="1. In the &quot;System Extension Blocked&quot; alert, click: &quot;Open System Settings&quot;" id="C1V-iy-oEo">
@@ -165,7 +165,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zTC-iG-aS4">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zTC-iG-aS4">
                     <rect key="frame" x="478" y="418" width="453" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" alignment="center" title="..." id="EOD-Hh-8e5">
@@ -174,7 +174,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EE9-oh-Y1l">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EE9-oh-Y1l">
                     <rect key="frame" x="153" y="89" width="96" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="3. Authenticate" id="ZZK-2G-iIB">
@@ -183,7 +183,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dQ7-Ff-Lr3">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dQ7-Ff-Lr3">
                     <rect key="frame" x="535" y="69" width="341" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" alignment="center" title="4. In the &quot;Filter Network Content&quot; alert, click: &quot;Allow&quot;" id="qYE-G3-j1K">
@@ -226,7 +226,7 @@
                     </view>
                     <color key="fillColor" red="0.57793885469999995" green="0.75859862570000003" blue="0.2368842065" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </box>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="ikd-wz-01Q">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="ikd-wz-01Q">
                     <rect key="frame" x="31" y="276" width="664" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Now, let's configure LuLu:" id="XHD-XH-wR0">
@@ -251,7 +251,7 @@
                         <font key="font" metaFont="system" size="20"/>
                     </buttonCell>
                 </button>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="445" translatesAutoresizingMaskIntoConstraints="NO" id="AhJ-ov-jbx">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="445" translatesAutoresizingMaskIntoConstraints="NO" id="AhJ-ov-jbx">
                     <rect key="frame" x="179" y="196" width="503" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This option will allow any Apple-signed binary to access the network without generating an alert." id="r1b-Nl-Ii7">
@@ -260,7 +260,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="445" translatesAutoresizingMaskIntoConstraints="NO" id="KHZ-VJ-JkQ">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="445" translatesAutoresizingMaskIntoConstraints="NO" id="KHZ-VJ-JkQ">
                     <rect key="frame" x="177" y="117" width="505" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This option will allow any 3rd-party app that is already installed, to access the network without generating an alert." id="3aO-AI-YtY">
@@ -269,7 +269,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Udh-qU-3t3">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Udh-qU-3t3">
                     <rect key="frame" x="200" y="236" width="310" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" Allow Apple Programs" id="zo1-a0-tPg">
@@ -278,7 +278,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gf8-do-3hb">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gf8-do-3hb">
                     <rect key="frame" x="200" y="157" width="399" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" Allow Already Installed Applications" id="ymJ-tB-qiA">
@@ -295,7 +295,7 @@
                         <font key="font" metaFont="system" size="20"/>
                     </buttonCell>
                 </button>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="445" translatesAutoresizingMaskIntoConstraints="NO" id="yI4-k1-boN">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="445" translatesAutoresizingMaskIntoConstraints="NO" id="yI4-k1-boN">
                     <rect key="frame" x="179" y="40" width="503" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This option will allow any (UDP) traffic over port 53." id="sAE-Mf-3fz">
@@ -304,7 +304,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bLF-86-77M">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bLF-86-77M">
                     <rect key="frame" x="202" y="80" width="399" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" Allow DNS Traffic" id="SWc-iv-oN4">
@@ -330,7 +330,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Heart" id="NdE-ks-tao"/>
                 </imageView>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="NuI-gL-I9N">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="NuI-gL-I9N">
                     <rect key="frame" x="153" y="257" width="636" height="110"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="It's free, open-source, and written by a single (Mac-loving) coder!" id="Uzd-7P-dzG">
@@ -372,7 +372,7 @@
                     </view>
                     <color key="fillColor" red="0.57793885469999995" green="0.75859862570000003" blue="0.2368842065" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </box>
-                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" alphaValue="0.59999999999999998" id="SzT-r7-Ma4">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" alphaValue="0.59999999999999998" id="SzT-r7-Ma4">
                     <rect key="frame" x="290" y="130" width="233" height="29"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Mahalo to the &quot;Friends Objective-See&quot;" id="7pD-BH-c8i">
@@ -421,7 +421,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Friends1Password" id="E9h-9G-taP"/>
                 </imageView>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="JBN-MO-km3">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="JBN-MO-km3">
                     <rect key="frame" x="38" y="380" width="664" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Support LuLu?" id="qNj-Zh-8FW">
@@ -430,7 +430,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="NeU-Pi-VDr">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="NeU-Pi-VDr">
                     <rect key="frame" x="515" y="192" width="274" height="57"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Show some love? " id="XBE-gW-YkK">
