@@ -76,10 +76,10 @@
                         </connections>
                     </button>
                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tWx-6z-uXa">
-                        <rect key="frame" x="43" y="221" width="176" height="15"/>
+                        <rect key="frame" x="43" y="221" width="296" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="JbN-x8-MlU"/>
-                            <constraint firstAttribute="width" constant="172" id="NrD-pm-grO"/>
+                            <constraint firstAttribute="width" constant="292" id="NrD-pm-grO"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Details &amp; Options" id="FYF-6N-pro">
                             <font key="font" size="13" name="Menlo-Regular"/>
