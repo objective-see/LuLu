@@ -44,6 +44,12 @@ XPCDaemonClient* xpcDaemonClient = nil;
 //main app interface
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    //delay
+    NSInteger delay = 1;
+    
+    //current version
+    NSOperatingSystemVersion version = {0};
+    
     //alert response
     NSModalResponse response = 0;
     
@@ -157,8 +163,19 @@ XPCDaemonClient* xpcDaemonClient = nil;
             [self.startupWindowController showWindow:nil];
         }
         
-        //wait 1 second, so that startup window can show...
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(),
+        //grab OS version
+        version = NSProcessInfo.processInfo.operatingSystemVersion;
+
+        //macOS 15
+        // but less than 15.3? ...increase delay so users can see warning
+        if(version.majorVersion == 15 && version.minorVersion < 3) {
+            
+            //3 seconds
+            delay = 3;
+        }
+        
+        //wait a few seconds, so that startup window can show... then fade out
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_main_queue(),
         ^{
             //fade out
             fadeOut(self.startupWindowController.window, 1.0f);

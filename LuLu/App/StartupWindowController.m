@@ -39,6 +39,9 @@ extern os_log_t logHandle;
     //set transparency
     self.window.titlebarAppearsTransparent = YES;
     
+    //need to display warning?
+    [self displayVersionWarning];
+    
     //make it key window
     [self.window makeKeyAndOrderFront:self];
     
@@ -54,6 +57,26 @@ extern os_log_t logHandle;
     //(re)make front
     [[NSRunningApplication currentApplication] activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
     
+    return;
+}
+
+//show version warning if on macOS 15, but less than 15.3
+-(void)displayVersionWarning
+{
+    //get OS version
+    NSOperatingSystemVersion version = NSProcessInfo.processInfo.operatingSystemVersion;
+
+    //default hide
+    self.versionWarning.hidden = YES;
+    
+    //macOS 15
+    // but less than 15.3? ...warn
+    if(version.majorVersion == 15 && version.minorVersion < 3) {
+        
+        //show warning
+        self.versionWarning.hidden = NO;
+    }
+
     return;
 }
 

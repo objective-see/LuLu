@@ -13,6 +13,10 @@
     
 }
 
+//version warning msg
+@property (weak) IBOutlet NSTextField *versionWarning;
+
+//activity indicator
 @property (weak) IBOutlet NSProgressIndicator *spinner;
 
 @end

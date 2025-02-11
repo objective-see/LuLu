@@ -264,18 +264,6 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 //next
 #define ACTION_NEXT_FLAG 3
 
-//path to kext cache
-#define KEXT_CACHE @"/usr/sbin/kextcache"
-
-//path to osascript
-#define OSASCRIPT @"/usr/bin/osascript"
-
-//open system prefs
-#define NSModalResponseOpen 1000
-
-//cancel
-#define NSModalResponseCancel 1001
-
 //app name
 #define APP_NAME @"LuLu.app"
 

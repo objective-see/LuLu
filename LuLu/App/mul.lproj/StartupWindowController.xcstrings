@@ -48,6 +48,60 @@
           }
         }
       }
+    },
+    "XsZ-6a-7Rk.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Note: LuLu works best on macOS 15.3+, as Apple fixed bugs affecting network stability. \"; ObjectID = \"XsZ-6a-7Rk\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweis: LuLu funktioniert am besten unter macOS 15.3+, da Apple Fehler behoben hat, die die Netzwerkstabilität beeinträchtigten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Note: LuLu works best on macOS 15.3+, as Apple fixed bugs affecting network stability. "
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nota: LuLu funciona mejor en macOS 15.3+, ya que Apple corrigió errores que afectaban la estabilidad de la red."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remarque : LuLu fonctionne mieux sur macOS 15.3+, car Apple a corrigé des bugs affectant la stabilité du réseau."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nota: LuLu funziona al meglio su macOS 15.3+, poiché Apple ha corretto bug che influivano sulla stabilità della rete."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uwaga: LuLu działa najlepiej na macOS 15.3+, ponieważ Apple naprawiło błędy wpływające na stabilność sieci."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nota: O LuLu funciona melhor no macOS 15.3+, pois a Apple corrigiu bugs que afetavam a estabilidade da rede."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not: LuLu, macOS 15.3+ üzerinde en iyi şekilde çalışır, çünkü Apple ağ kararlılığını etkileyen hataları düzeltti."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
