@@ -524,7 +524,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İkâz olmadan sessizce çalıştırın ve var olan kuralları uygulayın."
+            "value" : "İkaz olmadan sessizce çalıştırın ve var olan kuralları uygulayın."
           }
         }
       }
@@ -1916,7 +1916,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "VirusTotal Modu Yok"
+            "value" : "VirusTotal modu yok"
           }
         }
       }
