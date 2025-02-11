@@ -172,7 +172,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zobacz w WirusTotal"
+            "value" : "Zobacz w VirusTotal"
           }
         },
         "pt-BR" : {
@@ -2963,7 +2963,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rozszerzenia muszą zostać zatwierdzone ręcznie za pośrednictwem\nPreferencji systemowych dotyczących bezpieczeństwa i prywatności."
+            "value" : "Rozszerzenia muszą zostać zatwierdzone ręcznie za pośrednictwem\nUstawień systemowych dotyczących Prywatności i ochrony."
           }
         },
         "pt-BR" : {
@@ -3010,7 +3010,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rozszerzenia muszą zostać zatwierdzone ręcznie w Ustawieniach zabezpieczeń (Ogólne > Elementy logowania i rozszerzenia > Rozszerzenia sieciowe)."
+            "value" : "Rozszerzenia muszą zostać zatwierdzone ręcznie w Ustawieniach systemowych (Ogólne > Rzeczy i rozszerzenia otwierane podczas logowania > Rozszerzenia sieciowe)."
           }
         },
         "pt-BR" : {
