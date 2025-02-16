@@ -29,6 +29,12 @@
             "value" : "^"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌃"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +83,12 @@
             "value" : "LuLu est opérationnel !"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 정상 작동 중!"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -123,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Accédez-y ici à tout moment"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "언제든 여기서 이용할 수 있습니다."
           }
         },
         "pl" : {

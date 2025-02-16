@@ -29,6 +29,12 @@
             "value" : "Afficher …"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "보이기..."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -75,6 +81,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réglages ..."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정..."
           }
         },
         "pl" : {
@@ -125,6 +137,12 @@
             "value" : "Importer ..."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "가져오기..."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -168,6 +186,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu"
@@ -221,6 +245,12 @@
             "value" : "Exporter …"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내보내기..."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -267,6 +297,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quitter LuLu"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 종료"
           }
         },
         "pl" : {
@@ -317,6 +353,12 @@
             "value" : "Ajouter ..."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "추가..."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -360,6 +402,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu"
@@ -413,6 +461,12 @@
             "value" : "Désinstaller LuLu"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 삭제"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -459,6 +513,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nettoyage"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정리"
           }
         },
         "pl" : {
@@ -509,6 +569,12 @@
             "value" : "Désactiver"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "비활성화"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -555,6 +621,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "À propos de LuLu"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu에 관하여"
           }
         },
         "pl" : {
@@ -605,6 +677,12 @@
             "value" : "Quitter LuLu"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 종료"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -651,6 +729,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Menu Principal"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메인 매뉴"
           }
         },
         "pl" : {
@@ -701,6 +785,12 @@
             "value" : "Règles"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "규칙"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -747,6 +837,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "규칙"
           }
         },
         "pl" : {
@@ -797,6 +893,12 @@
             "value" : "Moniteur réseau ..."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 모니터..."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -843,6 +945,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LULU : activé"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LULU: 활성화됨"
           }
         },
         "pl" : {

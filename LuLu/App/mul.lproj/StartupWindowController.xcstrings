@@ -29,6 +29,12 @@
             "value" : "Démarrage en cours …"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시동 중..."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -81,6 +87,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nota: LuLu funziona al meglio su macOS 15.3+, poiché Apple ha corretto bug che influivano sulla stabilità della rete."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "참고: LuLu는 macOS 버전 15.3 이상에 최적화되었습니다. 이는 Apple이 네트워크 안정성에 영향을 주는 버그를 수정했기 때문입니다."
           }
         },
         "pl" : {

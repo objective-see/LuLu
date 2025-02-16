@@ -23,6 +23,12 @@
             "value" : "LuLu"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -57,6 +63,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Copyright (c) 2020 Objective-See. Todos los derechos reservados."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright (c) 2020 Objective-See. 모든 권리 보유."
           }
         },
         "pt-BR" : {
