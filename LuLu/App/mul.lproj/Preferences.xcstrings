@@ -29,6 +29,12 @@
             "value" : "Vérifier maintenant"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지금 확인"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -75,6 +81,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode blocage"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "차단 모드"
           }
         },
         "pl" : {
@@ -125,6 +137,12 @@
             "value" : "Les règles pour les nouvelles connections doivent être créées ?"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새로운 연결에 관한 규칙을 생성할까요?"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +189,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programmes précédemment installées, les programmes de tierce-partie seront autorisés."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이전에 설치한 타사 프로그램을 허용합니다."
           }
         },
         "pl" : {
@@ -221,6 +245,12 @@
             "value" : "Note : Quand une nouvelle connection est réalisée, parfois seule l’adresse IP est disponible. Dans ces cas, les domaines sur la liste d’autorisation ou de blocage ne peuvent pas être utilisés, ce qui peut impacter le blocage ou l’autorisation d’une requête."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "참고: 새로운 연결이 만들어질 때, 때때로 IP 주소만 이용 가능할 수 있습니다. 이러한 경우, 허용 리스트 또는 차단 리스트의 도메인과 일치시킬 수 없으며, 이로 인해 요청이 차단되거나 허용될지에 영향이 있을 수 있습니다."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -267,6 +297,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fichier local ou distant, contenant les points d’accès à toujours autoriser."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "항상 허용할 엔드포인트를 포함한 로컬 또는 원격 파일"
           }
         },
         "pl" : {
@@ -317,6 +353,12 @@
             "value" : "Fichier local ou distant, contenant les points d’accès à toujours bloquer."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "항상 차단할 엔드포인트를 포함한 로컬 또는 원격 파일"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -363,6 +405,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exécuter sans afficher d'icône dans la barre de menu."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "상태 메뉴 막대에 아이콘을 표시하지 않습니다."
           }
         },
         "pl" : {
@@ -413,6 +461,12 @@
             "value" : "Voir les règles."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "규칙 보기"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -459,6 +513,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autorisé"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "허용"
           }
         },
         "pl" : {
@@ -509,6 +569,12 @@
             "value" : "Exécution silencieuse sans alerte, en appliquant les règles existantes."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기존 규칙을 적용하고, 경고 없이 조용히 실행합니다."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -555,6 +621,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oui"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "예"
           }
         },
         "pl" : {
@@ -605,6 +677,12 @@
             "value" : "Les applications fonctionnant dans le simulateur sont autorisées."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시뮬레이터 내에서 실행되는 애플리케이션을 허용합니다."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -651,6 +729,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Liste de blocage :"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "차단 리스트:"
           }
         },
         "pl" : {
@@ -701,6 +785,12 @@
             "value" : "Réglages de LuLu"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 설정"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -747,6 +837,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Liste d’autorisation :"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "허용 리스트:"
           }
         },
         "pl" : {
@@ -797,6 +893,12 @@
             "value" : "Parcourir"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "찾아보기"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -843,6 +945,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les nouvelles connections doivent être :"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새로운 연결을 항상:"
           }
         },
         "pl" : {
@@ -893,6 +1001,12 @@
             "value" : "Mode sans icône"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아이콘 비활성화 모드"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -939,6 +1053,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tout le trafic (UDP) sur le port 53 sera autorisé."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "53번 포트를 통하는 모든 (UDP) 트래픽을 허용합니다."
           }
         },
         "pl" : {
@@ -989,6 +1109,12 @@
             "value" : "Ne pas vérifier automatiquement les nouvelles versions."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "자동으로 새로운 버전을 확인하지 않습니다."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1035,6 +1161,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode passif"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "패시브 모드"
           }
         },
         "pl" : {
@@ -1085,6 +1217,12 @@
             "value" : "Autoriser les programmes installés"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설치된 프로그램 허용"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1131,6 +1269,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Non"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아니요"
           }
         },
         "pl" : {
@@ -1181,6 +1325,12 @@
             "value" : "Mode"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모드"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1227,6 +1377,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모드"
           }
         },
         "pl" : {
@@ -1277,6 +1433,12 @@
             "value" : "Les binaires signés par Apple seront autorisés"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple에 의해 서명된 실행 파일을 허용합니다."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1323,6 +1485,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloqué"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "차단"
           }
         },
         "pl" : {
@@ -1373,6 +1541,12 @@
             "value" : "Mise à jour"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1419,6 +1593,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mise à jour"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트"
           }
         },
         "pl" : {
@@ -1469,6 +1649,12 @@
             "value" : "Listes"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "리스트"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1515,6 +1701,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Listes"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "리스트"
           }
         },
         "pl" : {
@@ -1565,6 +1757,12 @@
             "value" : "Tout le trafic acheminé par LuLu sera bloqué (à moins que le point d’accès ne figure explicitement sur la liste 'Autoriser')."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu를 통하는 모든 트래픽을 차단합니다. (엔드포인트가 '허용' 리스트에 명시적으로 있지 않은 경우)"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1611,6 +1809,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser les programmes Apple"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple 프로그램 허용"
           }
         },
         "pl" : {
@@ -1661,6 +1865,12 @@
             "value" : "Règles"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "규칙"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1707,6 +1917,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "규칙"
           }
         },
         "pl" : {
@@ -1757,6 +1973,12 @@
             "value" : "Autoriser les applications du simulateur"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시뮬레이터 애플리케이션 허용"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1803,6 +2025,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Parcourir"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "찾아보기"
           }
         },
         "pl" : {
@@ -1853,6 +2081,12 @@
             "value" : "Autoriser le trafic DNS"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DNS 트래픽 허용"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1899,6 +2133,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pas de mode VirusTotal"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal 비활성화 모드"
           }
         },
         "pl" : {
@@ -1949,6 +2189,12 @@
             "value" : "Désactiver l'intégration avec VirusTotal."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내장된 VirusTotal 연동 기능을 비활성화합니다."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1995,6 +2241,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Désactiver les contrôles de mise à jour"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트 확인 비활성화"
           }
         },
         "pl" : {

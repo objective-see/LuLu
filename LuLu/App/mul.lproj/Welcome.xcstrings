@@ -29,6 +29,12 @@
             "value" : "Cette option permet à toute application tierce déjà installée d'accéder au réseau sans générer d'alerte."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 옵션은 이전에 설치한 모든 타사 프로그램을 허용합니다. 해당 프로그램은 경고 발생 없이 네트워크에 접근할 수 있습니다."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -75,6 +81,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mahalo aux « Amis Objectif-See »"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Objective-See 친구들\"에게, 마할로!"
           }
         },
         "pl" : {
@@ -125,6 +137,12 @@
             "value" : "1. Dans l'alerte « Extension du système bloquée », cliquez sur : « Ouvrir les Réglages Système »"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. \"시스템 확장 프로그램 차단됨\" 경고 대화상자에서 \"보안 환경설정 열기\"를 클릭합니다"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -173,6 +191,12 @@
             "value" : "Tout d'abord, autorisez l'extension de réseau LuLu :"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "먼저,  LuLu 네트워크 확장 프로그램을 허용합니다:"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -219,6 +243,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Il surveille l'activité du réseau et vous avertit lorsqu'un programme tente pour la première fois d'établir une connexion sortante, ce qui vous permet de l'autoriser ou de la refuser."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 활동을 모니터하고, 어떤 프로그램이 나가는 연결을 최초로 시도할 때 사용자가 허용하거나 거부할 수 있도록 경고합니다."
           }
         },
         "pl" : {
@@ -288,6 +318,12 @@
             "value" : "LuLu"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -334,6 +370,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu est un pare-feu libre et gratuit pour macOS."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu는 macOS를 위한 무료 오픈소스 방화벽입니다."
           }
         },
         "pl" : {
@@ -384,6 +426,12 @@
             "value" : "Non"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아니요"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -430,6 +478,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Soutenir LuLu ?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu를 응원하시겠어요?"
           }
         },
         "pl" : {
@@ -480,6 +534,12 @@
             "value" : "4. Dans l'alerte « Filtrer le contenu du réseau », cliquez sur : « Autoriser »"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. \"네트워크 콘텐츠 필터링\" 경고 대화상자에서 \"허용\"을 클릭합니다"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -526,6 +586,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bienvenue sur"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "반가워요!"
           }
         },
         "pl" : {
@@ -576,6 +642,12 @@
             "value" : "Cette option permet à tout binaire signé par Apple d'accéder au réseau sans générer d'alerte."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 옵션을 활성화하면 Apple에 의해 서명된 실행 파일을 허용합니다. 해당 프로그램은 경고 발생 없이 네트워크에 접근할 수 있습니다."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -622,6 +694,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oui !"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "좋아요!"
           }
         },
         "pl" : {
@@ -672,6 +750,12 @@
             "value" : "Cette option autorise tout trafic (UDP) sur le port 53."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 옵션을 활성화하면 53번 포트를 통하는 모든 (UDP) 트래픽을 허용합니다."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -718,6 +802,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser le trafic DNS"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " DNS 트래픽 허용"
           }
         },
         "pl" : {
@@ -768,6 +858,12 @@
             "value" : "C’est gratuit, open-source et écrit par un seul codeur (amoureux du Mac) !"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "무료이면서, 오픈소스에, 한 (Mac 덕후) 코더에 의해 개발되었습니다!"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -814,6 +910,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "En attente de l'approbation de l'extension du système"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시스템 확장 프로그램 승인 대기 중"
           }
         },
         "pl" : {
@@ -864,6 +966,12 @@
             "value" : "Montrer un peu d’amour ?"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "애정을 보여주실래요?"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -910,6 +1018,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suivant"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다음"
           }
         },
         "pl" : {
@@ -960,6 +1074,12 @@
             "value" : "Maintenant, configurons LuLu :"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "자, LuLu를 구성해봅시다:"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1006,6 +1126,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser les applications déjà installées"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " 사전에 설치된 프로그램 허용"
           }
         },
         "pl" : {
@@ -1056,6 +1182,12 @@
             "value" : "Suivant"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다음"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1104,6 +1236,12 @@
             "value" : "Autoriser les programmes Apple"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Apple 프로그램 허용"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1150,6 +1288,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3. S’authentifier"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. 인증합니다"
           }
         },
         "pl" : {
