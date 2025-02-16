@@ -29,6 +29,12 @@
             "value" : " - autorité de signature 2"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " - 인증 기관 2"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -69,6 +75,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ID de signature : "
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서명 ID:"
           }
         },
         "pl" : {
@@ -119,6 +131,12 @@
             "value" : "Connection : "
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "연결:"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -165,6 +183,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Durée de la règle : "
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "규칙 지속 시간:"
           }
         },
         "pl" : {
@@ -215,6 +239,12 @@
             "value" : "non applicable"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "해당 없음"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -261,6 +291,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "port/protocole : "
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "포트/프로토콜:"
           }
         },
         "pl" : {
@@ -311,6 +347,12 @@
             "value" : "Durée de vie du processus"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로세스 수명 동안"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -354,6 +396,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HH:mm"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "HH:mm"
@@ -407,6 +455,12 @@
             "value" : "Détails : "
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "세부 사항:"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -455,6 +509,12 @@
             "value" : "Autorités de signature : "
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "인증 기관:"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -495,6 +555,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alert LuLu"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 경고"
           }
         },
         "pl" : {
@@ -545,6 +611,12 @@
             "value" : " - autorité de signature 3"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " - 인증 기관 3"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -585,6 +657,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "dns (inverse) : "
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(역방향) DNS:"
           }
         },
         "pl" : {
@@ -635,6 +713,12 @@
             "value" : "Détails et options"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "세부 사항 & 옵션"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -681,6 +765,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Champ d’application de la règle : "
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "규칙 적용 범위:"
           }
         },
         "pl" : {
@@ -731,6 +821,12 @@
             "value" : "chemin : "
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "경로:"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -777,6 +873,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "id de signature"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서명 ID:"
           }
         },
         "pl" : {
@@ -827,6 +929,12 @@
             "value" : "pid : "
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pid:"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -873,6 +981,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Processus"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로세스"
           }
         },
         "pl" : {
@@ -923,6 +1037,12 @@
             "value" : "Nom du processus"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로세스 이름"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -969,6 +1089,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nom"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이름"
           }
         },
         "pl" : {
@@ -1019,6 +1145,12 @@
             "value" : " - autorité de signature 1"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " - 인증 기관 1"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1059,6 +1191,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Point d’accès distant"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원격 엔드포인트"
           }
         },
         "pl" : {
@@ -1109,6 +1247,12 @@
             "value" : "Processus : "
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로세스:"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1155,6 +1299,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "message"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메시지"
           }
         },
         "pl" : {
@@ -1205,6 +1355,12 @@
             "value" : "arguments : "
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "인수:"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1251,6 +1407,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toujours"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "항상"
           }
         },
         "pl" : {
@@ -1301,6 +1463,12 @@
             "value" : "adresse ip : "
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP 주소:"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1347,6 +1515,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloquer"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "차단"
           }
         },
         "pl" : {
@@ -1397,6 +1571,12 @@
             "value" : "Valide jusque : "
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다음 시간 동안:"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1445,6 +1625,12 @@
             "value" : "Horodatage : "
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "타임 스탬프:"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1491,6 +1677,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "허용"
           }
         },
         "pl" : {

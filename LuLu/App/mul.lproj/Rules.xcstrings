@@ -29,6 +29,12 @@
             "value" : "Label"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "레이블"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -75,6 +81,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nom d’item"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "항목 이름"
           }
         },
         "pl" : {
@@ -125,6 +137,12 @@
             "value" : "Règles récentes"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최근 규칙"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +189,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cellule texte"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "텍스트 셀"
           }
         },
         "pl" : {
@@ -221,6 +245,12 @@
             "value" : "Règles utilisateur"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용자 규칙"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -267,6 +297,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles de filtre"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "규칙 필터"
           }
         },
         "pl" : {
@@ -317,6 +353,12 @@
             "value" : "Règles LuLu"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 규칙"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -363,6 +405,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vue personnalisée"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용자 지정 보기"
           }
         },
         "pl" : {
@@ -413,6 +461,12 @@
             "value" : "Vue personnalisée"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용자 지정 보기"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -459,6 +513,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règle"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " 규칙"
           }
         },
         "pl" : {
@@ -509,6 +569,12 @@
             "value" : "Toutes les règles"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 규칙"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -555,6 +621,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Détails de l'item"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "항목 세부 정보..."
           }
         },
         "pl" : {
@@ -605,6 +677,12 @@
             "value" : "Règles Apple"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple 규칙"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -651,6 +729,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles par défaut"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기본 규칙"
           }
         },
         "pl" : {
@@ -701,6 +785,12 @@
             "value" : "information de connection"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "연결 정보"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -747,6 +837,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "(re)chargement des règles ..."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "규칙 (재)로드 중..."
           }
         },
         "pl" : {
@@ -797,6 +893,12 @@
             "value" : "Ajouter règle"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "규칙 추가"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -843,6 +945,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles tierce-partie"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서드파티 규칙"
           }
         },
         "pl" : {

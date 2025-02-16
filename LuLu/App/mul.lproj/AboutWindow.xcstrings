@@ -29,6 +29,12 @@
             "value" : "Soutenez nous !"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저희를 응원해 주세요!"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -75,6 +81,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version : "
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "버전:"
           }
         },
         "pl" : {
@@ -125,6 +137,12 @@
             "value" : "Mécènes et amis"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patron 후원자 & 친구들"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +189,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plus d’information"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "더 많은 정보"
           }
         },
         "pl" : {

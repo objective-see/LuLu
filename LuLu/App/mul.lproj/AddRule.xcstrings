@@ -29,6 +29,12 @@
             "value" : "Port distant"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원격 포트"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -75,6 +81,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Adresse/domaine distant"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "원격 주소/도메인"
           }
         },
         "pl" : {
@@ -125,6 +137,12 @@
             "value" : "Ajouter une règle (pour connections sortantes)"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "규칙 추가 (나가는 연결)"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +189,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "regex ?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정규 표현식?"
           }
         },
         "pl" : {
@@ -221,6 +245,12 @@
             "value" : "Annuler"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "취소"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -269,6 +299,12 @@
             "value" : "Bloquer"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " 차단"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -312,6 +348,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "*"
@@ -365,6 +407,12 @@
             "value" : "Autoriser"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " 허용"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -413,6 +461,12 @@
             "value" : "Parcourir"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "찾아보기"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -456,6 +510,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "*"
@@ -509,6 +569,12 @@
             "value" : "Chemin du programme"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로그램 경로"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -555,6 +621,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajouter"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "추가"
           }
         },
         "pl" : {

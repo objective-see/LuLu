@@ -28,6 +28,12 @@
             "value" : "\nRapporto di rilevamento:"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\n진단률:"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -73,6 +79,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "non trovato su VirusTotal"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\nVirusTotal에 내역이 없습니다"
           }
         },
         "pl" : {
@@ -122,6 +134,12 @@
             "value" : "Ricevuta risposta non valida"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\n유효하지 않은 응답을 받았습니다"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -167,6 +185,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vedi VirusTotal"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\nVirusTotal 내역을 보려면"
           }
         },
         "pl" : {
@@ -216,6 +240,12 @@
             "value" : "ha un problema con la firma"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "의 서명에 문제가 있음"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -261,6 +291,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "non è firmato"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "은(는) 서명되지 않음"
           }
         },
         "pl" : {
@@ -310,6 +346,12 @@
             "value" : "non ha una firma valida"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "의 서명은 유효하지 않음"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -355,6 +397,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ha una firma valida"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "의 서명은 유효함"
           }
         },
         "pl" : {
@@ -404,6 +452,12 @@
             "value" : "è firmato da "
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "은(는) 서드파티/Ad hoc 서명됨"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -449,6 +503,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "sconosciuto"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " 알 수 없음"
           }
         },
         "pl" : {
@@ -498,6 +558,12 @@
             "value" : "…copia l’Applicazione in /Applications e riavviala"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...응용 프로그램 폴더(/Applications)에 복사 후 다시 실행하세요."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -543,6 +609,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "…questo rimuoverà completamente LuLu dal tuo Mac"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...이 작업은 사용자의 Mac에서 LuLu를 완전히 삭제합니다."
           }
         },
         "pl" : {
@@ -592,6 +664,12 @@
             "value" : "…questo arresterà LuLu, fino al prossimo accesso"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...이 작업은 다음 로그인할 때까지 LuLu의 작동을 멈춥니다."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -637,6 +715,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "› non firmato"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "› 인증 기관 없음"
           }
         },
         "pl" : {
@@ -692,6 +776,12 @@
             "value" : "%@ (pid: %@)"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (pid: %2$@)"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -745,6 +835,12 @@
             "value" : "%1$@ (firmato da: %2$@)"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (서명자: %2$@)"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -790,6 +886,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (firmato da: Apple Mac OS App Store)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (서명자: Apple Mac OS App Store)"
           }
         },
         "pl" : {
@@ -839,6 +941,12 @@
             "value" : "%@ (firmato da: Apple Proper)"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (서명자: Apple 자체 서명)"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -884,6 +992,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (firmato da: Non Valido/Non Firmato)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (서명자: 유효하지 않음/서명되지 않음)"
           }
         },
         "pl" : {
@@ -933,6 +1047,12 @@
             "value" : "%@ non esiste!"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@은(는) 존재하지 않습니다!"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -980,6 +1100,12 @@
             "value" : "%@ è un processo legittimo di macOS"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@은(는) 적법한 macOS 프로세스입니다"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1025,6 +1151,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ non è un numero (di porta) valido"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@은(는) 유효하지 않은 (포트) 번호입니다"
           }
         },
         "pl" : {
@@ -1080,6 +1212,12 @@
             "value" : "%@ non è un’espressione regolare valida\ndettagli: %@"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@은(는) 유효하지 않는 정규 표현식입니다\n세부 정보: %2$@"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1125,6 +1263,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ questa regola potrebbe impattare alcune funzionalità di sistema ...continuare?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 작업 시, 적법한 시스템 기능에 영향이 있을 수 있습니다. 계속할까요?"
           }
         },
         "pl" : {
@@ -1174,6 +1318,12 @@
             "value" : "La firma di %@ è cambiata"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@의 디지털 서명 정보가 변경되었습니다"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1219,6 +1369,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancella Regola"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ 규칙 삭제"
           }
         },
         "pl" : {
@@ -1268,6 +1424,12 @@
             "value" : "Cancella Regola/e"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ 규칙 삭제"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1313,6 +1475,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modifica Regola"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ 규칙 편집"
           }
         },
         "pl" : {
@@ -1362,6 +1530,12 @@
             "value" : "Mostra percorso/i"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ 경로 표시"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1407,6 +1581,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "<sconosciuto (%d)>"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<알 수 없음 (%d)>"
           }
         },
         "pl" : {
@@ -1456,6 +1636,12 @@
             "value" : "2. Nelle Impostazioni di Sistema, scorri fino alla voce “LuLu” e clicca su “Consenti”"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 시스템 설정에서 'LuLu'가 있는 곳으로 스크롤하여 '허용'을 클릭합니다"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1501,6 +1687,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2. Nelle Impostazioni di Sistema, abilita l’estensione LuLu"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 시스템 설정에서 LuLu 확장 프로그램을 켭니다"
           }
         },
         "pl" : {
@@ -1550,6 +1742,12 @@
             "value" : "una nuova versione (%@) è disponibile!"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새로운 버전(%@)이 있습니다!"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1595,6 +1793,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "A questo"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ad hoc"
           }
         },
         "pl" : {
@@ -1644,6 +1848,12 @@
             "value" : "Aggiunte nelle ultime 24 ore (ordinate per data di creazione)"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최근 24시간 이내에 추가됨 (생성 시간 순 정렬)"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1689,6 +1899,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tutte le Regole"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 규칙"
           }
         },
         "pl" : {
@@ -1738,6 +1954,12 @@
             "value" : "Consenti"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "허용"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1783,6 +2005,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consenti (pid: %@)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "허용 (pid: %@)"
           }
         },
         "pl" : {
@@ -1832,6 +2060,12 @@
             "value" : "Consenti (fino a: %@)"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "허용 (기한: %@)"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1877,6 +2111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ogni indirizzo"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 주소"
           }
         },
         "pl" : {
@@ -1926,6 +2166,12 @@
             "value" : "ogni porta"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 포트"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1971,6 +2217,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ogni programma"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 프로그램"
           }
         },
         "pl" : {
@@ -2020,6 +2272,12 @@
             "value" : "Programmi Apple (autorizzati e aggiunti qui automaticamente se è impostato \"Consenti programmi Apple\")"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple 프로그램 ('Apple 프로그램 허용' 설정에 따라 자동으로 허용 및 추가됨)"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2065,6 +2323,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Blocca"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "차단"
           }
         },
         "pl" : {
@@ -2114,6 +2378,12 @@
             "value" : "Blocca (pid: %@)"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "차단 (pid: %@)"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2159,6 +2429,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Blocca (fino a: %@)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "차단 (기한: %@)"
           }
         },
         "pl" : {
@@ -2208,6 +2484,12 @@
             "value" : "Cancella"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "취소"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2253,6 +2535,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vuoi pulire le regole che fanno riferimento agli elementi eliminati, scaduti o terminati?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "삭제, 만료, 또는 중지된 항목을 참조하는 규칙을 정리할까요?"
           }
         },
         "pl" : {
@@ -2302,6 +2590,12 @@
             "value" : "%ld regole pulite"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%ld개의 규칙을 정리함"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2347,6 +2641,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Continua"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속"
           }
         },
         "pl" : {
@@ -2396,6 +2696,12 @@
             "value" : "Le regole della directory si applicano a tutti gli elementi all'interno della directory"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "디렉토리 규칙은 디렉토리 내 모든 항목에 적용됩니다"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2441,6 +2747,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Disabilita"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "비활성화"
           }
         },
         "pl" : {
@@ -2490,6 +2802,12 @@
             "value" : "Abilita"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "활성화"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2535,6 +2853,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Attivazione fallita"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오류: 활성화 실패"
           }
         },
         "pl" : {
@@ -2584,6 +2908,12 @@
             "value" : "ERRORE: Pulizia regole non completata"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오류: 규칙 정리 실패"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2629,6 +2959,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Esportazione delle regole non completata"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오류: 규칙 내보내기 실패"
           }
         },
         "pl" : {
@@ -2678,6 +3014,12 @@
             "value" : "ERRORE: Importazione delle regole non completata"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오류: 규칙 가져오기 실패"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2723,6 +3065,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Caricamento patrons non completato"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오류: Patron 후원자 불러오기 실패"
           }
         },
         "pl" : {
@@ -2772,6 +3120,12 @@
             "value" : "ERRORE: Percorso non valido"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오류: 유효하지 않은 경로"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2817,6 +3171,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRORE: Porta non valida"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오류: 유효하지 않은 포트"
           }
         },
         "pl" : {
@@ -2866,6 +3226,12 @@
             "value" : "ERRORE: Espressione regolare non corretta"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오류: 유효하지 않은 정규 표현식"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2911,6 +3277,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "errore: impossibile controllare la disponibilità di aggiornamenti"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오류: 업데이트 확인 실패"
           }
         },
         "pl" : {
@@ -2960,6 +3332,12 @@
             "value" : "Le estensioni devono essere manualmente abilitate tramite il menù Sicurezza e Privacy delle Impostazioni di Sistema"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "확장 프로그램은 시스템 설정의 개인정보 보호 및 보안에서 수동으로 승인해야 합니다."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3005,6 +3383,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Le estensioni devono essere approvate manualmente tramite Impostazioni di sicurezza (Generale > Elementi di accesso ed estensioni > Estensioni di rete)."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "확장 프로그램은 보안 설정(일반 > 로그인 항목 및 확장 프로그램 > 네트워크 확장 프로그램)을 통해 수동으로 승인해야 합니다."
           }
         },
         "pl" : {
@@ -3054,6 +3438,12 @@
             "value" : "Impossibile attivare l’estensione di rete"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 확장 프로그램 활성화 실패"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3099,6 +3489,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impossibile attivare il filtro di rete"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 필터 활성화 실패"
           }
         },
         "pl" : {
@@ -3148,6 +3544,12 @@
             "value" : "Impossibile attivare l’estensione di sistema"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시스템 확장 프로그램 활성화 실패"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3193,6 +3595,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impossibile attivare l’estensione di sistema/rete"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시스템/네트워크 확장 프로그램 활성화 실패"
           }
         },
         "pl" : {
@@ -3242,6 +3650,12 @@
             "value" : "Impossibile contattare VirusTotal"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal 쿼리 실패"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3287,6 +3701,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "risultati"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "여기를 클릭하세요"
           }
         },
         "pl" : {
@@ -3336,6 +3756,12 @@
             "value" : "URL Completo: %@"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전체 URL: %@"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3381,6 +3807,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Le Regole Globali sono valide per tutti i percorsi"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전역 규칙은 모든 경로에 적용됩니다"
           }
         },
         "pl" : {
@@ -3430,6 +3862,12 @@
             "value" : "%ld regole importate"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%ld개의 규칙을 가져옴"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3475,6 +3913,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La versione installata (%@) è l’ultima disponibile"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설치된 버전(%@)이 최신입니다."
           }
         },
         "pl" : {
@@ -3524,6 +3968,12 @@
             "value" : "si sta connettendo a %@"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로세스가 다음으로 연결 시도 중: %@"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3569,6 +4019,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu deve essere eseguito da:\n%@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu는 다음에서 실행되어야 합니다:\r\n  %@"
           }
         },
         "pl" : {
@@ -3618,6 +4074,12 @@
             "value" : "LuLu: Disabilitato"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: 비활성화됨"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3663,6 +4125,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu: Abilitato"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: 활성화됨"
           }
         },
         "pl" : {
@@ -3712,6 +4180,12 @@
             "value" : "L’estensione di rete di LuLu non è attiva"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu의 네트워크 확장 프로그램이 실행되고 있지 않습니다"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3757,6 +4231,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Più informazioni"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "추가 정보"
           }
         },
         "pl" : {
@@ -3806,6 +4286,12 @@
             "value" : "nessuno"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "없음"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3851,6 +4337,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "non applicabile"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "해당 없음"
           }
         },
         "pl" : {
@@ -3900,6 +4392,12 @@
             "value" : "Tieni a mente:\n * Le connessioni esistente non verranno impattate.\n * Il traffico di rete del Sistema Operativo (che non passa tramite LuLu) non verrà bloccato."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "참고 사항:\r\n▪ 기존 연결은 영향을 받지 않습니다.\r\n▪ (LuLu를 통하지 않는) OS 트래픽은 차단되지 않습니다."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3942,6 +4440,12 @@
           }
         },
         "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
@@ -3994,6 +4498,12 @@
             "value" : "È installata una vecchia versione di LuLu"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이전 버전의 LuLu가 설치됨"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4039,6 +4549,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programmi del Sistema Operativo (Richiesti per le funzionalità di sistema)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "운영 체제 프로그램 (시스템 기능에 필요)"
           }
         },
         "pl" : {
@@ -4088,6 +4604,12 @@
             "value" : "Il traffico in uscita non verrà bloccato"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이제 나가는 트래픽이 차단됩니다."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4133,6 +4655,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programmi di terze parti pre-installati (approvati automaticamente e mostrati qui se “Abilita applicazioni installate” è attivo)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사전에 설치한 타사 프로그램 ('설치된 프로그램 허용' 설정에 따라 자동으로 허용 및 추가됨)"
           }
         },
         "pl" : {
@@ -4182,6 +4710,12 @@
             "value" : "Argomenti del processo: %@"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로세스 인수: %@"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4227,6 +4761,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Percorso del processo: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로세스 경로: %@"
           }
         },
         "pl" : {
@@ -4276,6 +4816,12 @@
             "value" : "Programmi all'interno di \"%@/\""
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"%@/\" 내 프로그램"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4321,6 +4867,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Interrogazione di VirusTotal..."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal 쿼리 중..."
           }
         },
         "pl" : {
@@ -4370,6 +4922,12 @@
             "value" : "Termina"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "종료"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4417,6 +4975,12 @@
             "value" : "Terminare LuLu?"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu를 종료할까요?"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4462,6 +5026,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dominio inverso: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "리버스 도메인: %@"
           }
         },
         "pl" : {
@@ -4541,6 +5111,12 @@
             "value" : "Vedi i log per altre informazioni"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "더 자세한 사항은 로그를 참조하세요"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4586,6 +5162,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "firmato correttamente da Apple"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple에 의해 자체 서명됨"
           }
         },
         "pl" : {
@@ -4635,6 +5217,12 @@
             "value" : "firmato da Mac App Store"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac App Store에 의해 서명됨"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4680,6 +5268,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "firmato da un Apple Developer ID"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Developer ID에 의해 서명됨"
           }
         },
         "pl" : {
@@ -4729,6 +5323,12 @@
             "value" : "firmata da "
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서명되었으나 인증 기관이 없음 (adhoc?)"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4774,6 +5374,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "errore di firma: %#lx"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서명 에러: %#lx"
           }
         },
         "pl" : {
@@ -4823,6 +5429,12 @@
             "value" : "Prima di continuare, il programma deve essere disinstallato. Clicca “Più informazioni” per scoprire come"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속하기 전 반드시 삭제해야 합니다. '추가 정보'를 클릭하여 삭제 방법을 알 수 있습니다."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4868,6 +5480,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Marca temporale: %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "타임 스탬프: %@"
           }
         },
         "pl" : {
@@ -4917,6 +5535,12 @@
             "value" : "Disinstalla"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "삭제"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4962,6 +5586,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Disinstalla LuLu?"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu를 삭제할까요?"
           }
         },
         "pl" : {
@@ -5011,6 +5641,12 @@
             "value" : "sconosciuto"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "알 수 없음"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5056,6 +5692,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aggiorna"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트"
           }
         },
         "pl" : {
@@ -5105,6 +5747,12 @@
             "value" : "Programmi specificati dall'utente (aggiunti manualmente o in risposta a un avviso)"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용자 지정 프로그램 (수동 또는 경고 창에 의해 추가됨)"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5152,6 +5800,12 @@
             "value" : "Versione: %@"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "버전: %@"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5197,6 +5851,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "In attesa di approvazione per l’estensione di rete"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 확장 프로그램 승인 대기 중"
           }
         },
         "pl" : {
