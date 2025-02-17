@@ -1,4 +1,4 @@
-VERSION="3.1.1"
+VERSION="3.1.2"
 
 printf "\nCreating LuLu Disk Image...\n\n"
 
