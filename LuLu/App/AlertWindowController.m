@@ -95,6 +95,9 @@ extern XPCDaemonClient* xpcDaemonClient;
     //url
     NSURL* url = nil;
     
+    //selected duration
+    NSInteger lastRuleDurationTag = 0;
+    
     //init paragraph style
     paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     
@@ -305,9 +308,37 @@ extern XPCDaemonClient* xpcDaemonClient;
         self.ruleDurationCustom.enabled = YES;
     }
 
-    //set action scope
+    //set rule scope
     // ...based on last one
-    [self.actionScope selectItemAtIndex:[preferences[PREF_ALERT_LAST_ACTION_SCOPE] intValue]];
+    [self.actionScope selectItemAtIndex:[preferences[PREF_ALERT_LAST_RULE_SCOPE] integerValue]];
+    
+    //grab last rule duration tag
+    lastRuleDurationTag = [preferences[PREF_ALERT_LAST_RULE_DURATION] integerValue];
+    
+    //not set
+    // default to always
+    if(0 == lastRuleDurationTag)
+    {
+        self.ruleDurationAlways.state = NSControlStateValueOn;
+    }
+    
+    //set rule duration
+    // ...based on last one
+    else if(lastRuleDurationTag == self.ruleDurationAlways.tag)
+    {
+        //set: on
+        self.ruleDurationAlways.state = NSControlStateValueOn;
+    }
+    else if(lastRuleDurationTag == self.ruleDurationProcess.tag)
+    {
+        //set: on
+        self.ruleDurationProcess.state = NSControlStateValueOn;
+    }
+    else if(lastRuleDurationTag == self.ruleDurationCustom.tag)
+    {
+        //set: on
+        self.ruleDurationCustom.state = NSControlStateValueOn;
+    }
     
     //show touch bar
     [self initTouchBar];
@@ -328,7 +359,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     
     //show details?
     // if user expanded them on the last alert
-    if(NSControlStateValueOn == [preferences[PREF_ALERT_LAST_ACTION_SCOPE] integerValue])
+    if(NSControlStateValueOn == [preferences[PREF_ALERT_SHOW_OPTIONS] integerValue])
     {
         //set 'options' button state to on
         self.showOptions.state = NSControlStateValueOn;
@@ -689,20 +720,40 @@ bail:
     //show options state
     NSInteger showOptionsState = 0;
     
-    //action scope index
-    NSInteger actionScopeIndex = 0;
+    //rule scope index
+    NSInteger ruleScopeIndex = 0;
     
-    //grab state
-    showOptionsState = self.showOptions.state;
-    
-    //grab action scope index
-    actionScopeIndex = self.actionScope.indexOfSelectedItem;
+    //rule duration
+    NSInteger ruleDurationTag = 0;
     
     //response to daemon
     NSMutableDictionary* alertResponse = nil;
     
     //dbg msg
     os_log_debug(logHandle, "handling user response");
+    
+    //grab state
+    showOptionsState = self.showOptions.state;
+    
+    //grab action scope index
+    ruleScopeIndex = self.actionScope.indexOfSelectedItem;
+    
+    //get selected rule duration
+    if(self.ruleDurationAlways.state == NSControlStateValueOn)
+    {
+        //save
+        ruleDurationTag = self.ruleDurationAlways.tag;
+    }
+    else if(self.ruleDurationProcess.state == NSControlStateValueOn)
+    {
+        //save
+        ruleDurationTag = self.ruleDurationProcess.tag;
+    }
+    else if(self.ruleDurationCustom.state == NSControlStateValueOn)
+    {
+        //save
+        ruleDurationTag = self.ruleDurationCustom.tag;
+    }
 
     //init alert response
     // start w/ copy of received alert
@@ -718,7 +769,7 @@ bail:
     alertResponse[KEY_ACTION] = @(((NSButton*)sender).tag);
     
     //add action scope
-    alertResponse[KEY_SCOPE] = @(actionScopeIndex);
+    alertResponse[KEY_SCOPE] = @(ruleScopeIndex);
 
     //rule duration temporary (pid)?
     if(NSControlStateValueOn == self.ruleDurationProcess.state)
@@ -756,9 +807,10 @@ bail:
     self.reply(alertResponse);
     
     //save preferences
-    // includes options shown/last action scope, etc
+    // includes options shown/last action scope, etc.
     [xpcDaemonClient updatePreferences:@{PREF_ALERT_SHOW_OPTIONS: @(showOptionsState),
-                                         PREF_ALERT_LAST_ACTION_SCOPE: @(actionScopeIndex)}];
+                                         PREF_ALERT_LAST_RULE_SCOPE: @(ruleScopeIndex),
+                                         PREF_ALERT_LAST_RULE_DURATION: @(ruleDurationTag)}];
     
     //set app's background/foreground state
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) setActivationPolicy];
