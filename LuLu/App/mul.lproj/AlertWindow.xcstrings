@@ -50,60 +50,6 @@
       },
       "shouldTranslate" : false
     },
-    "2iW-bn-Rov.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Signing ID:\"; ObjectID = \"2iW-bn-Rov\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Signatur-ID:"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Signing ID:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ID de firma:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ID de signature : "
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서명 ID:"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Podpis ID:"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ID da Assinatura"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İmzalama kimliği:"
-          }
-        }
-      }
-    },
     "8eV-Ag-i7n.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Connection:\"; ObjectID = \"8eV-Ag-i7n\";",
       "extractionState" : "extracted_with_value",
@@ -208,60 +154,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kural süresi:"
-          }
-        }
-      }
-    },
-    "9Yb-sJ-Kcj.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"not applicable\"; ObjectID = \"9Yb-sJ-Kcj\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "nicht anwendbar"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "not applicable"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "no aplica"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "non applicable"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "해당 없음"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "nie dotyczy"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "não se aplica"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "uygulanabilir değil"
           }
         }
       }
@@ -851,60 +743,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "yol:"
-          }
-        }
-      }
-    },
-    "HBz-tK-Y6f.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"signing id\"; ObjectID = \"HBz-tK-Y6f\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Signierungs-ID"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "signing id"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "id de firma"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "id de signature"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "서명 ID:"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "podpis id"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "id da assinatura"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "imzalama kimliği"
           }
         }
       }
