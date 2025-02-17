@@ -18,12 +18,6 @@
 
 /* GLOBALS */
 
-//options view shown?
-BOOL optionsVisible = NO;
-
-//(last) action scope
-NSInteger lastActionScope = 0;
-
 //log handle
 extern os_log_t logHandle;
 
@@ -310,11 +304,11 @@ extern XPCDaemonClient* xpcDaemonClient;
         self.ruleDurationAlways.enabled = YES;
         self.ruleDurationCustom.enabled = YES;
     }
-    
+
     //set action scope
     // ...based on last one
-    [self.actionScope selectItemAtIndex:lastActionScope];
-        
+    [self.actionScope selectItemAtIndex:[preferences[PREF_ALERT_LAST_ACTION_SCOPE] intValue]];
+    
     //show touch bar
     [self initTouchBar];
 
@@ -334,7 +328,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     
     //show details?
     // if user expanded them on the last alert
-    if(YES == optionsVisible)
+    if(NSControlStateValueOn == [preferences[PREF_ALERT_LAST_ACTION_SCOPE] integerValue])
     {
         //set 'options' button state to on
         self.showOptions.state = NSControlStateValueOn;
@@ -686,11 +680,23 @@ bail:
 }
 
 //button handler
-// close popups and stop modal with response
+// close popups, grap user response/send to daemon, save 'preferences' (options shown, etc)
 -(IBAction)handleUserResponse:(id)sender
 {
     //rule expiration
     NSDate* expiration = nil;
+    
+    //show options state
+    NSInteger showOptionsState = 0;
+    
+    //action scope index
+    NSInteger actionScopeIndex = 0;
+    
+    //grab state
+    showOptionsState = self.showOptions.state;
+    
+    //grab action scope index
+    actionScopeIndex = self.actionScope.indexOfSelectedItem;
     
     //response to daemon
     NSMutableDictionary* alertResponse = nil;
@@ -703,20 +709,17 @@ bail:
     alertResponse = [self.alert mutableCopy];
     
     //set type as user
-    alertResponse[KEY_TYPE] = [NSNumber numberWithInt:RULE_TYPE_USER];
+    alertResponse[KEY_TYPE] = @(RULE_TYPE_USER);
     
     //add current user
-    alertResponse[KEY_USER_ID] = [NSNumber numberWithUnsignedInt:getuid()];
+    alertResponse[KEY_USER_ID] = @(getuid());
     
     //add user response
-    alertResponse[KEY_ACTION] = [NSNumber numberWithLong:((NSButton*)sender).tag];
+    alertResponse[KEY_ACTION] = @(((NSButton*)sender).tag);
     
     //add action scope
-    alertResponse[KEY_SCOPE] = [NSNumber numberWithInteger:self.actionScope.indexOfSelectedItem];
-    
-    //and save it for next alert
-    lastActionScope = self.actionScope.indexOfSelectedItem;
-    
+    alertResponse[KEY_SCOPE] = @(actionScopeIndex);
+
     //rule duration temporary (pid)?
     if(NSControlStateValueOn == self.ruleDurationProcess.state)
     {
@@ -751,6 +754,11 @@ bail:
     
     //reply
     self.reply(alertResponse);
+    
+    //save preferences
+    // includes options shown/last action scope, etc
+    [xpcDaemonClient updatePreferences:@{PREF_ALERT_SHOW_OPTIONS: @(showOptionsState),
+                                         PREF_ALERT_LAST_ACTION_SCOPE: @(actionScopeIndex)}];
     
     //set app's background/foreground state
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) setActivationPolicy];
@@ -892,9 +900,6 @@ bail:
     //on
     if(NSControlStateValueOn == self.showOptions.state)
     {
-        //set (global) flag
-        optionsVisible = YES;
-        
         origin = self.window.contentView.frame;
         origin.origin.y = self.window.contentView.frame.size.height;
         
@@ -915,9 +920,6 @@ bail:
     //off
     else
     {
-        //unset (global) flag
-        optionsVisible = NO;
-        
         //[self.options removeFromSuperview];
         [self.options setHidden:YES];
         

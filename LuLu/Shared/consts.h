@@ -182,6 +182,14 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 // not really a 'pref' but need to save it
 #define PREF_INSTALL_TIMESTAMP @"installTime"
 
+//show alert options
+// not really a 'pref' but need to save it
+#define PREF_ALERT_SHOW_OPTIONS @"alertShowOptions"
+
+//show alert options
+// not really a 'pref' but need to save it
+#define PREF_ALERT_LAST_ACTION_SCOPE @"alertLastActionScope"
+
 //log file
 #define LOG_FILE_NAME @"LuLu.log"
 
