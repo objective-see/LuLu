@@ -2,52 +2,53 @@
   "sourceLanguage" : "en",
   "strings" : {
     "1zg-95-QM7.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \" - signing auth 2\"; ObjectID = \"1zg-95-QM7\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \" -\"; ObjectID = \"1zg-95-QM7\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : " - Zertifizierungsinstanz 2"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : " - signing auth 2"
+            "value" : " -"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "- autorización de firma 2"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : " - autorité de signature 2"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : " - 인증 기관 2"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "- podpisanie autoryzacji 2"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "- imzalama otoritesi 2"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "2iW-bn-Rov.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Signing ID:\"; ObjectID = \"2iW-bn-Rov\";",
@@ -482,7 +483,7 @@
       }
     },
     "D1C-aK-AFU.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Signing Auths:\"; ObjectID = \"D1C-aK-AFU\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Signing Authorities:\"; ObjectID = \"D1C-aK-AFU\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
@@ -494,7 +495,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Signing Auths:"
+            "value" : "Signing Authorities:"
           }
         },
         "es" : {
@@ -519,6 +520,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uwierzytelnianie podpisów:"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assinaturas de Autorizações:"
           }
         },
         "tr" : {
@@ -584,52 +591,53 @@
       }
     },
     "FLb-1c-otA.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \" - signing auth 3\"; ObjectID = \"FLb-1c-otA\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \" -\"; ObjectID = \"FLb-1c-otA\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : " - Zertifizierungsinstanz 3"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : " - signing auth 3"
+            "value" : " -"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "- autorización de firma 3"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : " - autorité de signature 3"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : " - 인증 기관 3"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "- podpisanie autoryzacji 3"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "- imzalama otoritesi 3"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Fxr-aW-bT2.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"(reverse) dns:\"; ObjectID = \"Fxr-aW-bT2\";",
@@ -1118,52 +1126,53 @@
       }
     },
     "Ki9-ld-5Xu.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \" - signing auth 1\"; ObjectID = \"Ki9-ld-5Xu\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \" -\"; ObjectID = \"Ki9-ld-5Xu\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : " - Zertifizierungsinstanz 1"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : " - signing auth 1"
+            "value" : " -"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "- autorización de firma 1"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : " - autorité de signature 1"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : " - 인증 기관 1"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "- podpisanie autoryzacji 1"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "- imzalama otoritesi 1"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "N6E-eT-Q39.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Remote Endpoint\"; ObjectID = \"N6E-eT-Q39\";",
