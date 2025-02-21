@@ -52,6 +52,12 @@
             "state" : "translated",
             "value" : "Şimdi Denetle"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在檢查"
+          }
         }
       }
     },
@@ -105,6 +111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Engelleme kipi"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阻擋模式"
           }
         }
       }
@@ -160,6 +172,12 @@
             "state" : "translated",
             "value" : "Yeni bağlantılar için kurallar oluşturulmalı mı?"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "是否應建立新連線的規則？"
+          }
         }
       }
     },
@@ -213,6 +231,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Daha önceden kurulmuş, 3. parti uygulamalara izin verilecektir."
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已安裝的第三方程式將被允許"
           }
         }
       }
@@ -268,6 +292,12 @@
             "state" : "translated",
             "value" : "Not: Yeni bir bağlantı yapıldığında, bazen yalnızca IP adresi kullanılabilir olabilir. Bu tür durumlarda, izin verilenler veya engellenenler listesindeki etki alanları eşleştirilemez; bu, bir bağlantının engellenip engellenmeyeceğine etki edebilir."
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注意：當建立新的連線時，有時只有 IP 位址可用。在此情況下，允許或阻擋名單上的網域無法配對，這可能會影響連線請求是否被阻擋或允許。"
+          }
         }
       }
     },
@@ -321,6 +351,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yerel veya uzak dosya, her zaman izin verilecek içeren bitiş noktaları."
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本地或遠端檔案，包含總是允許的端點。"
           }
         }
       }
@@ -376,6 +412,12 @@
             "state" : "translated",
             "value" : "Yerel veya uzak dosya, her zaman engellenecek içeren bitiş noktaları."
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本地或遠端檔案，包含總是阻擋的端點。"
+          }
         }
       }
     },
@@ -429,6 +471,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Menü çubuğunda bir simge göstermeden çalıştırın."
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "執行時不於選單列中顯示圖示。"
           }
         }
       }
@@ -484,6 +532,12 @@
             "state" : "translated",
             "value" : "Kuralları Görüntüle"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查看規則"
+          }
         }
       }
     },
@@ -537,6 +591,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İzin ver"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允許"
           }
         }
       }
@@ -592,6 +652,12 @@
             "state" : "translated",
             "value" : "İkaz olmadan sessizce çalıştırın ve var olan kuralları uygulayın."
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "執行時不顯示警告，自動套用現有規則。"
+          }
         }
       }
     },
@@ -645,6 +711,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Evet"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "是"
           }
         }
       }
@@ -700,6 +772,12 @@
             "state" : "translated",
             "value" : "Simülatörde çalışan uygulamalara izin verilecektir."
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "執行於模擬器內的應用程式將被允許"
+          }
         }
       }
     },
@@ -753,6 +831,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Engel listesi:"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阻擋名單"
           }
         }
       }
@@ -808,6 +892,12 @@
             "state" : "translated",
             "value" : "LuLu’nun Ayarları"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 的設定"
+          }
         }
       }
     },
@@ -861,6 +951,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İzin listesi:"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允許名單"
           }
         }
       }
@@ -916,6 +1012,12 @@
             "state" : "translated",
             "value" : "Göz At"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "瀏覽"
+          }
         }
       }
     },
@@ -969,6 +1071,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yeni bağlantılara:"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新的連線應被："
           }
         }
       }
@@ -1024,6 +1132,12 @@
             "state" : "translated",
             "value" : "Simgesiz kip"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無圖示模式"
+          }
         }
       }
     },
@@ -1077,6 +1191,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "53. kapıdaki tüm (UDP) trafiğe izin verilecektir."
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有 53 連接埠的 （UDP）流量將被允許。"
           }
         }
       }
@@ -1132,6 +1252,12 @@
             "state" : "translated",
             "value" : "Yeni sürümleri kendiliğinden denetlemeyin."
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不自動檢查新版本。"
+          }
         }
       }
     },
@@ -1185,6 +1311,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pasif kip"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "被動模式"
           }
         }
       }
@@ -1240,6 +1372,12 @@
             "state" : "translated",
             "value" : "Kurulu programlara izin ver"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允許已安裝程式"
+          }
         }
       }
     },
@@ -1293,6 +1431,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hayır"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "否"
           }
         }
       }
@@ -1348,6 +1492,12 @@
             "state" : "translated",
             "value" : "Kip"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "模式"
+          }
         }
       }
     },
@@ -1401,6 +1551,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kip"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "模式"
           }
         }
       }
@@ -1456,6 +1612,12 @@
             "state" : "translated",
             "value" : "Apple tarafından imzalanan ikililere izin verilir."
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "由 Apple 簽署的程式將被允許"
+          }
         }
       }
     },
@@ -1509,6 +1671,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Engelle"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阻擋"
           }
         }
       }
@@ -1564,6 +1732,12 @@
             "state" : "translated",
             "value" : "Güncelle"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新"
+          }
         }
       }
     },
@@ -1617,6 +1791,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Güncelle"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新"
           }
         }
       }
@@ -1672,6 +1852,12 @@
             "state" : "translated",
             "value" : "Listeler"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名單"
+          }
         }
       }
     },
@@ -1725,6 +1911,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Listeler"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名單"
           }
         }
       }
@@ -1780,6 +1972,12 @@
             "state" : "translated",
             "value" : "LuLu üzerinden aktarılan tüm trafik engellenir (bitiş noktası açıkça “İzin Ver” listesinde değilse)."
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有經由 LuLu 路由的流量將被阻擋（除非該端點被列於允許名單中）。"
+          }
         }
       }
     },
@@ -1833,6 +2031,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apple programlarına izin ver"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允許 Apple 程式"
           }
         }
       }
@@ -1888,6 +2092,12 @@
             "state" : "translated",
             "value" : "Kurallar"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "規則"
+          }
         }
       }
     },
@@ -1941,6 +2151,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kurallar"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "規則"
           }
         }
       }
@@ -1996,6 +2212,12 @@
             "state" : "translated",
             "value" : "Simülatör uygulamalarına izin ver"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允許模擬器內的應用程式"
+          }
         }
       }
     },
@@ -2049,6 +2271,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Göz At"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "瀏覽"
           }
         }
       }
@@ -2104,6 +2332,12 @@
             "state" : "translated",
             "value" : "DNS trafiğine izin ver"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允許 DNS 流量"
+          }
         }
       }
     },
@@ -2157,6 +2391,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "VirusTotal modu yok"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無 VirusTotal 模式"
           }
         }
       }
@@ -2212,6 +2452,12 @@
             "state" : "translated",
             "value" : "VirusTotal ile entegrasyonu devre dışı bırakın."
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停用與 VirusTotal 的整合功能。"
+          }
         }
       }
     },
@@ -2265,6 +2511,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Güncelleme denetimlerini devre dışı bırak"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停用更新檢查"
           }
         }
       }

@@ -52,6 +52,12 @@
             "state" : "translated",
             "value" : "⌃"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌃"
+          }
         }
       }
     },
@@ -106,6 +112,12 @@
             "state" : "translated",
             "value" : "LuLu açık ve çalışıyor!"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 已啟動並執行中！"
+          }
         }
       }
     },
@@ -159,6 +171,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ona buradan istediğiniz zaman erişebilirsiniz."
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隨時可以從這裡存取。"
           }
         }
       }
