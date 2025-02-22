@@ -1610,7 +1610,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apple tarafından imzalanan ikililere izin verilir."
+            "value" : "Apple tarafından imzalanan ikililere izin verilecektir."
           }
         },
         "zh-Hant" : {
@@ -2390,7 +2390,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "VirusTotal modu yok"
+            "value" : "VirusTotal kipi yok"
           }
         },
         "zh-Hant" : {
