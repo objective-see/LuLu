@@ -52,6 +52,12 @@
             "state" : "translated",
             "value" : "LuLu’yu Güncelle"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 更新"
+          }
         }
       }
     },
@@ -105,6 +111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Güncelle"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新"
           }
         }
       }

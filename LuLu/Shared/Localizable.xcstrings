@@ -51,6 +51,12 @@
             "state" : "translated",
             "value" : "Algılama oranı:"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "偵測率："
+          }
         }
       }
     },
@@ -103,6 +109,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "VirusTotal’da bulunamadı"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal 上未找到"
           }
         }
       }
@@ -157,6 +169,12 @@
             "state" : "translated",
             "value" : "Geçersiz yanıt alındı"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "收到無效的回應"
+          }
         }
       }
     },
@@ -209,6 +227,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "VirusTotal’de görüntüle:"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查看 VirusTotal 的"
           }
         }
       }
@@ -263,6 +287,12 @@
             "state" : "translated",
             "value" : "imzalama sorunu var"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "存在簽章問題"
+          }
         }
       }
     },
@@ -315,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "imzalı değil"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有簽章"
           }
         }
       }
@@ -369,6 +405,12 @@
             "state" : "translated",
             "value" : "geçerli bir biçimde imzalanmamış"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沒有有效的簽章"
+          }
         }
       }
     },
@@ -421,6 +463,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "geçerli bir biçimde imzalanmış"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "具有有效的簽章"
           }
         }
       }
@@ -475,6 +523,12 @@
             "state" : "translated",
             "value" : " bilinmiyor"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未知"
+          }
         }
       }
     },
@@ -527,6 +581,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "…lütfen /Applications’a kopyalayın ve yeniden başlatın "
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…請將其複製到 /Applications 並重新啟動應用程式。"
           }
         }
       }
@@ -581,6 +641,12 @@
             "state" : "translated",
             "value" : "…bu, LuLu’yu Mac’inizden tümüyle kaldıracaktır"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…這會將 LuLu 從您的 Mac 完全移除 。"
+          }
         }
       }
     },
@@ -634,6 +700,12 @@
             "state" : "translated",
             "value" : "…bu, bir sonraki oturum açışınıza dek LuLu’yu sonlandıracaktır"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…這將關閉 LuLu，直到您下次登入。"
+          }
         }
       }
     },
@@ -686,6 +758,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "› imzalama otoritesi yok"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "› 無簽署單位"
           }
         }
       }
@@ -746,6 +824,12 @@
             "state" : "translated",
             "value" : "%1$@ (pid: %2$@)"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@（pid: %@）"
+          }
         }
       }
     },
@@ -805,6 +889,12 @@
             "state" : "translated",
             "value" : "%1$@ (imzalayan: %2$@)"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (簽署者：%@）"
+          }
         }
       }
     },
@@ -857,6 +947,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (imzalayan: Apple macOS App Store)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@（簽署者：Apple Mac OS App Store）"
           }
         }
       }
@@ -911,6 +1007,12 @@
             "state" : "translated",
             "value" : "%@ (imzalayan: Apple Proper)"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@（簽署者：Apple Proper）"
+          }
         }
       }
     },
@@ -963,6 +1065,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (imzalayan: Geçersiz/İmzasız)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@（簽署者：無效／未簽署）"
           }
         }
       }
@@ -1017,6 +1125,12 @@
             "state" : "translated",
             "value" : "%@ yok!"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 不存在！"
+          }
         }
       }
     },
@@ -1070,6 +1184,12 @@
             "state" : "translated",
             "value" : "%@ geçerli bir macOS işlemi"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 是合法的 macOS 程式"
+          }
         }
       }
     },
@@ -1122,6 +1242,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ geçerli bir kapı numarası değil"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 不是有效的（連接埠）號碼"
           }
         }
       }
@@ -1182,6 +1308,12 @@
             "state" : "translated",
             "value" : "%1$@ geçerli bir düzenli ifade değil\nayrıntılar: %2$@"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 不是有效的正則表達式\n詳細資訊：%@"
+          }
         }
       }
     },
@@ -1234,6 +1366,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ 3. kişiler/geçici kişi tarafından imzalanmış"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 由第三方／臨時簽署"
           }
         }
       }
@@ -1288,6 +1426,12 @@
             "state" : "translated",
             "value" : "%@ Apple Proper tarafından imzalanmış"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 由 Apple Proper 簽署"
+          }
         }
       }
     },
@@ -1340,6 +1484,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ Mac App Store tarafından imzalanmış"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 由 Mac App Store 簽署"
           }
         }
       }
@@ -1394,6 +1544,12 @@
             "state" : "translated",
             "value" : "%@ bir Apple Geliştirici Kimliği ile imzalanmış"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 由 Apple 開發者 ID 簽署"
+          }
         }
       }
     },
@@ -1446,6 +1602,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ imzalama hatası: %#lx"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 簽署錯誤：%#lx"
           }
         }
       }
@@ -1500,6 +1662,12 @@
             "state" : "translated",
             "value" : "bu kuralı %@ yapmak, geçerli sistem işlevselliğini etkileyebilir... sürdürülsün mü?"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 此規則可能影響系統的正常功能…要繼續嗎？"
+          }
         }
       }
     },
@@ -1552,6 +1720,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ öğesinin kod imzalama bilgisi değiştirildi"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 的程式簽署資訊已變更"
           }
         }
       }
@@ -1606,6 +1780,12 @@
             "state" : "translated",
             "value" : "→ Kuralı Sil"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ 刪除規則"
+          }
         }
       }
     },
@@ -1658,6 +1838,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "→ Kuralları Sil"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ 刪除規則"
           }
         }
       }
@@ -1712,6 +1898,12 @@
             "state" : "translated",
             "value" : "→ Kuralı Düzenle"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ 編輯規則"
+          }
         }
       }
     },
@@ -1764,6 +1956,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "→ Yolları Göster"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ 顯示路徑"
           }
         }
       }
@@ -1818,6 +2016,12 @@
             "state" : "translated",
             "value" : "<bilinmeyen (%d)>"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<unknown (%d)>"
+          }
         }
       }
     },
@@ -1870,6 +2074,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2. Sistem Ayarları’nda, “LuLu”dan söz ettiği yere sarın ve “İzin Ver”e tıklayın"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 在「系統設定」中，捲動至提及「LuLu」的部分，然後點擊「允許」"
           }
         }
       }
@@ -1924,6 +2134,12 @@
             "state" : "translated",
             "value" : "2. Sistem Ayarları’nda, LuLu genişletmesini açın"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 在「系統設定」中，開啟 LuLu 延伸功能"
+          }
         }
       }
     },
@@ -1976,6 +2192,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "yeni bir sürüm (%@) kullanılabilir!"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有可用的新版本（%@）！"
           }
         }
       }
@@ -2030,6 +2252,12 @@
             "state" : "translated",
             "value" : "Geçici"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "臨時簽署"
+          }
         }
       }
     },
@@ -2082,6 +2310,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Son 24 saat içinde eklendi (oluşturulma zamanına göre sıralı)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "過去 24 小時內新增（依建立時間排序）"
           }
         }
       }
@@ -2136,6 +2370,12 @@
             "state" : "translated",
             "value" : "Tüm Kurallar"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部規則"
+          }
         }
       }
     },
@@ -2188,6 +2428,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İzin Ver"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允許"
           }
         }
       }
@@ -2242,6 +2488,12 @@
             "state" : "translated",
             "value" : "İzin Ver (PID: %@)"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允許（pid: %@）"
+          }
         }
       }
     },
@@ -2294,6 +2546,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İzin Ver (Şuna dek: %@)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允許（直到：%@）"
           }
         }
       }
@@ -2348,6 +2606,12 @@
             "state" : "translated",
             "value" : "herhangi bir adres"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "任何位址"
+          }
         }
       }
     },
@@ -2400,6 +2664,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "herhangi bir kapı"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "任何連接埠"
           }
         }
       }
@@ -2454,6 +2724,12 @@
             "state" : "translated",
             "value" : "herhangi bir program"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "任何程式"
+          }
         }
       }
     },
@@ -2506,6 +2782,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apple Programları (“Apple programlarına izin ver” ayarlıysa buraya kendiliğinden eklenir ve izin verilir)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple 程式（若啟用「允許 Apple 程式」，則會自動允許並新增至此）"
           }
         }
       }
@@ -2560,6 +2842,12 @@
             "state" : "translated",
             "value" : "Engelle"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阻擋"
+          }
         }
       }
     },
@@ -2612,6 +2900,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Engelle (PID: %@)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阻擋（pid: %@）"
           }
         }
       }
@@ -2666,6 +2960,12 @@
             "state" : "translated",
             "value" : "Engelle (Şuna dek: %@)"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阻擋 (直到：%@)"
+          }
         }
       }
     },
@@ -2718,6 +3018,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vazgeç"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
           }
         }
       }
@@ -2772,6 +3078,12 @@
             "state" : "translated",
             "value" : "Silinen, süresi dolan veya sonlandırılan öğelere atıfta bulunan temizleme kurallarını mı istiyorsunuz?"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清理引用已刪除、過期或終止項目的規則？"
+          }
         }
       }
     },
@@ -2824,6 +3136,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%ld kural temizlendi"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已清理 %ld 條規則"
           }
         }
       }
@@ -2878,6 +3196,12 @@
             "state" : "translated",
             "value" : "Sürdür"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "繼續"
+          }
         }
       }
     },
@@ -2930,6 +3254,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dizin kuralları, dizindeki tüm öğelere uygulanır"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目錄規則適用於該目錄內的所有項目"
           }
         }
       }
@@ -2984,6 +3314,12 @@
             "state" : "translated",
             "value" : "Devre Dışı Bırak"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停用"
+          }
         }
       }
     },
@@ -3036,6 +3372,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Engelle"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "啟用"
           }
         }
       }
@@ -3090,6 +3432,12 @@
             "state" : "translated",
             "value" : "HATA: Etkinleştirme başarısız"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錯誤：啟動失敗"
+          }
         }
       }
     },
@@ -3142,6 +3490,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "HATA: Kurallar temizlenemedi"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錯誤：清理規則失敗"
           }
         }
       }
@@ -3196,6 +3550,12 @@
             "state" : "translated",
             "value" : "HATA: Kurallar dışa aktarılamadı"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錯誤：規則匯出失敗"
+          }
         }
       }
     },
@@ -3248,6 +3608,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "HATA: Kurallar içe aktarılamadı"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錯誤：規則匯入失敗"
           }
         }
       }
@@ -3302,6 +3668,12 @@
             "state" : "translated",
             "value" : "HATA: Aboneler yüklenemedi"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錯誤：載入贊助者失敗"
+          }
         }
       }
     },
@@ -3354,6 +3726,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "HATA: Geçersiz yol"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錯誤：無效的路徑"
           }
         }
       }
@@ -3408,6 +3786,12 @@
             "state" : "translated",
             "value" : "HATA: Geçersiz kapı"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錯誤：無效的連接埠"
+          }
         }
       }
     },
@@ -3460,6 +3844,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "HATA: Geçersiz düzenli ifade"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錯誤：無效的正則表達式"
           }
         }
       }
@@ -3514,6 +3904,12 @@
             "state" : "translated",
             "value" : "HATA: Güncelleme denetimi başarısız"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錯誤：更新檢查失敗"
+          }
         }
       }
     },
@@ -3566,6 +3962,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Genişletmeler, Güvenlik ve Gizlilik sistem tercihlerinden elle onaylanmalıdır."
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "必須在系統設定的「隱私權與安全性」中手動核准延伸功能。"
           }
         }
       }
@@ -3620,6 +4022,12 @@
             "state" : "translated",
             "value" : "Uzantılar, Güvenlik Ayarları (Genel > Oturum Açma Öğeleri ve Uzantılar > Ağ Uzantıları) üzerinden manuel olarak onaylanmalıdır."
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "必須在「安全性設定」（一般 > 登入項目與延伸功能 > 網路延伸功能）中手動核准延伸功能。"
+          }
         }
       }
     },
@@ -3672,6 +4080,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ağ genişletmesi etkinleştirilemedi"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "啟動網路延伸功能失敗"
           }
         }
       }
@@ -3726,6 +4140,12 @@
             "state" : "translated",
             "value" : "ağ süzgeci etkinleştirilemedi"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "啟用網路過濾器失敗"
+          }
         }
       }
     },
@@ -3778,6 +4198,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "sistem genişletmesi etkinleştirilemedi"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "啟動系統延伸功能失敗"
           }
         }
       }
@@ -3832,6 +4258,12 @@
             "state" : "translated",
             "value" : "sistem/ağ genişletmesi etkinleştirilemedi"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "啟動系統/網路延伸功能失敗"
+          }
         }
       }
     },
@@ -3884,6 +4316,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "VirusTotal sorgusu yapılamadı"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查詢 VirusTotal 失敗"
           }
         }
       }
@@ -3938,6 +4376,12 @@
             "state" : "translated",
             "value" : "bulunanlar"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查詢結果"
+          }
         }
       }
     },
@@ -3990,6 +4434,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tam URL: %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完整網址：%@"
           }
         }
       }
@@ -4044,6 +4494,12 @@
             "state" : "translated",
             "value" : "Global kurallar tüm yollara uygulanır"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全域規則適用於所有路徑"
+          }
         }
       }
     },
@@ -4096,6 +4552,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%ld kural içe aktarıldı"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已匯入 %ld 條規則"
           }
         }
       }
@@ -4150,6 +4612,12 @@
             "state" : "translated",
             "value" : "kurulu sürüm (%@), günceldir"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已安裝版本（%@）為最新版本。"
+          }
         }
       }
     },
@@ -4202,6 +4670,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ konumuna bağlanıyor"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在連線至 %@"
           }
         }
       }
@@ -4256,6 +4730,12 @@
             "state" : "translated",
             "value" : "LuLu şuradan çalıştırılmalıdır:\n  %@"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 必須從 %@ 執行"
+          }
         }
       }
     },
@@ -4308,6 +4788,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu: Devre dışı"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu：停用"
           }
         }
       }
@@ -4362,6 +4848,12 @@
             "state" : "translated",
             "value" : "LuLu: Etkin"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu：啟用"
+          }
         }
       }
     },
@@ -4414,6 +4906,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu’nun ağ genişletmesi çalışmıyor"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 的網路延伸功能未執行"
           }
         }
       }
@@ -4468,6 +4966,12 @@
             "state" : "translated",
             "value" : "Daha Fazla Bilgi"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更多資訊"
+          }
         }
       }
     },
@@ -4520,6 +5024,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "yok"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無"
           }
         }
       }
@@ -4574,6 +5084,12 @@
             "state" : "translated",
             "value" : "uygulanabilir değil"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不適用"
+          }
         }
       }
     },
@@ -4626,6 +5142,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ancak şuna dikkat edin:\n ▪ Var olan bağlantılar bundan etkilenmez.\n▪ İşletim sistemi trafiği (LuLu tarafından yönetilmeyen) engellenmez."
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請注意：\n▪ 現有連線不會受影響。\n▪ 作業系統流量（未經過 LuLu）不會被封鎖。"
           }
         }
       }
@@ -4680,6 +5202,12 @@
             "state" : "translated",
             "value" : "Tamam"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
         }
       }
     },
@@ -4732,6 +5260,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu’nun eski sürümü kurulu"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已安裝舊版 LuLu"
           }
         }
       }
@@ -4786,6 +5320,12 @@
             "state" : "translated",
             "value" : "İşletim sistemi programları (sistem işlevselliği için gerekli)"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "作業系統程式（系統功能所需）"
+          }
         }
       }
     },
@@ -4838,6 +5378,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dışarı giden trafik artık engellenecek."
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "對外流量將被封鎖。"
           }
         }
       }
@@ -4892,6 +5438,12 @@
             "state" : "translated",
             "value" : "Önceden kurulu 3. parti uygulamalar (“Kurulu uygulamalara izin ver” ayarlıysa kendiliğinden eklenir ve izin verilir)"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已安裝的第三方程式（若啟用「允許已安裝的應用程式」，則會自動允許並新增至此）"
+          }
         }
       }
     },
@@ -4944,6 +5496,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İşlem argümanları: %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Process 參數：%@"
           }
         }
       }
@@ -4998,6 +5556,12 @@
             "state" : "translated",
             "value" : "İşlem yolu: %@"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Process 路徑：%@"
+          }
         }
       }
     },
@@ -5050,6 +5614,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "“%@/\" içindeki uygulamalar"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"%@/\" 中的程式"
           }
         }
       }
@@ -5104,6 +5674,12 @@
             "state" : "translated",
             "value" : "VirusTotal sorgusu yapılıyor…"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在查詢 VirusTotal..."
+          }
         }
       }
     },
@@ -5156,6 +5732,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Çık"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關閉"
           }
         }
       }
@@ -5210,6 +5792,12 @@
             "state" : "translated",
             "value" : "LuLu’dan çıkılsın mı?"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關閉 LuLu？"
+          }
         }
       }
     },
@@ -5262,6 +5850,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ters etki alanı: %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反向網域：%@"
           }
         }
       }
@@ -5346,6 +5940,12 @@
             "state" : "translated",
             "value" : "Ayrıntılar için günlüğe bakın"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請查看日誌以獲取（更多）詳細資訊"
+          }
         }
       }
     },
@@ -5398,6 +5998,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sürdürme öncesi bunun kaldırılması gerekiyor. Nasıl kaldıracağınızı öğrenmek için “Daha Fazla Bilgi”ye tıklayın."
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "必須先解除安裝才能繼續。請點擊「更多資訊」了解如何解除安裝。"
           }
         }
       }
@@ -5452,6 +6058,12 @@
             "state" : "translated",
             "value" : "Zaman damgası: %@"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時間戳：%@"
+          }
         }
       }
     },
@@ -5504,6 +6116,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kaldır"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解除安裝"
           }
         }
       }
@@ -5558,6 +6176,12 @@
             "state" : "translated",
             "value" : "LuLu kaldırılsın mı?"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解除安裝 LuLu？"
+          }
         }
       }
     },
@@ -5610,6 +6234,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "bilinmiyor"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未知"
           }
         }
       }
@@ -5664,6 +6294,12 @@
             "state" : "translated",
             "value" : "Güncelle"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新"
+          }
         }
       }
     },
@@ -5716,6 +6352,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kullanıcı tanımlı programlar (elle veya bir ikâza yönelik eklenir)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用者指定的程式（手動新增或因警告而加入）"
           }
         }
       }
@@ -5770,6 +6412,12 @@
             "state" : "translated",
             "value" : "Sürüm: %@"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本：%@"
+          }
         }
       }
     },
@@ -5822,6 +6470,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ağ genişletmesi onayı bekleniyor"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在等待網路延伸功能被核准"
           }
         }
       }

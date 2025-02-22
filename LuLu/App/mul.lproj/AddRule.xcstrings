@@ -52,6 +52,12 @@
             "state" : "translated",
             "value" : "Uzak kapı"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "遠端連接埠"
+          }
         }
       }
     },
@@ -105,6 +111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uzak adres/Etki alanı"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "遠端位址／網域"
           }
         }
       }
@@ -160,6 +172,12 @@
             "state" : "translated",
             "value" : "Kural Ekle (Dışarı Giden Bağlantılar)"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新增規則（適用於對外連線）"
+          }
         }
       }
     },
@@ -213,6 +231,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Düzenli ifade"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正規表達式？"
           }
         }
       }
@@ -268,6 +292,12 @@
             "state" : "translated",
             "value" : "Vazgeç"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
+          }
         }
       }
     },
@@ -322,6 +352,12 @@
             "state" : "translated",
             "value" : "Engelle"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阻擋"
+          }
         }
       }
     },
@@ -372,6 +408,12 @@
           }
         },
         "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "*"
@@ -430,6 +472,12 @@
             "state" : "translated",
             "value" : "İzin ver"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允許"
+          }
         }
       }
     },
@@ -484,6 +532,12 @@
             "state" : "translated",
             "value" : "Göz At"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "瀏覽"
+          }
         }
       }
     },
@@ -534,6 +588,12 @@
           }
         },
         "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "*"
@@ -592,6 +652,12 @@
             "state" : "translated",
             "value" : "Program yolu"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "程式路徑"
+          }
         }
       }
     },
@@ -645,6 +711,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ekle"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新增"
           }
         }
       }

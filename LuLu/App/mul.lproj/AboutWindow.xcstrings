@@ -52,6 +52,12 @@
             "state" : "translated",
             "value" : "Bizi Destekleyin!"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "支持我們！"
+          }
         }
       }
     },
@@ -105,6 +111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sürüm:"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本："
           }
         }
       }
@@ -160,6 +172,12 @@
             "state" : "translated",
             "value" : "Aboneler ve Arkadaşlar"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "贊助者 & 朋友"
+          }
         }
       }
     },
@@ -213,6 +231,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Daha Fazla Bilgi"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更多資訊"
           }
         }
       }
