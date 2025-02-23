@@ -86,6 +86,9 @@ bail:
     //error
     NSError* error = nil;
     
+    //lines
+    NSArray* lines = nil;
+    
     //file contents
     NSString* list = nil;
     
@@ -165,27 +168,23 @@ bail:
     }
      
     //now alloc
-    self.items = [NSMutableArray array];
+    self.items = [NSMutableSet set];
     
-    //parse/check each
-    for(NSString* item in [list componentsSeparatedByString:@"\n"])
-    {
-        //skip empty items
-        if(0 == item.length)
-        {
-            continue;
-        }
-        
-        //skip commands
-        if(YES == [item hasPrefix:@"#"])
-        {
-            continue;
-        }
-        
-        //add
-        [self.items addObject:item];
-    }
+    //split on lines
+    lines = [list componentsSeparatedByString:@"\n"];
     
+    //init set
+    // of trimmed/lower-cased items
+    self.items = [NSMutableSet setWithArray:[[[list componentsSeparatedByString:@"\n"] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSString *item, NSDictionary *bindings) {
+                
+                //trim
+                NSString* trimmed = [item stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                
+                //make sure its not empty/not a comment
+                return (trimmed.length > 0 && ![trimmed hasPrefix:@"#"]);
+        
+            }]] valueForKey:@"lowercaseString"]];
+        
     //dbg msg
     os_log_debug(logHandle, "(re)loaded %lu list items", (unsigned long)self.items.count);
     
@@ -206,7 +205,10 @@ bail:
     NWHostEndpoint* remoteEndpoint = nil;
     
     //endpoint url/hosts
-    NSMutableArray* endpointNames = nil;
+    NSMutableSet* endpointNames = nil;
+    
+    //matches
+    NSSet* matches = nil;
     
     //extract remote endpoint
     remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
@@ -223,27 +225,27 @@ bail:
     @synchronized (self) {
         
     //init endpoint names
-    endpointNames = [NSMutableArray array];
+    endpointNames = [NSMutableSet set];
         
     //add url
     if(nil != flow.URL.absoluteString)
     {
         //add full url
-        [endpointNames addObject:flow.URL.absoluteString];
+        [endpointNames addObject:flow.URL.absoluteString.lowercaseString];
     }
     
     //add host
     if(nil != flow.URL.host)
     {
         //add full url
-        [endpointNames addObject:flow.URL.host];
+        [endpointNames addObject:flow.URL.host.lowercaseString];
     }
         
     //add host name
     if(nil != remoteEndpoint.hostname)
     {
         //add
-        [endpointNames addObject:remoteEndpoint.hostname];
+        [endpointNames addObject:remoteEndpoint.hostname.lowercaseString];
     }
     
     //macOS 11+?
@@ -254,34 +256,34 @@ bail:
         if(nil != flow.remoteHostname)
         {
             //add
-            [endpointNames addObject:flow.remoteHostname];
-        }
-    }
-
-    //check each item
-    for(NSString* item in self.items)
-    {
-        //check against each name
-        for(NSString* endpointName in endpointNames)
-        {
-            //match?
-            if(NSOrderedSame == [item caseInsensitiveCompare:endpointName])
+            [endpointNames addObject:flow.remoteHostname.lowercaseString];
+         
+            //if it starts w/ 'www.'
+            // strip and add that too
+            if(YES == [flow.remoteHostname hasPrefix:@"www."])
             {
-                //dbg msg
-                os_log_debug(logHandle, "listed item '%{public}@' matches %{public}@", item, endpointNames);
-                
-                //happy
-                isMatch = YES;
-                
-                //done
-                goto bail;
+                //add
+                [endpointNames addObject:[[flow.remoteHostname substringFromIndex:4] lowercaseString]];
             }
         }
     }
         
+    //find matches
+    matches = [self.items objectsPassingTest:^BOOL(NSString* item, BOOL* stop) {
+        return [endpointNames containsObject:item];
+    }];
+        
+    //any matches?
+    if(0 != matches.count)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "endpoint names %{public}@ matched the following list items %{public}@", endpointNames, matches);
+       
+        //set flag
+        isMatch = YES;
+    }
+        
     }//sync
-    
-bail:
     
     return isMatch;
 }

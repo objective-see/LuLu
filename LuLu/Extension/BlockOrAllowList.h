@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, retain)NSString* path;
 
 //block list
-@property(nonatomic, retain)NSMutableArray* items;
+@property(nonatomic, retain)NSMutableSet* items;
 
 //modification time
 @property(nonatomic, retain)NSDate* lastModified;
