@@ -53,6 +53,12 @@
             "value" : "Bizi Destekleyin!"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Підтримайте нас!"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +117,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sürüm:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версія:"
           }
         },
         "zh-Hant" : {
@@ -173,6 +185,12 @@
             "value" : "Aboneler ve Arkadaşlar"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Патрони і друзі"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -231,6 +249,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Daha Fazla Bilgi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Більше інформації"
           }
         },
         "zh-Hant" : {

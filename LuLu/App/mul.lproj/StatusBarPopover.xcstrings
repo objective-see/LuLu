@@ -53,6 +53,12 @@
             "value" : "⌃"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌃"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -113,6 +119,12 @@
             "value" : "LuLu açık ve çalışıyor!"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu запущено і працює!"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -171,6 +183,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ona buradan istediğiniz zaman erişebilirsiniz."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отримуйте доступ до нього звідси в будь-який час."
           }
         },
         "zh-Hant" : {
