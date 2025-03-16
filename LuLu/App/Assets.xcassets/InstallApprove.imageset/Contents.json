@@ -28,6 +28,22 @@
       "idiom" : "universal",
       "locale" : "es",
       "scale" : "3x"
+    },
+    {
+      "filename" : "approve_ko.png",
+      "idiom" : "universal",
+      "locale" : "ko",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "locale" : "ko",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "locale" : "ko",
+      "scale" : "3x"
     }
   ],
   "info" : {
