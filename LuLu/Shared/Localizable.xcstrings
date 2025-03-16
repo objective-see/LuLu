@@ -52,6 +52,12 @@
             "value" : "Algılama oranı:"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Коефіцієнт виявлення:"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -109,6 +115,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "VirusTotal’da bulunamadı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "не знайдено у VirusTotal"
           }
         },
         "zh-Hant" : {
@@ -170,6 +182,12 @@
             "value" : "Geçersiz yanıt alındı"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отримано некоректну відповідь"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -227,6 +245,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "VirusTotal’de görüntüle:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відкрити у VirusTotal"
           }
         },
         "zh-Hant" : {
@@ -288,6 +312,12 @@
             "value" : "imzalama sorunu var"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "має проблему з підписом"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -345,6 +375,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "imzalı değil"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "не підписано"
           }
         },
         "zh-Hant" : {
@@ -406,6 +442,12 @@
             "value" : "geçerli bir biçimde imzalanmamış"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "підпис недійсний"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -463,6 +505,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "geçerli bir biçimde imzalanmış"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "успішно підписано"
           }
         },
         "zh-Hant" : {
@@ -524,6 +572,12 @@
             "value" : " bilinmiyor"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "невідомий"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -581,6 +635,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "…lütfen /Applications’a kopyalayın ve yeniden başlatın "
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…будь ласка, скопіюйте в /Application і перезапустіть."
           }
         },
         "zh-Hant" : {
@@ -642,6 +702,12 @@
             "value" : "…bu, LuLu’yu Mac’inizden tümüyle kaldıracaktır"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…це повністю видалить LuLu з вашого Маку"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -701,6 +767,12 @@
             "value" : "…bu, bir sonraki oturum açışınıza dek LuLu’yu sonlandıracaktır"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…це зупинить роботу LuLu до наступного входу."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -758,6 +830,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "› imzalama otoritesi yok"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "› немає довірених підписантів"
           }
         },
         "zh-Hant" : {
@@ -825,6 +903,12 @@
             "value" : "%1$@ (pid: %2$@)"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (PID: %2$@) "
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -890,6 +974,12 @@
             "value" : "%1$@ (imzalayan: %2$@)"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (підписант: %2$@) "
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -947,6 +1037,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (imzalayan: Apple macOS App Store)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (підписант: Apple Mac OS App Store)"
           }
         },
         "zh-Hant" : {
@@ -1008,6 +1104,12 @@
             "value" : "%@ (imzalayan: Apple Proper)"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (підписант: Apple Proper)"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1065,6 +1167,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (imzalayan: Geçersiz/İmzasız)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (підписант: невалідний/не підписано)"
           }
         },
         "zh-Hant" : {
@@ -1126,6 +1234,12 @@
             "value" : "%@ yok!"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ не існує!"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1185,6 +1299,12 @@
             "value" : "%@ geçerli bir macOS işlemi"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ є легітимним процесом macOS"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1242,6 +1362,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ geçerli bir kapı numarası değil"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ не є валідним номером порту"
           }
         },
         "zh-Hant" : {
@@ -1309,6 +1435,12 @@
             "value" : "%1$@ geçerli bir düzenli ifade değil\nayrıntılar: %2$@"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ не є валідним регулярним виразом  \nДеталі: %2$@"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1366,6 +1498,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ 3. kişiler/geçici kişi tarafından imzalanmış"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ має неофіційний (ad hoc) підпис"
           }
         },
         "zh-Hant" : {
@@ -1427,6 +1565,12 @@
             "value" : "%@ Apple Proper tarafından imzalanmış"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ підписано безпосередньо Apple"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1484,6 +1628,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ Mac App Store tarafından imzalanmış"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ підписано Mac App Store"
           }
         },
         "zh-Hant" : {
@@ -1545,6 +1695,12 @@
             "value" : "%@ bir Apple Geliştirici Kimliği ile imzalanmış"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ підписано з Apple Developer ID"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1602,6 +1758,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ imzalama hatası: %#lx"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "помилка підпису: %#lx"
           }
         },
         "zh-Hant" : {
@@ -1663,6 +1825,12 @@
             "value" : "bu kuralı %@ yapmak, geçerli sistem işlevselliğini etkileyebilir... sürdürülsün mü?"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ це правило може вплинути на коректну роботу системи... Продовжити?"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1720,6 +1888,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ öğesinin kod imzalama bilgisi değiştirildi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Інформація щодо підпису коду %@ змінилася"
           }
         },
         "zh-Hant" : {
@@ -1781,6 +1955,12 @@
             "value" : "→ Kuralı Sil"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Видалити правило"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1838,6 +2018,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "→ Kuralları Sil"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Видалити правило/правила"
           }
         },
         "zh-Hant" : {
@@ -1899,6 +2085,12 @@
             "value" : "→ Kuralı Düzenle"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Редагувати правило"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1956,6 +2148,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "→ Yolları Göster"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ Показати шлях/шляхи"
           }
         },
         "zh-Hant" : {
@@ -2017,6 +2215,12 @@
             "value" : "<bilinmeyen (%d)>"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<невідомий (%d)>"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2074,6 +2278,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2. Sistem Ayarları’nda, “LuLu”dan söz ettiği yere sarın ve “İzin Ver”e tıklayın"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. У «Системних параметрах» прокрутіть до LuLu і натисніть «Дозволити»."
           }
         },
         "zh-Hant" : {
@@ -2135,6 +2345,12 @@
             "value" : "2. Sistem Ayarları’nda, LuLu genişletmesini açın"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. У «Системних параметрах» увімкніть розширення LuLu."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2192,6 +2408,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "yeni bir sürüm (%@) kullanılabilir!"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "доступна нова версія (%@)!"
           }
         },
         "zh-Hant" : {
@@ -2253,6 +2475,12 @@
             "value" : "Geçici"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ad hoc"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2310,6 +2538,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Son 24 saat içinde eklendi (oluşturulma zamanına göre sıralı)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Додано за останні 24 години (відсортовано за часом створення)"
           }
         },
         "zh-Hant" : {
@@ -2371,6 +2605,12 @@
             "value" : "Tüm Kurallar"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Всі правила"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2428,6 +2668,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İzin Ver"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дозволити"
           }
         },
         "zh-Hant" : {
@@ -2489,6 +2735,12 @@
             "value" : "İzin Ver (PID: %@)"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дозволити (PID: %@)"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2546,6 +2798,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İzin Ver (Şuna dek: %@)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дозволити (до: %@)"
           }
         },
         "zh-Hant" : {
@@ -2607,6 +2865,12 @@
             "value" : "herhangi bir adres"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "будь-яка адреса"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2664,6 +2928,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "herhangi bir kapı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Будь-який порт"
           }
         },
         "zh-Hant" : {
@@ -2725,6 +2995,12 @@
             "value" : "herhangi bir program"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Будь-яка програма"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2782,6 +3058,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apple Programları (“Apple programlarına izin ver” ayarlıysa buraya kendiliğinden eklenir ve izin verilir)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Програми Apple (автоматично дозволяються й додаються сюди, якщо увімкнено «Дозволяти програми Apple»)"
           }
         },
         "zh-Hant" : {
@@ -2843,6 +3125,12 @@
             "value" : "Engelle"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Блокувати"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2900,6 +3188,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Engelle (PID: %@)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Блокувати (PID: %@)"
           }
         },
         "zh-Hant" : {
@@ -2961,6 +3255,12 @@
             "value" : "Engelle (Şuna dek: %@)"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Блокувати (до: %@)"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3018,6 +3318,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vazgeç"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати"
           }
         },
         "zh-Hant" : {
@@ -3079,6 +3385,12 @@
             "value" : "Silinen, süresi dolan veya sonlandırılan öğelere atıfta bulunan temizleme kurallarını mı istiyorsunuz?"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видалити правила, що посилаються на видалені, прострочені або завершені елементи?"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3136,6 +3448,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%ld kural temizlendi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видалено %ld правил"
           }
         },
         "zh-Hant" : {
@@ -3197,6 +3515,12 @@
             "value" : "Sürdür"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продовжити"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3254,6 +3578,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dizin kuralları, dizindeki tüm öğelere uygulanır"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила каталогів застосовуються до всіх елементів у каталозі."
           }
         },
         "zh-Hant" : {
@@ -3315,6 +3645,12 @@
             "value" : "Devre Dışı Bırak"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вимкнути"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3372,6 +3708,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Engelle"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увімкнути"
           }
         },
         "zh-Hant" : {
@@ -3433,6 +3775,12 @@
             "value" : "HATA: Etkinleştirme başarısız"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОМИЛКА: активація не вдалася"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3490,6 +3838,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "HATA: Kurallar temizlenemedi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОМИЛКА: не вдалося видалити правила"
           }
         },
         "zh-Hant" : {
@@ -3551,6 +3905,12 @@
             "value" : "HATA: Kurallar dışa aktarılamadı"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОМИЛКА: не вдалося експортувати правила"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3608,6 +3968,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "HATA: Kurallar içe aktarılamadı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОМИЛКА: не вдалося імпортувати правила"
           }
         },
         "zh-Hant" : {
@@ -3669,6 +4035,12 @@
             "value" : "HATA: Aboneler yüklenemedi"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОМИЛКА: не вдалося завантажити список патронів"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3726,6 +4098,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "HATA: Geçersiz yol"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОМИЛКА: некоректний шлях"
           }
         },
         "zh-Hant" : {
@@ -3787,6 +4165,12 @@
             "value" : "HATA: Geçersiz kapı"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОМИЛКА: некоректний порт"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3844,6 +4228,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "HATA: Geçersiz düzenli ifade"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОМИЛКА: некоректний регулярний вираз"
           }
         },
         "zh-Hant" : {
@@ -3905,6 +4295,12 @@
             "value" : "HATA: Güncelleme denetimi başarısız"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОМИЛКА: не вдалося перевірити оновлення"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3962,6 +4358,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Genişletmeler, Güvenlik ve Gizlilik sistem tercihlerinden elle onaylanmalıdır."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розширення потрібно схвалити вручну в розділі «Приватність і безпека» у Системних параметрах."
           }
         },
         "zh-Hant" : {
@@ -4023,6 +4425,12 @@
             "value" : "Uzantılar, Güvenlik Ayarları (Genel > Oturum Açma Öğeleri ve Uzantılar > Ağ Uzantıları) üzerinden manuel olarak onaylanmalıdır."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розширення потрібно схвалити вручну в «Налаштуваннях безпеки» (Загальні > Автозапуск і розширення > Мережеві розширення)."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4080,6 +4488,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ağ genişletmesi etkinleştirilemedi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "не вдалося активувати мережеве розширення"
           }
         },
         "zh-Hant" : {
@@ -4141,6 +4555,12 @@
             "value" : "ağ süzgeci etkinleştirilemedi"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "не вдалося активувати мережевий фільтр"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4198,6 +4618,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "sistem genişletmesi etkinleştirilemedi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "не вдалося активувати системне розширення"
           }
         },
         "zh-Hant" : {
@@ -4259,6 +4685,12 @@
             "value" : "sistem/ağ genişletmesi etkinleştirilemedi"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "не вдалося активувати системне або мережеве розширення"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4316,6 +4748,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "VirusTotal sorgusu yapılamadı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося виконати запит до VirusTotal"
           }
         },
         "zh-Hant" : {
@@ -4377,6 +4815,12 @@
             "value" : "bulunanlar"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "результати аналізу"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4434,6 +4878,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tam URL: %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повний URL: %@"
           }
         },
         "zh-Hant" : {
@@ -4495,6 +4945,12 @@
             "value" : "Global kurallar tüm yollara uygulanır"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Глобальні правила застосовуються до всіх шляхів"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4552,6 +5008,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%ld kural içe aktarıldı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Імпортовано %ld правил"
           }
         },
         "zh-Hant" : {
@@ -4613,6 +5075,12 @@
             "value" : "kurulu sürüm (%@), günceldir"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Встановлена версія (%@) є найновішою."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4672,10 +5140,27 @@
             "value" : "%@ konumuna bağlanıyor"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "підключається до %@"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在連線至 %@"
+          }
+        }
+      }
+    },
+    "Key" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ключ"
           }
         }
       }
@@ -4729,6 +5214,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu şuradan çalıştırılmalıdır:\n  %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu має працювати з:\r\n  %@"
           }
         },
         "zh-Hant" : {
@@ -4790,6 +5281,12 @@
             "value" : "LuLu: Devre dışı"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: вимкнено"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4847,6 +5344,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu: Etkin"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: увімкнено"
           }
         },
         "zh-Hant" : {
@@ -4908,6 +5411,12 @@
             "value" : "LuLu’nun ağ genişletmesi çalışmıyor"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мережеве розширення LuLu не працює"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4965,6 +5474,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Daha Fazla Bilgi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Більше інформації"
           }
         },
         "zh-Hant" : {
@@ -5026,6 +5541,12 @@
             "value" : "yok"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "жоден"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5083,6 +5604,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "uygulanabilir değil"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "не застосовується"
           }
         },
         "zh-Hant" : {
@@ -5144,6 +5671,12 @@
             "value" : "Ancak şuna dikkat edin:\n ▪ Var olan bağlantılar bundan etkilenmez.\n▪ İşletim sistemi trafiği (LuLu tarafından yönetilmeyen) engellenmez."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зверніть увагу:\n▪ Існуючі з'єднання не будуть порушені.  \n▪ Системний трафік, який не проходить через LuLu, не буде заблоковано."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5201,6 +5734,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tamam"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОК"
           }
         },
         "zh-Hant" : {
@@ -5262,6 +5801,12 @@
             "value" : "LuLu’nun eski sürümü kurulu"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виявлено застарілу версію LuLu"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5319,6 +5864,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İşletim sistemi programları (sistem işlevselliği için gerekli)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Системні програми (необхідні для роботи операційної системи)"
           }
         },
         "zh-Hant" : {
@@ -5380,6 +5931,12 @@
             "value" : "Dışarı giden trafik artık engellenecek."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вихідний трафік тепер буде заблоковано."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5437,6 +5994,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Önceden kurulu 3. parti uygulamalar (“Kurulu uygulamalara izin ver” ayarlıysa kendiliğinden eklenir ve izin verilir)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Попередньо встановлені сторонні програми (автоматично дозволяються й додаються сюди, якщо увімкнено «Дозволити встановлені програми»)"
           }
         },
         "zh-Hant" : {
@@ -5498,6 +6061,12 @@
             "value" : "İşlem argümanları: %@"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Параметри процесу: %@"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5555,6 +6124,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İşlem yolu: %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шлях процесу: %@"
           }
         },
         "zh-Hant" : {
@@ -5616,6 +6191,12 @@
             "value" : "“%@/\" içindeki uygulamalar"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Програми в \"%@/\""
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5673,6 +6254,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "VirusTotal sorgusu yapılıyor…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виконується запит до VirusTotal..."
           }
         },
         "zh-Hant" : {
@@ -5734,6 +6321,12 @@
             "value" : "Çık"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завершити"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5793,6 +6386,12 @@
             "value" : "LuLu’dan çıkılsın mı?"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завершити роботу з LuLu?"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5850,6 +6449,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ters etki alanı: %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зворотний домен: %@"
           }
         },
         "zh-Hant" : {
@@ -5941,6 +6546,12 @@
             "value" : "Ayrıntılar için günlüğe bakın"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дивіться лог для детальнішої інформації"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5998,6 +6609,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sürdürme öncesi bunun kaldırılması gerekiyor. Nasıl kaldıracağınızı öğrenmek için “Daha Fazla Bilgi”ye tıklayın."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Щоб продовжити, необхідно це видалити. Натисніть «Більше інформації», щоб дізнатися, як це видалити."
           }
         },
         "zh-Hant" : {
@@ -6059,6 +6676,12 @@
             "value" : "Zaman damgası: %@"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мітка часу: %@"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6116,6 +6739,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kaldır"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видалити"
           }
         },
         "zh-Hant" : {
@@ -6177,6 +6806,12 @@
             "value" : "LuLu kaldırılsın mı?"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видалити LuLu?"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6234,6 +6869,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "bilinmiyor"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "невідомий"
           }
         },
         "zh-Hant" : {
@@ -6295,6 +6936,12 @@
             "value" : "Güncelle"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оновити"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6352,6 +6999,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kullanıcı tanımlı programlar (elle veya bir ikâza yönelik eklenir)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Програми, вказані користувачем (додані вручну або у відповідь на сповіщення)"
           }
         },
         "zh-Hant" : {
@@ -6413,6 +7066,12 @@
             "value" : "Sürüm: %@"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версія: %@"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6470,6 +7129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ağ genişletmesi onayı bekleniyor"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очікується схвалення мережевого розширення"
           }
         },
         "zh-Hant" : {

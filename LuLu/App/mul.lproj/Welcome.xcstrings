@@ -53,6 +53,12 @@
             "value" : "Bu seçenek, halihazırda kurulu olan herhangi bir 3. parti uygulamanın bir ikâz oluşturmadan ağa erişimine izin verir."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ця опція дозволить будь-якому сторонньому додатку, який уже встановлено, отримувати доступ до мережі без сповіщення."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +117,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "“Objective-See” Arkadaşlarına Mahalo"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дякуємо «Friends Objective-See»"
           }
         },
         "zh-Hant" : {
@@ -173,6 +185,12 @@
             "value" : "1. “Sistem Genişletmesi Engellendi” ikâzında “Sistem Ayarları’nı Aç”a tıklayın."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. У сповіщенні «Системне розширення заблоковано» натисніть «Відкрити системні параметри»."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -233,6 +251,12 @@
             "value" : "Öncelikle, LuLu ağ genişletmesine izin verin:"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спочатку, надайте доступ розширенню LuLu:"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -291,6 +315,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ağ etkinliğinizi izler ve bir program ilk kez dışarıya bir bağlantı sağlamaya çalıştığında sizi ikâz eder ve izin vermenizi veya engellemenizi ister."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вона відстежує мережеву активність і сповіщає вас, коли програма вперше намагається ініціювати вихідне з'єднання, тож ви зможете його дозволити або заборонити."
           }
         },
         "zh-Hant" : {
@@ -372,6 +402,12 @@
             "value" : "LuLu"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -430,6 +466,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu, macOS için ücretsiz ve açık kaynak bir güvenlik duvarıdır."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu — це безкоштовний фаєрвол із відкритим кодом для macOS."
           }
         },
         "zh-Hant" : {
@@ -492,6 +534,12 @@
             "value" : "Hayır"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ні"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -550,6 +598,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu’yu desteklemek ister misiniz?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Підтримати LuLu?"
           }
         },
         "zh-Hant" : {
@@ -612,6 +666,12 @@
             "value" : "4. “Ağ İçeriğini Filtrele” ikâzında “İzin Ver”e tıklayın."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. У сповіщенні «Фільтрувати мережевий контент» натисніть «Дозволити»."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -670,6 +730,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hoş Geldiniz"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ласкаво просимо до"
           }
         },
         "zh-Hant" : {
@@ -732,6 +798,12 @@
             "value" : "Bu seçenek, Apple tarafından imzalanmış herhangi bir ikilinin, bir ikâz oluşturmadan ağa erişimine izin verecektir."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ця опція дозволить будь-якому бінарному файлу, підписаному Apple, отримувати доступ до мережі без сповіщення."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -790,6 +862,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Evet!"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Так!"
           }
         },
         "zh-Hant" : {
@@ -852,6 +930,12 @@
             "value" : "Bu seçenek, 53. kapı üzerinden herhangi bir UDP trafiğine izin verecektir."
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ця опція дозволить будь-який (UDP) трафік через порт 53."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -910,6 +994,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "DNS trafiğine izin ver"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дозволити DNS трафік"
           }
         },
         "zh-Hant" : {
@@ -972,6 +1062,12 @@
             "value" : "Ücretsizdir, açık kaynaktır ve tek bir (Mac hastası) kodcu tarafından yazılmıştır!"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вона безкоштовна, з відкритим кодом і написана одним розробником, закоханим у Maк!"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1030,6 +1126,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sistem Genişletmesi Onayı Bekleniyor"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очікується схвалення системного розширення"
           }
         },
         "zh-Hant" : {
@@ -1092,6 +1194,12 @@
             "value" : "Biraz sevgi gösterseniz?"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проявити підтримку?"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1150,6 +1258,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sonraki"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далі"
           }
         },
         "zh-Hant" : {
@@ -1212,6 +1326,12 @@
             "value" : "Haydi LuLu’yu yapılandıralım:"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "А тепер давайте налаштуємо LuLu:"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1270,6 +1390,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Halihazırda kurulu uygulamalara izin ver"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дозволити вже установлені програми"
           }
         },
         "zh-Hant" : {
@@ -1332,6 +1458,12 @@
             "value" : "Sonraki"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далі"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1392,6 +1524,12 @@
             "value" : "Apple programlarına izin ver"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дозволити програми Apple"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1450,6 +1588,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3. Yetkilendirin."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Аутентифікувати"
           }
         },
         "zh-Hant" : {

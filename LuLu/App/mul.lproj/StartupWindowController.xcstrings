@@ -53,6 +53,12 @@
             "value" : "şimdi başlatılıyor…"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запуск…"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -117,6 +123,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Not: LuLu, macOS 15.3+ üzerinde en iyi şekilde çalışır, çünkü Apple ağ kararlılığını etkileyen hataları düzeltti."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Примітка: LuLu найкраще працює на macOS 15.3+, оскільки Apple виправила помилки, що впливали на стабільність мережі."
           }
         },
         "zh-Hant" : {

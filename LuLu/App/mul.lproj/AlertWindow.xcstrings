@@ -102,6 +102,12 @@
             "value" : "Bağlantı:"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "З'єднання:"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -160,6 +166,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kural süresi:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тривалість правила:"
           }
         },
         "zh-Hant" : {
@@ -222,6 +234,12 @@
             "value" : "kapı/protokol"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "порт/протокол:"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -280,6 +298,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İşlem yaşam süresi boyunca"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тривалість життя процесу"
           }
         },
         "zh-Hant" : {
@@ -342,6 +366,12 @@
             "value" : "SS:dd"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ГГ:хх"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -400,6 +430,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ayrıntılar:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Деталі:"
           }
         },
         "zh-Hant" : {
@@ -462,6 +498,12 @@
             "value" : "İmzalama otoriteleri:"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Довірені підписанти:"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -520,6 +562,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu İkâzı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сповіщення LuLu"
           }
         },
         "zh-Hant" : {
@@ -631,6 +679,12 @@
             "value" : "(ters) dns:"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(зворотний) DNS:"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -689,6 +743,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ayrıntılar ve Seçenekler"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Деталі та параметри"
           }
         },
         "zh-Hant" : {
@@ -751,6 +811,12 @@
             "value" : "Kural kapsamı:"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Межі правила:"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -809,6 +875,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "yol:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "шлях:"
           }
         },
         "zh-Hant" : {
@@ -871,6 +943,12 @@
             "value" : "pid:"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PID:"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -929,6 +1007,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İşlem"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Процес"
           }
         },
         "zh-Hant" : {
@@ -991,6 +1075,12 @@
             "value" : "İşlem Adı"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назва процесу"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1049,6 +1139,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ad"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назва"
           }
         },
         "zh-Hant" : {
@@ -1160,6 +1256,12 @@
             "value" : "Uzak bitiş noktası"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Віддалена веб- або IP-адреса"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1218,6 +1320,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İşlem:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Процес:"
           }
         },
         "zh-Hant" : {
@@ -1280,6 +1388,12 @@
             "value" : "Mesaj"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "повідомлення"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1338,6 +1452,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "argümanlar:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "аргументи:"
           }
         },
         "zh-Hant" : {
@@ -1400,6 +1520,12 @@
             "value" : "Her zaman"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завжди"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1458,6 +1584,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ip adresi:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP-адреса"
           }
         },
         "zh-Hant" : {
@@ -1520,6 +1652,12 @@
             "value" : "Engelle"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Блокувати"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1578,6 +1716,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Şu tarihe dek:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дійсне до:"
           }
         },
         "zh-Hant" : {
@@ -1640,6 +1784,12 @@
             "value" : "Zaman damgası:"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мітка часу:"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1698,6 +1848,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İzin Ver"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дозволити"
           }
         },
         "zh-Hant" : {

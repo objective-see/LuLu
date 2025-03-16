@@ -53,6 +53,12 @@
             "value" : "Etiket"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мітка"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,6 +117,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Öge Adı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назва елемента"
           }
         },
         "zh-Hant" : {
@@ -173,6 +185,12 @@
             "value" : "Son Kullanılan Kurallar"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нещодавні правила"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -231,6 +249,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Metin Hücresi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Текстове поле"
           }
         },
         "zh-Hant" : {
@@ -293,6 +317,12 @@
             "value" : "Kullanıcı Kuralları"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Користувацькі правила"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -351,6 +381,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kuralları süz…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила фільтрації"
           }
         },
         "zh-Hant" : {
@@ -413,6 +449,12 @@
             "value" : "LuLu Kuralları"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила LuLu"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -471,6 +513,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Özel Görünüm"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кастомний вигляд"
           }
         },
         "zh-Hant" : {
@@ -533,6 +581,12 @@
             "value" : "Özel Görünüm"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кастомний вигляд"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -591,6 +645,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kural"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правило"
           }
         },
         "zh-Hant" : {
@@ -653,6 +713,12 @@
             "value" : "Tüm Kurallar"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Усі правила"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -711,6 +777,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Öğe ayrıntıları…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "деталі елемента…"
           }
         },
         "zh-Hant" : {
@@ -773,6 +845,12 @@
             "value" : "Apple Kuralları"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила Apple"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -831,6 +909,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Saptanmış Kurallar"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стандартні правила"
           }
         },
         "zh-Hant" : {
@@ -893,6 +977,12 @@
             "value" : "bağlantı bilgisi"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "інформація про зʼєднання"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -951,6 +1041,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "kurallar (yeniden) yükleniyor…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(пере)завантаження правил..."
           }
         },
         "zh-Hant" : {
@@ -1013,6 +1109,12 @@
             "value" : "Kural Ekle"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати правило"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1071,6 +1173,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3. Parti Kurallar"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила від сторонніх постачальників"
           }
         },
         "zh-Hant" : {
