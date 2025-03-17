@@ -4309,102 +4309,37 @@
         }
       }
     },
-    "Extensions must be manually approved via\r\nSecurity & Privacy System Preferences." : {
-      "comment" : "Extensions must be manually approved via\r\nSecurity & Privacy System Preferences.",
+    "Extensions must be manually approved via System Settings (General > Login Items & Extensions > Network Extensions)." : {
+      "comment" : "Extensions must be manually approved via System Settings (General > Login Items & Extensions > Network Extensions).",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erweiterungen müssen manuell in den Systemeinstellungen\r\nunter Datenschutz & Sicherheit genehmigt werden."
+            "value" : "Erweiterungen müssen manuell über die Systemeinstellungen (Allgemein > Anmeldeobjekte und Erweiterungen > Netzwerkerweiterungen) genehmigt werden."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Las extensiones deben ser aprobadas manualmente a través de las Preferencias del Sistema de Seguridad y Privacidad."
+            "value" : "Las extensiones deben aprobarse manualmente a través de Configuración del sistema (General > Elementos de inicio de sesión y extensiones > Extensiones de red)."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les extensions doivent être approuvées manuellement via\nPréférences du système de sécurité et de confidentialité."
+            "value" : "Les extensions doivent être approuvées manuellement via les paramètres système (Général > Éléments de connexion et extensions > Extensions réseau)."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le estensioni devono essere manualmente abilitate tramite il menù Sicurezza e Privacy delle Impostazioni di Sistema"
+            "value" : "Le estensioni devono essere approvate manualmente tramite Impostazioni di sistema (Generale > Elementi di accesso ed estensioni > Estensioni di rete)."
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "확장 프로그램은 시스템 설정의 개인정보 보호 및 보안에서 수동으로 승인해야 합니다."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rozszerzenia muszą zostać zatwierdzone ręcznie za pośrednictwem\nUstawień systemowych dotyczących Prywatności i ochrony."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Extensões devem ser manualmente aprovadas nas Preferências de Sistema de Segurança e Privacidade"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Genişletmeler, Güvenlik ve Gizlilik sistem tercihlerinden elle onaylanmalıdır."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Розширення потрібно схвалити вручну в розділі «Приватність і безпека» у Системних параметрах."
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "必須在系統設定的「隱私權與安全性」中手動核准延伸功能。"
-          }
-        }
-      }
-    },
-    "Extensions must be manually approved via Security Settings (General > Login Items & Extensions > Network Extensions)." : {
-      "comment" : "Extensions must be manually approved via Security Settings (General > Login Items & Extensions > Network Extensions).",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erweiterungen müssen manuell über die Sicherheitseinstellungen (Allgemein > Anmeldeobjekte und Erweiterungen > Netzwerkerweiterungen) genehmigt werden."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Las extensiones deben aprobarse manualmente a través de Configuración de seguridad (General > Elementos de inicio de sesión y extensiones > Extensiones de red)."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les extensions doivent être approuvées manuellement via les paramètres de sécurité (Général > Éléments de connexion et extensions > Extensions réseau)."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le estensioni devono essere approvate manualmente tramite Impostazioni di sicurezza (Generale > Elementi di accesso ed estensioni > Estensioni di rete)."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "확장 프로그램은 보안 설정(일반 > 로그인 항목 및 확장 프로그램 > 네트워크 확장 프로그램)을 통해 수동으로 승인해야 합니다."
+            "value" : "확장 프로그램은 시스템 설정(일반 > 로그인 항목 및 확장 프로그램 > 네트워크 확장 프로그램)을 통해 수동으로 승인되어야 합니다."
           }
         },
         "pl" : {
@@ -4416,25 +4351,25 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "As extensões devem ser aprovadas manualmente por meio das Configurações de segurança (Geral > Itens de login e extensões > Extensões de rede)."
+            "value" : "As extensões devem ser aprovadas manualmente por meio das Configurações do sistema (Geral > Itens de login e extensões > Extensões de rede)."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uzantılar, Güvenlik Ayarları (Genel > Oturum Açma Öğeleri ve Uzantılar > Ağ Uzantıları) üzerinden manuel olarak onaylanmalıdır."
+            "value" : "Uzantılar, Sistem Ayarları (Genel > Oturum Açma Öğeleri ve Uzantılar > Ağ Uzantıları) üzerinden manuel olarak onaylanmalıdır."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Розширення потрібно схвалити вручну в «Налаштуваннях безпеки» (Загальні > Автозапуск і розширення > Мережеві розширення)."
+            "value" : "Розширення потрібно схвалити вручну в «Системні Налаштуваннях» (Загальні > Автозапуск і розширення > Мережеві розширення)."
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "必須在「安全性設定」（一般 > 登入項目與延伸功能 > 網路延伸功能）中手動核准延伸功能。"
+            "value" : "必須在「系統設定」（一般 > 登入項目與延伸功能 > 網路延伸功能）中手動核准延伸功能。"
           }
         }
       }
@@ -5163,7 +5098,8 @@
             "value" : "Ключ"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "LuLu must run from:\r\n  %@" : {
       "comment" : "LuLu must run from:\r\n  %@",
@@ -6946,6 +6882,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "更新"
+          }
+        }
+      }
+    },
+    "Update available, but isn't supported on macOS %ld.%ld" : {
+      "comment" : "Update available, but isn't supported on macOS %ld.%ld",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Update available, but isn't supported on macOS %1$ld.%2$ld"
           }
         }
       }

@@ -294,7 +294,7 @@ bail:
             if(YES != [((AppDelegate*)[[NSApplication sharedApplication] delegate]) isFirstTime])
             {
                 //show alert
-                showAlert(NSAlertStyleInformational, NSLocalizedString(@"LuLu's Network Extension Is Not Running",@"LuLu's Network Extension Is Not Running"), NSLocalizedString(@"Extensions must be manually approved via\r\nSecurity & Privacy System Preferences.", @"Extensions must be manually approved via\r\nSecurity & Privacy System Preferences."), @[NSLocalizedString(@"OK", @"OK")]);
+                showAlert(NSAlertStyleInformational, NSLocalizedString(@"LuLu's Network Extension Is Not Running", @"LuLu's Network Extension Is Not Running"), NSLocalizedString(@"Extensions must be manually approved via System Settings (General > Login Items & Extensions > Network Extensions).",@"Extensions must be manually approved via System Settings (General > Login Items & Extensions > Network Extensions)."), @[NSLocalizedString(@"OK", @"OK")]);
             }
         });
     }

@@ -23,82 +23,136 @@ extern os_log_t logHandle;
 // will invoke app delegate method to update UI when check completes
 -(void)checkForUpdate:(void (^)(NSUInteger result, NSString* latestVersion))completionHandler
 {
-    //latest version
-    __block NSString* latestVersion = nil;
-    
-    //result
-    __block NSInteger result = -1;
-
     //get latest version in background
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        //grab latest version
-        latestVersion = [self getLatestVersion];
-        if(0 != latestVersion.length)
-        {
-            //check
-            result = (NSOrderedAscending == [getAppVersion() compare:latestVersion options:NSNumericSearch]);
-        }
+        //result
+        NSInteger result = Update_None;
+
+        //product info
+        NSDictionary* productInfo = nil;
         
+        //latest version
+        NSString* latestVersion = nil;
+        
+        //major/minor
+        NSNumber* osMajor = nil;
+        NSNumber* osMinor = nil;
+        
+        //get product info
+        productInfo = [self getProductInfo:PRODUCT_NAME];
+        if(nil != productInfo)
+        {
+            //first check if there is a new version
+            latestVersion = productInfo[LATEST_VERSION];
+            if(YES == [latestVersion isKindOfClass:[NSString class]])
+            {
+                //trim
+                latestVersion = [latestVersion stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                
+                //check current version with latest
+                if(NSOrderedAscending == [getAppVersion() compare:latestVersion options:NSNumericSearch])
+                {
+                    //update available
+                    result = Update_Available;
+                }
+            }
+            
+            //then check if new version is compatible w/ user version of macOS
+            if(result == Update_Available)
+            {
+                osMajor = productInfo[SUPPORTED_OS_MAJOR];
+                osMinor = productInfo[SUPPORTED_OS_MINOR];
+                
+                if( (YES == [osMajor isKindOfClass:[NSNumber class]]) &&
+                    (YES == [osMinor isKindOfClass:[NSNumber class]]) )
+                {
+                    //init
+                    NSOperatingSystemVersion supportedOS = {
+                        .majorVersion = osMajor.intValue,
+                        .minorVersion = osMinor.intValue,
+                        .patchVersion = 0
+                    };
+                    
+                    //user's version of macOS supported?
+                    if(YES != [NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:supportedOS])
+                    {
+                        //dbg mdg
+                        os_log_debug(logHandle, "Latest version requires macOS %ld.%ld, but current macOS is %{public}@", supportedOS.majorVersion, supportedOS.minorVersion, NSProcessInfo.processInfo.operatingSystemVersionString);
+                        
+                        //not supported
+                        result = Update_NotSupported;
+                    }
+                }
+            }
+        }
+        //error
+        else
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: Failed to retrieve product info (for update check) from %{public}@", PRODUCT_VERSIONS_URL);
+            
+            result = Update_Error;
+        }
+         
         //invoke app delegate method
-        // will update UI/show popup if necessart
+        // will update UI/show popup if necessary
         dispatch_async(dispatch_get_main_queue(),
         ^{
             completionHandler(result, latestVersion);
         });
-        
     });
     
     return;
 }
 
-//query interwebz to get latest version
--(NSString*)getLatestVersion
+//read JSON file w/ products
+// return dictionary w/ info about this product
+-(NSDictionary*)getProductInfo:(NSString*)product
 {
     //product version(s) data
-    NSData* productsVersionData = nil;
-    
-    //version dictionary
-    NSDictionary* productsVersionDictionary = nil;
-    
-    //latest version
-    NSString* latestVersion = nil;
-    
-    //get version from remote URL
-    productsVersionData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:PRODUCT_VERSIONS_URL]];
-    if(nil == productsVersionData)
-    {
-        //bail
-        goto bail;
-    }
-    
-    //convert JSON to dictionary
-    // wrap as may throw exception
+    NSData* json = nil;
+    NSError* error = nil;
+    NSDictionary* products = nil;
+    NSDictionary* productInfo = nil;
+
+    //get json file (products) from remote URL
     @try
     {
-        //convert
-        productsVersionDictionary = [NSJSONSerialization JSONObjectWithData:productsVersionData options:kNilOptions error:nil];
-        if(nil == productsVersionDictionary)
+        //get JSON
+        json = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:PRODUCT_VERSIONS_URL]];
+        if(nil == json)
         {
-            //bail
+            //err msg
+            os_log_error(logHandle, "ERROR: failed to download product info from %{public}@", PRODUCT_VERSIONS_URL);
             goto bail;
+        }
+        
+        //convert
+        products = [NSJSONSerialization JSONObjectWithData:json options:0 error:&error];
+        if(nil != error)
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: Failed to convert 'products' to JSON (error: %{public}@)", error);
+            goto bail;
+        }
+        
+        //extract product info
+        if( (YES == [products isKindOfClass:[NSDictionary class]]) &&
+            (YES == [products[product] isKindOfClass:[NSDictionary class]]) )
+        {
+            productInfo = products[product];
         }
     }
     @catch(NSException* exception)
     {
-        //bail
-        goto bail;
+        //err msg
+        os_log_error(logHandle, "ERROR: Failed to convert 'products' to JSON (exception: %{public}@)", exception);
     }
-    
-    //extract latest version
-    latestVersion = productsVersionDictionary[PRODUCT_KEY][@"version"];
-    
-    //dbg msg
-    os_log_debug(logHandle, "latest version: %{public}@", latestVersion);
-    
+
 bail:
     
-    return latestVersion;
+    return productInfo;
 }
 
 @end

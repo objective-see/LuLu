@@ -503,14 +503,14 @@ bail:
     switch(result)
     {
         //error
-        case -1:
+        case Update_Error:
             
             //set label
             self.updateLabel.stringValue = NSLocalizedString(@"error: update check failed", @"error: update check failed");
             break;
             
         //no updates
-        case 0:
+        case Update_None:
             
             //dbg msg
             os_log_debug(logHandle, "no updates available");
@@ -519,10 +519,20 @@ bail:
             self.updateLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Installed version (%@),\r\nis the latest.",@"Installed version (%@),\r\nis the latest."), getAppVersion()];
            
             break;
-         
             
+        //update is not compatible
+        case Update_NotSupported:
+            
+            //dbg msg
+            os_log_debug(logHandle, "update available, but isn't supported on macOS %ld.%ld", NSProcessInfo.processInfo.operatingSystemVersion.majorVersion, NSProcessInfo.processInfo.operatingSystemVersion.minorVersion);
+            
+            //set label
+            self.updateLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Update available, but isn't supported on macOS %ld.%ld", @"Update available, but isn't supported on macOS %ld.%ld"), NSProcessInfo.processInfo.operatingSystemVersion.majorVersion, NSProcessInfo.processInfo.operatingSystemVersion.minorVersion];
+           
+            break;
+         
         //new version
-        case 1:
+        case Update_Available:
             
             //dbg msg
             os_log_debug(logHandle, "a new version (%@) is available", newVersion);

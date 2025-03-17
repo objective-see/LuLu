@@ -55,7 +55,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
     
     //dbg msg
     os_log_debug(logHandle, "%s", __PRETTY_FUNCTION__);
-    
+
     //don't relaunch
     [NSApp disableRelaunchOnLogin];
     
@@ -314,7 +314,7 @@ bail:
     if(YES != [extension isExtensionRunning])
     {
         //show alert
-        showAlert(NSAlertStyleInformational, NSLocalizedString(@"LuLu's Network Extension Is Not Running", @"LuLu's Network Extension Is Not Running"), NSLocalizedString(@"Extensions must be manually approved via Security Settings (General > Login Items & Extensions > Network Extensions).",@"Extensions must be manually approved via Security Settings (General > Login Items & Extensions > Network Extensions)."), @[NSLocalizedString(@"OK", @"OK")]);
+        showAlert(NSAlertStyleInformational, NSLocalizedString(@"LuLu's Network Extension Is Not Running", @"LuLu's Network Extension Is Not Running"), NSLocalizedString(@"Extensions must be manually approved via System Settings (General > Login Items & Extensions > Network Extensions).",@"Extensions must be manually approved via System Settings (General > Login Items & Extensions > Network Extensions)."), @[NSLocalizedString(@"OK", @"OK")]);
         
         //bail
         goto bail;
@@ -665,18 +665,25 @@ bail:
         switch(result)
         {
             //error
-            case UPDATE_ERROR:
+            case Update_Error:
                 os_log_error(logHandle, "ERROR: update check failed");
                 break;
                 
             //no updates
-            case UPDATE_NOTHING_NEW:
+            case Update_None:
                 os_log_debug(logHandle, "no updates available");
+                break;
+                
+            //this version of macOS, not supported
+            case Update_NotSupported:
+                
+                //dbg msg
+                os_log_debug(logHandle, "update available, but not for this version of macOS");
                 break;
                 
             //new version
             // show update window
-            case UPDATE_NEW_VERSION:
+            case Update_Available:
                 
                 //dbg msg
                 os_log_debug(logHandle, "a new version (%@) is available", newVersion);

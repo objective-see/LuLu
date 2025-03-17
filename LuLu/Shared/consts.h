@@ -73,8 +73,8 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 //product version url
 #define PRODUCT_VERSIONS_URL @"https://objective-see.org/products.json"
 
-//product key
-#define PRODUCT_KEY @"LuLu"
+//app name
+#define PRODUCT_NAME @"LuLu"
 
 //product url
 #define PRODUCT_URL @"https://objective-see.org/products/lulu.html"
@@ -239,10 +239,6 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 
 //installed apps file
 #define INSTALLED_APPS @"installedApps"
-
-//DON'T need/cleanup
-//finder
-#define FINDER_APP @"/System/Library/CoreServices/Finder.app/Contents/MacOS/Finder"
 
 //frame shift
 // for status msg to avoid activity indicator
@@ -417,13 +413,16 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define MENU_RULES_EXPORT  4
 #define MENU_RULES_CLEANUP 5
 
-//update error
-#define UPDATE_ERROR -1
+//os major
+#define SUPPORTED_OS_MAJOR @"OSMajor"
 
-//update no new version
-#define UPDATE_NOTHING_NEW 0
+//os minor
+#define SUPPORTED_OS_MINOR @"OSMinor"
 
-//update new version
-#define UPDATE_NEW_VERSION 1
+//latest version
+#define LATEST_VERSION @"version"
+
+//updates
+typedef enum {Update_Error, Update_None, Update_NotSupported, Update_Available} UpdateStatus;
 
 #endif /* const_h */
