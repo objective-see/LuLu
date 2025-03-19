@@ -254,7 +254,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "регулярний вираз?"
+            "value" : "regex?"
           }
         },
         "zh-Hant" : {
@@ -584,7 +584,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Переглянути"
+            "value" : "Огляд"
           }
         },
         "zh-Hant" : {
