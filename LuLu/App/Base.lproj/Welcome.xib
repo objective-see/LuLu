@@ -416,7 +416,7 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="NeU-Pi-VDr">
-                    <rect key="frame" x="515" y="192" width="274" height="57"/>
+                    <rect key="frame" x="290" y="192" width="499" height="57"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Show some love? " id="XBE-gW-YkK">
                         <font key="font" size="40" name="AvenirNextCondensed-Regular"/>
