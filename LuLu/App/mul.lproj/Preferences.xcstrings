@@ -554,7 +554,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Voir les règles."
+            "value" : "Voir les règles"
           }
         },
         "ko" : {
@@ -1742,7 +1742,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les binaires signés par Apple seront autorisés"
+            "value" : "Les binaires signés par Apple seront autorisés."
           }
         },
         "ko" : {
