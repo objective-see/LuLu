@@ -2600,7 +2600,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pas de mode VirusTotal"
+            "value" : "Mode sans VirusTotal"
           }
         },
         "ko" : {
