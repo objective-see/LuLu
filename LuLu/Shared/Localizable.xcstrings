@@ -3352,7 +3352,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nettoyer les règles référençant les éléments supprimés, expirés ou terminés ?"
+            "value" : "Nettoyer les règles faisant référence à des éléments supprimés, expirés ou terminés ?"
           }
         },
         "it" : {
