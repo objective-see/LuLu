@@ -1874,7 +1874,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mise à jour"
+            "value" : "Modifier"
           }
         },
         "ko" : {
@@ -1940,7 +1940,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mise à jour"
+            "value" : "Modifier"
           }
         },
         "ko" : {
