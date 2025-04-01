@@ -26,7 +26,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Afficher …"
+            "value" : "Afficher…"
           }
         },
         "ko" : {
@@ -92,7 +92,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Réglages ..."
+            "value" : "Réglages…"
           }
         },
         "ko" : {
@@ -158,7 +158,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Importer ..."
+            "value" : "Importer…"
           }
         },
         "ko" : {
@@ -290,7 +290,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Exporter …"
+            "value" : "Exporter…"
           }
         },
         "ko" : {
@@ -422,7 +422,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ajouter ..."
+            "value" : "Ajouter…"
           }
         },
         "ko" : {
@@ -1082,7 +1082,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Moniteur réseau ..."
+            "value" : "Moniteur réseau…"
           }
         },
         "ko" : {
