@@ -158,7 +158,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les règles pour les nouvelles connections doivent être créées ?"
+            "value" : "Faut-il créer des règles pour les nouvelles connexions ?"
           }
         },
         "ko" : {
