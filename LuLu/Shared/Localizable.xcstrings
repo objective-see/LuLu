@@ -4977,7 +4977,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La version installée (%@), est la dernière"
+            "value" : "La version installée (%@) est la plus récente."
           }
         },
         "it" : {
