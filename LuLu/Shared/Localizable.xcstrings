@@ -734,7 +734,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "… ceci arrêtera Lulu, jusqu’à la prochaine connection."
+            "value" : "… cela arrêtera LuLu, jusqu'à la prochaine ouverture de session."
           }
         },
         "it" : {
