@@ -26,7 +26,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vérifier maintenant"
+            "value" : "Rechercher"
           }
         },
         "ko" : {
@@ -158,7 +158,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les règles pour les nouvelles connections doivent être créées ?"
+            "value" : "Faut-il créer des règles pour les nouvelles connexions ?"
           }
         },
         "ko" : {
@@ -290,7 +290,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Note : Quand une nouvelle connection est réalisée, parfois seule l’adresse IP est disponible. Dans ces cas, les domaines sur la liste d’autorisation ou de blocage ne peuvent pas être utilisés, ce qui peut impacter le blocage ou l’autorisation d’une requête."
+            "value" : "Note : lorsqu'une nouvelle connexion est établie, il arrive que seule l'adresse IP soit disponible. Dans ce cas, les domaines figurant sur la liste d'autorisation ou de blocage ne peuvent être mis en correspondance, ce qui peut avoir une incidence sur le fait que la demande soit bloquée ou autorisée."
           }
         },
         "ko" : {
@@ -356,7 +356,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fichier local ou distant, contenant les points d’accès à toujours autoriser."
+            "value" : "Fichier local ou distant contenant les points d’accès à toujours autoriser."
           }
         },
         "ko" : {
@@ -422,7 +422,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fichier local ou distant, contenant les points d’accès à toujours bloquer."
+            "value" : "Fichier local ou distant contenant les points d’accès à toujours bloquer."
           }
         },
         "ko" : {
@@ -554,7 +554,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Voir les règles."
+            "value" : "Voir les règles"
           }
         },
         "ko" : {
@@ -1346,7 +1346,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ne pas vérifier automatiquement les nouvelles versions."
+            "value" : "Ne pas rechercher automatiquement la présence de nouvelles versions."
           }
         },
         "ko" : {
@@ -1742,7 +1742,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les binaires signés par Apple seront autorisés"
+            "value" : "Les binaires signés par Apple seront autorisés."
           }
         },
         "ko" : {
@@ -1874,7 +1874,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mise à jour"
+            "value" : "Modifier"
           }
         },
         "ko" : {
@@ -1940,7 +1940,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mise à jour"
+            "value" : "Modifier"
           }
         },
         "ko" : {
@@ -2600,7 +2600,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pas de mode VirusTotal"
+            "value" : "Mode sans VirusTotal"
           }
         },
         "ko" : {
@@ -2732,7 +2732,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Désactiver les contrôles de mise à jour"
+            "value" : "Désactiver la recherche de mise à jour"
           }
         },
         "ko" : {

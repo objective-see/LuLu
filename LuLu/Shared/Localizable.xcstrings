@@ -734,7 +734,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "… ceci arrêtera Lulu, jusqu’à la prochaine connection."
+            "value" : "… cela arrêtera LuLu, jusqu'à la prochaine ouverture de session."
           }
         },
         "it" : {
@@ -3352,7 +3352,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nettoyer les règles référençant les éléments supprimés, expirés ou terminés ?"
+            "value" : "Nettoyer les règles faisant référence à des éléments supprimés, expirés ou terminés ?"
           }
         },
         "it" : {
@@ -3807,7 +3807,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ERREUR : Échec du nettoyage des règles"
+            "value" : "Erreur : échec du nettoyage des règles"
           }
         },
         "it" : {
@@ -3872,7 +3872,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ERREUR : Échec de l'exportation des règles"
+            "value" : "Erreur : échec de l'exportation des règles"
           }
         },
         "it" : {
@@ -3937,7 +3937,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ERREUR : Échec de l'importation des règles"
+            "value" : "Erreur : échec de l'importation des règles"
           }
         },
         "it" : {
@@ -4002,7 +4002,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ERREUR : échec du chargement des patrons"
+            "value" : "Erreur : échec du chargement des patrons"
           }
         },
         "it" : {
@@ -4067,7 +4067,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ERREUR : Chemin invalide"
+            "value" : "Erreur : chemin invalide"
           }
         },
         "it" : {
@@ -4132,7 +4132,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ERREUR : port invalide"
+            "value" : "Erreur : port invalide"
           }
         },
         "it" : {
@@ -4197,7 +4197,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ERREUR : regex invalide"
+            "value" : "Erreur : regex invalide"
           }
         },
         "it" : {
@@ -4262,7 +4262,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ERREUR : échec du contrôle de la mise à jour"
+            "value" : "Erreur : la recherche de mise à jour a échoué"
           }
         },
         "it" : {
@@ -4977,7 +4977,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La version installée (%@), est la dernière"
+            "value" : "La version installée (%@) est la plus récente."
           }
         },
         "it" : {
