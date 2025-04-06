@@ -317,7 +317,8 @@ bail:
         
     //CHECK:
     // client using (global) block list
-    if(YES == [preferences.preferences[PREF_USE_BLOCK_LIST] boolValue])
+    if( (YES == [preferences.preferences[PREF_USE_BLOCK_LIST] boolValue]) &&
+        (0 != [preferences.preferences[PREF_BLOCK_LIST] length]) )
     {
         //dbg msg
         os_log_debug(logHandle, "client is using block list '%{public}@' (%lu items) ...will check for match", preferences.preferences[PREF_BLOCK_LIST], (unsigned long)blockList.items.count);
@@ -340,7 +341,8 @@ bail:
     
     //CHECK:
     // client using (global) allow list
-    if(YES == [preferences.preferences[PREF_USE_ALLOW_LIST] boolValue])
+    if( (YES == [preferences.preferences[PREF_USE_ALLOW_LIST] boolValue]) &&
+        (0 != [preferences.preferences[PREF_ALLOW_LIST] length]) )
     {
         //dbg msg
         os_log_debug(logHandle, "client is using allow list '%{public}@' (%lu items) ...will check for match", preferences.preferences[PREF_ALLOW_LIST], (unsigned long)allowList.items.count);
