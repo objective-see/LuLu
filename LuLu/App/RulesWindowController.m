@@ -428,7 +428,7 @@ bail:
         {
             //show alert
             // ...and bail if user cancels
-            if(NSModalResponseCancel == [self showDefaultRuleAlert:item action:@"Editing"])
+            if(NSAlertSecondButtonReturn == [self showDefaultRuleAlert:item action:@"Editing"])
             {
                 //bail
                 goto bail;
@@ -447,13 +447,7 @@ bail:
 //warn user the modifying default rules might break things
 -(NSModalResponse)showDefaultRuleAlert:(Rule*)rule action:(NSString*)action
 {
-    //response
-    NSModalResponse response = 0;
-    
-    //show alert
-    response = showAlert(NSAlertStyleWarning, [NSString stringWithFormat:NSLocalizedString(@"%@ is legitimate macOS process", @"%@ is legitimate macOS process"), rule.name], [NSString stringWithFormat:NSLocalizedString(@"%@ this rule, may impact legitimate system functionalty ...continue?",@"%@ this rule, may impact legitimate system functionalty ...continue?"), action], @[NSLocalizedString(@"Continue", @"Continue"), NSLocalizedString(@"Cancel", @"Cancel")]);
-    
-    return response;
+    return showAlert(NSAlertStyleWarning, [NSString stringWithFormat:NSLocalizedString(@"%@ is legitimate macOS process", @"%@ is legitimate macOS process"), rule.name], [NSString stringWithFormat:NSLocalizedString(@"%@ this rule, may impact legitimate system functionalty ...continue?",@"%@ this rule, may impact legitimate system functionalty ...continue?"), action], @[NSLocalizedString(@"Continue", @"Continue"), NSLocalizedString(@"Cancel", @"Cancel")]);
 }
 
 //show paths in sheet
@@ -504,7 +498,7 @@ bail:
         {
             //show alert
             // ...and bail if user cancels
-            if(NSModalResponseCancel == [self showDefaultRuleAlert:sender action:@"Editing"])
+            if(NSAlertSecondButtonReturn == [self showDefaultRuleAlert:sender action:@"Editing"])
             {
                 //bail
                 goto bail;
@@ -1344,7 +1338,7 @@ bail:
     {
         //show alert
         // ...and bail if user cancels
-        if(NSModalResponseCancel == [self showDefaultRuleAlert:rule action:@"Deleting"])
+        if(NSAlertSecondButtonReturn == [self showDefaultRuleAlert:rule action:@"Deleting"])
         {
             //bail
             goto bail;

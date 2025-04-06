@@ -67,7 +67,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
         response = showAlert(NSAlertStyleWarning, NSLocalizedString(@"Old Version of LuLu Installed", @"Old Version of LuLu Installed"), NSLocalizedString(@"This must be uninstalled before continuing. Click 'More Info' to learn how to uninstall it", @"This must be uninstalled before continuing\r\n.Click 'More Info' to learn how to uninstall it."), @[NSLocalizedString(@"More Info", @"More Info"), NSLocalizedString(@"Cancel", @"Cancel")]);
         
         //open link to uninstall instructions
-        if(response == NSAlertFirstButtonReturn)
+        if(NSAlertSecondButtonReturn == response)
         {
             //open
             [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?uninstall_v1", PRODUCT_URL]]];
@@ -734,7 +734,7 @@ bail:
     
     //show alert
     // cancel? ignore
-    if(NSModalResponseCancel == response)
+    if(NSAlertSecondButtonReturn == response)
     {
          //dbg msg
          os_log_debug(logHandle, "user canceled quitting");
@@ -776,7 +776,7 @@ bail:
     response = showAlert(NSAlertStyleInformational, NSLocalizedString(@"Uninstall LuLu?", @"Uninstall LuLu?"), NSLocalizedString(@"...this will fully remove LuLu from your Mac", @"...this will fully remove LuLu from your Mac"), @[NSLocalizedString(@"Uninstall", @"Uninstall"), NSLocalizedString(@"Cancel", @"Cancel")]);
     
     //cancel? ignore
-    if(NSModalResponseCancel == response)
+    if(NSAlertSecondButtonReturn == response)
     {
          //dbg msg
          os_log_debug(logHandle, "user canceled uninstalling");
