@@ -99,6 +99,15 @@ bail:
 {
     //flag
     BOOL updated = NO;
+    
+    //allow list
+    NSString* allowListPath = nil;
+    
+    //block list
+    NSString* blockListPath = nil;
+    
+    //sync
+    @synchronized (self) {
 
     //dbg msg
     os_log_debug(logHandle, "updating preferences (%{public}@)", updates);
@@ -115,25 +124,59 @@ bail:
         //bail
         goto bail;
     }
+
+    //extract any allow list
+    allowListPath = updates[PREF_ALLOW_LIST];
+    
+    //extract any block list
+    blockListPath = updates[PREF_BLOCK_LIST];
     
     //(new) allow list?
     // now, trigger reload
-    if(0 != [updates[PREF_ALLOW_LIST] length])
+    if(0 != [allowListPath length])
     {
-        //(re)load
-        [allowList load:updates[PREF_ALLOW_LIST]];
+        //dbg msg
+        os_log_debug(logHandle, "user specified new 'allow' list: %{public}@", allowListPath);
+        
+        //first time?
+        if(nil == allowList)
+        {
+            //alloc/init/load block list
+            allowList = [[BlockOrAllowList alloc] init:allowListPath];
+        }
+        //otherwise just reload
+        else
+        {
+            //(re)load
+            [allowList load:allowListPath];
+        }
     }
     
     //(new) block list?
     // now, trigger reload
-    if(0 != [updates[PREF_BLOCK_LIST] length])
+    if(0 != [blockListPath length])
     {
-        //(re)load
-        [blockList load:updates[PREF_BLOCK_LIST]];
+        //dbg msg
+        os_log_debug(logHandle, "user specified new 'block' list: %{public}@", blockListPath);
+        
+        //first time?
+        if(nil == blockList)
+        {
+            //alloc/init/load block list
+            blockList = [[BlockOrAllowList alloc] init:blockListPath];
+        }
+        //otherwise just reload
+        else
+        {
+            //(re)load
+            [blockList load:blockListPath];
+        }
     }
     
     //happy
     updated = YES;
+        
+    } //sync
     
 bail:
     

@@ -81,13 +81,10 @@ bail:
 }
 
 //(re)load
--(void)load:(NSString*)path;
+-(void)load:(NSString*)path
 {
     //error
     NSError* error = nil;
-    
-    //lines
-    NSArray* lines = nil;
     
     //file contents
     NSString* list = nil;
@@ -166,17 +163,10 @@ bail:
         //save timestamp
         self.lastModified = [[NSFileManager.defaultManager attributesOfItemAtPath:self.path error:nil] objectForKey:NSFileModificationDate];
     }
-     
-    //now alloc
-    self.items = [NSMutableSet set];
-    
-    //split on lines
-    lines = [list componentsSeparatedByString:@"\n"];
     
     //init set
     // of trimmed/lower-cased items
     self.items = [NSMutableSet setWithArray:[[[list componentsSeparatedByString:@"\n"] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSString *item, NSDictionary *bindings) {
-                
                 //trim
                 NSString* trimmed = [item stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 

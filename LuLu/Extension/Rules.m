@@ -1226,7 +1226,7 @@ bail:
     }
     
     //unarchive
-    unarchivedRules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSMutableSet class],  [NSDate class], [Rule class]]] fromData:importedRules error:&error];
+    unarchivedRules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSMutableSet class], [NSDate class], [Rule class]]] fromData:importedRules error:&error];
     
     //error?
     if( (nil != error) ||
