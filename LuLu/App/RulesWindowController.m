@@ -212,10 +212,10 @@ extern XPCDaemonClient* xpcDaemonClient;
     __block NSInteger selectedRow = -1;
     
     //item's (new?) row
-    //__block NSInteger itemRow = -1;
+    __block NSInteger itemRow = -1;
     
     //currently selected item
-    //__block id selectedItem = nil;
+    __block id selectedItem = nil;
     
     //sync
     // filter & reload
@@ -257,8 +257,6 @@ extern XPCDaemonClient* xpcDaemonClient;
             //unset
             self.addedRule = nil;
         }
-        
-        /*
         else
         {
             //get selected item's (new) row
@@ -269,8 +267,7 @@ extern XPCDaemonClient* xpcDaemonClient;
                 selectedRow = itemRow;
             }
         }
-        */
-        
+            
         //prev selected now beyond bounds?
         // just default to select last row...
         selectedRow = MIN(selectedRow, (self.outlineView.numberOfRows-1));
@@ -278,6 +275,9 @@ extern XPCDaemonClient* xpcDaemonClient;
         //(re)select & scroll
         dispatch_async(dispatch_get_main_queue(),
         ^{
+            //dbg msg
+            os_log_debug(logHandle, "reselecting %ld", (long)selectedRow);
+            
             //reselect
             [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow] byExtendingSelection:NO];
             
