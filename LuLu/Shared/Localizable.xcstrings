@@ -58,6 +58,12 @@
             "value" : " Коефіцієнт виявлення:"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "侦测率:"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -121,6 +127,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "не знайдено у VirusTotal"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VirusTotal上未找到"
           }
         },
         "zh-Hant" : {
@@ -188,6 +200,12 @@
             "value" : "Отримано некоректну відповідь"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "收到无效的回应"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -251,6 +269,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Відкрити у VirusTotal"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查看VirusTotal的"
           }
         },
         "zh-Hant" : {
@@ -318,6 +342,12 @@
             "value" : "має проблему з підписом"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "存在签名问题"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -381,6 +411,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "не підписано"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未签名"
           }
         },
         "zh-Hant" : {
@@ -448,6 +484,12 @@
             "value" : "підпис недійсний"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有有效的签名"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -511,6 +553,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "успішно підписано"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "具有有效的签名"
           }
         },
         "zh-Hant" : {
@@ -578,6 +626,12 @@
             "value" : "невідомий"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未知"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -641,6 +695,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "…будь ласка, скопіюйте в /Application і перезапустіть."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…请将其复制到 /Applications 并重新启动应用程序"
           }
         },
         "zh-Hant" : {
@@ -708,6 +768,12 @@
             "value" : "…це повністю видалить LuLu з вашого Маку"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…这会将LuLu从您的Mac完全移除。"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -773,6 +839,12 @@
             "value" : "…це зупинить роботу LuLu до наступного входу."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…这将关闭LuLu 直到您下次登入"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -836,6 +908,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "› немає довірених підписантів"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有签名权限"
           }
         },
         "zh-Hant" : {
@@ -909,6 +987,12 @@
             "value" : "%1$@ (PID: %2$@) "
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (pid: %@)"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -980,6 +1064,12 @@
             "value" : "%1$@ (підписант: %2$@) "
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@（签名者：%@）"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1043,6 +1133,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (підписант: Apple Mac OS App Store)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@（签名者：Apple Mac OS App Store）"
           }
         },
         "zh-Hant" : {
@@ -1110,6 +1206,12 @@
             "value" : "%@ (підписант: Apple Proper)"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@（签名者：Apple Proper）"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1173,6 +1275,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (підписант: невалідний/не підписано)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@（签名者：无效/未签名）"
           }
         },
         "zh-Hant" : {
@@ -1240,6 +1348,12 @@
             "value" : "%@ не існує!"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 不存在！"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1305,6 +1419,12 @@
             "value" : "%@ є легітимним процесом macOS"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@是合法的macOS程序"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1368,6 +1488,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ не є валідним номером порту"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 不是有效的（端口）号"
           }
         },
         "zh-Hant" : {
@@ -1441,6 +1567,12 @@
             "value" : "%1$@ не є валідним регулярним виразом  \nДеталі: %2$@"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 不是有效的正则表达式\n详细信息：%@"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1504,6 +1636,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ має неофіційний (ad hoc) підпис"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 由第三方/临时签名"
           }
         },
         "zh-Hant" : {
@@ -1571,6 +1709,12 @@
             "value" : "%@ підписано безпосередньо Apple"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 由 Apple 正式签名"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1634,6 +1778,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ підписано Mac App Store"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 由 Mac App Store 签名"
           }
         },
         "zh-Hant" : {
@@ -1701,6 +1851,12 @@
             "value" : "%@ підписано з Apple Developer ID"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 使用 Apple 开发者 ID 签名"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1764,6 +1920,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "помилка підпису: %#lx"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 签名错误：%#lx"
           }
         },
         "zh-Hant" : {
@@ -1831,6 +1993,12 @@
             "value" : "%@ це правило може вплинути на коректну роботу системи... Продовжити?"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 此规则可能会影响合法系统功能…要继续吗？"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1894,6 +2062,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Інформація щодо підпису коду %@ змінилася"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 的代码签名信息已发生改变"
           }
         },
         "zh-Hant" : {
@@ -1961,6 +2135,12 @@
             "value" : "→ Видалити правило"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除规则"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2024,6 +2204,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "→ Видалити правило/правила"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除多条规则"
           }
         },
         "zh-Hant" : {
@@ -2091,6 +2277,12 @@
             "value" : "→ Редагувати правило"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑规则"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2154,6 +2346,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "→ Показати шлях/шляхи"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示路径"
           }
         },
         "zh-Hant" : {
@@ -2221,6 +2419,12 @@
             "value" : "<невідомий (%d)>"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<未知（%d）>"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2284,6 +2488,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2. У «Системних параметрах» прокрутіть до LuLu і натисніть «Дозволити»."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 在系统设置中，滚动到提到“LuLu”的位置，然后单击“允许”"
           }
         },
         "zh-Hant" : {
@@ -2351,6 +2561,12 @@
             "value" : "2. У «Системних параметрах» увімкніть розширення LuLu."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 在系统设置中，打开 LuLu 扩展程序"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2414,6 +2630,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "доступна нова версія (%@)!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有新版本（％@）可用！"
           }
         },
         "zh-Hant" : {
@@ -2481,6 +2703,12 @@
             "value" : "Ad hoc"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "临时签名"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2544,6 +2772,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : " Додано за останні 24 години (відсортовано за часом створення)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "过去 24 小时内添加（按创建时间排序）"
           }
         },
         "zh-Hant" : {
@@ -2611,6 +2845,12 @@
             "value" : "Всі правила"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部规则"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2674,6 +2914,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дозволити"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许"
           }
         },
         "zh-Hant" : {
@@ -2741,6 +2987,12 @@
             "value" : "Дозволити (PID: %@)"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许(pid: %@)"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2804,6 +3056,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дозволити (до: %@)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许(直到: %@)"
           }
         },
         "zh-Hant" : {
@@ -2871,6 +3129,12 @@
             "value" : "будь-яка адреса"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "任意地址"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2934,6 +3198,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "будь-який порт"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "任意端口"
           }
         },
         "zh-Hant" : {
@@ -3001,6 +3271,12 @@
             "value" : "Будь-яка програма"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "任意程序"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3064,6 +3340,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Програми Apple (автоматично дозволяються й додаються сюди, якщо увімкнено «Дозволяти програми Apple»)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple 程序（如果设置了“允许 Apple 程序”，则自动允许并添加到此处）"
           }
         },
         "zh-Hant" : {
@@ -3131,6 +3413,12 @@
             "value" : "Блокувати"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阻止"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3194,6 +3482,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Блокувати (PID: %@)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阻止 (pid: %@)"
           }
         },
         "zh-Hant" : {
@@ -3261,6 +3555,12 @@
             "value" : "Блокувати (до: %@)"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阻止 (直到: %@)"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3324,6 +3624,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Скасувати"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
           }
         },
         "zh-Hant" : {
@@ -3391,6 +3697,12 @@
             "value" : "Видалити правила, що посилаються на видалені, прострочені або завершені елементи?"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清理引用已删除、过期或终止的项目的规则？"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3454,6 +3766,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Видалено %ld правил"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已清理 %ld 条规则"
           }
         },
         "zh-Hant" : {
@@ -3521,6 +3839,12 @@
             "value" : "Продовжити"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "继续"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3584,6 +3908,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Правила каталогів застосовуються до всіх елементів у каталозі."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目录规则适用于目录内的所有项目"
           }
         },
         "zh-Hant" : {
@@ -3651,6 +3981,12 @@
             "value" : "Вимкнути"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁用"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3714,6 +4050,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Увімкнути"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "启用"
           }
         },
         "zh-Hant" : {
@@ -3781,6 +4123,12 @@
             "value" : "ПОМИЛКА: активація не вдалася"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "错误：激活失败"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3844,6 +4192,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ПОМИЛКА: не вдалося видалити правила"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "错误：无法清理规则"
           }
         },
         "zh-Hant" : {
@@ -3911,6 +4265,12 @@
             "value" : "ПОМИЛКА: не вдалося експортувати правила"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "错误：无法导出规则"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3974,6 +4334,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ПОМИЛКА: не вдалося імпортувати правила"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "错误：无法导入规则"
           }
         },
         "zh-Hant" : {
@@ -4041,6 +4407,12 @@
             "value" : "ПОМИЛКА: не вдалося завантажити список патронів"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "错误：无法加载赞助者"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4104,6 +4476,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ПОМИЛКА: некоректний шлях"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "错误：路径无效"
           }
         },
         "zh-Hant" : {
@@ -4171,6 +4549,12 @@
             "value" : "ПОМИЛКА: некоректний порт"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "错误：端口无效"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4234,6 +4618,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ПОМИЛКА: некоректний регулярний вираз"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "错误：正则表达式无效"
           }
         },
         "zh-Hant" : {
@@ -4301,6 +4691,12 @@
             "value" : "ПОМИЛКА: не вдалося перевірити оновлення"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "错误：更新检查失败"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4364,6 +4760,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Розширення потрібно схвалити вручну в «Налаштуваннях безпеки» (Загальні > Автозапуск і розширення > Мережеві розширення)."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "必须通过系统设置（通用 > 登录项和扩展 > 网络扩展）手动批准扩展。"
           }
         },
         "zh-Hant" : {
@@ -4431,6 +4833,12 @@
             "value" : "не вдалося активувати мережеве розширення"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法激活网络扩展"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4494,6 +4902,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "не вдалося активувати мережевий фільтр"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法激活网络过滤器"
           }
         },
         "zh-Hant" : {
@@ -4561,6 +4975,12 @@
             "value" : "не вдалося активувати системне розширення"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法激活系统扩展"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4624,6 +5044,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "не вдалося активувати системне або мережеве розширення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法激活系统/网络扩展"
           }
         },
         "zh-Hant" : {
@@ -4691,6 +5117,12 @@
             "value" : "Не вдалося виконати запит до VirusTotal"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法查询 VirusTotal"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4754,6 +5186,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "результати аналізу"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查询结果"
           }
         },
         "zh-Hant" : {
@@ -4821,6 +5259,12 @@
             "value" : "Повний URL: %@"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完整网址：%@"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4884,6 +5328,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Глобальні правила застосовуються до всіх шляхів"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全局规则适用于所有路径"
           }
         },
         "zh-Hant" : {
@@ -4951,6 +5401,12 @@
             "value" : "Імпортовано %ld правил"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已导入 %ld 条规则"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5016,6 +5472,12 @@
             "value" : "Встановлена версія (%@) є найновішою."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已安装版本 (%@)，\n是最新版本。"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5079,6 +5541,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "підключається до %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在连接到 %@"
           }
         },
         "zh-Hant" : {
@@ -5158,6 +5626,12 @@
             "value" : "LuLu має працювати з:\r\n  %@"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 必须从%@执行"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5221,6 +5695,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu: вимкнено"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: 禁用"
           }
         },
         "zh-Hant" : {
@@ -5288,6 +5768,12 @@
             "value" : "LuLu: увімкнено"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: 启用"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5351,6 +5837,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Мережеве розширення LuLu не працює"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 的网络扩展未运行"
           }
         },
         "zh-Hant" : {
@@ -5418,6 +5910,12 @@
             "value" : "Більше інформації"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更多信息"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5481,6 +5979,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "жоден"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无"
           }
         },
         "zh-Hant" : {
@@ -5548,6 +6052,12 @@
             "value" : "не застосовується"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不适用"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5611,6 +6121,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Зверніть увагу:\n▪ Існуючі з'єднання не будуть порушені.  \n▪ Системний трафік, який не проходить через LuLu, не буде заблоковано."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请注意：\n▪ 现有连接不会受到影响。\n▪ 操作系统流量（未通过 LuLu 路由）不会被阻止。"
           }
         },
         "zh-Hant" : {
@@ -5678,6 +6194,12 @@
             "value" : "ОК"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5741,6 +6263,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Виявлено застарілу версію LuLu"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已安装旧版本的 LuLu"
           }
         },
         "zh-Hant" : {
@@ -5808,6 +6336,12 @@
             "value" : "Системні програми (необхідні для роботи операційної системи)"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "操作系统程序（系统功能所需）"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5871,6 +6405,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вихідний трафік тепер буде заблоковано."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "传出的流量将被阻止。"
           }
         },
         "zh-Hant" : {
@@ -5938,6 +6478,12 @@
             "value" : "Попередньо встановлені сторонні програми (автоматично дозволяються й додаються сюди, якщо увімкнено «Дозволити встановлені програми»)"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已安装的第三方程序（如果设置了“允许已安装的应用程序”，则自动允许并添加到此处）"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6001,6 +6547,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Параметри процесу: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "进程参数：%@"
           }
         },
         "zh-Hant" : {
@@ -6068,6 +6620,12 @@
             "value" : "Шлях процесу: %@"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "进程路径：％@"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6131,6 +6689,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Програми в \"%@/\""
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@/”内的程序"
           }
         },
         "zh-Hant" : {
@@ -6198,6 +6762,12 @@
             "value" : "Виконується запит до VirusTotal..."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在查询 VirusTotal..."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6261,6 +6831,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Завершити"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭"
           }
         },
         "zh-Hant" : {
@@ -6328,6 +6904,12 @@
             "value" : "Завершити роботу з LuLu?"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭LuLu ？"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6391,6 +6973,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Зворотний домен: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反向域 %@"
           }
         },
         "zh-Hant" : {
@@ -6488,6 +7076,12 @@
             "value" : "Дивіться лог для детальнішої інформації"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查看日志了解更多详细信息"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6551,6 +7145,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Щоб продовжити, необхідно це видалити. Натисніть «Більше інформації», щоб дізнатися, як це видалити."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "必须先卸载才能继续。点击“更多信息”了解如何卸载它。"
           }
         },
         "zh-Hant" : {
@@ -6618,6 +7218,12 @@
             "value" : "Мітка часу: %@"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时间戳：%@"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6681,6 +7287,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Видалити"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "卸载"
           }
         },
         "zh-Hant" : {
@@ -6748,6 +7360,12 @@
             "value" : "Видалити LuLu?"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "卸载LuLu ？"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6811,6 +7429,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "невідомий"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未知"
           }
         },
         "zh-Hant" : {
@@ -6878,6 +7502,12 @@
             "value" : "Оновити"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6893,6 +7523,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Update available, but isn't supported on macOS %1$ld.%2$ld"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有可用更新，但不支持 macOS %ld.%ld"
           }
         }
       }
@@ -6952,6 +7588,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Програми, вказані користувачем (додані вручну або у відповідь на сповіщення)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用户指定的程序（手动添加或响应警报）"
           }
         },
         "zh-Hant" : {
@@ -7019,6 +7661,12 @@
             "value" : "Версія: %@"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本: %@"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7082,6 +7730,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Очікується схвалення мережевого розширення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "等待网络扩展批准"
           }
         },
         "zh-Hant" : {
