@@ -57,10 +57,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
     
     //load rules
-    [self loadRules:YES];
-    
-    //select first row
-    [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+    [self loadRules:YES select:@0];
 
     return;
 }
@@ -104,7 +101,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     self.rulesObserver = [[NSNotificationCenter defaultCenter] addObserverForName:RULES_CHANGED object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
     {
         //get new rules
-        [self loadRules:YES];
+        [self loadRules:YES select:@(0)];
     }];
     
     return;
@@ -112,7 +109,7 @@ extern XPCDaemonClient* xpcDaemonClient;
 
 //get rules from daemon
 // then, re-load rules table
--(void)loadRules:(BOOL)showOverlay
+-(void)loadRules:(BOOL)showOverlay select:(NSNumber*)row
 {
     //dbg msg
     os_log_debug(logHandle, "loading rules...");
@@ -196,7 +193,7 @@ extern XPCDaemonClient* xpcDaemonClient;
             }
             
             //update ui
-            [self update];
+            [self update:row];
             
         });
 
@@ -206,16 +203,13 @@ extern XPCDaemonClient* xpcDaemonClient;
 }
 
 //update outline view
--(void)update
+-(void)update:(NSNumber*)select
 {
-    //selected row
-    __block NSInteger selectedRow = -1;
-    
     //item's (new?) row
     __block NSInteger itemRow = -1;
     
-    //currently selected item
-    __block id selectedItem = nil;
+    //selected row
+    __block NSInteger selectedRow = -1;
     
     //sync
     // filter & reload
@@ -224,15 +218,25 @@ extern XPCDaemonClient* xpcDaemonClient;
         //dbg msg
         os_log_debug(logHandle, "updating outline view for rules...");
         
+        //row to select
+        if(nil != select)
+        {
+            //set
+            selectedRow = select.intValue;
+        }
         //get currently selected row
         // default to first row if this fails
-        selectedRow = self.outlineView.selectedRow;
-        if(-1 == selectedRow) 
+        else
         {
-            //default
-            selectedRow = 0;
+            //get
+            selectedRow = self.outlineView.selectedRow;
+            if(-1 == selectedRow)
+            {
+                //default
+                selectedRow = 0;
+            }
         }
-        
+    
         //always filter
         self.rulesFiltered = [self filter];
         
@@ -257,20 +261,13 @@ extern XPCDaemonClient* xpcDaemonClient;
             //unset
             self.addedRule = nil;
         }
-        else
-        {
-            //get selected item's (new) row
-            itemRow = [self findRowForItem:selectedItem];
-            if(-1 != itemRow)
-            {
-                //set
-                selectedRow = itemRow;
-            }
-        }
-            
+    
         //prev selected now beyond bounds?
         // just default to select last row...
-        selectedRow = MIN(selectedRow, (self.outlineView.numberOfRows-1));
+        if(self.outlineView.numberOfRows > 0)
+        {
+            selectedRow = MIN(selectedRow, (self.outlineView.numberOfRows-1));
+        }
         
         //(re)select & scroll
         dispatch_async(dispatch_get_main_queue(),
@@ -350,7 +347,7 @@ bail:
     [self.outlineView deselectAll:nil];
     
     //reload table
-    [self update];
+    [self update:@(0)];
     
     //'add rules' only allowed for 'all' and 'user' views
     if( (self.selectedRuleView == RULE_TYPE_ALL) ||
@@ -383,7 +380,7 @@ bail:
     os_log_debug(logHandle, "filtering rules...");
     
     //update
-    [self update];
+    [self update:nil];
     
     return;
 }
@@ -544,7 +541,7 @@ bail:
             }
             
             //reload
-            [self loadRules:YES];
+            [self loadRules:YES select:nil];
         }
         
         //unset add rule window controller
@@ -1072,7 +1069,7 @@ bail:
         [self.outlineView deselectAll:nil];
 
         //refresh table
-        [self update];
+        [self update:nil];
     }
     
     return;
@@ -1351,7 +1348,7 @@ bail:
     
     //(re)load rules
     // but no need to show overlay
-    [self loadRules:NO];
+    [self loadRules:NO select:@(row)];
     
 bail:
     
