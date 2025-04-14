@@ -59,6 +59,12 @@
             "value" : "Запуск…"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在启动..."
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -129,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Примітка: LuLu найкраще працює на macOS 15.3+, оскільки Apple виправила помилки, що впливали на стабільність мережі."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注意：LuLu 在 macOS 15.3+ 上运行效果最佳，因为 Apple 修复了影响网络稳定性的错误。"
           }
         },
         "zh-Hant" : {

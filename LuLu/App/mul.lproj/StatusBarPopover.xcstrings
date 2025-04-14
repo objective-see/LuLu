@@ -125,6 +125,12 @@
             "value" : "LuLu запущено і працює!"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 已启动并运行中！"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -189,6 +195,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отримуйте доступ до нього звідси в будь-який час."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可随时从这里访问。"
           }
         },
         "zh-Hant" : {

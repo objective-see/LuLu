@@ -41,6 +41,12 @@
             "value" : "LuLu"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -87,6 +93,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Telif hakkı © 2020 Objective-See. Tüm hakları saklıdır."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版权所有 (c) 2020 Objective-See. 保留一切权利。"
           }
         },
         "zh-Hant" : {

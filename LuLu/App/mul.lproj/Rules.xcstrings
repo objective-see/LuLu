@@ -59,6 +59,12 @@
             "value" : "Мітка"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标签"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -123,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назва елемента"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "项目名称"
           }
         },
         "zh-Hant" : {
@@ -191,6 +203,12 @@
             "value" : "Нещодавні правила"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最近的规则"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -255,6 +273,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Текстове поле"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文本单元格"
           }
         },
         "zh-Hant" : {
@@ -323,6 +347,12 @@
             "value" : "Користувацькі правила"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用户规则"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -387,6 +417,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Правила фільтрації"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "过滤规则"
           }
         },
         "zh-Hant" : {
@@ -455,6 +491,12 @@
             "value" : "Правила LuLu"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 规则"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -519,6 +561,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Кастомний вигляд"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自定义视图"
           }
         },
         "zh-Hant" : {
@@ -587,6 +635,12 @@
             "value" : "Кастомний вигляд"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自定义视图"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -651,6 +705,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Правило"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "规则"
           }
         },
         "zh-Hant" : {
@@ -719,6 +779,12 @@
             "value" : "Усі правила"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有规则"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -783,6 +849,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "деталі елемента…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "项目详情"
           }
         },
         "zh-Hant" : {
@@ -851,6 +923,12 @@
             "value" : "Правила Apple"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple 规则"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -915,6 +993,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Стандартні правила"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "默认规则"
           }
         },
         "zh-Hant" : {
@@ -983,6 +1067,12 @@
             "value" : "інформація про зʼєднання"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "连接信息"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1047,6 +1137,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "(пере)завантаження правил..."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "（重新）加载规则..."
           }
         },
         "zh-Hant" : {
@@ -1115,6 +1211,12 @@
             "value" : "Додати правило"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新增规则"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1179,6 +1281,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Правила від сторонніх постачальників"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "第三方规则"
           }
         },
         "zh-Hant" : {
