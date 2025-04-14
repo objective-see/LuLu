@@ -59,6 +59,12 @@
             "value" : "Шлях(и):"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "路径："
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -123,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Закрити"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭"
           }
         },
         "zh-Hant" : {

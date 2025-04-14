@@ -108,6 +108,12 @@
             "value" : "З'єднання:"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "链接内容："
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -172,6 +178,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Тривалість правила:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "规则持续时间："
           }
         },
         "zh-Hant" : {
@@ -240,6 +252,12 @@
             "value" : "порт/протокол:"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "端口/通讯协议"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -304,6 +322,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Тривалість життя процесу"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "持续到进程结束"
           }
         },
         "zh-Hant" : {
@@ -372,6 +396,12 @@
             "value" : "ГГ:хх"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HH:mm"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -436,6 +466,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Деталі:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "详情："
           }
         },
         "zh-Hant" : {
@@ -504,6 +540,12 @@
             "value" : "Довірені підписанти:"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "签名机构："
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -568,6 +610,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сповіщення LuLu"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu警告"
           }
         },
         "zh-Hant" : {
@@ -685,6 +733,12 @@
             "value" : "(зворотний) DNS:"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "（反向）DNS："
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -749,6 +803,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Деталі та параметри"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "详情&选项"
           }
         },
         "zh-Hant" : {
@@ -817,6 +877,12 @@
             "value" : "Межі правила:"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "规则作用范围："
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -881,6 +947,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "шлях:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "路径："
           }
         },
         "zh-Hant" : {
@@ -949,6 +1021,12 @@
             "value" : "PID:"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pid："
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1013,6 +1091,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Процес"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "进程"
           }
         },
         "zh-Hant" : {
@@ -1081,6 +1165,12 @@
             "value" : "Назва процесу"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "进程名称"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1145,6 +1235,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назва"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名称"
           }
         },
         "zh-Hant" : {
@@ -1262,6 +1358,12 @@
             "value" : "Віддалена веб- або IP-адреса"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "远程端点"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1326,6 +1428,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Процес:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "进程："
           }
         },
         "zh-Hant" : {
@@ -1394,6 +1502,12 @@
             "value" : "повідомлення"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "信息"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1458,6 +1572,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "аргументи:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "参数："
           }
         },
         "zh-Hant" : {
@@ -1526,6 +1646,12 @@
             "value" : "Завжди"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "总是"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1590,6 +1716,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "IP-адреса"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP地址："
           }
         },
         "zh-Hant" : {
@@ -1658,6 +1790,12 @@
             "value" : "Блокувати"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阻止"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1722,6 +1860,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дійсне до:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "持续时间："
           }
         },
         "zh-Hant" : {
@@ -1790,6 +1934,12 @@
             "value" : "Мітка часу:"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "時間戳："
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1854,6 +2004,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дозволити"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许"
           }
         },
         "zh-Hant" : {

@@ -59,6 +59,12 @@
             "value" : "Ця опція дозволить будь-якому сторонньому додатку, який уже встановлено, отримувати доступ до мережі без сповіщення."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此选项将允许任何已安装的第三方应用程序访问网络而不会生成警报。"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -123,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дякуємо «Friends Objective-See»"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "感谢“Objective-See 的伙伴们”"
           }
         },
         "zh-Hant" : {
@@ -191,6 +203,12 @@
             "value" : "1. У сповіщенні «Системне розширення заблоковано» натисніть «Відкрити системні параметри»."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. 在“系统扩展被阻止”警报中，单击：“打开系统设置”"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -257,6 +275,12 @@
             "value" : "Спочатку, надайте доступ розширенню LuLu:"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "首先，允许 LuLu 网络扩展："
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -321,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вона відстежує мережеву активність і сповіщає вас, коли програма вперше намагається ініціювати вихідне з'єднання, тож ви зможете його дозволити або заборонити."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "它监视网络活动，并在程序首次尝试启动传出连接时发出警报，以便您允许或拒绝它。"
           }
         },
         "zh-Hant" : {
@@ -408,6 +438,12 @@
             "value" : "LuLu"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -472,6 +508,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu — це безкоштовний фаєрвол із відкритим кодом для macOS."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 是一款适用于 macOS 的免费开源防火墙。"
           }
         },
         "zh-Hant" : {
@@ -540,6 +582,12 @@
             "value" : "Ні"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "否"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -604,6 +652,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Підтримати LuLu?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "支持LuLu吗？"
           }
         },
         "zh-Hant" : {
@@ -672,6 +726,12 @@
             "value" : "4. У сповіщенні «Фільтрувати мережевий контент» натисніть «Дозволити»."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. 在“过滤网络内容”警告中，点击“允许”"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -736,6 +796,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ласкаво просимо до"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "欢迎使用"
           }
         },
         "zh-Hant" : {
@@ -804,6 +870,12 @@
             "value" : "Ця опція дозволить будь-якому бінарному файлу, підписаному Apple, отримувати доступ до мережі без сповіщення."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此选项将允许任何 Apple 签名的二进制文件访问网络而不会生成警报。"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -868,6 +940,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Так!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "是！"
           }
         },
         "zh-Hant" : {
@@ -936,6 +1014,12 @@
             "value" : "Ця опція дозволить будь-який (UDP) трафік через порт 53."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此选项将允许通过端口 53 的任何 (UDP) 流量。"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1000,6 +1084,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дозволити DNS трафік"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许 DNS 流量"
           }
         },
         "zh-Hant" : {
@@ -1068,6 +1158,12 @@
             "value" : "Безкоштовна, з відкритим кодом, створена однією людиною."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "它是免费的、开源的，并且是由一位（热爱 Mac 的）程序员编写的！"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1132,6 +1228,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Очікується схвалення системного розширення"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "等待系统扩展批准"
           }
         },
         "zh-Hant" : {
@@ -1200,6 +1302,12 @@
             "value" : "Бажаєте підтримати?"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表达一些支持？"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1264,6 +1372,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Далі"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一步"
           }
         },
         "zh-Hant" : {
@@ -1332,6 +1446,12 @@
             "value" : "А тепер давайте налаштуємо LuLu:"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "现在，让我们配置 LuLu："
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1396,6 +1516,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дозволити вже установлені програми"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许已安装的应用程序"
           }
         },
         "zh-Hant" : {
@@ -1464,6 +1590,12 @@
             "value" : "Далі"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一步"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1530,6 +1662,12 @@
             "value" : "Дозволити програми Apple"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许 Apple 程序"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1594,6 +1732,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3. Аутентифікувати"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. 身份验证"
           }
         },
         "zh-Hant" : {

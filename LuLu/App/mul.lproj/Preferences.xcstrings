@@ -59,6 +59,12 @@
             "value" : "Перевірити"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "立即检查"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -123,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Режим блокування"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阻止模式"
           }
         },
         "zh-Hant" : {
@@ -191,6 +203,12 @@
             "value" : "Створювати правила для нових з'єднань?"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "是否应创建新连接规则？"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -255,6 +273,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Раніше встановлені сторонні програми будуть дозволені."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "先前安装的第三方程序将被允许。"
           }
         },
         "zh-Hant" : {
@@ -323,6 +347,12 @@
             "value" : "Примітка: Коли встановлюється нове з'єднання, іноді доступна лише IP-адреса. У таких випадках не можна зіставити домени зі списком дозволених або заблокованих, що може вплинути на те, чи буде запит заблоковано або дозволено."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注意：建立新连接时，有时可能只有 IP 地址可用。在这种情况下，允许或阻止列表中的域名将无法匹配，这可能会影响请求是被阻止还是被允许。"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -387,6 +417,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Файл, що містить веб- або IP-адреси, які завжди дозволено."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本地或远程文件，包含始终允许的端点。"
           }
         },
         "zh-Hant" : {
@@ -455,6 +491,12 @@
             "value" : "Файл, що містить веб- або IP-адреси, які завжди блокуються."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本地或远程文件，包含始终要阻止的端点。"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -519,6 +561,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Запускати без зображення іконки в панелі меню."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "运行时不在状态菜单栏中显示图标。"
           }
         },
         "zh-Hant" : {
@@ -587,6 +635,12 @@
             "value" : "Переглянути правила"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查看规则"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -651,6 +705,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дозволено"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已允许"
           }
         },
         "zh-Hant" : {
@@ -719,6 +779,12 @@
             "value" : "Запускати у фоновому режимі без сповіщень і застосовувати наявні правила."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "静默运行，不发出警报，应用现有规则。"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -783,6 +849,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Так"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "是"
           }
         },
         "zh-Hant" : {
@@ -851,6 +923,12 @@
             "value" : "Програми, що працюють у середовищі Симулятора, будуть дозволені."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将允许在模拟器内运行的应用程序。"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -915,6 +993,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Список заблокованих:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阻止列表："
           }
         },
         "zh-Hant" : {
@@ -983,6 +1067,12 @@
             "value" : "Параметри LuLu:"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu的设置"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1047,6 +1137,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Список дозволених:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow List:"
           }
         },
         "zh-Hant" : {
@@ -1115,6 +1211,12 @@
             "value" : "Переглянути"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "浏览"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1179,6 +1281,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нові з'єднання мають бути:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新的连接应该是："
           }
         },
         "zh-Hant" : {
@@ -1247,6 +1355,12 @@
             "value" : "Режим без іконки"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无图标模式"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1311,6 +1425,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Увесь (UDP) трафік на порту 53 буде дозволено."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许端口 53 上的所有 (UDP) 流量。"
           }
         },
         "zh-Hant" : {
@@ -1379,6 +1499,12 @@
             "value" : "Не перевіряти наявність нових версій автоматично."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不自动检查新版本。"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1443,6 +1569,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пасивний режим"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "被动模式"
           }
         },
         "zh-Hant" : {
@@ -1511,6 +1643,12 @@
             "value" : "Дозволити установлені програми"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许已安装的程序"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1575,6 +1713,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ні"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "否"
           }
         },
         "zh-Hant" : {
@@ -1643,6 +1787,12 @@
             "value" : "Режим"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "模式"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1707,6 +1857,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Режим"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "模式"
           }
         },
         "zh-Hant" : {
@@ -1775,6 +1931,12 @@
             "value" : "Бінарні файли, підписані Apple, будуть дозволені."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将允许使用 Apple 签名的二进制文件。"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1839,6 +2001,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Заблоковано"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已阻止"
           }
         },
         "zh-Hant" : {
@@ -1907,6 +2075,12 @@
             "value" : "Оновити"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1971,6 +2145,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Оновити"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新"
           }
         },
         "zh-Hant" : {
@@ -2039,6 +2219,12 @@
             "value" : "Списки"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列表"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2103,6 +2289,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Списки"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列表"
           }
         },
         "zh-Hant" : {
@@ -2171,6 +2363,12 @@
             "value" : "Увесь трафік, що проходить через LuLu, буде заблоковано (якщо веб- або IP-адреса не в списку «Дозволених»)."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通过 LuLu 路由的所有流量都将被阻止（除非端点明确位于“允许”列表中）。"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2235,6 +2433,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дозволити програми Apple"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许 Apple 程序"
           }
         },
         "zh-Hant" : {
@@ -2303,6 +2507,12 @@
             "value" : "Правила"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "规则"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2367,6 +2577,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Правила"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "规则"
           }
         },
         "zh-Hant" : {
@@ -2435,6 +2651,12 @@
             "value" : "Дозволити програми Симулятора"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许模拟器应用程序"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2499,6 +2721,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Переглянути"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "浏览"
           }
         },
         "zh-Hant" : {
@@ -2567,6 +2795,12 @@
             "value" : "Дозволити DNS трафік"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许 DNS 流量"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2631,6 +2865,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Режим без VirusTotal"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无 VirusTotal 模式"
           }
         },
         "zh-Hant" : {
@@ -2699,6 +2939,12 @@
             "value" : "Вимкнути інтеграцію з VirusTotal."
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁用与 VirusTotal 的集成。"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2763,6 +3009,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вимкнути перевірку оновлень"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁用更新检查"
           }
         },
         "zh-Hant" : {
