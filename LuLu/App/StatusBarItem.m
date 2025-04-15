@@ -134,6 +134,15 @@ enum menuItems
     // add target, enable, and handler for each
     for(NSMenuItem* menuItem in menu.itemArray)
     {
+        //handle sub-menu(s)
+        if(nil != menuItem.submenu)
+        {
+            //recursively set actions for submenu items
+            [self setMenuHandler:menuItem.submenu];
+            
+            continue;
+        }
+        
         //set target
         menuItem.target = self;
         
@@ -143,12 +152,6 @@ enum menuItems
         //set action, to handler
         menuItem.action = @selector(handler:);
         
-        //handle sub-menu(s)
-        if(nil != menuItem.submenu)
-        {
-            // Recursively set actions for submenu items
-            [self setMenuHandler:menuItem.submenu];
-        }
     }
     
     return;
