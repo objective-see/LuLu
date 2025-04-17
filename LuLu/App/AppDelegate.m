@@ -70,7 +70,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
         if(NSAlertSecondButtonReturn == response)
         {
             //open
-            [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?uninstall_v1", PRODUCT_URL]]];
+            [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@#uninstall_v1", PRODUCT_URL]]];
         }
         
         //(always) exit
