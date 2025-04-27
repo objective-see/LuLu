@@ -458,8 +458,37 @@ bail:
             //dbg msg
             os_log_debug(logHandle, "passive mode: create rules is set, so creating rule for new connection");
             
-            //init info for rule creation
-            info = [@{KEY_PATH:process.path, KEY_TYPE:@RULE_TYPE_ALL} mutableCopy];
+            //extract remote endpoint information
+            NWHostEndpoint* remoteEndpoint = (NWHostEndpoint*)((NEFilterSocketFlow*)flow).remoteEndpoint;
+            
+            //init info for rule creation with specific endpoint information
+            info = [@{KEY_PATH:process.path} mutableCopy];
+            
+            //add endpoint address (hostname) if available
+            if(nil != remoteEndpoint.hostname && ![remoteEndpoint.hostname isEqualToString:@""])
+            {
+                info[KEY_ENDPOINT_ADDR] = remoteEndpoint.hostname;
+            }
+            else
+            {
+                info[KEY_ENDPOINT_ADDR] = VALUE_ANY;
+            }
+            
+            //add endpoint port if available
+            if(nil != remoteEndpoint.port && ![remoteEndpoint.port isEqualToString:@""])
+            {
+                info[KEY_ENDPOINT_PORT] = remoteEndpoint.port;
+            }
+            else
+            {
+                info[KEY_ENDPOINT_PORT] = VALUE_ANY;
+            }
+            
+            //add protocol if available
+            if(((NEFilterSocketFlow*)flow).socketProtocol > 0)
+            {
+                info[KEY_PROTOCOL] = [NSNumber numberWithInt:((NEFilterSocketFlow*)flow).socketProtocol];
+            }
 
             //add process cs info?
             if(nil != process.csInfo) info[KEY_CS_INFO] = process.csInfo;
@@ -962,4 +991,3 @@ bail:
 }
 
 @end
-
