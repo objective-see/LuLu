@@ -59,6 +59,12 @@
             "value" : "Ця опція дозволить будь-якому сторонньому додатку, який уже встановлено, отримувати доступ до мережі без сповіщення."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "یہ آپشن کسی بھی پہلے سے انسٹال شدہ تھرڈ پارٹی ایپ کو الرٹ پیدا کیے بغیر نیٹ ورک تک رسائی کی اجازت دے گا۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -129,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дякуємо «Friends Objective-See»"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Objective-See دوستوں\" کو شکریہ"
           }
         },
         "zh-Hans" : {
@@ -203,6 +215,12 @@
             "value" : "1. У сповіщенні «Системне розширення заблоковано» натисніть «Відкрити системні параметри»."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. \"سسٹم ایکسٹینشن بلاک\" الرٹ میں، کلک کریں: \"سسٹم سیٹنگز کھولیں\""
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -275,6 +293,12 @@
             "value" : "Спочатку, надайте доступ розширенню LuLu:"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پہلے، LuLu نیٹ ورک ایکسٹینشن کو اجازت دیں:"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -345,6 +369,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вона відстежує мережеву активність і сповіщає вас, коли програма вперше намагається ініціювати вихідне з'єднання, тож ви зможете його дозволити або заборонити."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "یہ نیٹ ورک کی سرگرمیوں کو مانیٹر کرتا ہے اور آپ کو الرٹ کرتا ہے جب کوئی پروگرام پہلی بار باہر کی طرف کنیکشن قائم کرنے کی کوشش کرتا ہے، آپ کو اجازت دینے یا انکار کرنے کی اجازت دیتا ہے۔"
           }
         },
         "zh-Hans" : {
@@ -438,6 +468,12 @@
             "value" : "LuLu"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -508,6 +544,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu — це безкоштовний фаєрвол із відкритим кодом для macOS."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu ایک مفت اوپن سورس فائر وال ہے جو macOS کے لیے ہے۔"
           }
         },
         "zh-Hans" : {
@@ -582,6 +624,12 @@
             "value" : "Ні"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نہیں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -652,6 +700,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Підтримати LuLu?"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کیا آپ LuLu کی مدد کرنا چاہتے ہیں؟"
           }
         },
         "zh-Hans" : {
@@ -726,6 +780,12 @@
             "value" : "4. У сповіщенні «Фільтрувати мережевий контент» натисніть «Дозволити»."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. \"نیٹ ورک مواد کو فلٹر کریں\" الرٹ میں، کلک کریں: \"اجازت دیں\""
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -796,6 +856,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ласкаво просимо до"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خوش آمدید"
           }
         },
         "zh-Hans" : {
@@ -870,6 +936,12 @@
             "value" : "Ця опція дозволить будь-якому бінарному файлу, підписаному Apple, отримувати доступ до мережі без сповіщення."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "یہ آپشن کسی بھی ایپل سائنڈ بائنری کو الرٹ پیدا کیے بغیر نیٹ ورک تک رسائی کی اجازت دے گا۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -940,6 +1012,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Так!"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "جی!"
           }
         },
         "zh-Hans" : {
@@ -1014,6 +1092,12 @@
             "value" : "Ця опція дозволить будь-який (UDP) трафік через порт 53."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "یہ آپشن کسی بھی (UDP) ٹریفک کو پورٹ 53 پر اجازت دے گا۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1084,6 +1168,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дозволити DNS трафік"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DNS ٹریفک کو اجازت دیں"
           }
         },
         "zh-Hans" : {
@@ -1158,6 +1248,12 @@
             "value" : "Безкоштовна, з відкритим кодом, створена однією людиною."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "یہ مفت ہے، اوپن سورس ہے اور ایک ہی (میک لوونگ) کوڈر نے لکھا ہے!"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1228,6 +1324,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Очікується схвалення системного розширення"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سیسٹم ایکسٹینشن کی منظوری کا انتظار"
           }
         },
         "zh-Hans" : {
@@ -1302,6 +1404,12 @@
             "value" : "Бажаєте підтримати?"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کیا آپ ہمیں پیار دکھانا چاہتے ہیں؟"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1372,6 +1480,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Далі"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اگلا"
           }
         },
         "zh-Hans" : {
@@ -1446,6 +1560,12 @@
             "value" : "А тепер давайте налаштуємо LuLu:"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اب، ہم LuLu کو تشکیل دیں:"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1516,6 +1636,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дозволити вже установлені програми"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پہلے سے انسٹال شدہ ایپلی کیشنز کو اجازت دیں"
           }
         },
         "zh-Hans" : {
@@ -1590,6 +1716,12 @@
             "value" : "Далі"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اگلا"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1662,6 +1794,12 @@
             "value" : "Дозволити програми Apple"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ایپل پروگرامز کو اجازت دیں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1732,6 +1870,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3. Аутентифікувати"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. تصدیق کریں۔"
           }
         },
         "zh-Hans" : {

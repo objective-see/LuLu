@@ -59,6 +59,12 @@
             "value" : "Запуск…"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اب شروع ہو رہا ہے..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -135,6 +141,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Примітка: LuLu найкраще працює на macOS 15.3+, оскільки Apple виправила помилки, що впливали на стабільність мережі."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نوٹ: لولو macOS 15.3+ پر بہترین کام کرتا ہے، کیونکہ ایپل نے نیٹ ورک کی استحکام کو متاثر کرنے والے بگز کو ٹھیک کیا ہے۔"
           }
         },
         "zh-Hans" : {

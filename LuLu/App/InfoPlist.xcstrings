@@ -41,6 +41,12 @@
             "value" : "LuLu"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -93,6 +99,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Telif hakkı © 2020 Objective-See. Tüm hakları saklıdır."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کاپی رائٹ (c) 2020 Objective-See۔ تمام حقوق محفوظ ہیں۔"
           }
         },
         "zh-Hans" : {

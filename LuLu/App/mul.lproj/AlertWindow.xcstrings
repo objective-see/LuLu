@@ -46,6 +46,12 @@
             "state" : "needs_review",
             "value" : "- imzalama otoritesi 2"
           }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " - سرٹیفیکیشن اتھارٹی 2"
+          }
         }
       },
       "shouldTranslate" : false
@@ -106,6 +112,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "З'єднання:"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کنکشن:"
           }
         },
         "zh-Hans" : {
@@ -180,6 +192,12 @@
             "value" : "Тривалість правила:"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قانون کی مدت:"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -250,6 +268,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "порт/протокол:"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پورٹ/پروٹوکول:"
           }
         },
         "zh-Hans" : {
@@ -324,6 +348,12 @@
             "value" : "Тривалість життя процесу"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عمل کی مدت"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -394,6 +424,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ГГ:хх"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HH:mm"
           }
         },
         "zh-Hans" : {
@@ -468,6 +504,12 @@
             "value" : "Деталі:"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تفصیلات:"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -538,6 +580,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Довірені підписанти:"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سرٹیفیکیشن اتھارٹیز:"
           }
         },
         "zh-Hans" : {
@@ -612,6 +660,12 @@
             "value" : "Сповіщення LuLu"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu الارٹ"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -670,6 +724,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "- imzalama otoritesi 3"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " - سرٹیفیکیشن اتھارٹی 3"
           }
         }
       },
@@ -731,6 +791,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "(зворотний) DNS:"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(ریورس) ڈی این ایس:"
           }
         },
         "zh-Hans" : {
@@ -805,6 +871,12 @@
             "value" : "Деталі та параметри"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تفصیلات اور آپشنز"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -875,6 +947,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Межі правила:"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قانون کا دائرہ کار:"
           }
         },
         "zh-Hans" : {
@@ -949,6 +1027,12 @@
             "value" : "шлях:"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پاتھ:"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1019,6 +1103,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "PID:"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پی آئی ڈی:"
           }
         },
         "zh-Hans" : {
@@ -1093,6 +1183,12 @@
             "value" : "Процес"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عمل"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1163,6 +1259,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назва процесу"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عمل کا نام"
           }
         },
         "zh-Hans" : {
@@ -1237,6 +1339,12 @@
             "value" : "Назва"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نام"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1295,6 +1403,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "- imzalama otoritesi 1"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " - سرٹیفیکیشن اتھارٹی 1"
           }
         }
       },
@@ -1356,6 +1470,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Віддалена веб- або IP-адреса"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ریموٹ اینڈ پوائنٹ"
           }
         },
         "zh-Hans" : {
@@ -1430,6 +1550,12 @@
             "value" : "Процес:"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عمل:"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1500,6 +1626,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "повідомлення"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پیغام"
           }
         },
         "zh-Hans" : {
@@ -1574,6 +1706,12 @@
             "value" : "аргументи:"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ارجومنٹس:"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1644,6 +1782,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Завжди"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ہمیشہ"
           }
         },
         "zh-Hans" : {
@@ -1718,6 +1862,12 @@
             "value" : "IP-адреса"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "آئی پی پتہ:"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1788,6 +1938,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Блокувати"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بلاک کریں"
           }
         },
         "zh-Hans" : {
@@ -1862,6 +2018,12 @@
             "value" : "Дійсне до:"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تک:"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1934,6 +2096,12 @@
             "value" : "Мітка часу:"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ٹائم اسٹیمپ:"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2004,6 +2172,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дозволити"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اجازت دیں"
           }
         },
         "zh-Hans" : {

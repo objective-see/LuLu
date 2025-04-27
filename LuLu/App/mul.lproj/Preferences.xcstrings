@@ -59,6 +59,12 @@
             "value" : "Перевірити"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ابھی چیک کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -129,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Режим блокування"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بلاک موڈ"
           }
         },
         "zh-Hans" : {
@@ -203,6 +215,12 @@
             "value" : "Створювати правила для нових з'єднань?"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نئے کنکشنز کے لیے قواعد بنائے جائیں؟"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -273,6 +291,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Раніше встановлені сторонні програми будуть дозволені."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پہلے سے انسٹال شدہ، تیسرے فریق کے پروگراموں کو اجازت دی جائے گی۔"
           }
         },
         "zh-Hans" : {
@@ -347,6 +371,12 @@
             "value" : "Примітка: Коли встановлюється нове з'єднання, іноді доступна лише IP-адреса. У таких випадках не можна зіставити домени зі списком дозволених або заблокованих, що може вплинути на те, чи буде запит заблоковано або дозволено."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نوٹ: جب ایک نیا کنکشن بنایا جاتا ہے، تو بعض اوقات صرف IP ایڈریس دستیاب ہوتا ہے۔ ایسے معاملات میں، اجازت یا بلاک لسٹ پر موجود ڈومینز کا مقابلہ نہیں کیا جا سکتا، جس سے یہ متاثر ہو سکتا ہے کہ درخواست بلاک کی جائے گی یا اجازت دی جائے گی۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -417,6 +447,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Файл, що містить веб- або IP-адреси, які завжди дозволено."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مقامی یا ریموٹ فائل، جس میں ہمیشہ اجازت دینے والے اینڈ پوائنٹس شامل ہیں۔"
           }
         },
         "zh-Hans" : {
@@ -491,6 +527,12 @@
             "value" : "Файл, що містить веб- або IP-адреси, які завжди блокуються."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مقامی یا ریموٹ فائل، جس میں ہمیشہ بلاک کرنے والے اینڈ پوائنٹس شامل ہیں۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -561,6 +603,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Запускати без зображення іконки в панелі меню."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اسٹیٹس مینو بار میں آئیکن کو ظاہر کیے بغیر چلائیں۔"
           }
         },
         "zh-Hans" : {
@@ -635,6 +683,12 @@
             "value" : "Переглянути правила"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قواعد دیکھیں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -705,6 +759,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дозволено"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اجازت دی گئی"
           }
         },
         "zh-Hans" : {
@@ -779,6 +839,12 @@
             "value" : "Запускати у фоновому режимі без сповіщень і застосовувати наявні правила."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الرٹس کے بغیر خاموشی سے چلائیں اور موجودہ قواعد کو لاگو کریں۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -849,6 +915,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Так"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ہاں"
           }
         },
         "zh-Hans" : {
@@ -923,6 +995,12 @@
             "value" : "Програми, що працюють у середовищі Симулятора, будуть дозволені."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سیمولیٹر کے اندر چلنے والی ایپلیکیشنز کو اجازت دی جائے گی۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -993,6 +1071,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Список заблокованих:"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بلاک لسٹ:"
           }
         },
         "zh-Hans" : {
@@ -1067,6 +1151,12 @@
             "value" : "Параметри LuLu:"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لولو کی ترتیبات"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1137,6 +1227,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Список дозволених:"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اجازت دی گئی لسٹ:"
           }
         },
         "zh-Hans" : {
@@ -1211,6 +1307,12 @@
             "value" : "Переглянути"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "براؤز کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1281,6 +1383,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нові з'єднання мають бути:"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نئی کنکشنز کو ہونا چاہیے:"
           }
         },
         "zh-Hans" : {
@@ -1355,6 +1463,12 @@
             "value" : "Режим без іконки"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "آئیکن کے بغیر موڈ"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1425,6 +1539,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Увесь (UDP) трафік на порту 53 буде дозволено."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پورٹ 53 پر تمام (UDP) ٹریفک کو اجازت دی جائے گی۔"
           }
         },
         "zh-Hans" : {
@@ -1499,6 +1619,12 @@
             "value" : "Не перевіряти наявність нових версій автоматично."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نئی ورژنز کے لیے خودکار طور پر چیک نہ کریں۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1569,6 +1695,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пасивний режим"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پسیو موڈ"
           }
         },
         "zh-Hans" : {
@@ -1643,6 +1775,12 @@
             "value" : "Дозволити установлені програми"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "انسٹال شدہ پروگراموں کو اجازت دیں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1713,6 +1851,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ні"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نہیں"
           }
         },
         "zh-Hans" : {
@@ -1787,6 +1931,12 @@
             "value" : "Режим"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "موڈ"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1857,6 +2007,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Режим"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "موڈ"
           }
         },
         "zh-Hans" : {
@@ -1931,6 +2087,12 @@
             "value" : "Бінарні файли, підписані Apple, будуть дозволені."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ایپل کے دستخط شدہ بائنریز کو اجازت دی جائے گی۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2001,6 +2163,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Заблоковано"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بلاک"
           }
         },
         "zh-Hans" : {
@@ -2075,6 +2243,12 @@
             "value" : "Оновити"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اپڈیٹ"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2145,6 +2319,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Оновити"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اپڈیٹ"
           }
         },
         "zh-Hans" : {
@@ -2219,6 +2399,12 @@
             "value" : "Списки"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فہرستیں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2289,6 +2475,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Списки"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فہرستیں"
           }
         },
         "zh-Hans" : {
@@ -2363,6 +2555,12 @@
             "value" : "Увесь трафік, що проходить через LuLu, буде заблоковано (якщо веб- або IP-адреса не в списку «Дозволених»)."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لولو کے ذریعے روٹ کیا گیا تمام ٹریفک بلاک کر دیا جائے گا (جب تک کہ اینڈ پوائنٹ واضح طور پر 'اجازت' کی فہرست میں نہ ہو)۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2433,6 +2631,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дозволити програми Apple"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ایپل پروگراموں کو اجازت دیں"
           }
         },
         "zh-Hans" : {
@@ -2507,6 +2711,12 @@
             "value" : "Правила"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قواعد"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2577,6 +2787,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Правила"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قواعد"
           }
         },
         "zh-Hans" : {
@@ -2651,6 +2867,12 @@
             "value" : "Дозволити програми Симулятора"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سیمولیٹر ایپلیکیشنز کو اجازت دیں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2721,6 +2943,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Переглянути"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "براؤز کریں"
           }
         },
         "zh-Hans" : {
@@ -2795,6 +3023,12 @@
             "value" : "Дозволити DNS трафік"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DNS ٹریفک کو اجازت دیں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2865,6 +3099,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Режим без VirusTotal"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "وائرس ٹوٹل موڈ نہیں"
           }
         },
         "zh-Hans" : {
@@ -2939,6 +3179,12 @@
             "value" : "Вимкнути інтеграцію з VirusTotal."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "وائرس ٹوٹل کے ساتھ انضمام کو غیر فعال کریں۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3009,6 +3255,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вимкнути перевірку оновлень"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اپڈیٹ چیکس کو غیر فعال کریں"
           }
         },
         "zh-Hans" : {

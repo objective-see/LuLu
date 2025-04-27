@@ -59,6 +59,12 @@
             "value" : "Показати…"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "دکھائیں..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -129,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Параметри…"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ترتیبات..."
           }
         },
         "zh-Hans" : {
@@ -203,6 +215,12 @@
             "value" : "Імпортувати…"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "درآمد کریں..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -273,6 +291,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لولو"
           }
         },
         "zh-Hans" : {
@@ -347,6 +371,12 @@
             "value" : "Експортувати…"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "برآمد کریں..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -417,6 +447,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Закрити LuLu"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لولو کو ختم کریں"
           }
         },
         "zh-Hans" : {
@@ -491,6 +527,12 @@
             "value" : "Додати…"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اضافی کریں..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -561,6 +603,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لولو"
           }
         },
         "zh-Hans" : {
@@ -635,6 +683,12 @@
             "value" : "Видалити LuLu"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لولو ان انسٹال کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -705,6 +759,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Очистити"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "صاف کریں"
           }
         },
         "zh-Hans" : {
@@ -779,6 +839,12 @@
             "value" : "Вимкнути"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ناکارہ کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -849,6 +915,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Про LuLu"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لولو کے بارے میں"
           }
         },
         "zh-Hans" : {
@@ -923,6 +995,12 @@
             "value" : "Закрити LuLu"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لولو کو ختم کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -993,6 +1071,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Головне меню"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مینیو"
           }
         },
         "zh-Hans" : {
@@ -1067,6 +1151,12 @@
             "value" : "Правила"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قوانین"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1137,6 +1227,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Правила"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قوانین"
           }
         },
         "zh-Hans" : {
@@ -1211,6 +1307,12 @@
             "value" : "Монітор мережі.."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نیٹ ورک مانیٹر..."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1281,6 +1383,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu: увімкнено"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لولو: فعال"
           }
         },
         "zh-Hans" : {

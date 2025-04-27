@@ -509,6 +509,7 @@
 				"zh-Hant",
 				uk,
 				"zh-Hans",
+				"ur"
 			);
 			mainGroup = CDB2CC0F24D61A4E00D0EECE;
 			productRefGroup = CDB2CC1924D61A4E00D0EECE /* Products */;
