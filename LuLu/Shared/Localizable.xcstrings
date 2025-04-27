@@ -4485,7 +4485,7 @@
         }
       }
     },
-        "ERROR: Failed to cleanup rules" : {
+    "ERROR: Failed to cleanup rules" : {
       "comment" : "ERROR: Failed to cleanup rules",
       "localizations" : {
         "de" : {
@@ -6736,7 +6736,7 @@
         }
       }
     },
-        "Old Version of LuLu Installed" : {
+    "Old Version of LuLu Installed" : {
       "comment" : "Old Version of LuLu Installed",
       "localizations" : {
         "de" : {
@@ -6784,7 +6784,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu'nun eski sürümü kurulu"
+            "value" : "LuLu’nun eski sürümü kurulu"
           }
         },
         "uk" : {
@@ -7187,7 +7187,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "进程路径：%@"
+            "value" : "进程路径：％@"
           }
         },
         "zh-Hant" : {
