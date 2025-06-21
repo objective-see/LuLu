@@ -74,7 +74,7 @@ bail:
     
     //first gotta load default preferences
     NSDictionary* defaultPreferences = [NSDictionary dictionaryWithContentsOfFile:[INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE]];
-    if(nil == self.preferences)
+    if(nil == defaultPreferences)
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to load default preference from %{public}@", PREFS_FILE);

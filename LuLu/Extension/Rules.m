@@ -279,7 +279,7 @@ bail:
     
     //init path to rule's file
     // which might be in a profile directory
-    if(0 != preferences.preferences[PREF_CURRENT_PROFILE])
+    if(nil != preferences.preferences[PREF_CURRENT_PROFILE])
     {
         rulesFile = [PREF_CURRENT_PROFILE stringByAppendingPathComponent:RULES_FILE];
     }
@@ -1121,7 +1121,7 @@ bail:
     
     //init path to rule's file
     // which might be in a profile directory
-    if(0 != preferences.preferences[PREF_CURRENT_PROFILE])
+    if(nil != preferences.preferences[PREF_CURRENT_PROFILE])
     {
         rulesFile = [PREF_CURRENT_PROFILE stringByAppendingPathComponent:RULES_FILE];
     }

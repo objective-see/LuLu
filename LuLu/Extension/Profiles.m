@@ -155,7 +155,7 @@ bail:
     {
         //add new profile path
         // will also trigger a save
-        [preferences update:@{ PREF_CURRENT_PROFILE:self.current}];
+        [preferences update:@{PREF_CURRENT_PROFILE:self.current}];
     }
     //unsetting
     // remove from preferences

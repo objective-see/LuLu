@@ -26,12 +26,14 @@ extern XPCDaemonClient* xpcDaemonClient;
 enum menuItems
 {
     status = 100,
+    profile,
     toggle,
     rulesShow,
     rulesAdd,
     rulesExport,
     rulesImport,
     rulesCleanup,
+    profilesManage,
     prefs,
     monitor,
     quit,
@@ -110,6 +112,26 @@ enum menuItems
     //set handler for each menu item
     [self setMenuHandler:menu];
     
+    //disable
+    [menu.itemArray[0] setEnabled:NO];
+    [menu.itemArray[0] setAction:nil];
+    [menu.itemArray[1] setEnabled:NO];
+    [menu.itemArray[1] setAction:nil];
+    
+    //no profiles?
+    // disable profiles 'Switch'
+    NSDictionary* preferences = [xpcDaemonClient getPreferences];
+    if(nil == preferences[PREF_CURRENT_PROFILE])
+    {
+        //disable
+        [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) profileSwitchMenu] setEnabled:NO];
+    }
+    else
+    {
+        //enable
+        [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) profileSwitchMenu] setEnabled:YES];
+    }
+    
     return;
 }
 
@@ -151,9 +173,7 @@ enum menuItems
         
         //set action, to handler
         menuItem.action = @selector(handler:);
-        
     }
-    
     return;
 }
 

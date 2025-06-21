@@ -14,6 +14,8 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="profileSwitchMenu" destination="ahR-T8-occ" id="REw-fe-7jh"/>
+                <outlet property="profilesMenu" destination="7kG-TA-f15" id="iyo-Ut-GhB"/>
                 <outlet property="statusMenu" destination="bI7-kC-IUx" id="czq-O5-Zp6"/>
             </connections>
         </customObject>
@@ -44,11 +46,14 @@
         </menu>
         <menu id="bI7-kC-IUx" userLabel="Status Bar Menu">
             <items>
-                <menuItem title="LULU: enabled" tag="100" id="w99-Wo-epe">
+                <menuItem title="LULU: enabled" tag="100" enabled="NO" id="w99-Wo-epe">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Profile: Default" tag="101" enabled="NO" id="mxA-q2-fvN">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="RP3-f7-E06"/>
-                <menuItem title="Disable" tag="101" id="mxA-q2-fvN">
+                <menuItem title="Disable" tag="102" id="l9M-p8-kao">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="bOQ-2w-DOF"/>
@@ -56,36 +61,56 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Rules" id="vb5-99-ejR">
                         <items>
-                            <menuItem title="Show..." tag="102" id="0Y1-Pq-6Fc">
+                            <menuItem title="Show..." tag="103" id="0Y1-Pq-6Fc">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="MiV-95-jrU"/>
-                            <menuItem title="Add..." tag="103" id="gXq-yc-QnA">
+                            <menuItem title="Add..." tag="104" id="gXq-yc-QnA">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
-                            <menuItem title="Export..." tag="104" id="aZa-10-Ir1">
+                            <menuItem title="Export..." tag="105" id="aZa-10-Ir1">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
-                            <menuItem title="Import..." tag="105" id="39l-3u-dUR">
+                            <menuItem title="Import..." tag="106" id="39l-3u-dUR">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="wFv-yB-0aF"/>
-                            <menuItem title="Cleanup" tag="106" id="Lse-DT-C0z">
+                            <menuItem title="Cleanup" tag="107" id="Lse-DT-C0z">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="0od-m3-GN5"/>
-                <menuItem title="Settings..." tag="107" keyEquivalent="," id="4Uv-rm-VzQ"/>
-                <menuItem title="Network Monitor..." tag="108" id="VuY-Sy-392" userLabel="Network Monitor...">
+                <menuItem title="Profiles" id="7kG-TA-f15">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Profiles" id="d49-Ze-8oD">
+                        <items>
+                            <menuItem title="Switch" id="ahR-T8-occ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Switch" id="1HU-j3-Oa3">
+                                    <items>
+                                        <menuItem title="Profile One" id="TRi-aL-EeM">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="nxi-S8-RZE"/>
+                            <menuItem title="Manage..." tag="108" id="pF8-Hh-0tW">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Settings..." tag="109" keyEquivalent="," id="4Uv-rm-VzQ"/>
+                <menuItem title="Network Monitor..." tag="110" id="VuY-Sy-392" userLabel="Network Monitor...">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="i6W-GD-eRH"/>
-                <menuItem title="Quit LuLu" tag="109" id="QrZ-U2-1Ib">
+                <menuItem title="Quit LuLu" tag="111" id="QrZ-U2-1Ib">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Uninstall LuLu" tag="110" id="lns-C6-Aa5">
+                <menuItem title="Uninstall LuLu" tag="112" id="lns-C6-Aa5">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>

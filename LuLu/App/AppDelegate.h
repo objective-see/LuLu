@@ -34,8 +34,10 @@
 //welcome view controller
 @property(nonatomic, retain)WelcomeWindowController* welcomeWindowController;
 
-//status bar menu
+//status bar menu/sub-menus
 @property(strong) IBOutlet NSMenu* statusMenu;
+@property(strong) IBOutlet NSMenuItem *profilesMenu;
+@property (weak) IBOutlet NSMenuItem *profileSwitchMenu;
 
 //status bar menu controller
 @property(nonatomic, retain)StatusBarItem* statusBarItemController;

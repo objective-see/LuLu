@@ -79,6 +79,18 @@
         }
       }
     },
+    "1HU-j3-Oa3.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Switch\"; ObjectID = \"1HU-j3-Oa3\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Switch"
+          }
+        }
+      }
+    },
     "4Uv-rm-VzQ.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Settings...\"; ObjectID = \"4Uv-rm-VzQ\";",
       "extractionState" : "extracted_with_value",
@@ -157,6 +169,18 @@
         }
       }
     },
+    "7kG-TA-f15.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Profiles\"; ObjectID = \"7kG-TA-f15\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Profiles"
+          }
+        }
+      }
+    },
     "39l-3u-dUR.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Import...\"; ObjectID = \"39l-3u-dUR\";",
       "extractionState" : "extracted_with_value",
@@ -231,6 +255,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "匯入..."
+          }
+        }
+      }
+    },
+    "ahR-T8-occ.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Switch\"; ObjectID = \"ahR-T8-occ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Switch"
           }
         }
       }
@@ -387,6 +423,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "匯出..."
+          }
+        }
+      }
+    },
+    "d49-Ze-8oD.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Profiles\"; ObjectID = \"d49-Ze-8oD\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Profiles"
           }
         }
       }
@@ -625,6 +673,18 @@
         }
       }
     },
+    "l9M-p8-kao.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Disable\"; ObjectID = \"l9M-p8-kao\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Disable"
+          }
+        }
+      }
+    },
     "lns-C6-Aa5.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Uninstall LuLu\"; ObjectID = \"lns-C6-Aa5\";",
       "extractionState" : "extracted_with_value",
@@ -782,79 +842,91 @@
       }
     },
     "mxA-q2-fvN.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Disable\"; ObjectID = \"mxA-q2-fvN\";",
+      "comment" : "Class = \"NSMenuItem\"; title = \"Profile: Default\"; ObjectID = \"mxA-q2-fvN\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Deaktivieren"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Disable"
+            "value" : "Profile: Default"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Deshabilitar"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Désactiver"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "비활성화"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Wyłącz"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Desabilitar"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Devre Dışı Bırak"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Вимкнути"
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "ناکارہ کریں"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "禁用"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "停用"
+          }
+        }
+      }
+    },
+    "pF8-Hh-0tW.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Manage...\"; ObjectID = \"pF8-Hh-0tW\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Manage..."
           }
         }
       }
@@ -1011,6 +1083,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "關閉 LuLu"
+          }
+        }
+      }
+    },
+    "TRi-aL-EeM.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Profile One\"; ObjectID = \"TRi-aL-EeM\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Profile One"
           }
         }
       }

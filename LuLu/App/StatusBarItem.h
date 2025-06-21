@@ -30,7 +30,6 @@
 //disabled flag
 @property BOOL isDisabled;
 
-
 /* METHODS */
 
 //remove status item
