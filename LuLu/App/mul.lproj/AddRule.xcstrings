@@ -59,6 +59,12 @@
             "value" : "Віддалений порт"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ریموٹ پورٹ"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -129,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Віддалена адреса/домен"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ریموٹ ایڈریس/ڈومین"
           }
         },
         "zh-Hans" : {
@@ -203,6 +215,12 @@
             "value" : "Додати правило (для вихідних з'єднань)"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قانون شامل کریں (باہر جانے والے کنکشنز کے لیے)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -273,6 +291,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "regex?"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ریگولر ایکسپریشن؟"
           }
         },
         "zh-Hans" : {
@@ -347,6 +371,12 @@
             "value" : "Скасувати"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "منسوخ کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -419,6 +449,12 @@
             "value" : "Блокувати"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بلاک کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -486,6 +522,12 @@
           }
         },
         "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
+        "ur" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "*"
@@ -563,6 +605,12 @@
             "value" : "Дозволити"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اجازت دیں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -635,6 +683,12 @@
             "value" : "Огляд"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تلاش کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -702,6 +756,12 @@
           }
         },
         "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "*"
+          }
+        },
+        "ur" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "*"
@@ -779,6 +839,12 @@
             "value" : "Шлях до програми"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پروگرام پاتھ"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -849,6 +915,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додати"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اضافہ کریں"
           }
         },
         "zh-Hans" : {

@@ -59,6 +59,12 @@
             "value" : "Мітка"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لیبل"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -129,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назва елемента"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "آئٹم کا نام"
           }
         },
         "zh-Hans" : {
@@ -203,6 +215,12 @@
             "value" : "Нещодавні правила"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حالیہ قوانین"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -273,6 +291,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Текстове поле"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ٹیکسٹ سیل"
           }
         },
         "zh-Hans" : {
@@ -347,6 +371,12 @@
             "value" : "Користувацькі правила"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "صارف کے قوانین"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -417,6 +447,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Правила фільтрації"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قوانین فلٹر کریں"
           }
         },
         "zh-Hans" : {
@@ -503,6 +539,12 @@
             "value" : "Правила LuLu"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لولو قوانین"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -573,6 +615,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Кастомний вигляд"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کاسٹم ویو"
           }
         },
         "zh-Hans" : {
@@ -647,6 +695,12 @@
             "value" : "Кастомний вигляд"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کاسٹم ویو"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -717,6 +771,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Правило"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قاعدہ"
           }
         },
         "zh-Hans" : {
@@ -791,6 +851,12 @@
             "value" : "Усі правила"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تمام قوانین"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -861,6 +927,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "деталі елемента…"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "آئٹم کی تفصیلات..."
           }
         },
         "zh-Hans" : {
@@ -935,6 +1007,12 @@
             "value" : "Правила Apple"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ایپل قوانین"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1005,6 +1083,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Стандартні правила"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ڈیفالٹ قوانین"
           }
         },
         "zh-Hans" : {
@@ -1079,6 +1163,12 @@
             "value" : "інформація про зʼєднання"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کنیکشن کا معلومات"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1149,6 +1239,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "(пере)завантаження правил..."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(ری) لوڈنگ قوانین..."
           }
         },
         "zh-Hans" : {
@@ -1223,6 +1319,12 @@
             "value" : "Додати правило"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قاعدہ شامل کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1293,6 +1395,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Правила від сторонніх постачальників"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تھرڈ پارٹی قوانین"
           }
         },
         "zh-Hans" : {

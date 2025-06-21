@@ -59,6 +59,12 @@
             "value" : "Підтримайте нас!"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ہماری حمایت کریں!"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -129,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Версія:"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ورژن:"
           }
         },
         "zh-Hans" : {
@@ -203,6 +215,12 @@
             "value" : "Патрони і друзі"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سرپرست اور دوست"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -273,6 +291,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Більше інформації"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مزید معلومات"
           }
         },
         "zh-Hans" : {

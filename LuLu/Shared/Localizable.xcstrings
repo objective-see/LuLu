@@ -58,6 +58,12 @@
             "value" : " Коефіцієнт виявлення:"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\r\nشناخت کا تناسب: "
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -127,6 +133,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "не знайдено у VirusTotal"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\r\nوائرس ٹوٹل پر نہیں ملا"
           }
         },
         "zh-Hans" : {
@@ -200,6 +212,12 @@
             "value" : "Отримано некоректну відповідь"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\r\nغلط جواب موصول ہوا"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -269,6 +287,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Відкрити у VirusTotal"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\r\nوائرس ٹوٹل کا دیکھیں "
           }
         },
         "zh-Hans" : {
@@ -342,6 +366,12 @@
             "value" : "має проблему з підписом"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " دستخط کا مسئلہ ہے"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -411,6 +441,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "не підписано"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " دستخط شدہ نہیں ہے"
           }
         },
         "zh-Hans" : {
@@ -484,6 +520,12 @@
             "value" : "підпис недійсний"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " درست طریقے سے دستخط شدہ نہیں ہے"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -553,6 +595,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "успішно підписано"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " درست طریقے سے دستخط شدہ ہے"
           }
         },
         "zh-Hans" : {
@@ -626,6 +674,12 @@
             "value" : "невідомий"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " نامعلوم"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -695,6 +749,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "…будь ласка, скопіюйте в /Application і перезапустіть."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...براہ کرم اسے /ایپلیکیشنز میں کاپی کریں اور دوبارہ شروع کریں۔"
           }
         },
         "zh-Hans" : {
@@ -768,6 +828,12 @@
             "value" : "…це повністю видалить LuLu з вашого Маку"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...یہ آپ کے میک سے لولو کو مکمل طور پر ہٹا دے گا"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -839,6 +905,12 @@
             "value" : "…це зупинить роботу LuLu до наступного входу."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...یہ آپ کے اگلے لاگ ان تک لولو کو ختم کر دے گا۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -908,6 +980,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "› немає довірених підписантів"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "› دستخط کرنے والے اتھارٹی نہیں ہیں"
           }
         },
         "zh-Hans" : {
@@ -987,6 +1065,12 @@
             "value" : "%1$@ (PID: %2$@) "
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (پی ڈی: %2$@)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1064,6 +1148,12 @@
             "value" : "%1$@ (підписант: %2$@) "
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (دستخط کنندہ: %2$@)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1133,6 +1223,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (підписант: Apple Mac OS App Store)"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (دستخط کنندہ: ایپل میک او ایس ایپ اسٹور)"
           }
         },
         "zh-Hans" : {
@@ -1206,6 +1302,12 @@
             "value" : "%@ (підписант: Apple Proper)"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (دستخط کنندہ: ایپل پروپر)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1275,6 +1377,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (підписант: невалідний/не підписано)"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (دستخط کنندہ: غیر معتبر/غیر دستخط شدہ)"
           }
         },
         "zh-Hans" : {
@@ -1348,6 +1456,12 @@
             "value" : "%@ не існує!"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ موجود نہیں ہے!"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1419,6 +1533,12 @@
             "value" : "%@ є легітимним процесом macOS"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ایک قانونی میکس او ایس پروسس ہے"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1488,6 +1608,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ не є валідним номером порту"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ایک درست (پورٹ) نمبر نہیں ہے"
           }
         },
         "zh-Hans" : {
@@ -1567,6 +1693,12 @@
             "value" : "%1$@ не є валідним регулярним виразом  \nДеталі: %2$@"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ ایک درست ریگولر ایکسپریشن نہیں ہے\nتفصیلات: %2$@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1636,6 +1768,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ має неофіційний (ad hoc) підпис"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ تیسری پارٹی/ایڈ ہاک کے ذریعہ دستخط شدہ ہے"
           }
         },
         "zh-Hans" : {
@@ -1709,6 +1847,12 @@
             "value" : "%@ підписано безпосередньо Apple"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ایپل پروپر کے ذریعہ دستخط شدہ ہے"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1778,6 +1922,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ підписано Mac App Store"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ میک ایپ اسٹور کے ذریعہ دستخط شدہ ہے"
           }
         },
         "zh-Hans" : {
@@ -1851,6 +2001,12 @@
             "value" : "%@ підписано з Apple Developer ID"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ایپل ڈویلپر آئی ڈی کے ذریعہ دستخط شدہ ہے"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1920,6 +2076,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "помилка підпису: %#lx"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ دستخطی خطا: %#lx"
           }
         },
         "zh-Hans" : {
@@ -1993,6 +2155,12 @@
             "value" : "%@ це правило може вплинути на коректну роботу системи... Продовжити?"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ اس قاعدہ سے، قانونی سسٹم کی کارکردگی پر اثر پڑ سکتا ہے ... جاری رکھیں؟"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2062,6 +2230,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Інформація щодо підпису коду %@ змінилася"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ کی کوڈ دستخط کی معلومات تبدیل ہو گئی ہیں"
           }
         },
         "zh-Hans" : {
@@ -2135,6 +2309,12 @@
             "value" : "→ Видалити правило"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ قاعدہ حذف کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2204,6 +2384,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "→ Видалити правило/правила"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ قاعدہ/قواعد حذف کریں"
           }
         },
         "zh-Hans" : {
@@ -2277,6 +2463,12 @@
             "value" : "→ Редагувати правило"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ قاعدہ میں ترمیم کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2346,6 +2538,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "→ Показати шлях/шляхи"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "→ راستے(راستے) دکھائیں"
           }
         },
         "zh-Hans" : {
@@ -2419,6 +2617,12 @@
             "value" : "<невідомий (%d)>"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<نامعلوم (%d)>"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2488,6 +2692,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2. У «Системних параметрах» прокрутіть до LuLu і натисніть «Дозволити»."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. سسٹم سیٹنگز میں، 'LuLu' کے ذکر کردہ مقام پر اسکرول کریں اور 'الاؤ' پر کلک کریں۔"
           }
         },
         "zh-Hans" : {
@@ -2561,6 +2771,12 @@
             "value" : "2. У «Системних параметрах» увімкніть розширення LuLu."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. سسٹم سیٹنگز میں، LuLu ایکسٹینشن کو آن کریں۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2630,6 +2846,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "доступна нова версія (%@)!"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ایک نئی ورژن (%@) دستیاب ہے!"
           }
         },
         "zh-Hans" : {
@@ -2703,6 +2925,12 @@
             "value" : "Ad hoc"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ایڈ ہاک"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2772,6 +3000,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : " Додано за останні 24 години (відсортовано за часом створення)"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "گذشتہ 24 گھنٹوں میں شامل کیا گیا (تخلیق کے وقت کے مطابق ترتیب دیا گیا)"
           }
         },
         "zh-Hans" : {
@@ -2848,6 +3082,12 @@
             "value" : "Всі правила"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تمام قواعد"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2917,6 +3157,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дозволити"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الاؤ"
           }
         },
         "zh-Hans" : {
@@ -2990,6 +3236,12 @@
             "value" : "Дозволити (PID: %@)"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الاؤ (پی آئی ڈی: %@)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3059,6 +3311,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дозволити (до: %@)"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الاؤ (تک: %@)"
           }
         },
         "zh-Hans" : {
@@ -3132,6 +3390,12 @@
             "value" : "будь-яка адреса"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کوئی بھی پتہ"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3201,6 +3465,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "будь-який порт"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کوئی بھی پورٹ"
           }
         },
         "zh-Hans" : {
@@ -3274,6 +3544,12 @@
             "value" : "Будь-яка програма"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کوئی بھی پروگرام"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3343,6 +3619,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Програми Apple (автоматично дозволяються й додаються сюди, якщо увімкнено «Дозволяти програми Apple»)"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ایپل پروگرامز (اگر 'ایپل پروگرامز کو الاؤ' سیٹ کیا جائے تو خودکار طور پر یہاں شامل اور الاؤ دیا جاتا ہے)"
           }
         },
         "zh-Hans" : {
@@ -3416,6 +3698,12 @@
             "value" : "Блокувати"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بلاک"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3485,6 +3773,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Блокувати (PID: %@)"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بلاک کریں (پی آئی ڈی: %@)"
           }
         },
         "zh-Hans" : {
@@ -3558,6 +3852,12 @@
             "value" : "Блокувати (до: %@)"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بلاک کریں (تک: %@)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3627,6 +3927,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Скасувати"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "منسوخ کریں"
           }
         },
         "zh-Hans" : {
@@ -3700,6 +4006,12 @@
             "value" : "Видалити правила, що посилаються на видалені, прострочені або завершені елементи?"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف شدہ، ختم شدہ یا ختم شدہ اشیاء کے حوالے سے قواعد کو صاف کرنا چاہتے ہیں؟"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3769,6 +4081,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Видалено %ld правил"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%ld قواعد کو صاف کیا گیا"
           }
         },
         "zh-Hans" : {
@@ -3842,6 +4160,12 @@
             "value" : "Продовжити"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "جاری رکھیں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3911,6 +4235,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Правила каталогів застосовуються до всіх елементів у каталозі."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ڈائریکٹری قواعد ڈائریکٹری کے اندر موجود تمام اشیاء پر لاگو ہوتی ہیں۔"
           }
         },
         "zh-Hans" : {
@@ -3984,6 +4314,12 @@
             "value" : "Вимкнути"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "غیر فعال کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4053,6 +4389,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Увімкнути"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فعال کریں"
           }
         },
         "zh-Hans" : {
@@ -4126,6 +4468,12 @@
             "value" : "ПОМИЛКА: активація не вдалася"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خطا: فعال کرنے میں ناکامی"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4195,6 +4543,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ПОМИЛКА: не вдалося видалити правила"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خرابی: اصولوں کی صفائی میں ناکامی"
           }
         },
         "zh-Hans" : {
@@ -4268,6 +4622,12 @@
             "value" : "ПОМИЛКА: не вдалося експортувати правила"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خرابی: اصولوں کو برآمد کرنے میں ناکامی"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4337,6 +4697,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ПОМИЛКА: не вдалося імпортувати правила"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خرابی: اصولوں کو درآمد کرنے میں ناکامی"
           }
         },
         "zh-Hans" : {
@@ -4410,6 +4776,12 @@
             "value" : "ПОМИЛКА: не вдалося завантажити список патронів"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خرابی: سرپرستوں کو لوڈ کرنے میں ناکامی"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4479,6 +4851,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ПОМИЛКА: некоректний шлях"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خرابی: نا درست راستہ"
           }
         },
         "zh-Hans" : {
@@ -4552,6 +4930,12 @@
             "value" : "ПОМИЛКА: некоректний порт"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خرابی: نا درست پورٹ"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4621,6 +5005,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ПОМИЛКА: некоректний регулярний вираз"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خرابی: نا درست ریگولر ایکسپریشن"
           }
         },
         "zh-Hans" : {
@@ -4694,6 +5084,12 @@
             "value" : "ПОМИЛКА: не вдалося перевірити оновлення"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خرابی: اپ ڈیٹ چیک میں ناکامی"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4763,6 +5159,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Розширення потрібно схвалити вручну в «Налаштуваннях безпеки» (Загальні > Автозапуск і розширення > Мережеві розширення)."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ایکسٹینشنز کو مینوئل طور پر سسٹم سیٹنگز (جنرل > لاگ ان آئٹمز اینڈ ایکسٹینشنز > نیٹ ورک ایکسٹینشنز) کے ذریعے منظور کرنا ہوگا۔"
           }
         },
         "zh-Hans" : {
@@ -4836,6 +5238,12 @@
             "value" : "не вдалося активувати мережеве розширення"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نیٹ ورک ایکسٹینشن کو فعال کرنے میں ناکامی"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4905,6 +5313,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "не вдалося активувати мережевий фільтр"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نیٹ ورک فلٹر کو فعال کرنے میں ناکامی"
           }
         },
         "zh-Hans" : {
@@ -4978,6 +5392,12 @@
             "value" : "не вдалося активувати системне розширення"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سسٹم ایکسٹینشن کو فعال کرنے میں ناکامی"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5047,6 +5467,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "не вдалося активувати системне або мережеве розширення"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سسٹم/نیٹ ورک ایکسٹینشن کو فعال کرنے میں ناکامی"
           }
         },
         "zh-Hans" : {
@@ -5120,6 +5546,12 @@
             "value" : "Не вдалося виконати запит до VirusTotal"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "وائرس ٹوٹل کو کوئری کرنے میں ناکامی"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5189,6 +5621,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "результати аналізу"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نتائج"
           }
         },
         "zh-Hans" : {
@@ -5262,6 +5700,12 @@
             "value" : "Повний URL: %@"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مکمل یو آر ایل: %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5331,6 +5775,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Глобальні правила застосовуються до всіх шляхів"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "گلوبل رولز تمام راستوں پر لاگو ہوتے ہیں"
           }
         },
         "zh-Hans" : {
@@ -5404,6 +5854,12 @@
             "value" : "Імпортовано %ld правил"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%ld رولز درآمد کیے گئے"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5473,6 +5929,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Встановлена версія (%@) є найновішою."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "انسٹال ورژن (%@)،\r\nسب سے تازہ ترین ہے۔"
           }
         },
         "zh-Hans" : {
@@ -5546,6 +6008,12 @@
             "value" : "підключається до %@"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "منسلک ہو رہا ہے %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5567,6 +6035,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ключ"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کلید"
           }
         }
       },
@@ -5627,6 +6101,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu має працювати з:\r\n  %@"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu کو یہاں سے چلانا ہوگا:\r\n  %@"
           }
         },
         "zh-Hans" : {
@@ -5700,6 +6180,12 @@
             "value" : "LuLu: вимкнено"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: غیر فعال"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5769,6 +6255,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu: увімкнено"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: فعال"
           }
         },
         "zh-Hans" : {
@@ -5842,6 +6334,12 @@
             "value" : "Мережеве розширення LuLu не працює"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu کا نیٹ ورک ایکسٹینشن چل رہا نہیں ہے"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5911,6 +6409,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Більше інформації"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مزید معلومات"
           }
         },
         "zh-Hans" : {
@@ -5984,6 +6488,12 @@
             "value" : "жоден"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کوئی نہیں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6053,6 +6563,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "не застосовується"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لاگو نہیں"
           }
         },
         "zh-Hans" : {
@@ -6126,6 +6642,12 @@
             "value" : "Зверніть увагу:\n▪ Існуючі з'єднання не будуть порушені.  \n▪ Системний трафік, який не проходить через LuLu, не буде заблоковано."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "یہ نوٹ کریں:\r\n▪ موجودہ کنیکشن پر کوئی اثر نہیں پڑے گا۔\r\n▪ او ایس ٹریفک (جو لولو کے ذریعے روٹ نہیں کیا جاتا ہے) کو بلاک نہیں کیا جائے گا۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6195,6 +6717,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ОК"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ٹھیک ہے"
           }
         },
         "zh-Hans" : {
@@ -6268,6 +6796,12 @@
             "value" : "Виявлено застарілу версію LuLu"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لولو کا پرانا ورژن انسٹال ہے"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6337,6 +6871,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Системні програми (необхідні для роботи операційної системи)"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "آپریٹنگ سسٹم پروگرامز (سسٹم فنکشنیلٹی کے لیے ضروری)"
           }
         },
         "zh-Hans" : {
@@ -6410,6 +6950,12 @@
             "value" : "Вихідний трафік тепер буде заблоковано."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "آؤٹ گوئنگ ٹریفک اب بلاک کر دی جائے گی۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6479,6 +7025,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Попередньо встановлені сторонні програми (автоматично дозволяються й додаються сюди, якщо увімкнено «Дозволити встановлені програми»)"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پہلے سے انسٹال شدہ تھرڈ پارٹی پروگرامز (اگر 'انسٹال شدہ ایپلیکیشنز کو اجازت دیں' سیٹ ہو تو خودکار طور پر اجازت دی جاتی ہے اور یہاں شامل کی جاتی ہے)"
           }
         },
         "zh-Hans" : {
@@ -6552,6 +7104,12 @@
             "value" : "Параметри процесу: %@"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پروسیس آرگومنٹس: %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6621,6 +7179,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Шлях процесу: %@"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پروسیس پاتھ: %@"
           }
         },
         "zh-Hans" : {
@@ -6694,6 +7258,12 @@
             "value" : "Програми в \"%@/\""
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پروگرامز اندر \"%@/\""
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6763,6 +7333,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Виконується запит до VirusTotal..."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "وائرس ٹوٹل کو تلاش کر رہا ہے..."
           }
         },
         "zh-Hans" : {
@@ -6836,6 +7412,12 @@
             "value" : "Завершити"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ختم کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6905,6 +7487,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Завершити роботу з LuLu?"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لولو کو ختم کریں؟"
           }
         },
         "zh-Hans" : {
@@ -6978,6 +7566,12 @@
             "value" : "Зворотний домен: %@"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ریورس ڈومین: %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7014,6 +7608,12 @@
           }
         },
         "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "rules.json"
+          }
+        },
+        "ur" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "rules.json"
@@ -7077,6 +7677,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дивіться лог для детальнішої інформації"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مزید تفصیلات کے لیے لاگ دیکھیں"
           }
         },
         "zh-Hans" : {
@@ -7150,6 +7756,12 @@
             "value" : "Щоб продовжити, необхідно це видалити. Натисніть «Більше інформації», щоб дізнатися, як це видалити."
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اسے جاری رکھنے سے پہلے ان انسٹال کرنا ہوگا۔ مزید معلومات کے لیے 'مزید معلومات' پر کلک کریں۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7219,6 +7831,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Мітка часу: %@"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ٹائم اسٹیمپ: %@"
           }
         },
         "zh-Hans" : {
@@ -7292,6 +7910,12 @@
             "value" : "Видалити"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "انسٹال کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7361,6 +7985,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Видалити LuLu?"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لولو کو ان انسٹال کریں؟"
           }
         },
         "zh-Hans" : {
@@ -7434,6 +8064,12 @@
             "value" : "невідомий"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نامعلوم"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7503,6 +8139,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Оновити"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اپ ڈیٹ"
           }
         },
         "zh-Hans" : {
@@ -7593,6 +8235,12 @@
             "value" : "Програми, вказані користувачем (додані вручну або у відповідь на сповіщення)"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "صارف کے ذریعہ مخصوص پروگرامز (مینیول طور پر شامل کیے گئے ہیں، یا انتباہ کے جواب میں)"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7664,6 +8312,12 @@
             "value" : "Версія: %@"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ورژن: %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7733,6 +8387,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Очікується схвалення мережевого розширення"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نیٹ ورک ایکسٹینشن کی منظوری کا انتظار"
           }
         },
         "zh-Hans" : {

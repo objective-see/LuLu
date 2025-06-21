@@ -59,6 +59,12 @@
             "value" : "⌃"
           }
         },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌃"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -123,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu запущено і працює!"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "!لولو چل رہا ہے"
           }
         },
         "zh-Hans" : {
@@ -195,6 +207,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отримуйте доступ до нього звідси в будь-який час."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کسی بھی وقت یہاں سے اس تک رسائی حاصل کریں۔"
           }
         },
         "zh-Hans" : {
