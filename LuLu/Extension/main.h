@@ -10,10 +10,11 @@
 #import "Rules.h"
 #import "Alerts.h"
 #import "consts.h"
+#import "Profiles.h"
 #import "utilities.h"
-#import "BlockOrAllowList.h"
 #import "Preferences.h"
 #import "XPCListener.h"
+#import "BlockOrAllowList.h"
 
 #ifndef main_h
 #define main_h
@@ -37,6 +38,9 @@ XPCListener* xpcListener = nil;
 
 //prefs obj
 Preferences* preferences = nil;
+
+//profile obj
+Profiles* profiles = nil;
 
 //dispatch source for SIGTERM
 dispatch_source_t dispatchSource = nil;

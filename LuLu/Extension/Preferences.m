@@ -33,9 +33,9 @@ extern BlockOrAllowList* blockList;
     self = [super init];
     if(nil != self)
     {
-        //prefs exist?
+        //default prefs exist?
         // load them from disk
-        if(YES == [[NSFileManager defaultManager] fileExistsAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE]])
+        if(YES == [NSFileManager.defaultManager fileExistsAtPath:[INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE]])
         {
             //load
             if(YES != [self load])
@@ -65,25 +65,67 @@ bail:
     return self;
 }
 
+//get path to preferences
+// either default, or in current profile directory
+-(NSString*)path {
+    
+    //path
+    NSString* path = nil;
+    
+    //first gotta load default preferences
+    NSDictionary* defaultPreferences = [NSDictionary dictionaryWithContentsOfFile:[INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE]];
+    if(nil == self.preferences)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to load default preference from %{public}@", PREFS_FILE);
+        goto bail;
+    }
+    
+    //init path to preferences file
+    // which might be in a profile directory
+    if(0 != defaultPreferences[PREF_CURRENT_PROFILE])
+    {
+        //set
+        path = [PREF_CURRENT_PROFILE stringByAppendingPathComponent:PREFS_FILE];
+        
+        //dbg msg
+        os_log_debug(logHandle, "using profile's preferences file: %{public}@", path);
+    }
+    //otherwise just use default
+    else
+    {
+        //init w/ default
+        path = [INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE];
+        
+        //dbg msg
+        os_log_debug(logHandle, "using default preferences file: %{public}@", path);
+    }
+    
+bail:
+    
+    return path;
+}
+
 //load prefs from disk
 -(BOOL)load
 {
     //flag
     BOOL loaded = NO;
     
+    //path
+    NSString* prefsFile = [self path];
+    
     //load
-    preferences = [NSMutableDictionary dictionaryWithContentsOfFile:[INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE]];
+    preferences = [NSMutableDictionary dictionaryWithContentsOfFile:prefsFile];
     if(nil == self.preferences)
     {
         //err msg
-        os_log_error(logHandle, "ERROR: failed to load preference from %{public}@", PREFS_FILE);
-        
-        //bail
+        os_log_error(logHandle, "ERROR: failed to load preference from %{public}@", prefsFile);
         goto bail;
     }
     
     //dbg msg
-    os_log_debug(logHandle, "loaded preferences: %{public}@", self.preferences);
+    os_log_debug(logHandle, "from %{public}@, loaded preferences: %{public}@", prefsFile, self.preferences);
     
     //happy
     loaded = YES;
@@ -186,8 +228,29 @@ bail:
 //save to disk
 -(BOOL)save
 {
-    //save
-    return [self.preferences writeToFile:[INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE] atomically:YES];
+    //flag
+    BOOL wasSaved = NO;
+    
+    //get path
+    NSString* prefsFile = [self path];
+    
+    //write out preferences
+    if(YES != [self.preferences writeToFile:prefsFile atomically:YES])
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to save preferences to: %{public}@", prefsFile);
+        goto bail;
+    }
+    
+    //dbg msg
+    os_log_debug(logHandle, "saved preferences to %{public}@", prefsFile);
+    
+    //happy
+    wasSaved = YES;
+    
+bail:
+    
+    return wasSaved;
 }
 
 @end

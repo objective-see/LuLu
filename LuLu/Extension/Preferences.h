@@ -25,4 +25,7 @@
 // saves and handles logic for specific prefs
 -(BOOL)update:(NSDictionary*)updates;
 
+//save to disk
+-(BOOL)save;
+
 @end

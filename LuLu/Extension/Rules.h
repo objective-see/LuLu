@@ -44,6 +44,9 @@
 //load from disk
 -(BOOL)load;
 
+//generate default rules
+-(BOOL)generateDefaultRules;
+
 //add a rule
 -(BOOL)add:(Rule*)rule save:(BOOL)save;
 
@@ -52,6 +55,9 @@
 
 //delete rule
 -(BOOL)delete:(NSString*)key rule:(NSString*)uuid;
+
+//save
+-(BOOL)save;
 
 //import rules
 -(BOOL)import:(NSData*)rules;

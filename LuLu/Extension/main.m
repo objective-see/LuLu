@@ -48,6 +48,9 @@ int main(int argc, char *argv[])
     //alloc/init rules object
     rules = [[Rules alloc] init];
     
+    //alloc/init profiles object
+    profiles = [[Profiles alloc] init];
+        
     //alloc/init XPC comms object
     xpcListener = [[XPCListener alloc] init];
         

@@ -2788,6 +2788,9 @@
         }
       }
     },
+    "Added passively (either if 'passive mode' is set, or no user was logged in when rule was created)" : {
+      "comment" : "Added passively (either if 'passive mode' is set, or no user was logged in when rule was created)"
+    },
     "All Rules" : {
       "comment" : "All Rules",
       "localizations" : {

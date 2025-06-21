@@ -43,6 +43,15 @@
 //cleanup rules
 -(NSInteger)cleanupRules;
 
+//get list of profiles
+-(NSArray*)getProfiles;
+
+//add profile
+-(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences;
+
+//delete profile
+-(void)deleteProfile:(NSString*)name;
+
 //uninstall
 -(BOOL)uninstall;
 

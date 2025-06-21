@@ -74,6 +74,7 @@
 		CDCAA96C2B69DC3700FE27DD /* RulesMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCAA96B2B69DC3700FE27DD /* RulesMenuController.m */; };
 		CDD7853D255609AC001BB0BE /* BlockOrAllowList.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD7853C255609AC001BB0BE /* BlockOrAllowList.m */; };
 		CDD992D72C4EC30000A1B406 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CDD992D62C4EC30000A1B406 /* InfoPlist.xcstrings */; };
+		CDEA3AD22E0724EC00FDD0C0 /* Profiles.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEA3AD12E0724EC00FDD0C0 /* Profiles.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +232,8 @@
 		CDD7853B255609AC001BB0BE /* BlockOrAllowList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockOrAllowList.h; sourceTree = "<group>"; };
 		CDD7853C255609AC001BB0BE /* BlockOrAllowList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockOrAllowList.m; sourceTree = "<group>"; };
 		CDD992D62C4EC30000A1B406 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		CDEA3AD02E0724EC00FDD0C0 /* Profiles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Profiles.h; sourceTree = "<group>"; };
+		CDEA3AD12E0724EC00FDD0C0 /* Profiles.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Profiles.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +415,8 @@
 				CDB2CC3824D61B3900D0EECE /* main.m */,
 				CDA1365B24EF4E57005AD424 /* Preferences.h */,
 				CDA1365324EF4E56005AD424 /* Preferences.m */,
+				CDEA3AD02E0724EC00FDD0C0 /* Profiles.h */,
+				CDEA3AD12E0724EC00FDD0C0 /* Profiles.m */,
 				CD03F8FB24F8E6C600723BDC /* Process.h */,
 				CD03F8F424F8E68300723BDC /* Process.m */,
 				CDA1366B24EF4F89005AD424 /* Rules.h */,
@@ -607,6 +612,7 @@
 				CDB2CC3924D61B3900D0EECE /* main.m in Sources */,
 				CDA1366724EF4E57005AD424 /* XPCDaemon.m in Sources */,
 				CDA1366324EF4E57005AD424 /* Alerts.m in Sources */,
+				CDEA3AD22E0724EC00FDD0C0 /* Profiles.m in Sources */,
 				CDD7853D255609AC001BB0BE /* BlockOrAllowList.m in Sources */,
 				CDB2CC3724D61B3900D0EECE /* FilterDataProvider.m in Sources */,
 				CDA1366224EF4E57005AD424 /* XPCUserClient.m in Sources */,

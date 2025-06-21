@@ -11,6 +11,7 @@
 #import "Rules.h"
 #import "Alerts.h"
 #import "consts.h"
+#import "Profiles.h"
 #import "XPCDaemon.h"
 #import "utilities.h"
 #import "Preferences.h"
@@ -21,6 +22,9 @@ extern Rules* rules;
 //global alerts obj
 extern Alerts* alerts;
 
+//global profiles obj
+extern Profiles* profiles;
+
 //global prefs obj
 extern Preferences* preferences;
 
@@ -29,13 +33,16 @@ extern os_log_t logHandle;
 
 @implementation XPCDaemon
 
-//send preferences to the clientl
--(NSDictionary*)getPreferences
+//send preferences to the client
+-(void)getPreferences:(void (^)(NSDictionary* preferences))reply
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
     
-    return preferences.preferences;
+    //reply w/ prefs
+    reply(preferences.preferences);
+        
+    return;
 }
 
 //update preferences
@@ -254,6 +261,66 @@ bail:
     
     //return result
     reply(uninstalled);
+    
+    return;
+}
+
+//get list of profiles
+-(void)getProfiles:(void (^)(NSArray* preferences))reply
+{
+    //dbg msg
+    os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
+    
+    //reply w/ prefs
+    reply([profiles enumerate]);
+        
+    return;
+}
+
+//add profile
+-(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences
+{
+    //dbg msg
+    os_log_debug(logHandle, "XPC request: '%s' with %{public}@", __PRETTY_FUNCTION__, name);
+    
+    //create and add profile
+    if(YES != [profiles add:name preferences:preferences])
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to add new profile '%{public}@'", name);
+         
+        //bail
+        goto bail;
+    }
+    
+    //dbg msg
+    os_log_debug(logHandle, "added new profile '%{public}@'", name);
+    
+bail:
+    
+    return;
+}
+
+//delete profile
+-(void)deleteProfile:(NSString*)name
+{
+    //dbg msg
+    os_log_debug(logHandle, "XPC request: '%s' with name: %{public}@", __PRETTY_FUNCTION__, name);
+
+    //delete profile
+    if(YES != [profiles delete:name])
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to delete profile");
+        
+        //bail
+        goto bail;
+    }
+    
+    //dbg msg
+    os_log_debug(logHandle, "deleted profile %{public}@", name);
+    
+bail:
     
     return;
 }

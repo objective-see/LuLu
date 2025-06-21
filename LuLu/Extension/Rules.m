@@ -141,8 +141,18 @@ extern Preferences* preferences;
             goto bail;
         }
         
+        //save (generated rules)
+        if(YES != [self save])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: failed to save (generated) rules");
+            
+            //bail
+            goto bail;
+        }
+
         //dbg msg
-        os_log_debug(logHandle, "done generating default rules");
+        os_log_debug(logHandle, "done generating/saving default rules");
     }
     
     //happy
@@ -246,6 +256,7 @@ bail:
 }
 
 //load rules from disk
+// either default location, or from current profile
 -(BOOL)load
 {
     //result
@@ -267,7 +278,17 @@ bail:
     NSTimeInterval timeInterval = 0;
     
     //init path to rule's file
-    rulesFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE];
+    // which might be in a profile directory
+    if(0 != preferences.preferences[PREF_CURRENT_PROFILE])
+    {
+        rulesFile = [PREF_CURRENT_PROFILE stringByAppendingPathComponent:RULES_FILE];
+    }
+    //otherwise default
+    else
+    {
+        //init w/ default
+        rulesFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE];
+    }
     
     //dbg msg
     os_log_debug(logHandle, "loading rules from: %{public}@", rulesFile);
@@ -439,7 +460,6 @@ bail:
         if(nil != binary.csInfo) info[KEY_CS_INFO] = binary.csInfo;
         
         //add
-        // note: will save after loop
         if(YES != [self add:[[Rule alloc] init:info] save:NO])
         {
             //err msg
@@ -448,16 +468,6 @@ bail:
             //skip
             continue;
         }
-    }
-    
-    //save
-    if(YES != [self save])
-    {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to save (generated) rules");
-        
-        //bail
-        goto bail;
     }
 
     //happy
@@ -1110,7 +1120,17 @@ bail:
     persistentRules = [NSMutableDictionary dictionary];
     
     //init path to rule's file
-    rulesFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE];
+    // which might be in a profile directory
+    if(0 != preferences.preferences[PREF_CURRENT_PROFILE])
+    {
+        rulesFile = [PREF_CURRENT_PROFILE stringByAppendingPathComponent:RULES_FILE];
+    }
+    //otherwise default
+    else
+    {
+        //init w/ default
+        rulesFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE];
+    }
     
     //dbg msg
     os_log_debug(logHandle, "saving (non-temp) rules to %{public}@", rulesFile);

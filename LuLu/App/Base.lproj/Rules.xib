@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,7 +26,7 @@
         <window identifier="Rules" title="LuLu Rules" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="913" y="419" width="1015" height="574"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1720" height="695"/>
             <value key="minSize" type="size" width="1020" height="550"/>
             <view key="contentView" wantsLayer="YES" misplaced="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="1015" height="574"/>
@@ -297,29 +297,34 @@
                     <toolbarItem implicitItemIdentifier="D6A4E192-28DB-485F-B968-54E2C252CF2F" label="" paletteLabel="" title="All Rules" sizingBehavior="auto" id="2FE-FA-0jJ">
                         <nil key="toolTip"/>
                         <popUpButton key="view" verticalHuggingPriority="750" id="mfH-zV-Que" userLabel="Rule View Selector">
-                            <rect key="frame" x="0.0" y="14" width="131" height="25"/>
+                            <rect key="frame" x="0.0" y="14" width="180" height="25"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <popUpButtonCell key="cell" type="roundTextured" title="All Rules" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="omZ-DL-6R7" id="qeh-fO-uzj">
+                            <popUpButtonCell key="cell" type="roundTextured" title="All Rules" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="-1" imageScaling="proportionallyDown" inset="2" selectedItem="omZ-DL-6R7" id="qeh-fO-uzj">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="message"/>
                                 <menu key="menu" id="5Wl-5r-JnV">
                                     <items>
-                                        <menuItem title="All Rules" state="on" id="omZ-DL-6R7">
+                                        <menuItem title="All Rules" state="on" tag="-1" id="omZ-DL-6R7">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem title="Default Rules" id="rEm-hF-r0T">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="Apple Rules" id="qNT-HP-XkH">
+                                        <menuItem title="Apple Rules" tag="1" id="qNT-HP-XkH">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="3rd-party Rules" id="YzL-Xb-QI1">
+                                        <menuItem title="3rd-party Rules" tag="2" id="YzL-Xb-QI1">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="User Rules" id="cvb-ds-FcC">
+                                        <menuItem title="User-created Rules" tag="3" id="cvb-ds-FcC">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="Recent Rules" id="b9m-wt-VZa"/>
+                                        <menuItem title="Passively-created Rules" tag="4" id="b9m-wt-VZa">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Recent Rules" tag="5" id="e4i-1F-tjh">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
                                     </items>
                                 </menu>
                                 <connections>
@@ -356,7 +361,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="272" y="172" width="471" height="353"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1720" height="695"/>
             <view key="contentView" id="cna-Y1-PEc">
                 <rect key="frame" x="0.0" y="0.0" width="471" height="353"/>
                 <autoresizingMask key="autoresizingMask"/>

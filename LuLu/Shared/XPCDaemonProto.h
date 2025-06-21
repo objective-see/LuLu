@@ -12,7 +12,7 @@
 @protocol XPCDaemonProtocol
 
 //get preferences
--(NSDictionary*)getPreferences;
+-(void)getPreferences:(void (^)(NSDictionary*))reply;
 
 //update preferences
 -(void)updatePreferences:(NSDictionary*)preferences reply:(void (^)(NSDictionary*))reply;
@@ -31,6 +31,15 @@
 
 //cleanup rules
 -(void)cleanupRules:(void (^)(NSInteger))reply;
+
+//get list of profiles
+-(void)getProfiles:(void (^)(NSArray*))reply;
+
+//add profile
+-(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences;
+
+//delete profile
+-(void)deleteProfile:(NSString*)name;
 
 //uninstall
 -(void)uninstall:(void (^)(BOOL))reply;

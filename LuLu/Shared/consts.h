@@ -178,6 +178,10 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 //global block list
 #define PREF_BLOCK_LIST @"blockList"
 
+//prefs
+// current profile
+#define PREF_CURRENT_PROFILE @"currentProfile"
+
 //install time
 // not really a 'pref' but need to save it
 #define PREF_INSTALL_TIMESTAMP @"installTime"
@@ -349,7 +353,9 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define RULE_TYPE_APPLE    1
 #define RULE_TYPE_BASELINE 2
 #define RULE_TYPE_USER     3
-#define RULE_TYPE_RECENT   4
+#define RULE_TYPE_PASSIVE  4
+#define RULE_TYPE_RECENT   5
+
 
 //search (filter) field
 #define RULE_SEARCH_FIELD 5
@@ -363,7 +369,7 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define ACTION_SCOPE_PROCESS 0
 #define ACTION_SCOPE_ENDPOINT 1
 
-//signing info (from ESF)
+//signing info (from ES)
 #define CS_FLAGS @"csFlags"
 #define PLATFORM_BINARY @"platformBinary"
 #define TEAM_ID @"teamID"
@@ -424,5 +430,8 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 
 //updates
 typedef enum {Update_Error, Update_None, Update_NotSupported, Update_Available} UpdateStatus;
+
+//profiles directory
+#define PROFILE_DIRECTORY @"Profiles"
 
 #endif /* const_h */

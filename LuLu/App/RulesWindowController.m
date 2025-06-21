@@ -295,9 +295,8 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
     
-    //save
-    // subtract one, since rule types start at -1
-    self.selectedRuleView = self.rulesViewSelector.indexOfSelectedItem - 1;
+    //grab tag/save
+    self.selectedRuleView = self.rulesViewSelector.selectedItem.tag;
     
     //set column title
     switch(self.selectedRuleView)
@@ -330,6 +329,12 @@ bail:
         case RULE_TYPE_USER:
             
             self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"User-specified Programs (manually added, or in response to an alert)", @"User-specified Programs (manually added, or in response to an alert)");
+            
+            break;
+            
+        case RULE_TYPE_PASSIVE:
+            
+            self.outlineView.tableColumns.firstObject.headerCell.stringValue = NSLocalizedString(@"Added passively (either if 'passive mode' is set, or no user was logged in when rule was created)", @"Added passively (either if 'passive mode' is set, or no user was logged in when rule was created)");
             
             break;
             

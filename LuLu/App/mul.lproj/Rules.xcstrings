@@ -146,72 +146,72 @@
       }
     },
     "b9m-wt-VZa.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Recent Rules\"; ObjectID = \"b9m-wt-VZa\";",
+      "comment" : "Class = \"NSMenuItem\"; title = \"Passively-created Rules\"; ObjectID = \"b9m-wt-VZa\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Neuste Regeln"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Recent Rules"
+            "value" : "Passively-created Rules"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Reglas Recientes"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Règles récentes"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "최근 규칙"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Najnowsze reguły"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Regras Recentes"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Son Kullanılan Kurallar"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Нещодавні правила"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "最近的规则"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "最近加入的規則"
           }
         }
@@ -290,72 +290,72 @@
       }
     },
     "cvb-ds-FcC.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"User Rules\"; ObjectID = \"cvb-ds-FcC\";",
+      "comment" : "Class = \"NSMenuItem\"; title = \"User-created Rules\"; ObjectID = \"cvb-ds-FcC\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Benutzerregeln"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "User Rules"
+            "value" : "User-created Rules"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Reglas del Usuario"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Règles utilisateur"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "사용자 규칙"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Reguły użytkownika"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Regras do Usuário"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Kullanıcı Kuralları"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Користувацькі правила"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "用户规则"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "使用者規則"
           }
         }
@@ -429,6 +429,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "過濾規則"
+          }
+        }
+      }
+    },
+    "e4i-1F-tjh.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Recent Rules\"; ObjectID = \"e4i-1F-tjh\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Recent Rules"
           }
         }
       }

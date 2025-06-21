@@ -462,25 +462,19 @@ bail:
             NWHostEndpoint* remoteEndpoint = (NWHostEndpoint*)((NEFilterSocketFlow*)flow).remoteEndpoint;
             
             //init info for rule creation with specific endpoint information
-            info = [@{KEY_PATH:process.path} mutableCopy];
+            info = [@{KEY_PATH:process.path, KEY_TYPE:@RULE_TYPE_PASSIVE} mutableCopy];
             
             //add endpoint address (hostname) if available
-            if(nil != remoteEndpoint.hostname && ![remoteEndpoint.hostname isEqualToString:@""])
-            {
+            if(0 != remoteEndpoint.hostname.length) {
                 info[KEY_ENDPOINT_ADDR] = remoteEndpoint.hostname;
-            }
-            else
-            {
+            } else {
                 info[KEY_ENDPOINT_ADDR] = VALUE_ANY;
             }
             
             //add endpoint port if available
-            if(nil != remoteEndpoint.port && ![remoteEndpoint.port isEqualToString:@""])
-            {
+            if(0 != remoteEndpoint.port.length) {
                 info[KEY_ENDPOINT_PORT] = remoteEndpoint.port;
-            }
-            else
-            {
+            } else {
                 info[KEY_ENDPOINT_PORT] = VALUE_ANY;
             }
             
@@ -771,10 +765,10 @@ bail:
         (nil == alerts.xpcUserClient) )
     {
         //dbg msg
-        os_log_debug(logHandle, "no active user or no connect client, will allow (and create rule)...");
+        os_log_debug(logHandle, "no active user or no connected client, will allow (and create rule)...");
         
         //init info for rule creation
-        info = [@{KEY_PATH:process.path, KEY_ACTION:@RULE_STATE_ALLOW, KEY_TYPE:@RULE_TYPE_ALL} mutableCopy];
+        info = [@{KEY_PATH:process.path, KEY_ACTION:@RULE_STATE_ALLOW, KEY_TYPE:@RULE_TYPE_PASSIVE} mutableCopy];
 
         //add process cs info?
         if(nil != process.csInfo) info[KEY_CS_INFO] = process.csInfo;

@@ -64,14 +64,20 @@ extern NSMutableDictionary* alerts;
     //dbg msg
     os_log_debug(logHandle, "invoking daemon XPC method, '%s'", __PRETTY_FUNCTION__);
     
-    //request preferences
-    preferences = [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
+    [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
-        
-    }] getPreferences];
-    
+          //err msg
+          os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+
+   }] getPreferences:^(NSDictionary* preferencesFromDaemon)
+   {
+       //dbg msg
+       os_log_debug(logHandle, "got preferences: %{public}@", preferencesFromDaemon);
+       
+       //save
+       preferences = preferencesFromDaemon;
+       
+   }];
     
     return preferences;
 }
@@ -229,6 +235,66 @@ extern NSMutableDictionary* alerts;
     
     return wasImported;
 }
+
+//get list of profiles
+-(NSArray*)getProfiles
+{
+    //rules
+    __block NSArray* profiles = nil;
+    
+    //dbg msg
+    os_log_debug(logHandle, "invoking daemon XPC method, '%s'", __PRETTY_FUNCTION__);
+    
+    //make XPC request to get profiles
+    [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError* proxyError)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        
+    }] getProfiles:^(NSArray* profilesFromDaemon)
+    {
+        //save
+        profiles = profilesFromDaemon;
+    
+    }];
+    
+    return profiles;
+}
+
+//add profile
+-(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences
+{
+    //dbg msg
+    os_log_debug(logHandle, "invoking daemon XPC method, '%s' with %{public}@", __PRETTY_FUNCTION__, name);
+    
+    //make XPC request to add rule
+    [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError* proxyError)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        
+    }] addProfile:name preferences:preferences];
+    
+    return;
+}
+
+//delete profile
+-(void)deleteProfile:(NSString*)name
+{
+    //dbg msg
+    os_log_debug(logHandle, "invoking daemon XPC method, '%s' with name: %{public}@", __PRETTY_FUNCTION__, name);
+    
+    //delete rule
+    [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError* proxyError)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        
+    }] deleteProfile:name];
+    
+    return;
+}
+
 
 //uninstall
 -(BOOL)uninstall
