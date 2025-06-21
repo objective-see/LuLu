@@ -2857,7 +2857,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "有新版本（％@）可用！"
+            "value" : "有新版本（%@）可用！"
           }
         },
         "zh-Hant" : {
@@ -7190,7 +7190,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "进程路径：％@"
+            "value" : "进程路径：%@"
           }
         },
         "zh-Hant" : {
