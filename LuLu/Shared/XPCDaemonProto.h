@@ -12,7 +12,7 @@
 @protocol XPCDaemonProtocol
 
 //get preferences
--(void)getPreferences:(void (^)(NSDictionary*))reply;
+-(NSDictionary*)getPreferences;
 
 //update preferences
 -(void)updatePreferences:(NSDictionary*)preferences reply:(void (^)(NSDictionary*))reply;

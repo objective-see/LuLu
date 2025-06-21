@@ -29,16 +29,13 @@ extern os_log_t logHandle;
 
 @implementation XPCDaemon
 
-//send preferences to the client
--(void)getPreferences:(void (^)(NSDictionary* preferences))reply
+//send preferences to the clientl
+-(NSDictionary*)getPreferences
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
     
-    //reply w/ prefs
-    reply(preferences.preferences);
-    
-    return;
+    return preferences.preferences;
 }
 
 //update preferences
