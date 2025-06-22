@@ -73,7 +73,7 @@
 
 //'preferences' menu item handler
 // alloc and show preferences window
--(IBAction)showPreferences:(id)sender;
+-(void)showPreferences:(NSString*)itemID;
 
 //preferences changed
 // for now, just check status bar icon setting

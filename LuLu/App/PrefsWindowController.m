@@ -73,15 +73,28 @@ extern XPCDaemonClient* xpcDaemonClient;
 {
     //get prefs
     self.preferences = [xpcDaemonClient getPreferences];
+    return;
+}
+
+//switch to tab
+-(void)switchTo:(NSString*)itemID
+{
+    //predicate
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"itemIdentifier == %@", itemID];
     
-    //set rules prefs as default
-    [self toolbarButtonHandler:nil];
+    //item
+    NSToolbarItem* item = [[self.toolbar.items filteredArrayUsingPredicate:predicate] firstObject];
     
-    //set rules prefs as default
-    [self.toolbar setSelectedItemIdentifier:TOOLBAR_RULES_ID];
+    //dbg msg
+    os_log_debug(logHandle, "item '%@' -> %{public}@", itemID, item);
+    
+    //select
+    [self toolbarButtonHandler:item];
+    [self.toolbar setSelectedItemIdentifier:itemID];
     
     return;
 }
+
 
 //toolbar view handler
 // toggle view based on user selection
@@ -90,10 +103,16 @@ extern XPCDaemonClient* xpcDaemonClient;
     //view
     NSView* view = nil;
     
+    //dbg msg
+    os_log_debug(logHandle, "%s invoked with %{public}@", __PRETTY_FUNCTION__, sender);
+    
     //when we've prev added a view
     // remove the prev view cuz adding a new one
-    if(nil != sender)
+    if(YES == self.viewWasAdded)
     {
+        //dbg msg
+        os_log_debug(logHandle, "removing previous view...");
+        
         //remove
         [[[self.window.contentView subviews] lastObject] removeFromSuperview];
     }
@@ -210,6 +229,8 @@ extern XPCDaemonClient* xpcDaemonClient;
     //add to window
     [self.window.contentView addSubview:view];
     
+    //set
+    self.viewWasAdded = YES;
     
 bail:
     

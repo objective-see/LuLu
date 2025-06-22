@@ -112,12 +112,14 @@ enum menuItems
     //set handler for each menu item
     [self setMenuHandler:menu];
     
-    //disable
+    //disable first two menu items
+    // as they are purely informative
     [menu.itemArray[0] setEnabled:NO];
     [menu.itemArray[0] setAction:nil];
     [menu.itemArray[1] setEnabled:NO];
     [menu.itemArray[1] setAction:nil];
     
+    //TODO: will this be updated, we add a profile?
     //no profiles?
     // disable profiles 'Switch'
     NSDictionary* preferences = [xpcDaemonClient getPreferences];
@@ -348,10 +350,16 @@ enum menuItems
                 goto bail;
             }
             break;
-                
+        
+        //profiles
+        case profilesManage:
+            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) showPreferences:TOOLBAR_PROFILES_ID];
+            break;
+            
         //prefs
+        // default to rules
         case prefs:
-            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) showPreferences:sender];
+            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) showPreferences:TOOLBAR_RULES_ID];
             break;
             
         //monitor

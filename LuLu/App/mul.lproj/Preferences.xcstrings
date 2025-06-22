@@ -157,6 +157,30 @@
         }
       }
     },
+    "5li-Ut-Gsb.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Profiles\"; ObjectID = \"5li-Ut-Gsb\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Profiles"
+          }
+        }
+      }
+    },
+    "5li-Ut-Gsb.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Profiles\"; ObjectID = \"5li-Ut-Gsb\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Profiles"
+          }
+        }
+      }
+    },
     "5Wo-JL-Khb.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Rules for new connections should be created?\"; ObjectID = \"5Wo-JL-Khb\";",
       "extractionState" : "extracted_with_value",

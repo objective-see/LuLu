@@ -358,10 +358,10 @@ bail:
 
 //'preferences' menu item handler
 // alloc and show preferences window
--(IBAction)showPreferences:(id)sender
+-(void)showPreferences:(NSString*)itemID
 {
     //dbg msg
-    os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
+    os_log_debug(logHandle, "method '%s' invoked with %@", __PRETTY_FUNCTION__, itemID);
     
     //alloc prefs window controller
     if(nil == self.prefsWindowController)
@@ -369,9 +369,12 @@ bail:
         //alloc
         prefsWindowController = [[PrefsWindowController alloc] initWithWindowNibName:@"Preferences"];
     }
-    
+
     //make active
     [self makeActive:self.prefsWindowController];
+    
+    //select tab
+    [self.prefsWindowController switchTo:itemID];
     
     return;
 }

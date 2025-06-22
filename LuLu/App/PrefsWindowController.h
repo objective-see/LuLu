@@ -24,11 +24,15 @@
 //update view
 #define TOOLBAR_LISTS 2
 
+//profiles view
+#define TOOLBAR_PROFILES 3
+
 //update view
-#define TOOLBAR_UPDATE 3
+#define TOOLBAR_UPDATE 4
 
 //to select, need string ID
 #define TOOLBAR_RULES_ID @"Rules"
+#define TOOLBAR_PROFILES_ID @"Profiles"
 
 @interface PrefsWindowController : NSWindowController <NSWindowDelegate>
 
@@ -67,7 +71,6 @@
 //select block list button
 @property (weak) IBOutlet NSButton* selectBlockListButton;
 
-
 //update view
 @property (weak) IBOutlet NSView* updateView;
 
@@ -83,10 +86,16 @@
 //update window controller
 @property(nonatomic, retain)UpdateWindowController* updateWindowController;
 
+//added view
+@property (nonatomic) BOOL viewWasAdded;
+
 /* METHODS */
 
 //toolbar button handler
 -(IBAction)toolbarButtonHandler:(id)sender;
+
+//switch to tab
+-(void)switchTo:(NSString*)itemID;
 
 //button handler for all preference buttons
 -(IBAction)togglePreference:(id)sender;

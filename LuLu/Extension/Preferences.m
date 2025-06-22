@@ -69,20 +69,25 @@ bail:
 // either default, or in current profile directory
 -(NSString*)path {
     
-    //path
-    NSString* path = nil;
+    //defaults
+    NSDictionary* defaultPreferences = nil;
     
-    //first gotta load default preferences
-    NSDictionary* defaultPreferences = [NSDictionary dictionaryWithContentsOfFile:[INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE]];
-    if(nil == defaultPreferences)
+    //path
+    // init with default
+    NSString* path = [INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE];
+    
+    //not found?
+    // that ok, likely just first time
+    if(YES != [NSFileManager.defaultManager fileExistsAtPath:path])
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to load default preference from %{public}@", PREFS_FILE);
+        //dbg msg
+        os_log_debug(logHandle, "default preferences file '%{public}@' not found ...first time?", path);
         goto bail;
     }
     
-    //init path to preferences file
-    // which might be in a profile directory
+    //load default preferences
+    // as need to see if 'PREF_CURRENT_PROFILE' is set
+    defaultPreferences = [NSDictionary dictionaryWithContentsOfFile:path];
     if(0 != defaultPreferences[PREF_CURRENT_PROFILE])
     {
         //set
@@ -91,17 +96,11 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "using profile's preferences file: %{public}@", path);
     }
-    //otherwise just use default
-    else
-    {
-        //init w/ default
-        path = [INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE];
-        
-        //dbg msg
-        os_log_debug(logHandle, "using default preferences file: %{public}@", path);
-    }
     
 bail:
+    
+    //dbg msg
+    os_log_debug(logHandle, "using preferences file: %{public}@", path);
     
     return path;
 }

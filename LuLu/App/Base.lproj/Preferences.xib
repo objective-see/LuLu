@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,10 +29,10 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="LuLu's Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <rect key="contentRect" x="196" y="240" width="600" height="453"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
+            <rect key="contentRect" x="196" y="240" width="722" height="453"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1720" height="695"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="453"/>
+                <rect key="frame" x="0.0" y="0.0" width="722" height="453"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             </view>
             <toolbar key="toolbar" implicitIdentifier="C2AC49E3-FD8B-4919-9001-868355500E38" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="V8g-Ya-LK4">
@@ -60,7 +60,14 @@
                             <action selector="toolbarButtonHandler:" target="-2" id="i0e-Tc-OaX"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="17E7D752-54CB-43BA-A631-2CD19CEA653E" explicitItemIdentifier="Update" label="Update" paletteLabel="Update" tag="3" image="PrefsUpdate" selectable="YES" id="pGG-dq-qkU">
+                    <toolbarItem implicitItemIdentifier="D48AE3A4-6AC7-4E2D-9026-47CD30E3D727" explicitItemIdentifier="Profiles" label="Profiles" paletteLabel="Profiles" tag="3" image="AppIcon" selectable="YES" id="5li-Ut-Gsb">
+                        <size key="minSize" width="22" height="22"/>
+                        <size key="maxSize" width="22" height="22"/>
+                        <connections>
+                            <action selector="toolbarButtonHandler:" target="-2" id="XG6-Jb-CdL"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="17E7D752-54CB-43BA-A631-2CD19CEA653E" explicitItemIdentifier="Update" label="Update" paletteLabel="Update" tag="4" image="PrefsUpdate" selectable="YES" id="pGG-dq-qkU">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
@@ -75,13 +82,15 @@
                     <toolbarItem reference="J66-tT-qAf"/>
                     <toolbarItem reference="rrF-xj-cXp"/>
                     <toolbarItem reference="J66-tT-qAf"/>
+                    <toolbarItem reference="5li-Ut-Gsb"/>
+                    <toolbarItem reference="J66-tT-qAf"/>
                     <toolbarItem reference="pGG-dq-qkU"/>
                 </defaultToolbarItems>
             </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-823" y="532.5"/>
+            <point key="canvasLocation" x="-762" y="532.5"/>
         </window>
         <customView id="378-bj-fYw" userLabel="Rules">
             <rect key="frame" x="0.0" y="0.0" width="600" height="402"/>
@@ -622,6 +631,7 @@
         </customView>
     </objects>
     <resources>
+        <image name="AppIcon" width="128" height="128"/>
         <image name="PrefsList" width="128" height="128"/>
         <image name="PrefsMode" width="72" height="72"/>
         <image name="PrefsRules" width="72" height="72"/>
