@@ -113,6 +113,10 @@
                 <menuItem title="Uninstall LuLu" tag="112" id="lns-C6-Aa5">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="4wj-Sr-XSL"/>
+                <menuItem title="Support LuLu 💕" tag="113" id="K0B-xd-gGB">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
             </items>
             <point key="canvasLocation" x="55" y="10"/>
         </menu>

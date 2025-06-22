@@ -38,6 +38,7 @@ enum menuItems
     monitor,
     quit,
     uninstall,
+    support,
     end
 };
 
@@ -397,6 +398,14 @@ enum menuItems
         //uninstall
         case uninstall:
             [((AppDelegate*)[[NSApplication sharedApplication] delegate]) uninstall:sender];
+            break;
+            
+        //support
+        case support:
+            
+            //open URL
+            // invokes user's default browser
+            [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:PATREON_URL]];
             break;
         
         default:

@@ -21,6 +21,7 @@
 /* METHODS */
 
 -(NSMutableArray*)enumerate;
+-(void)set:(NSString*)profilePath;
 -(BOOL)add:(NSString*)name preferences:(NSDictionary*)preferences;
 -(BOOL)delete:(NSString*)name;
 

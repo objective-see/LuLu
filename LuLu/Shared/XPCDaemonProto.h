@@ -33,13 +33,16 @@
 -(void)cleanupRules:(void (^)(NSInteger))reply;
 
 //get list of profiles
--(void)getProfiles:(void (^)(NSArray*))reply;
+-(void)getProfiles:(void (^)(NSMutableArray*))reply;
 
 //add profile
 -(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences;
 
 //delete profile
 -(void)deleteProfile:(NSString*)name;
+
+//set profile
+-(void)setProfile:(NSString*)name;
 
 //uninstall
 -(void)uninstall:(void (^)(BOOL))reply;

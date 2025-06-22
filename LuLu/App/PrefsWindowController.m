@@ -206,6 +206,17 @@ extern XPCDaemonClient* xpcDaemonClient;
             
             break;
             
+        //profiles
+        case TOOLBAR_PROFILES:
+            
+            //set view
+            view = self.profilesView;
+            
+            //reload
+            [self reloadProfiles];
+            
+            break;
+            
         //update
         case TOOLBAR_UPDATE:
             
@@ -467,12 +478,228 @@ bail:
     return;
 }
 
-//'view rules' button handler
-// call helper method to show rule's window
--(IBAction)viewRules:(id)sender
+//reload profile UI
+-(void)reloadProfiles
 {
-    //call into app delegate to show app rules
-    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) showRules:nil];
+    //send XPC msg to daemon get profiles
+    self.profiles = [xpcDaemonClient getProfiles];
+    
+    //manually add default at start
+    [self.profiles insertObject:@"Default" atIndex:0];
+    
+    //get preferences
+    // as need current profile (if any)
+    self.preferences = [xpcDaemonClient getPreferences];
+
+    //reload table
+    [self.profilesTable reloadData];
+
+    //reset dropdown
+    //[self.switchProfileButton removeAllItems];
+
+    /*
+    //extract just the profile names
+    NSMutableArray<NSString*> *names = [NSMutableArray array];
+    
+    //first add default
+    [names addObject:@"Default"];
+    
+    //add rest
+    for (NSString *fullPath in self.profiles) {
+        [names addObject:fullPath.lastPathComponent];
+    }
+
+    //add them all at once to dropdown
+    if(0 != names.count)
+    {
+        [self.switchProfileButton addItemsWithTitles:names];
+    }
+    
+    //select the current profile if set
+    if(self.preferences[PREF_CURRENT_PROFILE]) {
+        NSString *currentName = [self.preferences[PREF_CURRENT_PROFILE] lastPathComponent];
+        [self.switchProfileButton selectItemWithTitle:currentName];
+    }
+    */
+}
+
+#pragma mark – Profile's table delegates
+
+//number of profiles
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+    return self.profiles.count;
+}
+
+//view for each column+row
+- (NSView *)tableView:(NSTableView *)tableView
+   viewForTableColumn:(NSTableColumn *)tableColumn
+                  row:(NSInteger)row
+{
+    //dequeue a cell
+    NSTableCellView *cell = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
+    
+    //first column
+    // check button if we're looking at the current profile
+    if(YES == [tableColumn.identifier isEqualToString:@"Current"]) {
+        
+        //current profile
+        NSString* currentProfile = self.preferences[PREF_CURRENT_PROFILE];
+        
+        //select button
+        NSButton* selectButton = (NSButton*)[cell viewWithTag:TABLE_ROW_SELECT_BTN_TAG];
+        
+        //TODO: remove
+        os_log_debug(logHandle, "current row: %ld, current profile %@, select button: %{public}@", (long)row, currentProfile, selectButton);
+        
+        //no profile?
+        // select row zero (default)
+        if( (0 == row) &&
+            (nil == currentProfile) )
+        {
+            
+            //TODO: remove
+            os_log_debug(logHandle, "enabling default button here...");
+            
+            
+            //select
+            selectButton.state = NSControlStateValueOn;
+        }
+        //profile matches?
+        else if(YES == [currentProfile isEqualToString:self.profiles[row]])
+        {
+            //TODO: remove
+            os_log_debug(logHandle, "match, enabling button here...");
+            
+            //select
+            selectButton.state = NSControlStateValueOn;
+        }
+        else
+        {
+            //TODO: remove
+            os_log_debug(logHandle, "off button here...");
+            
+            //turn off
+            selectButton.state = NSControlStateValueOff;
+        }
+    }
+    
+    //add name
+    // and customize delete button
+    if ([tableColumn.identifier isEqualToString:@"Name"]) {
+        
+        NSButton* deleteButton = (NSButton*)[cell viewWithTag:TABLE_ROW_DELETE_BTN_TAG];
+        
+        //add name
+        cell.textField.stringValue = self.profiles[row];
+        
+        //first row?
+        // this is 'default' profile, so disable delete button
+        if(0 == row) {
+            
+            //hide
+            deleteButton.hidden = YES;
+            
+        } else {
+            
+            //show/enable
+            deleteButton.hidden = NO;
+            deleteButton.enabled = YES;
+        }
+    }
+
+    return cell;
+}
+
+#pragma mark – Profile's button handlers
+
+//get profile name from current/selected row
+-(NSString*)profileFromTable:(id)sender
+{
+    //profile path
+    NSString* profile = nil;
+    
+    //index of row
+    // either clicked or selected row
+    NSInteger row = 0;
+
+    //dbg msg
+    os_log_debug(logHandle, "%s invoked", __PRETTY_FUNCTION__);
+    
+    //get row
+    if(nil != sender)
+    {
+        //row from sender
+        row = [self.profilesTable rowForView:sender];
+    }
+    //otherwise get selected row
+    else
+    {
+        //selected row
+        row = self.profilesTable.selectedRow;
+    }
+    
+    //TODO: sanity check ... -1?
+    
+    //get item
+    // index 0, is zero, and want to leave nil for that, as its not really a profile
+    if(0 != row)
+    {
+        profile = self.profiles[row];
+    }
+    
+    //dbg msg
+    os_log_debug(logHandle, "row: %ld, profile: %{public}@", (long)row, profile);
+    
+    return profile;
+}
+
+//'switch profile' button handler
+-(IBAction)switchProfile:(id)sender {
+    
+    //profile
+    NSString* profile = nil;
+    
+    //dbg msg
+    os_log_debug(logHandle, "%s invoked", __PRETTY_FUNCTION__);
+    
+    //get profile
+    // can be 'nil' if default profile is selected
+    profile = [self profileFromTable:sender];
+    
+    //dbg msg
+    os_log_debug(logHandle, "user wants to change profile to '%@'", profile ? profile : @"default");
+    
+    //set profile via XPC
+    [xpcDaemonClient setProfile:profile];
+    
+    return;
+}
+
+//add profile button handler
+-(IBAction)addProfile:(id)sender {
+    
+    //dbg msg
+    os_log_debug(logHandle, "%s invoked", __PRETTY_FUNCTION__);
+    
+    return;
+}
+
+//delete profile button handler
+-(IBAction)deleteProfile:(id)sender {
+    
+    //name
+    NSString* profile = nil;
+
+    //get profile
+    profile = [self profileFromTable:sender];
+    
+    //dbg msg
+    os_log_debug(logHandle, "user wants to delete profile '%@'", profile ? profile : @"default");
+    
+    //delete via XPC
+    [xpcDaemonClient deleteProfile:profile];
+    
+bail:
     
     return;
 }
@@ -510,6 +737,20 @@ bail:
     
     return;
 }
+
+
+
+//'view rules' button handler
+// call helper method to show rule's window
+-(IBAction)viewRules:(id)sender
+{
+    //call into app delegate to show app rules
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) showRules:nil];
+    
+    return;
+}
+
+
 
 //process update response
 // error, no update, update/new version

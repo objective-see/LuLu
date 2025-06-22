@@ -493,6 +493,18 @@
         }
       }
     },
+    "9ts-yW-4uE.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Selected Profile\"; ObjectID = \"9ts-yW-4uE\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Selected Profile"
+          }
+        }
+      }
+    },
     "Bdp-Z8-BhB.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Local or remote file, containing endpoints to always block.\"; ObjectID = \"Bdp-Z8-BhB\";",
       "extractionState" : "extracted_with_value",
@@ -1118,78 +1130,78 @@
       }
     },
     "F0z-JX-Cv5.title" : {
-      "comment" : "Class = \"NSWindow\"; title = \"LuLu's Settings\"; ObjectID = \"F0z-JX-Cv5\";",
+      "comment" : "Class = \"NSWindow\"; title = \"Settings\"; ObjectID = \"F0z-JX-Cv5\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "LuLus Einstellungen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "LuLu's Settings"
+            "value" : "Settings"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Configuración de LuLu"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Réglages de LuLu"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "LuLu 설정"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Ustawienia LuLu"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Configurações LuLu:"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "LuLu’nun Ayarları"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Параметри LuLu:"
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "لولو کی ترتیبات"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "LuLu的设置"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "LuLu 的設定"
           }
         }
@@ -1351,6 +1363,18 @@
         }
       }
     },
+    "GRx-gM-j7j.headerCell.title" : {
+      "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Profile Name\"; ObjectID = \"GRx-gM-j7j\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Profile Name"
+          }
+        }
+      }
+    },
     "GsR-9d-5N8.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"New connections should be be:\"; ObjectID = \"GsR-9d-5N8\";",
       "extractionState" : "extracted_with_value",
@@ -1425,6 +1449,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "新的連線應被："
+          }
+        }
+      }
+    },
+    "ICK-Xr-yt1.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Add Profile\"; ObjectID = \"ICK-Xr-yt1\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add Profile"
           }
         }
       }

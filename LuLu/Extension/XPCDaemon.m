@@ -265,8 +265,8 @@ bail:
     return;
 }
 
-//get list of profiles
--(void)getProfiles:(void (^)(NSArray* preferences))reply
+//get list of profile names
+-(void)getProfiles:(void (^)(NSMutableArray* preferences))reply
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
@@ -301,19 +301,50 @@ bail:
     return;
 }
 
+//set profile
+-(void)setProfile:(NSString*)name
+{
+    //full path
+    NSString* newProfilePath = nil;
+    
+    //dbg msg
+    os_log_debug(logHandle, "XPC request: '%s' with name: %{public}@", __PRETTY_FUNCTION__, name);
+
+    //new profile?
+    if(nil != name)
+    {
+        //init path for new profile directory
+        newProfilePath = [profiles.directory stringByAppendingPathComponent:name];
+    }
+    
+    //set
+    [profiles set:newProfilePath];
+    
+    //dbg msg
+    os_log_debug(logHandle, "set profile to %{public}@", newProfilePath ? newProfilePath : @"default");
+    
+    return;
+}
+
 //delete profile
 -(void)deleteProfile:(NSString*)name
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s' with name: %{public}@", __PRETTY_FUNCTION__, name);
+    
+    //sanity check
+    if(nil == name)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: profile name is nil, so ignoring...");
+        goto bail;
+    }
 
     //delete profile
     if(YES != [profiles delete:name])
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to delete profile");
-        
-        //bail
         goto bail;
     }
     

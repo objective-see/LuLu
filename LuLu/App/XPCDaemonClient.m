@@ -237,10 +237,10 @@ extern NSMutableDictionary* alerts;
 }
 
 //get list of profiles
--(NSArray*)getProfiles
+-(NSMutableArray*)getProfiles
 {
     //rules
-    __block NSArray* profiles = nil;
+    __block NSMutableArray* profiles = nil;
     
     //dbg msg
     os_log_debug(logHandle, "invoking daemon XPC method, '%s'", __PRETTY_FUNCTION__);
@@ -251,7 +251,7 @@ extern NSMutableDictionary* alerts;
         //err msg
         os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
         
-    }] getProfiles:^(NSArray* profilesFromDaemon)
+    }] getProfiles:^(NSMutableArray* profilesFromDaemon)
     {
         //save
         profiles = profilesFromDaemon;
@@ -261,13 +261,30 @@ extern NSMutableDictionary* alerts;
     return profiles;
 }
 
+//set profile
+-(void)setProfile:(NSString*)name
+{
+    //dbg msg
+    os_log_debug(logHandle, "invoking daemon XPC method, '%s' with name: %{public}@", __PRETTY_FUNCTION__, name);
+    
+    //send XPC message to set profile
+    [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError* proxyError)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        
+    }] setProfile:name];
+    
+    return;
+}
+
 //add profile
 -(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences
 {
     //dbg msg
     os_log_debug(logHandle, "invoking daemon XPC method, '%s' with %{public}@", __PRETTY_FUNCTION__, name);
     
-    //make XPC request to add rule
+    //make XPC request to add profile
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError* proxyError)
     {
         //err msg
@@ -284,7 +301,7 @@ extern NSMutableDictionary* alerts;
     //dbg msg
     os_log_debug(logHandle, "invoking daemon XPC method, '%s' with name: %{public}@", __PRETTY_FUNCTION__, name);
     
-    //delete rule
+    //send XPC message to delete profile
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError* proxyError)
     {
         //err msg

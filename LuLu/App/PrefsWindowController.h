@@ -34,7 +34,10 @@
 #define TOOLBAR_RULES_ID @"Rules"
 #define TOOLBAR_PROFILES_ID @"Profiles"
 
-@interface PrefsWindowController : NSWindowController <NSWindowDelegate>
+//id (tag) for delete button
+#define TABLE_ROW_DELETE_TAG 110
+
+@interface PrefsWindowController : NSWindowController <NSWindowDelegate, NSTableViewDelegate, NSTableViewDataSource>
 
 /* PROPERTIES */
 
@@ -70,6 +73,22 @@
 
 //select block list button
 @property (weak) IBOutlet NSButton* selectBlockListButton;
+
+//profiles table
+@property (weak) IBOutlet NSTableView *profilesTable;
+
+/* PROFILES VIEW */
+
+//profiles view
+@property (strong) IBOutlet NSView* profilesView;
+
+//profiles
+@property(nonatomic, retain)NSMutableArray* profiles;
+
+//selected profile
+@property(nonatomic, retain)NSString* selectedProfile;
+
+/* UPDATE VIEW */
 
 //update view
 @property (weak) IBOutlet NSView* updateView;

@@ -44,7 +44,10 @@
 -(NSInteger)cleanupRules;
 
 //get list of profiles
--(NSArray*)getProfiles;
+-(NSMutableArray*)getProfiles;
+
+//set profile
+-(void)setProfile:(NSString*)name;
 
 //add profile
 -(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences;

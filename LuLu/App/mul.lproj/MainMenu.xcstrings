@@ -673,6 +673,18 @@
         }
       }
     },
+    "K0B-xd-gGB.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Support LuLu 💕\"; ObjectID = \"K0B-xd-gGB\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Support LuLu 💕"
+          }
+        }
+      }
+    },
     "l9M-p8-kao.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Disable\"; ObjectID = \"l9M-p8-kao\";",
       "extractionState" : "extracted_with_value",

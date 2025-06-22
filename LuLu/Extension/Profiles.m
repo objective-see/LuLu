@@ -53,11 +53,11 @@ extern Preferences* preferences;
     if(![NSFileManager.defaultManager fileExistsAtPath:self.directory])
     {
         //dbg msg
-        os_log_debug(logHandle, "didn't find profiles directory %{public}@", self.directory);
+        os_log_debug(logHandle, "no profiles? didn't find profiles directory %{public}@", self.directory);
         goto bail;
     }
 
-    //grab all items, saving only directories
+    //grab all items, saving only names of directories
     for(NSString* name in [NSFileManager.defaultManager contentsOfDirectoryAtPath:self.directory error:nil])
     {
         BOOL isDir = NO;
@@ -154,14 +154,17 @@ bail:
     if(nil != profilePath)
     {
         //add new profile path
-        // will also trigger a save
+        // note: update will also trigger a save
         [preferences update:@{PREF_CURRENT_PROFILE:self.current}];
     }
     //unsetting
     // remove from preferences
     else {
         
-        //remove
+        //dbg msg
+        os_log_debug(logHandle, "resetting back to default profile");
+        
+        //remove from preferences
         [preferences.preferences removeObjectForKey:PREF_CURRENT_PROFILE];
         
         //save
@@ -195,7 +198,7 @@ bail:
     if(YES != [NSFileManager.defaultManager removeItemAtPath:profile error:&error])
     {
         //err msg
-        os_log_error(logHandle, "ERROR: Failed to delete profile directory '%@': %{public}@",
+        os_log_error(logHandle, "ERROR: Failed to delete profile directory '%{public}@': %{public}@",
                      profile, error.localizedDescription);
         goto bail;
     }
@@ -209,7 +212,7 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "'%{public}@' was current profile, so will reset back to default", profile);
         
-        //unset
+        //unset (to default)
         [self set:nil];
     }
     

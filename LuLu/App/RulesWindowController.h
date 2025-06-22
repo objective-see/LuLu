@@ -26,7 +26,8 @@
 #define TABLE_ROW_SUB_TEXT 101
 
 //id (tag) for delete button
-#define TABLE_ROW_DELETE_TAG 110
+#define TABLE_ROW_SELECT_BTN_TAG 100
+#define TABLE_ROW_DELETE_BTN_TAG 101
 
 //show path(s)
 #define MENU_SHOW_PATHS 0
