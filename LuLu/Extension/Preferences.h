@@ -26,6 +26,14 @@
 -(BOOL)update:(NSDictionary*)updates replace:(BOOL)replace;
 
 //save to disk
--(BOOL)save:(BOOL)useDefault;
+-(BOOL)save;
+
+//get current profile
+// this is saved in the default preferences (and may be nil)
+-(NSString*)getCurrentProfile;
+
+//set current profile
+// this is saved in the default preferences (and may be nil)
+-(void)setCurrentProfile:(NSString*)profilePath;
 
 @end

@@ -255,6 +255,32 @@ bail:
     return upgraded;
 }
 
+//get rule's path
+// either default, or one in current profile
+-(NSString*)getPath
+{
+    //path
+    NSString* path = nil;
+    
+    //current profile
+    NSString* currentProfile =  [preferences getCurrentProfile];
+    
+    //init path to rule's file
+    // which might be in a profile directory
+    if(nil != currentProfile)
+    {
+        path = [currentProfile stringByAppendingPathComponent:RULES_FILE];
+    }
+    //otherwise default
+    else
+    {
+        //init w/ default
+        path = [INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE];
+    }
+    
+    return path;
+}
+
 //load rules from disk
 // either default location, or from current profile
 -(BOOL)load
@@ -277,18 +303,8 @@ bail:
     //interval for expirations
     NSTimeInterval timeInterval = 0;
     
-    //init path to rule's file
-    // which might be in a profile directory
-    if(nil != preferences.preferences[PREF_CURRENT_PROFILE])
-    {
-        rulesFile = [preferences.preferences[PREF_CURRENT_PROFILE] stringByAppendingPathComponent:RULES_FILE];
-    }
-    //otherwise default
-    else
-    {
-        //init w/ default
-        rulesFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE];
-    }
+    //init path
+    rulesFile = [self getPath];
     
     //dbg msg
     os_log_debug(logHandle, "loading rules from: %{public}@", rulesFile);
@@ -1119,18 +1135,8 @@ bail:
     //init
     persistentRules = [NSMutableDictionary dictionary];
     
-    //init path to rule's file
-    // which might be in a profile directory
-    if(nil != preferences.preferences[PREF_CURRENT_PROFILE])
-    {
-        rulesFile = [preferences.preferences[PREF_CURRENT_PROFILE] stringByAppendingPathComponent:RULES_FILE];
-    }
-    //otherwise default
-    else
-    {
-        //init w/ default
-        rulesFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:RULES_FILE];
-    }
+    //init path
+    rulesFile = [self getPath];
     
     //dbg msg
     os_log_debug(logHandle, "saving (non-temp) rules to %{public}@", rulesFile);

@@ -15,9 +15,6 @@
 //profiles directory
 @property(nonatomic, retain)NSString* directory;
 
-//current profile directory
-@property(nonatomic, retain)NSString* current;
-
 /* METHODS */
 
 -(NSMutableArray*)enumerate;

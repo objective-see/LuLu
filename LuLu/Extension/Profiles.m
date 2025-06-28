@@ -33,9 +33,6 @@ extern Preferences* preferences;
     {
         //set (base) directory
         self.directory = [INSTALL_DIRECTORY stringByAppendingPathComponent:PROFILE_DIRECTORY];
-        
-        //set current path
-        self.current = preferences.preferences[PREF_CURRENT_PROFILE];
     }
         
     return self;
@@ -165,26 +162,14 @@ bail:
 // note: can be called with nil to reset back to default profile
 -(void)set:(NSString*)profilePath
 {
-    //flag
-    BOOL useDefault = YES;
-    
-    //set current
-    self.current = profilePath;
-    
     //set
-    // if nil, is a remove!
-    preferences.preferences[PREF_CURRENT_PROFILE] = self.current;
-    
-    //save
-    // but use defaults
-    [preferences save:useDefault];
+    [preferences setCurrentProfile:profilePath];
     
     return;
-    
 }
 
 //delete a profile
-// delete folder matching name and reset default if needed
+// delete folder matching name and reset to default if needed
 -(BOOL)delete:(NSString*)name
 {
     //flag
@@ -192,6 +177,9 @@ bail:
     
     //error
     NSError* error = nil;
+    
+    //current
+    NSString* current = nil;
     
     //path
     NSString* profile = [self.directory stringByAppendingPathComponent:name];
@@ -211,8 +199,11 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "deleted profile directory: %{public}@", profile);
     
+    //get current
+    current = [[preferences getCurrentProfile] lastPathComponent];
+    
     //was current?
-    if(YES == [profile isEqualToString:self.current])
+    if(YES == [profile isEqualToString:current])
     {
         //dbg msg
         os_log_debug(logHandle, "'%{public}@' was current profile, so will reset back to default", profile);

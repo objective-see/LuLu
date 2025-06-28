@@ -272,7 +272,7 @@ bail:
     os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
     
     //reply
-    reply(profiles.current);
+    reply([preferences getCurrentProfile]);
         
     return;
 }

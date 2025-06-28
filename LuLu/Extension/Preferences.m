@@ -69,8 +69,8 @@ bail:
 // either default, or in current profile directory
 -(NSString*)path
 {
-    //defaults
-    NSDictionary* defaultPreferences = nil;
+    //current profile
+    NSString* currentProfile = nil;
     
     //path
     // init with default
@@ -85,16 +85,12 @@ bail:
         goto bail;
     }
     
-    //load default preferences
-    // as need to see if 'PREF_CURRENT_PROFILE' is set
-    defaultPreferences = [NSDictionary dictionaryWithContentsOfFile:path];
-    if(0 != defaultPreferences[PREF_CURRENT_PROFILE])
+    //get current profile
+    currentProfile = [self getCurrentProfile];
+    if(nil != currentProfile)
     {
         //set
-        path = [defaultPreferences[PREF_CURRENT_PROFILE] stringByAppendingPathComponent:PREFS_FILE];
-        
-        //dbg msg
-        os_log_debug(logHandle, "using profile's preferences file: %{public}@", path);
+        path = currentProfile;
     }
     
 bail:
@@ -171,7 +167,7 @@ bail:
     }
         
     //save
-    if(YES != [self save:NO])
+    if(YES != [self save])
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to save preferences");
@@ -239,20 +235,13 @@ bail:
 }
 
 //save to disk
--(BOOL)save:(BOOL)useDefault
+-(BOOL)save
 {
     //flag
     BOOL wasSaved = NO;
     
     //init w/ default
-    NSString* prefsFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE];
-    
-    //not used defaults?
-    // use current profile
-    if(YES != useDefault)
-    {
-        prefsFile = [self path];
-    }
+    NSString* prefsFile = [self path];
     
     //write out preferences
     if(YES != [self.preferences writeToFile:prefsFile atomically:YES])
@@ -271,6 +260,47 @@ bail:
 bail:
     
     return wasSaved;
+}
+
+//get current profile
+// this is saved in the default preferences (and may be nil)
+-(NSString*)getCurrentProfile
+{
+    //current
+    NSString* currentProfile = nil;
+    
+    //load *default* prefs
+    NSDictionary* defaultPreferences = [NSDictionary dictionaryWithContentsOfFile:[INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE]];
+    
+    //extract
+    currentProfile = defaultPreferences[PREF_CURRENT_PROFILE];
+    
+    //dbg msg
+    os_log_debug(logHandle, "returning current profile %{public}@", currentProfile);
+    
+    return currentProfile;
+}
+
+//set current profile
+// this is saved in the default preferences (and may be nil)
+-(void)setCurrentProfile:(NSString*)profilePath
+{
+    //default pref's file
+    NSString* defaultPreferencesFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE];
+    
+    //load *default* prefs
+    NSMutableDictionary* defaultPreferences = [NSMutableDictionary dictionaryWithContentsOfFile:defaultPreferencesFile];
+    
+    //set
+    defaultPreferences[PREF_CURRENT_PROFILE] = profilePath;
+    
+    //save
+    [defaultPreferences writeToFile:defaultPreferencesFile atomically:YES];
+    
+    //dbg msg
+    os_log_debug(logHandle, "set current profile to %{public}@", profilePath);
+    
+    return;
 }
 
 @end
