@@ -198,6 +198,8 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 // not really a 'pref' but need to save it
 #define PREF_ALERT_LAST_RULE_DURATION @"alertLastRuleDuration"
 
+
+
 //rule duration buttons
 #define RULE_DURATION_BUTTON_ALWAYS 100
 #define RULE_DURATION_BUTTON_PROCESS 101

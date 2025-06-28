@@ -157,6 +157,18 @@
         }
       }
     },
+    "5Fx-eu-v3J.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Cancel\"; ObjectID = \"5Fx-eu-v3J\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
     "5li-Ut-Gsb.label" : {
       "comment" : "Class = \"NSToolbarItem\"; label = \"Profiles\"; ObjectID = \"5li-Ut-Gsb\";",
       "extractionState" : "extracted_with_value",
@@ -813,6 +825,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "允許"
+          }
+        }
+      }
+    },
+    "d79-kw-Ala.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"First create a name for your profile. \\n\\nThen click \\\"Next\\\" to configure the settings for your new profile.\"; ObjectID = \"d79-kw-Ala\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "First create a name for your profile. \n\nThen click \"Next\" to configure the settings for your new profile."
           }
         }
       }
@@ -2089,6 +2113,18 @@
         }
       }
     },
+    "kZA-kY-nGm.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Profile Name:\"; ObjectID = \"kZA-kY-nGm\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Profile Name:"
+          }
+        }
+      }
+    },
     "M8X-n4-v2d.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Apple-signed binaries will be allowed.\"; ObjectID = \"M8X-n4-v2d\";",
       "extractionState" : "extracted_with_value",
@@ -3181,6 +3217,18 @@
         }
       }
     },
+    "wVp-l1-Eac.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Next\"; ObjectID = \"wVp-l1-Eac\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Next"
+          }
+        }
+      }
+    },
     "XTD-vf-hNE.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Disable integration with VirusTotal.\"; ObjectID = \"XTD-vf-hNE\";",
       "extractionState" : "extracted_with_value",
@@ -3333,6 +3381,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "停用更新檢查"
+          }
+        }
+      }
+    },
+    "Zan-q8-ABi.title" : {
+      "comment" : "Class = \"NSWindow\"; title = \"Add Profile\"; ObjectID = \"Zan-q8-ABi\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Add Profile"
           }
         }
       }

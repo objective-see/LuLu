@@ -83,6 +83,7 @@ extern NSMutableDictionary* alerts;
 }
 
 //update (save) preferences
+// note: will merge into current ones
 -(NSDictionary*)updatePreferences:(NSDictionary*)preferences
 {
     //updated preferences (from daemon)
@@ -236,6 +237,31 @@ extern NSMutableDictionary* alerts;
     return wasImported;
 }
 
+//get current profile
+-(NSString*)getCurrentProfile
+{
+    //rules
+    __block NSString* currentProfile = nil;
+    
+    //dbg msg
+    os_log_debug(logHandle, "invoking daemon XPC method, '%s'", __PRETTY_FUNCTION__);
+    
+    //make XPC request to get profiles
+    [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError* proxyError)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        
+    }] getCurrentProfile:^(NSString* currrentProfileFromDaemon)
+    {
+        //save
+        currentProfile = currrentProfileFromDaemon;
+    
+    }];
+    
+    return currentProfile;
+}
+
 //get list of profiles
 -(NSMutableArray*)getProfiles
 {
@@ -251,10 +277,13 @@ extern NSMutableDictionary* alerts;
         //err msg
         os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
         
-    }] getProfiles:^(NSMutableArray* profilesFromDaemon)
+    }] getProfiles:^(NSArray* profilesFromDaemon)
     {
+        //TODO: rem
+        os_log_debug(logHandle, "profilesFromDaemon '%{public}@'", profilesFromDaemon);
+        
         //save
-        profiles = profilesFromDaemon;
+        profiles = [profilesFromDaemon mutableCopy];
     
     }];
     

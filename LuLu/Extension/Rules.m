@@ -281,7 +281,7 @@ bail:
     // which might be in a profile directory
     if(nil != preferences.preferences[PREF_CURRENT_PROFILE])
     {
-        rulesFile = [PREF_CURRENT_PROFILE stringByAppendingPathComponent:RULES_FILE];
+        rulesFile = [preferences.preferences[PREF_CURRENT_PROFILE] stringByAppendingPathComponent:RULES_FILE];
     }
     //otherwise default
     else
@@ -298,7 +298,7 @@ bail:
     if(nil == archivedRules)
     {
         //err msg
-        os_log_error(logHandle, "ERROR: failed to load rules from %{public}@", RULES_FILE);
+        os_log_error(logHandle, "ERROR: failed to load rules from %{public}@", rulesFile);
         
         //bail
         goto bail;
@@ -1123,7 +1123,7 @@ bail:
     // which might be in a profile directory
     if(nil != preferences.preferences[PREF_CURRENT_PROFILE])
     {
-        rulesFile = [PREF_CURRENT_PROFILE stringByAppendingPathComponent:RULES_FILE];
+        rulesFile = [preferences.preferences[PREF_CURRENT_PROFILE] stringByAppendingPathComponent:RULES_FILE];
     }
     //otherwise default
     else

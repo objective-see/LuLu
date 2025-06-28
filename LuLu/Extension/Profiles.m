@@ -84,7 +84,7 @@ bail:
 
 //add new profile
 // and then set it to default
--(BOOL)add:(NSString*)name preferences:(NSDictionary*)preferences
+-(BOOL)add:(NSString*)name preferences:(NSDictionary*)newPreferences
 {
     BOOL wasAdded = NO;
     NSError* error = nil;
@@ -97,42 +97,61 @@ bail:
         if(YES != [NSFileManager.defaultManager createDirectoryAtPath:self.directory withIntermediateDirectories:YES attributes:nil error:&error])
         {
             //error
-            os_log_error(logHandle, "ERROR: failed to create profiles directory '%@': %{public}@",
+            os_log_error(logHandle, "ERROR: failed to create profiles directory '%{public}@': %{public}@",
                          self.directory, error.localizedDescription);
             goto bail;
         }
     }
     
     //init path for new profile directory
-    newProfilePath = [self.directory stringByAppendingPathComponent:name];
+    newProfilePath = [[[self.directory stringByAppendingPathComponent:name.lastPathComponent] stringByStandardizingPath] stringByResolvingSymlinksInPath];
     
-    //check that it doesn't already exist
-    if(YES != [NSFileManager.defaultManager fileExistsAtPath:newProfilePath]) {
-        os_log_error(logHandle, "ERROR: Profile '%@' already exists at '%@'", name, newProfilePath);
+    //sanity check
+    if(YES != [newProfilePath hasPrefix:[self.directory stringByAppendingString:@"/"]]) {
+        
+        //error
+        os_log_error(logHandle, "ERROR: created path '%{public}@' isn't in the profile directory %{public}@",
+                     newProfilePath, self.directory);
         goto bail;
     }
     
-    //TODO: sanitize name?
+    //if already exists, delete it
+    if(YES == [NSFileManager.defaultManager fileExistsAtPath:newProfilePath]) {
+        
+        //remove install directory
+        if(YES != [NSFileManager.defaultManager removeItemAtPath:newProfilePath error:&error])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: failed to remove existing profile %{public}@ (error: %{public}@)", newProfilePath, error);
+        }
+        else
+        {
+            //dbg msg
+            os_log_debug(logHandle, "removed existing profile %{public}@", newProfilePath);
+        }
+    }
+    
     //create directory for new profile
     if(YES != [NSFileManager.defaultManager createDirectoryAtPath:newProfilePath withIntermediateDirectories:NO attributes:nil error:&error])
     {
         //err msg
-        os_log_error(logHandle, "ERROR: Failed to create new profile directory '%@': %{public}@",
+        os_log_error(logHandle, "ERROR: Failed to create new profile directory '%{public}@': %{public}@",
                      newProfilePath, error.localizedDescription);
         goto bail;
     }
     
-    //write the preferences out into new preferences directory
-    [preferences writeToFile:[newProfilePath stringByAppendingPathComponent:PREFS_FILE] atomically:YES];
-    
-    //generate default rules
-    [rules generateDefaultRules];
-    
-    //save them
-    [rules save];
-    
-    //set it to default
+    //set as current
     [self set:newProfilePath];
+    
+    //save prefs
+    // replacing all
+    [preferences update:newPreferences replace:YES];
+    
+    //reload rules
+    [rules load];
+    
+    //reload prefs
+    [preferences load];
 
     //happy
     wasAdded = YES;
@@ -142,38 +161,24 @@ bail:
     return wasAdded;
 }
 
-//set current profile
-// then triggers rule and prefs (re)load
+//set current profile path in *default* prefs
 // note: can be called with nil to reset back to default profile
 -(void)set:(NSString*)profilePath
 {
+    //flag
+    BOOL useDefault = YES;
+    
     //set current
     self.current = profilePath;
     
-    //update preferences
-    if(nil != profilePath)
-    {
-        //add new profile path
-        // note: update will also trigger a save
-        [preferences update:@{PREF_CURRENT_PROFILE:self.current}];
-    }
-    //unsetting
-    // remove from preferences
-    else {
-        
-        //dbg msg
-        os_log_debug(logHandle, "resetting back to default profile");
-        
-        //remove from preferences
-        [preferences.preferences removeObjectForKey:PREF_CURRENT_PROFILE];
-        
-        //save
-        [preferences save];
-    }
-        
-    //(re)load rules
-    [rules load];
-
+    //set
+    // if nil, is a remove!
+    preferences.preferences[PREF_CURRENT_PROFILE] = self.current;
+    
+    //save
+    // but use defaults
+    [preferences save:useDefault];
+    
     return;
     
 }
@@ -212,8 +217,14 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "'%{public}@' was current profile, so will reset back to default", profile);
         
-        //unset (to default)
+        //unset path
         [self set:nil];
+        
+        //reload rules
+        [rules load];
+        
+        //reload prefs
+        [preferences load];
     }
     
     //happy

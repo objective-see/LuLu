@@ -2945,6 +2945,9 @@
         }
       }
     },
+    "Add Profile" : {
+      "comment" : "Add Profile"
+    },
     "Added in last 24 hours (sorted by creation time)" : {
       "comment" : "Added in last 24 hours (sorted by creation time)",
       "localizations" : {
@@ -3024,6 +3027,9 @@
     },
     "Added passively (either if 'passive mode' is set, or no user was logged in when rule was created)" : {
       "comment" : "Added passively (either if 'passive mode' is set, or no user was logged in when rule was created)"
+    },
+    "Added Profile" : {
+      "comment" : "Added Profile"
     },
     "All Rules" : {
       "comment" : "All Rules",
@@ -7200,6 +7206,9 @@
           }
         }
       }
+    },
+    "profile '%@' saved and activated" : {
+      "comment" : "profile '%@' saved and activated"
     },
     "Programs within \"%@/\"" : {
       "comment" : "Programs within \"%@/\"",

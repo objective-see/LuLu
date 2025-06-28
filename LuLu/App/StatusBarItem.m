@@ -120,11 +120,9 @@ enum menuItems
     [menu.itemArray[1] setEnabled:NO];
     [menu.itemArray[1] setAction:nil];
     
-    //TODO: will this be updated, we add a profile?
     //no profiles?
     // disable profiles 'Switch'
-    NSDictionary* preferences = [xpcDaemonClient getPreferences];
-    if(nil == preferences[PREF_CURRENT_PROFILE])
+    if(nil == [xpcDaemonClient getCurrentProfile])
     {
         //disable
         [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) profileSwitchMenu] setEnabled:NO];

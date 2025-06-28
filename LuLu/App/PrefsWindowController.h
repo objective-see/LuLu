@@ -47,8 +47,15 @@
 //toolbar
 @property (weak) IBOutlet NSToolbar* toolbar;
 
+/* RULES */
+
 //rules prefs view
 @property (weak) IBOutlet NSView* rulesView;
+
+//show rules button
+@property (weak) IBOutlet NSButton* showRulesButton;
+
+/* MODES */
 
 //modes view
 @property (strong) IBOutlet NSView* modesView;
@@ -88,6 +95,37 @@
 //selected profile
 @property(nonatomic, retain)NSString* selectedProfile;
 
+//add profile sheet
+@property (strong) IBOutlet NSPanel* addProfileSheet;
+
+//continue/next button
+@property (weak) IBOutlet NSButton* continueProfileButton;
+
+//current view
+@property (strong) NSView* currentProfileSubview;
+
+//profile name label
+@property (weak) IBOutlet NSTextField* profileNameLabel;
+
+//profile name view
+@property (strong) IBOutlet NSView* profileNameView;
+
+//new profile name
+@property(nonatomic, retain)NSString* profileName;
+
+//profile preferences
+@property(nonatomic, retain)NSMutableDictionary* profilePreferences;
+
+//profile views
+enum profileViews
+{
+    profileName = 0,
+    profileRules,
+    profileModes,
+    profileLists,
+    profileUpdates,
+};
+
 /* UPDATE VIEW */
 
 //update view
@@ -107,6 +145,8 @@
 
 //added view
 @property (nonatomic) BOOL viewWasAdded;
+
+
 
 /* METHODS */
 

@@ -43,6 +43,9 @@
 //cleanup rules
 -(NSInteger)cleanupRules;
 
+//get current profile
+-(NSString*)getCurrentProfile;
+
 //get list of profiles
 -(NSMutableArray*)getProfiles;
 

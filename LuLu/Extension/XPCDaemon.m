@@ -53,7 +53,7 @@ extern os_log_t logHandle;
     os_log_debug(logHandle, "XPC request: '%s' (%{public}@)", __PRETTY_FUNCTION__, updates);
     
     //call into prefs obj
-    if(YES != [preferences update:updates])
+    if(YES != [preferences update:updates replace:NO])
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to updates to preferences");
@@ -265,14 +265,27 @@ bail:
     return;
 }
 
+//get current profile
+-(void)getCurrentProfile:(void (^)(NSString* profile))reply
+{
+    //dbg msg
+    os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
+    
+    //reply
+    reply(profiles.current);
+        
+    return;
+}
+
 //get list of profile names
--(void)getProfiles:(void (^)(NSMutableArray* preferences))reply
+-(void)getProfiles:(void (^)(NSArray* preferences))reply
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
     
     //reply w/ prefs
-    reply([profiles enumerate]);
+    // return immutable copy
+    reply([profiles enumerate].copy);
         
     return;
 }
@@ -319,6 +332,12 @@ bail:
     
     //set
     [profiles set:newProfilePath];
+    
+    //reload rules
+    [rules load];
+    
+    //reload prefs
+    [preferences load];
     
     //dbg msg
     os_log_debug(logHandle, "set profile to %{public}@", newProfilePath ? newProfilePath : @"default");

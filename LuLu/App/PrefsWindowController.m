@@ -126,6 +126,9 @@ extern XPCDaemonClient* xpcDaemonClient;
             //set view
             view = self.rulesView;
             
+            //show
+            self.showRulesButton.hidden = NO;
+            
             //set 'apple allowed' button state
             ((NSButton*)[view viewWithTag:BUTTON_ALLOW_APPLE]).state = [self.preferences[PREF_ALLOW_APPLE] boolValue];
             
@@ -226,6 +229,9 @@ extern XPCDaemonClient* xpcDaemonClient;
             //set 'update' button state
             ((NSButton*)[view viewWithTag:BUTTON_NO_UPDATE_MODE]).state = [self.preferences[PREF_NO_UPDATE_MODE] boolValue];
             
+            //show
+            self.updateButton.hidden = NO;
+            
             break;
             
         default:
@@ -258,8 +264,19 @@ bail:
     //button state
     NSNumber* state = nil;
     
-    //init
-    updatedPreferences = [NSMutableDictionary dictionary];
+    //in "add profile" mode
+    // want to capture all the preferences
+    if(YES == self.addProfileSheet.isVisible)
+    {
+        updatedPreferences = self.profilePreferences;
+    }
+    //otherwise
+    // grab (just) updated preferences to send to daemon
+    else
+    {
+        //init
+        updatedPreferences = [NSMutableDictionary dictionary];
+    }
     
     //get button state
     state = [NSNumber numberWithBool:((NSButton*)sender).state];
@@ -397,13 +414,17 @@ bail:
         updatedPreferences[PREF_PASSIVE_MODE_RULES] = [NSNumber numberWithInteger:self.passiveModeRules.indexOfSelectedItem];
     }
     
-    //send XPC msg to daemon to update prefs
-    // returns (all/latest) prefs, which is what we want
-    self.preferences = [xpcDaemonClient updatePreferences:updatedPreferences];
+    //only process here if we're not in "add profile" mode
+    if(YES != self.addProfileSheet.isVisible)
+    {
+        //send XPC msg to daemon to update prefs
+        // returns (all/latest) prefs, which is what we want
+        self.preferences = [xpcDaemonClient updatePreferences:updatedPreferences];
 
-    //call back into app to process
-    // e.g. show/hide status bar icon, etc.
-    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
+        //call back into app to process
+        // e.g. show/hide status bar icon, etc.
+        [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
+    }
     
     return;
 }
@@ -478,49 +499,25 @@ bail:
     return;
 }
 
-//reload profile UI
+//reload profiles/UI
 -(void)reloadProfiles
 {
+    //dbg msg
+    os_log_debug(logHandle, "%s invoked", __PRETTY_FUNCTION__);
+    
     //send XPC msg to daemon get profiles
     self.profiles = [xpcDaemonClient getProfiles];
     
     //manually add default at start
     [self.profiles insertObject:@"Default" atIndex:0];
     
-    //get preferences
-    // as need current profile (if any)
-    self.preferences = [xpcDaemonClient getPreferences];
-
+    //dbg msg
+    os_log_debug(logHandle, "list of profiles: %{public}@", self.profiles);
+    
     //reload table
     [self.profilesTable reloadData];
 
-    //reset dropdown
-    //[self.switchProfileButton removeAllItems];
-
-    /*
-    //extract just the profile names
-    NSMutableArray<NSString*> *names = [NSMutableArray array];
-    
-    //first add default
-    [names addObject:@"Default"];
-    
-    //add rest
-    for (NSString *fullPath in self.profiles) {
-        [names addObject:fullPath.lastPathComponent];
-    }
-
-    //add them all at once to dropdown
-    if(0 != names.count)
-    {
-        [self.switchProfileButton addItemsWithTitles:names];
-    }
-    
-    //select the current profile if set
-    if(self.preferences[PREF_CURRENT_PROFILE]) {
-        NSString *currentName = [self.preferences[PREF_CURRENT_PROFILE] lastPathComponent];
-        [self.switchProfileButton selectItemWithTitle:currentName];
-    }
-    */
+    return;
 }
 
 #pragma mark – Profile's table delegates
@@ -543,31 +540,32 @@ bail:
     if(YES == [tableColumn.identifier isEqualToString:@"Current"]) {
         
         //current profile
-        NSString* currentProfile = self.preferences[PREF_CURRENT_PROFILE];
+        NSString* currentProfile = [xpcDaemonClient getCurrentProfile];
         
         //select button
         NSButton* selectButton = (NSButton*)[cell viewWithTag:TABLE_ROW_SELECT_BTN_TAG];
         
+        //dbg msg
+        os_log_debug(logHandle, "current row: %ld, current profile %{public}@, select button: %{public}@", (long)row, currentProfile, selectButton);
+        
         //TODO: remove
-        os_log_debug(logHandle, "current row: %ld, current profile %@, select button: %{public}@", (long)row, currentProfile, selectButton);
+        os_log_debug(logHandle, "checking %{public}@ with %{public}@", currentProfile, self.profiles[row]);
         
         //no profile?
         // select row zero (default)
         if( (0 == row) &&
             (nil == currentProfile) )
         {
-            
-            //TODO: remove
+            //dbg msg
             os_log_debug(logHandle, "enabling default button here...");
-            
             
             //select
             selectButton.state = NSControlStateValueOn;
         }
-        //profile matches?
+        //profile matches current?
         else if(YES == [currentProfile isEqualToString:self.profiles[row]])
         {
-            //TODO: remove
+            //dbg msg
             os_log_debug(logHandle, "match, enabling button here...");
             
             //select
@@ -575,9 +573,6 @@ bail:
         }
         else
         {
-            //TODO: remove
-            os_log_debug(logHandle, "off button here...");
-            
             //turn off
             selectButton.state = NSControlStateValueOff;
         }
@@ -587,6 +582,7 @@ bail:
     // and customize delete button
     if ([tableColumn.identifier isEqualToString:@"Name"]) {
         
+        //delete button
         NSButton* deleteButton = (NSButton*)[cell viewWithTag:TABLE_ROW_DELETE_BTN_TAG];
         
         //add name
@@ -667,20 +663,222 @@ bail:
     profile = [self profileFromTable:sender];
     
     //dbg msg
-    os_log_debug(logHandle, "user wants to change profile to '%@'", profile ? profile : @"default");
+    os_log_debug(logHandle, "user wants to change profile to '%{public}@'", profile ? profile : @"default");
     
     //set profile via XPC
     [xpcDaemonClient setProfile:profile];
+    
+    //reload profiles
+    [self reloadProfiles];
+
+    //grab latest (now, new profile) preferences
+    self.preferences = [xpcDaemonClient getPreferences];
+    
+    //tell app they changed
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
     
     return;
 }
 
 //add profile button handler
+// show sheet for user to specify settings
 -(IBAction)addProfile:(id)sender {
     
     //dbg msg
     os_log_debug(logHandle, "%s invoked", __PRETTY_FUNCTION__);
     
+    //init dictionary to collect preferences
+    self.profilePreferences = [NSMutableDictionary dictionary];
+    
+    //init/reset
+    self.profileName = nil;
+    
+    //init/reset
+    self.continueProfileButton.tag = 0;
+    
+    //remove any old view
+    if(self.currentProfileSubview) {
+        
+        //remove current view
+        [self.currentProfileSubview removeFromSuperview];
+    }
+
+    //init current view (with profile name)
+    self.currentProfileSubview = self.profileNameView;
+    
+    //add initial (profile name) view
+    [self.addProfileSheet.contentView addSubview:self.currentProfileSubview];
+    
+    //show sheet for user to specify settings
+    [self.window beginSheet:self.addProfileSheet
+               completionHandler:^(NSModalResponse returnCode) {
+        
+            //add profile?
+            // and handle UI refreshes, etc
+            if (returnCode == NSModalResponseOK) {
+            
+                //dbg msg
+                os_log_debug(logHandle, "user wants to add profile '%{public}@'", self.profileName);
+                
+                //add profile via XPC
+                [xpcDaemonClient addProfile:self.profileName preferences:self.profilePreferences];
+                
+                //hide profile sheet
+                [self.addProfileSheet orderOut:self];
+                
+                //reload
+                [self reloadProfiles];
+                
+                //show alert
+                showAlert(NSAlertStyleInformational, NSLocalizedString(@"Added Profile", @"Added Profile"), [NSString stringWithFormat:NSLocalizedString(@"profile '%@' saved and activated", @"profile '%@' saved and activated"), self.profileName], @[NSLocalizedString(@"OK", @"OK")]);
+                
+                //dbg msg
+                os_log_debug(logHandle, "grabbing (updated) preferences");
+            
+                //now grab (profile's) preferences
+                self.preferences = [xpcDaemonClient getPreferences];
+                
+                //tell app they changed
+                [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
+                
+                
+            }
+            
+            //cancel
+            else {
+                
+                //close sheet
+                [self.addProfileSheet orderOut:self];
+            }
+    }];
+    
+    return;
+}
+
+//cancel creation of profile
+- (IBAction)cancelProfileButtonHandler:(id)sender {
+    
+    //end w/ cancel
+    [self.window endSheet:self.addProfileSheet returnCode:NSModalResponseCancel];
+    
+    return;
+}
+
+//show next view
+// note: each case is current view, going to next!
+- (IBAction)continueProfileButtonHandler:(NSButton*)sender {
+    
+    //switch on current view
+    // last view, will add profile
+    switch (sender.tag) {
+            
+        //current view: name
+        // setup next view: rules
+        case profileName:
+            
+            //save name
+            self.profileName = self.profileNameLabel.stringValue;
+            
+            //remove current view
+            [self.currentProfileSubview removeFromSuperview];
+            
+            //update
+            self.currentProfileSubview = self.rulesView;
+            
+            //hide 'show buttons'
+            self.showRulesButton.hidden = YES;
+            
+            //add to rule's view
+            [self.addProfileSheet.contentView addSubview:self.currentProfileSubview];
+            
+            //update tag
+            self.continueProfileButton.tag = profileRules;
+            
+            break;
+            
+        //current view: rules
+        // setup next view: modes
+        case profileRules:
+            
+            //remove current view
+            [self.currentProfileSubview removeFromSuperview];
+            
+            //update
+            self.currentProfileSubview = self.modesView;
+            
+            //add to mode's view
+            [self.addProfileSheet.contentView addSubview:self.currentProfileSubview];
+            
+            //update tag
+            self.continueProfileButton.tag = profileModes;
+            
+            break;
+        
+        //current view: modes
+        // setup next view: lists
+        case profileModes:
+            
+            //remove current view
+            [self.currentProfileSubview removeFromSuperview];
+            
+            //update
+            self.currentProfileSubview = self.listsView;
+            
+            //add to list's view
+            [self.addProfileSheet.contentView addSubview:self.currentProfileSubview];
+            
+            //update tag
+            self.continueProfileButton.tag = profileLists;
+            
+            break;
+        
+        //current view: lists
+        // setup next view: updates
+        case profileLists:
+            
+            //remove current view
+            [self.currentProfileSubview removeFromSuperview];
+            
+            //update
+            self.currentProfileSubview = self.updateView;
+            
+            //hide button
+            self.updateButton.hidden = YES;
+            
+            //add to mode's view
+            [self.addProfileSheet.contentView addSubview:self.currentProfileSubview];
+            
+            //update tag
+            self.continueProfileButton.tag = profileUpdates;
+            
+            //update button name to "Add Profile"
+            self.continueProfileButton.title = NSLocalizedString(@"Add Profile", @"Add Profile");
+            
+            break;
+            
+        //current view: updates
+        // add profile as this is the last one!
+        case profileUpdates:
+            
+            //end with 'ok'
+            [self.window endSheet:self.addProfileSheet returnCode:NSModalResponseOK];
+            
+        default:
+            break;
+    }
+    
+    //update view's fame
+    NSRect bounds = self.addProfileSheet.contentView.bounds;
+    NSRect frame = self.currentProfileSubview.frame;
+    frame.origin.x  = 0;
+    frame.origin.y  = bounds.size.height - frame.size.height;
+    
+    //toolbar
+    frame.origin.y += 50;
+    
+    //set frame
+    self.currentProfileSubview.frame = frame;
+
     return;
 }
 
@@ -694,10 +892,13 @@ bail:
     profile = [self profileFromTable:sender];
     
     //dbg msg
-    os_log_debug(logHandle, "user wants to delete profile '%@'", profile ? profile : @"default");
+    os_log_debug(logHandle, "user wants to delete profile '%{public}@'", profile ? profile : @"default");
     
     //delete via XPC
     [xpcDaemonClient deleteProfile:profile];
+    
+    //reload UI
+    [self reloadProfiles];
     
 bail:
     
@@ -738,8 +939,6 @@ bail:
     return;
 }
 
-
-
 //'view rules' button handler
 // call helper method to show rule's window
 -(IBAction)viewRules:(id)sender
@@ -749,8 +948,6 @@ bail:
     
     return;
 }
-
-
 
 //process update response
 // error, no update, update/new version

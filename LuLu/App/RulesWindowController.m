@@ -205,9 +205,6 @@ extern XPCDaemonClient* xpcDaemonClient;
 //update outline view
 -(void)update:(NSNumber*)select
 {
-    //item's (new?) row
-    __block NSInteger itemRow = -1;
-    
     //selected row
     __block NSInteger selectedRow = -1;
     

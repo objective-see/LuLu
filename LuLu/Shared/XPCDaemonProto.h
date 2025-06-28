@@ -32,8 +32,11 @@
 //cleanup rules
 -(void)cleanupRules:(void (^)(NSInteger))reply;
 
+//get current profile
+-(void)getCurrentProfile:(void (^)(NSString*))profile;
+
 //get list of profiles
--(void)getProfiles:(void (^)(NSMutableArray*))reply;
+-(void)getProfiles:(void (^)(NSArray*))reply;
 
 //add profile
 -(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences;

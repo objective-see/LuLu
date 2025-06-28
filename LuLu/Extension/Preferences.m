@@ -67,8 +67,8 @@ bail:
 
 //get path to preferences
 // either default, or in current profile directory
--(NSString*)path {
-    
+-(NSString*)path
+{
     //defaults
     NSDictionary* defaultPreferences = nil;
     
@@ -91,7 +91,7 @@ bail:
     if(0 != defaultPreferences[PREF_CURRENT_PROFILE])
     {
         //set
-        path = [PREF_CURRENT_PROFILE stringByAppendingPathComponent:PREFS_FILE];
+        path = [defaultPreferences[PREF_CURRENT_PROFILE] stringByAppendingPathComponent:PREFS_FILE];
         
         //dbg msg
         os_log_debug(logHandle, "using profile's preferences file: %{public}@", path);
@@ -136,7 +136,7 @@ bail:
 
 //update prefs
 // handles logic for specific prefs & then saves
--(BOOL)update:(NSDictionary*)updates
+-(BOOL)update:(NSDictionary*)updates replace:(BOOL)replace
 {
     //flag
     BOOL updated = NO;
@@ -150,14 +150,28 @@ bail:
     //sync
     @synchronized (self) {
 
-    //dbg msg
-    os_log_debug(logHandle, "updating preferences (%{public}@)", updates);
-    
-    //add in (new) prefs
-    [self.preferences addEntriesFromDictionary:updates];
-    
+    //replace?
+    // e.g. new profile
+    if(YES == replace)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "replacing preferences (%{public}@)", updates);
+        
+        //replace
+        self.preferences = [updates mutableCopy];
+    }
+    //merge
+    else
+    {
+        //dbg msg
+        os_log_debug(logHandle, "updating preferences (%{public}@)", updates);
+        
+        //add in (new) prefs
+        [self.preferences addEntriesFromDictionary:updates];
+    }
+        
     //save
-    if(YES != [self save])
+    if(YES != [self save:NO])
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to save preferences");
@@ -225,13 +239,20 @@ bail:
 }
 
 //save to disk
--(BOOL)save
+-(BOOL)save:(BOOL)useDefault
 {
     //flag
     BOOL wasSaved = NO;
     
-    //get path
-    NSString* prefsFile = [self path];
+    //init w/ default
+    NSString* prefsFile = [INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE];
+    
+    //not used defaults?
+    // use current profile
+    if(YES != useDefault)
+    {
+        prefsFile = [self path];
+    }
     
     //write out preferences
     if(YES != [self.preferences writeToFile:prefsFile atomically:YES])
