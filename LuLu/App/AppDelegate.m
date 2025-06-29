@@ -412,6 +412,19 @@ bail:
     return;
 }
 
+//profiles changed
+// update preferences window and status bar menu
+-(void)profilesChanged
+{
+    //tell preferences window
+    [self.prefsWindowController reload];
+    
+    //tell status menu
+    [self.statusBarItemController setProfile:[xpcDaemonClient getProfiles] current:[xpcDaemonClient getCurrentProfile]];
+
+    return;
+}
+
 //close window handler
 // close rules || pref window
 -(IBAction)closeWindow:(id)sender

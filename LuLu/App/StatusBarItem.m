@@ -120,18 +120,8 @@ enum menuItems
     [menu.itemArray[1] setEnabled:NO];
     [menu.itemArray[1] setAction:nil];
     
-    //no profiles?
-    // disable profiles 'Switch'
-    if(nil == [xpcDaemonClient getCurrentProfile])
-    {
-        //disable
-        [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) profileSwitchMenu] setEnabled:NO];
-    }
-    else
-    {
-        //enable
-        [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) profileSwitchMenu] setEnabled:YES];
-    }
+    //init profiles items/sub-menu
+    [self setProfile:[xpcDaemonClient getProfiles] current:[xpcDaemonClient getCurrentProfile]];
     
     return;
 }
@@ -415,6 +405,74 @@ bail:
     
     return;
 }
+
+//TODO: just ask XPC?
+//state current profile
+-(void)setProfile:(NSArray*)profiles current:(NSString*)current
+{
+    //grab menu
+    NSMenu* menu = [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesMenu];
+    
+    //set current profile
+    if(nil != current)
+    {
+        //(re)set to default
+        [self.statusItem.menu itemWithTag:profile].title = current;
+    }
+    //otherwise (re)set to default
+    else
+    {
+        //set
+        [self.statusItem.menu itemWithTag:profile].title = NSLocalizedString(@"Profile: Default", @"Profile: Default");
+    }
+    
+    //reset profiles menu
+    [menu removeAllItems];
+    
+    //have profiles?
+    // add each name and enable 'Switch' menu item
+    if(0 != profiles.count)
+    {
+        //enable
+        [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) profileSwitchMenuItem] setEnabled:YES];
+        
+        //add each name
+        for(NSString *name in profiles) {
+            
+            NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:name action:@selector(switchToProfile:) keyEquivalent:@""];
+            item.target = self;
+            item.representedObject = name;
+        
+            //add
+            [menu addItem:item];
+        }
+    }
+    //otherwise disable
+    else
+    {
+        //disable
+        [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) profileSwitchMenuItem] setEnabled:NO];
+    }
+}
+
+//switch profile
+- (void)switchToProfile:(NSMenuItem *)sender {
+    
+    //grab profile
+    NSString* profile = sender.representedObject;
+    
+    //set profile via XPC
+    [xpcDaemonClient setProfile:profile];
+    
+    //reload menu states
+    [self setProfile:[xpcDaemonClient getProfiles] current:[xpcDaemonClient getCurrentProfile]];
+    
+    //TODO: tell prefs? (need to reload prefs window, if open).
+    //TODO: handle other settings - like if profile is no menu mode?
+    
+    return;
+}
+
 
 //set menu status
 // logic based on 'isEnabled' iVar

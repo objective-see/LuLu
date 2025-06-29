@@ -254,6 +254,9 @@ extern NSMutableDictionary* alerts;
         
     }] getCurrentProfile:^(NSString* currrentProfileFromDaemon)
     {
+        //dbg msg
+        os_log_debug(logHandle, "current profile from daemon: '%{public}@'", currrentProfileFromDaemon);
+        
         //save
         currentProfile = currrentProfileFromDaemon;
     

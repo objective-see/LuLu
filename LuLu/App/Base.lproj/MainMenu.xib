@@ -14,8 +14,9 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
-                <outlet property="profileSwitchMenu" destination="ahR-T8-occ" id="REw-fe-7jh"/>
-                <outlet property="profilesMenu" destination="7kG-TA-f15" id="iyo-Ut-GhB"/>
+                <outlet property="profileSwitchMenuItem" destination="ahR-T8-occ" id="SWm-ux-zVF"/>
+                <outlet property="profilesMenu" destination="1HU-j3-Oa3" id="Mlf-Md-K1Q"/>
+                <outlet property="profilesMenuItem" destination="7kG-TA-f15" id="seZ-kC-yqm"/>
                 <outlet property="statusMenu" destination="bI7-kC-IUx" id="czq-O5-Zp6"/>
             </connections>
         </customObject>

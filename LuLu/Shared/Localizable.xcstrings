@@ -7210,6 +7210,9 @@
     "profile '%@' saved and activated" : {
       "comment" : "profile '%@' saved and activated"
     },
+    "Profile: Default" : {
+      "comment" : "Profile: Default"
+    },
     "Programs within \"%@/\"" : {
       "comment" : "Programs within \"%@/\"",
       "localizations" : {

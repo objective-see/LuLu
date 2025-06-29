@@ -159,4 +159,7 @@ enum profileViews
 //button handler for all preference buttons
 -(IBAction)togglePreference:(id)sender;
 
+//reload UI
+-(void)reload;
+
 @end

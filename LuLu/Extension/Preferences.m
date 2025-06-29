@@ -56,7 +56,7 @@ extern BlockOrAllowList* blockList;
         else
         {
             //init
-            preferences = [NSMutableDictionary dictionary];
+            self.preferences = [NSMutableDictionary dictionary];
         }
     }
     
@@ -111,7 +111,7 @@ bail:
     NSString* prefsFile = [self path];
     
     //load
-    preferences = [NSMutableDictionary dictionaryWithContentsOfFile:prefsFile];
+    self.preferences = [NSMutableDictionary dictionaryWithContentsOfFile:prefsFile];
     if(nil == self.preferences)
     {
         //err msg
@@ -268,6 +268,9 @@ bail:
 {
     //current
     NSString* currentProfile = nil;
+    
+    //dbg msg
+    os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
     
     //load *default* prefs
     NSDictionary* defaultPreferences = [NSDictionary dictionaryWithContentsOfFile:[INSTALL_DIRECTORY stringByAppendingPathComponent:PREFS_FILE]];

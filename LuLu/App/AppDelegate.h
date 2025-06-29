@@ -36,8 +36,15 @@
 
 //status bar menu/sub-menus
 @property(strong) IBOutlet NSMenu* statusMenu;
-@property(strong) IBOutlet NSMenuItem *profilesMenu;
-@property (weak) IBOutlet NSMenuItem *profileSwitchMenu;
+
+//profile menu item
+@property(strong) IBOutlet NSMenuItem *profilesMenuItem;
+
+//switch profile menu item
+@property (weak) IBOutlet NSMenuItem *profileSwitchMenuItem;
+
+//list of profiles mene
+@property (weak) IBOutlet NSMenu *profilesMenu;
 
 //status bar menu controller
 @property(nonatomic, retain)StatusBarItem* statusBarItemController;
@@ -78,6 +85,9 @@
 //preferences changed
 // for now, just check status bar icon setting
 -(void)preferencesChanged:(NSDictionary*)preferences;
+
+//profiles changed
+-(void)profilesChanged;
 
 //toggle (status) bar icon
 -(void)toggleIcon:(NSDictionary*)preferences;

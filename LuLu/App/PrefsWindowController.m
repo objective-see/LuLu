@@ -516,6 +516,9 @@ bail:
     
     //reload table
     [self.profilesTable reloadData];
+    
+    //tell app profiles changed
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
 
     return;
 }
@@ -527,7 +530,7 @@ bail:
     return self.profiles.count;
 }
 
-//view for each column+row
+//view for each column + row
 - (NSView *)tableView:(NSTableView *)tableView
    viewForTableColumn:(NSTableColumn *)tableColumn
                   row:(NSInteger)row
@@ -550,6 +553,8 @@ bail:
         
         //TODO: remove
         os_log_debug(logHandle, "checking %{public}@ with %{public}@", currentProfile, self.profiles[row]);
+        
+        //TODO: select row too?
         
         //no profile?
         // select row zero (default)
@@ -674,7 +679,7 @@ bail:
     //grab latest (now, new profile) preferences
     self.preferences = [xpcDaemonClient getPreferences];
     
-    //tell app they changed
+    //tell app all prefs changed
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
     
     return;
