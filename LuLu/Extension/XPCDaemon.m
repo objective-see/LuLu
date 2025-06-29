@@ -265,14 +265,14 @@ bail:
     return;
 }
 
-//get current profile
+//get current profile *name*
 -(void)getCurrentProfile:(void (^)(NSString* profile))reply
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
     
     //reply
-    reply([preferences getCurrentProfile]);
+    reply([[preferences getCurrentProfile] lastPathComponent]);
         
     return;
 }
@@ -291,8 +291,11 @@ bail:
 }
 
 //add profile
--(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences
+-(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences reply:(void (^)(BOOL))reply
 {
+    //flag
+    BOOL wasAdded = NO;
+    
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s' with %{public}@", __PRETTY_FUNCTION__, name);
     
@@ -306,17 +309,25 @@ bail:
         goto bail;
     }
     
+    //happy
+    wasAdded = YES;
+    
     //dbg msg
     os_log_debug(logHandle, "added new profile '%{public}@'", name);
     
 bail:
     
+    reply(wasAdded);
+    
     return;
 }
 
 //set profile
--(void)setProfile:(NSString*)name
+-(void)setProfile:(NSString*)name reply:(void (^)(BOOL))reply
 {
+    //flag
+    BOOL wasSet = NO;
+    
     //full path
     NSString* newProfilePath = nil;
     
@@ -339,15 +350,23 @@ bail:
     //reload prefs
     [preferences load];
     
+    //happy
+    wasSet = YES;
+    
     //dbg msg
     os_log_debug(logHandle, "set profile to %{public}@", newProfilePath ? newProfilePath : @"default");
+    
+    reply(wasSet);
     
     return;
 }
 
 //delete profile
--(void)deleteProfile:(NSString*)name
+-(void)deleteProfile:(NSString*)name reply:(void (^)(BOOL))reply
 {
+    //flag
+    BOOL wasDeleted = NO;
+    
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s' with name: %{public}@", __PRETTY_FUNCTION__, name);
     
@@ -367,10 +386,15 @@ bail:
         goto bail;
     }
     
+    //happy
+    wasDeleted = YES;
+    
     //dbg msg
     os_log_debug(logHandle, "deleted profile %{public}@", name);
     
 bail:
+    
+    reply(wasDeleted);
     
     return;
 }

@@ -147,7 +147,6 @@ enum profileViews
 @property (nonatomic) BOOL viewWasAdded;
 
 
-
 /* METHODS */
 
 //toolbar button handler

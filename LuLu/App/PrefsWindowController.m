@@ -71,8 +71,43 @@ extern XPCDaemonClient* xpcDaemonClient;
 // add it, and make it selected
 -(void)awakeFromNib
 {
+    //set subtitle
+    [self setSubTitle];
+    
     //get prefs
     self.preferences = [xpcDaemonClient getPreferences];
+    
+    return;
+}
+
+//set subtitle to current profile
+-(void)setSubTitle
+{
+    //dbg msg
+    os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
+    
+    //current profile
+    NSString* currentProfile = [xpcDaemonClient getCurrentProfile];
+    
+    //TODO: rem
+    os_log_debug(logHandle, "currentProfile: %{public}@", currentProfile);
+    
+    if(0 != currentProfile.length) {
+        
+        //add subtitle
+        if (@available(macOS 11.0, *)) {
+            self.window.subtitle = [NSString stringWithFormat:NSLocalizedString(@"Current Profile: %@",@"Current Profile: %@"), currentProfile];
+        }
+    }
+    //set to default
+    else
+    {
+        //set
+        if (@available(macOS 11.0, *)) {
+            self.window.subtitle = NSLocalizedString(@"Current Profile: Default",@"Current Profile: Default");
+        }
+    }
+    
     return;
 }
 
@@ -94,7 +129,6 @@ extern XPCDaemonClient* xpcDaemonClient;
     
     return;
 }
-
 
 //toolbar view handler
 // toggle view based on user selection
@@ -215,8 +249,17 @@ extern XPCDaemonClient* xpcDaemonClient;
             //set view
             view = self.profilesView;
             
-            //reload
-            [self reloadProfiles];
+            //send XPC msg to daemon get profiles
+            self.profiles = [xpcDaemonClient getProfiles];
+            
+            //manually add default at start
+            [self.profiles insertObject:@"Default" atIndex:0];
+            
+            //dbg msg
+            os_log_debug(logHandle, "list of profiles: %{public}@", self.profiles);
+            
+            //reload table
+            [self.profilesTable reloadData];
             
             break;
             
@@ -235,13 +278,22 @@ extern XPCDaemonClient* xpcDaemonClient;
             break;
             
         default:
-            
-            //bail
-            goto bail;
+            return;
     }
-    
-    //set window size to match each pref's view
-    [self.window setFrame:NSMakeRect(self.window.frame.origin.x, NSMaxY(self.window.frame) - view.frame.size.height, view.frame.size.width, view.frame.size.height) display:YES];
+
+    // Resize window to fit the view’s height (keeping top edge fixed)
+    NSRect windowFrame = self.window.frame;
+    CGFloat newHeight = view.frame.size.height + 50; //toolbar
+    CGFloat newWidth = view.frame.size.width;
+    CGFloat deltaY = NSMaxY(windowFrame) - newHeight;
+    [self.window setFrame:NSMakeRect(windowFrame.origin.x, deltaY, newWidth, newHeight) display:YES];
+
+    // Position view so its top aligns with the window’s contentView top
+    NSView *container = self.window.contentView;
+    NSRect viewFrame = view.frame;
+    viewFrame.origin.y = container.bounds.size.height - viewFrame.size.height;
+    viewFrame.origin.x = 0;
+    view.frame = viewFrame;
     
     //add to window
     [self.window.contentView addSubview:view];
@@ -499,28 +551,26 @@ bail:
     return;
 }
 
-//reload profiles/UI
--(void)reloadProfiles
+//reload current toolbar view (as profile changed)
+// ...by triggering a 'click' to our toolbar button handler
+-(void)reload
 {
     //dbg msg
     os_log_debug(logHandle, "%s invoked", __PRETTY_FUNCTION__);
     
-    //send XPC msg to daemon get profiles
-    self.profiles = [xpcDaemonClient getProfiles];
+    //(re)set subtitle
+    [self setSubTitle];
     
-    //manually add default at start
-    [self.profiles insertObject:@"Default" atIndex:0];
-    
-    //dbg msg
-    os_log_debug(logHandle, "list of profiles: %{public}@", self.profiles);
-    
-    //reload table
-    [self.profilesTable reloadData];
-    
-    //tell app profiles changed
-    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
+    //selected ID
+    NSToolbarItemIdentifier selectedID = self.toolbar.selectedItemIdentifier;
 
-    return;
+    //selected item
+    NSToolbarItem *toolbarItem = [[self.toolbar items]
+        filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"itemIdentifier == %@", selectedID]].firstObject;
+
+    //trigger reload
+    [self toolbarButtonHandler:toolbarItem];
+    
 }
 
 #pragma mark – Profile's table delegates
@@ -554,10 +604,8 @@ bail:
         //TODO: remove
         os_log_debug(logHandle, "checking %{public}@ with %{public}@", currentProfile, self.profiles[row]);
         
-        //TODO: select row too?
-        
         //no profile?
-        // select row zero (default)
+        // select button/row zero (default)
         if( (0 == row) &&
             (nil == currentProfile) )
         {
@@ -566,6 +614,9 @@ bail:
             
             //select
             selectButton.state = NSControlStateValueOn;
+            
+            //select row too
+            [tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
         }
         //profile matches current?
         else if(YES == [currentProfile isEqualToString:self.profiles[row]])
@@ -575,6 +626,9 @@ bail:
             
             //select
             selectButton.state = NSControlStateValueOn;
+            
+            //select row too
+            [tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
         }
         else
         {
@@ -673,13 +727,13 @@ bail:
     //set profile via XPC
     [xpcDaemonClient setProfile:profile];
     
-    //reload profiles
-    [self reloadProfiles];
-
-    //grab latest (now, new profile) preferences
+    //tell app profiles changed
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
+    
+    //now grab (new profile's) preferences
     self.preferences = [xpcDaemonClient getPreferences];
     
-    //tell app all prefs changed
+    //tell app preferences changed
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
     
     return;
@@ -714,6 +768,9 @@ bail:
     //add initial (profile name) view
     [self.addProfileSheet.contentView addSubview:self.currentProfileSubview];
     
+    //reset button name
+    self.continueProfileButton.title = NSLocalizedString(@"Next", @"Next");
+    
     //show sheet for user to specify settings
     [self.window beginSheet:self.addProfileSheet
                completionHandler:^(NSModalResponse returnCode) {
@@ -731,22 +788,17 @@ bail:
                 //hide profile sheet
                 [self.addProfileSheet orderOut:self];
                 
-                //reload
-                [self reloadProfiles];
+                //tell app profiles changed
+                [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
                 
-                //show alert
-                showAlert(NSAlertStyleInformational, NSLocalizedString(@"Added Profile", @"Added Profile"), [NSString stringWithFormat:NSLocalizedString(@"profile '%@' saved and activated", @"profile '%@' saved and activated"), self.profileName], @[NSLocalizedString(@"OK", @"OK")]);
-                
-                //dbg msg
-                os_log_debug(logHandle, "grabbing (updated) preferences");
-            
                 //now grab (profile's) preferences
                 self.preferences = [xpcDaemonClient getPreferences];
                 
-                //tell app they changed
+                //tell app preferences changed
                 [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
                 
-                
+                //show alert
+                showAlert(NSAlertStyleInformational, NSLocalizedString(@"Added Profile", @"Added Profile"), [NSString stringWithFormat:NSLocalizedString(@"profile '%@' saved and activated", @"profile '%@' saved and activated"), self.profileName], @[NSLocalizedString(@"OK", @"OK")]);
             }
             
             //cancel
@@ -774,7 +826,7 @@ bail:
 - (IBAction)continueProfileButtonHandler:(NSButton*)sender {
     
     //switch on current view
-    // last view, will add profile
+    // last view, will add the profile
     switch (sender.tag) {
             
         //current view: name
@@ -872,14 +924,22 @@ bail:
             break;
     }
     
+    //uncheck all checks buttons (might be set from current preferences)
+    for (NSView *subview in self.currentProfileSubview.subviews) {
+        if ([subview isKindOfClass:[NSButton class]]) {
+            NSButton *button = (NSButton *)subview;
+            // Uncheck only if the button has a toggleable state
+                if (button.allowsMixedState || button.state != NSControlStateValueOff) {
+                    button.state = NSControlStateValueOff;
+                }
+        }
+    }
+    
     //update view's fame
     NSRect bounds = self.addProfileSheet.contentView.bounds;
     NSRect frame = self.currentProfileSubview.frame;
     frame.origin.x  = 0;
     frame.origin.y  = bounds.size.height - frame.size.height;
-    
-    //toolbar
-    frame.origin.y += 50;
     
     //set frame
     self.currentProfileSubview.frame = frame;
@@ -897,15 +957,22 @@ bail:
     profile = [self profileFromTable:sender];
     
     //dbg msg
-    os_log_debug(logHandle, "user wants to delete profile '%{public}@'", profile ? profile : @"default");
+    os_log_debug(logHandle, "user wants to delete profile '%{public}@'", profile);
     
     //delete via XPC
     [xpcDaemonClient deleteProfile:profile];
     
-    //reload UI
-    [self reloadProfiles];
+    //dbg msg
+    os_log_debug(logHandle, "deleted profile '%{public}@'", profile);
     
-bail:
+    //tell app profiles changed
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
+    
+    //now grab (profile's) preferences
+    self.preferences = [xpcDaemonClient getPreferences];
+    
+    //tell app preferences (maybe) changed
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
     
     return;
 }

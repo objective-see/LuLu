@@ -121,7 +121,7 @@ enum menuItems
     [menu.itemArray[1] setAction:nil];
     
     //init profiles items/sub-menu
-    [self setProfile:[xpcDaemonClient getProfiles] current:[xpcDaemonClient getCurrentProfile]];
+    [self setProfile];
     
     return;
 }
@@ -406,18 +406,23 @@ bail:
     return;
 }
 
-//TODO: just ask XPC?
-//state current profile
--(void)setProfile:(NSArray*)profiles current:(NSString*)current
+//set current profile
+-(void)setProfile
 {
+    //current
+    NSString* current = [xpcDaemonClient getCurrentProfile];
+    
+    //profiles
+    NSMutableArray* profiles = [[xpcDaemonClient getProfiles] mutableCopy];
+    
     //grab menu
     NSMenu* menu = [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesMenu];
     
     //set current profile
     if(nil != current)
     {
-        //(re)set to default
-        [self.statusItem.menu itemWithTag:profile].title = current;
+        //set
+        [self.statusItem.menu itemWithTag:profile].title = [NSString stringWithFormat:NSLocalizedString(@"Profile: %@", @"Profile: %@"), current];
     }
     //otherwise (re)set to default
     else
@@ -435,6 +440,9 @@ bail:
     {
         //enable
         [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) profileSwitchMenuItem] setEnabled:YES];
+        
+        //add default first/top
+        [profiles insertObject:NSLocalizedString(@"Default", @"Default") atIndex:0];
         
         //add each name
         for(NSString *name in profiles) {
@@ -465,7 +473,7 @@ bail:
     [xpcDaemonClient setProfile:profile];
     
     //reload menu states
-    [self setProfile:[xpcDaemonClient getProfiles] current:[xpcDaemonClient getCurrentProfile]];
+    [self setProfile];
     
     //TODO: tell prefs? (need to reload prefs window, if open).
     //TODO: handle other settings - like if profile is no menu mode?

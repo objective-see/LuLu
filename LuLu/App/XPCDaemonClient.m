@@ -294,8 +294,11 @@ extern NSMutableDictionary* alerts;
 }
 
 //set profile
--(void)setProfile:(NSString*)name
+-(BOOL)setProfile:(NSString*)name
 {
+    //flag
+    __block BOOL wasSet = NO;
+    
     //dbg msg
     os_log_debug(logHandle, "invoking daemon XPC method, '%s' with name: %{public}@", __PRETTY_FUNCTION__, name);
     
@@ -305,14 +308,25 @@ extern NSMutableDictionary* alerts;
         //err msg
         os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
         
-    }] setProfile:name];
+    }] setProfile:name reply:^(BOOL reply)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "daemon XPC method, '%s', done!", __PRETTY_FUNCTION__);
+          
+        //set flag
+        wasSet = reply;
+          
+    }];
     
-    return;
+    return wasSet;
 }
 
 //add profile
--(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences
+-(BOOL)addProfile:(NSString*)name preferences:(NSDictionary*)preferences
 {
+    //flag
+    __block BOOL wasAdded = NO;
+    
     //dbg msg
     os_log_debug(logHandle, "invoking daemon XPC method, '%s' with %{public}@", __PRETTY_FUNCTION__, name);
     
@@ -322,14 +336,25 @@ extern NSMutableDictionary* alerts;
         //err msg
         os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
         
-    }] addProfile:name preferences:preferences];
+    }] addProfile:name preferences:preferences reply:^(BOOL reply)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "daemon XPC method, '%s', done!", __PRETTY_FUNCTION__);
+          
+        //set flag
+        wasAdded = reply;
+          
+    }];
     
-    return;
+    return wasAdded;
 }
 
 //delete profile
--(void)deleteProfile:(NSString*)name
+-(BOOL)deleteProfile:(NSString*)name
 {
+    //flag
+    __block BOOL wasDeleted = NO;
+    
     //dbg msg
     os_log_debug(logHandle, "invoking daemon XPC method, '%s' with name: %{public}@", __PRETTY_FUNCTION__, name);
     
@@ -339,11 +364,21 @@ extern NSMutableDictionary* alerts;
         //err msg
         os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
         
-    }] deleteProfile:name];
+    }] deleteProfile:name reply:^(BOOL reply)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "daemon XPC method, '%s', done!", __PRETTY_FUNCTION__);
+         
+        //set flag
+        wasDeleted = reply;
+         
+    }];
     
-    return;
+    //dbg msg
+    os_log_debug(logHandle, "daemon XPC method, '%s' with name: %{public}@ returned", __PRETTY_FUNCTION__, name);
+    
+    return wasDeleted;
 }
-
 
 //uninstall
 -(BOOL)uninstall
@@ -366,7 +401,7 @@ extern NSMutableDictionary* alerts;
         os_log_debug(logHandle, "daemon XPC method, '%s', done!", __PRETTY_FUNCTION__);
         
         //set flag
-        uninstalled = YES;
+        uninstalled = result;
         
     }];
     

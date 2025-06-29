@@ -86,6 +86,9 @@ bail:
     BOOL wasAdded = NO;
     NSError* error = nil;
     NSString *newProfilePath = nil;
+    
+    //dbg msg
+    os_log_debug(logHandle, "method '%s' invoked with %{public}@ / %{public}@", __PRETTY_FUNCTION__, name, newPreferences);
 
     //create base profiles directory if needed
     if(YES != [NSFileManager.defaultManager fileExistsAtPath:self.directory])
@@ -137,12 +140,34 @@ bail:
         goto bail;
     }
     
+    //dbg msg
+    os_log_debug(logHandle, "created profile directory: %{public}@", newProfilePath);
+    
     //set as current
     [self set:newProfilePath];
     
-    //save prefs
+    //save new prefs
     // replacing all
     [preferences update:newPreferences replace:YES];
+    
+    //clear out all rules
+    @synchronized (rules) {
+        
+        [rules.rules removeAllObjects];
+    }
+    
+    //generate default rules
+    if(YES != [rules generateDefaultRules])
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to generate default rules");
+        
+        //bail
+        goto bail;
+    }
+    
+    //save
+    [rules save];
     
     //reload rules
     [rules load];
@@ -200,7 +225,10 @@ bail:
     os_log_debug(logHandle, "deleted profile directory: %{public}@", profile);
     
     //get current
-    current = [[preferences getCurrentProfile] lastPathComponent];
+    current = [preferences getCurrentProfile];
+    
+    //dbg msg
+    os_log_debug(logHandle, "checking if %{public}@ matches current %{public}@", profile, current);
     
     //was current?
     if(YES == [profile isEqualToString:current])

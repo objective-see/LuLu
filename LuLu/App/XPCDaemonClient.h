@@ -50,13 +50,13 @@
 -(NSMutableArray*)getProfiles;
 
 //set profile
--(void)setProfile:(NSString*)name;
+-(BOOL)setProfile:(NSString*)name;
 
 //add profile
--(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences;
+-(BOOL)addProfile:(NSString*)name preferences:(NSDictionary*)preferences;
 
 //delete profile
--(void)deleteProfile:(NSString*)name;
+-(BOOL)deleteProfile:(NSString*)name;
 
 //uninstall
 -(BOOL)uninstall;

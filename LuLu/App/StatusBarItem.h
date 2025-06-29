@@ -38,7 +38,7 @@
 //init
 -(id)init:(NSMenu*)menu preferences:(NSDictionary*)preferences;
 
-//set profile
--(void)setProfile:(NSArray*)profiles current:(NSString*)current;
+//set to current profile
+-(void)setProfile;
 
 @end

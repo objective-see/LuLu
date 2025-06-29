@@ -39,13 +39,13 @@
 -(void)getProfiles:(void (^)(NSArray*))reply;
 
 //add profile
--(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences;
+-(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences reply:(void (^)(BOOL))reply;
 
 //delete profile
--(void)deleteProfile:(NSString*)name;
+-(void)deleteProfile:(NSString*)name reply:(void (^)(BOOL))reply;
 
 //set profile
--(void)setProfile:(NSString*)name;
+-(void)setProfile:(NSString*)name reply:(void (^)(BOOL))reply;
 
 //uninstall
 -(void)uninstall:(void (^)(BOOL))reply;

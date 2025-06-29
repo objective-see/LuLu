@@ -1132,6 +1132,9 @@ bail:
     //archived rules
     NSData* archivedRules = nil;
     
+    //dbg msg
+    os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
+    
     //init
     persistentRules = [NSMutableDictionary dictionary];
     

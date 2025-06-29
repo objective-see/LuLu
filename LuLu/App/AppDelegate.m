@@ -406,6 +406,9 @@ bail:
 // for now, just check status bar icon setting
 -(void)preferencesChanged:(NSDictionary*)preferences
 {
+    //dbg msg
+    os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
+    
     //update status bar
     [self toggleIcon:preferences];
     
@@ -416,11 +419,14 @@ bail:
 // update preferences window and status bar menu
 -(void)profilesChanged
 {
+    //dbg msg
+    os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
+    
     //tell preferences window
     [self.prefsWindowController reload];
     
     //tell status menu
-    [self.statusBarItemController setProfile:[xpcDaemonClient getProfiles] current:[xpcDaemonClient getCurrentProfile]];
+    [self.statusBarItemController setProfile];
 
     return;
 }

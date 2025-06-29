@@ -90,7 +90,7 @@ bail:
     if(nil != currentProfile)
     {
         //set
-        path = currentProfile;
+        path = [currentProfile stringByAppendingPathComponent:PREFS_FILE];
     }
     
 bail:
@@ -240,6 +240,9 @@ bail:
     //flag
     BOOL wasSaved = NO;
     
+    //dbg msg
+    os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
+    
     //init w/ default
     NSString* prefsFile = [self path];
     
@@ -285,7 +288,7 @@ bail:
 }
 
 //set current profile
-// this is saved in the default preferences (and may be nil)
+// this is saved in the *default* preferences (and may be nil)
 -(void)setCurrentProfile:(NSString*)profilePath
 {
     //default pref's file
