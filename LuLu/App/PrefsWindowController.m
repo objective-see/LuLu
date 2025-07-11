@@ -558,6 +558,9 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "%s invoked", __PRETTY_FUNCTION__);
     
+    //grab (profile's) preferences
+    self.preferences = [xpcDaemonClient getPreferences];
+    
     //(re)set subtitle
     [self setSubTitle];
     
@@ -565,12 +568,13 @@ bail:
     NSToolbarItemIdentifier selectedID = self.toolbar.selectedItemIdentifier;
 
     //selected item
-    NSToolbarItem *toolbarItem = [[self.toolbar items]
+    NSToolbarItem* toolbarItem = [[self.toolbar items]
         filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"itemIdentifier == %@", selectedID]].firstObject;
 
     //trigger reload
     [self toolbarButtonHandler:toolbarItem];
     
+    return;
 }
 
 #pragma mark – Profile's table delegates
@@ -722,18 +726,16 @@ bail:
     profile = [self profileFromTable:sender];
     
     //dbg msg
-    os_log_debug(logHandle, "user wants to change profile to '%{public}@'", profile ? profile : @"default");
+    os_log_debug(logHandle, "user wants to change profile to '%{public}@'", profile ? profile : @"Default");
     
     //set profile via XPC
     [xpcDaemonClient setProfile:profile];
     
     //tell app profiles changed
+    // will grab profile's preferences too
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
-    
-    //now grab (new profile's) preferences
-    self.preferences = [xpcDaemonClient getPreferences];
-    
-    //tell app preferences changed
+
+    //also tell app preferences changed
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
     
     return;
@@ -789,16 +791,14 @@ bail:
                 [self.addProfileSheet orderOut:self];
                 
                 //tell app profiles changed
+                // will grab profile's preferences too
                 [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
-                
-                //now grab (profile's) preferences
-                self.preferences = [xpcDaemonClient getPreferences];
                 
                 //tell app preferences changed
                 [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
                 
                 //show alert
-                showAlert(NSAlertStyleInformational, NSLocalizedString(@"Added Profile", @"Added Profile"), [NSString stringWithFormat:NSLocalizedString(@"profile '%@' saved and activated", @"profile '%@' saved and activated"), self.profileName], @[NSLocalizedString(@"OK", @"OK")]);
+                showAlert(NSAlertStyleInformational, NSLocalizedString(@"Added Profile", @"Added Profile"), [NSString stringWithFormat:NSLocalizedString(@"New profile '%@' saved and activated.", @"New profile '%@' saved and activated."), self.profileName], @[NSLocalizedString(@"OK", @"OK")]);
             }
             
             //cancel
@@ -832,6 +832,35 @@ bail:
         //current view: name
         // setup next view: rules
         case profileName:
+        {
+            //check against 'Default'
+            if(NSOrderedSame == [self.profileNameLabel.stringValue caseInsensitiveCompare:NSLocalizedString(@"Default", @"Default")])
+            {
+                //show alert
+                showAlert(NSAlertStyleInformational, NSLocalizedString(@"Invalid Profile Name", @"Invalid Profile Name"), NSLocalizedString(@"'Default' is a reserved profile name.", @"'Default' is a reserved profile name."), @[NSLocalizedString(@"OK", @"OK")]);
+                
+                //reset
+                self.profileNameLabel.stringValue = @"";
+                
+                //done
+                goto bail;
+            }
+            
+            //check against existing names
+            for(NSString *name in [xpcDaemonClient getProfiles])
+            {
+                if(NSOrderedSame == [self.profileNameLabel.stringValue caseInsensitiveCompare:name])
+                {
+                    //show alert
+                    showAlert(NSAlertStyleInformational, NSLocalizedString(@"Invalid Profile Name", @"Invalid Profile Name"), [NSString stringWithFormat:NSLocalizedString(@"'%@' matches an existing profile name.", @"'%@' matches an existing profile name."), name], @[NSLocalizedString(@"OK", @"OK")]);
+                    
+                    //reset
+                    self.profileNameLabel.stringValue = @"";
+                    
+                    //done
+                    goto bail;
+                }
+            }
             
             //save name
             self.profileName = self.profileNameLabel.stringValue;
@@ -852,6 +881,7 @@ bail:
             self.continueProfileButton.tag = profileRules;
             
             break;
+        }
             
         //current view: rules
         // setup next view: modes
@@ -943,6 +973,8 @@ bail:
     
     //set frame
     self.currentProfileSubview.frame = frame;
+    
+bail:
 
     return;
 }
@@ -966,10 +998,8 @@ bail:
     os_log_debug(logHandle, "deleted profile '%{public}@'", profile);
     
     //tell app profiles changed
+    // will grab profile's preferences too
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
-    
-    //now grab (profile's) preferences
-    self.preferences = [xpcDaemonClient getPreferences];
     
     //tell app preferences (maybe) changed
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];

@@ -82,6 +82,8 @@ bail:
     {
         //dbg msg
         os_log_debug(logHandle, "default preferences file '%{public}@' not found ...first time?", path);
+        
+        //done
         goto bail;
     }
     

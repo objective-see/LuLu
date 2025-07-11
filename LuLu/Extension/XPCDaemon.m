@@ -34,7 +34,7 @@ extern os_log_t logHandle;
 @implementation XPCDaemon
 
 //send preferences to the client
--(void)getPreferences:(void (^)(NSDictionary* preferences))reply
+-(void)getPreferences:(void (^)(NSDictionary*))reply
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
@@ -47,7 +47,7 @@ extern os_log_t logHandle;
 
 //update preferences
 // note: sends full preferences back to the client
--(void)updatePreferences:(NSDictionary *)updates reply:(void (^)(NSDictionary*))reply
+-(void)updatePreferences:(NSDictionary*)updates reply:(void (^)(NSDictionary*))reply
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s' (%{public}@)", __PRETTY_FUNCTION__, updates);
@@ -266,7 +266,7 @@ bail:
 }
 
 //get current profile *name*
--(void)getCurrentProfile:(void (^)(NSString* profile))reply
+-(void)getCurrentProfile:(void (^)(NSString*))reply
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
@@ -278,7 +278,7 @@ bail:
 }
 
 //get list of profile names
--(void)getProfiles:(void (^)(NSArray* preferences))reply
+-(void)getProfiles:(void (^)(NSArray*))reply
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
@@ -341,11 +341,17 @@ bail:
         newProfilePath = [profiles.directory stringByAppendingPathComponent:name];
     }
     
+    //TODO: rem
+    os_log_debug(logHandle, "invoking %{public}@ 'set:' with %{public}@", profiles, newProfilePath);
+    
     //set
     [profiles set:newProfilePath];
     
     //reload rules
     [rules load];
+    
+    //TODO: rem
+    os_log_debug(logHandle, "invoking %{public}@ 'load'", preferences);
     
     //reload prefs
     [preferences load];
@@ -354,7 +360,7 @@ bail:
     wasSet = YES;
     
     //dbg msg
-    os_log_debug(logHandle, "set profile to %{public}@", newProfilePath ? newProfilePath : @"default");
+    os_log_debug(logHandle, "set profile to %{public}@", newProfilePath ? newProfilePath : @"Default");
     
     reply(wasSet);
     

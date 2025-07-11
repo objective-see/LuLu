@@ -413,7 +413,7 @@ bail:
     NSString* current = [xpcDaemonClient getCurrentProfile];
     
     //profiles
-    NSMutableArray* profiles = [[xpcDaemonClient getProfiles] mutableCopy];
+    NSMutableArray* profiles = [xpcDaemonClient getProfiles];
     
     //grab menu
     NSMenu* menu = [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesMenu];
@@ -445,12 +445,22 @@ bail:
         [profiles insertObject:NSLocalizedString(@"Default", @"Default") atIndex:0];
         
         //add each name
-        for(NSString *name in profiles) {
+        for(NSString *name in profiles)
+        {
+            //menu item
+            NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:name action:@selector(switchToProfile:) keyEquivalent:@""];
             
-            NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:name action:@selector(switchToProfile:) keyEquivalent:@""];
+            //target
             item.target = self;
-            item.representedObject = name;
-        
+            
+            //name
+            // though keep default 'nil'
+            if(NSOrderedSame != [name caseInsensitiveCompare:NSLocalizedString(@"Default", @"Default")])
+            {
+                //set
+                item.representedObject = name;
+            }
+            
             //add
             [menu addItem:item];
         }
@@ -469,14 +479,19 @@ bail:
     //grab profile
     NSString* profile = sender.representedObject;
     
+    //dbg msg
+    os_log_debug(logHandle, "user wants to change profile to '%{public}@'", profile ? profile : @"Default");
+    
     //set profile via XPC
+    // nil is ok, means (re)set to default
     [xpcDaemonClient setProfile:profile];
     
-    //reload menu states
-    [self setProfile];
+    //tell app profiles changed
+    // will also update status menu
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
     
-    //TODO: tell prefs? (need to reload prefs window, if open).
-    //TODO: handle other settings - like if profile is no menu mode?
+    //tell app preferences changed
+    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:[xpcDaemonClient getPreferences]];
     
     return;
 }
