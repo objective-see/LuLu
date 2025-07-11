@@ -738,6 +738,9 @@ bail:
     //also tell app preferences changed
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
     
+    //show alert
+    showAlert(NSAlertStyleInformational, NSLocalizedString(@"Profile Switched", @"Profile Switched"), [NSString stringWithFormat:NSLocalizedString(@"Current profile is now: '%@.'", @"Current profile is now: '%@.'"), nil != profile ? profile : NSLocalizedString(@"Default", @"Default")], @[NSLocalizedString(@"OK", @"OK")]);
+    
     return;
 }
 
@@ -823,7 +826,7 @@ bail:
 
 //show next view
 // note: each case is current view, going to next!
-- (IBAction)continueProfileButtonHandler:(NSButton*)sender {
+-(IBAction)continueProfileButtonHandler:(NSButton*)sender {
     
     //switch on current view
     // last view, will add the profile
@@ -982,6 +985,9 @@ bail:
 //delete profile button handler
 -(IBAction)deleteProfile:(id)sender {
     
+    //response
+    NSModalResponse response = 0;
+    
     //name
     NSString* profile = nil;
 
@@ -990,6 +996,19 @@ bail:
     
     //dbg msg
     os_log_debug(logHandle, "user wants to delete profile '%{public}@'", profile);
+    
+    //show alert
+    response = showAlert(NSAlertStyleInformational, NSLocalizedString(@"Confirm Deletion", @"Confirm Deletion"), [NSString stringWithFormat:NSLocalizedString(@"Delete profile: '%@'?", @"Delete profile: '%@'?"), profile], @[NSLocalizedString(@"Ok", @"Ok"), NSLocalizedString(@"Cancel", @"Cancel")]);
+    
+    //cancel?
+    if(NSAlertSecondButtonReturn == response)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "user canceled deleting profile...");
+        
+        //done
+        goto bail;
+    }
     
     //delete via XPC
     [xpcDaemonClient deleteProfile:profile];
@@ -1003,6 +1022,8 @@ bail:
     
     //tell app preferences (maybe) changed
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
+    
+bail:
     
     return;
 }

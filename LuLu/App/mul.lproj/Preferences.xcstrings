@@ -505,6 +505,18 @@
         }
       }
     },
+    "7vn-ff-PJk.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Note: A profile defines a set of rules and settings. Once activated, its settings apply LuLu-wide (and can be modified via LuLu's Settings panes). Any new rules will be added only to that profile's ruleset.\"; ObjectID = \"7vn-ff-PJk\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Note: A profile defines a set of rules and settings. Once activated, its settings apply LuLu-wide (and can be modified via LuLu's Settings panes). Any new rules will be added only to that profile's ruleset."
+          }
+        }
+      }
+    },
     "9ts-yW-4uE.headerCell.title" : {
       "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Selected Profile\"; ObjectID = \"9ts-yW-4uE\";",
       "extractionState" : "extracted_with_value",

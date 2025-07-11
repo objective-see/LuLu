@@ -37,7 +37,7 @@
         <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="196" y="240" width="650" height="450"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1720" height="695"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1710" height="1068"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="650" height="450"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,7 +67,7 @@
                             <action selector="toolbarButtonHandler:" target="-2" id="i0e-Tc-OaX"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="D48AE3A4-6AC7-4E2D-9026-47CD30E3D727" explicitItemIdentifier="Profiles" label="Profiles" paletteLabel="Profiles" tag="3" image="AppIcon" selectable="YES" id="5li-Ut-Gsb">
+                    <toolbarItem implicitItemIdentifier="D48AE3A4-6AC7-4E2D-9026-47CD30E3D727" explicitItemIdentifier="Profiles" label="Profiles" paletteLabel="Profiles" tag="3" image="PrefsProfiles" selectable="YES" id="5li-Ut-Gsb">
                         <size key="minSize" width="22" height="22"/>
                         <size key="maxSize" width="22" height="22"/>
                         <connections>
@@ -711,7 +711,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <button tag="101" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hxj-Ur-U0j">
-                                                        <rect key="frame" x="309" y="0.0" width="20" height="21"/>
+                                                        <rect key="frame" x="464" y="2" width="20" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSStopProgressFreestandingTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="aMR-uQ-XJ3">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -760,6 +760,26 @@
                         <action selector="addProfile:" target="-2" id="UPM-Mu-xbx"/>
                     </connections>
                 </button>
+                <box fixedFrame="YES" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7Qe-7Y-13Z">
+                    <rect key="frame" x="42" y="16" width="566" height="67"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <view key="contentView" id="I9Y-vf-Pty">
+                        <rect key="frame" x="4" y="5" width="558" height="59"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="z5d-7h-d7r">
+                                <rect key="frame" x="18" y="2" width="522" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="justified" id="7vn-ff-PJk">
+                                    <font key="font" size="11" name="Menlo-Regular"/>
+                                    <string key="title">Note: A profile defines a set of rules and settings. Once activated, its settings apply LuLu-wide (and can be modified via LuLu's Settings panes). Any new rules will be added only to that profile's ruleset.</string>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </box>
             </subviews>
             <point key="canvasLocation" x="-137" y="1038"/>
         </customView>
@@ -853,10 +873,10 @@ Then click "Next" to configure the settings for your new profile.</string>
         </customView>
     </objects>
     <resources>
-        <image name="AppIcon" width="128" height="128"/>
         <image name="NSStopProgressFreestandingTemplate" width="20" height="20"/>
         <image name="PrefsList" width="128" height="128"/>
         <image name="PrefsMode" width="72" height="72"/>
+        <image name="PrefsProfiles" width="612" height="792"/>
         <image name="PrefsRules" width="72" height="72"/>
         <image name="PrefsUpdate" width="72" height="72"/>
     </resources>

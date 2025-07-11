@@ -4115,6 +4115,9 @@
         }
       }
     },
+    "Confirm Deletion" : {
+      "comment" : "Confirm Deletion"
+    },
     "Continue" : {
       "comment" : "Continue",
       "localizations" : {
@@ -4192,6 +4195,9 @@
         }
       }
     },
+    "Current profile is now: '%@.'" : {
+      "comment" : "Current profile is now: '%@.'"
+    },
     "Current Profile: %@" : {
       "comment" : "Current Profile: %@"
     },
@@ -4200,6 +4206,9 @@
     },
     "Default" : {
       "comment" : "Default"
+    },
+    "Delete profile: '%@'?" : {
+      "comment" : "Delete profile: '%@'?"
     },
     "Directory Rules apply to all items within the directory" : {
       "comment" : "Directory Rules apply to all items within the directory",
@@ -6692,6 +6701,9 @@
         }
       }
     },
+    "Ok" : {
+      "comment" : "Ok"
+    },
     "OK" : {
       "comment" : "OK",
       "localizations" : {
@@ -7230,6 +7242,9 @@
           }
         }
       }
+    },
+    "Profile Switched" : {
+      "comment" : "Profile Switched"
     },
     "Profile: %@" : {
       "comment" : "Profile: %@"
