@@ -4195,8 +4195,8 @@
         }
       }
     },
-    "Current profile is now: '%@.'" : {
-      "comment" : "Current profile is now: '%@.'"
+    "Current profile is now: '%@'." : {
+      "comment" : "Current profile is now: '%@'."
     },
     "Current Profile: %@" : {
       "comment" : "Current Profile: %@"

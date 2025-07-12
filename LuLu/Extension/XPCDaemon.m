@@ -341,17 +341,11 @@ bail:
         newProfilePath = [profiles.directory stringByAppendingPathComponent:name];
     }
     
-    //TODO: rem
-    os_log_debug(logHandle, "invoking %{public}@ 'set:' with %{public}@", profiles, newProfilePath);
-    
     //set
     [profiles set:newProfilePath];
     
     //reload rules
     [rules load];
-    
-    //TODO: rem
-    os_log_debug(logHandle, "invoking %{public}@ 'load'", preferences);
     
     //reload prefs
     [preferences load];

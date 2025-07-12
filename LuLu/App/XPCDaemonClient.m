@@ -282,9 +282,6 @@ extern NSMutableDictionary* alerts;
         
     }] getProfiles:^(NSArray* profilesFromDaemon)
     {
-        //TODO: rem
-        os_log_debug(logHandle, "profilesFromDaemon '%{public}@'", profilesFromDaemon);
-        
         //save
         profiles = [profilesFromDaemon mutableCopy];
     

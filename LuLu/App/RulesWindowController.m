@@ -58,7 +58,39 @@ extern XPCDaemonClient* xpcDaemonClient;
     
     //load rules
     [self loadRules:YES select:@0];
+    
+    //set subtitle
+    [self setSubTitle];
 
+    return;
+}
+
+//set subtitle to current profile
+-(void)setSubTitle
+{
+    //dbg msg
+    os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
+    
+    //current profile
+    NSString* currentProfile = [xpcDaemonClient getCurrentProfile];
+    
+    //have profile?
+    if(0 != currentProfile.length) {
+        
+        //add subtitle
+        if (@available(macOS 11.0, *)) {
+            self.window.subtitle = [NSString stringWithFormat:NSLocalizedString(@"Current Profile: %@",@"Current Profile: %@"), currentProfile];
+        }
+    }
+    //set to default
+    else
+    {
+        //set
+        if (@available(macOS 11.0, *)) {
+            self.window.subtitle = NSLocalizedString(@"Current Profile: Default",@"Current Profile: Default");
+        }
+    }
+    
     return;
 }
 

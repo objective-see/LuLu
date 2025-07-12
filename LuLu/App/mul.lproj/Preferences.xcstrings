@@ -1489,6 +1489,18 @@
         }
       }
     },
+    "I4i-8n-Kep.placeholderString" : {
+      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"Profile Name\"; ObjectID = \"I4i-8n-Kep\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Profile Name"
+          }
+        }
+      }
+    },
     "ICK-Xr-yt1.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Add Profile\"; ObjectID = \"ICK-Xr-yt1\";",
       "extractionState" : "extracted_with_value",

@@ -89,9 +89,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     //current profile
     NSString* currentProfile = [xpcDaemonClient getCurrentProfile];
     
-    //TODO: rem
-    os_log_debug(logHandle, "currentProfile: %{public}@", currentProfile);
-    
+    //have profile?
     if(0 != currentProfile.length) {
         
         //add subtitle
@@ -605,9 +603,6 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "current row: %ld, current profile %{public}@, select button: %{public}@", (long)row, currentProfile, selectButton);
         
-        //TODO: remove
-        os_log_debug(logHandle, "checking %{public}@ with %{public}@", currentProfile, self.profiles[row]);
-        
         //no profile?
         // select button/row zero (default)
         if( (0 == row) &&
@@ -697,12 +692,11 @@ bail:
         row = self.profilesTable.selectedRow;
     }
     
-    //TODO: sanity check ... -1?
-    
-    //get item
-    // index 0, is zero, and want to leave nil for that, as its not really a profile
-    if(0 != row)
+    //get profile
+    // index 0, is the default profile, which we want as nil
+    if(row > 0 && row < self.profiles.count)
     {
+        //get profile
         profile = self.profiles[row];
     }
     
@@ -739,7 +733,7 @@ bail:
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
     
     //show alert
-    showAlert(NSAlertStyleInformational, NSLocalizedString(@"Profile Switched", @"Profile Switched"), [NSString stringWithFormat:NSLocalizedString(@"Current profile is now: '%@.'", @"Current profile is now: '%@.'"), nil != profile ? profile : NSLocalizedString(@"Default", @"Default")], @[NSLocalizedString(@"OK", @"OK")]);
+    showAlert(NSAlertStyleInformational, NSLocalizedString(@"Profile Switched", @"Profile Switched"), [NSString stringWithFormat:NSLocalizedString(@"Current profile is now: '%@'.", @"Current profile is now: '%@'."), nil != profile ? profile : NSLocalizedString(@"Default", @"Default")], @[NSLocalizedString(@"OK", @"OK")]);
     
     return;
 }
@@ -775,6 +769,9 @@ bail:
     
     //reset button name
     self.continueProfileButton.title = NSLocalizedString(@"Next", @"Next");
+    
+    //set profile name
+    self.profileNameLabel.stringValue = @"";
     
     //show sheet for user to specify settings
     [self.window beginSheet:self.addProfileSheet

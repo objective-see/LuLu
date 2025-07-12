@@ -453,6 +453,9 @@ bail:
             //target
             item.target = self;
             
+            //default to off
+            item.state = NSControlStateValueOff;
+            
             //name
             // though keep default 'nil'
             if(NSOrderedSame != [name caseInsensitiveCompare:NSLocalizedString(@"Default", @"Default")])
@@ -463,6 +466,21 @@ bail:
             
             //add
             [menu addItem:item];
+            
+            //should select 'default' as current?
+            if( (nil == current) &&
+                (NSOrderedSame == [name caseInsensitiveCompare:NSLocalizedString(@"Default", @"Default")]) )
+            {
+                //set
+                item.state = NSControlStateValueOn;
+            }
+            
+            //should select other as current?
+            else if(YES == [item.title isEqualToString:current])
+            {
+                //set
+                item.state = NSControlStateValueOn;
+            }
         }
     }
     //otherwise disable
@@ -471,6 +489,8 @@ bail:
         //disable
         [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) profileSwitchMenuItem] setEnabled:NO];
     }
+    
+    return;
 }
 
 //switch profile
@@ -492,6 +512,9 @@ bail:
     
     //tell app preferences changed
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:[xpcDaemonClient getPreferences]];
+    
+    //show alert
+    showAlert(NSAlertStyleInformational, NSLocalizedString(@"Profile Switched", @"Profile Switched"), [NSString stringWithFormat:NSLocalizedString(@"Current profile is now: '%@'.", @"Current profile is now: '%@'."), nil != profile ? profile : NSLocalizedString(@"Default", @"Default")], @[NSLocalizedString(@"OK", @"OK")]);
     
     return;
 }
