@@ -55,12 +55,12 @@ extern XPCDaemonClient* xpcDaemonClient;
 {
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
+
+    //set subtitle
+    [self setSubTitle];
     
     //load rules
     [self loadRules:YES select:@0];
-    
-    //set subtitle
-    [self setSubTitle];
 
     return;
 }
@@ -227,6 +227,8 @@ extern XPCDaemonClient* xpcDaemonClient;
             //update ui
             [self update:row];
             
+            //set subtitle
+            [self setSubTitle];
         });
 
     });

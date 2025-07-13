@@ -347,6 +347,10 @@ bail:
     //reload rules
     [rules load];
     
+    //tell user rules changed
+    // ...in case rule's window need refreshing
+    [alerts.xpcUserClient rulesChanged];
+    
     //reload prefs
     [preferences load];
     
