@@ -66,6 +66,9 @@
 //protocol
 @property(nonatomic, retain)NSNumber* protocol;
 
+//is disabled
+@property(nonatomic, retain)NSNumber* isDisabled;
+
 // TIMESTAMPS
 
 //rule creation

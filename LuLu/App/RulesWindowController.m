@@ -937,10 +937,11 @@ bail:
         //set row ID
         rowView.identifier = kRowIdentifier;
     }
-
+    
     return rowView;
 }
 
+//TODO: set text color when disabled
 //table delegate method
 // return new cell for row
 -(NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item
@@ -1308,60 +1309,147 @@ bail:
     return cell;
 }
 
-//delete a rule
-// grab rule, then invoke daemon to delete
--(IBAction)deleteRule:(id)sender
+-(IBAction)showRuleMenu:(NSButton *)sender
 {
-    //index of row
-    // either clicked or selected row
-    NSInteger row = 0;
+    NSInteger row = [self.outlineView rowForView:sender];
+    if (row < 0) return;
 
-    //item
-    id item = nil;
+    id item = [self.outlineView itemAtRow:row];
+    BOOL isGroup = [item isKindOfClass:[NSArray class]];
     
-    //rule
-    Rule* rule = nil;
+    //grab rule
+    // if group, any rule is fine
+    Rule *rule = isGroup ? [item firstObject] : (Rule *)item;
     
-    //rule uuid
+    NSString* base = NSLocalizedString(@"Rule", nil);
+    if(isGroup && [item count] > 1) {
+        base = NSLocalizedString(@"Rules", nil);
+    }
+    
+    NSString *toggleTitle =  rule.isDisabled.boolValue
+        ? [NSString stringWithFormat:@"Enable %@", base]
+        : [NSString stringWithFormat:@"Disable %@", base];
+
+    NSString *deleteTitle = [NSString stringWithFormat:@"Delete %@", base];
+
+    os_log_debug(logHandle, "row: %ld, item: %{public}@", (long)row, item);
+
+    NSMenu *menu = [[NSMenu alloc] initWithTitle:@"Rule Menu"];
+    menu.autoenablesItems = NO;
+    
+    //edit
+    // but only for rules (not group)
+    if(!isGroup) {
+        
+        NSMenuItem *edit =
+            [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Edit Rule", nil)
+                                       action:@selector(editRule:)
+                                keyEquivalent:@""];
+        edit.target = self;
+        edit.representedObject = @(row);
+        [menu addItem:edit];
+        
+    }
+    
+    //toggle
+    NSMenuItem *toggle =
+        [[NSMenuItem alloc] initWithTitle:NSLocalizedString(toggleTitle, nil)
+                                   action:@selector(toggleRule:)
+                            keyEquivalent:@""];
+    toggle.target = self;
+    toggle.representedObject = @(row);
+    [menu addItem:toggle];
+    
+    //separator
+    [menu addItem:[NSMenuItem separatorItem]];
+    
+    //delete
+    NSMenuItem *delete =
+        [[NSMenuItem alloc] initWithTitle:NSLocalizedString(deleteTitle, nil)
+                                   action:@selector(deleteRule:)
+                            keyEquivalent:@""];
+    delete.target = self;
+    delete.representedObject = @(row);
+    [menu addItem:delete];
+    
+    //separator
+    [menu addItem:[NSMenuItem separatorItem]];
+
+    //show paths
+    NSMenuItem *paths =
+        [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Display Paths", nil)
+                                   action:@selector(showPaths:)
+                            keyEquivalent:@""];
+    paths.target = self;
+    paths.representedObject = @(row);
+    [menu addItem:paths];
+
+    //anchor menu under button
+    NSPoint pt = NSMakePoint(NSMinX(sender.bounds), NSMaxY(sender.bounds));
+    [menu popUpMenuPositioningItem:nil atLocation:pt inView:sender];
+
+    return;
+}
+
+-(void)editRule:(NSMenuItem*)sender
+{
+    //grab rule
+    // note: edit is only shown for rules (not item group)
+    Rule *rule = [self.outlineView itemAtRow:[sender.representedObject integerValue]];
+    
+    //dbg msg
+    os_log_debug(logHandle, "editing rule %{public}@", rule);
+    
+    //edit (via add window)
+    [self addRule:rule];
+    
+    return;
+}
+
+//toggle rule(s) via XPC
+-(void)toggleRule:(NSMenuItem*)sender
+{
+    Rule *rule = nil;
     NSString* uuid = nil;
     
-    //dbg msg
-    os_log_debug(logHandle, "deleting rule...");
+    NSInteger row = [sender.representedObject integerValue];
     
-    //get row
-    if(nil != sender)
-    {
-        //row from sender
-        row = [self.outlineView rowForView:sender];
-    }
-    //otherwise get selected row
-    else
-    {
-        //selected row
-        row = self.outlineView.selectedRow;
-    }
+    id item = [self.outlineView itemAtRow:row];
     
-    //get item
-    item = [self.outlineView itemAtRow:row];
-    
-    //dbg msg
-    os_log_debug(logHandle, "row: %ld, item: %{public}@", (long)row, item);
-    
-    //get rule
-    // a root item? any rule is fine
-    if(YES == [item isKindOfClass:[NSArray class]])
-    {
-        //grab first rule
+    if([item isKindOfClass:[NSArray class]]) {
         rule = [item firstObject];
+    } else {
+        rule = item;
+        uuid = rule.uuid;
     }
-    //child
-    // item is the rule
-    else
-    {
-        //typecast
-        rule = (Rule*)item;
-        
-        //set uuid
+    
+    //dbg msg
+    os_log_debug(logHandle, "toggling rule %{public}@", rule);
+    
+    //toggle rule via XPC
+    // nil uuid, means toggle all rules for item (process)
+    [xpcDaemonClient toggleRule:rule.key rule:uuid];
+    
+    //refresh
+    [self loadRules:NO select:@(row)];
+    
+    return;
+}
+
+//delete rule(s) via XPC
+-(void)deleteRule:(NSMenuItem *)sender
+{
+    Rule *rule = nil;
+    NSString* uuid = nil;
+    
+    NSInteger row = [sender.representedObject integerValue];
+    
+    id item = [self.outlineView itemAtRow:row];
+    
+    if([item isKindOfClass:[NSArray class]]) {
+        rule = [item firstObject];
+    } else {
+        rule = item;
         uuid = rule.uuid;
     }
     
@@ -1378,15 +1466,36 @@ bail:
         }
     }
     
+    //dbg msg
+    os_log_debug(logHandle, "deleting rule key: %{public}@, rule uuid: %{public}@", rule.key, uuid);
+    
     //remove rule via XPC
     // nil uuid, means delete all rules for item (process)
     [xpcDaemonClient deleteRule:rule.key rule:uuid];
     
-    //(re)load rules
-    // but no need to show overlay
+    //refresh
     [self loadRules:NO select:@(row)];
     
 bail:
+    
+    return;
+}
+
+//show paths
+-(void)showPaths:(NSMenuItem *)sender
+{
+    Rule *rule = nil;
+    NSInteger row = [sender.representedObject integerValue];
+    
+    id item = [self.outlineView itemAtRow:row];
+    
+    if([item isKindOfClass:[NSArray class]]) {
+        rule = [item firstObject];
+    } else {
+        rule = item;
+    }
+    
+    [self showItemPaths:rule.key];
     
     return;
 }
@@ -1456,62 +1565,6 @@ bail:
     }//all items
     
     return row;
-}
-
-//menu handler for row context menu
--(IBAction)rowMenuHandler:(id)sender
-{
-    //item
-    id item = nil;
-    
-    //get item
-    item = [self.outlineView itemAtRow:self.outlineView.selectedRow];
-    
-    //handle click
-    switch(((NSMenuItem*)sender).tag)
-    {
-        //show paths
-        case MENU_SHOW_PATHS:
-            
-            //sanity check
-            if(YES != [item isKindOfClass:[NSArray class]]) 
-            {
-                goto bail;
-            }
-            
-            //show paths
-            [self showItemPaths:((Rule*)((NSArray*)item).firstObject).key];
-            
-            break;
-            
-        //edit rule
-        case MENU_EDIT_RULE:
-            
-            //sanity check
-            if(YES != [item isKindOfClass:[Rule class]]) goto bail;
-            
-            //show paths
-            [self addRule:item];
-            
-            break;
-            
-        //delete rule
-        case MENU_DELETE_RULE:
-            
-            //delete
-            [self deleteRule:nil];
-            
-            break;
-        
-
-        default:
-            
-            break;
-    }
-    
-bail:
-    
-    return;
 }
 
 

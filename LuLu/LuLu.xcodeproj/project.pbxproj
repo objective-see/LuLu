@@ -47,7 +47,6 @@
 		CDA136D524F0DA0E005AD424 /* PrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1368E24F0D2CF005AD424 /* PrefsWindowController.m */; };
 		CDA136D624F0DA0E005AD424 /* RuleRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369E24F0D2CF005AD424 /* RuleRow.m */; };
 		CDA136D724F0DA0E005AD424 /* RuleRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136A024F0D2D0005AD424 /* RuleRowCell.m */; };
-		CDA136D824F0DA0E005AD424 /* RulesTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136A324F0D2D0005AD424 /* RulesTable.m */; };
 		CDA136D924F0DA0E005AD424 /* RulesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369C24F0D2CF005AD424 /* RulesWindowController.m */; };
 		CDA136DA24F0DA0E005AD424 /* WelcomeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369924F0D2CF005AD424 /* WelcomeWindowController.m */; };
 		CDA136DB24F0DA0E005AD424 /* AlertWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367224F0D268005AD424 /* AlertWindowController.m */; };
@@ -191,8 +190,6 @@
 		CDA1369D24F0D2CF005AD424 /* RuleRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleRow.h; sourceTree = "<group>"; };
 		CDA1369E24F0D2CF005AD424 /* RuleRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleRow.m; sourceTree = "<group>"; };
 		CDA136A024F0D2D0005AD424 /* RuleRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleRowCell.m; sourceTree = "<group>"; };
-		CDA136A224F0D2D0005AD424 /* RulesTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesTable.h; sourceTree = "<group>"; };
-		CDA136A324F0D2D0005AD424 /* RulesTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesTable.m; sourceTree = "<group>"; };
 		CDA136B324F0D4A8005AD424 /* UpdateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateWindowController.m; sourceTree = "<group>"; };
 		CDA136B424F0D4A8005AD424 /* Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Update.m; sourceTree = "<group>"; };
 		CDA136B524F0D4A9005AD424 /* Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Update.h; sourceTree = "<group>"; };
@@ -352,8 +349,6 @@
 				CD00702F2C3959970011979F /* Rules.xib */,
 				CDCAA96D2B69DC4500FE27DD /* RulesMenuController.h */,
 				CDCAA96B2B69DC3700FE27DD /* RulesMenuController.m */,
-				CDA136A224F0D2D0005AD424 /* RulesTable.h */,
-				CDA136A324F0D2D0005AD424 /* RulesTable.m */,
 				CDA1368F24F0D2CF005AD424 /* RulesWindowController.h */,
 				CDA1369C24F0D2CF005AD424 /* RulesWindowController.m */,
 				CDA136BD24F0D526005AD424 /* Shared */,
@@ -575,7 +570,6 @@
 				CDA136D624F0DA0E005AD424 /* RuleRow.m in Sources */,
 				CDCAA9692B677AFC00FE27DD /* StartupWindowController.m in Sources */,
 				CDA136D724F0DA0E005AD424 /* RuleRowCell.m in Sources */,
-				CDA136D824F0DA0E005AD424 /* RulesTable.m in Sources */,
 				CDA136D924F0DA0E005AD424 /* RulesWindowController.m in Sources */,
 				CDA136DA24F0DA0E005AD424 /* WelcomeWindowController.m in Sources */,
 				CDA136DB24F0DA0E005AD424 /* AlertWindowController.m in Sources */,
@@ -920,10 +914,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Extension/Extension.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3.9.0;
-				DEVELOPMENT_TEAM = VBG97UB4TA;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Extension/Info.plist;
@@ -939,7 +935,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.extension";
 				PRODUCT_NAME = "com.objective-see.lulu.extension";
-				PROVISIONING_PROFILE_SPECIFIER = "LuLu Extension";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "LuLu Extension";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -948,10 +945,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Extension/Extension.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3.9.0;
-				DEVELOPMENT_TEAM = VBG97UB4TA;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Extension/Info.plist;
@@ -966,7 +965,8 @@
 				MARKETING_VERSION = 3.9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.extension";
 				PRODUCT_NAME = "com.objective-see.lulu.extension";
-				PROVISIONING_PROFILE_SPECIFIER = "LuLu Extension";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "LuLu Extension";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

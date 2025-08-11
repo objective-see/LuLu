@@ -2260,6 +2260,7 @@
     },
     "→ Delete Rule" : {
       "comment" : "→ Delete Rule",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2337,6 +2338,7 @@
     },
     "→ Delete rule(s)" : {
       "comment" : "→ Delete rule(s)",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2414,6 +2416,7 @@
     },
     "→ Edit Rule" : {
       "comment" : "→ Edit Rule",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2491,6 +2494,7 @@
     },
     "→ Show path(s)" : {
       "comment" : "→ Show path(s)",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4363,6 +4367,12 @@
           }
         }
       }
+    },
+    "Display Paths" : {
+      "comment" : "Display paths"
+    },
+    "Edit Rule" : {
+
     },
     "Enable" : {
       "comment" : "Enable",
@@ -7636,6 +7646,12 @@
           }
         }
       }
+    },
+    "Rule" : {
+      "comment" : "Rule"
+    },
+    "Rules" : {
+      "comment" : "Rules"
     },
     "rules.json" : {
       "comment" : "rules.json",

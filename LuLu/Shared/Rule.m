@@ -258,6 +258,8 @@ extern os_log_t logHandle;
         self.scope = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(scope))];
         self.action = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(action))];
         
+        self.isDisabled = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(isDisabled))];
+        
         self.creation = [decoder decodeObjectOfClass:[NSDate class] forKey:NSStringFromSelector(@selector(creation))];
         self.expiration = [decoder decodeObjectOfClass:[NSDate class] forKey:NSStringFromSelector(@selector(expiration))];
     }
@@ -286,6 +288,8 @@ extern os_log_t logHandle;
     [encoder encodeObject:self.type forKey:NSStringFromSelector(@selector(type))];
     [encoder encodeObject:self.scope forKey:NSStringFromSelector(@selector(scope))];
     [encoder encodeObject:self.action forKey:NSStringFromSelector(@selector(action))];
+    
+    [encoder encodeObject:self.isDisabled forKey:NSStringFromSelector(@selector(isDisabled))];
 
     [encoder encodeObject:self.creation forKey:NSStringFromSelector(@selector(creation))];
     [encoder encodeObject:self.expiration forKey:NSStringFromSelector(@selector(expiration))];
@@ -411,7 +415,7 @@ bail:
     }
     
     //just serialize
-    return [NSString stringWithFormat:@"RULE: pid: %@, path: %@, name: %@, code signing info: %@, endpoint addr: %@, endpoint port: %@, action: %@, type: %@, creation: %@, expiration: %@", pid, self.path, self.name, self.csInfo, self.endpointAddr, self.endpointPort, self.action, self.type, self.creation, self.expiration];
+    return [NSString stringWithFormat:@"RULE: pid: %@, path: %@, name: %@, code signing info: %@, endpoint addr: %@, endpoint port: %@, action: %@, type: %@, disabled: %@, creation: %@, expiration: %@", pid, self.path, self.name, self.csInfo, self.endpointAddr, self.endpointPort, self.action, self.type, self.isDisabled, self.creation, self.expiration];
 }
 
 //covert rule to dictionary
@@ -490,7 +494,11 @@ bail:
     [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(isEndpointAddrRegex)), self.isEndpointAddrRegex];
 
     //type
+    //TODO: do these need to be strings!?
     [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(type)), self.type.intValue];
+    
+    //disabled
+    [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(type)), self.isDisabled.intValue];
     
     //scope
     [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(scope)), self.scope.intValue];
@@ -719,7 +727,18 @@ bail:
         if(YES != [self.action isKindOfClass:[NSNumber class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'action' should be a number, not %@", self.endpointPort.className);
+            os_log_error(logHandle, "ERROR: 'action' should be a number, not %@", self.action.className);
+            
+            self = nil;
+            goto bail;
+        }
+        
+        //disabled?
+        self.isDisabled = [numberFormatter numberFromString:info[NSStringFromSelector(@selector(isDisabled))]];
+        if(YES != [self.isDisabled isKindOfClass:[NSNumber class]])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'disabled' should be a number, not %@", self.isDisabled.className);
             
             self = nil;
             goto bail;
@@ -727,9 +746,25 @@ bail:
         
         //creation (date)
         self.creation = [dateFormatter dateFromString:info[NSStringFromSelector(@selector(creation))]];
+        if(YES != [self.creation isKindOfClass:[NSDate class]])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'creation' should be a number, not %@", self.creation.className);
+            
+            self = nil;
+            goto bail;
+        }
         
         //expiration
         self.expiration = [dateFormatter dateFromString:info[NSStringFromSelector(@selector(expiration))]];
+        if(YES != [self.expiration isKindOfClass:[NSDate class]])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'expiration' should be a number, not %@", self.expiration.className);
+            
+            self = nil;
+            goto bail;
+        }
         
     }
     

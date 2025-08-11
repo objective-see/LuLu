@@ -397,4 +397,10 @@ bail:
     return;
 }
 
+//ensure title-bar close also ends the modal
+- (BOOL)windowShouldClose:(NSWindow *)sender {
+    [NSApp stopModalWithCode:NSModalResponseCancel];
+    return YES;
+}
+
 @end

@@ -164,6 +164,23 @@ extern NSMutableDictionary* alerts;
     return;
 }
 
+//disable (or re-enable) rule
+-(void)toggleRule:(NSString*)key rule:(NSString*)uuid
+{
+    //dbg msg
+    os_log_debug(logHandle, "invoking daemon XPC method, '%s' with key: %{public}@, rule id: %{public}@", __PRETTY_FUNCTION__, key, uuid);
+    
+    //disable rule
+    [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        
+    }] toggleRule:key rule:uuid];
+    
+    return;
+}
+
 //delete rule
 -(void)deleteRule:(NSString*)key rule:(NSString*)uuid
 {

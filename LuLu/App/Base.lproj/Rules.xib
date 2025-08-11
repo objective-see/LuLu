@@ -26,13 +26,13 @@
         <window identifier="Rules" title="LuLu Rules" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="913" y="419" width="1015" height="574"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1720" height="695"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
             <value key="minSize" type="size" width="1020" height="550"/>
             <view key="contentView" wantsLayer="YES" misplaced="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="1015" height="574"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <userGuides>
-                    <userLayoutGuide location="994" affinity="minX"/>
+                    <userLayoutGuide location="992" affinity="minX"/>
                 </userGuides>
                 <subviews>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="52" horizontalPageScroll="10" verticalLineScroll="52" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tn9-NJ-2RM">
@@ -142,19 +142,8 @@
                                                     <rect key="frame" x="784" y="1" width="229" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <button tag="110" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZYK-WR-Jeh">
-                                                            <rect key="frame" x="199" y="17" width="20" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSStopProgressFreestandingTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="CJy-ZW-Yu6">
-                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                <font key="font" metaFont="system"/>
-                                                            </buttonCell>
-                                                            <connections>
-                                                                <action selector="deleteRule:" target="-2" id="q9O-IU-kzL"/>
-                                                            </connections>
-                                                        </button>
                                                         <textField focusRingType="none" horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="100" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GQ2-Ny-NHf">
-                                                            <rect key="frame" x="30" y="15" width="164" height="20"/>
+                                                            <rect key="frame" x="30" y="17" width="164" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" id="fZ4-hz-z9B">
                                                                 <font key="font" size="13" name="Menlo-Regular"/>
@@ -163,10 +152,21 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Py6-88-hfn">
-                                                            <rect key="frame" x="3" y="15" width="24" height="23"/>
+                                                            <rect key="frame" x="3" y="16" width="24" height="23"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="TNE-FM-Q4H"/>
                                                         </imageView>
+                                                        <button tag="110" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZYK-WR-Jeh">
+                                                            <rect key="frame" x="189" y="8" width="30" height="40"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSTouchBarTextListTemplate" imagePosition="overlaps" alignment="center" controlSize="large" imageScaling="proportionallyDown" inset="2" id="CJy-ZW-Yu6">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="showRuleMenu:" target="-2" id="xeK-Jj-5mh"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <connections>
                                                         <outlet property="imageView" destination="Py6-88-hfn" id="zEs-fw-NDI"/>
@@ -361,7 +361,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="272" y="172" width="471" height="353"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1720" height="695"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1470" height="918"/>
             <view key="contentView" id="cna-Y1-PEc">
                 <rect key="frame" x="0.0" y="0.0" width="471" height="353"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -373,6 +373,6 @@
         <image name="LuLuText" width="1268" height="385"/>
         <image name="NSAddTemplate" width="18" height="17"/>
         <image name="NSColorPanel" width="32" height="32"/>
-        <image name="NSStopProgressFreestandingTemplate" width="20" height="20"/>
+        <image name="NSTouchBarTextListTemplate" width="21" height="15"/>
     </resources>
 </document>

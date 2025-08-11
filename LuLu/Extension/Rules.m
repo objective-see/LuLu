@@ -637,6 +637,7 @@ bail:
     return;
 }
 
+//TODO: cs change modal window!
 //find (matching) rule
 -(Rule*)find:(Process*)process flow:(NEFilterSocketFlow*)flow csChange:(BOOL*)csChange
 {
@@ -701,9 +702,6 @@ bail:
                 //bail
                 goto bail;
             }
-            
-            //extract item rules
-            itemRules = self.rules[process.key][KEY_RULES];
         }
        
         //grab global rules
@@ -769,6 +767,16 @@ bail:
             // note: * is a wildcard, meaning any match
             for(Rule* rule in rules)
             {
+                //skip any disabled rule(s)
+                if(0 != rule.isDisabled.intValue) {
+                    
+                    //dbg msg
+                    os_log_debug(logHandle, "skipping disabled rule match %{public}@", rule);
+                    
+                    //skip
+                    continue;
+                }
+                
                 //checks for temp rules
                 if(YES == [rule isTemporary])
                 {
@@ -1030,6 +1038,71 @@ bail:
     return isMatch;
 }
 
+//toggle rule
+// either disable, or (re)enable
+-(BOOL)toggleRule:(NSString*)key rule:(NSString*)uuid
+{
+    //result
+    BOOL result = NO;
+    
+    //dbg msg
+    os_log_debug(logHandle, "toggling rule, key: %{public}@, rule id: %{public}@", key, uuid);
+    
+    //sync to access
+    @synchronized(self.rules)
+    {
+        //no uuid
+        // toggle all (process') rules
+        if(nil == uuid)
+        {
+            //toggle all
+            for(Rule* rule in self.rules[key][KEY_RULES])
+            {
+                //toggle each
+                rule.isDisabled = (rule.isDisabled.boolValue) ? nil : @YES;
+            }
+            
+            //happy
+            result = YES;
+            
+            //done
+            goto bail;
+        }
+        
+        //find matching rule
+        [self.rules[key][KEY_RULES] enumerateObjectsUsingBlock:^(Rule* currentRule, NSUInteger index, BOOL* stop)
+        {
+            //is match?
+            if(YES == [currentRule.uuid isEqualToString:uuid])
+            {
+                //toggle each
+                currentRule.isDisabled = (currentRule.isDisabled.boolValue) ? nil : @YES;
+            
+                //done
+                *stop = YES;
+            }
+        }];
+        
+    } //sync
+        
+    //happy
+    result = YES;
+    
+bail:
+    
+    //always save to disk
+    if(YES != [self save])
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to save (toggled) rules");
+        
+        //not happy
+        result = NO;
+    }
+    
+    return result;
+}
+
 //delete rule
 -(BOOL)delete:(NSString*)key rule:(NSString*)uuid
 {
@@ -1253,7 +1326,7 @@ bail:
         os_log_error(logHandle, "ERROR: imported rules are not a NSData");
         goto bail;
     }
-    
+        
     //unarchive
     unarchivedRules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSMutableSet class], [NSDate class], [Rule class]]] fromData:importedRules error:&error];
     

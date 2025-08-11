@@ -358,7 +358,6 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define RULE_TYPE_PASSIVE  4
 #define RULE_TYPE_RECENT   5
 
-
 //search (filter) field
 #define RULE_SEARCH_FIELD 5
 
