@@ -102,7 +102,7 @@
                                                         <outlet property="textField" destination="bkx-JF-q5i" id="cbO-X8-NpB"/>
                                                     </connections>
                                                 </tableCellView>
-                                                <tableCellView identifier="simpleCell" id="Tec-Zl-6cm" userLabel="Connection">
+                                                <tableCellView identifier="simpleCell" id="Tec-Zl-6cm" userLabel="Connection" customClass="CustomTableCellView">
                                                     <rect key="frame" x="1" y="53" width="780" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -138,7 +138,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView identifier="ruleCell" id="5sm-If-Eqg">
+                                                <tableCellView identifier="ruleCell" id="5sm-If-Eqg" customClass="CustomTableCellView">
                                                     <rect key="frame" x="784" y="1" width="229" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -183,7 +183,7 @@
                                 </outlineView>
                             </subviews>
                         </clipView>
-                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="djS-lX-Nkf">
+                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="djS-lX-Nkf">
                             <rect key="frame" x="1" y="512" width="1014" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>

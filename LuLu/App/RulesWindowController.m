@@ -26,6 +26,26 @@ extern os_log_t logHandle;
 //xpc for daemon comms
 extern XPCDaemonClient* xpcDaemonClient;
 
+//custom view
+// to disable highlighting for disabled rules
+@interface CustomTableCellView : NSTableCellView
+@property (nonatomic) BOOL isDisabled;
+@end
+
+@implementation CustomTableCellView
+
+- (void)setBackgroundStyle:(NSBackgroundStyle)backgroundStyle {
+    [super setBackgroundStyle:backgroundStyle];
+    
+    //maintain disabled color even when selected
+    if (self.isDisabled) {
+        self.textField.textColor = NSColor.disabledControlTextColor;
+        [super setBackgroundStyle: NSBackgroundStyleLight];
+    }
+}
+
+@end
+
 @implementation RulesWindowController
 
 @synthesize rules;
@@ -300,22 +320,14 @@ extern XPCDaemonClient* xpcDaemonClient;
             selectedRow = MIN(selectedRow, (self.outlineView.numberOfRows-1));
         }
         
-        id item = [self.outlineView itemAtRow:selectedRow];
-    
+        //dbg msg
+        os_log_debug(logHandle, "reselecting %ld", (long)selectedRow);
+            
         //reselect
-        // but only if rule isn't disabled!
-        if ([item isKindOfClass:Rule.class] && !((Rule *)item).isDisabled.boolValue) {
-         
-            //dbg msg
-            os_log_debug(logHandle, "reselecting %ld", (long)selectedRow);
+        [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow] byExtendingSelection:NO];
             
-            //reselect
-            [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow] byExtendingSelection:NO];
-            
-            //scroll
-            [self.outlineView scrollRowToVisible:selectedRow];
-            
-        }
+        //scroll
+        [self.outlineView scrollRowToVisible:selectedRow];
 
     } //sync
     
@@ -983,10 +995,10 @@ bail:
     // init a basic cell
     else if(tableColumn == self.outlineView.tableColumns[1])
     {
-        //init table cell
+        //cell
         cell = [self.outlineView makeViewWithIdentifier:@"ruleCell" owner:self];
         if(nil == cell) goto bail;
-        
+                
         //only add rule for connection (i.e. not item)
         if(YES == [item isKindOfClass:[Rule class]])
         {
@@ -1062,17 +1074,17 @@ bail:
                 }
             }
             
-            //set text
-            cell.textField.stringValue = action;
-            
-            //set color
+            //disabled?
+            // set flag (for highlighting) and color
+            ((CustomTableCellView *)cell).isDisabled = rule.isDisabled.boolValue;
             if (rule.isDisabled.boolValue) {
-                //disabled
                 cell.textField.textColor = NSColor.disabledControlTextColor;
             } else {
-                //enabled
                 cell.textField.textColor = NSColor.controlTextColor;
             }
+        
+            //set text
+            cell.textField.stringValue = action;
         }
         //otherwise unset image/text
         else
@@ -1232,17 +1244,6 @@ bail:
     return details;
 }
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {
-    
-    if(YES == [item isKindOfClass:[Rule class]])
-    {
-        Rule *rule = (Rule *)item;
-        return !rule.isDisabled.boolValue;
-    }
-    
-    return YES;
-}
-
 //create & customize connection cell
 -(NSTableCellView*)createConnectionCell:(Rule*)rule
 {
@@ -1253,7 +1254,7 @@ bail:
     NSString* address = nil;
     
     //item cell
-    NSTableCellView* cell = nil;
+    //NSTableCellView* cell = nil;
     
     //contents
     NSMutableString* contents = nil;
@@ -1264,8 +1265,17 @@ bail:
     //date formatter
     static NSDateFormatter *dateFormatter = nil;
     
-    //create cell
-    cell = [self.outlineView makeViewWithIdentifier:@"simpleCell" owner:self];
+    //cell
+    CustomTableCellView *cell = (CustomTableCellView *)[self.outlineView makeViewWithIdentifier:@"simpleCell" owner:self];
+    
+    //disabled?
+    // set flag (for highlighting) and color
+    cell.isDisabled = rule.isDisabled.boolValue;
+    if (rule.isDisabled.boolValue) {
+        cell.textField.textColor = NSColor.disabledControlTextColor;
+    } else {
+        cell.textField.textColor = NSColor.controlTextColor;
+    }
     
     //reset text
     ((NSTableCellView*)cell).textField.stringValue = @"";
@@ -1298,16 +1308,7 @@ bail:
 
     //set text
     cell.textField.stringValue = contents;
-        
-    //set color
-    if (rule.isDisabled.boolValue) {
-        //disabled
-        cell.textField.textColor = NSColor.disabledControlTextColor;
-    } else {
-        //enabled
-        cell.textField.textColor = NSColor.controlTextColor;
-    }
-
+    
     return cell;
 }
 
