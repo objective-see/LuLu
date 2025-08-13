@@ -438,60 +438,34 @@ bail:
 }
 
 //double-click handler
-// bring up add/edit box
+// show rule's menu
 -(void)doubleClickHandler:(id)object
 {
-    //clicked row
-    NSInteger row = 0;
+    NSInteger row = [self.outlineView clickedRow];
+    if (row < 0) return;
     
-    //item
-    id item = nil;
+    //get button from the clicked row (last column)
+    NSButton*button = nil;
+    NSInteger lastColumn = self.outlineView.numberOfColumns - 1;
     
-    //dbg msg
-    os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
-
-    //get row
-    row = [self.outlineView clickedRow];
-    
-    //get item
-    item = [self.outlineView itemAtRow:row];
-    
-    //dbg msg
-    os_log_debug(logHandle, "row: %ld, item: %{public}@", (long)row, item);
-    
-    //item row?
-    // ...show paths
-    if(YES == [item isKindOfClass:[NSArray class]])
-    {
-        //show paths
-        [self showItemPaths:((Rule*)((NSArray*)item).firstObject).key];
+    NSTableCellView* cellView = [self.outlineView viewAtColumn:lastColumn row:row makeIfNecessary:NO];
+    if(!cellView) {
+        goto bail;
     }
     
-    //rule row
-    // ...edit!
-    else if(YES == [item isKindOfClass:[Rule class]])
-    {
-        //default rule?
-        // show alert/warning
-        if(RULE_TYPE_DEFAULT == ((Rule*)item).type.intValue)
-        {
-            //show alert
-            // ...and bail if user cancels
-            if(NSAlertSecondButtonReturn == [self showDefaultRuleAlert:item action:@"Editing"])
-            {
-                //bail
-                goto bail;
-            }
-        }
-        
-        //add (edit) rule
-        [self addRule:item];
+    button = [cellView viewWithTag:RULE_ROW_MENU_BUTTON];
+    if(!button) {
+        goto bail;
     }
+    
+    //show menu
+    [self showRuleMenu:button];
     
 bail:
     
     return;
 }
+
 
 //warn user the modifying default rules might break things
 -(NSModalResponse)showDefaultRuleAlert:(Rule*)rule action:(NSString*)action
@@ -1312,11 +1286,13 @@ bail:
     return cell;
 }
 
--(IBAction)showRuleMenu:(NSButton *)sender
+-(IBAction)showRuleMenu:(NSButton*)sender
 {
-    NSInteger row = [self.outlineView rowForView:sender];
+    NSInteger row = 0;
+    row = [self.outlineView rowForView:sender];
     if (row < 0) return;
-
+    
+    //get item
     id item = [self.outlineView itemAtRow:row];
     BOOL isGroup = [item isKindOfClass:[NSArray class]];
     
@@ -1387,7 +1363,6 @@ bail:
     paths.representedObject = @(row);
     [menu addItem:paths];
 
-    //anchor menu under button
     NSPoint pt = NSMakePoint(NSMinX(sender.bounds), NSMaxY(sender.bounds));
     [menu popUpMenuPositioningItem:nil atLocation:pt inView:sender];
 
