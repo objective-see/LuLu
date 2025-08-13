@@ -34,9 +34,6 @@
 #define TOOLBAR_RULES_ID @"Rules"
 #define TOOLBAR_PROFILES_ID @"Profiles"
 
-//id (tag) for delete button
-#define TABLE_ROW_DELETE_TAG 110
-
 @interface PrefsWindowController : NSWindowController <NSWindowDelegate, NSTableViewDelegate, NSTableViewDataSource>
 
 /* PROPERTIES */

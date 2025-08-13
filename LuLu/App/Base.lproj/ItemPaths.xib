@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ItemPathsWindowController">
             <connections>
                 <outlet property="closeButton" destination="Zmw-oO-5hi" id="DI7-8s-nIy"/>
+                <outlet property="heading" destination="18Q-9B-4bK" id="af8-cU-rNS"/>
                 <outlet property="itemPaths" destination="1wZ-zd-2f4" id="ffE-Jb-I5r"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -19,7 +20,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="664" height="270"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="664" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -41,7 +42,7 @@ Gw
                             <action selector="closeButtonHandler:" target="-2" id="LwB-dR-X1U"/>
                         </connections>
                     </button>
-                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1wZ-zd-2f4">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1wZ-zd-2f4">
                         <rect key="frame" x="18" y="49" width="628" height="177"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="177" id="wd9-5r-pJS"/>
@@ -52,8 +53,8 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18Q-9B-4bK">
-                        <rect key="frame" x="18" y="234" width="152" height="16"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="18Q-9B-4bK">
+                        <rect key="frame" x="18" y="234" width="628" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Path(s):" id="NhE-Zh-Scd">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -71,6 +72,7 @@ Gw
                     <constraint firstAttribute="bottom" secondItem="Zmw-oO-5hi" secondAttribute="bottom" constant="20" id="SuO-oe-wQd"/>
                     <constraint firstItem="1wZ-zd-2f4" firstAttribute="trailing" secondItem="Zmw-oO-5hi" secondAttribute="trailing" id="eHZ-wb-xW5"/>
                     <constraint firstItem="1wZ-zd-2f4" firstAttribute="top" secondItem="18Q-9B-4bK" secondAttribute="bottom" constant="8" id="fTw-Dt-EKX"/>
+                    <constraint firstAttribute="trailing" secondItem="18Q-9B-4bK" secondAttribute="trailing" constant="20" symbolic="YES" id="lES-hi-riQ"/>
                 </constraints>
             </view>
             <connections>

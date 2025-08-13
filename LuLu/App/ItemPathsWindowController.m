@@ -27,6 +27,9 @@ extern XPCDaemonClient* xpcDaemonClient;
 //generate and show paths
 -(void)windowDidLoad {
     
+    //rule
+    Rule* rule = nil;
+    
     //super
     [super windowDidLoad];
     
@@ -36,6 +39,22 @@ extern XPCDaemonClient* xpcDaemonClient;
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
     
+    //extract (first) rule
+    rule = [self.item[KEY_RULES] firstObject];
+    
+    //set heading if 'normal' rule
+    if(!rule.isGlobal.boolValue &&
+       !rule.isDirectory.boolValue) {
+        
+        //set heading
+        self.heading.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Path(s) for %@:", nil), rule.name];
+    }
+    //reset heading
+    else {
+        self.heading.stringValue = NSLocalizedString(@"Path(s):", nil);
+    }
+    
+    //get paths
     paths = [self getPaths];
     
     //each rule's path
@@ -95,7 +114,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     }
     
     //directory rule?
-    else if(YES == rule.isDirectory.boolValue)
+    if(YES == rule.isDirectory.boolValue)
     {
         //set message
         [paths addObject:NSLocalizedString(@"Directory Rules apply to all items within the directory", @"Directory Rules apply to all items within the directory")];

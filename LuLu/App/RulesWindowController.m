@@ -240,7 +240,7 @@ extern XPCDaemonClient* xpcDaemonClient;
 -(void)update:(NSNumber*)select
 {
     //selected row
-    __block NSInteger selectedRow = -1;
+    NSInteger selectedRow = -1;
     
     //sync
     // filter & reload
@@ -300,9 +300,12 @@ extern XPCDaemonClient* xpcDaemonClient;
             selectedRow = MIN(selectedRow, (self.outlineView.numberOfRows-1));
         }
         
-        //(re)select & scroll
-        dispatch_async(dispatch_get_main_queue(),
-        ^{
+        id item = [self.outlineView itemAtRow:selectedRow];
+    
+        //reselect
+        // but only if rule isn't disabled!
+        if ([item isKindOfClass:Rule.class] && !((Rule *)item).isDisabled.boolValue) {
+         
             //dbg msg
             os_log_debug(logHandle, "reselecting %ld", (long)selectedRow);
             
@@ -311,7 +314,8 @@ extern XPCDaemonClient* xpcDaemonClient;
             
             //scroll
             [self.outlineView scrollRowToVisible:selectedRow];
-        });
+            
+        }
 
     } //sync
     
@@ -941,7 +945,6 @@ bail:
     return rowView;
 }
 
-//TODO: set text color when disabled
 //table delegate method
 // return new cell for row
 -(NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item
@@ -1062,6 +1065,14 @@ bail:
             //set text
             cell.textField.stringValue = action;
             
+            //set color
+            if (rule.isDisabled.boolValue) {
+                //disabled
+                cell.textField.textColor = NSColor.disabledControlTextColor;
+            } else {
+                //enabled
+                cell.textField.textColor = NSColor.controlTextColor;
+            }
         }
         //otherwise unset image/text
         else
@@ -1075,9 +1086,6 @@ bail:
             //unset text
             cell.textField.stringValue = @"";
         }
-        
-        //enable
-        [(NSButton*)[cell viewWithTag:TABLE_ROW_DELETE_TAG] setEnabled:YES];
     }
     
 bail:
@@ -1224,6 +1232,17 @@ bail:
     return details;
 }
 
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {
+    
+    if(YES == [item isKindOfClass:[Rule class]])
+    {
+        Rule *rule = (Rule *)item;
+        return !rule.isDisabled.boolValue;
+    }
+    
+    return YES;
+}
+
 //create & customize connection cell
 -(NSTableCellView*)createConnectionCell:(Rule*)rule
 {
@@ -1242,33 +1261,9 @@ bail:
     //time stamp
     NSString* timestamp = nil;
     
-    //contents + time stamp
-    NSMutableAttributedString* contentsWithTimestamp = nil;
-    
     //date formatter
     static NSDateFormatter *dateFormatter = nil;
     
-    //string attributes
-    static NSDictionary *attributes = nil;
-    
-    //token
-    static dispatch_once_t onceToken = 0;
-    
-    //only once
-    // init requirements
-    dispatch_once(&onceToken, ^{
-        
-        //init
-        dateFormatter = [[NSDateFormatter alloc] init];
-        
-        //config
-        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-        
-        //set (string) attributes
-        attributes = @{NSForegroundColorAttributeName:NSColor.lightGrayColor, NSFontAttributeName:[NSFont fontWithName:@"Menlo-Regular" size:12]};
-        
-    });
-
     //create cell
     cell = [self.outlineView makeViewWithIdentifier:@"simpleCell" owner:self];
     
@@ -1288,22 +1283,29 @@ bail:
     //in "recents" view, add creation timestamp
     if(RULE_TYPE_RECENT == self.selectedRuleView)
     {
-        //init contents
-        contentsWithTimestamp = [[NSMutableAttributedString alloc] initWithString:contents];
+        //init
+        dateFormatter = [[NSDateFormatter alloc] init];
+        
+        //config
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
         
         //init (formatted) timestamp
         timestamp = [NSString stringWithFormat:@" (created at: %@)", [dateFormatter stringFromDate:rule.creation]];
         
-        //combine
-        [contentsWithTimestamp appendAttributedString:[[NSAttributedString alloc] initWithString:timestamp attributes:attributes]];
-    
-        //set contents
-        cell.textField.attributedStringValue = contentsWithTimestamp;
+        //append
+        [contents appendString:timestamp];
     }
-    //no timestamp
-    else
-    {
-        cell.textField.stringValue = contents;
+
+    //set text
+    cell.textField.stringValue = contents;
+        
+    //set color
+    if (rule.isDisabled.boolValue) {
+        //disabled
+        cell.textField.textColor = NSColor.disabledControlTextColor;
+    } else {
+        //enabled
+        cell.textField.textColor = NSColor.controlTextColor;
     }
 
     return cell;

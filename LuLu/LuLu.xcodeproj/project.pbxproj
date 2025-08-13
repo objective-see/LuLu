@@ -46,7 +46,6 @@
 		CDA136D424F0DA0E005AD424 /* AddRuleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369A24F0D2CF005AD424 /* AddRuleWindowController.m */; };
 		CDA136D524F0DA0E005AD424 /* PrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1368E24F0D2CF005AD424 /* PrefsWindowController.m */; };
 		CDA136D624F0DA0E005AD424 /* RuleRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369E24F0D2CF005AD424 /* RuleRow.m */; };
-		CDA136D724F0DA0E005AD424 /* RuleRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136A024F0D2D0005AD424 /* RuleRowCell.m */; };
 		CDA136D924F0DA0E005AD424 /* RulesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369C24F0D2CF005AD424 /* RulesWindowController.m */; };
 		CDA136DA24F0DA0E005AD424 /* WelcomeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369924F0D2CF005AD424 /* WelcomeWindowController.m */; };
 		CDA136DB24F0DA0E005AD424 /* AlertWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367224F0D268005AD424 /* AlertWindowController.m */; };
@@ -179,7 +178,6 @@
 		CDA1368F24F0D2CF005AD424 /* RulesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesWindowController.h; sourceTree = "<group>"; };
 		CDA1369224F0D2CF005AD424 /* PrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsWindowController.h; sourceTree = "<group>"; };
 		CDA1369324F0D2CF005AD424 /* AddRuleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRuleWindowController.h; sourceTree = "<group>"; };
-		CDA1369424F0D2CF005AD424 /* RuleRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleRowCell.h; sourceTree = "<group>"; };
 		CDA1369524F0D2CF005AD424 /* AboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWindowController.m; sourceTree = "<group>"; };
 		CDA1369624F0D2CF005AD424 /* patrons.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = patrons.txt; sourceTree = "<group>"; };
 		CDA1369724F0D2CF005AD424 /* WelcomeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeWindowController.h; sourceTree = "<group>"; };
@@ -189,7 +187,6 @@
 		CDA1369C24F0D2CF005AD424 /* RulesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesWindowController.m; sourceTree = "<group>"; };
 		CDA1369D24F0D2CF005AD424 /* RuleRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleRow.h; sourceTree = "<group>"; };
 		CDA1369E24F0D2CF005AD424 /* RuleRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleRow.m; sourceTree = "<group>"; };
-		CDA136A024F0D2D0005AD424 /* RuleRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleRowCell.m; sourceTree = "<group>"; };
 		CDA136B324F0D4A8005AD424 /* UpdateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateWindowController.m; sourceTree = "<group>"; };
 		CDA136B424F0D4A8005AD424 /* Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Update.m; sourceTree = "<group>"; };
 		CDA136B524F0D4A9005AD424 /* Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Update.h; sourceTree = "<group>"; };
@@ -344,8 +341,6 @@
 				CDA1368E24F0D2CF005AD424 /* PrefsWindowController.m */,
 				CDA1369D24F0D2CF005AD424 /* RuleRow.h */,
 				CDA1369E24F0D2CF005AD424 /* RuleRow.m */,
-				CDA1369424F0D2CF005AD424 /* RuleRowCell.h */,
-				CDA136A024F0D2D0005AD424 /* RuleRowCell.m */,
 				CD00702F2C3959970011979F /* Rules.xib */,
 				CDCAA96D2B69DC4500FE27DD /* RulesMenuController.h */,
 				CDCAA96B2B69DC3700FE27DD /* RulesMenuController.m */,
@@ -569,7 +564,6 @@
 				CDA136D524F0DA0E005AD424 /* PrefsWindowController.m in Sources */,
 				CDA136D624F0DA0E005AD424 /* RuleRow.m in Sources */,
 				CDCAA9692B677AFC00FE27DD /* StartupWindowController.m in Sources */,
-				CDA136D724F0DA0E005AD424 /* RuleRowCell.m in Sources */,
 				CDA136D924F0DA0E005AD424 /* RulesWindowController.m in Sources */,
 				CDA136DA24F0DA0E005AD424 /* WelcomeWindowController.m in Sources */,
 				CDA136DB24F0DA0E005AD424 /* AlertWindowController.m in Sources */,

@@ -15,14 +15,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ItemPathsWindowController : NSWindowController
 
+//title
+@property (weak) IBOutlet NSTextField* heading;
+
 //item's rules
 @property(nonatomic, retain)NSDictionary* item;
 
 //item paths
-@property (weak) IBOutlet NSTextField *itemPaths;
+@property (weak) IBOutlet NSTextField* itemPaths;
 
 //close button
-@property (weak) IBOutlet NSButton *closeButton;
+@property (weak) IBOutlet NSButton* closeButton;
 
 @end
 
