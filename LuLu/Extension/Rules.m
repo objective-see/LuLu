@@ -637,7 +637,6 @@ bail:
     return;
 }
 
-//TODO: cs change modal window!
 //find (matching) rule
 -(Rule*)find:(Process*)process flow:(NEFilterSocketFlow*)flow csChange:(BOOL*)csChange
 {

@@ -97,8 +97,14 @@ extern NSMutableDictionary* alerts;
                 //show (modal) alert
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     
+                    //lower window level (so alert can show above)
+                    [alertWindow.window setLevel:NSNormalWindowLevel];
+                    
                     //alert
                     showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"%@'s code signing information has changed", @"%@'s code signing information has changed"), alert[KEY_PROCESS_NAME]], @"", @[NSLocalizedString(@"OK", @"OK")]);
+                    
+                    //(re)set window level
+                    [alertWindow.window setLevel:NSPopUpMenuWindowLevel];
                     
                 });
             }
