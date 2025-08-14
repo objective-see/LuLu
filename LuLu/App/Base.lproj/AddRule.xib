@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,7 +24,7 @@
         <window title="Add Rule (for outgoing connections)" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
             <rect key="contentRect" x="196" y="240" width="508" height="325"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
             <value key="minSize" type="size" width="508" height="325"/>
             <value key="maxSize" type="size" width="800" height="325"/>
             <view key="contentView" id="se5-gp-TjO">
@@ -32,7 +32,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FGP-wa-tQy">
-                        <rect key="frame" x="102" y="46.5" width="100" height="27"/>
+                        <rect key="frame" x="102" y="46" width="125" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="radio" title=" Block" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="JJl-Lz-apr">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -56,7 +56,7 @@
                             <action selector="browseButtonHandler:" target="-2" id="PT1-Ty-Np7"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TMj-aG-iTU">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TMj-aG-iTU">
                         <rect key="frame" x="103" y="248" width="385" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="mOR-Su-gK2"/>
@@ -67,18 +67,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button tag="1" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LyI-TV-Syi">
-                        <rect key="frame" x="204" y="46.5" width="100" height="27"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="radio" title=" Allow" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="oCK-aR-Ek4">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" size="13" name="Menlo-Regular"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="radioButtonsHandler:" target="-2" id="Si1-r7-F3A"/>
-                        </connections>
-                    </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lP5-by-JA2">
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lP5-by-JA2">
                         <rect key="frame" x="101" y="272" width="389" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="FPl-4Y-c6j"/>
@@ -90,7 +79,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6aQ-uZ-MQT">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6aQ-uZ-MQT">
                         <rect key="frame" x="103" y="147" width="385" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="azV-rq-4Id"/>
@@ -101,7 +90,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wLJ-6S-WeA">
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wLJ-6S-WeA">
                         <rect key="frame" x="101" y="171" width="307" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="303" id="DTb-Uw-Iws"/>
@@ -113,7 +102,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SsU-Va-Vcn">
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SsU-Va-Vcn">
                         <rect key="frame" x="103" y="93" width="385" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="rzM-Fb-Vh0"/>
@@ -124,7 +113,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3qP-ad-9Fq">
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3qP-ad-9Fq">
                         <rect key="frame" x="101" y="117" width="389" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="385" id="jwv-kR-E8V"/>
@@ -179,12 +168,23 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AdX-rG-UUh">
-                        <rect key="frame" x="412" y="171.5" width="76" height="18"/>
+                        <rect key="frame" x="412" y="171" width="76" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="regex?" bezelStyle="regularSquare" imagePosition="left" inset="2" id="FCA-Cv-yT3">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="13" name="Menlo-Regular"/>
                         </buttonCell>
+                    </button>
+                    <button tag="1" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LyI-TV-Syi">
+                        <rect key="frame" x="233" y="46" width="162" height="27"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="radio" title=" Allow" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="oCK-aR-Ek4">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" size="13" name="Menlo-Regular"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="radioButtonsHandler:" target="-2" id="Si1-r7-F3A"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

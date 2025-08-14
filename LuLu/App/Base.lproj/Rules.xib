@@ -10,7 +10,6 @@
             <connections>
                 <outlet property="addRuleButton" destination="XnJ-SV-lDg" id="YqK-bz-bc0"/>
                 <outlet property="addRuleLabel" destination="eUD-fD-sWd" id="BHL-mp-mNT"/>
-                <outlet property="addRulePanel" destination="cna-Y1-PEc" id="a7H-3I-8qq"/>
                 <outlet property="filterBox" destination="6hG-3v-G35" id="fzu-Bv-orq"/>
                 <outlet property="loadingRules" destination="VUa-5Z-QAG" id="aLz-sm-xVQ"/>
                 <outlet property="loadingRulesSpinner" destination="XFi-AG-WZ4" id="aaT-3y-LEG"/>
@@ -356,17 +355,6 @@
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
             <point key="canvasLocation" x="-45.5" y="418"/>
-        </window>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="pch-yV-NXy" userLabel="Add Rule" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="272" y="172" width="471" height="353"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
-            <view key="contentView" id="cna-Y1-PEc">
-                <rect key="frame" x="0.0" y="0.0" width="471" height="353"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </view>
-            <point key="canvasLocation" x="-561.5" y="1030.5"/>
         </window>
     </objects>
     <resources>
