@@ -1415,6 +1415,7 @@ bail:
 {
     Rule *rule = nil;
     NSString* uuid = nil;
+    NSInteger selectedRow = -1;
     
     NSInteger row = [sender.representedObject integerValue];
     
@@ -1427,15 +1428,21 @@ bail:
         uuid = rule.uuid;
     }
     
+    //save selected row
+    selectedRow = self.outlineView.selectedRow;
+    if(-1 == selectedRow) {
+        selectedRow = row;
+    }
+    
     //dbg msg
-    os_log_debug(logHandle, "toggling rule %{public}@", rule);
+    os_log_debug(logHandle, "enabling rule %{public}@", rule);
     
     //enable rule via XPC
     // nil uuid, means toggle all rules for item (process)
     [xpcDaemonClient toggleRule:rule.key rule:uuid state:@RULE_TOGGLE_STATE_ENABLE];
     
     //refresh
-    [self loadRules:NO select:@(row)];
+    [self loadRules:NO select:@(selectedRow)];
     
     return;
 }
@@ -1445,6 +1452,7 @@ bail:
 {
     Rule *rule = nil;
     NSString* uuid = nil;
+    NSInteger selectedRow = -1;
     
     NSInteger row = [sender.representedObject integerValue];
     
@@ -1457,15 +1465,21 @@ bail:
         uuid = rule.uuid;
     }
     
+    //save selected row
+    selectedRow = self.outlineView.selectedRow;
+    if(-1 == selectedRow) {
+        selectedRow = row;
+    }
+    
     //dbg msg
-    os_log_debug(logHandle, "toggling rule %{public}@", rule);
+    os_log_debug(logHandle, "disabling rule %{public}@", rule);
     
     //disable rule via XPC
     // nil uuid, means toggle all rules for item (process)
     [xpcDaemonClient toggleRule:rule.key rule:uuid state:@RULE_TOGGLE_STATE_DISABLE];
     
     //refresh
-    [self loadRules:NO select:@(row)];
+    [self loadRules:NO select:@(selectedRow)];
     
     return;
 }
