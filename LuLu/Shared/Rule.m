@@ -420,7 +420,7 @@ bail:
 
 //covert rule to dictionary
 // needed for conversion to JSON
-// note: temporary properties (such as pid / expiration) not included
+// note: temporary properties (such as pid) not included
 -(NSMutableString*)toJSON
 {
     //json
@@ -484,27 +484,29 @@ bail:
     //expiration
     if(nil != self.expiration)
     {
-        [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(creation)), [dateFormatter stringFromDate:self.expiration]];
+        [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(expiration)), [dateFormatter stringFromDate:self.expiration]];
     }
 
     //port
     [json appendFormat:@"\"%@\" : \"%@\",", NSStringFromSelector(@selector(endpointPort)), self.endpointPort];
     
     //is regex
-    [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(isEndpointAddrRegex)), self.isEndpointAddrRegex];
+    [json appendFormat:@"\"%@\" : %d,", NSStringFromSelector(@selector(isEndpointAddrRegex)), self.isEndpointAddrRegex];
 
     //type
-    //TODO: do these need to be strings!?
-    [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(type)), self.type.intValue];
+    [json appendFormat:@"\"%@\" : %d,", NSStringFromSelector(@selector(type)), self.type.intValue];
     
     //disabled
-    [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(type)), self.isDisabled.intValue];
+    if(nil != self.isDisabled)
+    {
+        [json appendFormat:@"\"%@\" : %d,", NSStringFromSelector(@selector(isDisabled)), self.isDisabled.intValue];
+    }
     
     //scope
-    [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(scope)), self.scope.intValue];
+    [json appendFormat:@"\"%@\" : %d,", NSStringFromSelector(@selector(scope)), self.scope.intValue];
     
     //action
-    [json appendFormat:@"\"%@\" : \"%d\",", NSStringFromSelector(@selector(action)), self.action.intValue];
+    [json appendFormat:@"\"%@\" : %d,", NSStringFromSelector(@selector(action)), self.action.intValue];
     
     //cs info
     // dictionary...
@@ -533,7 +535,7 @@ bail:
             if(YES == [value isKindOfClass:[NSNumber class]])
             {
                 //append
-                [json appendFormat:@"\"%@\" : \"%d\",", key, [value intValue]];
+                [json appendFormat:@"\"%@\" : %d,", key, [value intValue]];
             }
             
             //array?
@@ -600,17 +602,10 @@ bail:
     //date formatter
     NSDateFormatter* dateFormatter = nil;
     
-    //number formatter
-    NSNumberFormatter* numberFormatter = nil;
-    
     //init formatter
     // format: ISO 8601 format
     dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
-    
-    //init
-    numberFormatter = [[NSNumberFormatter alloc] init];
-    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
     
     //dbg msg
     //os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
@@ -703,7 +698,7 @@ bail:
         
         self.isEndpointAddrRegex = [info[NSStringFromSelector(@selector(isEndpointAddrRegex))] boolValue];
         
-        self.type = [numberFormatter numberFromString:info[NSStringFromSelector(@selector(type))]];
+        self.type = info[NSStringFromSelector(@selector(type))];
         if(YES != [self.type isKindOfClass:[NSNumber class]])
         {
             //err msg
@@ -713,7 +708,7 @@ bail:
             goto bail;
         }
         
-        self.scope = [numberFormatter numberFromString:info[NSStringFromSelector(@selector(scope))]];
+        self.scope = info[NSStringFromSelector(@selector(scope))];
         if(YES != [self.scope isKindOfClass:[NSNumber class]])
         {
             //err msg
@@ -723,7 +718,7 @@ bail:
             goto bail;
         }
         
-        self.action = [numberFormatter numberFromString:info[NSStringFromSelector(@selector(action))]];
+        self.action = info[NSStringFromSelector(@selector(action))];
         if(YES != [self.action isKindOfClass:[NSNumber class]])
         {
             //err msg
@@ -734,11 +729,12 @@ bail:
         }
         
         //disabled?
-        self.isDisabled = [numberFormatter numberFromString:info[NSStringFromSelector(@selector(isDisabled))]];
-        if(YES != [self.isDisabled isKindOfClass:[NSNumber class]])
+        // note: optional
+        self.isDisabled = info[NSStringFromSelector(@selector(isDisabled))];
+        if(self.isDisabled && ![self.isDisabled isKindOfClass:[NSNumber class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'disabled' should be a number, not %@", self.isDisabled.className);
+            os_log_error(logHandle, "ERROR: 'disabled' should be a number or nil, not %@", self.isDisabled.className);
             
             self = nil;
             goto bail;
@@ -746,10 +742,10 @@ bail:
         
         //creation (date)
         self.creation = [dateFormatter dateFromString:info[NSStringFromSelector(@selector(creation))]];
-        if(YES != [self.creation isKindOfClass:[NSDate class]])
+        if(self.creation && ![self.creation isKindOfClass:[NSDate class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'creation' should be a number, not %@", self.creation.className);
+            os_log_error(logHandle, "ERROR: 'creation' should be a date, not %@", self.creation.className);
             
             self = nil;
             goto bail;
@@ -757,10 +753,10 @@ bail:
         
         //expiration
         self.expiration = [dateFormatter dateFromString:info[NSStringFromSelector(@selector(expiration))]];
-        if(YES != [self.expiration isKindOfClass:[NSDate class]])
+        if(self.expiration && ![self.expiration isKindOfClass:[NSDate class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'expiration' should be a number, not %@", self.expiration.className);
+            os_log_error(logHandle, "ERROR: 'expiration' should be a date, not %@", self.expiration.className);
             
             self = nil;
             goto bail;
