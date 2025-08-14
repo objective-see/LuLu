@@ -599,6 +599,8 @@ bail:
 //make a rule obj from a dictioanary
 -(id)initFromJSON:(NSDictionary*)info
 {
+    id value = nil;
+    
     //date formatter
     NSDateFormatter* dateFormatter = nil;
     
@@ -618,7 +620,7 @@ bail:
         if(YES != [self.key isKindOfClass:[NSString class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'key' should be a string, not %@", self.key.className);
+            os_log_error(logHandle, "ERROR: 'key' should be a string, not %@", [self.key class]);
             
             self = nil;
             goto bail;
@@ -628,7 +630,7 @@ bail:
         if(YES != [self.uuid isKindOfClass:[NSString class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'uuid' should be a string, not %@", self.uuid.className);
+            os_log_error(logHandle, "ERROR: 'uuid' should be a string, not %@", [self.uuid class]);
             
             self = nil;
             goto bail;
@@ -638,7 +640,7 @@ bail:
         if(YES != [self.path isKindOfClass:[NSString class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'path' should be a string, not %@", self.path.className);
+            os_log_error(logHandle, "ERROR: 'path' should be a string, not %@", [self.path class]);
             
             self = nil;
             goto bail;
@@ -648,7 +650,7 @@ bail:
         if(YES != [self.name isKindOfClass:[NSString class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'name' should be a string, not %@", self.name.className);
+            os_log_error(logHandle, "ERROR: 'name' should be a string, not %@", [self.name class]);
             
             self = nil;
             goto bail;
@@ -659,7 +661,7 @@ bail:
             (YES != [self.csInfo isKindOfClass:[NSDictionary class]]) )
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'csInfo' should be a dictionary, not %@", self.csInfo.className);
+            os_log_error(logHandle, "ERROR: 'csInfo' should be a dictionary, not %@", [self.csInfo class]);
             
             self = nil;
             goto bail;
@@ -669,7 +671,7 @@ bail:
         if(YES != [self.endpointAddr isKindOfClass:[NSString class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'endpointAddr' should be a string, not %@", self.endpointAddr.className);
+            os_log_error(logHandle, "ERROR: 'endpointAddr' should be a string, not %@", [self.endpointAddr class]);
             
             self = nil;
             goto bail;
@@ -680,7 +682,7 @@ bail:
             (YES != [self.endpointHost isKindOfClass:[NSString class]]) )
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'endpointHost' should be a string, not %@", self.endpointHost.className);
+            os_log_error(logHandle, "ERROR: 'endpointHost' should be a string, not %@", [self.endpointHost class]);
             
             self = nil;
             goto bail;
@@ -690,7 +692,7 @@ bail:
         if(YES != [self.endpointPort isKindOfClass:[NSString class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'endpointPort' should be a string, not %@", self.endpointPort.className);
+            os_log_error(logHandle, "ERROR: 'endpointPort' should be a string, not %@", [self.endpointPort class]);
             
             self = nil;
             goto bail;
@@ -702,7 +704,7 @@ bail:
         if(YES != [self.type isKindOfClass:[NSNumber class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'type' should be a number, not %@", self.type.className);
+            os_log_error(logHandle, "ERROR: 'type' should be a number, not %@", [self.type class]);
             
             self = nil;
             goto bail;
@@ -712,7 +714,7 @@ bail:
         if(YES != [self.scope isKindOfClass:[NSNumber class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'scope' should be a number, not %@", self.scope.className);
+            os_log_error(logHandle, "ERROR: 'scope' should be a number, not %@", [self.scope class]);
             
             self = nil;
             goto bail;
@@ -722,7 +724,7 @@ bail:
         if(YES != [self.action isKindOfClass:[NSNumber class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'action' should be a number, not %@", self.action.className);
+            os_log_error(logHandle, "ERROR: 'action' should be a number, not %@", [self.action class]);
             
             self = nil;
             goto bail;
@@ -734,32 +736,54 @@ bail:
         if(self.isDisabled && ![self.isDisabled isKindOfClass:[NSNumber class]])
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'disabled' should be a number or nil, not %@", self.isDisabled.className);
+            os_log_error(logHandle, "ERROR: 'disabled' should be a number or nil, not %@", [self.isDisabled class]);
             
             self = nil;
             goto bail;
         }
         
         //creation (date)
-        self.creation = [dateFormatter dateFromString:info[NSStringFromSelector(@selector(creation))]];
-        if(self.creation && ![self.creation isKindOfClass:[NSDate class]])
-        {
-            //err msg
-            os_log_error(logHandle, "ERROR: 'creation' should be a date, not %@", self.creation.className);
+        value = info[NSStringFromSelector(@selector(creation))];
+        if(value) {
             
-            self = nil;
-            goto bail;
+            if(![value isKindOfClass:[NSString class]]) {
+                //err msg
+                os_log_error(logHandle, "ERROR: 'creation' should be a string, not %@", [value class]);
+                
+                self = nil;
+                goto bail;
+            }
+            
+            self.creation = [dateFormatter dateFromString:value];
+            if(!self.creation) {
+                //err msg
+                os_log_error(logHandle, "ERROR: 'creation' date string is invalid: %@", value);
+                
+                self = nil;
+                goto bail;
+            }
         }
         
         //expiration
-        self.expiration = [dateFormatter dateFromString:info[NSStringFromSelector(@selector(expiration))]];
-        if(self.expiration && ![self.expiration isKindOfClass:[NSDate class]])
-        {
-            //err msg
-            os_log_error(logHandle, "ERROR: 'expiration' should be a date, not %@", self.expiration.className);
+        value = info[NSStringFromSelector(@selector(expiration))];
+        if(value) {
             
-            self = nil;
-            goto bail;
+            if(![value isKindOfClass:[NSString class]]) {
+                //err msg
+                os_log_error(logHandle, "ERROR: 'expiration' should be a string, not %@", [value class]);
+                
+                self = nil;
+                goto bail;
+            }
+            
+            self.expiration = [dateFormatter dateFromString:value];
+            if(!self.expiration) {
+                //err msg
+                os_log_error(logHandle, "ERROR: 'expiration' date string is invalid: %@", value);
+                
+                self = nil;
+                goto bail;
+            }
         }
         
     }
