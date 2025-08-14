@@ -155,13 +155,13 @@ bail:
 }
 
 //disable (or re-enable) rule
--(void)toggleRule:(NSString*)key rule:(NSString*)uuid
+-(void)toggleRule:(NSString*)key rule:(NSString*)uuid state:(NSNumber*)state
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s' with key: %{public}@, rule id: %{public}@", __PRETTY_FUNCTION__, key, uuid);
     
     //toggle
-    if(YES != [rules toggleRule:key rule:uuid])
+    if(YES != [rules toggleRule:key rule:uuid state:state])
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to toggle rule");

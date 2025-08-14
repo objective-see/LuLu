@@ -54,7 +54,7 @@
 -(Rule*)find:(Process*)process flow:(NEFilterSocketFlow*)flow csChange:(BOOL*)csChange;
 
 //disable (or re-enable)
--(BOOL)toggleRule:(NSString*)key rule:(NSString*)uuid;
+-(BOOL)toggleRule:(NSString*)key rule:(NSString*)uuid state:(NSNumber*)state;
 
 //delete rule
 -(BOOL)delete:(NSString*)key rule:(NSString*)uuid;

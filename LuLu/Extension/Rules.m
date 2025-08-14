@@ -1039,7 +1039,7 @@ bail:
 
 //toggle rule
 // either disable, or (re)enable
--(BOOL)toggleRule:(NSString*)key rule:(NSString*)uuid
+-(BOOL)toggleRule:(NSString*)key rule:(NSString*)uuid state:(NSNumber*)state
 {
     //result
     BOOL result = NO;
@@ -1051,14 +1051,21 @@ bail:
     @synchronized(self.rules)
     {
         //no uuid
-        // toggle all (process') rules
+        // set all (process') rules to specified state
         if(nil == uuid)
         {
             //toggle all
             for(Rule* rule in self.rules[key][KEY_RULES])
             {
-                //toggle each
-                rule.isDisabled = (rule.isDisabled.boolValue) ? nil : @YES;
+                //enable
+                if(RULE_TOGGLE_STATE_ENABLE == state.intValue) {
+                    rule.isDisabled = nil;
+                }
+                //disable
+                else
+                {
+                    rule.isDisabled = @YES;
+                }
             }
             
             //happy
@@ -1074,9 +1081,16 @@ bail:
             //is match?
             if(YES == [currentRule.uuid isEqualToString:uuid])
             {
-                //toggle each
-                currentRule.isDisabled = (currentRule.isDisabled.boolValue) ? nil : @YES;
-            
+                //enable
+                if(RULE_TOGGLE_STATE_ENABLE == state.intValue) {
+                    currentRule.isDisabled = nil;
+                }
+                //disable
+                else
+                {
+                    currentRule.isDisabled = @YES;
+                }
+                
                 //done
                 *stop = YES;
             }

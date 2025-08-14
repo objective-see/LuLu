@@ -340,7 +340,6 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 
 #define VALUE_ANY @"*"
 
-
 //keys for rule dictionary
 #define RULE_ID @"id"
 #define RULE_PATH @"path"
@@ -358,6 +357,10 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define RULE_TYPE_USER     3
 #define RULE_TYPE_PASSIVE  4
 #define RULE_TYPE_RECENT   5
+
+//rule toggle states
+#define RULE_TOGGLE_STATE_ENABLE 1
+#define RULE_TOGGLE_STATE_DISABLE 0
 
 //search (filter) field
 #define RULE_SEARCH_FIELD 5

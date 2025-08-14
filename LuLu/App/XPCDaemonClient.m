@@ -165,7 +165,7 @@ extern NSMutableDictionary* alerts;
 }
 
 //disable (or re-enable) rule
--(void)toggleRule:(NSString*)key rule:(NSString*)uuid
+-(void)toggleRule:(NSString*)key rule:(NSString*)uuid state:(NSNumber*)state
 {
     //dbg msg
     os_log_debug(logHandle, "invoking daemon XPC method, '%s' with key: %{public}@, rule id: %{public}@", __PRETTY_FUNCTION__, key, uuid);
@@ -176,7 +176,7 @@ extern NSMutableDictionary* alerts;
         //err msg
         os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
         
-    }] toggleRule:key rule:uuid];
+    }] toggleRule:key rule:uuid state:state];
     
     return;
 }

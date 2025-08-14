@@ -1288,85 +1288,111 @@ bail:
 
 -(IBAction)showRuleMenu:(NSButton*)sender
 {
+    BOOL mixedStates = NO;
+    
+    NSString* editTitle = nil;
+    NSString* enableTitle = nil;
+    NSString* deleteTitle = nil;
+    NSString* disableTitle = nil;
+    NSString* showPathsTitle = nil;
+    
     NSInteger row = 0;
     row = [self.outlineView rowForView:sender];
     if (row < 0) return;
     
     //get item
     id item = [self.outlineView itemAtRow:row];
+    
+    //set flag
     BOOL isGroup = [item isKindOfClass:[NSArray class]];
     
-    //grab rule
-    // if group, any rule is fine
-    Rule *rule = isGroup ? [item firstObject] : (Rule *)item;
+    //determine if there are states?
+    if(isGroup && [item count] > 1) {
+        
+        BOOL firstState = ((Rule*)[item firstObject]).isDisabled.boolValue;
+        for(int i = 1; i < [item count] && !mixedStates; i++) {
+            mixedStates = (((Rule*)item[i]).isDisabled.boolValue != firstState);
+        }
+    }
     
+    //set rule
+    Rule* rule = isGroup ? [item firstObject] : (Rule *)item;
+   
+    //set base
     NSString* base = NSLocalizedString(@"Rule", nil);
     if(isGroup && [item count] > 1) {
         base = NSLocalizedString(@"Rules", nil);
     }
     
-    NSString *toggleTitle =  rule.isDisabled.boolValue
-        ? [NSString stringWithFormat:@"Enable %@", base]
-        : [NSString stringWithFormat:@"Disable %@", base];
-
-    NSString *deleteTitle = [NSString stringWithFormat:@"Delete %@", base];
-
+    //set titles
+    editTitle = [NSString stringWithFormat:@"Edit %@", base];
+    deleteTitle = [NSString stringWithFormat:@"Delete %@", base];
+    
+    enableTitle = [NSString stringWithFormat:@"Enable %@", base];
+    disableTitle = [NSString stringWithFormat:@"Disable %@", base];
+    
+    //dbg msg
     os_log_debug(logHandle, "row: %ld, item: %{public}@", (long)row, item);
 
+    //alloc menu
     NSMenu *menu = [[NSMenu alloc] initWithTitle:@"Rule Menu"];
     menu.autoenablesItems = NO;
     
-    //edit
+    //start with edit
     // but only for rules (not group)
     if(!isGroup) {
-        
-        NSMenuItem *edit =
-            [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Edit Rule", nil)
-                                       action:@selector(editRule:)
-                                keyEquivalent:@""];
-        edit.target = self;
-        edit.representedObject = @(row);
-        [menu addItem:edit];
-        
+        [menu addItem:[self createMenuItemWithTitle:editTitle action:@selector(editRule:) row:row]];
+    }
+
+    //mixed states (in groups)
+    // add both enable and disable
+    if(mixedStates) {
+        [menu addItem:[self createMenuItemWithTitle:enableTitle action:@selector(enableRule:) row:row]];
+        [menu addItem:[self createMenuItemWithTitle:disableTitle action:@selector(disableRule:) row:row]];
     }
     
-    //toggle
-    NSMenuItem *toggle =
-        [[NSMenuItem alloc] initWithTitle:NSLocalizedString(toggleTitle, nil)
-                                   action:@selector(toggleRule:)
-                            keyEquivalent:@""];
-    toggle.target = self;
-    toggle.representedObject = @(row);
-    [menu addItem:toggle];
+    //not mixed
+    // so can just add toggle option
+    else
+    {
+        //rule disabled?
+        // set 'enable' option
+        if(rule.isDisabled.boolValue) {
+            [menu addItem:[self createMenuItemWithTitle:enableTitle action:@selector(enableRule:) row:row]];
+        }
+        
+        //rule enabled?
+        // set 'disable' option
+        else {
+            [menu addItem:[self createMenuItemWithTitle:disableTitle action:@selector(disableRule:) row:row]];
+        }
+    }
     
     //separator
     [menu addItem:[NSMenuItem separatorItem]];
     
     //delete
-    NSMenuItem *delete =
-        [[NSMenuItem alloc] initWithTitle:NSLocalizedString(deleteTitle, nil)
-                                   action:@selector(deleteRule:)
-                            keyEquivalent:@""];
-    delete.target = self;
-    delete.representedObject = @(row);
-    [menu addItem:delete];
+    [menu addItem:[self createMenuItemWithTitle:deleteTitle action:@selector(deleteRule:) row:row]];
     
     //separator
     [menu addItem:[NSMenuItem separatorItem]];
 
     //show paths
-    NSMenuItem *paths =
-        [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Display Paths", nil)
-                                   action:@selector(showPaths:)
-                            keyEquivalent:@""];
-    paths.target = self;
-    paths.representedObject = @(row);
-    [menu addItem:paths];
-
+    showPathsTitle = NSLocalizedString(@"Display Path(s)", nil);
+    [menu addItem:[self createMenuItemWithTitle:showPathsTitle action:@selector(showPaths:) row:row]];
+    
+    //show menu below button
     NSPoint pt = NSMakePoint(NSMinX(sender.bounds), NSMaxY(sender.bounds));
     [menu popUpMenuPositioningItem:nil atLocation:pt inView:sender];
 
     return;
+}
+
+-(NSMenuItem*)createMenuItemWithTitle:(NSString*)title action:(SEL)action row:(NSInteger)row {
+    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:title action:action keyEquivalent:@""];
+    item.target = self;
+    item.representedObject = @(row);
+    return item;
 }
 
 -(void)editRule:(NSMenuItem*)sender
@@ -1384,8 +1410,8 @@ bail:
     return;
 }
 
-//toggle rule(s) via XPC
--(void)toggleRule:(NSMenuItem*)sender
+//enable rule(s) via XPC
+-(void)enableRule:(NSMenuItem*)sender
 {
     Rule *rule = nil;
     NSString* uuid = nil;
@@ -1404,15 +1430,46 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "toggling rule %{public}@", rule);
     
-    //toggle rule via XPC
+    //enable rule via XPC
     // nil uuid, means toggle all rules for item (process)
-    [xpcDaemonClient toggleRule:rule.key rule:uuid];
+    [xpcDaemonClient toggleRule:rule.key rule:uuid state:@RULE_TOGGLE_STATE_ENABLE];
     
     //refresh
     [self loadRules:NO select:@(row)];
     
     return;
 }
+
+//disable rule(s) via XPC
+-(void)disableRule:(NSMenuItem*)sender
+{
+    Rule *rule = nil;
+    NSString* uuid = nil;
+    
+    NSInteger row = [sender.representedObject integerValue];
+    
+    id item = [self.outlineView itemAtRow:row];
+    
+    if([item isKindOfClass:[NSArray class]]) {
+        rule = [item firstObject];
+    } else {
+        rule = item;
+        uuid = rule.uuid;
+    }
+    
+    //dbg msg
+    os_log_debug(logHandle, "toggling rule %{public}@", rule);
+    
+    //disable rule via XPC
+    // nil uuid, means toggle all rules for item (process)
+    [xpcDaemonClient toggleRule:rule.key rule:uuid state:@RULE_TOGGLE_STATE_DISABLE];
+    
+    //refresh
+    [self loadRules:NO select:@(row)];
+    
+    return;
+}
+
 
 //delete rule(s) via XPC
 -(void)deleteRule:(NSMenuItem *)sender

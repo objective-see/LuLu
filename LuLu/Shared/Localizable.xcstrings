@@ -4056,10 +4056,7 @@
         }
       }
     },
-    "Display Paths" : {
-      "comment" : "Display paths"
-    },
-    "Edit Rule" : {
+    "Display Path(s)" : {
 
     },
     "Enable" : {

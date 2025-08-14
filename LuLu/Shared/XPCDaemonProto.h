@@ -24,7 +24,7 @@
 -(void)addRule:(NSDictionary*)info;
 
 //disable (or re-enable) rule
--(void)toggleRule:(NSString*)key rule:(NSString*)uuid;
+-(void)toggleRule:(NSString*)key rule:(NSString*)uuid state:(NSNumber*)state;
 
 //delete rule
 -(void)deleteRule:(NSString*)key rule:(NSString*)uuid;
