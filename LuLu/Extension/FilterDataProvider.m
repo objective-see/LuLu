@@ -272,11 +272,11 @@ bail:
             
     //dbg msg
     //os_log_debug(logHandle, "process object for flow: %{public}@", process);
-    
+        
     //CHECK:
     // different logged in user?
     // just allow flow, as we don't want to block their traffic
-    if( (nil != consoleUser) &&
+    if( (nil != consoleUser) && (nil != alerts.consoleUser) &&
         (YES != [alerts.consoleUser isEqualToString:consoleUser]) )
     {
         //dbg msg
