@@ -932,6 +932,9 @@ bail:
             //hide button
             self.updateButton.hidden = YES;
             
+            //unset label
+            self.updateLabel.stringValue = @"";
+            
             //add to mode's view
             [self.addProfileSheet.contentView addSubview:self.currentProfileSubview];
             
@@ -1147,7 +1150,7 @@ bail:
 -(IBAction)openHomePage:(id)sender {
     
     //open
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:PRODUCT_URL]];
+    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:PRODUCT_URL]];
     
     return;
 }

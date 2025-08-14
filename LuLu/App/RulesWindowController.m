@@ -1286,6 +1286,7 @@ bail:
     return cell;
 }
 
+//menu when user 2x clicks, or clicks on rule menu
 -(IBAction)showRuleMenu:(NSButton*)sender
 {
     BOOL mixedStates = NO;
@@ -1306,7 +1307,7 @@ bail:
     //set flag
     BOOL isGroup = [item isKindOfClass:[NSArray class]];
     
-    //determine if there are states?
+    //determine if there are mixed states?
     if(isGroup && [item count] > 1) {
         
         BOOL firstState = ((Rule*)[item firstObject]).isDisabled.boolValue;
@@ -1325,11 +1326,11 @@ bail:
     }
     
     //set titles
-    editTitle = [NSString stringWithFormat:@"Edit %@", base];
-    deleteTitle = [NSString stringWithFormat:@"Delete %@", base];
-    
-    enableTitle = [NSString stringWithFormat:@"Enable %@", base];
-    disableTitle = [NSString stringWithFormat:@"Disable %@", base];
+    editTitle = [NSString stringWithFormat:NSLocalizedString(@"Edit %@", @"Edit %@"), base];
+    deleteTitle = [NSString stringWithFormat:NSLocalizedString(@"Delete %@", @"Delete %@"), base];
+
+    enableTitle = [NSString stringWithFormat:NSLocalizedString(@"Enable %@", @"Enable %@"), base];
+    disableTitle = [NSString stringWithFormat:NSLocalizedString(@"Disable %@", @"Disable %@"), base];
     
     //dbg msg
     os_log_debug(logHandle, "row: %ld, item: %{public}@", (long)row, item);
@@ -1351,8 +1352,8 @@ bail:
         [menu addItem:[self createMenuItemWithTitle:disableTitle action:@selector(disableRule:) row:row]];
     }
     
-    //not mixed
-    // so can just add toggle option
+    //not mixed or single rule
+    // so can just add one option to toggle
     else
     {
         //rule disabled?
@@ -1371,13 +1372,13 @@ bail:
     //separator
     [menu addItem:[NSMenuItem separatorItem]];
     
-    //delete
+    //add delete
     [menu addItem:[self createMenuItemWithTitle:deleteTitle action:@selector(deleteRule:) row:row]];
     
     //separator
     [menu addItem:[NSMenuItem separatorItem]];
 
-    //show paths
+    //add show paths
     showPathsTitle = NSLocalizedString(@"Display Path(s)", nil);
     [menu addItem:[self createMenuItemWithTitle:showPathsTitle action:@selector(showPaths:) row:row]];
     
@@ -1388,6 +1389,7 @@ bail:
     return;
 }
 
+//create menu item with title
 -(NSMenuItem*)createMenuItemWithTitle:(NSString*)title action:(SEL)action row:(NSInteger)row {
     NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:title action:action keyEquivalent:@""];
     item.target = self;
@@ -1395,6 +1397,8 @@ bail:
     return item;
 }
 
+//edit rule
+// just show 'add rule' window with pre-filled data
 -(void)editRule:(NSMenuItem*)sender
 {
     //grab rule
