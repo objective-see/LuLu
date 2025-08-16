@@ -173,10 +173,28 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Cancel\"; ObjectID = \"5Fx-eu-v3J\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Cancel"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
           }
         },
         "it" : {
@@ -185,7 +203,49 @@
             "value" : "Annulla"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "취소"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anuluj"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İptal"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скасувати"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "منسوخ کریں"
+          }
+        },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "取消"
@@ -197,10 +257,28 @@
       "comment" : "Class = \"NSToolbarItem\"; label = \"Profiles\"; ObjectID = \"5li-Ut-Gsb\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Profiles"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfiles"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profils"
           }
         },
         "it" : {
@@ -209,10 +287,52 @@
             "value" : "Profili"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로필"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfis"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profiller"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профілі"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پروفائلز"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "配置文件"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定檔"
           }
         }
       }
@@ -221,10 +341,28 @@
       "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Profiles\"; ObjectID = \"5li-Ut-Gsb\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Profiles"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfiles"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profils"
           }
         },
         "it" : {
@@ -233,10 +371,52 @@
             "value" : "Profili"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로필"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfis"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profiller"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профілі"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پروفائلز"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "配置文件"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定檔"
           }
         }
       }
@@ -581,10 +761,28 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Note: A profile defines a set of rules and settings. Once activated, its settings apply LuLu-wide (and can be modified via LuLu's Settings panes). Any new rules will be added only to that profile's ruleset.\"; ObjectID = \"7vn-ff-PJk\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweis: Ein Profil definiert eine Reihe von Regeln und Einstellungen. Sobald es aktiviert ist, gelten diese Einstellungen für ganz LuLu (und können in den LuLu-Einstellungen geändert werden). Neue Regeln werden nur zu diesem Profil hinzugefügt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Note: A profile defines a set of rules and settings. Once activated, its settings apply LuLu-wide (and can be modified via LuLu's Settings panes). Any new rules will be added only to that profile's ruleset."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nota: Un perfil define un conjunto de reglas y configuraciones. Una vez activado, sus configuraciones se aplican en todo LuLu (y se pueden modificar en los paneles de Configuración de LuLu). Cualquier regla nueva se añadirá solo al conjunto de reglas de ese perfil."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remarque : un profil définit un ensemble de règles et de paramètres. Une fois activé, ses paramètres s’appliquent à l’ensemble de LuLu (et peuvent être modifiés dans les panneaux de paramètres de LuLu). Toute nouvelle règle sera ajoutée uniquement à l’ensemble de règles de ce profil."
           }
         },
         "it" : {
@@ -593,10 +791,52 @@
             "value" : "Nota: Un profilo definisce un insieme di regole e impostazioni. Una volta attivato, le sue impostazioni si applicano in tutto LuLu (e possono essere modificate nei pannelli Impostazioni di LuLu). Eventuali nuove regole verranno aggiunte solo al set di regole di quel profilo."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "참고: 프로필은 일련의 규칙과 설정을 정의합니다. 활성화되면 해당 설정이 LuLu 전체에 적용되며 (LuLu의 설정 창에서 수정할 수 있습니다). 새 규칙은 해당 프로필의 규칙 집합에만 추가됩니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uwaga: Profil definiuje zestaw reguł i ustawień. Po aktywowaniu ustawienia te mają zastosowanie w całym LuLu (i mogą być zmieniane w panelach ustawień LuLu). Nowe reguły będą dodawane tylko do zestawu reguł tego profilu."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nota: Um perfil define um conjunto de regras e configurações. Uma vez ativado, suas configurações são aplicadas em todo o LuLu (e podem ser modificadas nos painéis de Configurações do LuLu). Novas regras serão adicionadas somente ao conjunto de regras desse perfil."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not: Bir profil, bir dizi kural ve ayar tanımlar. Etkinleştirildiğinde bu ayarlar LuLu genelinde geçerli olur (ve LuLu’nun Ayarlar pencerelerinden değiştirilebilir). Yeni kurallar yalnızca o profilin kural kümesine eklenir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Примітка: профіль визначає набір правил і налаштувань. Після активації його параметри застосовуються в LuLu (і можуть бути змінені через панелі налаштувань LuLu). Будь-які нові правила буде додано лише до набору правил цього профілю."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نوٹ: ایک پروفائل قواعد اور ترتیبات کا مجموعہ متعین کرتا ہے۔ فعال ہونے کے بعد، اس کی ترتیبات پوری LuLu پر لاگو ہوں گی (اور انہیں LuLu کی ترتیبات میں ترمیم کیا جا سکتا ہے)۔ کوئی بھی نیا قاعدہ صرف اسی پروفائل کے قواعد میں شامل کیا جائے گا۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "注意：配置文件定义了一组规则和设置。激活后，其设置将在整个 LuLu 中生效（并可通过 LuLu 的“设置”面板进行修改）。任何新规则都只会添加到该配置文件的规则集中。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注意：設定檔定義了一組規則與設定。啟用後，其設定將套用於整個 LuLu（並可透過 LuLu 的設定面板修改）。任何新的規則只會新增到該設定檔的規則集中。"
           }
         }
       }
@@ -605,10 +845,28 @@
       "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Selected Profile\"; ObjectID = \"9ts-yW-4uE\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausgewähltes Profil"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Selected Profile"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfil seleccionado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil sélectionné"
           }
         },
         "it" : {
@@ -617,10 +875,52 @@
             "value" : "Profilo Selezionato"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선택된 프로필"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybrany profil"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfil selecionado"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçili Profil"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вибраний профіль"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "منتخب کردہ پروفائل"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "已选择的配置文件"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已選取的設定檔"
           }
         }
       }
@@ -965,10 +1265,28 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"First create a name for your profile. \\n\\nThen click \\\"Next\\\" to configure the settings for your new profile.\"; ObjectID = \"d79-kw-Ala\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erstellen Sie zuerst einen Namen für Ihr Profil.\n\nKlicken Sie dann auf „Weiter“, um die Einstellungen für Ihr neues Profil zu konfigurieren."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "First create a name for your profile. \n\nThen click \"Next\" to configure the settings for your new profile."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primero cree un nombre para su perfil.\n\nLuego haga clic en “Siguiente” para configurar los ajustes de su nuevo perfil."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créez d’abord un nom pour votre profil.\n\nCliquez ensuite sur « Suivant » pour configurer les paramètres de votre nouveau profil."
           }
         },
         "it" : {
@@ -977,10 +1295,52 @@
             "value" : "Crea prima un nome per il tuo profilo. \n\nPoi fai clic su “Avanti” per configurare le impostazioni del tuo nuovo profilo."
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "먼저 프로필 이름을 만드세요.\n\n그런 다음 \"다음\"을 클릭하여 새 프로필의 설정을 구성하세요."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Najpierw utwórz nazwę dla swojego profilu.\n\nNastępnie kliknij „Dalej”, aby skonfigurować ustawienia nowego profilu."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primeiro crie um nome para o seu perfil.\n\nEm seguida, clique em “Avançar” para configurar as configurações do seu novo perfil."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önce profiliniz için bir ad oluşturun.\n\nArdından yeni profilinizin ayarlarını yapılandırmak için “İleri”ye tıklayın."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спочатку створіть назву для свого профілю.\n\nПотім натисніть «Далі», щоб налаштувати параметри для нового профілю."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سب سے پہلے اپنے پروفائل کے لیے ایک نام بنائیں۔\n\nپھر \"اگلا\" پر کلک کریں تاکہ اپنے نئے پروفائل کی ترتیبات تشکیل دیں۔"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "请先为您的配置文件创建一个名称。\n然后点击“下一步”来配置新配置文件的设置。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請先為您的設定檔建立名稱。 \n\n然後點擊「下一步」以設定新設定檔的選項。"
           }
         }
       }
@@ -1327,8 +1687,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "LuLus Einstellungen"
+            "state" : "translated",
+            "value" : "Einstellungen"
           }
         },
         "en" : {
@@ -1339,14 +1699,14 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Configuración de LuLu"
+            "state" : "translated",
+            "value" : "Configuración"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Réglages de LuLu"
+            "state" : "translated",
+            "value" : "Paramètres"
           }
         },
         "it" : {
@@ -1357,38 +1717,38 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "LuLu 설정"
+            "state" : "translated",
+            "value" : "설정"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ustawienia LuLu"
+            "state" : "translated",
+            "value" : "Ustawienia"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Configurações LuLu:"
+            "state" : "translated",
+            "value" : "Configurações"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "LuLu’nun Ayarları"
+            "state" : "translated",
+            "value" : "Ayarlar"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Параметри LuLu:"
+            "state" : "translated",
+            "value" : "Параметри"
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "لولو کی ترتیبات"
+            "state" : "translated",
+            "value" : "ترتیبات"
           }
         },
         "zh-Hans" : {
@@ -1399,8 +1759,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "LuLu 的設定"
+            "state" : "translated",
+            "value" : "設定"
           }
         }
       }
@@ -1577,10 +1937,28 @@
       "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Profile Name\"; ObjectID = \"GRx-gM-j7j\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profilname"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Profile Name"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre del perfil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom du profil"
           }
         },
         "it" : {
@@ -1589,10 +1967,52 @@
             "value" : "Nome Profilo"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로필 이름"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa profilu"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome do perfil"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil Adı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назва профілю"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "روفائل کا نام"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "配置文件名称"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定檔名稱"
           }
         }
       }
@@ -1685,10 +2105,28 @@
       "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"Profile Name\"; ObjectID = \"I4i-8n-Kep\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profilname"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Profile Name"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre del perfil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom du profil"
           }
         },
         "it" : {
@@ -1697,10 +2135,52 @@
             "value" : "Nome Profilo"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로필 이름"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa profilu"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome do perfil"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil Adı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назва профілю"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "روفائل کا نام"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "配置文件名称"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定檔名稱"
           }
         }
       }
@@ -1709,10 +2189,28 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Add Profile\"; ObjectID = \"ICK-Xr-yt1\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Add Profile"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar perfil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un profil"
           }
         },
         "it" : {
@@ -1721,10 +2219,52 @@
             "value" : "Aggiungi Profilo"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로필 추가"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaj profil"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar perfil"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil Ekle"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати профіль"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "روفائل کا نام"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "添加配置文件"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新增設定檔"
           }
         }
       }
@@ -2405,10 +2945,28 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Profile Name:\"; ObjectID = \"kZA-kY-nGm\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profilname"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Profile Name:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre del perfil:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom du profil :"
           }
         },
         "it" : {
@@ -2417,10 +2975,52 @@
             "value" : "Nome Profilo:"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로필 이름:"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa profilu:"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome do perfil:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil Adı:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назва профілю:"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "روفائل کا نام:"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "配置文件名称："
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定檔名稱:"
           }
         }
       }
@@ -3605,10 +4205,28 @@
       "comment" : "Class = \"NSButtonCell\"; title = \"Next\"; ObjectID = \"wVp-l1-Eac\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profilname"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Next"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant"
           }
         },
         "it" : {
@@ -3617,7 +4235,49 @@
             "value" : "Avanti"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다음"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dalej"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avançar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İleri"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далі"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اگلا"
+          }
+        },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一步"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "下一步"
@@ -3797,10 +4457,28 @@
       "comment" : "Class = \"NSWindow\"; title = \"Add Profile\"; ObjectID = \"Zan-q8-ABi\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil hinzufügen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Add Profile"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar perfil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un profil"
           }
         },
         "it" : {
@@ -3809,10 +4487,52 @@
             "value" : "Aggiungi Profilo"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로필 추가"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaj profil"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar perfil"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil Ekle"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати профіль"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پروفائل شامل کریں"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "添加配置文件"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新增設定檔"
           }
         }
       }

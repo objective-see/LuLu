@@ -37,7 +37,7 @@
         <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="196" y="240" width="650" height="450"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1720" height="695"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="650" height="450"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -787,7 +787,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="172" y="98" width="650" height="420"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1720" height="695"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
             <view key="contentView" id="XyO-rJ-3Fe">
                 <rect key="frame" x="0.0" y="0.0" width="650" height="420"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -873,7 +873,7 @@ Then click "Next" to configure the settings for your new profile.</string>
         </customView>
     </objects>
     <resources>
-        <image name="NSStopProgressFreestandingTemplate" width="20" height="20"/>
+        <image name="NSStopProgressFreestandingTemplate" width="19" height="19"/>
         <image name="PrefsList" width="128" height="128"/>
         <image name="PrefsMode" width="72" height="72"/>
         <image name="PrefsProfiles" width="32" height="32"/>
