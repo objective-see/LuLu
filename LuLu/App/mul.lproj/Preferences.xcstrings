@@ -166,6 +166,12 @@
             "state" : "new",
             "value" : "Cancel"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
+          }
         }
       }
     },
@@ -178,6 +184,12 @@
             "state" : "new",
             "value" : "Profiles"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "配置文件"
+          }
         }
       }
     },
@@ -189,6 +201,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Profiles"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "配置文件"
           }
         }
       }
@@ -514,6 +532,12 @@
             "state" : "new",
             "value" : "Note: A profile defines a set of rules and settings. Once activated, its settings apply LuLu-wide (and can be modified via LuLu's Settings panes). Any new rules will be added only to that profile's ruleset."
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注意：配置文件定义了一组规则和设置。激活后，其设置将在整个 LuLu 中生效（并可通过 LuLu 的“设置”面板进行修改）。任何新规则都只会添加到该配置文件的规则集中。"
+          }
         }
       }
     },
@@ -525,6 +549,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Selected Profile"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已选择的配置文件"
           }
         }
       }
@@ -849,6 +879,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "First create a name for your profile. \n\nThen click \"Next\" to configure the settings for your new profile."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请先为您的配置文件创建一个名称。\n然后点击“下一步”来配置新配置文件的设置。"
           }
         }
       }
@@ -1231,8 +1267,8 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "LuLu的设置"
+            "state" : "translated",
+            "value" : "设置"
           }
         },
         "zh-Hant" : {
@@ -1408,6 +1444,12 @@
             "state" : "new",
             "value" : "Profile Name"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "配置文件名称"
+          }
         }
       }
     },
@@ -1498,6 +1540,12 @@
             "state" : "new",
             "value" : "Profile Name"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "配置文件名称"
+          }
         }
       }
     },
@@ -1509,6 +1557,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Add Profile"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加配置文件"
           }
         }
       }
@@ -2145,6 +2199,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Profile Name:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "配置文件名称："
           }
         }
       }
@@ -3250,6 +3310,12 @@
             "state" : "new",
             "value" : "Next"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一步"
+          }
         }
       }
     },
@@ -3417,6 +3483,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Add Profile"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加配置文件"
           }
         }
       }

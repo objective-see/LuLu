@@ -223,92 +223,14 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "最近的规则"
+            "state" : "translated",
+            "value" : "被动创建的规则"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "最近加入的規則"
-          }
-        }
-      }
-    },
-    "BsU-Gh-mch.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Text Cell\"; ObjectID = \"BsU-Gh-mch\";",
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Textzelle"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Text Cell"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Celda de Texto"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cellule texte"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "텍스트 셀"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Komórka tekstowa"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Célula de Texto"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Metin Hücresi"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Текстове поле"
-          }
-        },
-        "ur" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ٹیکسٹ سیل"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "文本单元格"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "文字欄位"
           }
         }
       }
@@ -379,8 +301,8 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "用户规则"
+            "state" : "translated",
+            "value" : "用户创建的规则"
           }
         },
         "zh-Hant" : {
@@ -477,6 +399,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Recent Rules"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最近的规则"
           }
         }
       }

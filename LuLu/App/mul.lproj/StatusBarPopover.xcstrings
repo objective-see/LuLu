@@ -71,7 +71,8 @@
             "value" : "⌃"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "17.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"LuLu up & running!\"; ObjectID = \"17\";",

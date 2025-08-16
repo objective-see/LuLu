@@ -926,10 +926,26 @@
       }
     },
     "'%@' matches an existing profile name." : {
-      "comment" : "'%@' matches an existing profile name."
+      "comment" : "'%@' matches an existing profile name.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” 与现有的配置文件名称匹配。"
+          }
+        }
+      }
     },
     "'Default' is a reserved profile name." : {
-      "comment" : "'Default' is a reserved profile name."
+      "comment" : "'Default' is a reserved profile name.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Default” 是保留的配置文件名称。"
+          }
+        }
+      }
     },
     "› no signing authorities" : {
       "comment" : "› no signing authorities",
@@ -2644,7 +2660,15 @@
       }
     },
     "Add Profile" : {
-      "comment" : "Add Profile"
+      "comment" : "Add Profile",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加配置文件"
+          }
+        }
+      }
     },
     "Added in last 24 hours (sorted by creation time)" : {
       "comment" : "Added in last 24 hours (sorted by creation time)",
@@ -2724,10 +2748,26 @@
       }
     },
     "Added passively (either if 'passive mode' is set, or no user was logged in when rule was created)" : {
-      "comment" : "Added passively (either if 'passive mode' is set, or no user was logged in when rule was created)"
+      "comment" : "Added passively (either if 'passive mode' is set, or no user was logged in when rule was created)",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "被动添加（当设置了“被动模式”，或在创建规则时没有用户登录时）"
+          }
+        }
+      }
     },
     "Added Profile" : {
-      "comment" : "Added Profile"
+      "comment" : "Added Profile",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已添加的配置文件"
+          }
+        }
+      }
     },
     "All Rules" : {
       "comment" : "All Rules",
@@ -3808,7 +3848,15 @@
       }
     },
     "Confirm Deletion" : {
-      "comment" : "Confirm Deletion"
+      "comment" : "Confirm Deletion",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认删除"
+          }
+        }
+      }
     },
     "Continue" : {
       "comment" : "Continue",
@@ -3888,19 +3936,62 @@
       }
     },
     "Current profile is now: '%@'." : {
-      "comment" : "Current profile is now: '%@'."
+      "comment" : "Current profile is now: '%@'.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当前配置文件为：“%@”。"
+          }
+        }
+      }
     },
     "Current Profile: %@" : {
-      "comment" : "Current Profile: %@"
+      "comment" : "Current Profile: %@",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当前配置文件：%@"
+          }
+        }
+      }
     },
     "Current Profile: Default" : {
-      "comment" : "Current Profile: Default"
+      "comment" : "Current Profile: Default",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当前配置文件：Default"
+          }
+        }
+      }
     },
     "Default" : {
-      "comment" : "Default"
+      "comment" : "Default",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "默认"
+          }
+        }
+      }
+    },
+    "Delete %@" : {
+      "comment" : "Delete %@"
     },
     "Delete profile: '%@'?" : {
-      "comment" : "Delete profile: '%@'?"
+      "comment" : "Delete profile: '%@'?",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除配置文件：“%@”？"
+          }
+        }
+      }
     },
     "Directory Rules apply to all items within the directory" : {
       "comment" : "Directory Rules apply to all items within the directory",
@@ -4056,8 +4147,21 @@
         }
       }
     },
+    "Disable %@" : {
+      "comment" : "Disable %@"
+    },
     "Display Path(s)" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示路径"
+          }
+        }
+      }
+    },
+    "Edit %@" : {
+      "comment" : "Edit %@"
     },
     "Enable" : {
       "comment" : "Enable",
@@ -4135,6 +4239,9 @@
           }
         }
       }
+    },
+    "Enable %@" : {
+      "comment" : "Enable %@"
     },
     "ERROR: activation failed" : {
       "comment" : "ERROR: activation failed",
@@ -5677,7 +5784,15 @@
       }
     },
     "Invalid Profile Name" : {
-      "comment" : "Invalid Profile Name"
+      "comment" : "Invalid Profile Name",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "配置文件名称无效"
+          }
+        }
+      }
     },
     "is connecting to %@" : {
       "comment" : "is connecting to %@",
@@ -6160,10 +6275,26 @@
       }
     },
     "New profile '%@' saved and activated." : {
-      "comment" : "New profile '%@' saved and activated."
+      "comment" : "New profile '%@' saved and activated.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新配置文件“%@”已保存并激活。"
+          }
+        }
+      }
     },
     "Next" : {
-      "comment" : "Next"
+      "comment" : "Next",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一步"
+          }
+        }
+      }
     },
     "none" : {
       "comment" : "none",
@@ -6397,7 +6528,15 @@
       }
     },
     "Ok" : {
-      "comment" : "Ok"
+      "comment" : "Ok",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确定"
+          }
+        }
+      }
     },
     "OK" : {
       "comment" : "OK",
@@ -6708,10 +6847,24 @@
       }
     },
     "Path(s) for %@:" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 的路径："
+          }
+        }
+      }
     },
     "Path(s):" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "路径："
+          }
+        }
+      }
     },
     "Pre-installed 3rd-party Programs (automatically allowed & added here if 'allow installed applications' is set)" : {
       "comment" : "Pre-installed 3rd-party Programs (automatically allowed & added here if 'allow installed applications' is set)",
@@ -6945,13 +7098,37 @@
       }
     },
     "Profile Switched" : {
-      "comment" : "Profile Switched"
+      "comment" : "Profile Switched",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "配置文件已切换"
+          }
+        }
+      }
     },
     "Profile: %@" : {
-      "comment" : "Profile: %@"
+      "comment" : "Profile: %@",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "配置文件：%@"
+          }
+        }
+      }
     },
     "Profile: Default" : {
-      "comment" : "Profile: Default"
+      "comment" : "Profile: Default",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "配置文件：Default"
+          }
+        }
+      }
     },
     "Programs within \"%@/\"" : {
       "comment" : "Programs within \"%@/\"",
@@ -7339,10 +7516,26 @@
       }
     },
     "Rule" : {
-      "comment" : "Rule"
+      "comment" : "Rule",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "规则"
+          }
+        }
+      }
     },
     "Rules" : {
-      "comment" : "Rules"
+      "comment" : "Rules",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "规则"
+          }
+        }
+      }
     },
     "rules.json" : {
       "comment" : "rules.json",
