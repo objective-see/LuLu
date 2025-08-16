@@ -1261,8 +1261,16 @@ bail:
     //set endpoint port
     port = (YES == [rule.endpointPort isEqualToString:VALUE_ANY]) ? NSLocalizedString(@"any port",@"any port") : rule.endpointPort;
     
-    //init addr/port
-    contents = [NSMutableString stringWithFormat:@"%@:%@", address, port];
+    //init addr/port with smart port display (hide common ports 80, 443)
+    if (([rule.endpointPort isEqualToString:@"80"] || [rule.endpointPort isEqualToString:@"443"]) &&
+        NO == [rule.endpointAddr isEqualToString:VALUE_ANY] &&
+        NO == [rule.endpointPort isEqualToString:VALUE_ANY]) {
+        // Hide common ports for cleaner display
+        contents = [NSMutableString stringWithString:address];
+    } else {
+        // Show port for uncommon ports or when using "any" values
+        contents = [NSMutableString stringWithFormat:@"%@:%@", address, port];
+    }
     
     //in "recents" view, add creation timestamp
     if(RULE_TYPE_RECENT == self.selectedRuleView)
