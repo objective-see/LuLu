@@ -175,8 +175,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Neuste Regeln"
+            "state" : "translated",
+            "value" : "Passiv erstellte Regeln"
           }
         },
         "en" : {
@@ -187,14 +187,14 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Reglas Recientes"
+            "state" : "translated",
+            "value" : "Reglas Pasivamente"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Règles récentes"
+            "state" : "translated",
+            "value" : "Règles créées passivement"
           }
         },
         "it" : {
@@ -205,32 +205,32 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "최근 규칙"
+            "state" : "translated",
+            "value" : "수동으로 생성된 규칙"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Najnowsze reguły"
+            "state" : "translated",
+            "value" : "Pasywnie utworzone reguły"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Regras Recentes"
+            "state" : "translated",
+            "value" : "Regras criadas passivamente"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Son Kullanılan Kurallar"
+            "state" : "translated",
+            "value" : "Pasif Kurallar"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Нещодавні правила"
+            "state" : "translated",
+            "value" : "Пасивно створені правила"
           }
         },
         "ur" : {
@@ -247,8 +247,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "最近加入的規則"
+            "state" : "translated",
+            "value" : "被動建立的規則"
           }
         }
       }
@@ -259,8 +259,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Benutzerregeln"
+            "state" : "translated",
+            "value" : "Vom Benutzer erstellte Regeln"
           }
         },
         "en" : {
@@ -271,14 +271,14 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Reglas del Usuario"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Règles utilisateur"
+            "state" : "translated",
+            "value" : "Règles créées par l’utilisateur"
           }
         },
         "it" : {
@@ -289,31 +289,31 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "사용자 규칙"
+            "state" : "translated",
+            "value" : "사용자가 생성한 규칙"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Reguły użytkownika"
+            "state" : "translated",
+            "value" : "Reguły utworzone przez użytkownika"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Regras do Usuário"
+            "state" : "translated",
+            "value" : "Regras criadas pelo usuário"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Kullanıcı Kuralları"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Користувацькі правила"
           }
         },
@@ -331,8 +331,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "使用者規則"
+            "state" : "translated",
+            "value" : "使用者建立的規則"
           }
         }
       }
@@ -425,10 +425,28 @@
       "comment" : "Class = \"NSMenuItem\"; title = \"Recent Rules\"; ObjectID = \"e4i-1F-tjh\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neueste Regeln"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Recent Rules"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reglas Recientes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Règles récentes"
           }
         },
         "it" : {
@@ -437,10 +455,52 @@
             "value" : "Regole recenti"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최근 규칙"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ostatnie reguły"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regras recentes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son Kurallar"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нещодавні правила"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حالیہ قواعد"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "最近的规则"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最近的規則"
           }
         }
       }
