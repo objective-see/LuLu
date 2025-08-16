@@ -90,7 +90,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Switch" id="1HU-j3-Oa3">
                                     <items>
-                                        <menuItem title="Profile One" id="TRi-aL-EeM">
+                                        <menuItem id="TRi-aL-EeM">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                     </items>

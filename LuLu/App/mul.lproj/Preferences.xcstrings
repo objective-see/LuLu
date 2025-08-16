@@ -29,6 +29,12 @@
             "value" : "Rechercher"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifica ora"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -107,6 +113,12 @@
             "value" : "Mode blocage"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modalità Blocco"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -167,6 +179,12 @@
             "value" : "Cancel"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulla"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -185,6 +203,12 @@
             "value" : "Profiles"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profili"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -201,6 +225,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Profiles"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profili"
           }
         },
         "zh-Hans" : {
@@ -237,6 +267,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Faut-il créer des règles pour les nouvelles connexions ?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creare regole per le nuove connessioni?"
           }
         },
         "ko" : {
@@ -317,6 +353,12 @@
             "value" : "Programmes précédemment installées, les programmes de tierce-partie seront autorisés."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I programmi di terze parti già installati saranno consentiti."
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -393,6 +435,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Note : lorsqu'une nouvelle connexion est établie, il arrive que seule l'adresse IP soit disponible. Dans ce cas, les domaines figurant sur la liste d'autorisation ou de blocage ne peuvent être mis en correspondance, ce qui peut avoir une incidence sur le fait que la demande soit bloquée ou autorisée."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nota: Quando viene stabilita una nuova connessione, a volte è disponibile solo l’indirizzo IP. In questi casi, i domini nell’elenco di blocco o autorizzazione potrebbero non essere riconosciuti, il che può influire sul fatto che una richiesta venga bloccata o consentita."
           }
         },
         "ko" : {
@@ -473,6 +521,12 @@
             "value" : "Fichier local ou distant contenant les points d’accès à toujours autoriser."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File locale o remoto contenente endpoint da consentire sempre."
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -533,6 +587,12 @@
             "value" : "Note: A profile defines a set of rules and settings. Once activated, its settings apply LuLu-wide (and can be modified via LuLu's Settings panes). Any new rules will be added only to that profile's ruleset."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nota: Un profilo definisce un insieme di regole e impostazioni. Una volta attivato, le sue impostazioni si applicano in tutto LuLu (e possono essere modificate nei pannelli Impostazioni di LuLu). Eventuali nuove regole verranno aggiunte solo al set di regole di quel profilo."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -549,6 +609,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Selected Profile"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profilo Selezionato"
           }
         },
         "zh-Hans" : {
@@ -585,6 +651,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fichier local ou distant contenant les points d’accès à toujours bloquer."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File locale o remoto contenente endpoint da bloccare sempre."
           }
         },
         "ko" : {
@@ -665,6 +737,12 @@
             "value" : "Exécuter sans afficher d'icône dans la barre de menu."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File locale o remoto contenente endpoint da bloccare sempre."
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -741,6 +819,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Voir les règles"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualizza Regole"
           }
         },
         "ko" : {
@@ -821,6 +905,12 @@
             "value" : "Autorisé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consentito"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -881,6 +971,12 @@
             "value" : "First create a name for your profile. \n\nThen click \"Next\" to configure the settings for your new profile."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea prima un nome per il tuo profilo. \n\nPoi fai clic su “Avanti” per configurare le impostazioni del tuo nuovo profilo."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -915,6 +1011,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exécution silencieuse sans alerte, en appliquant les règles existantes."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esegui in silenzio senza avvisi, applicando le regole esistenti."
           }
         },
         "ko" : {
@@ -995,6 +1097,12 @@
             "value" : "Oui"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sì"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1071,6 +1179,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les applications fonctionnant dans le simulateur sont autorisées."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le applicazioni in esecuzione nel simulatore saranno consentite."
           }
         },
         "ko" : {
@@ -1151,6 +1265,12 @@
             "value" : "Liste de blocage :"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elenco Blocco:"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1227,6 +1347,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Réglages de LuLu"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostazioni"
           }
         },
         "ko" : {
@@ -1307,6 +1433,12 @@
             "value" : "Liste d’autorisation :"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elenco Consenti:"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1385,6 +1517,12 @@
             "value" : "Parcourir"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sfoglia"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1445,6 +1583,12 @@
             "value" : "Profile Name"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome Profilo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1479,6 +1623,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les nouvelles connections doivent être :"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le nuove connessioni dovrebbero essere:"
           }
         },
         "ko" : {
@@ -1541,6 +1691,12 @@
             "value" : "Profile Name"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome Profilo"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1557,6 +1713,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Add Profile"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi Profilo"
           }
         },
         "zh-Hans" : {
@@ -1593,6 +1755,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode sans icône"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modalità senza icona"
           }
         },
         "ko" : {
@@ -1673,6 +1841,12 @@
             "value" : "Tout le trafic (UDP) sur le port 53 sera autorisé."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutto il traffico (UDP) sulla porta 53 sarà consentito."
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1749,6 +1923,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ne pas rechercher automatiquement la présence de nouvelles versions."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non controllare automaticamente la disponibilità di nuove versioni."
           }
         },
         "ko" : {
@@ -1829,6 +2009,12 @@
             "value" : "Mode passif"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modalità Passiva"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1905,6 +2091,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser les programmes installés"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consenti Programmi Installati"
           }
         },
         "ko" : {
@@ -1985,6 +2177,12 @@
             "value" : "Non"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2061,6 +2259,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modalità"
           }
         },
         "ko" : {
@@ -2141,6 +2345,12 @@
             "value" : "Mode"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modalità"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2201,6 +2411,12 @@
             "value" : "Profile Name:"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome Profilo:"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2235,6 +2451,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les binaires signés par Apple seront autorisés."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I binari firmati da Apple saranno consentiti."
           }
         },
         "ko" : {
@@ -2315,6 +2537,12 @@
             "value" : "Bloqué"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloccato"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2391,6 +2619,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modifier"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiorna"
           }
         },
         "ko" : {
@@ -2471,6 +2705,12 @@
             "value" : "Modifier"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiorna"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2547,6 +2787,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Listes"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elenchi"
           }
         },
         "ko" : {
@@ -2627,6 +2873,12 @@
             "value" : "Listes"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elenchi"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2703,6 +2955,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tout le trafic acheminé par LuLu sera bloqué (à moins que le point d’accès ne figure explicitement sur la liste 'Autoriser')."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutto il traffico instradato tramite LuLu verrà bloccato (a meno che l’endpoint non sia esplicitamente presente nell’elenco “Consenti”)."
           }
         },
         "ko" : {
@@ -2783,6 +3041,12 @@
             "value" : "Autoriser les programmes Apple"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consenti Programmi Apple"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2859,6 +3123,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regole"
           }
         },
         "ko" : {
@@ -2939,6 +3209,12 @@
             "value" : "Règles"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regole"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3015,6 +3291,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser les applications du simulateur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consenti Applicazioni del Simulatore"
           }
         },
         "ko" : {
@@ -3095,6 +3377,12 @@
             "value" : "Parcourir"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sfoglia"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3171,6 +3459,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser le trafic DNS"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consenti Traffico DNS"
           }
         },
         "ko" : {
@@ -3251,6 +3545,12 @@
             "value" : "Mode sans VirusTotal"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modalità senza VirusTotal"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3311,6 +3611,12 @@
             "value" : "Next"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avanti"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3345,6 +3651,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Désactiver l'intégration avec VirusTotal."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disabilita integrazione con VirusTotal."
           }
         },
         "ko" : {
@@ -3425,6 +3737,12 @@
             "value" : "Désactiver la recherche de mise à jour"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disabilita Verifica Aggiornamenti"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3483,6 +3801,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Add Profile"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi Profilo"
           }
         },
         "zh-Hans" : {

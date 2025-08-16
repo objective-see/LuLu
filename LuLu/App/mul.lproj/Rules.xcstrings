@@ -29,6 +29,12 @@
             "value" : "Label"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etichetta"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -105,6 +111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nom d’item"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome elemento"
           }
         },
         "ko" : {
@@ -185,6 +197,12 @@
             "value" : "Règles récentes"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regole create passivamente"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -261,6 +279,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Règles utilisateur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regole create dall'utente"
           }
         },
         "ko" : {
@@ -341,6 +365,12 @@
             "value" : "Règles de filtre"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtra regole"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -401,6 +431,12 @@
             "value" : "Recent Rules"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regole recenti"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -435,6 +471,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles LuLu"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regole LuLu"
           }
         },
         "ko" : {
@@ -515,6 +557,12 @@
             "value" : "Vue personnalisée"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vista personalizzata"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -591,6 +639,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vue personnalisée"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vista personalizzata"
           }
         },
         "ko" : {
@@ -671,6 +725,12 @@
             "value" : "Règle"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regola"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -747,6 +807,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toutes les règles"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutte le regole"
           }
         },
         "ko" : {
@@ -827,6 +893,12 @@
             "value" : "Détails de l'item"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dettagli elemento..."
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -903,6 +975,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles Apple"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regole Apple"
           }
         },
         "ko" : {
@@ -983,6 +1061,12 @@
             "value" : "Règles par défaut"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regole predefinite"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1059,6 +1143,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "information de connection"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "informazioni connessione"
           }
         },
         "ko" : {
@@ -1139,6 +1229,12 @@
             "value" : "(re)chargement des règles ..."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(ri)caricamento regole..."
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1217,6 +1313,12 @@
             "value" : "Ajouter règle"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi regola"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1293,6 +1395,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles tierce-partie"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regole di terze parti"
           }
         },
         "ko" : {

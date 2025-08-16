@@ -29,6 +29,12 @@
             "value" : "Démarrage en cours …"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avvio in corso..."
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",

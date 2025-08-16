@@ -102,6 +102,12 @@
             "value" : "LuLu est opérationnel !"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu è attivo e funzionante!"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -178,6 +184,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Accédez-y ici à tout moment"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accedici da qui in qualsiasi momento."
           }
         },
         "ko" : {

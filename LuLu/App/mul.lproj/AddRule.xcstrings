@@ -29,6 +29,12 @@
             "value" : "Port distant"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porta remota"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -107,6 +113,12 @@
             "value" : "Adresse/domaine distant"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indirizzo/Dominio remoto"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -183,6 +195,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajouter une règle (pour connections sortantes)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi regola (per connessioni in uscita)"
           }
         },
         "ko" : {
@@ -311,7 +329,8 @@
             "value" : "正規表達式？"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "fX0-Jq-Okq.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Cancel\"; ObjectID = \"fX0-Jq-Okq\";",
@@ -339,6 +358,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Annuler"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulla"
           }
         },
         "ko" : {
@@ -417,6 +442,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloquer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Blocca"
           }
         },
         "ko" : {
@@ -545,7 +576,8 @@
             "value" : "*"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "oCK-aR-Ek4.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \" Allow\"; ObjectID = \"oCK-aR-Ek4\";",
@@ -573,6 +605,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Consenti"
           }
         },
         "ko" : {
@@ -651,6 +689,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Parcourir"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sfoglia"
           }
         },
         "ko" : {
@@ -779,7 +823,8 @@
             "value" : "*"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "tc1-pS-Wns.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Program path\"; ObjectID = \"tc1-pS-Wns\";",
@@ -807,6 +852,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chemin du programme"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Percorso programma"
           }
         },
         "ko" : {
@@ -885,6 +936,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajouter"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi"
           }
         },
         "ko" : {

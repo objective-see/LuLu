@@ -84,6 +84,12 @@
             "value" : "Connection : "
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connessione:"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -160,6 +166,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Durée de la règle : "
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durata regola:"
           }
         },
         "ko" : {
@@ -240,6 +252,12 @@
             "value" : "port/protocole : "
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "porta/protocollo:"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -316,6 +334,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Durée de vie du processus"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durata processo"
           }
         },
         "ko" : {
@@ -444,7 +468,8 @@
             "value" : "HH:mm"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "b63-At-csb.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Details:\"; ObjectID = \"b63-At-csb\";",
@@ -472,6 +497,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Détails : "
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dettagli:"
           }
         },
         "ko" : {
@@ -552,6 +583,12 @@
             "value" : "Autorités de signature : "
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autorità di firma:"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -628,6 +665,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alert LuLu"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avviso LuLu"
           }
         },
         "ko" : {
@@ -763,6 +806,12 @@
             "value" : "dns (inverse) : "
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DNS inverso:"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -839,6 +888,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Détails et options"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dettagli e opzioni"
           }
         },
         "ko" : {
@@ -919,6 +974,12 @@
             "value" : "Champ d’application de la règle : "
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dettagli e opzioni"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -995,6 +1056,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "chemin : "
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "percorso:"
           }
         },
         "ko" : {
@@ -1123,7 +1190,8 @@
             "value" : "pid:"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Iys-aY-OZ4.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Process\"; ObjectID = \"Iys-aY-OZ4\";",
@@ -1151,6 +1219,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Processus"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Processo"
           }
         },
         "ko" : {
@@ -1231,6 +1305,12 @@
             "value" : "Nom du processus"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome processo"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1307,6 +1387,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nom"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome"
           }
         },
         "ko" : {
@@ -1442,6 +1528,12 @@
             "value" : "Point d’accès distant"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Endpoint remoto"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1518,6 +1610,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Processus : "
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Processo:"
           }
         },
         "ko" : {
@@ -1598,6 +1696,12 @@
             "value" : "message"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "messaggio"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1674,6 +1778,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "arguments : "
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "argomenti:"
           }
         },
         "ko" : {
@@ -1754,6 +1864,12 @@
             "value" : "Toujours"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sempre"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1830,6 +1946,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "adresse ip : "
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "indirizzo IP:"
           }
         },
         "ko" : {
@@ -1910,6 +2032,12 @@
             "value" : "Bloquer"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blocca"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1986,6 +2114,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Valide jusque : "
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valido fino a:"
           }
         },
         "ko" : {
@@ -2066,6 +2200,12 @@
             "value" : "Horodatage : "
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marca temporale:"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2142,6 +2282,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consenti"
           }
         },
         "ko" : {

@@ -29,6 +29,12 @@
             "value" : "Soutenez nous !"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sostienici!"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -105,6 +111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version : "
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versione:"
           }
         },
         "ko" : {
@@ -185,6 +197,12 @@
             "value" : "Mécènes et amis"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sostenitori e Amici"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -261,6 +279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Plus d’information"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maggiori informazioni"
           }
         },
         "ko" : {

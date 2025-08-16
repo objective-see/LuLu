@@ -29,6 +29,12 @@
             "value" : "Afficher…"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra…"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -89,6 +95,12 @@
             "value" : "Switch"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambia"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -123,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réglages…"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostazioni…"
           }
         },
         "ko" : {
@@ -185,6 +203,12 @@
             "value" : "Profiles"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profili"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -219,6 +243,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importer…"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importa…"
           }
         },
         "ko" : {
@@ -279,6 +309,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Switch"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambia"
           }
         },
         "zh-Hans" : {
@@ -365,7 +401,8 @@
             "value" : "LuLu"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "aZa-10-Ir1.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Export...\"; ObjectID = \"aZa-10-Ir1\";",
@@ -393,6 +430,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exporter…"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esporta…"
           }
         },
         "ko" : {
@@ -455,6 +498,12 @@
             "value" : "Profiles"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profili"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -489,6 +538,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quitter LuLu"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiudi LuLu"
           }
         },
         "ko" : {
@@ -567,6 +622,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajouter…"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi…"
           }
         },
         "ko" : {
@@ -695,7 +756,8 @@
             "value" : "LuLu"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "K0B-xd-gGB.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Support LuLu 💕\"; ObjectID = \"K0B-xd-gGB\";",
@@ -705,6 +767,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Support LuLu 💕"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supporta LuLu 💕"
           }
         },
         "zh-Hans" : {
@@ -723,6 +791,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Disable"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disattiva"
           }
         },
         "zh-Hans" : {
@@ -759,6 +833,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Désinstaller LuLu"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disinstalla LuLu"
           }
         },
         "ko" : {
@@ -839,6 +919,12 @@
             "value" : "Nettoyage"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulisci"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -917,6 +1003,12 @@
             "value" : "Désactiver"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profilo: Predefinito"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -977,6 +1069,12 @@
             "value" : "Manage..."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestisci…"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1011,6 +1109,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "À propos de LuLu"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni su LuLu"
           }
         },
         "ko" : {
@@ -1091,6 +1195,12 @@
             "value" : "Quitter LuLu"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiudi LuLu"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1141,24 +1251,6 @@
         }
       }
     },
-    "TRi-aL-EeM.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Profile One\"; ObjectID = \"TRi-aL-EeM\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Profile One"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "配置文件一"
-          }
-        }
-      }
-    },
     "uhX-d8-iZM.title" : {
       "comment" : "Class = \"NSMenu\"; title = \"Main Menu\"; ObjectID = \"uhX-d8-iZM\";",
       "extractionState" : "extracted_with_value",
@@ -1185,6 +1277,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Menu Principal"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu Principale"
           }
         },
         "ko" : {
@@ -1265,6 +1363,12 @@
             "value" : "Règles"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regole"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1341,6 +1445,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Règles"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regole"
           }
         },
         "ko" : {
@@ -1421,6 +1531,12 @@
             "value" : "Moniteur réseau…"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monitor di Rete…"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1497,6 +1613,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LULU : activé"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LULU: abilitato"
           }
         },
         "ko" : {

@@ -29,6 +29,12 @@
             "value" : "Cette option permet à toute application tierce déjà installée d'accéder au réseau sans générer d'alerte."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa opzione consentirà a qualsiasi app di terze parti già installata di accedere alla rete senza generare un avviso."
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -105,6 +111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mahalo aux « Amis Objectif-See »"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grazie agli \"Amici di Objective-See\""
           }
         },
         "ko" : {
@@ -185,6 +197,12 @@
             "value" : "1. Dans l'alerte « Extension du système bloquée », cliquez sur : « Ouvrir les Réglages Système »"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Nell’avviso \"Estensione di sistema bloccata\", fai clic su: \"Apri Impostazioni di sistema\""
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -263,6 +281,12 @@
             "value" : "Tout d'abord, autorisez l'extension de réseau LuLu :"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per prima cosa, consenti l’Estensione di rete di LuLu:"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -339,6 +363,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Il surveille l'activité du réseau et vous avertit lorsqu'un programme tente pour la première fois d'établir une connexion sortante, ce qui vous permet de l'autoriser ou de la refuser."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per prima cosa, consenti l’Estensione di rete di LuLu:"
           }
         },
         "ko" : {
@@ -486,7 +516,8 @@
             "value" : "LuLu"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "pMo-Yj-XKY.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"LuLu is a free open-source firewall for macOS.\"; ObjectID = \"pMo-Yj-XKY\";",
@@ -514,6 +545,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu est un pare-feu libre et gratuit pour macOS."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu è un firewall gratuito e open-source per macOS."
           }
         },
         "ko" : {
@@ -594,6 +631,12 @@
             "value" : "Non"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -670,6 +713,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Soutenir LuLu ?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuoi supportare LuLu?"
           }
         },
         "ko" : {
@@ -750,6 +799,12 @@
             "value" : "4. Dans l'alerte « Filtrer le contenu du réseau », cliquez sur : « Autoriser »"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Nell’avviso \"Filtra contenuti di rete\", fai clic su: \"Consenti\""
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -826,6 +881,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bienvenue sur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benvenuto in"
           }
         },
         "ko" : {
@@ -906,6 +967,12 @@
             "value" : "Cette option permet à tout binaire signé par Apple d'accéder au réseau sans générer d'alerte."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa opzione consentirà a qualsiasi binario firmato da Apple di accedere alla rete senza generare un avviso."
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -982,6 +1049,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oui !"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sì!"
           }
         },
         "ko" : {
@@ -1062,6 +1135,12 @@
             "value" : "Cette option autorise tout trafic (UDP) sur le port 53."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa opzione consentirà qualsiasi traffico (UDP) sulla porta 53."
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1138,6 +1217,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser le trafic DNS"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consenti traffico DNS"
           }
         },
         "ko" : {
@@ -1218,6 +1303,12 @@
             "value" : "C’est gratuit, open-source et écrit par un seul codeur (amoureux du Mac) !"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "È gratuito, open-source e scritto da un singolo programmatore (innamorato del Mac)!"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1294,6 +1385,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "En attente de l'approbation de l'extension du système"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In attesa dell’approvazione dell’estensione di sistema"
           }
         },
         "ko" : {
@@ -1374,6 +1471,12 @@
             "value" : "Montrer un peu d’amour ?"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuoi mostrare un po’ di supporto?"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1450,6 +1553,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suivant"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avanti"
           }
         },
         "ko" : {
@@ -1530,6 +1639,12 @@
             "value" : "Maintenant, configurons LuLu :"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ora configuriamo LuLu:"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1606,6 +1721,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Autoriser les applications déjà installées"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consenti applicazioni già installate"
           }
         },
         "ko" : {
@@ -1686,6 +1807,12 @@
             "value" : "Suivant"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avanti"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1764,6 +1891,12 @@
             "value" : "Autoriser les programmes Apple"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consenti programmi Apple"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1840,6 +1973,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3. S’authentifier"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autenticati"
           }
         },
         "ko" : {
