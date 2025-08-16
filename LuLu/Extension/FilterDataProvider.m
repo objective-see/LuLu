@@ -466,9 +466,12 @@ bail:
             //init info for rule creation with specific endpoint information
             info = [@{KEY_PATH:process.path, KEY_TYPE:@RULE_TYPE_PASSIVE} mutableCopy];
             
+            //get best hostname (prioritizes domain names over IP addresses)
+            NSString* bestHostname = [self getBestHostnameFromFlow:(NEFilterSocketFlow*)flow];
+            
             //add endpoint address (hostname) if available
-            if(0 != remoteEndpoint.hostname.length) {
-                info[KEY_ENDPOINT_ADDR] = remoteEndpoint.hostname;
+            if(nil != bestHostname && 0 != bestHostname.length) {
+                info[KEY_ENDPOINT_ADDR] = bestHostname;
             } else {
                 info[KEY_ENDPOINT_ADDR] = VALUE_ANY;
             }
@@ -984,6 +987,67 @@ bail:
 bail:
     
     return process;
+}
+
+//get best hostname from flow
+// prioritizes domain names over IP addresses
+// uses same logic as active mode rule matching
+-(NSString*)getBestHostnameFromFlow:(NEFilterSocketFlow*)flow
+{
+    //best hostname
+    NSString* bestHostname = nil;
+    
+    //remote endpoint
+    NWHostEndpoint* remoteEndpoint = nil;
+    
+    //extract remote endpoint
+    remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
+    
+    //priority 1: try flow.URL.host (best for domain names)
+    if(nil != flow.URL.host && 0 != flow.URL.host.length)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "using flow.URL.host as best hostname: %{public}@", flow.URL.host);
+        
+        //use it
+        bestHostname = flow.URL.host;
+        
+        //done
+        goto bail;
+    }
+    
+    //priority 2: try flow.remoteHostname (macOS 11+)
+    if(@available(macOS 11, *))
+    {
+        if(nil != flow.remoteHostname && 0 != flow.remoteHostname.length)
+        {
+            //dbg msg
+            os_log_debug(logHandle, "using flow.remoteHostname as best hostname: %{public}@", flow.remoteHostname);
+            
+            //use it
+            bestHostname = flow.remoteHostname;
+            
+            //done
+            goto bail;
+        }
+    }
+    
+    //priority 3: fallback to remoteEndpoint.hostname (may be IP address)
+    if(nil != remoteEndpoint.hostname && 0 != remoteEndpoint.hostname.length)
+    {
+        //dbg msg
+        os_log_debug(logHandle, "using remoteEndpoint.hostname as fallback hostname: %{public}@", remoteEndpoint.hostname);
+        
+        //use it
+        bestHostname = remoteEndpoint.hostname;
+    }
+    
+bail:
+    
+    //dbg msg
+    os_log_debug(logHandle, "best hostname for flow: %{public}@", bestHostname);
+    
+    return bestHostname;
 }
 
 @end
