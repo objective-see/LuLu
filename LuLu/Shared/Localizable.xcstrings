@@ -3980,7 +3980,15 @@
       }
     },
     "Delete %@" : {
-      "comment" : "Delete %@"
+      "comment" : "Delete %@",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除 %@"
+          }
+        }
+      }
     },
     "Delete profile: '%@'?" : {
       "comment" : "Delete profile: '%@'?",
@@ -4148,7 +4156,15 @@
       }
     },
     "Disable %@" : {
-      "comment" : "Disable %@"
+      "comment" : "Disable %@",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "禁用 %@"
+          }
+        }
+      }
     },
     "Display Path(s)" : {
       "localizations" : {
@@ -4161,7 +4177,15 @@
       }
     },
     "Edit %@" : {
-      "comment" : "Edit %@"
+      "comment" : "Edit %@",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑 %@"
+          }
+        }
+      }
     },
     "Enable" : {
       "comment" : "Enable",
@@ -4241,7 +4265,15 @@
       }
     },
     "Enable %@" : {
-      "comment" : "Enable %@"
+      "comment" : "Enable %@",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "启用 %@"
+          }
+        }
+      }
     },
     "ERROR: activation failed" : {
       "comment" : "ERROR: activation failed",
