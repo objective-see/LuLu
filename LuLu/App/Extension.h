@@ -11,7 +11,7 @@
 @import NetworkExtension;
 @import SystemExtensions;
 
-typedef void(^replyBlockType)(BOOL);
+typedef void(^replyBlockType)(NSError*);
 
 @interface Extension : NSObject <OSSystemExtensionRequestDelegate>
 

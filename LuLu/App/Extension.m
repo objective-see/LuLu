@@ -19,7 +19,7 @@ extern os_log_t logHandle;
 @implementation Extension
 
 //submit request to toggle system extension
--(void)toggleExtension:(NSUInteger)action reply:(void (^)(BOOL))reply
+-(void)toggleExtension:(NSUInteger)action reply:(replyBlockType)reply
 {
     //request
     OSSystemExtensionRequest* request = nil;
@@ -237,7 +237,7 @@ bail:
     os_log_error(logHandle, "ERROR: method '%s' invoked with %{public}@, %{public}@", __PRETTY_FUNCTION__, request, error);
     
     //invoke reply
-    self.replyBlock(NO);
+    self.replyBlock(error);
 
     return;
 }
@@ -248,7 +248,7 @@ bail:
 -(void)request:(nonnull OSSystemExtensionRequest *)request didFinishWithResult:(OSSystemExtensionRequestResult)result {
     
     //happy
-    BOOL completed = NO;
+    NSError* error = nil;
     
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked with %{public}@, %ld", __PRETTY_FUNCTION__, request, (long)result);
@@ -259,17 +259,17 @@ bail:
         //err msg
         os_log_error(logHandle, "ERROR: result %ld is an unexpected result for system extension request", (long)result);
         
-        //bail
-        goto bail;
+        //set error
+        error = [NSError errorWithDomain:@BUNDLE_ID
+                                            code:result
+                                        userInfo:@{
+                                            NSLocalizedDescriptionKey: [NSString stringWithFormat:@"System extension request failed with result: %ld", (long)result],
+                                            NSLocalizedFailureReasonErrorKey: @"Unexpected result from system extension request",
+        }];
     }
     
-    //happy
-    completed = YES;
-    
-bail:
-    
     //reply
-    self.replyBlock(completed);
+    self.replyBlock(error);
     
     return;
 }

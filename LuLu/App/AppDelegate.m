@@ -197,13 +197,13 @@ XPCDaemonClient* xpcDaemonClient = nil;
                 semaphore = dispatch_semaphore_create(0);
                 
                 //kick off extension activation request
-                [extension toggleExtension:ACTION_ACTIVATE reply:^(BOOL toggled)
+                [extension toggleExtension:ACTION_ACTIVATE reply:^(NSError* error)
                 {
                     //dbg msg
                     os_log_debug(logHandle, "extension 'activate' returned");
                     
                     //error
-                    if(YES != toggled)
+                    if(error)
                     {
                         //err msg
                         os_log_error(logHandle, "ERROR: failed to activate extension");

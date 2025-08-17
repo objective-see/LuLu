@@ -202,9 +202,6 @@ bail:
     
     //error
     NSError* error = nil;
-
-    //flag
-    __block BOOL deactivated = NO;
     
     //wait semaphore
     dispatch_semaphore_t semaphore = 0;
@@ -322,45 +319,35 @@ bail:
             //init wait semaphore
             semaphore = dispatch_semaphore_create(0);
             
-            //user has to remove
-            // otherwise we get into a funky state :/
-            while(YES)
+            //kick off extension activation request
+            [extension toggleExtension:ACTION_DEACTIVATE reply:^(NSError* error)
             {
-                //kick off extension activation request
-                [extension toggleExtension:ACTION_DEACTIVATE reply:^(BOOL toggled)
+                //toggled ok?
+                if(!error)
                 {
-                    //save
-                    deactivated = toggled;
-                    
-                    //toggled ok?
-                    if(YES == toggled)
-                    {
-                        //dbg msg
-                        os_log_debug(logHandle, "extension deactivated");
-                    }
-                    //failed?
-                    else
-                    {
-                        //err msg
-                        os_log_error(logHandle, "ERROR: failed to deactivate extension, will reattempt");
-                    }
-                    
-                    //signal semaphore
-                    dispatch_semaphore_signal(semaphore);
-                }];
+                    //dbg msg
+                    os_log_debug(logHandle, "extension deactivated");
+                }
+                //failed?
+                else
+                {
+                    //err msg
+                    os_log_error(logHandle, "ERROR: failed to deactivate extension");
+                }
                 
-                //dbg msg
-                os_log_debug(logHandle, "waiting system extension deactivation...");
+                //signal semaphore
+                dispatch_semaphore_signal(semaphore);
+            }];
                 
-                //wait for extension semaphore
-                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-                
-                //dbg msg
-                os_log_debug(logHandle, "extension event triggered");
-                
-                //deactivated?
-                if(YES == deactivated) break;
-            }
+            //dbg msg
+            os_log_debug(logHandle, "waiting system extension deactivation...");
+            
+            //wait for extension semaphore
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            
+            //dbg msg
+            os_log_debug(logHandle, "extension event triggered");
+            
         }
     }
     
