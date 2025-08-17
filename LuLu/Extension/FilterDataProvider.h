@@ -26,4 +26,10 @@
 //related flows
 @property(nonatomic, retain)NSMutableDictionary* relatedFlows;
 
+/* METHODS */
+
+//get best hostname from flow
+// prioritizes domain names over IP addresses
+-(NSString*)getBestHostnameFromFlow:(NEFilterSocketFlow*)flow;
+
 @end
