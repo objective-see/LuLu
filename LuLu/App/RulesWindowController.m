@@ -1262,13 +1262,13 @@ bail:
     port = (YES == [rule.endpointPort isEqualToString:VALUE_ANY]) ? NSLocalizedString(@"any port",@"any port") : rule.endpointPort;
     
     //init addr/port with smart port display (hide common ports 80, 443)
-    if (([rule.endpointPort isEqualToString:@"80"] || [rule.endpointPort isEqualToString:@"443"]) &&
-        NO == [rule.endpointAddr isEqualToString:VALUE_ANY] &&
-        NO == [rule.endpointPort isEqualToString:VALUE_ANY]) {
-        // Hide common ports for cleaner display
+    if( ([rule.endpointPort isEqualToString:@"80"] ||
+         [rule.endpointPort isEqualToString:@"443"]) &&
+         YES != [rule.endpointAddr isEqualToString:VALUE_ANY] ) {
+        //hide
         contents = [NSMutableString stringWithString:address];
     } else {
-        // Show port for uncommon ports or when using "any" values
+        //show port for uncommon ports or when using "any" values
         contents = [NSMutableString stringWithFormat:@"%@:%@", address, port];
     }
     

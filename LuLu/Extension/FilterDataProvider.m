@@ -470,7 +470,7 @@ bail:
             NSString* bestHostname = [self getBestHostnameFromFlow:(NEFilterSocketFlow*)flow];
             
             //add endpoint address (hostname) if available
-            if(nil != bestHostname && 0 != bestHostname.length) {
+            if(0!= bestHostname.length) {
                 info[KEY_ENDPOINT_ADDR] = bestHostname;
             } else {
                 info[KEY_ENDPOINT_ADDR] = VALUE_ANY;
@@ -1004,7 +1004,7 @@ bail:
     remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
     
     //priority 1: try flow.URL.host (best for domain names)
-    if(nil != flow.URL.host && 0 != flow.URL.host.length)
+    if(flow.URL.host.length)
     {
         //dbg msg
         os_log_debug(logHandle, "using flow.URL.host as best hostname: %{public}@", flow.URL.host);
@@ -1019,7 +1019,7 @@ bail:
     //priority 2: try flow.remoteHostname (macOS 11+)
     if(@available(macOS 11, *))
     {
-        if(nil != flow.remoteHostname && 0 != flow.remoteHostname.length)
+        if(flow.remoteHostname.length)
         {
             //dbg msg
             os_log_debug(logHandle, "using flow.remoteHostname as best hostname: %{public}@", flow.remoteHostname);
@@ -1033,7 +1033,7 @@ bail:
     }
     
     //priority 3: fallback to remoteEndpoint.hostname (may be IP address)
-    if(nil != remoteEndpoint.hostname && 0 != remoteEndpoint.hostname.length)
+    if(remoteEndpoint.hostname.length)
     {
         //dbg msg
         os_log_debug(logHandle, "using remoteEndpoint.hostname as fallback hostname: %{public}@", remoteEndpoint.hostname);
