@@ -27,7 +27,7 @@
         <window title="LuLu" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="196" y="240" width="700" height="350"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1720" height="695"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
             <value key="minSize" type="size" width="700" height="350"/>
             <value key="maxSize" type="size" width="700" height="350"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
@@ -401,10 +401,10 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsiVerify" id="Qy2-wU-bbf"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="7sb-Zs-q5d">
-                    <rect key="frame" x="358" y="95" width="96" height="34"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="CsL-Yj-dhy">
+                    <rect key="frame" x="435" y="102" width="89" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsKandji" id="W0a-k0-8a1"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="FriendsFleet" id="jTn-RV-2Tp"/>
                 </imageView>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="JBN-MO-km3">
                     <rect key="frame" x="38" y="380" width="664" height="54"/>
@@ -429,11 +429,17 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsJamf" id="2Ll-Bq-g75"/>
                 </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="7sb-Zs-q5d">
+                    <rect key="frame" x="299" y="95" width="102" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsKandji" id="W0a-k0-8a1"/>
+                </imageView>
             </subviews>
             <point key="canvasLocation" x="685" y="1355"/>
         </customView>
     </objects>
     <resources>
+        <image name="FriendsFleet" width="236" height="96"/>
         <image name="FriendsHuntress" width="800" height="198"/>
         <image name="FriendsJamf" width="328" height="114"/>
         <image name="FriendsKandji" width="1944" height="494"/>
