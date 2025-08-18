@@ -2,27 +2,7 @@
   "images" : [
     {
       "idiom" : "mac",
-      "filename" : "darkMode.png"
-    },
-    {
-      "idiom" : "mac",
-      "filename" : "lightMode.png",
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ]
-    },
-    {
-      "idiom" : "mac",
-      "filename" : "darkMode.png",
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ]
+      "filename" : "sophos.png"
     }
   ],
   "info" : {

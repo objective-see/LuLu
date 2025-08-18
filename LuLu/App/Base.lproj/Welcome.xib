@@ -382,22 +382,22 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.90000000000000002" id="AM3-9J-hwR">
-                    <rect key="frame" x="270" y="57" width="138" height="31"/>
+                    <rect key="frame" x="260" y="58" width="138" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsMacPaw" id="Ylq-Y7-0yI"/>
-                </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="wYW-XY-DPT">
-                    <rect key="frame" x="430" y="56" width="138" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="FriendsSophos" id="ZqJ-o4-Joj"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.90000000000000002" id="fcd-Wp-myp">
                     <rect key="frame" x="122" y="61" width="119" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsPANW" id="Dio-uY-kZm"/>
                 </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="mxQ-16-QkH">
+                    <rect key="frame" x="571" y="57" width="142" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsHuntress" id="5gc-uV-gX6"/>
+                </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="2M2-4t-B3w">
-                    <rect key="frame" x="730" y="63" width="57" height="18"/>
+                    <rect key="frame" x="719" y="61" width="73" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsiVerify" id="Qy2-wU-bbf"/>
                 </imageView>
@@ -434,10 +434,10 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsJamf" id="2Ll-Bq-g75"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="mxQ-16-QkH">
-                    <rect key="frame" x="590" y="59" width="130" height="28"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="wYW-XY-DPT">
+                    <rect key="frame" x="406" y="53" width="157" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsHuntress" id="5gc-uV-gX6"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="FriendsSophos" id="ZqJ-o4-Joj"/>
                 </imageView>
             </subviews>
             <point key="canvasLocation" x="685" y="1355"/>
@@ -450,8 +450,8 @@
         <image name="FriendsKandji" width="1944" height="494"/>
         <image name="FriendsMacPaw" width="1922" height="464"/>
         <image name="FriendsPANW" width="1312" height="240"/>
-        <image name="FriendsSophos" width="600" height="65"/>
-        <image name="FriendsiVerify" width="500" height="180"/>
+        <image name="FriendsSophos" width="1201" height="131"/>
+        <image name="FriendsiVerify" width="736" height="268"/>
         <image name="Heart" width="256" height="256"/>
         <image name="Icon" width="144" height="144"/>
         <image name="InstallAllow" width="520" height="468"/>
