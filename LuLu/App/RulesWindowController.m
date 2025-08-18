@@ -848,15 +848,51 @@ bail:
         }];
     }
     
-    
-    
-    
-
     return recentRules;
 }
 
 #pragma mark -
 #pragma mark outline delegate methods
+
+static const NSUInteger kDeleteKeyCode = 51;
+
+//handle delete
+// alert and delete rule
+- (void)keyDown:(NSEvent *)event {
+    
+    // Only care about delete key
+    if (event.keyCode != kDeleteKeyCode) {
+        [super keyDown:event];
+        return;
+    }
+        
+    NSInteger selectedRow = self.outlineView.selectedRow;
+    if (selectedRow == -1) {
+        [super keyDown:event];
+        return;
+    }
+        
+    //show alert
+    NSModalResponse response = showAlert(NSAlertStyleWarning,
+                                           NSLocalizedString(@"Delete Rule?", @"Delete Rule?"),
+                                           nil,
+                                           @[NSLocalizedString(@"Delete", @"Delete"),
+                                             NSLocalizedString(@"Cancel", @"Cancel")]);
+        
+    //user chose delete
+    if (response == NSAlertFirstButtonReturn) {
+        
+            //delete rule needs menu item
+            NSMenuItem *tempMenuItem = [[NSMenuItem alloc] init];
+            tempMenuItem.representedObject = @(selectedRow);
+        
+            //delete rule
+            [self deleteRule:tempMenuItem];
+    }
+    
+    return;
+
+}
 
 //number of the children
 -(NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
