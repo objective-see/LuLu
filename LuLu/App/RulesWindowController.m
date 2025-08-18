@@ -79,7 +79,10 @@ extern XPCDaemonClient* xpcDaemonClient;
     //set subtitle
     [self setSubTitle];
     
-    //load rules
+    //first cleanup any expired/temp rules
+    [xpcDaemonClient cleanupRules:NO];
+    
+    //then load rules
     [self loadRules:YES select:@0];
 
     return;
@@ -1679,9 +1682,12 @@ bail:
 // set activation policy
 -(void)windowWillClose:(NSNotification *)notification
 {
-     //wait a bit, then set activation policy
-     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-     ^{
+    //cleanup any expired/temp rules
+    [xpcDaemonClient cleanupRules:NO];
+    
+    //wait a bit, then set activation policy
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+    ^{
          //on main thread
          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
              
@@ -1689,7 +1695,7 @@ bail:
              [((AppDelegate*)[[NSApplication sharedApplication] delegate]) setActivationPolicy];
              
          });
-     });
+    });
     
     return;
 }

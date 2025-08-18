@@ -33,7 +33,7 @@
 -(void)importRules:(NSData*)newRules result:(void (^)(BOOL))reply;
 
 //cleanup rules
--(void)cleanupRules:(void (^)(NSInteger))reply;
+-(void)cleanupRules:(BOOL)fule reply:(void (^)(NSInteger))reply;
 
 //get current profile
 -(void)getCurrentProfile:(void (^)(NSString*))profile;

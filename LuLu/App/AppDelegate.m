@@ -649,6 +649,9 @@ bail:
         os_log_debug(logHandle, "running in 'no icon' mode (so no need for status bar)");
     }
     
+    //cleanup any expired/temp rules
+    [xpcDaemonClient cleanupRules:NO];
+    
     //automatically check for updates?
     // skipped if launched by user (e.g. first time run)
     if( (YES != launchedByUser()) &&

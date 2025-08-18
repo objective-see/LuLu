@@ -1387,7 +1387,7 @@ bail:
 // a) rule expired
 // a) path was deleted
 // b) point to non-existent processes (temp rule)
--(NSUInteger)cleanup
+-(NSUInteger)cleanup:(BOOL)full
 {
     //count
     NSUInteger deletedRules = 0;
@@ -1396,7 +1396,7 @@ bail:
     NSMutableArray* rules2Delete = nil;
     
     //dbg msg
-    os_log_debug(logHandle, "cleaning up rules");
+    os_log_debug(logHandle, "cleaning up rules (full?: %d)", full);
     
     //alloc
     rules2Delete = [NSMutableArray array];
@@ -1404,7 +1404,7 @@ bail:
     //sync to access
     @synchronized(self.rules)
     {
-        //gather all rules with deleted paths
+        //gather all rules
         for(NSString* key in self.rules.allKeys)
         {
             //paths
@@ -1441,40 +1441,44 @@ bail:
                 continue;
             }
             
-            //directory rule?
-            // check if directory has been deleted
-            if(YES == rule.isDirectory.boolValue)
+            //only do path checks on full cleanup
+            if(full)
             {
-                //directory rules end in /*
-                // so first remove the trailing '*'
-                path = [rule.path substringToIndex:path.length - 1];
-                
-                //was directory deleted?
-                if(YES != [NSFileManager.defaultManager fileExistsAtPath:path])
+                //directory rule?
+                // check if directory has been deleted
+                if(YES == rule.isDirectory.boolValue)
                 {
-                    //dbg msg
-                    os_log_debug(logHandle, "%{public}@ is gone, will delete directory rule", path);
+                    //directory rules end in /*
+                    // so first remove the trailing '*'
+                    path = [rule.path substringToIndex:path.length - 1];
                     
-                    //add to list
-                    [rules2Delete addObject:rule];
+                    //was directory deleted?
+                    if(YES != [NSFileManager.defaultManager fileExistsAtPath:path])
+                    {
+                        //dbg msg
+                        os_log_debug(logHandle, "%{public}@ is gone, will delete directory rule", path);
+                        
+                        //add to list
+                        [rules2Delete addObject:rule];
+                    }
+                    
+                    //next
+                    continue;
                 }
                 
-                //next
-                continue;
-            }
-            
-            //for (normal) item rules
-            // first set flag if all 'external' paths have been deleted
-            for(NSString* path in paths)
-            {
-                //path still there?
-                if(YES == [NSFileManager.defaultManager fileExistsAtPath:path])
+                //for (normal) item rules
+                // first set flag if all 'external' paths have been deleted
+                for(NSString* path in paths)
                 {
-                    //toggle
-                    allDeleted = NO;
-                    
-                    //done
-                    break;
+                    //path still there?
+                    if(YES == [NSFileManager.defaultManager fileExistsAtPath:path])
+                    {
+                        //toggle
+                        allDeleted = NO;
+                        
+                        //done
+                        break;
+                    }
                 }
             }
             
@@ -1482,19 +1486,23 @@ bail:
             // and expiration, and process id (temp rules)
             for(Rule* rule in rules)
             {
-                //was path deleted?
-                // and all 'external' paths too?
-                if( (YES == allDeleted) &&
-                    (YES != [NSFileManager.defaultManager fileExistsAtPath:rule.path]))
+                //only do path checks on full cleanup
+                if(full)
                 {
-                    //dbg msg
-                    os_log_debug(logHandle, "%{public}@ is gone - will delete rule", rule.path);
-                    
-                    //add to list
-                    [rules2Delete addObject:rule];
-                    
-                    //next
-                    continue;
+                    //was path deleted?
+                    // and all 'external' paths too?
+                    if( (YES == allDeleted) &&
+                       (YES != [NSFileManager.defaultManager fileExistsAtPath:rule.path]))
+                    {
+                        //dbg msg
+                        os_log_debug(logHandle, "%{public}@ is gone - will delete rule", rule.path);
+                        
+                        //add to list
+                        [rules2Delete addObject:rule];
+                        
+                        //next
+                        continue;
+                    }
                 }
                 
                 //did process (for temp rule) exit?

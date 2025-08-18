@@ -199,7 +199,7 @@ extern NSMutableDictionary* alerts;
 }
 
 //cleanup rules
--(NSInteger)cleanupRules
+-(NSInteger)cleanupRules:(BOOL)full
 {
     //result
     __block NSInteger deletedRules = -1;
@@ -213,7 +213,7 @@ extern NSMutableDictionary* alerts;
         //err msg
         os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
           
-    }] cleanupRules:^(NSInteger result)
+    }] cleanupRules:full reply:^(NSInteger result)
     {
         //dbg msg
         os_log_debug(logHandle, "daemon XPC method, '%s', done! (returned %ld)", __PRETTY_FUNCTION__, (long)deletedRules);

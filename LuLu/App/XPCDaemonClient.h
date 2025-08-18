@@ -44,7 +44,7 @@
 -(BOOL)importRules:(NSData*)newRules;
 
 //cleanup rules
--(NSInteger)cleanupRules;
+-(NSInteger)cleanupRules:(BOOL)full;
 
 //get current profile
 -(NSString*)getCurrentProfile;

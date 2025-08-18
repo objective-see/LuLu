@@ -392,7 +392,7 @@ bail:
     
     //call into daemon to cleanup
     // returns number or deleted rules
-    cleanedUp = [xpcDaemonClient cleanupRules];
+    cleanedUp = [xpcDaemonClient cleanupRules:YES];
     if(cleanedUp < 0)
     {
         //bail

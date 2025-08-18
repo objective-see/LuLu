@@ -70,7 +70,7 @@
 -(void)updateCSInfo:(Process*)process;
 
 //cleanup rules
--(NSUInteger)cleanup;
+-(NSUInteger)cleanup:(BOOL)full;
 
 @end
 

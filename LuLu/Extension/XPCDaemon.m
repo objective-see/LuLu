@@ -216,13 +216,13 @@ bail:
 }
 
 //cleanup rules
--(void)cleanupRules:(void (^)(NSInteger))reply
+-(void)cleanupRules:(BOOL)full reply:(void (^)(NSInteger))reply
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
     
     //cleanup rules
-    reply([rules cleanup]);
+    reply([rules cleanup:full]);
 
     return;
 }
