@@ -11,7 +11,6 @@
 @import OSLog;
 
 #import "ParentsWindowController.h"
-#import "VirusTotalViewController.h"
 #import "SigningInfoViewController.h"
 
 @interface AlertWindowController : NSWindowController <NSTouchBarProvider, NSTouchBarDelegate>
@@ -48,8 +47,6 @@
 //virus total: button
 @property (weak) IBOutlet NSButton *virusTotalButton;
 
-//virus total: popover
-@property (strong) IBOutlet NSPopover *virusTotalPopover;
 
 //view controller for ancestry view/popover
 @property (weak) IBOutlet ParentsWindowController *ancestryViewController;

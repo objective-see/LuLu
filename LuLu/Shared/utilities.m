@@ -1104,47 +1104,26 @@ bail:
     return date;
 }
 
+
 #pragma clang diagnostic pop
 
-//hash a file
-NSMutableString* hashFile(NSString* filePath)
-{
-    //file's contents
-    NSData* fileContents = nil;
+
+//sha256
+// as string
+NSMutableString* hashFile(NSString* path) {
     
-    //hash digest
-    uint8_t digestSHA256[CC_SHA256_DIGEST_LENGTH] = {0};
+    NSData* contents = [NSData dataWithContentsOfFile:path];
+    if (!contents) return nil;
     
-    //hash as string
-    NSMutableString* sha256 = nil;
+    unsigned char digest[CC_SHA256_DIGEST_LENGTH];
+    CC_SHA256(contents.bytes, (CC_LONG)contents.length, digest);
     
-    //index var
-    NSUInteger index = 0;
-    
-    //init
-    sha256 = [NSMutableString string];
-    
-    //load file
-    if(nil == (fileContents = [NSData dataWithContentsOfFile:filePath]))
-    {
-        //bail
-        goto bail;
+    NSMutableString* hash = [NSMutableString stringWithCapacity:CC_SHA256_DIGEST_LENGTH * 2];
+    for (int i = 0; i < CC_SHA256_DIGEST_LENGTH; i++) {
+        [hash appendFormat:@"%02x", digest[i]];
     }
     
-    //sha256 it
-    CC_SHA256(fileContents.bytes, (unsigned int)fileContents.length, digestSHA256);
-    
-    //convert to NSString
-    // iterate over each bytes in computed digest and format
-    for(index=0; index < CC_SHA256_DIGEST_LENGTH; index++)
-    {
-        //format/append
-        [sha256 appendFormat:@"%02lX", (unsigned long)digestSHA256[index]];
-    }
-    
-bail:
-    
-    return sha256;
+    return hash;
 }
 
 //get parent pid

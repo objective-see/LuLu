@@ -53,8 +53,6 @@
 		CDA136DE24F0DA0F005AD424 /* SigningInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367524F0D268005AD424 /* SigningInfoViewController.m */; };
 		CDA136DF24F0DA0F005AD424 /* StatusBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1368024F0D268005AD424 /* StatusBarItem.m */; };
 		CDA136E024F0DA0F005AD424 /* StatusBarPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367C24F0D268005AD424 /* StatusBarPopoverController.m */; };
-		CDA136E124F0DA0F005AD424 /* VirusTotal.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367924F0D268005AD424 /* VirusTotal.m */; };
-		CDA136E224F0DA0F005AD424 /* VirusTotalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367D24F0D268005AD424 /* VirusTotalViewController.m */; };
 		CDA136E524F0DA43005AD424 /* Rule.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136E424F0DA43005AD424 /* Rule.m */; };
 		CDB2CC1D24D61A4E00D0EECE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB2CC1C24D61A4E00D0EECE /* AppDelegate.m */; };
 		CDB2CC1F24D61A5000D0EECE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDB2CC1E24D61A5000D0EECE /* Assets.xcassets */; };
@@ -161,19 +159,15 @@
 		CDA1366C24EF4F89005AD424 /* Rules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rules.m; sourceTree = "<group>"; };
 		CDA1366E24EF5587005AD424 /* libbsm.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbsm.tbd; path = usr/lib/libbsm.tbd; sourceTree = SDKROOT; };
 		CDA1367224F0D268005AD424 /* AlertWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertWindowController.m; sourceTree = "<group>"; };
-		CDA1367324F0D268005AD424 /* VirusTotal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirusTotal.h; sourceTree = "<group>"; };
 		CDA1367524F0D268005AD424 /* SigningInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigningInfoViewController.m; sourceTree = "<group>"; };
 		CDA1367724F0D268005AD424 /* StatusBarPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarPopoverController.h; sourceTree = "<group>"; };
 		CDA1367824F0D268005AD424 /* SigningInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigningInfoViewController.h; sourceTree = "<group>"; };
-		CDA1367924F0D268005AD424 /* VirusTotal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirusTotal.m; sourceTree = "<group>"; };
 		CDA1367A24F0D268005AD424 /* ParentsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentsWindowController.h; sourceTree = "<group>"; };
 		CDA1367C24F0D268005AD424 /* StatusBarPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarPopoverController.m; sourceTree = "<group>"; };
-		CDA1367D24F0D268005AD424 /* VirusTotalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirusTotalViewController.m; sourceTree = "<group>"; };
 		CDA1367E24F0D268005AD424 /* ParentsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentsWindowController.m; sourceTree = "<group>"; };
 		CDA1367F24F0D268005AD424 /* AlertWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertWindowController.h; sourceTree = "<group>"; };
 		CDA1368024F0D268005AD424 /* StatusBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarItem.m; sourceTree = "<group>"; };
 		CDA1368224F0D269005AD424 /* StatusBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarItem.h; sourceTree = "<group>"; };
-		CDA1368324F0D269005AD424 /* VirusTotalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirusTotalViewController.h; sourceTree = "<group>"; };
 		CDA1368E24F0D2CF005AD424 /* PrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsWindowController.m; sourceTree = "<group>"; };
 		CDA1368F24F0D2CF005AD424 /* RulesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesWindowController.h; sourceTree = "<group>"; };
 		CDA1369224F0D2CF005AD424 /* PrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsWindowController.h; sourceTree = "<group>"; };
@@ -362,10 +356,6 @@
 				CD00703B2C3959B90011979F /* UpdateWindow.xib */,
 				CDA136B624F0D4A9005AD424 /* UpdateWindowController.h */,
 				CDA136B324F0D4A8005AD424 /* UpdateWindowController.m */,
-				CDA1367324F0D268005AD424 /* VirusTotal.h */,
-				CDA1367924F0D268005AD424 /* VirusTotal.m */,
-				CDA1368324F0D269005AD424 /* VirusTotalViewController.h */,
-				CDA1367D24F0D268005AD424 /* VirusTotalViewController.m */,
 				CD00702B2C3956F50011979F /* Welcome.xib */,
 				CDA1369724F0D2CF005AD424 /* WelcomeWindowController.h */,
 				CDA1369924F0D2CF005AD424 /* WelcomeWindowController.m */,
@@ -571,9 +561,7 @@
 				CDA136DE24F0DA0F005AD424 /* SigningInfoViewController.m in Sources */,
 				CDA136DF24F0DA0F005AD424 /* StatusBarItem.m in Sources */,
 				CDA136E024F0DA0F005AD424 /* StatusBarPopoverController.m in Sources */,
-				CDA136E124F0DA0F005AD424 /* VirusTotal.m in Sources */,
 				CDCAA96C2B69DC3700FE27DD /* RulesMenuController.m in Sources */,
-				CDA136E224F0DA0F005AD424 /* VirusTotalViewController.m in Sources */,
 				CDA136D024F0D9C1005AD424 /* XPCDaemonClient.m in Sources */,
 				CD21D37D252FE94F001A19A8 /* signing.m in Sources */,
 				CDA136C724F0D7C3005AD424 /* utilities.m in Sources */,

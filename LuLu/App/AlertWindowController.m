@@ -34,7 +34,6 @@ extern XPCDaemonClient* xpcDaemonClient;
 @synthesize processHierarchy;
 @synthesize virusTotalButton;
 @synthesize signingInfoButton;
-@synthesize virusTotalPopover;
 
 #define DEFAULT_WINDOW_HEIGHT 244
 #define DEFAULT_WINDOW_HEIGHT_EXPANDED 452
@@ -525,35 +524,21 @@ bail:
     return;
 }
 
-//automatically invoked when user clicks process vt button
-// depending on state, show/populate the popup, or close it
+//VT button handler
+// open user's browser w/ VT results
 -(IBAction)vtButtonHandler:(id)sender
 {
-    //view controller
-    VirusTotalViewController* popoverVC = nil;
-    
-    //open popover
-    if(NSControlStateValueOn == self.virusTotalButton.state)
-    {
-        //grab
-        popoverVC = (VirusTotalViewController*)self.virusTotalPopover.delegate;
+    NSString* hash = hashFile(self.processPath.string);
+    if(!hash) {
         
-        //set name
-        popoverVC.itemName = self.processName.stringValue;
+        //show error
+        showAlert(NSAlertStyleWarning, [NSString stringWithFormat:NSLocalizedString(@"ERROR: Failed to hash %@", @"ERROR: Failed to hash %@"), self.processName.stringValue], nil, @[NSLocalizedString(@"OK", @"OK")]);
         
-        //set path
-        popoverVC.itemPath = self.processPath.string;
+        return;
         
-        //show popover
-        [self.virusTotalPopover showRelativeToRect:[self.virusTotalButton bounds] ofView:self.virusTotalButton preferredEdge:NSMaxYEdge];
     }
-    
-    //close popover
-    else
-    {
-        //close
-        [self.virusTotalPopover close];
-    }
+
+    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://www.virustotal.com/gui/file/%@", hash]]];
     
     return;
 }
@@ -677,16 +662,6 @@ bail:
 //close any open popups
 -(void)closePopups
 {
-    //VirusTotal popup
-    if(NSControlStateValueOn == self.virusTotalButton.state)
-    {
-        //close
-        [self.virusTotalPopover close];
-    
-        //set button state to off
-        self.virusTotalButton.state = NSControlStateValueOff;
-    }
-    
     //process ancestry popup
     if(NSControlStateValueOn == self.ancestryButton.state)
     {
