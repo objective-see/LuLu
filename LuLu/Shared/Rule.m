@@ -396,26 +396,29 @@ bail:
 // allows rules to be 'pretty-printed'
 -(NSString*)description
 {
-    //pid
     id pid = @"all";
-    
-    //expiration
+    id isDisabled = @NO;
     id expiration = @"never";
     
     //has pid?
-    if(nil != self.pid)
+    if(self.pid)
     {
         pid = self.pid;
     }
     
     //has expiration?
-    if(nil != self.expiration)
+    if(self.expiration)
     {
         expiration = self.expiration;
     }
     
+    //disabled?
+    if(self.isDisabled) {
+        isDisabled = self.isDisabled;
+    }
+    
     //just serialize
-    return [NSString stringWithFormat:@"RULE: pid: %@, path: %@, name: %@, code signing info: %@, endpoint addr: %@, endpoint port: %@, action: %@, type: %@, disabled: %@, creation: %@, expiration: %@", pid, self.path, self.name, self.csInfo, self.endpointAddr, self.endpointPort, self.action, self.type, self.isDisabled, self.creation, self.expiration];
+    return [NSString stringWithFormat:@"RULE: pid: %@, path: %@, name: %@, endpoint addr: %@, endpoint port: %@, action: %@, type: %@, disabled: %@, creation: %@, expiration: %@", pid, self.path, self.name, self.endpointAddr, self.endpointPort, self.action, self.type, isDisabled, self.creation, expiration];
 }
 
 //covert rule to dictionary
