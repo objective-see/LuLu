@@ -272,6 +272,9 @@ extern XPCDaemonClient* xpcDaemonClient;
         //dbg msg
         os_log_debug(logHandle, "updating outline view for rules...");
         
+        //grab (profile's) preferences
+        self.preferences = [xpcDaemonClient getPreferences];
+        
         //row to select
         if(nil != select)
         {
@@ -1300,15 +1303,22 @@ bail:
     //set endpoint port
     port = (YES == [rule.endpointPort isEqualToString:VALUE_ANY]) ? NSLocalizedString(@"any port",@"any port") : rule.endpointPort;
     
-    //init addr/port with smart port display (hide common ports 80, 443)
-    if( ([rule.endpointPort isEqualToString:@"80"] ||
-         [rule.endpointPort isEqualToString:@"443"]) &&
-         YES != [rule.endpointAddr isEqualToString:VALUE_ANY] ) {
-        //hide
-        contents = [NSMutableString stringWithString:address];
-    } else {
-        //show port for uncommon ports or when using "any" values
-        contents = [NSMutableString stringWithFormat:@"%@:%@", address, port];
+    //default contents
+    // address: port
+    contents = [NSMutableString stringWithFormat:@"%@:%@", address, port];
+    
+    //when not in detailed rule mode
+    // and when port is well known (80/443), don't show
+    if(YES != [self.preferences[PREF_DETAILED_RULE_MODE] boolValue])
+    {
+        //common port?
+        if( ([rule.endpointPort isEqualToString:@"80"] ||
+             [rule.endpointPort isEqualToString:@"443"]) &&
+             YES != [rule.endpointAddr isEqualToString:VALUE_ANY] )
+        {
+            //init w/ just address
+            contents = [NSMutableString stringWithString:address];
+        }
     }
     
     //in "recents" view, add creation timestamp

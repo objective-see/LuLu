@@ -54,14 +54,17 @@ extern XPCDaemonClient* xpcDaemonClient;
 //'no-VT mode' button
 #define BUTTON_NO_VT_MODE 8
 
+//'detailed' rule mode
+#define BUTTON_DETAILED_RULE_MODE 9
+
 //'use allow list' button
-#define BUTTON_USE_ALLOW_LIST 9
+#define BUTTON_USE_ALLOW_LIST 10
 
 //'use block list' button
-#define BUTTON_USE_BLOCK_LIST 10
+#define BUTTON_USE_BLOCK_LIST 11
 
 //'update mode' button
-#define BUTTON_NO_UPDATE_MODE 11
+#define BUTTON_NO_UPDATE_MODE 12
 
 //'passive mode' actions
 #define BUTTON_PASSIVE_MODE_ACTION_ALLOW 0
@@ -198,6 +201,9 @@ extern XPCDaemonClient* xpcDaemonClient;
             
             //set 'no VT icon' button state
             ((NSButton*)[view viewWithTag:BUTTON_NO_VT_MODE]).state = [self.preferences[PREF_NO_VT_MODE] boolValue];
+            
+            //set 'detailed rule' button state
+            ((NSButton*)[view viewWithTag:BUTTON_DETAILED_RULE_MODE]).state = [self.preferences[PREF_DETAILED_RULE_MODE] boolValue];
             
             break;
             
@@ -437,9 +443,14 @@ bail:
             updatedPreferences[PREF_NO_ICON_MODE] = state;
             break;
             
-        //no icon mode
+        //no vt mode
         case BUTTON_NO_VT_MODE:
             updatedPreferences[PREF_NO_VT_MODE] = state;
+            break;
+            
+        //detailed rule mode
+        case BUTTON_DETAILED_RULE_MODE:
+            updatedPreferences[PREF_DETAILED_RULE_MODE] = state;
             break;
             
         //no update mode

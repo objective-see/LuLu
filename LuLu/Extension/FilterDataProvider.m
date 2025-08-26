@@ -807,6 +807,12 @@ bail:
     
     //;} //pool
     
+    //log msg
+    // match on this if you want detailed insight into LuLu's decision
+    // log stream --level debug --predicate 'subsystem == "com.objective-see.lulu" && composedMessage BEGINSWITH "[LULU]"'
+    os_log_debug(logHandle, "[LULU] process: %{public}@, flow: %{public}@, rule: %{public}@, verdict: %{public}@", process.name, flow, matchingRule, verdict);
+    
+    
     return verdict;
 }
 

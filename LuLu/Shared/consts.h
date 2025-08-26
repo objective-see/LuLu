@@ -147,6 +147,10 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define PREF_NO_VT_MODE @"noVTMode"
 
 //prefs
+// detailed rule mode
+#define PREF_DETAILED_RULE_MODE @"detailedRuleMode"
+
+//prefs
 // update mode
 #define PREF_NO_UPDATE_MODE @"noupdateMode"
 
