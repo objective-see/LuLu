@@ -409,6 +409,9 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
     
+    //trigger rules reload, because some prefs influence how rules are displayed
+    [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
+    
     //update status bar
     [self toggleIcon:preferences];
     
