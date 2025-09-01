@@ -1,4 +1,4 @@
-VERSION="4.0.0"
+VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "Release/LuLu.app/Contents/Info.plist")
 
 printf "\nCreating LuLu Disk Image...\n\n"
 
