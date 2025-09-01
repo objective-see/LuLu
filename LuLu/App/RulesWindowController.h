@@ -45,9 +45,6 @@
 
 /* PROPERTIES */
 
-//preferences
-@property(nonatomic, retain)NSDictionary* preferences;
-
 //(main) outline view
 @property (weak) IBOutlet NSOutlineView *outlineView;
 

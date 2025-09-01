@@ -272,9 +272,6 @@ extern XPCDaemonClient* xpcDaemonClient;
         //dbg msg
         os_log_debug(logHandle, "updating outline view for rules...");
         
-        //grab (profile's) preferences
-        self.preferences = [xpcDaemonClient getPreferences];
-        
         //row to select
         if(nil != select)
         {
