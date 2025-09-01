@@ -1307,20 +1307,6 @@ bail:
     // address: port
     contents = [NSMutableString stringWithFormat:@"%@:%@", address, port];
     
-    //when not in detailed rule mode
-    // and when port is well known (80/443), don't show
-    if(YES != [self.preferences[PREF_DETAILED_RULE_MODE] boolValue])
-    {
-        //common port?
-        if( ([rule.endpointPort isEqualToString:@"80"] ||
-             [rule.endpointPort isEqualToString:@"443"]) &&
-             YES != [rule.endpointAddr isEqualToString:VALUE_ANY] )
-        {
-            //init w/ just address
-            contents = [NSMutableString stringWithString:address];
-        }
-    }
-    
     //in "recents" view, add creation timestamp
     if(RULE_TYPE_RECENT == self.selectedRuleView)
     {

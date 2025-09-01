@@ -87,7 +87,7 @@ extern os_log_t logHandle;
     if( (SHOW_CONFIGURE+1) == ((NSToolbarItem*)sender).tag)
     {
         //capture
-        self.preferences = @{PREF_ALLOW_APPLE:[NSNumber numberWithBool:self.allowApple.state], PREF_ALLOW_INSTALLED: [NSNumber numberWithBool:self.allowInstalled.state], PREF_ALLOW_DNS: [NSNumber numberWithBool:self.allowDNS.state], PREF_ALLOW_SIMULATOR:@NO, PREF_PASSIVE_MODE:@NO, PREF_PASSIVE_MODE_ACTION:@0, PREF_BLOCK_MODE:@NO, PREF_NO_ICON_MODE:@NO, PREF_NO_VT_MODE:@NO, PREF_DETAILED_RULE_MODE:@NO, PREF_NO_UPDATE_MODE:@NO, PREF_INSTALL_TIMESTAMP:[NSDate date]};
+        self.preferences = @{PREF_ALLOW_APPLE:[NSNumber numberWithBool:self.allowApple.state], PREF_ALLOW_INSTALLED: [NSNumber numberWithBool:self.allowInstalled.state], PREF_ALLOW_DNS: [NSNumber numberWithBool:self.allowDNS.state], PREF_ALLOW_SIMULATOR:@NO, PREF_PASSIVE_MODE:@NO, PREF_PASSIVE_MODE_ACTION:@0, PREF_BLOCK_MODE:@NO, PREF_NO_ICON_MODE:@NO, PREF_NO_VT_MODE:@NO, PREF_NO_UPDATE_MODE:@NO, PREF_INSTALL_TIMESTAMP:[NSDate date]};
     }
     
     //set next view

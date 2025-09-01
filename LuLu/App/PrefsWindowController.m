@@ -202,9 +202,6 @@ extern XPCDaemonClient* xpcDaemonClient;
             //set 'no VT icon' button state
             ((NSButton*)[view viewWithTag:BUTTON_NO_VT_MODE]).state = [self.preferences[PREF_NO_VT_MODE] boolValue];
             
-            //set 'detailed rule' button state
-            ((NSButton*)[view viewWithTag:BUTTON_DETAILED_RULE_MODE]).state = [self.preferences[PREF_DETAILED_RULE_MODE] boolValue];
-            
             break;
             
         //lists
@@ -446,11 +443,6 @@ bail:
         //no vt mode
         case BUTTON_NO_VT_MODE:
             updatedPreferences[PREF_NO_VT_MODE] = state;
-            break;
-            
-        //detailed rule mode
-        case BUTTON_DETAILED_RULE_MODE:
-            updatedPreferences[PREF_DETAILED_RULE_MODE] = state;
             break;
             
         //no update mode

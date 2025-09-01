@@ -1933,18 +1933,6 @@
         }
       }
     },
-    "GJK-DI-ctc.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Detailed Rule Mode\"; ObjectID = \"GJK-DI-ctc\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Detailed Rule Mode"
-          }
-        }
-      }
-    },
     "GRx-gM-j7j.headerCell.title" : {
       "comment" : "Class = \"NSTableColumn\"; headerCell.title = \"Profile Name\"; ObjectID = \"GRx-gM-j7j\";",
       "extractionState" : "extracted_with_value",
@@ -4377,18 +4365,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "停用與 VirusTotal 的整合功能。"
-          }
-        }
-      }
-    },
-    "YVD-Vu-nWe.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Display standard ports (80/443) for endpoint rules.\"; ObjectID = \"YVD-Vu-nWe\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Display standard ports (80/443) for endpoint rules."
           }
         }
       }
