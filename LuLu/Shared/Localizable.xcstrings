@@ -49,7 +49,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "imzalama sorunu var"
+            "value" : " için imzalama sorunu var"
           }
         },
         "uk" : {
@@ -126,7 +126,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "imzalı değil"
+            "value" : " imzalı değil"
           }
         },
         "uk" : {
@@ -203,7 +203,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "geçerli bir biçimde imzalanmamış"
+            "value" : " geçerli bir biçimde imzalanmamış"
           }
         },
         "uk" : {
@@ -280,7 +280,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "geçerli bir biçimde imzalanmış"
+            "value" : " geçerli bir biçimde imzalanmış"
           }
         },
         "uk" : {
@@ -665,7 +665,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "“%@” mevcut bir profil adıyla eşleşiyor."
+            "value" : "“%@” var olan bir profil adıyla eşleşiyor."
           }
         },
         "uk" : {
@@ -742,7 +742,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "“Default” ayrılmış bir profil adıdır."
+            "value" : "“Saptanmış”, ayrılmış bir profil adıdır."
           }
         },
         "uk" : {
@@ -1139,7 +1139,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ (imzalayan: Apple Proper)"
+            "value" : "%@ (imzalayan: Apple)"
           }
         },
         "uk" : {
@@ -1530,7 +1530,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@ geçerli bir düzenli ifade değil\nayrıntılar: %2$@"
+            "value" : "%1$@ geçerli bir düzenli ifade değil, ayrıntılar: %2$@"
           }
         },
         "uk" : {
@@ -1684,7 +1684,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ Apple Proper tarafından imzalanmış"
+            "value" : "%@ Apple tarafından düzgünce imzalanmış"
           }
         },
         "uk" : {
@@ -1992,7 +1992,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "bu kuralı %@ yapmak, geçerli sistem işlevselliğini etkileyebilir... sürdürülsün mü?"
+            "value" : "bu kuralı %@ yapmak, geçerli sistem işlevselliğini etkileyebilir …sürdürülsün mü?"
           }
         },
         "uk" : {
@@ -4148,7 +4148,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Geçerli Profil: %@"
+            "value" : "Geçerli profil: %@"
           }
         },
         "uk" : {
@@ -4225,7 +4225,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Geçerli Profil: Default"
+            "value" : "Geçerli profil: Saptanmış"
           }
         },
         "uk" : {
@@ -4302,7 +4302,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Default"
+            "value" : "Saptanmış"
           }
         },
         "uk" : {
@@ -4456,7 +4456,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ Sil"
+            "value" : "Sil: %@"
           }
         },
         "uk" : {
@@ -4533,7 +4533,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "“%@” profilini silmek istiyor musunuz?"
+            "value" : "“%@” profili silinsin mi?"
           }
         },
         "uk" : {
@@ -4841,7 +4841,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ Devre Dışı Bırak"
+            "value" : "Devre Dışı Bırak: %@"
           }
         },
         "uk" : {
@@ -4994,7 +4994,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ Düzenle"
+            "value" : "Düzenle: %@"
           }
         },
         "uk" : {
@@ -5148,7 +5148,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ Etkinleştir"
+            "value" : "Etkinleştir: %@"
           }
         },
         "uk" : {
@@ -7322,7 +7322,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İleri"
+            "value" : "Sonraki"
           }
         },
         "uk" : {
@@ -8014,7 +8014,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ için Yol(lar):"
+            "value" : "%@ için yol(lar):"
           }
         },
         "uk" : {
@@ -8552,7 +8552,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Profil: Default"
+            "value" : "Profil: Saptanmış"
           }
         },
         "uk" : {
@@ -8629,7 +8629,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "“%@/\" içindeki uygulamalar"
+            "value" : "“%@/“ içindeki uygulamalar"
           }
         },
         "uk" : {
@@ -9672,7 +9672,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Güncelleme mevcut, ancak macOS %ld.%ld üzerinde desteklenmiyor."
+            "value" : "Güncelleme kullanılabilir; ancak macOS %ld.%ld üzerinde desteklenmiyor."
           }
         },
         "uk" : {
