@@ -257,7 +257,23 @@ bail:
             }
         }
     }
-        
+    
+    //first check for "all"
+    // for IPV4 -> '0.0.0.0/0'
+    if( (AF_INET == flow.socketFamily) &&
+        ([self.items containsObject:@"0.0.0.0/0"]) )
+    {
+        isMatch = YES;
+        goto bail;
+    }
+    //for IPV6 -> '::/0'
+    else if( (AF_INET6 == flow.socketFamily) &&
+            ([self.items containsObject:@"::/0"]) )
+    {
+        isMatch = YES;
+        goto bail;
+    }
+   
     //find matches
     matches = [self.items objectsPassingTest:^BOOL(NSString* item, BOOL* stop) {
         return [endpointNames containsObject:item];
@@ -274,6 +290,8 @@ bail:
     }
         
     }//sync
+    
+bail:
     
     return isMatch;
 }
