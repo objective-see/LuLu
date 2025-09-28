@@ -25,7 +25,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright (c) 2020 Objective-See. All rights reserved.</string>
 	<key>NSSystemExtensionUsageDescription</key>
-	<string></string>
+	<string>LuLu needs to load its System Extension to block unauthorized network connections.</string>
 	<key>NetworkExtension</key>
 	<dict>
 		<key>NEMachServiceName</key>

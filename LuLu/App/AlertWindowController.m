@@ -528,17 +528,38 @@ bail:
 // open user's browser w/ VT results
 -(IBAction)vtButtonHandler:(id)sender
 {
-    NSString* hash = hashFile(self.processPath.string);
-    if(!hash) {
+    NSString* path = nil;
+    NSString* hash = nil;
+    
+    //default
+    path = self.processPath.string;
+    
+    //package?
+    // get path of binary from bundle
+    if ([[NSWorkspace sharedWorkspace] isFilePackageAtPath:self.processPath.string]) {
+        
+        //get path
+        path = getBundleExecutable(self.processPath.string);
+    }
+    
+    //hash
+    if(path) {
+        hash = hashFile(path);
+    }
+    if(hash) {
+        
+        //dbg msg
+        os_log_debug(logHandle, "%{public}@ hashed to %{public}@ for VT", path, hash);
+        
+        //open/show in browser
+        [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://www.virustotal.com/gui/file/%@", hash]]];
+    }
+    //error
+    else {
         
         //show error
         showAlert(NSAlertStyleWarning, [NSString stringWithFormat:NSLocalizedString(@"ERROR: Failed to hash %@", @"ERROR: Failed to hash %@"), self.processName.stringValue], nil, @[NSLocalizedString(@"OK", @"OK")]);
-        
-        return;
-        
     }
-
-    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://www.virustotal.com/gui/file/%@", hash]]];
     
     return;
 }

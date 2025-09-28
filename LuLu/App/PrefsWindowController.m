@@ -276,6 +276,9 @@ extern XPCDaemonClient* xpcDaemonClient;
             //show
             self.updateButton.hidden = NO;
             
+            //(re)set update label
+            self.updateLabel.stringValue = @"";
+            
             break;
             
         default:

@@ -176,7 +176,7 @@ NSMutableArray* generateProcessHierarchy(pid_t child)
         }
         
         //add
-        [ancestors insertObject:[@{KEY_PROCESS_ID:[NSNumber numberWithInt:currentPID], KEY_PROCESS_PATH:currentPath,  KEY_PROCESS_NAME:currentName} mutableCopy] atIndex:0];
+        [ancestors insertObject:[@{KEY_PROCESS_ID:[NSNumber numberWithInt:currentPID], KEY_PROCESS_PATH:currentPath, KEY_PROCESS_NAME:currentName} mutableCopy] atIndex:0];
         
         //for apps (and if we're not root)
         // try application services pid via serial
@@ -1113,7 +1113,11 @@ bail:
 NSMutableString* hashFile(NSString* path) {
     
     NSData* contents = [NSData dataWithContentsOfFile:path];
-    if (!contents) return nil;
+    if (!contents)
+    {
+        os_log_error(logHandle, "ERROR: failed to read in %{public}@ for hashing", path);
+        return nil;
+    }
     
     unsigned char digest[CC_SHA256_DIGEST_LENGTH];
     CC_SHA256(contents.bytes, (CC_LONG)contents.length, digest);

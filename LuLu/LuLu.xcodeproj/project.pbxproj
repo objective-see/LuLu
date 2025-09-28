@@ -845,6 +845,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 4.0.1;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = App/Info.plist;
@@ -860,6 +861,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "LuLu Application";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "LuLu Application";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Debug;
@@ -874,6 +876,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 4.0.1;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = App/Info.plist;
@@ -888,6 +891,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "LuLu Application";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "LuLu Application";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
