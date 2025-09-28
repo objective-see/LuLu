@@ -1450,7 +1450,7 @@ bail:
                 {
                     //directory rules end in /*
                     // so first remove the trailing '*'
-                    path = [rule.path substringToIndex:path.length - 1];
+                    path = [rule.path substringToIndex:rule.path.length - 1];
                     
                     //was directory deleted?
                     if(YES != [NSFileManager.defaultManager fileExistsAtPath:path])

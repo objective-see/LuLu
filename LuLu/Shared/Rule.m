@@ -704,6 +704,10 @@ bail:
         self.isEndpointAddrRegex = [info[NSStringFromSelector(@selector(isEndpointAddrRegex))] boolValue];
         
         self.type = info[NSStringFromSelector(@selector(type))];
+        if([self.type isKindOfClass:[NSString class]]) {
+            self.type = @([(NSString*)self.type integerValue]);
+        }
+        
         if(YES != [self.type isKindOfClass:[NSNumber class]])
         {
             //err msg
@@ -714,6 +718,10 @@ bail:
         }
         
         self.scope = info[NSStringFromSelector(@selector(scope))];
+        if([self.scope isKindOfClass:[NSString class]]) {
+            self.scope = @([(NSString*)self.scope integerValue]);
+        }
+        
         if(YES != [self.scope isKindOfClass:[NSNumber class]])
         {
             //err msg
@@ -724,6 +732,10 @@ bail:
         }
         
         self.action = info[NSStringFromSelector(@selector(action))];
+        if([self.action isKindOfClass:[NSString class]]) {
+            self.action = @([(NSString*)self.action integerValue]);
+        }
+        
         if(YES != [self.action isKindOfClass:[NSNumber class]])
         {
             //err msg
@@ -736,6 +748,10 @@ bail:
         //disabled?
         // note: optional
         self.isDisabled = info[NSStringFromSelector(@selector(isDisabled))];
+        if(self.isDisabled && [self.isDisabled isKindOfClass:[NSString class]]) {
+            self.isDisabled = @([(NSString*)self.isDisabled integerValue]);
+        }
+        
         if(self.isDisabled && ![self.isDisabled isKindOfClass:[NSNumber class]])
         {
             //err msg
@@ -788,7 +804,6 @@ bail:
                 goto bail;
             }
         }
-        
     }
     
 bail:
