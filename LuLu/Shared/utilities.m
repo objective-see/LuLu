@@ -1699,7 +1699,7 @@ BOOL matchesCSInfo(NSDictionary* csInfo_1, NSDictionary* csInfo_2)
     
     //check 0x3
     // signing ID mismatch?
-    if( ((nil != signingID_1) || (nil != signingID_1)) &&
+    if( ((nil != signingID_1) || (nil != signingID_2)) &&
         (YES != [signingID_1 isEqualToString:signingID_2]) )
     {
         //dbg msg
