@@ -386,8 +386,12 @@
         }
       }
     },
+    "...please copy it into /Applications and re-launch." : {
+      "comment" : "...please copy it into /Applications and re-launch."
+    },
     "...please copy it to /Applications and re-launch." : {
       "comment" : "...please copy it to /Applications and re-launch.",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -6812,8 +6816,12 @@
       },
       "shouldTranslate" : false
     },
+    "LuLu must run from within:\r\n  %@" : {
+      "comment" : "LuLu must run from within:\r\n  %@"
+    },
     "LuLu must run from:\r\n  %@" : {
       "comment" : "LuLu must run from:\r\n  %@",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -8349,6 +8357,9 @@
           }
         }
       }
+    },
+    "Profile name can't be blank" : {
+      "comment" : "Profile name can't be blank"
     },
     "Profile Switched" : {
       "comment" : "Profile Switched",

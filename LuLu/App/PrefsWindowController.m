@@ -773,13 +773,23 @@ bail:
     //add initial (profile name) view
     [self.addProfileSheet.contentView addSubview:self.currentProfileSubview];
     
+    //disable autoresizing mask
+    self.currentProfileSubview.translatesAutoresizingMaskIntoConstraints = NO;
+
+    //pin to top, leading, and trailing edges
+    [NSLayoutConstraint activateConstraints:@[
+        [self.currentProfileSubview.topAnchor constraintEqualToAnchor:self.addProfileSheet.contentView.topAnchor],
+        [self.currentProfileSubview.leadingAnchor constraintEqualToAnchor:self.addProfileSheet.contentView.leadingAnchor],
+        [self.currentProfileSubview.trailingAnchor constraintEqualToAnchor:self.addProfileSheet.contentView.trailingAnchor]
+    ]];
+    
     //reset button name
     self.continueProfileButton.title = NSLocalizedString(@"Next", @"Next");
     
     //set profile name
     self.profileNameLabel.stringValue = @"";
     
-    //show sheet for user to specify settings
+    //show sheet for user to add profile
     [self.window beginSheet:self.addProfileSheet
                completionHandler:^(NSModalResponse returnCode) {
         
@@ -839,16 +849,22 @@ bail:
         // setup next view: rules
         case profileName:
         {
+            //check against empty
+            if(!self.profileNameLabel.stringValue.length)
+            {
+                //show alert
+                showAlert(NSAlertStyleInformational, NSLocalizedString(@"Invalid Profile Name", @"Invalid Profile Name"), NSLocalizedString(@"Profile name can't be blank", @"Profile name can't be blank"), @[NSLocalizedString(@"OK", @"OK")]);
+                
+                self.profileNameLabel.stringValue = @"";
+                goto bail;
+            }
+            
             //check against 'Default'
             if(NSOrderedSame == [self.profileNameLabel.stringValue caseInsensitiveCompare:NSLocalizedString(@"Default", @"Default")])
             {
                 //show alert
                 showAlert(NSAlertStyleInformational, NSLocalizedString(@"Invalid Profile Name", @"Invalid Profile Name"), NSLocalizedString(@"'Default' is a reserved profile name.", @"'Default' is a reserved profile name."), @[NSLocalizedString(@"OK", @"OK")]);
                 
-                //reset
-                self.profileNameLabel.stringValue = @"";
-                
-                //done
                 goto bail;
             }
             
@@ -860,10 +876,7 @@ bail:
                     //show alert
                     showAlert(NSAlertStyleInformational, NSLocalizedString(@"Invalid Profile Name", @"Invalid Profile Name"), [NSString stringWithFormat:NSLocalizedString(@"'%@' matches an existing profile name.", @"'%@' matches an existing profile name."), name], @[NSLocalizedString(@"OK", @"OK")]);
                     
-                    //reset
                     self.profileNameLabel.stringValue = @"";
-                    
-                    //done
                     goto bail;
                 }
             }

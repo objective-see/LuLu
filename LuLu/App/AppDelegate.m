@@ -78,13 +78,13 @@ XPCDaemonClient* xpcDaemonClient = nil;
     }
     
     //Apple: item's w/ System Extensions must be run from /Applications 🤷🏻‍♂️
-    if(YES != [NSBundle.mainBundle.bundlePath isEqualToString:[@"/Applications" stringByAppendingPathComponent:APP_NAME]])
+    if(![NSBundle.mainBundle.bundlePath hasPrefix:@"/Applications/"])
     {
         //dbg msg
         os_log_debug(logHandle, "LuLu running from %{public}@, not from within /Applications", NSBundle.mainBundle.bundlePath);
         
         //show alert
-        showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"LuLu must run from:\r\n  %@", @"LuLu must run from:\r\n  %@"), [@"/Applications" stringByAppendingPathComponent:APP_NAME]], NSLocalizedString(@"...please copy it to /Applications and re-launch.", @"...please copy it to /Applications and re-launch."), @[NSLocalizedString(@"OK",@"OK")]);
+        showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"LuLu must run from within:\r\n  %@", @"LuLu must run from within:\r\n  %@"), [@"/Applications" stringByAppendingPathComponent:APP_NAME]], NSLocalizedString(@"...please copy it into /Applications and re-launch.", @"...please copy it into /Applications and re-launch."), @[NSLocalizedString(@"OK",@"OK")]);
         
         //exit
         [NSApplication.sharedApplication terminate:self];
