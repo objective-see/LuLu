@@ -635,8 +635,8 @@ void toggleMenu(NSMenu* menu, BOOL shouldEnable)
 }
 
 //get an icon for a process
-// for apps, this will be app's icon, otherwise just a standard system one
-NSImage* getIconForProcess(NSString* path)
+// for apps (and their helpers), this will be app's icon, otherwise just a standard system one
+NSImage* getIconForProcess(NSString* item)
 {
     //icon's file name
     NSString* iconFile = nil;
@@ -656,9 +656,13 @@ NSImage* getIconForProcess(NSString* path)
     //bundle
     NSBundle* appBundle = nil;
     
+    //path
+    // might change if we find a parent
+    NSString* path = item;
+    
     //invalid path?
     // grab a default icon and bail
-    if(YES != [[NSFileManager defaultManager] fileExistsAtPath:path])
+    if(YES != [NSFileManager.defaultManager fileExistsAtPath:path])
     {
         //set icon to system 'application' icon
         icon = [[NSWorkspace sharedWorkspace]
@@ -671,13 +675,48 @@ NSImage* getIconForProcess(NSString* path)
         goto bail;
     }
     
+    //helper?
+    if( [path containsString:@"Helper"] &&
+        [path.pathExtension isEqualToString:@"app"])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "%{public}@ appears to be a helper app", path);
+        
+        NSBundle* bundle = [NSBundle bundleWithPath:path];
+        NSString* iconFile = [bundle objectForInfoDictionaryKey:@"CFBundleIconFile"];
+        NSString* iconName = [bundle objectForInfoDictionaryKey:@"CFBundleIconName"];
+        
+        //no icon? find parent
+        if(!(iconFile.length || iconName.length))
+        {
+            NSString *currentPath = path;
+            
+            //find parent
+            while(currentPath.length > 1) {
+                
+                currentPath = [currentPath stringByDeletingLastPathComponent];
+                
+                if([currentPath.pathExtension isEqualToString:@"app"] && ![currentPath containsString:@"Helper"]) {
+                    
+                    //update
+                    path = currentPath;
+                    
+                    //dbg msg
+                    os_log_debug(logHandle, "will use parents path for icon: %{public}@", path);
+                    
+                    break;
+                }
+            }
+        }
+    }
+    
     //first try grab bundle
     // then extact icon from this
     appBundle = findAppBundle(path);
     if(nil != appBundle)
     {
         //extract icon
-        icon = [[NSWorkspace sharedWorkspace] iconForFile:appBundle.bundlePath];
+        icon = [NSWorkspace.sharedWorkspace iconForFile:appBundle.bundlePath];
         if(nil != icon)
         {
             //done!
@@ -1257,6 +1296,9 @@ NSModalResponse showAlert(NSAlertStyle style, NSString* messageText, NSString* i
     //make first button, first responder
     alert.buttons[0].keyEquivalent = @"\r";
     
+    //center
+    [alert.window center];
+    
     //foreground
     [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
     
@@ -1271,12 +1313,6 @@ NSModalResponse showAlert(NSAlertStyle style, NSString* messageText, NSString* i
     
     //(re)make front
     [[NSRunningApplication currentApplication] activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
-    
-    //make alert window front
-    [alert.window makeKeyAndOrderFront:nil];
-    
-    //center
-    [alert.window center];
     
     //show
     response = [alert runModal];

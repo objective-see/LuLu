@@ -392,7 +392,7 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsHuntress" id="5gc-uV-gX6"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="KQq-D5-uls">
-                    <rect key="frame" x="101" y="58" width="142" height="31"/>
+                    <rect key="frame" x="100" y="57" width="142" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="FriendsMalwarebytes" id="0Du-KM-jmM"/>
                 </imageView>
