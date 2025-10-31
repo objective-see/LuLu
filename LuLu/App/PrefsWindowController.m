@@ -287,7 +287,7 @@ extern XPCDaemonClient* xpcDaemonClient;
 
     // Resize window to fit the view’s height (keeping top edge fixed)
     NSRect windowFrame = self.window.frame;
-    CGFloat newHeight = view.frame.size.height + 50; //toolbar
+    CGFloat newHeight = view.frame.size.height + 50 + 10; //toolbar + a bit extra
     CGFloat newWidth = view.frame.size.width;
     CGFloat deltaY = NSMaxY(windowFrame) - newHeight;
     [self.window setFrame:NSMakeRect(windowFrame.origin.x, deltaY, newWidth, newHeight) display:YES];

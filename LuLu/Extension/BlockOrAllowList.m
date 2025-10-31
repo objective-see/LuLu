@@ -186,6 +186,7 @@ bail:
 }
 
 //check if flow matches item on block or allow list
+// note: currently lists don't support port matching
 -(BOOL)isMatch:(NEFilterSocketFlow*)flow
 {
     //match
@@ -268,7 +269,7 @@ bail:
     }
     //for IPV6 -> '::/0'
     else if( (AF_INET6 == flow.socketFamily) &&
-            ([self.items containsObject:@"::/0"]) )
+             ([self.items containsObject:@"::/0"]) )
     {
         isMatch = YES;
         goto bail;

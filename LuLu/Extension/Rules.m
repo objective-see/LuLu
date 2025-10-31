@@ -658,6 +658,10 @@ bail:
     //canidate rules
     NSMutableArray* candidateRules = nil;
     
+    //flag(s)
+    BOOL portAny = NO;
+    BOOL endpointAny = NO;
+    
     //any match
     // item has a '*:*' rule
     Rule* anyMatch = nil;
@@ -667,7 +671,7 @@ bail:
     Rule* partialMatch = nil;
     
     //exact match
-    Rule* extactMatch = nil;
+    Rule* exactMatch = nil;
     
     //remote endpoint
     NWHostEndpoint* remoteEndpoint = nil;
@@ -766,6 +770,12 @@ bail:
             // note: * is a wildcard, meaning any match
             for(Rule* rule in rules)
             {
+                //set flag: any port ('*')
+                portAny = [rule.endpointPort isEqualToString:VALUE_ANY];
+                
+                //set flag: any endpoint ('*', '0.0.0.0/0', or '::/0')
+                endpointAny = [self matchAnyEndpoint:rule flow:flow];
+                
                 //skip any disabled rule(s)
                 if(0 != rule.isDisabled.intValue) {
                     
@@ -801,12 +811,12 @@ bail:
                     continue;
                 }
                 
-                //any match?
-                if( (YES == [rule.endpointAddr isEqualToString:VALUE_ANY]) &&
-                    (YES == [rule.endpointPort isEqualToString:VALUE_ANY]) )
+                //match on any (addr) and any (port)
+                if( (YES == portAny) &&
+                    (YES == endpointAny) )
                 {
                     //dbg msg
-                    os_log_debug(logHandle, "rule match: 'any'");
+                    os_log_debug(logHandle, "rule match: 'any' address and port");
                     
                     //any
                     anyMatch = rule;
@@ -817,7 +827,7 @@ bail:
                 
                 //port is any?
                 // check for (partial) rule match: endpoint addr
-                else if(YES == [rule.endpointPort isEqualToString:VALUE_ANY])
+                else if(YES == portAny)
                 {
                     //dbg msg
                     os_log_debug(logHandle, "rule port is any ('*'), will check host/url");
@@ -826,7 +836,7 @@ bail:
                     if(YES == [self endpointAddrMatch:flow rule:rule])
                     {
                         //dbg msg
-                        os_log_debug(logHandle, "rule match: 'partial' (endpoint addr)");
+                        os_log_debug(logHandle, "rule match: 'partial' (addr)");
                         
                         //partial
                         partialMatch = rule;
@@ -838,17 +848,17 @@ bail:
                 
                 //endpoint addr is any?
                 // check for (partial) rule match: endpoint port
-                else if(YES == [rule.endpointAddr isEqualToString:VALUE_ANY])
+                else if(YES == endpointAny)
                 {
                     //dbg msg
-                    os_log_debug(logHandle, "rule address is any ('*'), will check port");
+                    os_log_debug(logHandle, "rule address is any ('*', '0.0.0.0/0', or '::/0'), will check port");
                     
                     //addr is any
                     //so check the port
                     if(YES == [rule.endpointPort isEqualToString:remoteEndpoint.port])
                     {
                         //dbg msg
-                        os_log_debug(logHandle, "rule match: 'partial' (endpoint port)");
+                        os_log_debug(logHandle, "rule match: 'partial' (port)");
                         
                         //partial
                         partialMatch = rule;
@@ -870,10 +880,10 @@ bail:
                         (YES == [rule.endpointPort isEqualToString:remoteEndpoint.port]) )
                     {
                         //dbg msg
-                        os_log_debug(logHandle, "rule match: 'exact'");
+                        os_log_debug(logHandle, "rule match: 'exact' address and port");
                             
                         //exact
-                        extactMatch = rule;
+                        exactMatch = rule;
                         
                         //next
                         continue;
@@ -885,7 +895,7 @@ bail:
         } //all candidate rules
         
         //extact match?
-        if(nil != extactMatch) matchingRule = extactMatch;
+        if(nil != exactMatch) matchingRule = exactMatch;
         
         //partial match?
         else if (nil != partialMatch) matchingRule = partialMatch;
@@ -898,6 +908,50 @@ bail:
 bail:
     
     return matchingRule;
+}
+
+//check if endpoint addr matches "any"
+// either '*' or (IPv4) '0.0.0.0/0' or (IPv6) '::/0'
+-(BOOL)matchAnyEndpoint:(Rule*)rule flow:(NEFilterSocketFlow*)flow
+{
+    //flag
+    BOOL matchesAny = NO;
+    
+    //first check any '*'
+    if([rule.endpointAddr isEqualToString:VALUE_ANY])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "rule match: 'any' ('*')");
+        
+        matchesAny = YES;
+        goto bail;
+    }
+    
+    //check for IPV4 -> '0.0.0.0/0'
+    if( (AF_INET == flow.socketFamily) &&
+        ([rule.endpointAddr isEqualToString:@"0.0.0.0/0"]) )
+    {
+        //dbg msg
+        os_log_debug(logHandle, "rule match: 'any' (IPv4: '0.0.0.0/0')");
+        
+        matchesAny = YES;
+        goto bail;
+    }
+    //check for IPV6 -> '::/0'
+    if( (AF_INET6 == flow.socketFamily) &&
+        ([rule.endpointAddr isEqualToString:@"::/0"]) )
+    {
+        //dbg msg
+        os_log_debug(logHandle, "rule match: 'any' (IPv6: '::/0')");
+        
+        matchesAny = YES;
+        goto bail;
+
+    }
+    
+bail:
+    
+    return matchesAny;
 }
 
 //check if endpoint host or url matches
