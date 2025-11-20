@@ -144,15 +144,6 @@ extern os_log_t logHandle;
                 ancestors = nil;
             }
         }
-        
-        //process exited?
-        // extracted info may be invalid
-        if(YES != isAlive(self.pid))
-        {
-            //err msg
-            os_log_error(logHandle, "ERROR: process (%d)%{public}@ has already exited", self.pid, self.path);
-            return nil;
-        }
     }
         
     return self;

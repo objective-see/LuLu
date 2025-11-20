@@ -252,8 +252,25 @@ bail:
         process = [self createProcess:flow];
     }
 
-    //dbg msg
-    else os_log_debug(logHandle, "found process object in cache: %{public}@ (pid: %d)", process.path, process.pid);
+    //in cache
+    else
+    {
+        //dbg msg
+        os_log_debug(logHandle, "found process object in cache: %{public}@ (pid: %d)", process.path, process.pid);
+    }
+    
+    //sanity check
+    // process exited? deny
+    pid_t pid = audit_token_to_pid(*(audit_token_t*)flow.sourceAppAuditToken.bytes);
+    if(!isAlive(pid))
+    {
+        //dbg msg
+        os_log_debug(logHandle, "process %d has exited, DENYING flow", pid);
+        
+        //deny
+        verdict = [NEFilterNewFlowVerdict dropVerdict];
+        goto bail;
+    }
     
     //sanity check
     // no process? just allow...
