@@ -26,6 +26,13 @@
 //related flows
 @property(nonatomic, retain)NSMutableDictionary* relatedFlows;
 
+//pending alerts
+// maps alert UUID -> flow
+@property(nonatomic, retain)NSMutableDictionary* pendingAlerts;
+
+//cleanup timer for orphaned flows
+@property(nonatomic, retain)dispatch_source_t cleanupTimer;
+
 /* METHODS */
 
 //get best hostname from flow

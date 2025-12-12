@@ -63,10 +63,106 @@ extern
         
         //alloc related flows
         self.relatedFlows = [NSMutableDictionary dictionary];
-        
+
+        //alloc pending alerts
+        self.pendingAlerts = [NSMutableDictionary dictionary];
+
+        //setup periodic cleanup for orphaned flows
+        // runs every 5 min to prevent memory leaks from dead processes
+        dispatch_queue_t cleanupQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
+        dispatch_source_t cleanupTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, cleanupQueue);
+        if(nil != cleanupTimer)
+        {
+            //set timer
+            // 5 min interval, 1 min leeway
+            dispatch_source_set_timer(cleanupTimer, dispatch_time(DISPATCH_TIME_NOW, 5 * 60 * NSEC_PER_SEC), 5 * 60 * NSEC_PER_SEC, 60 * NSEC_PER_SEC);
+
+            //weak reference to avoid retain cycle
+            __weak typeof(self) weakSelf = self;
+
+            //set event handler
+            dispatch_source_set_event_handler(cleanupTimer, ^{
+
+                //strong reference
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+                if(nil != strongSelf)
+                {
+                    //cleanup
+                    [strongSelf cleanupOrphanedFlows];
+                }
+
+            });
+
+            //activate
+            dispatch_resume(cleanupTimer);
+
+            //save
+            self.cleanupTimer = cleanupTimer;
+        }
     }
-    
+
     return self;
+}
+
+//dealloc
+-(void)dealloc
+{
+    //flows to resume
+    NSMutableArray* pendingFlows = nil;
+    NSMutableArray* relatedFlows = nil;
+
+    //cancel cleanup timer
+    if(nil != self.cleanupTimer)
+    {
+        //cancel
+        dispatch_source_cancel(self.cleanupTimer);
+
+        //nil out
+        self.cleanupTimer = nil;
+    }
+
+    //collect pending flows
+    // prevents flows from remaining paused if extension shuts down
+    @synchronized(self.pendingAlerts)
+    {
+        //any pending?
+        if(0 != self.pendingAlerts.count)
+        {
+            //collect all flows
+            pendingFlows = [NSMutableArray arrayWithArray:[self.pendingAlerts allValues]];
+
+            //clear
+            [self.pendingAlerts removeAllObjects];
+        }
+    }
+
+    //collect related flows
+    // prevents flows from remaining paused if extension shuts down
+    @synchronized(self.relatedFlows)
+    {
+        //any related?
+        if(0 != self.relatedFlows.count)
+        {
+            //init array
+            relatedFlows = [NSMutableArray array];
+
+            //collect flows from all processes
+            for(NSString* key in self.relatedFlows)
+            {
+                //add all flows for this process
+                [relatedFlows addObjectsFromArray:self.relatedFlows[key]];
+            }
+
+            //clear
+            [self.relatedFlows removeAllObjects];
+        }
+    }
+
+    //resume pending flows
+    [self resumeFlows:pendingFlows];
+
+    //resume related flows
+    [self resumeFlows:relatedFlows];
 }
 
 //start filter
@@ -848,14 +944,28 @@ bail:
     
     //add cs change
     alert[KEY_CS_CHANGE] = [NSNumber numberWithBool:csChange];
-    
+
+    //save flow for cleanup
+    // allows cleanup of flows whose processes exit before user responds
+    @synchronized(self.pendingAlerts)
+    {
+        //save
+        self.pendingAlerts[alert[KEY_UUID]] = flow;
+    }
+
     //dbg msg
     os_log_debug(logHandle, "created alert...");
 
+    //weak reference to self to avoid retain cycle
+    __weak typeof(self) weakSelf = self;
+
     //deliver alert
-    // and process user response
-    if(YES != [alerts deliver:alert reply:^(NSDictionary* alert)
+    // process user response
+    if(![alerts deliver:alert reply:^(NSDictionary* alert)
     {
+        //strong reference
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+
         //verdict
         NEFilterNewFlowVerdict* verdict = nil;
         
@@ -873,10 +983,47 @@ bail:
             //verdict: block
             verdict = [NEFilterNewFlowVerdict dropVerdict];
         }
-        
+
+        //sanity check
+        // self was deallocated before response
+        if(nil == strongSelf)
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: FilterDataProvider deallocated before user response, flow will remain paused");
+
+            //bail
+            return;
+        }
+
+        //check if flow still needs processing
+        // prevents double-resume if cleanup already handled it
+        BOOL shouldResume = NO;
+        @synchronized(strongSelf.pendingAlerts)
+        {
+            //still in pending alerts?
+            if(nil != strongSelf.pendingAlerts[alert[KEY_UUID]])
+            {
+                //remove from pending
+                [strongSelf.pendingAlerts removeObjectForKey:alert[KEY_UUID]];
+
+                //mark for resume
+                shouldResume = YES;
+            }
+        }
+
+        //already cleaned up?
+        if(!shouldResume)
+        {
+            //dbg msg
+            os_log_debug(logHandle, "flow already cleaned up, skipping user response");
+
+            //bail
+            return;
+        }
+
         //resume flow w/ verdict
-        [self resumeFlow:flow withVerdict:verdict];
-        
+        [strongSelf resumeFlow:flow withVerdict:verdict];
+
         //init rule
         rule = [[Rule alloc] init:alert];
 
@@ -885,19 +1032,31 @@ bail:
 
         //remove from 'shown'
         [alerts removeShown:alert];
-        
+
         //tell user rules changed
         [alerts.xpcUserClient rulesChanged];
-        
+
         //process (any) related flows
-        [self processRelatedFlow:alert[KEY_KEY]];
+        [strongSelf processRelatedFlow:alert[KEY_KEY]];
     }])
     {
         //failed to deliver
         // just allow flow...
         [self resumeFlow:flow withVerdict:[NEFilterNewFlowVerdict allowVerdict]];
+
+        //remove from pending
+        // alert was never shown
+        @synchronized(self.pendingAlerts)
+        {
+            //remove
+            [self.pendingAlerts removeObjectForKey:alert[KEY_UUID]];
+        }
+
+        //cleanup orphaned flows
+        // prevents accumulation when XPC connection fails
+        [self cleanupOrphanedFlows];
     }
-    
+
     //delivered to user
     else
     {
@@ -941,13 +1100,16 @@ bail:
 {
     //flows
     NSMutableArray* flows = nil;
-    
+
     //flow
     NEFilterSocketFlow* flow = nil;
-    
+
+    //verdict
+    NEFilterNewFlowVerdict* verdict = nil;
+
     //dbg msg
     os_log_debug(logHandle, "processing %lu related flow(s) for %{public}@", (unsigned long)[self.relatedFlows[key] count], key);
-    
+
     //sync
     @synchronized(self.relatedFlows)
     {
@@ -957,22 +1119,206 @@ bail:
         {
             //grab flow
             flow = flows[i];
-            
-            //remove
-            [flows removeObjectAtIndex:i];
-           
+
             //process
-            // pause means alert is/was shown
-            // ...so stop, and wait for user response (which will retrigger processing)
-            if([NEFilterNewFlowVerdict pauseVerdict] == [self processEvent:flow])
+            verdict = [self processEvent:flow];
+
+            //pause means alert is/was shown
+            // stop and wait for user response (leave flow in dictionary)
+            if([NEFilterNewFlowVerdict pauseVerdict] == verdict)
             {
                 //stop
                 break;
             }
+
+            //resume flow with verdict
+            // flow was paused when added to relatedFlows, must be resumed
+            [self resumeFlow:flow withVerdict:verdict];
+
+            //remove after successful resume
+            [flows removeObjectAtIndex:i];
+        }
+
+        //cleanup
+        // remove empty entries
+        if(0 == flows.count)
+        {
+            //remove
+            [self.relatedFlows removeObjectForKey:key];
         }
     }
-   
-bail:
+
+    return;
+}
+
+//check if flow's process is orphaned
+-(BOOL)isFlowOrphaned:(NEFilterSocketFlow*)flow
+{
+    //extract pid
+    pid_t pid = audit_token_to_pid(*(audit_token_t*)flow.sourceAppAuditToken.bytes);
+
+    //check if alive
+    return !isAlive(pid);
+}
+
+//resume flows with drop verdict
+// must be called outside synchronized blocks
+-(void)resumeFlows:(NSMutableArray*)flows
+{
+    //nothing to do
+    if(nil == flows)
+    {
+        return;
+    }
+
+    //resume each flow
+    for(NEFilterSocketFlow* flow in flows)
+    {
+        //resume
+        // allows system to release paused flow
+        [self resumeFlow:flow withVerdict:[NEFilterNewFlowVerdict dropVerdict]];
+    }
+
+    return;
+}
+
+//cleanup orphaned flows
+// resumes and removes flows for dead/exited processes
+-(void)cleanupOrphanedFlows
+{
+    //keys to remove
+    NSMutableArray* keysToRemove = nil;
+
+    //dbg msg
+    os_log_debug(logHandle, "cleaning up orphaned flows (related: %lu, pending: %lu)", (unsigned long)self.relatedFlows.count, (unsigned long)self.pendingAlerts.count);
+
+    //cleanup related flows
+    //orphaned flows to resume
+    NSMutableArray* orphanedRelatedFlows = nil;
+
+    @synchronized(self.relatedFlows)
+    {
+        //iterate all process keys
+        for(NSString* key in self.relatedFlows)
+        {
+            //flows for this process
+            NSMutableArray* flows = self.relatedFlows[key];
+
+            //check each flow (reverse order for safe removal)
+            for(NSInteger i = flows.count - 1; i >= 0; i--)
+            {
+                //flow
+                NEFilterSocketFlow* flow = flows[i];
+
+                //orphaned?
+                if([self isFlowOrphaned:flow])
+                {
+                    //dbg msg
+                    os_log_debug(logHandle, "found orphaned related flow (pid: %d)", audit_token_to_pid(*(audit_token_t*)flow.sourceAppAuditToken.bytes));
+
+                    //init array (if needed)
+                    if(nil == orphanedRelatedFlows)
+                    {
+                        //init
+                        orphanedRelatedFlows = [NSMutableArray array];
+                    }
+
+                    //save for resume
+                    [orphanedRelatedFlows addObject:flow];
+
+                    //remove
+                    [flows removeObjectAtIndex:i];
+                }
+            }
+
+            //no flows left?
+            if(0 == flows.count)
+            {
+                //init array (if needed)
+                if(nil == keysToRemove)
+                {
+                    //init
+                    keysToRemove = [NSMutableArray array];
+                }
+
+                //mark for removal
+                [keysToRemove addObject:key];
+            }
+        }
+
+        //remove empty entries
+        if(nil != keysToRemove)
+        {
+            for(NSString* key in keysToRemove)
+            {
+                //remove
+                [self.relatedFlows removeObjectForKey:key];
+            }
+        }
+    }
+
+    //resume orphaned related flows
+    [self resumeFlows:orphanedRelatedFlows];
+
+    //cleanup pending alerts
+    //orphaned flows to resume
+    NSMutableArray* orphanedFlows = nil;
+
+    @synchronized(self.pendingAlerts)
+    {
+        //alert keys to remove
+        NSMutableArray* alertKeysToRemove = nil;
+
+        //iterate all alert UUIDs
+        for(NSString* uuid in self.pendingAlerts)
+        {
+            //flow
+            NEFilterSocketFlow* flow = self.pendingAlerts[uuid];
+
+            //orphaned?
+            if([self isFlowOrphaned:flow])
+            {
+                //dbg msg
+                os_log_debug(logHandle, "found orphaned pending alert (pid: %d)", audit_token_to_pid(*(audit_token_t*)flow.sourceAppAuditToken.bytes));
+
+                //init array (if needed)
+                if(nil == orphanedFlows)
+                {
+                    //init
+                    orphanedFlows = [NSMutableArray array];
+                }
+
+                //save for resume
+                [orphanedFlows addObject:flow];
+
+                //init array (if needed)
+                if(nil == alertKeysToRemove)
+                {
+                    //init
+                    alertKeysToRemove = [NSMutableArray array];
+                }
+
+                //mark for removal
+                [alertKeysToRemove addObject:uuid];
+            }
+        }
+
+        //remove orphaned alerts
+        if(nil != alertKeysToRemove)
+        {
+            for(NSString* uuid in alertKeysToRemove)
+            {
+                //remove
+                [self.pendingAlerts removeObjectForKey:uuid];
+            }
+        }
+    }
+
+    //resume orphaned pending flows
+    [self resumeFlows:orphanedFlows];
+
+    //dbg msg
+    os_log_debug(logHandle, "cleanup complete (related: %lu, pending: %lu)", (unsigned long)self.relatedFlows.count, (unsigned long)self.pendingAlerts.count);
 
     return;
 }
