@@ -63,7 +63,7 @@
 -(BOOL)save;
 
 //import rules
--(BOOL)import:(NSData*)rules;
+-(BOOL)import:(NSData*)rules userOnly:(BOOL)userOnly;
 
 //update an item's cs info
 // and also the cs info of all its rule

@@ -104,6 +104,9 @@
 //is rule temp?
 -(BOOL)isTemporary;
 
+//is rule user (created)
+-(BOOL)isUserCreated;
+
 //covert to dictionary
 -(NSMutableString*)toJSON;
 

@@ -47,13 +47,10 @@ extern XPCDaemonClient* xpcDaemonClient;
 -(void)exportRules
 {
     //count
-    NSUInteger count = 0;
+    __block NSUInteger count = 0;
     
     //rules
     NSDictionary* rules = nil;
-    
-    //rules (as JSON)
-    NSMutableString* json = nil;
     
     //error
     __block NSError* error = nil;
@@ -70,87 +67,6 @@ extern XPCDaemonClient* xpcDaemonClient;
     //dbg msg
     os_log_debug(logHandle, "received %lu rules from daemon", (unsigned long)rules.count);
     
-    //init
-    json = [NSMutableString string];
-    
-    //start
-    [json appendString:@"{"];
-    
-    //covert each rule (set)
-    for(NSString* key in rules.allKeys)
-    {
-        //flag
-        BOOL persistentRule = NO;
-        
-        //rule set
-        NSDictionary* ruleSet = nil;
-        
-        //extract
-        ruleSet = rules[key];
-        
-        //for a given item
-        // make sure at least one non-temp rule
-        for(Rule* rule in rules[key][KEY_RULES])
-        {
-            //not temp?
-            if(YES != [rule isTemporary])
-            {
-                //set flag
-                persistentRule = YES;
-                
-                //done
-                break;
-            }
-        }
-        
-        //skip if all item's rules are temp
-        if(YES != persistentRule)
-        {
-            //skip
-            continue;
-        }
-        
-        //add key
-        [json appendFormat:@"\"%@\" : [", key];
-        
-        //covert each rule
-        for(Rule* rule in rules[key][KEY_RULES])
-        {
-            //skip temp
-            if(YES == [rule isTemporary])
-            {
-                //skip
-                continue;
-            }
-            
-            //append
-            [json appendFormat:@"{%@},", [rule toJSON]];
-            
-            //inc
-            count++;
-        }
-        
-        //remove last ','
-        if(YES == [json hasSuffix:@","])
-        {
-            //remove
-            [json deleteCharactersInRange:NSMakeRange(json.length-1, 1)];
-        }
-        
-        //end
-        [json appendString:@"],"];
-    }
-    
-    //remove last ','
-    if(YES == [json hasSuffix:@","])
-    {
-        //remove
-        [json deleteCharactersInRange:NSMakeRange(json.length-1, 1)];
-    }
-    
-    //end
-    [json appendString:@"}"];
-    
     //init panel
     panel = [NSSavePanel savePanel];
     
@@ -160,6 +76,13 @@ extern XPCDaemonClient* xpcDaemonClient;
     //suggest file name
     [panel setNameFieldStringValue:NSLocalizedString(@"rules.json", @"rules.json")];
     
+    //customize w/ "user only" rules options
+    NSButton *userRulesOnly = [[NSButton alloc] initWithFrame:NSMakeRect(0, 0, 200, 24)];
+    [userRulesOnly setButtonType:NSButtonTypeSwitch];
+    userRulesOnly.title = NSLocalizedString(@"Only export user created rules", @"Only export user created rules");
+    userRulesOnly.state = NSControlStateValueOff;
+    panel.accessoryView = userRulesOnly;
+    
     //show panel
     // completion handler will invoked when user clicks 'ok'
     [panel beginWithCompletionHandler:^(NSInteger result) {
@@ -167,6 +90,100 @@ extern XPCDaemonClient* xpcDaemonClient;
         //only need to handle 'ok'
         if(NSModalResponseOK == result)
         {
+            //only user rules?
+            BOOL exportUserOnly = (NSControlStateValueOn == userRulesOnly.state);
+            
+            //rules (as JSON)
+            NSMutableString* json = [NSMutableString string];
+            
+            //start
+            [json appendString:@"{"];
+            
+            //covert each rule (set)
+            for(NSString* key in rules.allKeys)
+            {
+                //flag
+                BOOL hasPersistentRule = NO;
+                
+                //flag
+                BOOL hasUserCreatedRule = NO;
+                
+                //rule set
+                NSDictionary* ruleSet = nil;
+                
+                //extract
+                ruleSet = rules[key];
+                
+                //for a given item
+                // check all rules for persistent or user created
+                for(Rule* rule in rules[key][KEY_RULES])
+                {
+                    //not temp?
+                    if(!hasPersistentRule && ![rule isTemporary]) {
+                        hasPersistentRule = YES;
+                    }
+                    
+                    //user created (non temp rule)
+                    if(!hasUserCreatedRule && [rule isUserCreated] && ![rule isTemporary]) {
+                        hasUserCreatedRule = YES;
+                    }
+                }
+                
+                //skip if all item's rules are temp
+                if(YES != hasPersistentRule) {
+                    continue;
+                }
+                
+                //when exporting only user rules
+                //skip if all item's rules are *not* user created
+                if(exportUserOnly && !hasUserCreatedRule) {
+                    continue;
+                }
+                
+                //add key
+                [json appendFormat:@"\"%@\" : [", key];
+                
+                //covert each rule
+                for(Rule* rule in rules[key][KEY_RULES])
+                {
+                    //skip temp
+                    if(YES == [rule isTemporary]) {
+                        continue;
+                    }
+                    
+                    //skip non user created
+                    if(exportUserOnly && ![rule isUserCreated]) {
+                        continue;
+                    }
+                        
+                    //append rule
+                    [json appendFormat:@"{%@},", [rule toJSON]];
+                    
+                    //inc
+                    count++;
+                }
+                
+                //remove last ','
+                if(YES == [json hasSuffix:@","])
+                {
+                    //remove
+                    [json deleteCharactersInRange:NSMakeRange(json.length-1, 1)];
+                }
+                
+                //end
+                [json appendString:@"],"];
+            }
+            
+            //remove last ','
+            if(YES == [json hasSuffix:@","])
+            {
+                //remove
+                [json deleteCharactersInRange:NSMakeRange(json.length-1, 1)];
+            }
+            
+            //end
+            [json appendString:@"}"];
+            
             //write out (converted) rules
             // then activate Finder and select file
             if(YES == [json writeToURL:panel.URL atomically:NO encoding:NSUTF8StringEncoding error:&error])
@@ -195,6 +212,9 @@ extern XPCDaemonClient* xpcDaemonClient;
 {
     //flag
     BOOL imported = NO;
+    
+    //flag
+    __block BOOL userOnlyImport = YES;
     
     //error
     NSError* error = nil;
@@ -308,6 +328,12 @@ extern XPCDaemonClient* xpcDaemonClient;
                 continue;
             }
             
+            //found a non-user created rule
+            // means we're going to do a full import
+            if(userOnlyImport && ![rule isUserCreated]) {
+                userOnlyImport = NO;
+            }
+            
             //inc
             count++;
             
@@ -344,7 +370,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     os_log_debug(logHandle, "serialized (imported) rules");
     
     //send to daemon
-    if(YES != [xpcDaemonClient importRules:archivedRules])
+    if(YES != [xpcDaemonClient importRules:archivedRules userOnly:userOnlyImport])
     {
         //bail
         goto bail;

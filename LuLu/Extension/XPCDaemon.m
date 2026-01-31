@@ -204,13 +204,13 @@ bail:
 }
 
 //import rules
--(void)importRules:(NSData*)importedRules result:(void (^)(BOOL))reply
+-(void)importRules:(NSData*)importedRules userOnly:(BOOL)userOnly result:(void (^)(BOOL))reply
 {
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
     
     //import rules
-    reply([rules import:importedRules]);
+    reply([rules import:importedRules userOnly:userOnly]);
 
     return;
 }

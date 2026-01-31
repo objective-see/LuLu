@@ -41,7 +41,7 @@
 -(void)deleteRule:(NSString*)key rule:(NSString*)uuid;
 
 //import rules
--(BOOL)importRules:(NSData*)newRules;
+-(BOOL)importRules:(NSData*)newRules userOnly:(BOOL)userOnly;
 
 //cleanup rules
 -(NSInteger)cleanupRules:(BOOL)full;

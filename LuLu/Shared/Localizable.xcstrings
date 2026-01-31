@@ -7824,6 +7824,9 @@
         }
       }
     },
+    "Only export user created rules" : {
+      "comment" : "Only export user created rules"
+    },
     "Operating System Programs (required for system functionality)" : {
       "comment" : "Operating System Programs (required for system functionality)",
       "localizations" : {

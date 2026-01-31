@@ -213,6 +213,12 @@ extern os_log_t logHandle;
     return (nil != self.pid);
 }
 
+//is rule user (created)?
+-(BOOL)isUserCreated
+{
+    return (self.type.intValue == RULE_TYPE_USER);
+}
+
 //is rule directory?
 -(NSNumber*)isDirectory
 {

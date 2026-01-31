@@ -227,7 +227,7 @@ extern NSMutableDictionary* alerts;
 }
 
 //update (save) preferences
--(BOOL)importRules:(NSData*)newRules
+-(BOOL)importRules:(NSData*)newRules userOnly:(BOOL)userOnly
 {
     //flag
     __block BOOL wasImported = NO;
@@ -241,7 +241,7 @@ extern NSMutableDictionary* alerts;
         //err msg
         os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
           
-    }] importRules:newRules result:^(BOOL result)
+    }] importRules:newRules userOnly:(BOOL)userOnly result:^(BOOL result)
     {
         //dbg msg
         os_log_debug(logHandle, "daemon XPC method, '%s', done!", __PRETTY_FUNCTION__);

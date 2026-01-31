@@ -30,7 +30,7 @@
 -(void)deleteRule:(NSString*)key rule:(NSString*)uuid;
 
 //import rules
--(void)importRules:(NSData*)newRules result:(void (^)(BOOL))reply;
+-(void)importRules:(NSData*)newRules userOnly:(BOOL)userOnly result:(void (^)(BOOL))reply;
 
 //cleanup rules
 -(void)cleanupRules:(BOOL)fule reply:(void (^)(NSInteger))reply;

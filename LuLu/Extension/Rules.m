@@ -1372,7 +1372,7 @@ bail:
 }
 
 //import rules
--(BOOL)import:(NSData*)importedRules
+-(BOOL)import:(NSData*)importedRules userOnly:(BOOL)userOnly
 {
     //flag
     BOOL result = NO;
@@ -1412,8 +1412,57 @@ bail:
     //update
     @synchronized (self)
     {
-        //update
-        self.rules = [unarchivedRules mutableCopy];
+        //full update
+        if(!userOnly) {
+            
+            //dbg msg
+            os_log_debug(logHandle, "full import");
+            
+            //update all
+            self.rules = [unarchivedRules mutableCopy];
+        }
+        //user-only update
+        else
+        {
+            //dbg msg
+            os_log_debug(logHandle, "partial (user-created only) import");
+            
+            //first: remove all existing user-created rules
+            for(NSString* key in self.rules.allKeys) {
+                
+                //get rules for key
+                NSMutableArray* existingRules = self.rules[key][KEY_RULES];
+                
+                //remove user-created rules
+                [existingRules filterUsingPredicate:
+                    [NSPredicate predicateWithBlock:^BOOL(Rule* rule, NSDictionary* bindings) {
+                        return (rule.type.intValue != RULE_TYPE_USER);
+                    }]
+                ];
+                
+                //no rules left?
+                // remove entire key
+                if(0 == existingRules.count) {
+                    [self.rules removeObjectForKey:key];
+                }
+            }
+            
+            //second: merge in imported user rules
+            for(NSString* key in unarchivedRules) {
+                
+                //key exists?
+                // (has non-user rules)
+                if(nil != self.rules[key]){
+                    //append imported rules
+                    [self.rules[key][KEY_RULES] addObjectsFromArray:unarchivedRules[key][KEY_RULES]];
+                }
+                //new key
+                else{
+                    //add entire entry
+                    self.rules[key] = [unarchivedRules[key] mutableCopy];
+                }
+            }
+        }
     }
     
     //save
