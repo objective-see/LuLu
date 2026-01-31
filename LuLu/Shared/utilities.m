@@ -1813,52 +1813,6 @@ bail:
 }
 
 
-//given HH:mm
-// covert to absolute date, up to 24 hrs in the future
-NSDate* absoluteDate(NSDate* date)
-{
-    NSDate* now = nil;
-    NSDate *absoluteDate = nil;
-    NSCalendar* calendar = nil;
-    NSDateComponents* components = nil;
-    NSDateComponents* nowComponents = nil;
-    
-    //dbg msg
-    os_log_debug(logHandle, "function '%s' invoked with %{public}@", __PRETTY_FUNCTION__, date);
-    
-    //now
-    now = [NSDate date];
-    
-    //init calendar
-    calendar = [NSCalendar currentCalendar];
-    
-    //components from entereed date
-    components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:date];
-    
-    //dbg msg
-    os_log_debug(logHandle, "components %{public}@", components);
-
-    //components from now
-    nowComponents = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:now];
-    
-    //replace hour/minute
-    nowComponents.hour = components.hour;
-    nowComponents.minute = components.minute;
-    
-    //new date with the combined components
-    absoluteDate = [calendar dateFromComponents:nowComponents];
-    
-    //in past?
-    // add day ...needs to be future
-    if([absoluteDate compare:now] == NSOrderedAscending) {
-        
-        //add day
-        absoluteDate = [calendar dateByAddingUnit:NSCalendarUnitDay value:1 toDate:absoluteDate options:0];
-    }
-
-    return absoluteDate;
-}
-
 //is process on internal drive?
 BOOL isInternalProcess(NSString *path)
 {

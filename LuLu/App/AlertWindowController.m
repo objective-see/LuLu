@@ -54,14 +54,19 @@ extern XPCDaemonClient* xpcDaemonClient;
     //move via background
     self.window.movableByWindowBackground = YES;
     
-    //init formatter for rule expiration
-    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
-    [timeFormatter setDateFormat:@"HH:mm"];
-    [timeFormatter setLocale:[NSLocale currentLocale]];
-    [timeFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    //set hour formatter
+    NSNumberFormatter *hoursFormatter = [[NSNumberFormatter alloc] init];
+    hoursFormatter.minimum = @0;
+    hoursFormatter.maximum = @23;
+    hoursFormatter.allowsFloats = NO;
+    self.ruleDurationHours.formatter = hoursFormatter;
 
-    //add formatter to input
-    self.ruleDurationCustomAmount.formatter = timeFormatter;
+    //set minute formatter
+    NSNumberFormatter *minutesFormatter = [[NSNumberFormatter alloc] init];
+    minutesFormatter.minimum = @0;
+    minutesFormatter.maximum = @59;
+    minutesFormatter.allowsFloats = NO;
+    self.ruleDurationMinutes.formatter = minutesFormatter;
     
     return;
 }
@@ -777,14 +782,38 @@ bail:
     //rule duration temporary (expiration)?
     else if(NSControlStateValueOn == self.ruleDurationCustom.state)
     {
-        //get expiration
-        expiration = absoluteDate([self.ruleDurationCustomAmount.formatter dateFromString:self.ruleDurationCustomAmount.stringValue]);
-        
-        //dbg msg
-        os_log_debug(logHandle, "rule expiration: %@", expiration);
-        
-        //add
-        alertResponse[KEY_DURATION_EXPIRATION] = expiration;
+        NSInteger hours  = self.ruleDurationHours.integerValue;
+        NSInteger minutes = self.ruleDurationMinutes.integerValue;
+        NSTimeInterval totalSeconds = (hours * 3600) + (minutes * 60);
+
+        //sanity check
+        if(totalSeconds <= 0)
+        {
+            
+            //lower window level (so alert can show above)
+            [self.window setLevel:NSNormalWindowLevel];
+            
+            //show error
+            showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: Enter a non-zero duration", @"ERROR: Enter a non-zero duration"), nil, @[NSLocalizedString(@"OK", @"OK")]);
+            
+            //(re)set window level
+            [self.window setLevel:NSPopUpMenuWindowLevel];
+                
+            //bail here
+            return;
+        }
+        //covert and add
+        else {
+            
+            //convert to data
+            expiration = [NSDate dateWithTimeIntervalSinceNow:totalSeconds];
+            
+            //dbg msg
+            os_log_debug(logHandle, "rule expiration: %{public}@", expiration);
+            
+            //add
+            alertResponse[KEY_DURATION_EXPIRATION] = expiration;
+        }
     }
     
     //set endpoint addr

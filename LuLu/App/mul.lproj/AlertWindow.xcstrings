@@ -393,83 +393,95 @@
       }
     },
     "abH-g6-95w.placeholderString" : {
-      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"HH:mm\"; ObjectID = \"abH-g6-95w\";",
+      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"HH\"; ObjectID = \"abH-g6-95w\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "HH:mm"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "HH:mm"
+            "value" : "HH"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "HH:mm"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "HH:mm"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "HH:mm"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "HH:mm"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "HH:mm"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "SS:dd"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "ГГ:хх"
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "HH:mm"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "HH:mm"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "HH:mm"
           }
         }
       },
       "shouldTranslate" : false
+    },
+    "AuV-oM-p6G.placeholderString" : {
+      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"mm\"; ObjectID = \"AuV-oM-p6G\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "mm"
+          }
+        }
+      }
     },
     "b63-At-csb.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Details:\"; ObjectID = \"b63-At-csb\";",
@@ -551,6 +563,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "詳細資訊"
+          }
+        }
+      }
+    },
+    "cUm-e3-Dh5.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \":\"; ObjectID = \"cUm-e3-Dh5\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : ":"
           }
         }
       }
@@ -2089,84 +2113,84 @@
       }
     },
     "Wn5-T5-boq.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"Valid until:\"; ObjectID = \"Wn5-T5-boq\";",
+      "comment" : "Class = \"NSButtonCell\"; title = \"Expires in:\"; ObjectID = \"Wn5-T5-boq\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Gültig bis:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Valid until:"
+            "value" : "Expires in:"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Válido hasta:"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Valide jusque : "
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Valido fino a:"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "다음 시간 동안:"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Ważne do:"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Válido até:"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Şu tarihe dek:"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Дійсне до:"
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "تک:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "持续时间："
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "持續直到"
           }
         }
