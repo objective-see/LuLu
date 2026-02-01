@@ -387,82 +387,78 @@
       }
     },
     "...please copy it into /Applications and re-launch." : {
-      "comment" : "...please copy it into /Applications and re-launch."
-    },
-    "...please copy it to /Applications and re-launch." : {
-      "comment" : "...please copy it to /Applications and re-launch.",
-      "extractionState" : "stale",
+      "comment" : "...please copy it into /Applications and re-launch.",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "...bitte kopiere die Anwendung nach /Applications und starte sie neu."
+            "value" : "…bitte kopieren Sie es in /Applications und starten Sie die Anwendung neu."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "...por favor cópialo a /Aplicaciones y vuelve a abrirlo. "
+            "value" : "…por favor, cópielo en /Applications y reinicie la aplicación."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "… merci de le copier vers /Applications et de relancer"
+            "value" : "…veuillez le copier dans /Applications et relancer l'application."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "…copia l’Applicazione in /Applications e riavviala"
+            "value" : "…si prega di copiarlo in /Applications e riavviare l'applicazione."
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "...응용 프로그램 폴더(/Applications)에 복사 후 다시 실행하세요."
+            "value" : "…/Applications에 복사한 후 다시 실행해 주세요."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "...proszę skopiować do /Aplikacje i uruchomić ponownie."
+            "value" : "…proszę skopiować do /Applications i ponownie uruchomić aplikację."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "…por favor copie para /Applications e reinicie o programa."
+            "value" : "…por favor, copie para /Applications e reinicie o aplicativo."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "…lütfen /Applications’a kopyalayın ve yeniden başlatın "
+            "value" : "…lütfen /Applications klasörüne kopyalayın ve uygulamayı yeniden başlatın."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "…будь ласка, скопіюйте в /Application і перезапустіть."
+            "value" : "…будь ласка, скопіюйте до /Applications та перезапустіть програму."
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "...براہ کرم اسے /ایپلیکیشنز میں کاپی کریں اور دوبارہ شروع کریں۔"
+            "value" : "…براہ کرم اسے /Applications میں کاپی کریں اور ایپلیکیشن دوبارہ شروع کریں۔"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "…请将其复制到 /Applications 并重新启动应用程序"
+            "value" : "…请将其复制到 /Applications 中并重新启动。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "…請將其複製到 /Applications 並重新啟動應用程式。"
+            "value" : "…請將其複製到 /Applications 中並重新啟動。"
           }
         }
       }
@@ -5259,7 +5255,81 @@
       }
     },
     "ERROR: Enter a non-zero duration" : {
-      "comment" : "ERROR: Enter a non-zero duration"
+      "comment" : "ERROR: Enter a non-zero duration",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FEHLER: Geben Sie eine Dauer ungleich Null ein"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERROR: Introduzca una duración distinta de cero"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERREUR : Entrez une durée non nulle"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERRORE: Inserire una durata diversa da zero"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오류: 0이 아닌 지속 시간을 입력하세요"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BŁĄD: Wprowadź niezerowy czas trwania"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERRO: Insira uma duração diferente de zero"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HATA: Sıfırdan farklı bir süre girin"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОМИЛКА: Введіть ненульову тривалість"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خرابی: صفر سے مختلف دورانیہ درج کریں"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "错误：请输入非零的持续时间"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錯誤：請輸入非零的持續時間"
+          }
+        }
+      }
     },
     "ERROR: Failed to cleanup rules" : {
       "comment" : "ERROR: Failed to cleanup rules",
@@ -6820,28 +6890,24 @@
       "shouldTranslate" : false
     },
     "LuLu must run from within:\r\n  %@" : {
-      "comment" : "LuLu must run from within:\r\n  %@"
-    },
-    "LuLu must run from:\r\n  %@" : {
-      "comment" : "LuLu must run from:\r\n  %@",
-      "extractionState" : "stale",
+      "comment" : "LuLu must run from within:\r\n  %@",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu muss von diesem Pfad ausgeführt werden:\r\n  %@"
+            "value" : "LuLu muss aus folgendem Verzeichnis ausgeführt werden:\n%@"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu debe ejecutarse desde: %@"
+            "value" : "LuLu debe ejecutarse desde:\n%@"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu doit être lancé depuis : %@"
+            "value" : "LuLu doit être exécuté depuis :\n%@"
           }
         },
         "it" : {
@@ -6853,49 +6919,49 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu는 다음에서 실행되어야 합니다:\r\n  %@"
+            "value" : "LuLu는 다음 위치에서 실행해야 합니다:\n%@"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu musi działać z:\n%@"
+            "value" : "LuLu musi być uruchamiany z lokalizacji:\n%@"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu deve ser executado em: %@"
+            "value" : "O LuLu deve ser executado a partir de:\n%@"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu şuradan çalıştırılmalıdır:\n  %@"
+            "value" : "LuLu şu konumdan çalıştırılmalıdır:\n%@"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu має працювати з:\r\n  %@"
+            "value" : "LuLu має запускатися з:\n%@"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu کو یہاں سے چلانا ہوگا:\r\n  %@"
+            "value" : "LuLu کو درج ذیل مقام سے چلایا جانا چاہیے:\n%@"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu 必须从%@执行"
+            "value" : "LuLu 必须从以下位置运行：\n%@"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu 必須從 %@ 執行"
+            "value" : "LuLu 必須從以下位置運行：\n%@"
           }
         }
       }
@@ -7825,7 +7891,81 @@
       }
     },
     "Only export user created rules" : {
-      "comment" : "Only export user created rules"
+      "comment" : "Only export user created rules",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur benutzererstellte Regeln exportieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar solo las reglas creadas por el usuario"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exporter uniquement les règles créées par l'utilisateur"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esporta solo le regole create dall'utente"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용자가 생성한 규칙만 내보내기"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eksportuj tylko reguły utworzone przez użytkownika"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar apenas regras criadas pelo usuário"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yalnızca kullanıcı tarafından oluşturulan kuralları dışa aktar"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Експортувати лише правила, створені користувачем"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "صرف صارف کی بنائی ہوئی قواعد برآمد کریں"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "仅导出用户创建的规则"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "僅導出用戶創建的規則"
+          }
+        }
+      }
     },
     "Operating System Programs (required for system functionality)" : {
       "comment" : "Operating System Programs (required for system functionality)",
@@ -8365,7 +8505,81 @@
       }
     },
     "Profile name can't be blank" : {
-      "comment" : "Profile name can't be blank"
+      "comment" : "Profile name can't be blank",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profilname darf nicht leer sein"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El nombre del perfil no puede estar vacío"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le nom du profil ne peut pas être vide"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il nome del profilo non può essere vuoto"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로필 이름은 비워둘 수 없습니다"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa profilu nie może być pusta"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O nome do perfil não pode estar vazio"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil adı boş bırakılamaz"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назва профілю не може бути порожньою"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پروفائل کا نام خالی نہیں ہو سکتا"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "配置文件名称不能为空"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "配置文件名稱不能為空"
+          }
+        }
+      }
     },
     "Profile Switched" : {
       "comment" : "Profile Switched",

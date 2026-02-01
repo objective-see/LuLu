@@ -481,7 +481,8 @@
             "value" : "mm"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "b63-At-csb.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Details:\"; ObjectID = \"b63-At-csb\";",
@@ -577,7 +578,8 @@
             "value" : ":"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "D1C-aK-AFU.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Signing Authorities:\"; ObjectID = \"D1C-aK-AFU\";",
@@ -2118,8 +2120,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Gültig bis:"
+            "state" : "translated",
+            "value" : "Läuft ab in:"
           }
         },
         "en" : {
@@ -2130,68 +2132,68 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Válido hasta:"
+            "state" : "translated",
+            "value" : "Expira en:"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Valide jusque : "
+            "state" : "translated",
+            "value" : "Expire dans :"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Valido fino a:"
+            "state" : "translated",
+            "value" : "Scade tra:"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "다음 시간 동안:"
+            "state" : "translated",
+            "value" : "만료까지:"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ważne do:"
+            "state" : "translated",
+            "value" : "Wygasa za:"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Válido até:"
+            "state" : "translated",
+            "value" : "Expira em:"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Şu tarihe dek:"
+            "state" : "translated",
+            "value" : "Süre dolmasına:"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Дійсне до:"
+            "state" : "translated",
+            "value" : "Закінчується через:"
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "تک:"
+            "state" : "translated",
+            "value" : "میعاد ختم ہونے میں:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "持续时间："
+            "state" : "translated",
+            "value" : "过期时间："
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "持續直到"
+            "state" : "translated",
+            "value" : "過期時間："
           }
         }
       }
