@@ -145,6 +145,9 @@ extern XPCDaemonClient* xpcDaemonClient;
     //set sort descriptor for first column
     [self.outlineView.tableColumns[0] setSortDescriptorPrototype:[[NSSortDescriptor alloc] initWithKey:SORT_DESCRIPTOR_COLUMN_0 ascending:YES]];
     
+    //set resizing
+    self.outlineView.columnAutoresizingStyle = NSTableViewFirstColumnOnlyAutoresizingStyle;
+    
     //set it to whole too...
     [self.outlineView setSortDescriptors:@[self.outlineView.tableColumns[0].sortDescriptorPrototype]];
     

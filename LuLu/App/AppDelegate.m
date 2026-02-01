@@ -751,9 +751,6 @@ bail:
     //response
     NSModalResponse response = 0;
     
-    //config obj
-    Configure* configure = nil;
-    
     //dbg msg
     os_log_debug(logHandle, "function '%s' invoked", __PRETTY_FUNCTION__);
     
@@ -777,14 +774,19 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "user confirmed quit");
         
-        //init
-        configure = [[Configure alloc] init];
-        
-        //quit
-        [configure quit];
-        
-        //and terminate
-        [NSApplication.sharedApplication terminate:self];
+        //slight delay to let alert dismiss
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+            //config obj
+            Configure* configure = [[Configure alloc] init];
+            
+            //quit
+            [configure quit];
+            
+            //and terminate
+            [NSApplication.sharedApplication terminate:self];
+            
+        });
     }
     
     return;
