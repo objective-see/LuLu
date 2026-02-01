@@ -357,8 +357,8 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField focusRingType="none" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbn-rf-Xhf">
-                                <rect key="frame" x="337" y="13" width="33" height="24"/>
+                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hbn-rf-Xhf">
+                                <rect key="frame" x="337" y="14" width="33" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="33" id="h1i-xh-JbU"/>
                                     <constraint firstAttribute="height" constant="24" id="xep-xu-zRP"/>
@@ -461,8 +461,8 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField focusRingType="none" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yCo-33-DDd">
-                                <rect key="frame" x="388" y="13" width="35" height="24"/>
+                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yCo-33-DDd">
+                                <rect key="frame" x="388" y="14" width="35" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="NFL-0Y-bXj"/>
                                     <constraint firstAttribute="height" constant="24" id="OVi-I6-Cdd"/>
@@ -480,8 +480,10 @@
                             <constraint firstItem="Xf4-RL-C1a" firstAttribute="leading" secondItem="xge-2z-T9l" secondAttribute="leading" constant="232" id="UE6-1O-GTy"/>
                             <constraint firstItem="yCo-33-DDd" firstAttribute="leading" secondItem="lal-dX-T3V" secondAttribute="trailing" constant="5" id="h63-kL-sLq"/>
                             <constraint firstItem="hbn-rf-Xhf" firstAttribute="leading" secondItem="Xf4-RL-C1a" secondAttribute="trailing" constant="3" id="iMg-X4-vst"/>
+                            <constraint firstAttribute="bottom" secondItem="hbn-rf-Xhf" secondAttribute="bottom" constant="14" id="iSf-vV-vhZ"/>
                             <constraint firstItem="n0b-XP-ZUr" firstAttribute="leading" secondItem="xge-2z-T9l" secondAttribute="leading" constant="232" id="qby-li-t9f"/>
                             <constraint firstItem="giZ-wY-Jcm" firstAttribute="leading" secondItem="xge-2z-T9l" secondAttribute="leading" constant="232" id="uga-fg-Obv"/>
+                            <constraint firstAttribute="bottom" secondItem="yCo-33-DDd" secondAttribute="bottom" constant="14" id="wWH-T5-Nl5"/>
                             <constraint firstItem="lal-dX-T3V" firstAttribute="leading" secondItem="hbn-rf-Xhf" secondAttribute="trailing" constant="5" id="zeH-jZ-fIo"/>
                         </constraints>
                     </customView>
