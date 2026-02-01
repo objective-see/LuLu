@@ -84,7 +84,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
         os_log_debug(logHandle, "LuLu running from %{public}@, not from within /Applications", NSBundle.mainBundle.bundlePath);
         
         //show alert
-        showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"LuLu must run from within:\r\n  %@", @"LuLu must run from within:\r\n  %@"), [@"/Applications" stringByAppendingPathComponent:APP_NAME]], NSLocalizedString(@"...please copy it into /Applications and re-launch.", @"...please copy it into /Applications and re-launch."), @[NSLocalizedString(@"OK",@"OK")]);
+        showAlert(NSAlertStyleInformational, NSLocalizedString(@"LuLu must run from within /Applications\r\n", @"LuLu must run from within /Applications\r\n"), NSLocalizedString(@"...please copy it into /Applications and re-launch.", @"...please copy it into /Applications and re-launch."), @[NSLocalizedString(@"OK",@"OK")]);
         
         //exit
         [NSApplication.sharedApplication terminate:self];

@@ -358,7 +358,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField focusRingType="none" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbn-rf-Xhf">
-                                <rect key="frame" x="337" y="14" width="33" height="24"/>
+                                <rect key="frame" x="337" y="13" width="33" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="33" id="h1i-xh-JbU"/>
                                     <constraint firstAttribute="height" constant="24" id="xep-xu-zRP"/>
@@ -462,7 +462,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField focusRingType="none" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yCo-33-DDd">
-                                <rect key="frame" x="388" y="14" width="35" height="24"/>
+                                <rect key="frame" x="388" y="13" width="35" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="NFL-0Y-bXj"/>
                                     <constraint firstAttribute="height" constant="24" id="OVi-I6-Cdd"/>

@@ -6889,79 +6889,79 @@
       },
       "shouldTranslate" : false
     },
-    "LuLu must run from within:\r\n  %@" : {
-      "comment" : "LuLu must run from within:\r\n  %@",
+    "LuLu must run from within /Applications\r\n" : {
+      "comment" : "LuLu must run from within /Applications\r\n",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu muss aus folgendem Verzeichnis ausgeführt werden:\n%@"
+            "value" : "LuLu muss aus /Applications heraus ausgeführt werden"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu debe ejecutarse desde:\n%@"
+            "value" : "LuLu debe ejecutarse desde /Applications\n"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu doit être exécuté depuis :\n%@"
+            "value" : "LuLu doit être exécuté depuis /Applications"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu deve essere eseguito da:\n%@"
+            "value" : "LuLu deve essere eseguito da /Applications"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu는 다음 위치에서 실행해야 합니다:\n%@"
+            "value" : "LuLu는 /Applications 내에서 실행해야 합니다"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu musi być uruchamiany z lokalizacji:\n%@"
+            "value" : "LuLu musi być uruchamiany z katalogu /Applications"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O LuLu deve ser executado a partir de:\n%@"
+            "value" : "O LuLu deve ser executado a partir de /Applications"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu şu konumdan çalıştırılmalıdır:\n%@"
+            "value" : "LuLu, /Applications klasöründen çalıştırılmalıdır"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu має запускатися з:\n%@"
+            "value" : "LuLu має запускатися з /Applications"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu کو درج ذیل مقام سے چلایا جانا چاہیے:\n%@"
+            "value" : "LuLu کو /Applications کے اندر سے چلایا جانا چاہیے"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu 必须从以下位置运行：\n%@"
+            "value" : "LuLu 必须从 /Applications 中运行"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LuLu 必須從以下位置運行：\n%@"
+            "value" : "LuLu 必須從 /Applications 中運行"
           }
         }
       }

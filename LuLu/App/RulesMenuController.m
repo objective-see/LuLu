@@ -81,6 +81,8 @@ extern XPCDaemonClient* xpcDaemonClient;
     [userRulesOnly setButtonType:NSButtonTypeSwitch];
     userRulesOnly.title = NSLocalizedString(@"Only export user created rules", @"Only export user created rules");
     userRulesOnly.state = NSControlStateValueOff;
+    [userRulesOnly sizeToFit];
+    
     panel.accessoryView = userRulesOnly;
     
     //show panel
