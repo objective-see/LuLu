@@ -941,13 +941,16 @@ bail:
 {
     //flows
     NSMutableArray* flows = nil;
-    
+
     //flow
     NEFilterSocketFlow* flow = nil;
-    
+
+    //verdict
+    NEFilterNewFlowVerdict* verdict = nil;
+
     //dbg msg
     os_log_debug(logHandle, "processing %lu related flow(s) for %{public}@", (unsigned long)[self.relatedFlows[key] count], key);
-    
+
     //sync
     @synchronized(self.relatedFlows)
     {
@@ -957,21 +960,33 @@ bail:
         {
             //grab flow
             flow = flows[i];
-            
-            //remove
-            [flows removeObjectAtIndex:i];
-           
+
             //process
-            // pause means alert is/was shown
+            // returns verdict for this flow
+            verdict = [self processEvent:flow];
+
+            //pause means alert is/was shown
             // ...so stop, and wait for user response (which will retrigger processing)
-            if([NEFilterNewFlowVerdict pauseVerdict] == [self processEvent:flow])
+            if([NEFilterNewFlowVerdict pauseVerdict] == verdict)
             {
                 //stop
                 break;
             }
+
+            //resume already-paused flow with determined verdict
+            [self resumeFlow:flow withVerdict:verdict];
+
+            //remove from related flows
+            [flows removeObjectAtIndex:i];
+        }
+
+        //cleanup empty entry
+        if(0 == flows.count)
+        {
+            [self.relatedFlows removeObjectForKey:key];
         }
     }
-   
+
 bail:
 
     return;
