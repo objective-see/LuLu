@@ -89,7 +89,6 @@ extern
     //init rules array
     rules = [NSMutableArray array];
 
-
     //Rule 1:
     // IPv4 loopback (127.0.0.0/8), any port
     NWHostEndpoint* loopback4 = [NWHostEndpoint endpointWithHostname:@"127.0.0.0" port:@"0"];
@@ -407,11 +406,9 @@ bail:
         NWHostEndpoint* remoteEndpoint = (NWHostEndpoint*)socketFlow.remoteEndpoint;
         
         //localhost?
-        if( (YES == [remoteEndpoint.hostname hasPrefix:@"127."]) ||
-            (YES == [remoteEndpoint.hostname isEqualToString:@"::1"]) ||
-            (YES == [remoteEndpoint.hostname isEqualToString:@"localhost"]) ) {
+        if([self isLocalhostHostname:remoteEndpoint.hostname]) {
             
-            os_log_debug(logHandle, "localhost allowed, so allowing loopback to %{public}@", remoteEndpoint);
+            os_log_debug(logHandle, "localhost allowed (preferences), so allowing loopback to %{public}@", remoteEndpoint);
             
             //allow
             verdict = [NEFilterNewFlowVerdict allowVerdict];
@@ -928,12 +925,15 @@ bail:
         [alerts.xpcUserClient rulesChanged];
         
         //process (any) related flows
+        // now that rule is created, related flows should match it or generate new alerts
         [self processRelatedFlow:alert[KEY_KEY]];
     }])
     {
-        //failed to deliver
-        // just allow flow...
+        //failed to deliver, so allow
         [self resumeFlow:flow withVerdict:[NEFilterNewFlowVerdict allowVerdict]];
+        
+        //process related flows
+        [self processRelatedFlow:alert[KEY_KEY]];
     }
     
     //delivered to user
@@ -1121,6 +1121,37 @@ bail:
     os_log_debug(logHandle, "best hostname for flow: %{public}@", bestHostname);
     
     return bestHostname;
+}
+
+//check if hostname is a valid localhost address
+-(BOOL)isLocalhostHostname:(NSString*)hostname {
+    
+    struct sockaddr_in sa4 = {0};
+    struct sockaddr_in6 sa6 = {0};
+    
+    //sanity check
+    if(!hostname.length) {
+        return NO;
+    }
+    
+    //exact matches for localhost or IPv6 loopback
+    if([hostname isEqualToString:@"::1"] ||
+       [hostname isEqualToString:@"localhost"]) {
+        return YES;
+    }
+    
+    //check for valid IPv4 loopback range (127.0.0.0/8)
+    if(inet_pton(AF_INET, hostname.UTF8String, &(sa4.sin_addr)) == 1) {
+        return IN_LOOPBACK(ntohl(sa4.sin_addr.s_addr));
+    }
+    
+    //check for valid IPv6 loopback (::1)
+    if(inet_pton(AF_INET6, [hostname UTF8String], &(sa6.sin6_addr)) == 1) {
+        return IN6_IS_ADDR_LOOPBACK(&sa6.sin6_addr);
+    }
+    
+    //not a valid localhost address
+    return NO;
 }
 
 @end
