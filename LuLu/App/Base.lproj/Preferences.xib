@@ -126,7 +126,7 @@
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="Zcd-0q-bOa">
                     <rect key="frame" x="72" y="350" width="508" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Apple-signed binaries will be allowed." id="M8X-n4-v2d">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Apple-signed programs will be allowed." id="M8X-n4-v2d">
                         <font key="font" size="11" name="Menlo-Regular"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -155,14 +155,14 @@
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="Hyt-Pl-KUs">
                     <rect key="frame" x="72" y="297" width="508" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Previously installed, 3rd-party programs will be allowed." id="6gH-HW-CFe">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Previously installed third-party programs will be allowed." id="6gH-HW-CFe">
                         <font key="font" size="11" name="Menlo-Regular"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button tag="5" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fQb-j3-FoU">
-                    <rect key="frame" x="39" y="158" width="29" height="18"/>
+                    <rect key="frame" x="39" y="165" width="29" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="J4Y-ES-3i0">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -173,18 +173,18 @@
                     </connections>
                 </button>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUM-gv-uWI">
-                    <rect key="frame" x="72" y="156" width="508" height="19"/>
+                    <rect key="frame" x="72" y="163" width="508" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Allow Simulator Applications" id="Uqq-dW-xf2">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Allow Simulator Programs" id="Uqq-dW-xf2">
                         <font key="font" size="13" name="Menlo-Bold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="ZjJ-WW-3Ir">
-                    <rect key="frame" x="72" y="131" width="510" height="26"/>
+                    <rect key="frame" x="72" y="138" width="510" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Applications running within the simulator will be allowed." id="e6s-dd-HG6">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Programs running in the (iOS) simulator will be allowed." id="e6s-dd-HG6">
                         <font key="font" size="11" name="Menlo-Regular"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -202,7 +202,7 @@
                     </connections>
                 </button>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2vI-jc-apL">
-                    <rect key="frame" x="72" y="268" width="510" height="19"/>
+                    <rect key="frame" x="72" y="269" width="510" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Allow DNS Traffic" id="wED-Z0-197">
                         <font key="font" size="13" name="Menlo-Bold"/>
@@ -211,16 +211,16 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="fg5-Ws-kmD">
-                    <rect key="frame" x="72" y="243" width="508" height="26"/>
+                    <rect key="frame" x="72" y="244" width="508" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="All (UDP) traffic on port 53 will be allowed." id="iYm-DO-gHs">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="All outgoing UDP traffic on port 53 will be allowed." id="iYm-DO-gHs">
                         <font key="font" size="11" name="Menlo-Regular"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button tag="4" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iY7-o9-c5m">
-                    <rect key="frame" x="37" y="214" width="29" height="18"/>
+                    <rect key="frame" x="37" y="218" width="29" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="pbD-7C-Uut">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -231,7 +231,7 @@
                     </connections>
                 </button>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xvQ-1T-rZO">
-                    <rect key="frame" x="70" y="211" width="510" height="19"/>
+                    <rect key="frame" x="70" y="216" width="510" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Allow Localhost Traffic" id="F6g-hE-DiK">
                         <font key="font" size="13" name="Menlo-Bold"/>
@@ -240,9 +240,9 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="3XI-VJ-kgK">
-                    <rect key="frame" x="70" y="186" width="508" height="26"/>
+                    <rect key="frame" x="70" y="191" width="508" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Do not filter outgoing connections to localhost (127.0.0.1 / ::1)." id="caA-Ec-ysj">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Outgoing connections to localhost will be allowed." id="caA-Ec-ysj">
                         <font key="font" size="11" name="Menlo-Regular"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
