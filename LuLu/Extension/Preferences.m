@@ -124,12 +124,40 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "from %{public}@, loaded preferences: %{public}@", prefsFile, self.preferences);
     
+    //set any defaults
+    [self setDefaults];
+    
     //happy
     loaded = YES;
     
 bail:
     
     return loaded;
+}
+
+//set any defaults
+// needed as upgrades don't (re)display welcome window
+-(void)setDefaults {
+    
+    //flag
+    BOOL shouldSave = NO;
+    
+    //PREF_ALLOW_LOCALHOST: default to YES for existing users
+    if(!self.preferences[PREF_ALLOW_LOCALHOST]) {
+    
+        os_log_debug(logHandle, "setting default value for PREF_ALLOW_LOCALHOST: YES");
+        
+        //set default
+        self.preferences[PREF_ALLOW_LOCALHOST] = @YES;
+        shouldSave = YES;
+    }
+    
+    //could add any others here...
+    
+    //save
+    if(shouldSave) {
+        [self save];
+    }
 }
 
 //update prefs

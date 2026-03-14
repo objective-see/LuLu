@@ -163,6 +163,10 @@ enum Signer{None, Apple, AppStore, DevID, AdHoc};
 #define PREF_ALLOW_DNS @"allowDNS"
 
 //prefs
+// allow localhost traffic
+#define PREF_ALLOW_LOCALHOST @"allowLocalHost"
+
+//prefs
 // allow simulator apps
 #define PREF_ALLOW_SIMULATOR @"allowSimulatorApps"
 

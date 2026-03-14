@@ -1093,6 +1093,18 @@
         }
       }
     },
+    "caA-Ec-ysj.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Do not filter outgoing connections to localhost (127.0.0.1 / ::1).\"; ObjectID = \"caA-Ec-ysj\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Do not filter outgoing connections to localhost (127.0.0.1 / ::1)."
+          }
+        }
+      }
+    },
     "Cfj-2E-dIA.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"View Rules\"; ObjectID = \"Cfj-2E-dIA\";",
       "extractionState" : "extracted_with_value",
@@ -1761,6 +1773,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定"
+          }
+        }
+      }
+    },
+    "F6g-hE-DiK.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Allow Localhost Traffic\"; ObjectID = \"F6g-hE-DiK\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Allow Localhost Traffic"
           }
         }
       }

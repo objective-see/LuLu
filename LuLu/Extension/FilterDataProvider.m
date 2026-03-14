@@ -71,46 +71,74 @@ extern
 
 //start filter
 -(void)startFilterWithCompletionHandler:(void (^)(NSError *error))completionHandler {
+    
+    //rules
+    NSMutableArray<NEFilterRule*>* rules = nil;
 
-    //rule
-    NENetworkRule* networkRule = nil;
-    
-    //filter rule
-    NEFilterRule* filterRule = nil;
-    
+    //network rules
+    NENetworkRule* anyOutboundRule = nil;
+    NENetworkRule* loopbackRule4 = nil;
+    NENetworkRule* loopbackRule6 = nil;
+
     //filter settings
     NEFilterSettings* filterSettings = nil;
-    
+
     //log msg
     os_log_debug(logHandle, "%s", __PRETTY_FUNCTION__);
-    
-    //init network rule
-    // any/all outbound traffic
-    networkRule = [[NENetworkRule alloc] initWithRemoteNetwork:nil remotePrefix:0 localNetwork:nil localPrefix:0 protocol:NENetworkRuleProtocolAny direction:NETrafficDirectionOutbound];
-    
-    //init filter rule
-    // filter traffic, based on network rule
-    filterRule = [[NEFilterRule alloc] initWithNetworkRule:networkRule action:NEFilterActionFilterData];
-    
+
+    //init rules array
+    rules = [NSMutableArray array];
+
+
+    //Rule 1:
+    // IPv4 loopback (127.0.0.0/8), any port
+    NWHostEndpoint* loopback4 = [NWHostEndpoint endpointWithHostname:@"127.0.0.0" port:@"0"];
+    loopbackRule4 = [[NENetworkRule alloc] initWithRemoteNetwork:loopback4
+                                                   remotePrefix:8
+                                                    localNetwork:nil
+                                                     localPrefix:0
+                                                        protocol:NENetworkRuleProtocolAny
+                                                       direction:NETrafficDirectionOutbound];
+    [rules addObject:[[NEFilterRule alloc] initWithNetworkRule:loopbackRule4 action:NEFilterActionFilterData]];
+
+    //Rule 2:
+    // IPv6 loopback (::1/128), any port
+    NWHostEndpoint* loopback6 = [NWHostEndpoint endpointWithHostname:@"::1" port:@"0"];
+    loopbackRule6 = [[NENetworkRule alloc] initWithRemoteNetwork:loopback6
+                                                   remotePrefix:128
+                                                    localNetwork:nil
+                                                     localPrefix:0
+                                                        protocol:NENetworkRuleProtocolAny
+                                                       direction:NETrafficDirectionOutbound];
+    [rules addObject:[[NEFilterRule alloc] initWithNetworkRule:loopbackRule6 action:NEFilterActionFilterData]];
+
+    //Rule 3:
+    // any/all outbound traffic (non-loopback)
+    anyOutboundRule = [[NENetworkRule alloc] initWithRemoteNetwork:nil
+                                                     remotePrefix:0
+                                                      localNetwork:nil
+                                                       localPrefix:0
+                                                          protocol:NENetworkRuleProtocolAny
+                                                         direction:NETrafficDirectionOutbound];
+    [rules addObject:[[NEFilterRule alloc] initWithNetworkRule:anyOutboundRule action:NEFilterActionFilterData]];
+
     //init filter settings
-    filterSettings = [[NEFilterSettings alloc] initWithRules:@[filterRule] defaultAction:NEFilterActionAllow];
-    
+    filterSettings = [[NEFilterSettings alloc] initWithRules:rules defaultAction:NEFilterActionAllow];
+
     //apply rules
     [self applySettings:filterSettings completionHandler:^(NSError * _Nullable error) {
-        
+
         //log msg
         os_log_debug(logHandle, "'applySettings' completed");
-        
+
         //error?
         if(nil != error) os_log_error(logHandle, "ERROR: failed to apply filter settings: %@", error.localizedDescription);
-        
+
         //call completion handler
         completionHandler(error);
-        
     }];
-    
+
     return;
-    
 }
 
 //stop filter
@@ -133,9 +161,6 @@ extern
 }
 
 //handle flow
-// a) skip local/inbound traffic
-// b) lookup matching rule & then apply
-// c) ...or ask user (alert via XPC) if no rule
 -(NEFilterNewFlowVerdict *)handleNewFlow:(NEFilterFlow *)flow {
     
     //socket flow
@@ -283,15 +308,6 @@ bail:
         goto bail;
     }
         
-    /*
-    //(now), broadcast notification
-    // allows anybody to listen to flows
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:LULU_EVENT object:@"new flow" userInfo:[alerts create:(NEFilterSocketFlow*)flow process:process] options:NSNotificationDeliverImmediately|NSNotificationPostToAllSessions];
-    */
-            
-    //dbg msg
-    //os_log_debug(logHandle, "process object for flow: %{public}@", process);
-        
     //CHECK:
     // different logged in user?
     // just allow flow, as we don't want to block their traffic
@@ -382,7 +398,28 @@ bail:
         //dbg msg
         else os_log_debug(logHandle, "remote endpoint/URL not on allow list...");
     }
+    
+    //CHECK:
+    // allow localhost enabled?
+    if([preferences.preferences[PREF_ALLOW_LOCALHOST] boolValue])
+    {
+        NEFilterSocketFlow* socketFlow = (NEFilterSocketFlow*)flow;
+        NWHostEndpoint* remoteEndpoint = (NWHostEndpoint*)socketFlow.remoteEndpoint;
         
+        //localhost?
+        if( (YES == [remoteEndpoint.hostname hasPrefix:@"127."]) ||
+            (YES == [remoteEndpoint.hostname isEqualToString:@"::1"]) ||
+            (YES == [remoteEndpoint.hostname isEqualToString:@"localhost"]) ) {
+            
+            os_log_debug(logHandle, "localhost allowed, so allowing loopback to %{public}@", remoteEndpoint);
+            
+            //allow
+            verdict = [NEFilterNewFlowVerdict allowVerdict];
+            
+            //all set
+            goto bail;
+        }
+    }
     //CHECK:
     // check for existing rule
     

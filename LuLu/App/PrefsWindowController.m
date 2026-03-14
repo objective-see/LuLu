@@ -39,23 +39,23 @@ extern XPCDaemonClient* xpcDaemonClient;
 //'allow dns' button
 #define BUTTON_ALLOW_DNS 3
 
+//'allow localhost' button
+#define BUTTON_ALLOW_LOCALHOST 4
+
 //'allow iOS simulator apps' mode button
-#define BUTTON_ALLOW_SIMULATOR 4
+#define BUTTON_ALLOW_SIMULATOR 5
 
 //'passive mode' button
-#define BUTTON_PASSIVE_MODE 5
+#define BUTTON_PASSIVE_MODE 6
 
 //'block mode' button
-#define BUTTON_BLOCK_MODE 6
+#define BUTTON_BLOCK_MODE 7
 
 //'no-icon mode' button
-#define BUTTON_NO_ICON_MODE 7
+#define BUTTON_NO_ICON_MODE 8
 
 //'no-VT mode' button
-#define BUTTON_NO_VT_MODE 8
-
-//'detailed' rule mode
-#define BUTTON_DETAILED_RULE_MODE 9
+#define BUTTON_NO_VT_MODE 9
 
 //'use allow list' button
 #define BUTTON_USE_ALLOW_LIST 10
@@ -172,7 +172,10 @@ extern XPCDaemonClient* xpcDaemonClient;
             
             //set 'allow dns' button state
             ((NSButton*)[view viewWithTag:BUTTON_ALLOW_DNS]).state = [self.preferences[PREF_ALLOW_DNS] boolValue];
-        
+            
+            //set 'allow localhost' button state
+            ((NSButton*)[view viewWithTag:BUTTON_ALLOW_LOCALHOST]).state = [self.preferences[PREF_ALLOW_LOCALHOST] boolValue];
+            
             //set 'allow simulator apps' button
             ((NSButton*)[view viewWithTag:BUTTON_ALLOW_SIMULATOR]).state = [self.preferences[PREF_ALLOW_SIMULATOR] boolValue];
 
@@ -353,6 +356,11 @@ bail:
         //allow dns traffic
         case BUTTON_ALLOW_DNS:
             updatedPreferences[PREF_ALLOW_DNS] = state;
+            break;
+            
+        //allow localhost host
+        case BUTTON_ALLOW_LOCALHOST:
+            updatedPreferences[PREF_ALLOW_LOCALHOST] = state;
             break;
             
         //allow simulator apps
