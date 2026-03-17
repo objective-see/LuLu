@@ -19,7 +19,7 @@
 NSString* const DEFAULT_RULES[] =
 {
     @"/System/Library/PrivateFrameworks/ApplePushService.framework/apsd",
-    @"/System/Library/PrivateFrameworks/AssistantServices.framework/Versions/A/Support/assistantd"
+    @"/System/Library/PrivateFrameworks/AssistantServices.framework/Versions/A/Support/assistantd",
     @"/usr/sbin/automount",
     @"/System/Library/PrivateFrameworks/HelpData.framework/Versions/A/Resources/helpd",
     @"/usr/sbin/mDNSResponder",
