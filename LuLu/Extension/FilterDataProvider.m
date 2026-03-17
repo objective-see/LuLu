@@ -17,6 +17,14 @@
 #import "XPCUserProto.h"
 #import "FilterDataProvider.h"
 
+//verdicts
+typedef NS_ENUM(NSInteger, FlowVerdict) {
+    kFlowVerdictAllow,
+    kFlowVerdictBlock,
+    kFlowVerdictPause,      // new alert shown, waiting for user
+    kFlowVerdictRelated,    // another alert already shown for this process
+};
+
 /* GLOBALS */
 
 //alerts
@@ -36,9 +44,6 @@ extern BlockOrAllowList* allowList;
 
 //block list
 extern BlockOrAllowList* blockList;
-
-//allow list
-extern
 
 @implementation FilterDataProvider
 
@@ -213,9 +218,49 @@ extern
     }
     
     //process flow
-    // determine verdict
-    // deliver alert (if necessary)
-    verdict = [self processEvent:flow];
+    // determine verdict/deliver alert
+    switch([self processEvent:flow]) {
+            
+        //allow
+        case kFlowVerdictAllow:
+            os_log_debug(logHandle, "verdict: allow");
+            verdict = [NEFilterNewFlowVerdict allowVerdict];
+            break;
+        
+        //block
+        case kFlowVerdictBlock:
+            os_log_debug(logHandle, "verdict: block");
+            verdict = [NEFilterNewFlowVerdict dropVerdict];
+            break;
+            
+        //pause
+        case kFlowVerdictPause:
+            os_log_debug(logHandle, "verdict: pause");
+            verdict = [NEFilterNewFlowVerdict pauseVerdict];
+            break;
+            
+        //related
+        // pause & save
+        case kFlowVerdictRelated:
+        {
+            os_log_debug(logHandle, "verdict: related");
+            
+            verdict = [NEFilterNewFlowVerdict pauseVerdict];
+            
+            //save as related flow
+            Process* process = [self.cache objectForKey:flow.sourceAppAuditToken];
+            if(process) {
+                [self addRelatedFlow:process.key flow:socketFlow];
+            }
+            //no process
+            // just allow
+            else {
+                verdict = [NEFilterNewFlowVerdict allowVerdict];
+            }
+            
+            break;
+        }
+    }
     
     //log msg
     os_log_debug(logHandle, "verdict: %{public}@", verdict);
@@ -227,15 +272,7 @@ bail:
 
 //process a network out event from the network extension (OS)
 // if there is no matching rule, will tell client to show alert
--(NEFilterNewFlowVerdict*)processEvent:(NEFilterFlow*)flow
-{
-    //verdict
-    // allow/deny
-    NEFilterNewFlowVerdict* verdict = nil;
-    
-    //pool
-    //@autoreleasepool
-    //{
+-(FlowVerdict)processEvent:(NEFilterFlow*)flow {
     
     //process obj
     Process* process = nil;
@@ -253,7 +290,7 @@ bail:
     NSMutableDictionary* info = nil;
     
     //default to allow (on errors, etc)
-    verdict = [NEFilterNewFlowVerdict allowVerdict];
+    FlowVerdict verdict = kFlowVerdictAllow;
     
     //(ext) install date
     static NSDate* installDate = nil;
@@ -266,9 +303,8 @@ bail:
     
     //check cache for process
     process = [self.cache objectForKey:flow.sourceAppAuditToken];
-    if(nil == process)
-    {
-        //dbg msg
+    if(!process) {
+        
         os_log_debug(logHandle, "no process found in cache, will create");
         
         //create
@@ -291,8 +327,8 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "process %d has exited, DENYING flow", pid);
         
-        //deny
-        verdict = [NEFilterNewFlowVerdict dropVerdict];
+        //block
+        verdict = kFlowVerdictBlock;
         goto bail;
     }
     
@@ -333,7 +369,7 @@ bail:
             os_log_debug(logHandle, "client in block mode, but flow matches item in allow list, so allowing");
                 
             //allow
-            verdict = [NEFilterNewFlowVerdict allowVerdict];
+            verdict = kFlowVerdictAllow;
                 
             //all set
             goto bail;
@@ -343,7 +379,7 @@ bail:
         os_log_debug(logHandle, "client in block mode (and item not on allow list), so disallowing %d/%{public}@", process.pid, process.binary.name);
         
         //deny
-        verdict = [NEFilterNewFlowVerdict dropVerdict];
+        verdict = kFlowVerdictBlock;
         
         //all set
         goto bail;
@@ -364,7 +400,7 @@ bail:
             os_log_debug(logHandle, "flow matches item in block list, so denying");
             
             //deny
-            verdict = [NEFilterNewFlowVerdict dropVerdict];
+            verdict = kFlowVerdictBlock;
             
             //all set
             goto bail;
@@ -388,7 +424,7 @@ bail:
             os_log_debug(logHandle, "flow matches item in allow list, so allowing");
             
             //allow
-            verdict = [NEFilterNewFlowVerdict allowVerdict];
+            verdict = kFlowVerdictAllow;
             
             //all set
             goto bail;
@@ -411,7 +447,7 @@ bail:
             os_log_debug(logHandle, "localhost allowed (preferences), so allowing loopback to %{public}@", remoteEndpoint);
             
             //allow
-            verdict = [NEFilterNewFlowVerdict allowVerdict];
+            verdict = kFlowVerdictAllow;
             
             //all set
             goto bail;
@@ -449,7 +485,7 @@ bail:
             os_log_debug(logHandle, "setting verdict to: BLOCK");
             
             //deny
-            verdict = [NEFilterNewFlowVerdict dropVerdict];
+            verdict = kFlowVerdictBlock;
         }
         //allow (msg)
         else os_log_debug(logHandle, "rule says: ALLOW");
@@ -493,7 +529,7 @@ bail:
             os_log_debug(logHandle, "passive mode: action is 'allow', so allowing %d/%{public}@", process.pid, process.binary.name);
             
             //allow
-            verdict = [NEFilterNewFlowVerdict allowVerdict];
+            verdict = kFlowVerdictAllow;
         }
         
         //user action: block?
@@ -503,7 +539,7 @@ bail:
             os_log_debug(logHandle, "passive mode: action is 'block', so blocking %d/%{public}@", process.pid, process.binary.name);
             
             //block
-            verdict = [NEFilterNewFlowVerdict dropVerdict];
+            verdict = kFlowVerdictBlock;
         }
         
         //create rule?
@@ -598,11 +634,9 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "an alert is shown for process %d/%{public}@, so holding off delivering for now...", process.pid, process.binary.name);
         
-        //add related flow
-        [self addRelatedFlow:process.key flow:(NEFilterSocketFlow*)flow];
-        
-        //pause
-        verdict = [NEFilterNewFlowVerdict pauseVerdict];
+        //related
+        // will pause
+        verdict = kFlowVerdictRelated;
         
         //bail
         goto bail;
@@ -635,7 +669,7 @@ bail:
                 os_log_debug(logHandle, "while signed by apple, %d/%{public}@ is gray listed, so will alert", process.pid, process.binary.name);
                 
                 //pause
-                verdict = [NEFilterNewFlowVerdict pauseVerdict];
+                verdict = kFlowVerdictPause;
                 
                 //create/deliver alert
                 [self alert:(NEFilterSocketFlow*)flow process:process csChange:csChange];
@@ -647,7 +681,7 @@ bail:
                 os_log_debug(logHandle, "while signed by apple, %d/%{public}@ has other (non-matching) rules, so will alert", process.pid, process.binary.name);
                 
                 //pause
-                verdict = [NEFilterNewFlowVerdict pauseVerdict];
+                verdict = kFlowVerdictPause;
                 
                 //create/deliver alert
                 [self alert:(NEFilterSocketFlow*)flow process:process csChange:csChange];
@@ -789,7 +823,7 @@ bail:
             os_log_debug(logHandle, "protocol is 'UDP' and port is '53', (so likely DNS traffic) ...will allow" );
             
             //allow
-            verdict = [NEFilterNewFlowVerdict allowVerdict];
+            verdict = kFlowVerdictAllow;
             
             //done
             goto bail;
@@ -809,7 +843,7 @@ bail:
             os_log_debug(logHandle, "%{public}@, is an simulator app, so will allow", process.path);
             
             //allow
-            verdict = [NEFilterNewFlowVerdict allowVerdict];
+            verdict = kFlowVerdictAllow;
             
             //done
             goto bail;
@@ -848,7 +882,7 @@ bail:
     }
     
     //sending to user, so pause!
-    verdict = [NEFilterNewFlowVerdict pauseVerdict];
+    verdict = kFlowVerdictPause;
         
     //create/deliver alert
     // note: handles response + next/any related flow
@@ -856,14 +890,10 @@ bail:
     
 bail:
     
-    
-    //;} //pool
-    
     //log msg
     // match on this if you want detailed insight into LuLu's decision
     // log stream --level debug --predicate 'subsystem == "com.objective-see.lulu" && composedMessage BEGINSWITH "[LULU]"'
-    os_log_debug(logHandle, "[LULU] PROCESS: %{public}@, FLOW (endpoint): %{public}@, RULE: %{public}@, verdict: %{public}@", process.path, ((NEFilterSocketFlow*)flow).remoteEndpoint, matchingRule, verdict);
-    
+    os_log_debug(logHandle, "[LULU] PROCESS: %{public}@, FLOW (endpoint): %{public}@, RULE: %{public}@, verdict: %ld", process.path, ((NEFilterSocketFlow*)flow).remoteEndpoint, matchingRule, verdict);
     
     return verdict;
 }
@@ -956,75 +986,84 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "adding flow to 'related': %{public}@ / %{public}@", key, flow);
     
+    if(!key) {
+        return;
+    }
+    
     //sync/save
     @synchronized(self.relatedFlows)
     {
         //first time
         // init array for item (process) alerts
-        if(nil == self.relatedFlows[key])
-        {
-            //create array
+        if(!self.relatedFlows[key]) {
             self.relatedFlows[key] = [NSMutableArray array];
         }
         
-        //add
-        [self.relatedFlows[key] addObject:flow];
+        //only add if new
+        if(![self.relatedFlows[key] containsObject:flow]) {
+            [self.relatedFlows[key] addObject:flow];
+        }
     }
-    
+
     return;
 }
 
-//process related flow for a process
+//process any related flows
 -(void)processRelatedFlow:(NSString*)key
 {
-    //flows
-    NSMutableArray* flows = nil;
-
-    //flow
-    NEFilterSocketFlow* flow = nil;
-
-    //verdict
-    NEFilterNewFlowVerdict* verdict = nil;
-    
-    //pause verdict
-    NEFilterNewFlowVerdict* pauseVerdict = [NEFilterNewFlowVerdict pauseVerdict];
-
     //dbg msg
     os_log_debug(logHandle, "processing %lu related flow(s) for %{public}@", (unsigned long)[self.relatedFlows[key] count], key);
 
-    //sync
-    @synchronized(self.relatedFlows)
+    while(YES)
     {
-        //grab flows for specified process
-        flows = self.relatedFlows[key];
-        for (NSInteger i = flows.count; i-- > 0; ) {
+        NEFilterSocketFlow* flow = nil;
+
+        //dequeue one flow
+        @synchronized(self.relatedFlows) {
             
-            //grab flow
-            flow = flows[i];
-
-            //process
-            // returns verdict for this flow
-            verdict = [self processEvent:flow];
-
-            //pause means alert is shown
-            // so we'll stop/wait for user response (which will retrigger processing)
-            if([pauseVerdict isEqual:verdict]) {
-                //stop
+            NSMutableArray* queue = self.relatedFlows[key];
+            
+            //done?
+            if(!queue.count) {
+                os_log_debug(logHandle, "drained (processed) all related flows");
+                [self.relatedFlows removeObjectForKey:key];
                 break;
             }
-
-            //resume (previously) paused flow
-            [self resumeFlow:flow withVerdict:verdict];
-
-            //remove from related flows
-            [flows removeObjectAtIndex:i];
+            
+            flow = queue.firstObject;
+            [queue removeObjectAtIndex:0];
         }
 
-        //cleanup empty entry
-        if(0 == flows.count) {
-            [self.relatedFlows removeObjectForKey:key];
+        //process
+        FlowVerdict flowVerdict = [self processEvent:flow];
+
+        //(still) related?
+        // (re)add and be done for now
+        if(flowVerdict == kFlowVerdictRelated) {
+            os_log_debug(logHandle, "flow is (still) related");
+            [self addRelatedFlow:key flow:flow];
+            break;
         }
+        
+        //paused (asked user)
+        // asked user, so be done for now too
+        else if(flowVerdict == kFlowVerdictPause) {
+            os_log_debug(logHandle, "flow is paused");
+            break;
+        }
+        
+        //resume flow
+        NEFilterNewFlowVerdict* verdict = (flowVerdict == kFlowVerdictBlock)
+            ? [NEFilterNewFlowVerdict dropVerdict]
+            : [NEFilterNewFlowVerdict allowVerdict];
+        
+    
+        os_log_debug(logHandle, "resuming related flow with %{public}@", verdict);
+
+        [self resumeFlow:flow withVerdict:verdict];
     }
+    
+    os_log_debug(logHandle, "done processing related flows");
 }
 
 //create process object
