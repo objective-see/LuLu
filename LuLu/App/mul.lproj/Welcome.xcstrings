@@ -169,6 +169,18 @@
         }
       }
     },
+    "8KH-RD-y9L.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Note: steps may vary by macOS version\"; ObjectID = \"8KH-RD-y9L\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Note: steps may vary by macOS version"
+          }
+        }
+      }
+    },
     "C1V-iy-oEo.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"1. In the \\\"System Extension Blocked\\\" alert, click: \\\"Open System Settings\\\"\"; ObjectID = \"C1V-iy-oEo\";",
       "extractionState" : "extracted_with_value",

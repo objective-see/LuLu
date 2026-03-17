@@ -444,32 +444,27 @@ bail:
 }
 
 //double-click handler
-// show rule's menu
 -(void)doubleClickHandler:(id)object
 {
     NSInteger row = [self.outlineView clickedRow];
     if (row < 0) return;
-    
-    //get button from the clicked row (last column)
-    NSButton*button = nil;
-    NSInteger lastColumn = self.outlineView.numberOfColumns - 1;
-    
-    NSTableCellView* cellView = [self.outlineView viewAtColumn:lastColumn row:row makeIfNecessary:NO];
-    if(!cellView) {
-        goto bail;
+
+    //get item
+    id item = [self.outlineView itemAtRow:row];
+
+    //only edit if it's a rule (not a group)
+    if ([item isKindOfClass:[NSArray class]]) {
+        return;
     }
-    
-    button = [cellView viewWithTag:RULE_ROW_MENU_BUTTON];
-    if(!button) {
-        goto bail;
-    }
-    
-    //show menu
-    [self showRuleMenu:button];
-    
-bail:
-    
-    return;
+
+    //grab rule
+    Rule *rule = (Rule *)item;
+
+    //dbg msg
+    os_log_debug(logHandle, "editing rule %{public}@", rule);
+
+    //edit (via add window)
+    [self addRule:rule];
 }
 
 
