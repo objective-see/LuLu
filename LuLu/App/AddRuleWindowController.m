@@ -37,6 +37,9 @@ extern os_log_t logHandle;
     // prepopulate fields
     if(nil != self.rule)
     {
+        //set title
+        self.window.title = @"Edit Exiting Rule";
+        
         //path
         self.path.stringValue = self.rule.path;
         
