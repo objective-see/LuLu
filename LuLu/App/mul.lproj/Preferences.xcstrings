@@ -506,7 +506,7 @@
       }
     },
     "6gH-HW-CFe.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Previously installed third-party programs will be allowed.\"; ObjectID = \"6gH-HW-CFe\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Outgoing connections from currently installed 3rd-party programs will be allowed.\"; ObjectID = \"6gH-HW-CFe\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
@@ -518,7 +518,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Previously installed third-party programs will be allowed."
+            "value" : "Outgoing connections from currently installed 3rd-party programs will be allowed."
           }
         },
         "es" : {
@@ -1526,7 +1526,7 @@
       }
     },
     "e6s-dd-HG6.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Programs running in the (iOS) simulator will be allowed.\"; ObjectID = \"e6s-dd-HG6\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Outgoing connections from programs running in the (iOS) simulator will be allowed.\"; ObjectID = \"e6s-dd-HG6\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
@@ -1538,7 +1538,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Programs running in the (iOS) simulator will be allowed."
+            "value" : "Outgoing connections from programs running in the (iOS) simulator will be allowed."
           }
         },
         "es" : {
@@ -2630,84 +2630,84 @@
       }
     },
     "jvT-uI-uNq.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Allow Installed Programs\"; ObjectID = \"jvT-uI-uNq\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Allow Already Installed Programs\"; ObjectID = \"jvT-uI-uNq\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Bereits installierte Programme erlauben."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Allow Installed Programs"
+            "value" : "Allow Already Installed Programs"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Permitir Programas Instalados"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Autoriser les programmes installés"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Consenti Programmi Installati"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "설치된 프로그램 허용"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Zezwalaj na zainstalowane programy"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Permitir Programas Instalados"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Kurulu programlara izin ver"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Дозволити установлені програми"
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "انسٹال شدہ پروگراموں کو اجازت دیں"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "允许已安装的程序"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "允許已安裝程式"
           }
         }
@@ -3050,7 +3050,7 @@
       }
     },
     "M8X-n4-v2d.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Apple-signed programs will be allowed.\"; ObjectID = \"M8X-n4-v2d\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Outgoing connections from Apple-signed programs will be allowed.\"; ObjectID = \"M8X-n4-v2d\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
@@ -3062,7 +3062,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Apple-signed programs will be allowed."
+            "value" : "Outgoing connections from Apple-signed programs will be allowed."
           }
         },
         "es" : {

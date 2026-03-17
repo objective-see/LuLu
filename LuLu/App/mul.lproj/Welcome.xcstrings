@@ -2,84 +2,84 @@
   "sourceLanguage" : "en",
   "strings" : {
     "3aO-AI-YtY.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"This option will allow any 3rd-party app that is already installed, to access the network without generating an alert.\"; ObjectID = \"3aO-AI-YtY\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Outgoing connections from currently installed 3rd-party programs will be allowed.\"; ObjectID = \"3aO-AI-YtY\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Diese Option erlaub allen bereits installierten Drittanbieterprogrammen auf das Netzwerk zugreifen, ohne eine Mitteilung auszulösen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This option will allow any 3rd-party app that is already installed, to access the network without generating an alert."
+            "value" : "Outgoing connections from currently installed 3rd-party programs will be allowed."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Esta opción permitirá que cualquier aplicación de terceros que ya esté instalada acceda a la red sin generar una alerta."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Cette option permet à toute application tierce déjà installée d'accéder au réseau sans générer d'alerte."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Questa opzione consentirà a qualsiasi app di terze parti già installata di accedere alla rete senza generare un avviso."
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "이 옵션은 이전에 설치한 모든 타사 프로그램을 허용합니다. 해당 프로그램은 경고 발생 없이 네트워크에 접근할 수 있습니다."
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Opcja ta umożliwi każdej zainstalowanej już aplikacji innej firmy dostęp do sieci bez generowania alertu."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Esta opção permitirá que qualquer aplicativo de terceiros que já esteja instalado tenha acesso à rede sem gerar um alerta."
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Bu seçenek, halihazırda kurulu olan herhangi bir 3. parti uygulamanın bir ikâz oluşturmadan ağa erişimine izin verir."
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Ця опція дозволить будь-якому сторонньому додатку, який уже встановлено, отримувати доступ до мережі без сповіщення."
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "یہ آپشن کسی بھی پہلے سے انسٹال شدہ تھرڈ پارٹی ایپ کو الرٹ پیدا کیے بغیر نیٹ ورک تک رسائی کی اجازت دے گا۔"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "此选项将允许任何已安装的第三方应用程序访问网络而不会生成警报。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "這個選項將允許任何已安裝的第三方應用程式存取網路，而不會產生警告。"
           }
         }
@@ -519,6 +519,18 @@
       },
       "shouldTranslate" : false
     },
+    "NCu-fH-K04.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"These can be changed later, via LuLu's Settings.\"; ObjectID = \"NCu-fH-K04\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "These can be changed later, via LuLu's Settings."
+          }
+        }
+      }
+    },
     "pMo-Yj-XKY.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"LuLu is a free open-source firewall for macOS.\"; ObjectID = \"pMo-Yj-XKY\";",
       "extractionState" : "extracted_with_value",
@@ -940,84 +952,84 @@
       }
     },
     "r1b-Nl-Ii7.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"This option will allow any Apple-signed binary to access the network without generating an alert.\"; ObjectID = \"r1b-Nl-Ii7\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Outgoing connections from Apple-signed programs will be allowed.\"; ObjectID = \"r1b-Nl-Ii7\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Diese Option erlaubt allen von Apple signierten Programmen auf das Netzwerk zuzugreifen, ohne eine Mitteilung auszulösen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This option will allow any Apple-signed binary to access the network without generating an alert."
+            "value" : "Outgoing connections from Apple-signed programs will be allowed."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Esta opción permitirá que cualquier código binario firmado por Apple acceda a la red sin generar una alerta."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Cette option permet à tout binaire signé par Apple d'accéder au réseau sans générer d'alerte."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Questa opzione consentirà a qualsiasi binario firmato da Apple di accedere alla rete senza generare un avviso."
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "이 옵션을 활성화하면 Apple에 의해 서명된 실행 파일을 허용합니다. 해당 프로그램은 경고 발생 없이 네트워크에 접근할 수 있습니다."
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Ta opcja umożliwi dostęp do sieci każdemu plikowi binarnemu podpisanemu przez Apple bez generowania alertu."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Esta permissão permitirá que qualquer binário assinado pela Apple tenha acesso à rede sem gerar um alerta."
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Bu seçenek, Apple tarafından imzalanmış herhangi bir ikilinin, bir ikâz oluşturmadan ağa erişimine izin verecektir."
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Ця опція дозволить будь-якому бінарному файлу, підписаному Apple, отримувати доступ до мережі без сповіщення."
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "یہ آپشن کسی بھی ایپل سائنڈ بائنری کو الرٹ پیدا کیے بغیر نیٹ ورک تک رسائی کی اجازت دے گا۔"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "此选项将允许任何 Apple 签名的二进制文件访问网络而不会生成警报。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "此選項將允許任何由 Apple 簽署的程式存取網路，而不會產生警告。"
           }
         }
@@ -1108,84 +1120,84 @@
       }
     },
     "sAE-Mf-3fz.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"This option will allow any (UDP) traffic over port 53.\"; ObjectID = \"sAE-Mf-3fz\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"All outgoing UDP traffic on port 53 will be allowed.\"; ObjectID = \"sAE-Mf-3fz\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Diese Option erlaubt alle (UDP-) Verbindungen auf Port 53."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "This option will allow any (UDP) traffic over port 53."
+            "value" : "All outgoing UDP traffic on port 53 will be allowed."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Esta opción permitirá cualquier tráfico (UDP) sobre el puerto 53. "
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Cette option autorise tout trafic (UDP) sur le port 53."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Questa opzione consentirà qualsiasi traffico (UDP) sulla porta 53."
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "이 옵션을 활성화하면 53번 포트를 통하는 모든 (UDP) 트래픽을 허용합니다."
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Opcja ta zezwoli na cały ruch (UDP) przez port 53."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Esta opção permitirá qualquer tráfego (UDP) na porta 53."
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Bu seçenek, 53. kapı üzerinden herhangi bir UDP trafiğine izin verecektir."
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Ця опція дозволить будь-який (UDP) трафік через порт 53."
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "یہ آپشن کسی بھی (UDP) ٹریفک کو پورٹ 53 پر اجازت دے گا۔"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "此选项将允许通过端口 53 的任何 (UDP) 流量。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "此選項將允許任何連接埠 53 的（UDP）流量。"
           }
         }
@@ -1696,84 +1708,84 @@
       }
     },
     "ymJ-tB-qiA.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \" Allow Already Installed Applications\"; ObjectID = \"ymJ-tB-qiA\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \" Allow Already Installed Programs\"; ObjectID = \"ymJ-tB-qiA\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : " Bereits installierte Anwendungen erlauben"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : " Allow Already Installed Applications"
+            "value" : " Allow Already Installed Programs"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Permitir Aplicaciones Ya Instaladas"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Autoriser les applications déjà installées"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Consenti applicazioni già installate"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : " 사전에 설치된 프로그램 허용"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Zezwalaj na już zainstalowane aplikacje"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Permitir aplicações já instaladas"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Halihazırda kurulu uygulamalara izin ver"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Дозволити вже установлені програми"
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "پہلے سے انسٹال شدہ ایپلی کیشنز کو اجازت دیں"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "允许已安装的应用程序"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "允許已安裝的應用程式"
           }
         }
