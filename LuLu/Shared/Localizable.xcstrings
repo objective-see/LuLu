@@ -2685,7 +2685,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pasif olarak eklendi (“pasif mod” etkinse veya kural oluşturulurken hiçbir kullanıcı oturum açmamışsa)"
+            "value" : "Pasif olarak eklendi (“pasif kip” etkinse veya kural oluşturulurken hiçbir kullanıcı oturum açmamışsa)"
           }
         },
         "uk" : {

@@ -559,8 +559,8 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Daha önceden kurulmuş, 3. parti uygulamalara izin verilecektir."
+            "state" : "translated",
+            "value" : "Şu anda kurulu olan başka 3. kişilerin programlarından giden trafiğe izin verilir."
           }
         },
         "uk" : {
@@ -1102,6 +1102,12 @@
             "state" : "new",
             "value" : "Outgoing connections to localhost will be allowed."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "localhost’a giden bağlantılara izin verilir."
+          }
         }
       }
     },
@@ -1579,8 +1585,8 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Simülatörde çalışan uygulamalara izin verilecektir."
+            "state" : "translated",
+            "value" : "Simülatörlerde (iOS, tvOS vb.) çalışan programlardan giden trafiğe izin verilir."
           }
         },
         "uk" : {
@@ -1785,6 +1791,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Allow Localhost Traffic"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localhost (Yerel Makine) trafiğine izin ver"
           }
         }
       }
@@ -2431,8 +2443,8 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "53. kapıdaki tüm (UDP) trafiğe izin verilecektir."
+            "state" : "translated",
+            "value" : "53. kapıdaki tüm (UDP) giden trafiğine izin verilir."
           }
         },
         "uk" : {
@@ -2683,8 +2695,8 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Kurulu programlara izin ver"
+            "state" : "translated",
+            "value" : "Şu anda kurulu programlara izin ver"
           }
         },
         "uk" : {
@@ -3103,8 +3115,8 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Apple tarafından imzalanan ikililere izin verilecektir."
+            "state" : "translated",
+            "value" : "Apple tarafından imzalı programlardan giden trafiğe izin verilir."
           }
         },
         "uk" : {
@@ -3943,8 +3955,8 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Simülatör uygulamalarına izin ver"
+            "state" : "translated",
+            "value" : "Simülatör programlarına izin ver"
           }
         },
         "uk" : {

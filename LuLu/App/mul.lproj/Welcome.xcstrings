@@ -55,8 +55,8 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Bu seçenek, halihazırda kurulu olan herhangi bir 3. parti uygulamanın bir ikâz oluşturmadan ağa erişimine izin verir."
+            "state" : "translated",
+            "value" : "Şu anda kurulu olan başka 3. kişilerin programlarından giden trafiğe izin verilir."
           }
         },
         "uk" : {
@@ -177,6 +177,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Note: steps may vary by macOS version"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not: Adımlar, macOS sürümüne göre değişiklik gösterebilir."
           }
         }
       }
@@ -539,6 +545,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "These can be changed later, via LuLu's Settings."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu ayarlar daha sonra LuLu’nun ayarlarından değiştirilebilir."
           }
         }
       }
@@ -1017,8 +1029,8 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Bu seçenek, Apple tarafından imzalanmış herhangi bir ikilinin, bir ikâz oluşturmadan ağa erişimine izin verecektir."
+            "state" : "translated",
+            "value" : "Apple tarafından imzalı programlardan giden trafiğe izin verilir."
           }
         },
         "uk" : {
@@ -1185,8 +1197,8 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Bu seçenek, 53. kapı üzerinden herhangi bir UDP trafiğine izin verecektir."
+            "state" : "translated",
+            "value" : "53. kapıdaki tüm (UDP) giden trafiğine izin verilir."
           }
         },
         "uk" : {
@@ -1773,8 +1785,8 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Halihazırda kurulu uygulamalara izin ver"
+            "state" : "translated",
+            "value" : "Şu anda kurulu programlara izin ver"
           }
         },
         "uk" : {
