@@ -43,8 +43,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Opcja ta umożliwi każdej zainstalowanej już aplikacji innej firmy dostęp do sieci bez generowania alertu."
+            "state" : "translated",
+            "value" : "Wychodzące połączenia z aktualnie zainstalowanych programów firm trzecich będą dozwolone."
           }
         },
         "pt-BR" : {
@@ -177,6 +177,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Note: steps may vary by macOS version"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uwaga: kroki mogą się różnić w zależności od wersji systemu macOS"
           }
         }
       }
@@ -539,6 +545,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "These can be changed later, via LuLu's Settings."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Można to zmienić później w ustawieniach programu LuLu."
           }
         }
       }
@@ -1005,8 +1017,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ta opcja umożliwi dostęp do sieci każdemu plikowi binarnemu podpisanemu przez Apple bez generowania alertu."
+            "state" : "translated",
+            "value" : "Połączenia wychodzące z programów podpisanych przez Apple będą dozwolone."
           }
         },
         "pt-BR" : {
@@ -1173,8 +1185,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Opcja ta zezwoli na cały ruch (UDP) przez port 53."
+            "state" : "translated",
+            "value" : "Cały wychodzący ruch UDP na porcie 53 będzie dozwolony."
           }
         },
         "pt-BR" : {
@@ -1761,8 +1773,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Zezwalaj na już zainstalowane aplikacje"
+            "state" : "translated",
+            "value" : "Zezwalaj na już zainstalowane programy"
           }
         },
         "pt-BR" : {
