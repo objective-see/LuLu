@@ -1131,8 +1131,7 @@ bail:
         //ancestor rule
         Rule* ancestorRule = nil;
         
-        //extract ancestor
-        ancestor = process.ancestors[i];
+        //extract ancestor path
         ancestorPath = ancestor[KEY_PROCESS_PATH];
         
         //skip invalid ancestor

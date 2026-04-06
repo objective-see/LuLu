@@ -114,7 +114,7 @@
 -(id)initFromJSON:(NSDictionary*)info;
 
 //generate matching key for Process's path
-(NSString *)generateKeyForPath:(NSString *)path csInfo:(NSDictionary *)csInfo;
++(NSString *)generateKeyForPath:(NSString *)path csInfo:(NSDictionary *)csInfo;
 
 @end
 

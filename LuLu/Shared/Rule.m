@@ -143,10 +143,10 @@ extern os_log_t logHandle;
 // note: this matches process' generate key algo
 -(NSString*)generateKey
 {
-    return [self.class keyForPath:self.path csInfo:self.csInfo]
+    return [self.class generateKeyForPath:self.path csInfo:self.csInfo];
 }
 
-(NSString *)generateKeyForPath:(NSString *)path csInfo:(NSDictionary *)csInfo
++(NSString *)generateKeyForPath:(NSString *)path csInfo:(NSDictionary *)csInfo
 {
     //id
     NSString* key = nil;
