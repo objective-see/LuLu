@@ -547,8 +547,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Wcześniej zainstalowane programy innych firm będą dozwolone."
+            "state" : "translated",
+            "value" : "Wychodzące połączenia z aktualnie zainstalowanych programów firm trzecich będą dozwolone."
           }
         },
         "pt-BR" : {
@@ -1102,6 +1102,12 @@
             "state" : "new",
             "value" : "Outgoing connections to localhost will be allowed."
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Połączenia wychodzące do localhost (hosta lokalnego) będą dozwolone."
+          }
         }
       }
     },
@@ -1567,8 +1573,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Aplikacje działające w symulatorze będą dozwolone."
+            "state" : "translated",
+            "value" : "Połączenia wychodzące z programów uruchomionych w symulatorze (iOS) będą dozwolone."
           }
         },
         "pt-BR" : {
@@ -1785,6 +1791,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Allow Localhost Traffic"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwalaj na ruch lokalny (Localhost)"
           }
         }
       }
@@ -2419,8 +2431,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Cały ruch (UDP) na porcie 53 będzie dozwolony."
+            "state" : "translated",
+            "value" : "Cały wychodzący ruch UDP na porcie 53 będzie dozwolony."
           }
         },
         "pt-BR" : {
@@ -2671,8 +2683,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Zezwalaj na zainstalowane programy"
+            "state" : "translated",
+            "value" : "Zezwalaj na już zainstalowane programy"
           }
         },
         "pt-BR" : {
@@ -3091,8 +3103,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Dozwolone będą pliki binarne podpisane przez Apple."
+            "state" : "translated",
+            "value" : "Połączenia wychodzące z programów podpisanych przez Apple będą dozwolone."
           }
         },
         "pt-BR" : {
@@ -3931,8 +3943,8 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Zezwalaj na aplikacje symulacyjne"
+            "state" : "translated",
+            "value" : "Zezwalaj na programy z symulatora"
           }
         },
         "pt-BR" : {
