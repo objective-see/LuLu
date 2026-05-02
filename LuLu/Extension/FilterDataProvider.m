@@ -917,10 +917,19 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "created alert...");
 
+    //weak refs to break retain cycle:
+    // block → self → context → _socketFlows → flow → savedMessageHandler → block
+    __weak typeof(self) weakSelf = self;
+    __weak NEFilterSocketFlow* weakFlow = flow;
+
     //deliver alert
     // and process user response
     if(YES != [alerts deliver:alert reply:^(NSDictionary* alert)
     {
+        //re-strengthen to avoid races within the block
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        __strong NEFilterSocketFlow* strongFlow = weakFlow;
+        
         //verdict
         NEFilterNewFlowVerdict* verdict = nil;
         
@@ -940,7 +949,7 @@ bail:
         }
         
         //resume flow w/ verdict
-        [self resumeFlow:flow withVerdict:verdict];
+        [strongSelf resumeFlow:strongFlow withVerdict:verdict];
         
         //init rule
         rule = [[Rule alloc] init:alert];
@@ -956,7 +965,7 @@ bail:
         
         //process (any) related flows
         // now that rule is created, related flows should match it or generate new alerts
-        [self processRelatedFlow:alert[KEY_KEY]];
+        [strongSelf processRelatedFlow:alert[KEY_KEY]];
     }])
     {
         //failed to deliver, so allow

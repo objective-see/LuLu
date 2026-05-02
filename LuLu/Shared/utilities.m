@@ -841,9 +841,6 @@ NSMutableArray* findProcesses(NSString* processName)
     //array of pids
     pid_t* pids = NULL;
     
-    //process path
-    NSString* processPath = nil;
-    
     //init
     processes = [NSMutableArray array];
     
@@ -870,6 +867,8 @@ NSMutableArray* findProcesses(NSString* processName)
     // get name for each via helper function
     for(int i = 0; i < numberOfProcesses; ++i)
     {
+        @autoreleasepool
+        {
         //skip blank pids
         if(0 == pids[i])
         {
@@ -878,7 +877,7 @@ NSMutableArray* findProcesses(NSString* processName)
         }
         
         //get path
-        processPath = getProcessPath(pids[i]);
+        NSString* processPath = getProcessPath(pids[i]);
         if( (nil == processPath) ||
             (0 == processPath.length) )
         {
@@ -896,6 +895,7 @@ NSMutableArray* findProcesses(NSString* processName)
         //save
         [processes addObject:@{KEY_PROCESS_ID:[NSNumber numberWithInt:pids[i]], KEY_PATH:processPath}];
         
+        }//autoreleasepool
     }//all procs
     
 bail:
