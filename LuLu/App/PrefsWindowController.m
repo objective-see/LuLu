@@ -779,7 +779,10 @@ bail:
     self.currentProfileSubview = self.profileNameView;
     
     //add initial (profile name) view
-    [self.addProfileSheet.contentView addSubview:self.currentProfileSubview];
+    [self.addProfileSheet.contentView addSubview:self.currentProfileSubview positioned:NSWindowBelow relativeTo:nil];
+    
+    //make next button first responder
+    [self.addProfileSheet makeFirstResponder:self.continueProfileButton];
     
     //disable autoresizing mask
     self.currentProfileSubview.translatesAutoresizingMaskIntoConstraints = NO;
@@ -902,7 +905,10 @@ bail:
             self.showRulesButton.hidden = YES;
             
             //add to rule's view
-            [self.addProfileSheet.contentView addSubview:self.currentProfileSubview];
+            [self.addProfileSheet.contentView addSubview:self.currentProfileSubview positioned:NSWindowBelow relativeTo:nil];
+            
+            //make next button first responder
+            [self.addProfileSheet makeFirstResponder:self.continueProfileButton];
             
             //update tag
             self.continueProfileButton.tag = profileRules;
@@ -921,7 +927,10 @@ bail:
             self.currentProfileSubview = self.modesView;
             
             //add to mode's view
-            [self.addProfileSheet.contentView addSubview:self.currentProfileSubview];
+            [self.addProfileSheet.contentView addSubview:self.currentProfileSubview positioned:NSWindowBelow relativeTo:nil];
+            
+            //make next button first responder
+            [self.addProfileSheet makeFirstResponder:self.continueProfileButton];
             
             //update tag
             self.continueProfileButton.tag = profileModes;
@@ -939,7 +948,10 @@ bail:
             self.currentProfileSubview = self.listsView;
             
             //add to list's view
-            [self.addProfileSheet.contentView addSubview:self.currentProfileSubview];
+            [self.addProfileSheet.contentView addSubview:self.currentProfileSubview positioned:NSWindowBelow relativeTo:nil];
+            
+            //make next button first responder
+            [self.addProfileSheet makeFirstResponder:self.continueProfileButton];
             
             //update tag
             self.continueProfileButton.tag = profileLists;
@@ -963,7 +975,10 @@ bail:
             self.updateLabel.stringValue = @"";
             
             //add to mode's view
-            [self.addProfileSheet.contentView addSubview:self.currentProfileSubview];
+            [self.addProfileSheet.contentView addSubview:self.currentProfileSubview positioned:NSWindowBelow relativeTo:nil];
+            
+            //make next button first responder
+            [self.addProfileSheet makeFirstResponder:self.continueProfileButton];
             
             //update tag
             self.continueProfileButton.tag = profileUpdates;
