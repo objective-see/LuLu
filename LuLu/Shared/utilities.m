@@ -896,6 +896,7 @@ NSMutableArray* findProcesses(NSString* processName)
         [processes addObject:@{KEY_PROCESS_ID:[NSNumber numberWithInt:pids[i]], KEY_PATH:processPath}];
         
         }//autoreleasepool
+        
     }//all procs
     
 bail:

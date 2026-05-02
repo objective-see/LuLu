@@ -24,6 +24,9 @@ extern os_log_t logHandle;
 //xpc for daemon comms
 extern XPCDaemonClient* xpcDaemonClient;
 
+//alert (windows)
+extern NSMutableDictionary* alerts;
+
 @implementation AlertWindowController
 
 @synthesize alert;
@@ -830,6 +833,12 @@ bail:
     
     //reply
     self.reply(alertResponse);
+    
+    //remove from alerts dictionary
+    @synchronized(alerts)
+    {
+        [alerts removeObjectForKey:self.alert[KEY_UUID]];
+    }
     
     //save preferences
     // includes options shown/last action scope, etc.
