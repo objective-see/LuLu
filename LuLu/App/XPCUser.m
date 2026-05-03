@@ -81,8 +81,9 @@ extern NSMutableDictionary* alerts;
                 [NSApp activateIgnoringOtherApps:YES];
             }
             
-            //make it modal(ish)
-            [alertWindow.window setLevel:NSPopUpMenuWindowLevel];
+            //make it modal(ish), unless a system modal dialog is active
+            if(nil == [NSApp modalWindow])
+                [alertWindow.window setLevel:NSPopUpMenuWindowLevel];
             
             //code sign change?
             // show code signing popover

@@ -783,6 +783,9 @@ bail:
     
     //make next button first responder
     [self.addProfileSheet makeFirstResponder:self.continueProfileButton];
+
+    //watch for end of editing in name field so we can shift focus to Next
+    self.profileNameLabel.delegate = self;
     
     //disable autoresizing mask
     self.currentProfileSubview.translatesAutoresizingMaskIntoConstraints = NO;
@@ -837,6 +840,16 @@ bail:
     }];
     
     return;
+}
+
+//when user hits Enter in the profile name field, shift focus to the Next button
+-(void)controlTextDidEndEditing:(NSNotification*)notification
+{
+    if(notification.object != self.profileNameLabel) return;
+
+    NSNumber* movement = notification.userInfo[@"NSTextMovement"];
+    if(movement.integerValue == NSReturnTextMovement)
+        [self.addProfileSheet makeFirstResponder:self.continueProfileButton];
 }
 
 //cancel creation of profile

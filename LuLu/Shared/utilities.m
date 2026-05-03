@@ -1315,6 +1315,9 @@ NSModalResponse showAlert(NSAlertStyle style, NSString* messageText, NSString* i
     //(re)make front
     [[NSRunningApplication currentApplication] activateWithOptions:(NSApplicationActivateAllWindows | NSApplicationActivateIgnoringOtherApps)];
     
+    //ensure modal appears above all other windows (e.g. alert windows at NSPopUpMenuWindowLevel)
+    [alert.window setLevel:NSPopUpMenuWindowLevel + 1];
+
     //show
     response = [alert runModal];
     

@@ -34,7 +34,7 @@
 #define TOOLBAR_RULES_ID @"Rules"
 #define TOOLBAR_PROFILES_ID @"Profiles"
 
-@interface PrefsWindowController : NSWindowController <NSWindowDelegate, NSTableViewDelegate, NSTableViewDataSource>
+@interface PrefsWindowController : NSWindowController <NSWindowDelegate, NSTableViewDelegate, NSTableViewDataSource, NSTextFieldDelegate>
 
 /* PROPERTIES */
 

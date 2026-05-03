@@ -28,16 +28,17 @@ extern os_log_t logHandle;
     //start progress indicator
     [self.spinner startAnimation:nil];
     
-    //not in dark mode?
-    // make window white
-    if(YES != isDarkMode())
-    {
-        //make white
-        self.window.backgroundColor = NSColor.whiteColor;
-    }
-    
-    //set transparency
+    //rounded corners: clear window background, content view provides the surface
+    self.window.opaque = NO;
+    self.window.backgroundColor = NSColor.clearColor;
+    self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
     self.window.titlebarAppearsTransparent = YES;
+    self.window.contentView.wantsLayer = YES;
+    self.window.contentView.layer.cornerRadius = 10.0;
+    self.window.contentView.layer.masksToBounds = YES;
+
+    //content view provides the solid background (adapts to light/dark mode)
+    self.window.contentView.layer.backgroundColor = NSColor.windowBackgroundColor.CGColor;
     
     //need to display warning?
     [self displayVersionWarning];
