@@ -183,6 +183,8 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Not: Adımlar, macOS sürümüne göre değişiklik gösterebilir."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -555,6 +557,8 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bu ayarlar daha sonra LuLu’nun ayarlarından değiştirilebilir."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",

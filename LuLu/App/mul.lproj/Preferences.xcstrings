@@ -1107,6 +1107,8 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "localhost’a giden bağlantılara izin verilir."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1801,6 +1803,8 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Localhost (Yerel Makine) trafiğine izin ver"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
