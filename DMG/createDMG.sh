@@ -2,6 +2,9 @@ VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "Release/LuLu.app/C
 
 printf "\nCreating LuLu Disk Image...\n\n"
 
+#remove any old ones
+rm -f LuLu_*.dmg
+
 create-dmg \
   --volname "LuLu v$VERSION" \
   --volicon "LuLu.icns" \
@@ -17,6 +20,7 @@ create-dmg \
 
 printf "\nCode signing dmg...\n"
 
+#code sign
 codesign --force --sign "Developer ID Application: Objective-See, LLC (VBG97UB4TA)" LuLu_$VERSION.dmg
 
 printf "Done!\n"
