@@ -143,6 +143,11 @@ extern os_log_t logHandle;
 // note: this matches process' generate key algo
 -(NSString*)generateKey
 {
+    return [self.class generateKeyForPath:self.path csInfo:self.csInfo];
+}
+
++(NSString *)generateKeyForPath:(NSString *)path csInfo:(NSDictionary *)csInfo
+{
     //id
     NSString* key = nil;
     
@@ -150,10 +155,10 @@ extern os_log_t logHandle;
     NSInteger signer = None;
     
     //cs info?
-    if(nil != self.csInfo)
+    if(nil != csInfo)
     {
         //extract signer
-        signer = [self.csInfo[KEY_CS_SIGNER] intValue];
+        signer = [csInfo[KEY_CS_SIGNER] intValue];
         
         //apple/app store
         // just use cs id
@@ -161,7 +166,7 @@ extern os_log_t logHandle;
             (AppStore == signer) )
         {
             //set key
-            key = self.csInfo[KEY_CS_ID];
+            key = csInfo[KEY_CS_ID];
         }
         
         //dev id?
@@ -169,11 +174,11 @@ extern os_log_t logHandle;
         else if(DevID == signer)
         {
             //check for cs id/auths
-            if( (0 != [self.csInfo[KEY_CS_ID] length]) &&
-                (0 != [self.csInfo[KEY_CS_AUTHS] count]) )
+            if( (0 != [csInfo[KEY_CS_ID] length]) &&
+                (0 != [csInfo[KEY_CS_AUTHS] count]) )
             {
                 //set
-                key = [NSString stringWithFormat:@"%@:%@", self.csInfo[KEY_CS_ID], [self.csInfo[KEY_CS_AUTHS] firstObject]];
+                key = [NSString stringWithFormat:@"%@:%@", csInfo[KEY_CS_ID], [csInfo[KEY_CS_AUTHS] firstObject]];
             }
         }
     }
@@ -183,7 +188,7 @@ extern os_log_t logHandle;
     if(0 == key.length)
     {
         //set
-        key = self.path;
+        key = path;
     }
     
     //dbg msg

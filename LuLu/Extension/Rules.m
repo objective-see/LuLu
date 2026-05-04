@@ -902,6 +902,24 @@ bail:
         
         //any match?
         else if (nil != anyMatch) matchingRule = anyMatch;
+
+        //no matching rule found for child process?
+        // check ancestors for blocking rules
+        if(nil == matchingRule)
+        {
+            //dbg msg
+            os_log_debug(logHandle, "no direct rule found for %{public}@, checking ancestors...", process.path);
+            
+            //check ancestors
+            matchingRule = [self findRuleForAncestors:process];
+            
+            //rule found?
+            if(nil != matchingRule)
+            {
+                //dbg msg
+                os_log_debug(logHandle, "inherited blocking rule from ancestor: %{public}@", matchingRule);
+            }
+        }
     
     }//sync
         
@@ -1089,6 +1107,138 @@ bail:
 bail:
         
     return isMatch;
+}
+
+// Check if an ancestor has a blocking rule
+// Returns the blocking rule if found
+-(Rule*)findRuleForAncestors:(Process*)process
+{
+    //dbg msg
+    os_log_debug(logHandle, "checking ancestors for blocking rules");
+    
+    //iterate through ancestors
+    for(NSDictionary* ancestor in process.ancestors)
+    {
+        //ancestor dictionary
+        NSDictionary* ancestor = nil;
+        
+        //ancestor path
+        NSString* ancestorPath = nil;
+        
+        //ancestor key
+        NSString* ancestorKey = nil;
+        
+        //ancestor rule
+        Rule* ancestorRule = nil;
+        
+        //extract ancestor path
+        ancestorPath = ancestor[KEY_PROCESS_PATH];
+        
+        //skip invalid ancestor
+        if(0 == ancestorPath.length)
+        {
+            continue;
+        }
+        
+        //sync to access rules dictionary
+        @synchronized(self.rules)
+        {
+            //check 1: direct path match
+            if(nil != self.rules[ancestorPath])
+            {
+                //dbg msg
+                os_log_debug(logHandle, "found ancestor rule by path: %{public}@", ancestorPath);
+                
+                //get ancestor rules
+                NSArray* ancestorRules = self.rules[ancestorPath][KEY_RULES];
+                
+                //check each rule for block
+                for(Rule* rule in ancestorRules)
+                {
+                    //only care about blocking rules
+                    if(RULE_STATE_BLOCK == rule.action.integerValue)
+                    {
+                        //dbg msg
+                        os_log_debug(logHandle, "ancestor has blocking rule: %{public}@", rule);
+                        
+                        //return blocking rule
+                        return rule;
+                    }
+                }
+            }
+            
+            //check 2: lazy CS info fetch
+            // only if path matching failed
+            {
+                //init cs flags
+                SecCSFlags flags = kSecCSDefaultFlags | kSecCSCheckNestedCode | kSecCSDoNotValidateResources | kSecCSCheckAllArchitectures;
+                
+                //extract signing info for ancestor
+                // note: we use the path, not a token
+                NSMutableDictionary* ancestorCSInfo = nil;
+                @try
+                {
+                    ancestorCSInfo = extractSigningInfo(0, ancestorPath, flags);
+                }
+                @catch(NSException* exception)
+                {
+                    //err msg
+                    os_log_error(logHandle, "ERROR: failed to extract CS info for ancestor: %{public}@ (exception: %{public}@)", ancestorPath, exception);
+                    
+                    //skip this ancestor
+                    continue;
+                }
+                
+                //skip if no CS info
+                if(nil == ancestorCSInfo)
+                {
+                    //dbg msg
+                    os_log_debug(logHandle, "failed to extract CS info for ancestor: %{public}@", ancestorPath);
+                    
+                    //skip this ancestor
+                    continue;
+                }
+                
+                // Get keyPath with same logic as for actual process
+                NSString* ancestorKey = [Rule generateKeyForPath:ancestorPath csInfo:ancestorCSInfo];
+                
+                //no valid key?
+                // fall back to path (already checked above)
+                if(0 == ancestorKey.length)
+                {
+                    //skip this ancestor
+                    continue;
+                }
+                
+                //check if rule exists for ancestor CS key
+                if(nil != self.rules[ancestorKey])
+                {
+                    //dbg msg
+                    os_log_debug(logHandle, "found ancestor rule by CS key: %{public}@", ancestorKey);
+                    
+                    //get ancestor rules
+                    NSArray* ancestorRules = self.rules[ancestorKey][KEY_RULES];
+                    
+                    //check each rule for block
+                    for(Rule* rule in ancestorRules)
+                    {
+                        //only care about blocking rules
+                        if(RULE_STATE_BLOCK == rule.action.integerValue)
+                        {
+                            //dbg msg
+                            os_log_debug(logHandle, "ancestor has blocking rule: %{public}@", rule);
+                            
+                            //return blocking rule
+                            return rule;
+                        }
+                    }
+                }
+            }
+        } //sync
+    } //iterate ancestors
+    
+    //no blocking rules found in ancestors
+    return nil;
 }
 
 //toggle rule

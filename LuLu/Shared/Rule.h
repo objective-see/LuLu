@@ -113,6 +113,9 @@
 //make a rule obj from a dictioanary
 -(id)initFromJSON:(NSDictionary*)info;
 
+//generate matching key for Process's path
++(NSString *)generateKeyForPath:(NSString *)path csInfo:(NSDictionary *)csInfo;
+
 @end
 
 #endif /* Rule_h */
