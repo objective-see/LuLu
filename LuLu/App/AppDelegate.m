@@ -608,69 +608,63 @@ bail:
 // includes enabling network ext if user hasn't disabled
 -(void)completeInitialization:(NSDictionary*)initialPreferences
 {
-    //preferences
-    NSDictionary* preferences = nil;
-       
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
-    
+
     //alloc array for alert (windows)
     alerts = [NSMutableDictionary dictionary];
-    
+
     //init extension comms
     // establishes connection to extension
     xpcDaemonClient = [[XPCDaemonClient alloc] init];
-    
+
     //initial prefs?
-    // send to extension
+    // send to extension (fire-and-forget)
     if(nil != initialPreferences)
     {
-        //set prefs
-        [xpcDaemonClient updatePreferences:initialPreferences];
+        [xpcDaemonClient updatePreferences:initialPreferences completion:nil];
     }
-    
+
     //always (reset) disabled
-    // always want enabled on (restart)
-    preferences = [xpcDaemonClient updatePreferences:@{PREF_IS_DISABLED:@NO}];
-    
-    //dbg msg
-    os_log_debug(logHandle, "loaded preferences %{public}@", preferences);
-    
-    //run with status bar icon?
-    if(YES != [preferences[PREF_NO_ICON_MODE] boolValue])
-    {
-        //alloc/load nib
-        statusBarItemController = [[StatusBarItem alloc] init:self.statusMenu preferences:(NSDictionary*)preferences];
-        
-        //dbg msg
-        os_log_debug(logHandle, "initialized/loaded status bar (icon/menu)");
-    }
-    else
-    {
-        //dbg msg
-        os_log_debug(logHandle, "running in 'no icon' mode (so no need for status bar)");
-    }
-    
-    //cleanup any expired/temp rules
-    [xpcDaemonClient cleanupRules:NO];
-    
-    //automatically check for updates?
-    // skipped if launched by user (e.g. first time run)
-    if( (YES != launchedByUser()) &&
-        (YES != [preferences[PREF_NO_UPDATE_MODE] boolValue]) )
-    {
-        //after a 30 seconds
-        // check for updates in background
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
-        {
+    // always want enabled on (re)start; daemon replies with the merged prefs,
+    // which we use to set up the status bar + auto-update check
+    [xpcDaemonClient updatePreferences:@{PREF_IS_DISABLED:@NO} completion:^(NSDictionary* preferences) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            //fallback to empty dict on XPC failure (status bar shows w/ defaults)
+            NSDictionary* prefs = preferences ?: @{};
+
             //dbg msg
-            os_log_debug(logHandle, "checking for update...");
-           
-            //check
-            [self check4Update];
-       });
-    }
-    
+            os_log_debug(logHandle, "loaded preferences %{public}@", prefs);
+
+            //run with status bar icon?
+            if(YES != [prefs[PREF_NO_ICON_MODE] boolValue])
+            {
+                statusBarItemController = [[StatusBarItem alloc] init:self.statusMenu preferences:prefs];
+                os_log_debug(logHandle, "initialized/loaded status bar (icon/menu)");
+            }
+            else
+            {
+                os_log_debug(logHandle, "running in 'no icon' mode (so no need for status bar)");
+            }
+
+            //automatically check for updates?
+            // skipped if launched by user (e.g. first time run)
+            if( (YES != launchedByUser()) &&
+                (YES != [prefs[PREF_NO_UPDATE_MODE] boolValue]) )
+            {
+                //after 30 seconds, check for updates in background
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 30 * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    os_log_debug(logHandle, "checking for update...");
+                    [self check4Update];
+                });
+            }
+        });
+    }];
+
+    //cleanup any expired/temp rules (async; result ignored)
+    [xpcDaemonClient cleanupRules:NO completion:nil];
+
     return;
 }
 

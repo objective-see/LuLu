@@ -265,8 +265,8 @@ enum menuItems
             //set menu state
             [self setState];
         
-            //update prefs
-            [xpcDaemonClient updatePreferences:@{PREF_IS_DISABLED:[NSNumber numberWithBool:self.isDisabled]}];
+            //update prefs (async; result ignored)
+            [xpcDaemonClient updatePreferences:@{PREF_IS_DISABLED:[NSNumber numberWithBool:self.isDisabled]} completion:nil];
             
             //toggle network extension based on (new) state
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
@@ -308,36 +308,31 @@ enum menuItems
             
             break;
         
-        //rules: import
+        //rules: import (async)
         case rulesImport:
-            
-            //import
-            if(YES != [self.rulesMenuController importRules])
-            {
-                //show alert
-                showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: Failed to import rules", @"ERROR: Failed to import rules"), NSLocalizedString(@"See log for (more) details",@"See log for (more) details"), @[NSLocalizedString(@"OK", @"OK")]);
-                
-                //bail
-                goto bail;
-            }
-            
-            //then show rules
-            [self.rulesMenuController showRules];
-            
+
+            [self.rulesMenuController importRulesWithCompletion:^(BOOL imported) {
+                //already on main queue (callback dispatches there)
+                if(YES != imported)
+                {
+                    showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: Failed to import rules", @"ERROR: Failed to import rules"), NSLocalizedString(@"See log for (more) details",@"See log for (more) details"), @[NSLocalizedString(@"OK", @"OK")]);
+                    return;
+                }
+                //then show rules
+                [self.rulesMenuController showRules];
+            }];
+
             break;
-            
-        //rules: cleanup
+
+        //rules: cleanup (async)
         case rulesCleanup:
-            
-            //cleanup
-            if([self.rulesMenuController cleanupRules] < 0)
-            {
-                //show alert
-                showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: Failed to cleanup rules", @"ERROR: Failed to cleanup rules"), NSLocalizedString(@"See log for (more) details",@"See log for (more) details"), @[NSLocalizedString(@"OK",@"OK")]);
-                
-                //bail
-                goto bail;
-            }
+
+            [self.rulesMenuController cleanupRulesWithCompletion:^(NSInteger cleanedUp) {
+                if(cleanedUp < 0)
+                {
+                    showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: Failed to cleanup rules", @"ERROR: Failed to cleanup rules"), NSLocalizedString(@"See log for (more) details",@"See log for (more) details"), @[NSLocalizedString(@"OK",@"OK")]);
+                }
+            }];
             break;
         
         //profiles
@@ -407,115 +402,106 @@ bail:
 }
 
 //set current profile
+// async chain: fetch current profile, then fetch list, then rebuild menu on main queue
 -(void)setProfile
 {
-    //current
-    NSString* current = [xpcDaemonClient getCurrentProfile];
-    
-    //profiles
-    NSMutableArray* profiles = [xpcDaemonClient getProfiles];
-    
-    //grab menu
-    NSMenu* menu = [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesMenu];
-    
-    //set current profile
-    if(nil != current)
-    {
-        //set
-        [self.statusItem.menu itemWithTag:profile].title = [NSString stringWithFormat:NSLocalizedString(@"Profile: %@", @"Profile: %@"), current];
-    }
-    //otherwise (re)set to default
-    else
-    {
-        //set
-        [self.statusItem.menu itemWithTag:profile].title = NSLocalizedString(@"Profile: Default", @"Profile: Default");
-    }
-    
-    //reset profiles menu
-    [menu removeAllItems];
-    
-    //have profiles?
-    // add each name and enable 'Switch' menu item
-    if(0 != profiles.count)
-    {
-        //enable
-        [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) profileSwitchMenuItem] setEnabled:YES];
-        
-        //add default first/top
-        [profiles insertObject:NSLocalizedString(@"Default", @"Default") atIndex:0];
-        
-        //add each name
-        for(NSString *name in profiles)
-        {
-            //menu item
-            NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:name action:@selector(switchToProfile:) keyEquivalent:@""];
-            
-            //target
-            item.target = self;
-            
-            //default to off
-            item.state = NSControlStateValueOff;
-            
-            //name
-            // though keep default 'nil'
-            if(NSOrderedSame != [name caseInsensitiveCompare:NSLocalizedString(@"Default", @"Default")])
-            {
-                //set
-                item.representedObject = name;
-            }
-            
-            //add
-            [menu addItem:item];
-            
-            //should select 'default' as current?
-            if( (nil == current) &&
-                (NSOrderedSame == [name caseInsensitiveCompare:NSLocalizedString(@"Default", @"Default")]) )
-            {
-                //set
-                item.state = NSControlStateValueOn;
-            }
-            
-            //should select other as current?
-            else if(YES == [item.title isEqualToString:current])
-            {
-                //set
-                item.state = NSControlStateValueOn;
-            }
-        }
-    }
-    //otherwise disable
-    else
-    {
-        //disable
-        [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) profileSwitchMenuItem] setEnabled:NO];
-    }
-    
+    [xpcDaemonClient getCurrentProfile:^(NSString* current) {
+        [xpcDaemonClient getProfiles:^(NSMutableArray* profilesFromDaemon) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+
+                //grab menu
+                NSMenu* menu = [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesMenu];
+
+                //set current profile title
+                if(nil != current)
+                {
+                    [self.statusItem.menu itemWithTag:profile].title = [NSString stringWithFormat:NSLocalizedString(@"Profile: %@", @"Profile: %@"), current];
+                }
+                else
+                {
+                    [self.statusItem.menu itemWithTag:profile].title = NSLocalizedString(@"Profile: Default", @"Profile: Default");
+                }
+
+                //reset profiles menu
+                [menu removeAllItems];
+
+                //local mutable copy (fallback to empty)
+                NSMutableArray* profiles = profilesFromDaemon ?: [NSMutableArray array];
+
+                //have profiles?
+                if(0 != profiles.count)
+                {
+                    //enable
+                    [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) profileSwitchMenuItem] setEnabled:YES];
+
+                    //add default first/top
+                    [profiles insertObject:NSLocalizedString(@"Default", @"Default") atIndex:0];
+
+                    //add each name
+                    for(NSString *name in profiles)
+                    {
+                        NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:name action:@selector(switchToProfile:) keyEquivalent:@""];
+                        item.target = self;
+                        item.state = NSControlStateValueOff;
+
+                        if(NSOrderedSame != [name caseInsensitiveCompare:NSLocalizedString(@"Default", @"Default")])
+                        {
+                            item.representedObject = name;
+                        }
+
+                        [menu addItem:item];
+
+                        if( (nil == current) &&
+                            (NSOrderedSame == [name caseInsensitiveCompare:NSLocalizedString(@"Default", @"Default")]) )
+                        {
+                            item.state = NSControlStateValueOn;
+                        }
+                        else if(YES == [item.title isEqualToString:current])
+                        {
+                            item.state = NSControlStateValueOn;
+                        }
+                    }
+                }
+                else
+                {
+                    //disable
+                    [[((AppDelegate*)[[NSApplication sharedApplication] delegate]) profileSwitchMenuItem] setEnabled:NO];
+                }
+            });
+        }];
+    }];
+
     return;
 }
 
 //switch profile
 - (void)switchToProfile:(NSMenuItem *)sender {
-    
+
     //grab profile
     NSString* profile = sender.representedObject;
-    
+
     //dbg msg
     os_log_debug(logHandle, "user wants to change profile to '%{public}@'", profile ? profile : @"Default");
-    
-    //set profile via XPC
-    // nil is ok, means (re)set to default
-    [xpcDaemonClient setProfile:profile];
-    
-    //tell app profiles changed
-    // will also update status menu
-    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
-    
-    //tell app preferences changed
-    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:[xpcDaemonClient getPreferences]];
-    
-    //show alert
-    showAlert(NSAlertStyleInformational, NSLocalizedString(@"Profile Switched", @"Profile Switched"), [NSString stringWithFormat:NSLocalizedString(@"Current profile is now: '%@'.", @"Current profile is now: '%@'."), nil != profile ? profile : NSLocalizedString(@"Default", @"Default")], @[NSLocalizedString(@"OK", @"OK")]);
-    
+
+    //set profile via XPC (async) — nil is ok, means (re)set to default
+    [xpcDaemonClient setProfile:profile completion:^(BOOL wasSet) {
+
+        //then fetch the (new) preferences
+        [xpcDaemonClient getPreferences:^(NSDictionary* prefs) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+
+                //tell app profiles changed (will also update status menu)
+                [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
+
+                //tell app preferences changed
+                [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:prefs];
+
+                //show alert
+                showAlert(NSAlertStyleInformational, NSLocalizedString(@"Profile Switched", @"Profile Switched"), [NSString stringWithFormat:NSLocalizedString(@"Current profile is now: '%@'.", @"Current profile is now: '%@'."), nil != profile ? profile : NSLocalizedString(@"Default", @"Default")], @[NSLocalizedString(@"OK", @"OK")]);
+            });
+        }];
+    }];
+
     return;
 }
 

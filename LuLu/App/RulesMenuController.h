@@ -18,8 +18,13 @@
 -(void)addRule;
 -(void)showRules;
 -(void)exportRules;
--(BOOL)importRules;
--(NSInteger)cleanupRules;
+
+// async: completion is called on the main queue with BOOL success (or NO on cancel/error)
+-(void)importRulesWithCompletion:(void(^)(BOOL imported))completion;
+
+// async: completion is called on the main queue with number of deleted rules
+// (-1 on error, 0 if user cancelled)
+-(void)cleanupRulesWithCompletion:(void(^)(NSInteger deletedRules))completion;
 
 @end
 

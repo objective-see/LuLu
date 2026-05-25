@@ -13,55 +13,61 @@
 
 @interface XPCDaemonClient : NSObject
 {
-    
+
 }
 
 //xpc connection to daemon
 @property (atomic, strong, readwrite)NSXPCConnection* daemon;
 
+//
+// NOTE: All methods are now asynchronous and non-blocking.
+// Callers MUST dispatch any UI work performed inside the completion block
+// back to the main queue (dispatch_get_main_queue()).
+// Completion blocks are invoked on an arbitrary XPC queue.
+//
+
 //get preferences
-// note: synchronous
--(NSDictionary*)getPreferences;
+-(void)getPreferences:(void (^)(NSDictionary* _Nullable preferences))completion;
 
 //update (save) preferences
-// note: synchronous, as then returns latest preferences
--(NSDictionary*)updatePreferences:(NSDictionary*)preferences;
+// note: returns merged preferences (from daemon) via the completion block
+-(void)updatePreferences:(NSDictionary*)preferences completion:(void (^)(NSDictionary* _Nullable updatedPreferences))completion;
 
 //get rules
-// note: synchronous
--(NSDictionary*)getRules;
+-(void)getRules:(void (^)(NSDictionary* _Nullable rules))completion;
 
-//add rule
+//add rule (fire-and-forget)
 -(void)addRule:(NSDictionary*)info;
 
-//disable (or re-enable) rule
+//disable (or re-enable) rule (fire-and-forget)
 -(void)toggleRule:(NSString*)key rule:(NSString*)uuid state:(NSNumber*)state;
 
-//delete rule
+//delete rule (fire-and-forget)
 -(void)deleteRule:(NSString*)key rule:(NSString*)uuid;
 
 //import rules
--(BOOL)importRules:(NSData*)newRules userOnly:(BOOL)userOnly;
+-(void)importRules:(NSData*)newRules userOnly:(BOOL)userOnly completion:(void (^)(BOOL imported))completion;
 
 //cleanup rules
--(NSInteger)cleanupRules:(BOOL)full;
+// note: NSInteger result is -1 on error (e.g. XPC failure)
+-(void)cleanupRules:(BOOL)full completion:(void (^)(NSInteger deletedRules))completion;
 
 //get current profile
--(NSString*)getCurrentProfile;
+-(void)getCurrentProfile:(void (^)(NSString* _Nullable currentProfile))completion;
 
 //get list of profiles
--(NSMutableArray*)getProfiles;
+-(void)getProfiles:(void (^)(NSMutableArray* _Nullable profiles))completion;
 
 //set profile
--(BOOL)setProfile:(NSString*)name;
+-(void)setProfile:(NSString*)name completion:(void (^)(BOOL wasSet))completion;
 
 //add profile
--(BOOL)addProfile:(NSString*)name preferences:(NSDictionary*)preferences;
+-(void)addProfile:(NSString*)name preferences:(NSDictionary*)preferences completion:(void (^)(BOOL wasAdded))completion;
 
 //delete profile
--(BOOL)deleteProfile:(NSString*)name;
+-(void)deleteProfile:(NSString*)name completion:(void (^)(BOOL wasDeleted))completion;
 
 //uninstall
--(BOOL)uninstall;
+-(void)uninstall:(void (^)(BOOL wasUninstalled))completion;
 
 @end

@@ -74,12 +74,25 @@ extern XPCDaemonClient* xpcDaemonClient;
 // add it, and make it selected
 -(void)awakeFromNib
 {
-    //set subtitle
+    //set subtitle (async)
     [self setSubTitle];
-    
-    //get prefs
-    self.preferences = [xpcDaemonClient getPreferences];
-    
+
+    //get prefs (async)
+    // when loaded, cache + refresh current toolbar view if any was already selected
+    [xpcDaemonClient getPreferences:^(NSDictionary* prefs) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.preferences = prefs;
+
+            //if a toolbar item is already selected, re-trigger to populate it
+            NSToolbarItemIdentifier selectedID = self.toolbar.selectedItemIdentifier;
+            if(nil != selectedID) {
+                NSToolbarItem* item = [[self.toolbar items]
+                    filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"itemIdentifier == %@", selectedID]].firstObject;
+                if(nil != item) [self toolbarButtonHandler:item];
+            }
+        });
+    }];
+
     return;
 }
 
@@ -88,27 +101,33 @@ extern XPCDaemonClient* xpcDaemonClient;
 {
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
-    
-    //current profile
-    NSString* currentProfile = [xpcDaemonClient getCurrentProfile];
-    
-    //have profile?
-    if(0 != currentProfile.length) {
-        
-        //add subtitle
-        if (@available(macOS 11.0, *)) {
-            self.window.subtitle = [NSString stringWithFormat:NSLocalizedString(@"Current Profile: %@",@"Current Profile: %@"), currentProfile];
-        }
-    }
-    //set to default
-    else
-    {
-        //set
-        if (@available(macOS 11.0, *)) {
-            self.window.subtitle = NSLocalizedString(@"Current Profile: Default",@"Current Profile: Default");
-        }
-    }
-    
+
+    //current profile (async)
+    [xpcDaemonClient getCurrentProfile:^(NSString* currentProfile) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            //cache for table-view delegate
+            self.currentProfile = currentProfile;
+
+            //have profile?
+            if(0 != currentProfile.length) {
+
+                //add subtitle
+                if (@available(macOS 11.0, *)) {
+                    self.window.subtitle = [NSString stringWithFormat:NSLocalizedString(@"Current Profile: %@",@"Current Profile: %@"), currentProfile];
+                }
+            }
+            //set to default
+            else
+            {
+                //set
+                if (@available(macOS 11.0, *)) {
+                    self.window.subtitle = NSLocalizedString(@"Current Profile: Default",@"Current Profile: Default");
+                }
+            }
+        });
+    }];
+
     return;
 }
 
@@ -249,22 +268,33 @@ extern XPCDaemonClient* xpcDaemonClient;
             
         //profiles
         case TOOLBAR_PROFILES:
-            
+
             //set view
             view = self.profilesView;
-            
-            //send XPC msg to daemon get profiles
-            self.profiles = [xpcDaemonClient getProfiles];
-            
-            //manually add default at start
-            [self.profiles insertObject:@"Default" atIndex:0];
-            
-            //dbg msg
-            os_log_debug(logHandle, "list of profiles: %{public}@", self.profiles);
-            
-            //reload table
-            [self.profilesTable reloadData];
-            
+
+            //send XPC msg to daemon to get profiles (async)
+            [xpcDaemonClient getProfiles:^(NSMutableArray* profilesFromDaemon) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+
+                    //fallback to empty array on XPC error
+                    self.profiles = (nil != profilesFromDaemon) ? profilesFromDaemon : [NSMutableArray array];
+
+                    //manually add default at start
+                    [self.profiles insertObject:@"Default" atIndex:0];
+
+                    //dbg msg
+                    os_log_debug(logHandle, "list of profiles: %{public}@", self.profiles);
+
+                    //also refresh the cached current profile (used by table-view delegate)
+                    [xpcDaemonClient getCurrentProfile:^(NSString* currentProfile) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            self.currentProfile = currentProfile;
+                            [self.profilesTable reloadData];
+                        });
+                    }];
+                });
+            }];
+
             break;
             
         //update
@@ -481,15 +511,19 @@ bail:
     //only process here if we're not in "add profile" mode
     if(YES != self.addProfileSheet.isVisible)
     {
-        //send XPC msg to daemon to update prefs
+        //send XPC msg to daemon to update prefs (async)
         // returns (all/latest) prefs, which is what we want
-        self.preferences = [xpcDaemonClient updatePreferences:updatedPreferences];
+        [xpcDaemonClient updatePreferences:updatedPreferences completion:^(NSDictionary* updatedFromDaemon) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if(nil != updatedFromDaemon) self.preferences = updatedFromDaemon;
 
-        //call back into app to process
-        // e.g. show/hide status bar icon, etc.
-        [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
+                //call back into app to process
+                // e.g. show/hide status bar icon, etc.
+                [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
+            });
+        }];
     }
-    
+
     return;
 }
 
@@ -520,24 +554,32 @@ bail:
         {
             //update ui
             self.allowList.stringValue = panel.URL.path;
-            
+
             //dbg msg
             os_log_debug(logHandle, "user selected allow list: %{public}@", self.allowList.stringValue);
-            
-            //send XPC msg to daemon to update prefs
-            self.preferences = [xpcDaemonClient updatePreferences:@{PREF_ALLOW_LIST:panel.URL.path}];
+
+            //send XPC msg to daemon to update prefs (async)
+            [xpcDaemonClient updatePreferences:@{PREF_ALLOW_LIST:panel.URL.path} completion:^(NSDictionary* updated) {
+                if(nil != updated) {
+                    dispatch_async(dispatch_get_main_queue(), ^{ self.preferences = updated; });
+                }
+            }];
         }
         //block list
         else if(sender == self.selectBlockListButton)
         {
             //update ui
             self.blockList.stringValue = panel.URL.path;
-            
+
             //dbg msg
             os_log_debug(logHandle, "user selected block list: %{public}@", self.blockList.stringValue);
-            
-            //send XPC msg to daemon to update prefs
-            self.preferences = [xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:panel.URL.path}];
+
+            //send XPC msg to daemon to update prefs (async)
+            [xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:panel.URL.path} completion:^(NSDictionary* updated) {
+                if(nil != updated) {
+                    dispatch_async(dispatch_get_main_queue(), ^{ self.preferences = updated; });
+                }
+            }];
         }
         //error
         else
@@ -555,11 +597,14 @@ bail:
 {
     //dbg msg
     os_log_debug(logHandle, "got 'update block list event' (value: %{public}@)", self.blockList.stringValue);
-    
-    //send XPC msg to daemon to update prefs
-    // returns (all/latest) prefs, which is what we want
-    self.preferences = [xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:self.blockList.stringValue}];
-    
+
+    //send XPC msg to daemon to update prefs (async)
+    [xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:self.blockList.stringValue} completion:^(NSDictionary* updated) {
+        if(nil != updated) {
+            dispatch_async(dispatch_get_main_queue(), ^{ self.preferences = updated; });
+        }
+    }];
+
     return;
 }
 
@@ -569,23 +614,28 @@ bail:
 {
     //dbg msg
     os_log_debug(logHandle, "%s invoked", __PRETTY_FUNCTION__);
-    
-    //grab (profile's) preferences
-    self.preferences = [xpcDaemonClient getPreferences];
-    
-    //(re)set subtitle
-    [self setSubTitle];
-    
-    //selected ID
-    NSToolbarItemIdentifier selectedID = self.toolbar.selectedItemIdentifier;
 
-    //selected item
-    NSToolbarItem* toolbarItem = [[self.toolbar items]
-        filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"itemIdentifier == %@", selectedID]].firstObject;
+    //grab (profile's) preferences (async)
+    [xpcDaemonClient getPreferences:^(NSDictionary* prefs) {
+        dispatch_async(dispatch_get_main_queue(), ^{
 
-    //trigger reload
-    [self toolbarButtonHandler:toolbarItem];
-    
+            if(nil != prefs) self.preferences = prefs;
+
+            //(re)set subtitle
+            [self setSubTitle];
+
+            //selected ID
+            NSToolbarItemIdentifier selectedID = self.toolbar.selectedItemIdentifier;
+
+            //selected item
+            NSToolbarItem* toolbarItem = [[self.toolbar items]
+                filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"itemIdentifier == %@", selectedID]].firstObject;
+
+            //trigger reload
+            if(nil != toolbarItem) [self toolbarButtonHandler:toolbarItem];
+        });
+    }];
+
     return;
 }
 
@@ -607,9 +657,10 @@ bail:
     //first column
     // check button if we're looking at the current profile
     if(YES == [tableColumn.identifier isEqualToString:@"Current"]) {
-        
-        //current profile
-        NSString* currentProfile = [xpcDaemonClient getCurrentProfile];
+
+        //current profile (cached — populated by toolbarButtonHandler / setSubTitle)
+        // avoids a blocking synchronous XPC call per table row
+        NSString* currentProfile = self.currentProfile;
         
         //select button
         NSButton* selectButton = (NSButton*)[cell viewWithTag:TABLE_ROW_SELECT_BTN_TAG];
@@ -735,20 +786,23 @@ bail:
     
     //dbg msg
     os_log_debug(logHandle, "user wants to change profile to '%{public}@'", profile ? profile : @"Default");
-    
-    //set profile via XPC
-    [xpcDaemonClient setProfile:profile];
-    
-    //tell app profiles changed
-    // will grab profile's preferences too
-    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
 
-    //also tell app preferences changed
-    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
-    
-    //show alert
-    showAlert(NSAlertStyleInformational, NSLocalizedString(@"Profile Switched", @"Profile Switched"), [NSString stringWithFormat:NSLocalizedString(@"Current profile is now: '%@'.", @"Current profile is now: '%@'."), nil != profile ? profile : NSLocalizedString(@"Default", @"Default")], @[NSLocalizedString(@"OK", @"OK")]);
-    
+    //set profile via XPC (async)
+    // wait for the daemon to confirm before refreshing the app
+    [xpcDaemonClient setProfile:profile completion:^(BOOL wasSet) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            //tell app profiles changed (will grab profile's preferences too)
+            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
+
+            //also tell app preferences changed
+            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
+
+            //show alert
+            showAlert(NSAlertStyleInformational, NSLocalizedString(@"Profile Switched", @"Profile Switched"), [NSString stringWithFormat:NSLocalizedString(@"Current profile is now: '%@'.", @"Current profile is now: '%@'."), nil != profile ? profile : NSLocalizedString(@"Default", @"Default")], @[NSLocalizedString(@"OK", @"OK")]);
+        });
+    }];
+
     return;
 }
 
@@ -810,25 +864,27 @@ bail:
             //add profile?
             // and handle UI refreshes, etc
             if (returnCode == NSModalResponseOK) {
-            
+
                 //dbg msg
                 os_log_debug(logHandle, "user wants to add profile '%{public}@'", self.profileName);
-                
-                //add profile via XPC
-                [xpcDaemonClient addProfile:self.profileName preferences:self.profilePreferences];
-                
-                //hide profile sheet
-                [self.addProfileSheet orderOut:self];
-                
-                //tell app profiles changed
-                // will grab profile's preferences too
-                [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
-                
-                //tell app preferences changed
-                [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
-                
-                //show alert
-                showAlert(NSAlertStyleInformational, NSLocalizedString(@"Added Profile", @"Added Profile"), [NSString stringWithFormat:NSLocalizedString(@"New profile '%@' saved and activated.", @"New profile '%@' saved and activated."), self.profileName], @[NSLocalizedString(@"OK", @"OK")]);
+
+                //add profile via XPC (async)
+                [xpcDaemonClient addProfile:self.profileName preferences:self.profilePreferences completion:^(BOOL wasAdded) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+
+                        //hide profile sheet
+                        [self.addProfileSheet orderOut:self];
+
+                        //tell app profiles changed (will grab profile's preferences too)
+                        [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
+
+                        //tell app preferences changed
+                        [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
+
+                        //show alert
+                        showAlert(NSAlertStyleInformational, NSLocalizedString(@"Added Profile", @"Added Profile"), [NSString stringWithFormat:NSLocalizedString(@"New profile '%@' saved and activated.", @"New profile '%@' saved and activated."), self.profileName], @[NSLocalizedString(@"OK", @"OK")]);
+                    });
+                }];
             }
             
             //cancel
@@ -892,14 +948,18 @@ bail:
                 goto bail;
             }
             
-            //check against existing names
-            for(NSString *name in [xpcDaemonClient getProfiles])
+            //check against existing names (use cached profiles to avoid blocking XPC)
+            // self.profiles was populated when the user navigated to the Profiles tab.
+            // Filter out the synthetic "Default" entry (added in toolbarButtonHandler).
+            for(NSString *name in self.profiles)
             {
+                if(NSOrderedSame == [name caseInsensitiveCompare:NSLocalizedString(@"Default", @"Default")]) continue;
+
                 if(NSOrderedSame == [self.profileNameLabel.stringValue caseInsensitiveCompare:name])
                 {
                     //show alert
                     showAlert(NSAlertStyleInformational, NSLocalizedString(@"Invalid Profile Name", @"Invalid Profile Name"), [NSString stringWithFormat:NSLocalizedString(@"'%@' matches an existing profile name.", @"'%@' matches an existing profile name."), name], @[NSLocalizedString(@"OK", @"OK")]);
-                    
+
                     self.profileNameLabel.stringValue = @"";
                     goto bail;
                 }
@@ -1065,21 +1125,23 @@ bail:
         goto bail;
     }
     
-    //delete via XPC
-    [xpcDaemonClient deleteProfile:profile];
-    
-    //dbg msg
-    os_log_debug(logHandle, "deleted profile '%{public}@'", profile);
-    
-    //tell app profiles changed
-    // will grab profile's preferences too
-    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
-    
-    //tell app preferences (maybe) changed
-    [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
-    
+    //delete via XPC (async)
+    [xpcDaemonClient deleteProfile:profile completion:^(BOOL wasDeleted) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            //dbg msg
+            os_log_debug(logHandle, "deleted profile '%{public}@' (result: %d)", profile, wasDeleted);
+
+            //tell app profiles changed (will grab profile's preferences too)
+            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) profilesChanged];
+
+            //tell app preferences (maybe) changed
+            [((AppDelegate*)[[NSApplication sharedApplication] delegate]) preferencesChanged:self.preferences];
+        });
+    }];
+
 bail:
-    
+
     return;
 }
 
@@ -1230,16 +1292,16 @@ bail:
         //disable allow list input
         self.allowList.enabled = NSControlStateValueOff;
         
-        //send XPC msg to daemon to update prefs
-        self.preferences = [xpcDaemonClient updatePreferences:@{PREF_USE_ALLOW_LIST:@0, PREF_ALLOW_LIST:@""}];
+        //send XPC msg to daemon to update prefs (async; window closing, no need to await)
+        [xpcDaemonClient updatePreferences:@{PREF_USE_ALLOW_LIST:@0, PREF_ALLOW_LIST:@""} completion:nil];
     }
-    
+
     //allow list changed? capture!
     // this logic is needed, as window can be closed when text field still has focus and 'end edit' won't have fired
     else if(YES != [self.preferences[PREF_ALLOW_LIST] isEqualToString:self.allowList.stringValue])
     {
-        //send XPC msg to daemon to update prefs
-        self.preferences = [xpcDaemonClient updatePreferences:@{PREF_ALLOW_LIST:self.allowList.stringValue}];
+        //send XPC msg to daemon to update prefs (async)
+        [xpcDaemonClient updatePreferences:@{PREF_ALLOW_LIST:self.allowList.stringValue} completion:nil];
     }
     
     //blank block list?
@@ -1258,17 +1320,16 @@ bail:
         //disable block list input
         self.blockList.enabled = NSControlStateValueOff;
         
-        //send XPC msg to daemon to update prefs
-        self.preferences = [xpcDaemonClient updatePreferences:@{PREF_USE_BLOCK_LIST:@0, PREF_BLOCK_LIST:@""}];
+        //send XPC msg to daemon to update prefs (async; window closing, no need to await)
+        [xpcDaemonClient updatePreferences:@{PREF_USE_BLOCK_LIST:@0, PREF_BLOCK_LIST:@""} completion:nil];
     }
-        
+
     //block list changed? capture!
     // this logic is needed, as window can be closed when text field still has focus and 'end edit' won't have fired
     else if(YES != [self.preferences[PREF_BLOCK_LIST] isEqualToString:self.blockList.stringValue])
     {
-        //send XPC msg to daemon to update prefs
-        // returns (all/latest) prefs, which is what we want
-        self.preferences = [xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:self.blockList.stringValue}];
+        //send XPC msg to daemon to update prefs (async)
+        [xpcDaemonClient updatePreferences:@{PREF_BLOCK_LIST:self.blockList.stringValue} completion:nil];
     }
      
     //wait a bit, then set activation policy

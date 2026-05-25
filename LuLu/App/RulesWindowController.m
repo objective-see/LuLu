@@ -76,12 +76,12 @@ extern XPCDaemonClient* xpcDaemonClient;
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
 
-    //set subtitle
+    //set subtitle (async)
     [self setSubTitle];
-    
-    //first cleanup any expired/temp rules
-    [xpcDaemonClient cleanupRules:NO];
-    
+
+    //first cleanup any expired/temp rules (async; result ignored)
+    [xpcDaemonClient cleanupRules:NO completion:nil];
+
     //then load rules
     [self loadRules:YES select:@0];
 
@@ -93,27 +93,30 @@ extern XPCDaemonClient* xpcDaemonClient;
 {
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
-    
-    //current profile
-    NSString* currentProfile = [xpcDaemonClient getCurrentProfile];
-    
-    //have profile?
-    if(0 != currentProfile.length) {
-        
-        //add subtitle
-        if (@available(macOS 11.0, *)) {
-            self.window.subtitle = [NSString stringWithFormat:NSLocalizedString(@"Current Profile: %@",@"Current Profile: %@"), currentProfile];
-        }
-    }
-    //set to default
-    else
-    {
-        //set
-        if (@available(macOS 11.0, *)) {
-            self.window.subtitle = NSLocalizedString(@"Current Profile: Default",@"Current Profile: Default");
-        }
-    }
-    
+
+    //current profile (async)
+    [xpcDaemonClient getCurrentProfile:^(NSString* currentProfile) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            //have profile?
+            if(0 != currentProfile.length) {
+
+                //add subtitle
+                if (@available(macOS 11.0, *)) {
+                    self.window.subtitle = [NSString stringWithFormat:NSLocalizedString(@"Current Profile: %@",@"Current Profile: %@"), currentProfile];
+                }
+            }
+            //set to default
+            else
+            {
+                //set
+                if (@available(macOS 11.0, *)) {
+                    self.window.subtitle = NSLocalizedString(@"Current Profile: Default",@"Current Profile: Default");
+                }
+            }
+        });
+    }];
+
     return;
 }
 
@@ -182,83 +185,79 @@ extern XPCDaemonClient* xpcDaemonClient;
         [self.loadingRulesSpinner startAnimation:nil];
     }
     
-    //in background get rules
-    // ...then load rule table table
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-    ^{
-        //current rules (from ext)
-        NSDictionary* currentRules = nil;
-        
-        //sorted keys
-        NSArray* sortedKeys = nil;
-        
-        //show overlay
-        if(YES == showOverlay)
-        {
-            //nap for UI (loading msg)
-            [NSThread sleepForTimeInterval:0.5f];
-        }
-        
-        //get rules
-        currentRules = [xpcDaemonClient getRules];
-        
+    //helper block: do sort + UI update (runs on whatever queue we hop it onto)
+    void (^processRules)(NSDictionary*) = ^(NSDictionary* currentRules) {
+
         //dbg msg
         os_log_debug(logHandle, "received %lu rules from daemon: %{public}@", (unsigned long)currentRules.count, currentRules.allKeys);
-        
+
         //sync rules
         @synchronized (self)
         {
             //alloc
             self.rules = [[OrderedDictionary alloc] init];
-        
+
             //dbg msg
             os_log_debug(logHandle, "sorting rules...");
-            
+
             //sort by (rule) name
-            sortedKeys = [currentRules keysSortedByValueUsingComparator:^NSComparisonResult(id _Nonnull obj1, id  _Nonnull obj2)
+            NSArray* sortedKeys = [currentRules keysSortedByValueUsingComparator:^NSComparisonResult(id _Nonnull obj1, id  _Nonnull obj2)
             {
                 //normal
                 if(YES == self.isAscending)
                 {
-                    //compare/return
                     return [((Rule*)[((NSDictionary*)obj1)[KEY_RULES] firstObject]).name compare:((Rule*)[((NSDictionary*)obj2)[KEY_RULES] firstObject]).name options:NSCaseInsensitiveSearch];
                 }
                 //reversed
                 else
                 {
-                    //compare/return
                     return [((Rule*)[((NSDictionary*)obj2)[KEY_RULES] firstObject]).name compare:((Rule*)[((NSDictionary*)obj1)[KEY_RULES] firstObject]).name options:NSCaseInsensitiveSearch];
                 }
             }];
-            
+
             //add sorted rules
             for(NSInteger i = 0; i<sortedKeys.count; i++)
             {
-                //add to ordered dictionary
                 [self.rules insertObject:currentRules[sortedKeys[i]] forKey:sortedKeys[i] atIndex:i];
             }
-            
+
         }//sync
-        
-        //show rules in UI
+
+        //show rules in UI on main queue
         dispatch_async(dispatch_get_main_queue(), ^{
-            
-            //show overlay
+
+            //hide overlay
             if(YES == showOverlay)
             {
-                //hide overlay
                 self.loadingRules.hidden = YES;
             }
-            
+
             //update ui
             [self update:row];
-            
+
             //set subtitle
             [self setSubTitle];
         });
+    };
 
-    });
-        
+    //fetch rules asynchronously from daemon (non-blocking; reply on XPC queue)
+    // optional "loading" nap is preserved by deferring the XPC fetch when overlay is shown
+    if(YES == showOverlay)
+    {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)),
+                       dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [xpcDaemonClient getRules:^(NSDictionary* currentRules) {
+                processRules(currentRules ?: @{});
+            }];
+        });
+    }
+    else
+    {
+        [xpcDaemonClient getRules:^(NSDictionary* currentRules) {
+            processRules(currentRules ?: @{});
+        }];
+    }
+
     return;
 }
 
@@ -477,29 +476,29 @@ bail:
 //show paths in sheet
 -(void)showItemPaths:(NSString*)itemKey
 {
-    //current rules (from ext)
-    NSDictionary* currentRules = nil;
-    
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked with %{public}@", __PRETTY_FUNCTION__, itemKey);
-    
+
     //alloc sheet
     self.itemPathsWindowController = [[ItemPathsWindowController alloc] initWithWindowNibName:@"ItemPaths"];
 
-    //get latest rules
-    currentRules = [xpcDaemonClient getRules];
-    
-    //set rules
-    self.itemPathsWindowController.item = currentRules[itemKey];
-    
-    //show it
-    [self.window beginSheet:self.itemPathsWindowController.window completionHandler:^(NSModalResponse returnCode) {
-        
-        //unset
-        self.itemPathsWindowController = nil;
-        
+    //get latest rules (async); show sheet once we have them
+    [xpcDaemonClient getRules:^(NSDictionary* currentRules) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            //set rules
+            self.itemPathsWindowController.item = currentRules[itemKey];
+
+            //show it
+            [self.window beginSheet:self.itemPathsWindowController.window completionHandler:^(NSModalResponse returnCode) {
+
+                //unset
+                self.itemPathsWindowController = nil;
+
+            }];
+        });
     }];
-    
+
     return;
 }
 
@@ -1673,9 +1672,9 @@ bail:
 // set activation policy
 -(void)windowWillClose:(NSNotification *)notification
 {
-    //cleanup any expired/temp rules
-    [xpcDaemonClient cleanupRules:NO];
-    
+    //cleanup any expired/temp rules (async; result ignored)
+    [xpcDaemonClient cleanupRules:NO completion:nil];
+
     //wait a bit, then set activation policy
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
     ^{

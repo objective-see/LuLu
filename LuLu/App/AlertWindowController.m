@@ -113,9 +113,18 @@ extern NSMutableDictionary* alerts;
     
     //extract process ID
     processID = [self.alert[KEY_PROCESS_ID] intValue];
-    
-    //get preferences
-    preferences = [xpcDaemonClient getPreferences];
+
+    {
+        __block NSDictionary* loadedPrefs = nil;
+        dispatch_semaphore_t prefsSem = dispatch_semaphore_create(0);
+        [xpcDaemonClient getPreferences:^(NSDictionary* prefs) {
+            loadedPrefs = prefs;
+            dispatch_semaphore_signal(prefsSem);
+        }];
+        //wait up to 2s; XPC error handler signals immediately on failure
+        dispatch_semaphore_wait(prefsSem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)));
+        preferences = loadedPrefs ?: @{};
+    }
     
     //do we have access?
     // build hierarchy here
@@ -840,11 +849,11 @@ bail:
         [alerts removeObjectForKey:self.alert[KEY_UUID]];
     }
     
-    //save preferences
+    //save preferences (async; result not needed)
     // includes options shown/last action scope, etc.
     [xpcDaemonClient updatePreferences:@{PREF_ALERT_SHOW_OPTIONS: @(showOptionsState),
                                          PREF_ALERT_LAST_RULE_SCOPE: @(ruleScopeIndex),
-                                         PREF_ALERT_LAST_RULE_DURATION: @(ruleDurationTag)}];
+                                         PREF_ALERT_LAST_RULE_DURATION: @(ruleDurationTag)} completion:nil];
     
     //set app's background/foreground state
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) setActivationPolicy];
