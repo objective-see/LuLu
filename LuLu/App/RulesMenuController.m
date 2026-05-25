@@ -20,6 +20,12 @@ extern os_log_t logHandle;
 //xpc for daemon comms
 extern XPCDaemonClient* xpcDaemonClient;
 
+//class extension
+// declares helper methods used internally by async chains
+@interface RulesMenuController ()
+-(void)continueExportWithRules:(NSDictionary*)rules;
+@end
+
 @implementation RulesMenuController
 
 //show rules
@@ -46,27 +52,34 @@ extern XPCDaemonClient* xpcDaemonClient;
 // show panel then write out rules
 -(void)exportRules
 {
-    //count
-    __block NSUInteger count = 0;
-    
-    //rules
-    NSDictionary* rules = nil;
-    
-    //error
-    __block NSError* error = nil;
-    
-    //'browse' panel
-    NSSavePanel *panel = nil;
-    
     //dbg msg
     os_log_debug(logHandle, "exporting rules...");
-    
-    //get rules
-    rules = [xpcDaemonClient getRules];
-    
+
+    //get rules (async); the panel + export work runs once they arrive
+    [xpcDaemonClient getRules:^(NSDictionary* rulesFromDaemon) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self continueExportWithRules:(rulesFromDaemon ?: @{})];
+        });
+    }];
+
+    return;
+}
+
+//continue export, given fetched rules
+-(void)continueExportWithRules:(NSDictionary*)rules
+{
+    //count
+    __block NSUInteger count = 0;
+
+    //error
+    __block NSError* error = nil;
+
+    //'browse' panel
+    NSSavePanel *panel = nil;
+
     //dbg msg
     os_log_debug(logHandle, "received %lu rules from daemon", (unsigned long)rules.count);
-    
+
     //init panel
     panel = [NSSavePanel savePanel];
     
@@ -208,13 +221,10 @@ extern XPCDaemonClient* xpcDaemonClient;
     return;
 }
 
-//import rules
+//import rules (async)
 // show panel, read in rules, parse, send to daemon
--(BOOL)importRules
+-(void)importRulesWithCompletion:(void(^)(BOOL))completion
 {
-    //flag
-    BOOL imported = NO;
-    
     //flag
     __block BOOL userOnlyImport = YES;
     
@@ -370,72 +380,68 @@ extern XPCDaemonClient* xpcDaemonClient;
     
     //dbg msg
     os_log_debug(logHandle, "serialized (imported) rules");
-    
-    //send to daemon
-    if(YES != [xpcDaemonClient importRules:archivedRules userOnly:userOnlyImport])
-    {
-        //bail
-        goto bail;
-    }
-    
-    //happy
-    imported = YES;
-    
-    //tell (any) windows rules changed
-    [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
-    
-    //show alert
-    showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"Imported %ld rules",@"Imported %ld rules"), count], nil, @[NSLocalizedString(@"OK", @"OK")]);
-    
+
+    //capture count for use inside async completion
+    NSUInteger finalCount = count;
+
+    //send to daemon (async)
+    [xpcDaemonClient importRules:archivedRules userOnly:userOnlyImport completion:^(BOOL imported) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(imported)
+            {
+                //tell (any) windows rules changed
+                [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
+
+                //show alert
+                showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"Imported %ld rules",@"Imported %ld rules"), finalCount], nil, @[NSLocalizedString(@"OK", @"OK")]);
+            }
+            if(completion) completion(imported);
+        });
+    }];
+
+    return;
+
 bail:
-    
-    return imported;
+
+    if(completion) completion(NO);
+    return;
 }
 
-//cleanup rules
--(NSInteger)cleanupRules
+//cleanup rules (async)
+-(void)cleanupRulesWithCompletion:(void(^)(NSInteger))completion
 {
-    //result
-    NSInteger cleanedUp = -1;
-    
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked", __PRETTY_FUNCTION__);
-    
+
     //first show rules
     [self showRules];
-    
-    //show alert
-    // if user cancels, just bail
+
+    //show alert — if user cancels, just bail
     if(NSAlertSecondButtonReturn == showAlert(NSAlertStyleInformational, NSLocalizedString(@"Clean up rules referencing deleted, expired, or terminated items?", @"Clean up rules referencing deleted, expired, or terminated items?"), nil, @[NSLocalizedString(@"OK",@"OK"), NSLocalizedString(@"Cancel",@"Cancel")]))
     {
         //dbg msg
         os_log_debug(logHandle, "user cancelled rule cleanup");
-        
+
         //not an error though
-        cleanedUp = 0;
-        
-        //bail
-        goto bail;
+        if(completion) completion(0);
+        return;
     }
-    
-    //call into daemon to cleanup
-    // returns number or deleted rules
-    cleanedUp = [xpcDaemonClient cleanupRules:YES];
-    if(cleanedUp < 0)
-    {
-        //bail
-        goto bail;
-    }
-    
-    //tell (any) windows rules changed
-    [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
-    
-    //share results w/ user
-    showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"Cleaned up %ld rules",@"Cleaned up %ld rules"), cleanedUp], nil, @[NSLocalizedString(@"OK",@"OK")]);
-    
-bail:
-    
-    return cleanedUp;
+
+    //call into daemon to cleanup (async)
+    // returns number of deleted rules (-1 on XPC error)
+    [xpcDaemonClient cleanupRules:YES completion:^(NSInteger cleanedUp) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(cleanedUp >= 0)
+            {
+                //tell (any) windows rules changed
+                [[NSNotificationCenter defaultCenter] postNotificationName:RULES_CHANGED object:nil userInfo:nil];
+
+                //share results w/ user
+                showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"Cleaned up %ld rules",@"Cleaned up %ld rules"), cleanedUp], nil, @[NSLocalizedString(@"OK",@"OK")]);
+            }
+            if(completion) completion(cleanedUp);
+        });
+    }];
 }
 
 @end

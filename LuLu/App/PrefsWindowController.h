@@ -92,6 +92,12 @@
 //selected profile
 @property(nonatomic, retain)NSString* selectedProfile;
 
+//current profile (cached; used by table-view delegate to avoid blocking XPC per row)
+@property(nonatomic, retain)NSString* currentProfile;
+
+//added view
+@property (nonatomic) BOOL viewWasAdded;
+
 //add profile sheet
 @property (strong) IBOutlet NSPanel* addProfileSheet;
 
@@ -139,9 +145,6 @@ enum profileViews
 
 //update window controller
 @property(nonatomic, retain)UpdateWindowController* updateWindowController;
-
-//added view
-@property (nonatomic) BOOL viewWasAdded;
 
 
 /* METHODS */

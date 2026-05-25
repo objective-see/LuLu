@@ -137,17 +137,30 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "function '%s' invoked", __PRETTY_FUNCTION__);
     
-    //tell ext. to uninstall
-    // remove rules, etc, etc
-    if(YES != [xpcDaemonClient uninstall])
+    //tell ext. to uninstall — remove rules, etc.
+    // NOTE: this MUST complete before we delete the app bundle (which contains
+    // the daemon binary), so we block on the async call here. The wait is
+    // bounded; on XPC error the proxy's error handler signals immediately.
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: daemon's XPC uninstall logic");
-        
-        //set flag
-        errors = YES;
-        
-        //but continue onwards
+        __block BOOL uninstalled = NO;
+        dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+        [xpcDaemonClient uninstall:^(BOOL result) {
+            uninstalled = result;
+            dispatch_semaphore_signal(sem);
+        }];
+        //wait up to 10s (daemon may need to flush rules to disk)
+        dispatch_semaphore_wait(sem, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)));
+
+        if(YES != uninstalled)
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: daemon's XPC uninstall logic");
+
+            //set flag
+            errors = YES;
+
+            //but continue onwards
+        }
     }
     
     //first, remove login item
