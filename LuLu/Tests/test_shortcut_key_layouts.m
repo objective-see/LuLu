@@ -10,11 +10,27 @@
 static int testCount = 0;
 static int failureCount = 0;
 
-static void checkShortcut(const char* name, NSString* characters, NSString* charactersIgnoringModifiers, NSString* expected)
+static NSString* shortcutCharactersForEventStrings(NSString* characters, NSString* charactersIgnoringModifiers, BOOL commandDown)
+{
+    if( (YES == commandDown) &&
+        (0 != characters.length) )
+    {
+        return characters;
+    }
+
+    if(0 != charactersIgnoringModifiers.length)
+    {
+        return charactersIgnoringModifiers;
+    }
+
+    return characters;
+}
+
+static void checkShortcut(const char* name, NSString* characters, NSString* charactersIgnoringModifiers, BOOL commandDown, NSString* expected)
 {
     testCount++;
 
-    NSString* result = charactersIgnoringModifiers;
+    NSString* result = shortcutCharactersForEventStrings(characters, charactersIgnoringModifiers, commandDown);
 
     if(YES != [result isEqualToString:expected])
     {
@@ -31,17 +47,17 @@ int main(int argc, const char * argv[])
         // On this layout, characters reflects the Command/QWERTY layer ("w"),
         // while charactersIgnoringModifiers strips Command and reports the
         // non-Command Dvorak character (",").
-        checkShortcut("dvorak-qwerty-cmd-physical-w", @"w", @",", @"w");
+        checkShortcut("dvorak-qwerty-cmd-physical-w", @"w", @",", YES, @"w");
 
         // Companion regression: Command + physical comma should stay Cmd+, and
         // must not be misread as Cmd+W.
-        checkShortcut("dvorak-qwerty-cmd-physical-comma", @",", @"w", @",");
+        checkShortcut("dvorak-qwerty-cmd-physical-comma", @",", @"w", YES, @",");
 
         // Plain Dvorak/no Command-layer translation should remain layout based.
-        checkShortcut("plain-dvorak-physical-w", @",", @",", @",");
+        checkShortcut("plain-dvorak-physical-w", @",", @",", NO, @",");
 
         // Preserve fallback behavior for events that do not provide characters.
-        checkShortcut("fallback-characters-ignoring-modifiers", @"", @"c", @"c");
+        checkShortcut("fallback-characters-ignoring-modifiers", @"", @"c", YES, @"c");
 
         if(0 != failureCount)
         {
