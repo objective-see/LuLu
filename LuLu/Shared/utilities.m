@@ -1946,18 +1946,12 @@ BOOL parseAddressRange(NSString* spec, int* family, uint8_t* lo, uint8_t* hi, in
         else if((1 == inet_pton(AF_INET6, aStr.UTF8String, a)) && (1 == inet_pton(AF_INET6, bStr.UTF8String, b))) { fam = AF_INET6; len = 16; }
         else goto bail;
 
-        //order lo <= hi
+        //require lo <= hi
         // note: network byte order is big-endian, so memcmp gives correct numeric ordering
-        if(memcmp(a, b, len) <= 0)
-        {
-            memcpy(lo, a, len);
-            memcpy(hi, b, len);
-        }
-        else
-        {
-            memcpy(lo, b, len);
-            memcpy(hi, a, len);
-        }
+        if(memcmp(a, b, len) > 0) goto bail;
+        
+        memcpy(lo, a, len);
+        memcpy(hi, b, len);
 
         //done
         *family = fam;

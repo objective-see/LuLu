@@ -11,6 +11,8 @@
 #import "utilities.h"
 #import "AddRuleWindowController.h"
 
+#import <arpa/inet.h>
+
 /* GLOBALS */
 
 //log handle
@@ -44,11 +46,12 @@ extern os_log_t logHandle;
         self.path.stringValue = self.rule.path;
         
         //endpoint addr
-        self.endpointAddr.stringValue = self.rule.endpointAddr;
+        self.endpointAddr.stringValue = (0 != self.rule.endpointAddrDisplay.length) ? self.rule.endpointAddrDisplay : self.rule.endpointAddr;
         
         //regex button
-        // note: cidr/glob rules show their string with the box unchecked
-        if(EndpointTypeRegex == self.rule.isEndpointAddrRegex)
+        // note: generated wildcard regex rules show their friendly string with the box unchecked
+        if( (EndpointTypeRegex == self.rule.isEndpointAddrRegex) &&
+            (EndpointInputKindGlob != self.rule.endpointInputKind.integerValue) )
         {
             //on
             self.isEndpointAddrRegex.state = NSControlStateValueOn;
@@ -249,6 +252,61 @@ bail:
     return [NSString stringWithFormat:@"^%@$", [escaped componentsJoinedByString:@".*"]];
 }
 
+//is string an IP address literal?
+-(BOOL)isIPAddressLiteral:(NSString*)input
+{
+    //address bytes
+    uint8_t address[16] = {0};
+    
+    //empty?
+    if(0 == input.length) {
+        return NO;
+    }
+    
+    //IPv4/IPv6?
+    return ( (1 == inet_pton(AF_INET, input.UTF8String, address)) ||
+             (1 == inet_pton(AF_INET6, input.UTF8String, address)) );
+}
+
+//does input look like an intended IP range?
+// used after range parsing fails, to avoid treating malformed ranges as exact hostnames
+-(BOOL)looksLikeIPRange:(NSString*)input
+{
+    //dash
+    NSRange dash = {0};
+    
+    //sides
+    NSString* left = nil;
+    NSString* right = nil;
+    
+    //whitespace
+    NSCharacterSet* whitespace = nil;
+    
+    //no dash?
+    dash = [input rangeOfString:@"-"];
+    if(NSNotFound == dash.location) {
+        return NO;
+    }
+    
+    //init
+    whitespace = NSCharacterSet.whitespaceCharacterSet;
+    
+    //split
+    left = [[input substringToIndex:dash.location] stringByTrimmingCharactersInSet:whitespace];
+    right = [[input substringFromIndex:(dash.location + 1)] stringByTrimmingCharactersInSet:whitespace];
+    
+    //empty side?
+    if( (0 == left.length) ||
+        (0 == right.length) )
+    {
+        return NO;
+    }
+    
+    //range-like if either side is already a valid IP literal
+    return ( (YES == [self isIPAddressLiteral:left]) ||
+             (YES == [self isIPAddressLiteral:right]) );
+}
+
 //'add' button handler
 // close sheet, returning NSModalResponseOK
 -(IBAction)addButtonHandler:(id)sender
@@ -267,6 +325,18 @@ bail:
     
     //(remote) endpoint addr
     NSString* endpointAddr = nil;
+    
+    //(remote) endpoint addr, as entered/displayed
+    NSString* endpointAddrDisplay = nil;
+    
+    //(remote) endpoint technical matcher
+    NSString* endpointAddrMatcher = nil;
+    
+    //endpoint input kind
+    NSNumber* endpointInputKind = nil;
+    
+    //normalized endpoint input
+    NSString* endpointInputNormalized = nil;
     
     //endpoint addr match type {exact, regex, cidr}
     NSNumber* endpointAddrRegex = nil;
@@ -331,7 +401,11 @@ bail:
     
     //endpoint addr
     // or '*' if blank
-    endpointAddr = (0 != self.endpointAddr.stringValue.length) ? self.endpointAddr.stringValue : VALUE_ANY;
+    endpointAddrDisplay = (0 != self.endpointAddr.stringValue.length) ? self.endpointAddr.stringValue : VALUE_ANY;
+    endpointAddr = endpointAddrDisplay;
+    endpointAddrMatcher = NSLocalizedString(@"Exact", @"Exact");
+    endpointInputKind = @(EndpointInputKindExact);
+    endpointInputNormalized = endpointAddrDisplay;
     
     //determine endpoint addr match type {exact, regex, cidr}
     EndpointType endpointType = EndpointTypeExact;
@@ -342,6 +416,8 @@ bail:
     {
         //regex
         endpointType = EndpointTypeRegex;
+        endpointAddrMatcher = [NSString stringWithFormat:NSLocalizedString(@"Regex: %@", @"Regex: %@"), endpointAddr];
+        endpointInputKind = @(EndpointInputKindRegex);
 
         //validate
         if(nil == [NSRegularExpression regularExpressionWithPattern:endpointAddr options:0 error:&error])
@@ -365,6 +441,8 @@ bail:
 
             //convert glob -> anchored regex
             endpointAddr = [self regexFromGlob:endpointAddr];
+            endpointAddrMatcher = [NSString stringWithFormat:NSLocalizedString(@"Generated regex: %@", @"Generated regex: %@"), endpointAddr];
+            endpointInputKind = @(EndpointInputKindGlob);
 
             //regex
             endpointType = EndpointTypeRegex;
@@ -381,6 +459,18 @@ bail:
 
             //cidr
             endpointType = EndpointTypeCIDR;
+            
+            //matcher metadata
+            if(NSNotFound != [endpointAddr rangeOfString:@"/"].location)
+            {
+                endpointAddrMatcher = NSLocalizedString(@"CIDR", @"CIDR");
+                endpointInputKind = @(EndpointInputKindCIDR);
+            }
+            else
+            {
+                endpointAddrMatcher = NSLocalizedString(@"IP range", @"IP range");
+                endpointInputKind = @(EndpointInputKindRange);
+            }
         }
         //looks like a CIDR ('/') but didn't parse?
         // reject (rather than silently storing a dead exact-match rule)
@@ -388,6 +478,16 @@ bail:
         {
             //show alert
             showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: invalid CIDR", @"ERROR: invalid CIDR"), [NSString stringWithFormat:NSLocalizedString(@"%@ is not a valid CIDR (e.g. 192.168.1.0/24)", @"%@ is not a valid CIDR (e.g. 192.168.1.0/24)"), endpointAddr], @[NSLocalizedString(@"OK", @"OK")]);
+
+            //bail
+            goto bail;
+        }
+        //looks like an IP range, but didn't parse?
+        // reject obvious range input rather than storing a dead exact-match rule
+        else if(YES == [self looksLikeIPRange:endpointAddr])
+        {
+            //show alert
+            showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: invalid IP range", @"ERROR: invalid IP range"), [NSString stringWithFormat:NSLocalizedString(@"%@ is not a valid IP range (e.g. 1.2.3.4 - 23.3.4.6)", @"%@ is not a valid IP range (e.g. 1.2.3.4 - 23.3.4.6)"), endpointAddr], @[NSLocalizedString(@"OK", @"OK")]);
 
             //bail
             goto bail;
@@ -418,6 +518,10 @@ bail:
     self.info = @{KEY_PATH:path,
                   KEY_ENDPOINT_ADDR:endpointAddr,
                   KEY_ENDPOINT_ADDR_IS_REGEX:endpointAddrRegex,
+                  KEY_ENDPOINT_ADDR_DISPLAY:endpointAddrDisplay,
+                  KEY_ENDPOINT_ADDR_MATCHER:endpointAddrMatcher,
+                  KEY_ENDPOINT_INPUT_KIND:endpointInputKind,
+                  KEY_ENDPOINT_INPUT_NORMALIZED:endpointInputNormalized,
                   KEY_ENDPOINT_PORT:endpointPort,
                   KEY_TYPE:@RULE_TYPE_USER,
                   KEY_ACTION:action};

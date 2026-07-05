@@ -86,6 +86,12 @@ extern os_log_t logHandle;
             //endpoint addr match type {exact, regex, cidr}
             self.isEndpointAddrRegex = [info[KEY_ENDPOINT_ADDR_IS_REGEX] integerValue];
             
+            //friendly display metadata
+            self.endpointAddrDisplay = info[KEY_ENDPOINT_ADDR_DISPLAY];
+            self.endpointAddrMatcher = info[KEY_ENDPOINT_ADDR_MATCHER];
+            self.endpointInputKind = info[KEY_ENDPOINT_INPUT_KIND];
+            self.endpointInputNormalized = info[KEY_ENDPOINT_INPUT_NORMALIZED];
+            
             //init port
             // nil? default to all ('*')
             self.endpointPort = (nil != info[KEY_ENDPOINT_PORT]) ? info[KEY_ENDPOINT_PORT] : VALUE_ANY;
@@ -295,6 +301,10 @@ extern os_log_t logHandle;
         // note: legacy archives stored a bool here (0/1); decodeInteger reads those cleanly
         self.isEndpointAddrRegex = [decoder decodeIntegerForKey:NSStringFromSelector(@selector(isEndpointAddrRegex))];
         self.endpointAddr = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointAddr))];
+        self.endpointAddrDisplay = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointAddrDisplay))];
+        self.endpointAddrMatcher = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointAddrMatcher))];
+        self.endpointInputKind = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(endpointInputKind))];
+        self.endpointInputNormalized = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointInputNormalized))];
         self.endpointHost = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointHost))];
         self.endpointPort = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointPort))];
         
@@ -325,6 +335,10 @@ extern os_log_t logHandle;
     [encoder encodeObject:self.csInfo forKey:NSStringFromSelector(@selector(csInfo))];
     
     [encoder encodeObject:self.endpointAddr forKey:NSStringFromSelector(@selector(endpointAddr))];
+    [encoder encodeObject:self.endpointAddrDisplay forKey:NSStringFromSelector(@selector(endpointAddrDisplay))];
+    [encoder encodeObject:self.endpointAddrMatcher forKey:NSStringFromSelector(@selector(endpointAddrMatcher))];
+    [encoder encodeObject:self.endpointInputKind forKey:NSStringFromSelector(@selector(endpointInputKind))];
+    [encoder encodeObject:self.endpointInputNormalized forKey:NSStringFromSelector(@selector(endpointInputNormalized))];
     [encoder encodeObject:self.endpointHost forKey:NSStringFromSelector(@selector(endpointHost))];
     [encoder encodeObject:self.endpointPort forKey:NSStringFromSelector(@selector(endpointPort))];
     [encoder encodeInteger:self.isEndpointAddrRegex forKey:NSStringFromSelector(@selector(isEndpointAddrRegex))];
@@ -391,6 +405,9 @@ extern os_log_t logHandle;
     
     //endpoint addr/port
     if( (YES == [self.endpointAddr localizedCaseInsensitiveContainsString:match]) ||
+        (YES == [self.endpointAddrDisplay localizedCaseInsensitiveContainsString:match]) ||
+        (YES == [self.endpointAddrMatcher localizedCaseInsensitiveContainsString:match]) ||
+        (YES == [[self friendlyEndpointType] localizedCaseInsensitiveContainsString:match]) ||
         (YES == [self.endpointPort localizedCaseInsensitiveContainsString:match]) )
     {
         //match
@@ -436,6 +453,72 @@ bail:
     return [self.uuid isEqualToString:rule.uuid];
 }
 
+//friendly endpoint display value
+-(NSString*)friendlyEndpointAddr
+{
+    if(0 != self.endpointAddrDisplay.length) {
+        return self.endpointAddrDisplay;
+    }
+    
+    return (nil != self.endpointAddr) ? self.endpointAddr : VALUE_ANY;
+}
+
+//technical matcher display value
+-(NSString*)friendlyEndpointMatcher
+{
+    if(0 != self.endpointAddrMatcher.length) {
+        return self.endpointAddrMatcher;
+    }
+    
+    if(EndpointTypeRegex == self.isEndpointAddrRegex) {
+        return [NSString stringWithFormat:NSLocalizedString(@"Regex: %@", @"Regex: %@"), self.endpointAddr];
+    }
+    
+    if(EndpointTypeCIDR == self.isEndpointAddrRegex) {
+        return (NSNotFound != [self.endpointAddr rangeOfString:@"/"].location) ? NSLocalizedString(@"CIDR", @"CIDR") : NSLocalizedString(@"IP range", @"IP range");
+    }
+    
+    return NSLocalizedString(@"Exact", @"Exact");
+}
+
+//friendly endpoint type label
+-(NSString*)friendlyEndpointType
+{
+    if(nil != self.endpointInputKind)
+    {
+        switch(self.endpointInputKind.integerValue)
+        {
+            case EndpointInputKindRegex:
+                return NSLocalizedString(@"Regex", @"Regex");
+                
+            case EndpointInputKindCIDR:
+                return NSLocalizedString(@"CIDR", @"CIDR");
+                
+            case EndpointInputKindRange:
+                return NSLocalizedString(@"IP Range", @"IP Range");
+                
+            case EndpointInputKindGlob:
+                return NSLocalizedString(@"Wildcard", @"Wildcard");
+                
+            case EndpointInputKindExact:
+                return NSLocalizedString(@"Exact", @"Exact");
+                
+            default:
+                break;
+        }
+    }
+    
+    if(EndpointTypeRegex == self.isEndpointAddrRegex) {
+        return NSLocalizedString(@"Regex", @"Regex");
+    }
+    
+    if(EndpointTypeCIDR == self.isEndpointAddrRegex) {
+        return (NSNotFound != [self.endpointAddr rangeOfString:@"/"].location) ? NSLocalizedString(@"CIDR", @"CIDR") : NSLocalizedString(@"IP Range", @"IP Range");
+    }
+    
+    return NSLocalizedString(@"Exact", @"Exact");
+}
+
 //override description method
 // allows rules to be 'pretty-printed'
 -(NSString*)description
@@ -462,7 +545,7 @@ bail:
     }
     
     //just serialize
-    return [NSString stringWithFormat:@"RULE: pid: %@, path: %@, name: %@, endpoint addr: %@, endpoint port: %@, action: %@, type: %@, disabled: %@, creation: %@, expiration: %@", pid, self.path, self.name, self.endpointAddr, self.endpointPort, self.action, self.type, isDisabled, self.creation, expiration];
+    return [NSString stringWithFormat:@"RULE: pid: %@, path: %@, name: %@, endpoint addr: %@, endpoint display: %@, endpoint matcher: %@, endpoint port: %@, action: %@, type: %@, disabled: %@, creation: %@, expiration: %@", pid, self.path, self.name, self.endpointAddr, self.endpointAddrDisplay, self.endpointAddrMatcher, self.endpointPort, self.action, self.type, isDisabled, self.creation, expiration];
 }
 
 //covert rule to dictionary
@@ -511,6 +594,29 @@ bail:
     if(nil != escaped)
     {
         [json appendFormat:@"\"%@\" : %@,", NSStringFromSelector(@selector(endpointAddr)), escaped];
+    }
+    
+    escaped = toEscapedJSON(self.endpointAddrDisplay);
+    if(nil != escaped)
+    {
+        [json appendFormat:@"\"%@\" : %@,", NSStringFromSelector(@selector(endpointAddrDisplay)), escaped];
+    }
+    
+    escaped = toEscapedJSON(self.endpointAddrMatcher);
+    if(nil != escaped)
+    {
+        [json appendFormat:@"\"%@\" : %@,", NSStringFromSelector(@selector(endpointAddrMatcher)), escaped];
+    }
+    
+    if(nil != self.endpointInputKind)
+    {
+        [json appendFormat:@"\"%@\" : %d,", NSStringFromSelector(@selector(endpointInputKind)), self.endpointInputKind.intValue];
+    }
+    
+    escaped = toEscapedJSON(self.endpointInputNormalized);
+    if(nil != escaped)
+    {
+        [json appendFormat:@"\"%@\" : %@,", NSStringFromSelector(@selector(endpointInputNormalized)), escaped];
     }
     
     if(nil != self.endpointHost)
@@ -719,6 +825,54 @@ bail:
         {
             //err msg
             os_log_error(logHandle, "ERROR: 'endpointAddr' should be a string, not %@", [self.endpointAddr class]);
+            
+            self = nil;
+            goto bail;
+        }
+        
+        self.endpointAddrDisplay = info[NSStringFromSelector(@selector(endpointAddrDisplay))];
+        if( (nil != self.endpointAddrDisplay) &&
+            (YES != [self.endpointAddrDisplay isKindOfClass:[NSString class]]) )
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'endpointAddrDisplay' should be a string, not %@", [self.endpointAddrDisplay class]);
+            
+            self = nil;
+            goto bail;
+        }
+        
+        self.endpointAddrMatcher = info[NSStringFromSelector(@selector(endpointAddrMatcher))];
+        if( (nil != self.endpointAddrMatcher) &&
+            (YES != [self.endpointAddrMatcher isKindOfClass:[NSString class]]) )
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'endpointAddrMatcher' should be a string, not %@", [self.endpointAddrMatcher class]);
+            
+            self = nil;
+            goto bail;
+        }
+        
+        self.endpointInputKind = info[NSStringFromSelector(@selector(endpointInputKind))];
+        if([self.endpointInputKind isKindOfClass:[NSString class]]) {
+            self.endpointInputKind = @([(NSString*)self.endpointInputKind integerValue]);
+        }
+        
+        if( (nil != self.endpointInputKind) &&
+            (YES != [self.endpointInputKind isKindOfClass:[NSNumber class]]) )
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'endpointInputKind' should be a number, not %@", [self.endpointInputKind class]);
+            
+            self = nil;
+            goto bail;
+        }
+        
+        self.endpointInputNormalized = info[NSStringFromSelector(@selector(endpointInputNormalized))];
+        if( (nil != self.endpointInputNormalized) &&
+            (YES != [self.endpointInputNormalized isKindOfClass:[NSString class]]) )
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'endpointInputNormalized' should be a string, not %@", [self.endpointInputNormalized class]);
             
             self = nil;
             goto bail;
