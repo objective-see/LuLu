@@ -1983,6 +1983,60 @@ BOOL addressInRange(NSString* address, int family, const uint8_t* lo, const uint
     return ((memcmp(lo, ip, length) <= 0) && (memcmp(ip, hi, length) <= 0));
 }
 
+//is a string an IP address literal?
+BOOL isIPAddressLiteral(NSString* input)
+{
+    //address bytes
+    uint8_t address[16] = {0};
+    
+    //empty?
+    if(0 == input.length) {
+        return NO;
+    }
+    
+    //IPv4/IPv6?
+    return ( (1 == inet_pton(AF_INET, input.UTF8String, address)) ||
+             (1 == inet_pton(AF_INET6, input.UTF8String, address)) );
+}
+
+//does a string look like an intended IP range?
+BOOL looksLikeIPAddressRange(NSString* input)
+{
+    //dash
+    NSRange dash = {0};
+    
+    //sides
+    NSString* left = nil;
+    NSString* right = nil;
+    
+    //whitespace
+    NSCharacterSet* whitespace = nil;
+    
+    //no dash?
+    dash = [input rangeOfString:@"-"];
+    if(NSNotFound == dash.location) {
+        return NO;
+    }
+    
+    //init
+    whitespace = NSCharacterSet.whitespaceCharacterSet;
+    
+    //split
+    left = [[input substringToIndex:dash.location] stringByTrimmingCharactersInSet:whitespace];
+    right = [[input substringFromIndex:(dash.location + 1)] stringByTrimmingCharactersInSet:whitespace];
+    
+    //empty side?
+    if( (0 == left.length) ||
+        (0 == right.length) )
+    {
+        return NO;
+    }
+    
+    //range-like if either side is already a valid IP literal
+    return ( (YES == isIPAddressLiteral(left)) ||
+             (YES == isIPAddressLiteral(right)) );
+}
+
 //is a string a valid CIDR or IP range?
 // note: a plain single IP ("1.2.3.4", "2001:db8::1") returns NO by design
 //       — those are handled as exact-match rules, not ranges

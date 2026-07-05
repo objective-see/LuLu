@@ -11,8 +11,6 @@
 #import "utilities.h"
 #import "AddRuleWindowController.h"
 
-#import <arpa/inet.h>
-
 /* GLOBALS */
 
 //log handle
@@ -252,61 +250,6 @@ bail:
     return [NSString stringWithFormat:@"^%@$", [escaped componentsJoinedByString:@".*"]];
 }
 
-//is string an IP address literal?
--(BOOL)isIPAddressLiteral:(NSString*)input
-{
-    //address bytes
-    uint8_t address[16] = {0};
-    
-    //empty?
-    if(0 == input.length) {
-        return NO;
-    }
-    
-    //IPv4/IPv6?
-    return ( (1 == inet_pton(AF_INET, input.UTF8String, address)) ||
-             (1 == inet_pton(AF_INET6, input.UTF8String, address)) );
-}
-
-//does input look like an intended IP range?
-// used after range parsing fails, to avoid treating malformed ranges as exact hostnames
--(BOOL)looksLikeIPRange:(NSString*)input
-{
-    //dash
-    NSRange dash = {0};
-    
-    //sides
-    NSString* left = nil;
-    NSString* right = nil;
-    
-    //whitespace
-    NSCharacterSet* whitespace = nil;
-    
-    //no dash?
-    dash = [input rangeOfString:@"-"];
-    if(NSNotFound == dash.location) {
-        return NO;
-    }
-    
-    //init
-    whitespace = NSCharacterSet.whitespaceCharacterSet;
-    
-    //split
-    left = [[input substringToIndex:dash.location] stringByTrimmingCharactersInSet:whitespace];
-    right = [[input substringFromIndex:(dash.location + 1)] stringByTrimmingCharactersInSet:whitespace];
-    
-    //empty side?
-    if( (0 == left.length) ||
-        (0 == right.length) )
-    {
-        return NO;
-    }
-    
-    //range-like if either side is already a valid IP literal
-    return ( (YES == [self isIPAddressLiteral:left]) ||
-             (YES == [self isIPAddressLiteral:right]) );
-}
-
 //'add' button handler
 // close sheet, returning NSModalResponseOK
 -(IBAction)addButtonHandler:(id)sender
@@ -484,7 +427,7 @@ bail:
         }
         //looks like an IP range, but didn't parse?
         // reject obvious range input rather than storing a dead exact-match rule
-        else if(YES == [self looksLikeIPRange:endpointAddr])
+        else if(YES == looksLikeIPAddressRange(endpointAddr))
         {
             //show alert
             showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: invalid IP range", @"ERROR: invalid IP range"), [NSString stringWithFormat:NSLocalizedString(@"%@ is not a valid IP range (e.g. 1.2.3.4 - 23.3.4.6)", @"%@ is not a valid IP range (e.g. 1.2.3.4 - 23.3.4.6)"), endpointAddr], @[NSLocalizedString(@"OK", @"OK")]);
