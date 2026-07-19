@@ -59,6 +59,18 @@
 //remote ip or url
 @property(nonatomic, retain)NSString* endpointAddr;
 
+//user-friendly endpoint display metadata
+@property(nonatomic, retain)NSString* endpointAddrDisplay;
+
+//technical endpoint matcher display metadata
+@property(nonatomic, retain)NSString* endpointAddrMatcher;
+
+//original endpoint input kind
+@property(nonatomic, retain)NSNumber* endpointInputKind;
+
+//normalized original endpoint input
+@property(nonatomic, retain)NSString* endpointInputNormalized;
+
 //remote host
 @property(nonatomic, retain)NSString* endpointHost;
 
@@ -126,6 +138,15 @@
 
 //check if a numeric IP string falls within this rule's (cached) CIDR/range endpoint
 -(BOOL)endpointAddrInRange:(NSString*)address;
+
+//friendly endpoint display value
+-(NSString*)friendlyEndpointAddr;
+
+//technical matcher display value
+-(NSString*)friendlyEndpointMatcher;
+
+//friendly endpoint type label
+-(NSString*)friendlyEndpointType;
 
 //covert to dictionary
 -(NSMutableString*)toJSON;

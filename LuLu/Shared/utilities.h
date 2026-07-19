@@ -135,4 +135,7 @@ BOOL addressInRange(NSString* address, int family, const uint8_t* lo, const uint
 //is a string a valid CIDR or IP range?
 BOOL isAddressRange(NSString* spec);
 
+//does a string look like an intended IP range?
+BOOL looksLikeIPAddressRange(NSString* input);
+
 #endif

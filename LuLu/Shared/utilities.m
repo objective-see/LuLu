@@ -1946,18 +1946,12 @@ BOOL parseAddressRange(NSString* spec, int* family, uint8_t* lo, uint8_t* hi, in
         else if((1 == inet_pton(AF_INET6, aStr.UTF8String, a)) && (1 == inet_pton(AF_INET6, bStr.UTF8String, b))) { fam = AF_INET6; len = 16; }
         else goto bail;
 
-        //order lo <= hi
+        //require lo <= hi
         // note: network byte order is big-endian, so memcmp gives correct numeric ordering
-        if(memcmp(a, b, len) <= 0)
-        {
-            memcpy(lo, a, len);
-            memcpy(hi, b, len);
-        }
-        else
-        {
-            memcpy(lo, b, len);
-            memcpy(hi, a, len);
-        }
+        if(memcmp(a, b, len) > 0) goto bail;
+        
+        memcpy(lo, a, len);
+        memcpy(hi, b, len);
 
         //done
         *family = fam;
@@ -1987,6 +1981,60 @@ BOOL addressInRange(NSString* address, int family, const uint8_t* lo, const uint
 
     //lo <= ip <= hi ?
     return ((memcmp(lo, ip, length) <= 0) && (memcmp(ip, hi, length) <= 0));
+}
+
+//is a string an IP address literal?
+BOOL isIPAddressLiteral(NSString* input)
+{
+    //address bytes
+    uint8_t address[16] = {0};
+    
+    //empty?
+    if(0 == input.length) {
+        return NO;
+    }
+    
+    //IPv4/IPv6?
+    return ( (1 == inet_pton(AF_INET, input.UTF8String, address)) ||
+             (1 == inet_pton(AF_INET6, input.UTF8String, address)) );
+}
+
+//does a string look like an intended IP range?
+BOOL looksLikeIPAddressRange(NSString* input)
+{
+    //dash
+    NSRange dash = {0};
+    
+    //sides
+    NSString* left = nil;
+    NSString* right = nil;
+    
+    //whitespace
+    NSCharacterSet* whitespace = nil;
+    
+    //no dash?
+    dash = [input rangeOfString:@"-"];
+    if(NSNotFound == dash.location) {
+        return NO;
+    }
+    
+    //init
+    whitespace = NSCharacterSet.whitespaceCharacterSet;
+    
+    //split
+    left = [[input substringToIndex:dash.location] stringByTrimmingCharactersInSet:whitespace];
+    right = [[input substringFromIndex:(dash.location + 1)] stringByTrimmingCharactersInSet:whitespace];
+    
+    //empty side?
+    if( (0 == left.length) ||
+        (0 == right.length) )
+    {
+        return NO;
+    }
+    
+    //range-like if either side is already a valid IP literal
+    return ( (YES == isIPAddressLiteral(left)) ||
+             (YES == isIPAddressLiteral(right)) );
 }
 
 //is a string a valid CIDR or IP range?

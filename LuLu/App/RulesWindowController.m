@@ -1287,8 +1287,8 @@ bail:
     //endpoint addr
     NSString* address = nil;
     
-    //item cell
-    //NSTableCellView* cell = nil;
+    //matcher details
+    NSString* matcher = nil;
     
     //contents
     NSMutableString* contents = nil;
@@ -1299,31 +1299,43 @@ bail:
     //date formatter
     static NSDateFormatter *dateFormatter = nil;
     
+    //detail text field
+    NSTextField* details = nil;
+    
     //cell
     CustomTableCellView *cell = (CustomTableCellView *)[self.outlineView makeViewWithIdentifier:@"simpleCell" owner:self];
+    
+    //grab details
+    details = (NSTextField*)[cell viewWithTag:TABLE_ROW_SUB_TEXT];
     
     //disabled?
     // set flag (for highlighting) and color
     cell.isDisabled = rule.isDisabled.boolValue;
     if (rule.isDisabled.boolValue) {
         cell.textField.textColor = NSColor.disabledControlTextColor;
+        details.textColor = NSColor.disabledControlTextColor;
     } else {
         cell.textField.textColor = NSColor.controlTextColor;
+        details.textColor = NSColor.secondaryLabelColor;
     }
     
     //reset text
     ((NSTableCellView*)cell).textField.stringValue = @"";
     ((NSTableCellView*)cell).textField.attributedStringValue = [[NSAttributedString alloc] initWithString:@""];
+    details.stringValue = @"";
     
     //set endpoint addr
-    address = (YES == [rule.endpointAddr isEqualToString:VALUE_ANY]) ? NSLocalizedString(@"any address",@"any address") : rule.endpointAddr;
+    address = (YES == [[rule friendlyEndpointAddr] isEqualToString:VALUE_ANY]) ? NSLocalizedString(@"any address",@"any address") : [rule friendlyEndpointAddr];
     
     //set endpoint port
     port = (YES == [rule.endpointPort isEqualToString:VALUE_ANY]) ? NSLocalizedString(@"any port",@"any port") : rule.endpointPort;
     
     //default contents
-    // address: port
-    contents = [NSMutableString stringWithFormat:@"%@:%@", address, port];
+    // type | address: port
+    contents = [NSMutableString stringWithFormat:@"%@ | %@:%@", [rule friendlyEndpointType], address, port];
+    
+    //matcher details
+    matcher = [NSString stringWithFormat:NSLocalizedString(@"Matcher: %@", @"Matcher: %@"), [rule friendlyEndpointMatcher]];
     
     //in "recents" view, add creation timestamp
     if(RULE_TYPE_RECENT == self.selectedRuleView)
@@ -1343,6 +1355,11 @@ bail:
 
     //set text
     cell.textField.stringValue = contents;
+    cell.textField.toolTip = contents;
+    
+    //set detail text
+    details.stringValue = matcher;
+    details.toolTip = matcher;
     
     return cell;
 }

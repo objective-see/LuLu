@@ -1479,6 +1479,9 @@
     "%@ is not a valid CIDR (e.g. 192.168.1.0/24)" : {
       "comment" : "%@ is not a valid CIDR (e.g. 192.168.1.0/24)"
     },
+    "%@ is not a valid IP range (e.g. 1.2.3.4 - 23.3.4.6)" : {
+      "comment" : "%@ is not a valid IP range (e.g. 1.2.3.4 - 23.3.4.6)"
+    },
     "%@ is not a valid regular expression\r\ndetails: %@" : {
       "comment" : "%@ is not a valid regular expression\r\ndetails: %@",
       "localizations" : {
@@ -3719,6 +3722,9 @@
         }
       }
     },
+    "CIDR" : {
+      "comment" : "CIDR"
+    },
     "Clean up rules referencing deleted, expired, or terminated items?" : {
       "comment" : "Clean up rules referencing deleted, expired, or terminated items?",
       "localizations" : {
@@ -5729,6 +5735,9 @@
     "ERROR: invalid CIDR" : {
       "comment" : "ERROR: invalid CIDR"
     },
+    "ERROR: invalid IP range" : {
+      "comment" : "ERROR: invalid IP range"
+    },
     "ERROR: invalid path" : {
       "comment" : "ERROR: invalid path",
       "localizations" : {
@@ -6036,6 +6045,9 @@
           }
         }
       }
+    },
+    "Exact" : {
+      "comment" : "Exact"
     },
     "Extensions must be manually approved via System Settings (General > Login Items & Extensions > Network Extensions)." : {
       "comment" : "Extensions must be manually approved via System Settings (General > Login Items & Extensions > Network Extensions).",
@@ -6499,6 +6511,9 @@
         }
       }
     },
+    "Generated regex: %@" : {
+      "comment" : "Generated regex: %@"
+    },
     "Global Rules apply to all paths" : {
       "comment" : "Global Rules apply to all paths",
       "localizations" : {
@@ -6806,6 +6821,12 @@
           }
         }
       }
+    },
+    "IP range" : {
+      "comment" : "IP range"
+    },
+    "IP Range" : {
+      "comment" : "IP Range"
     },
     "is connecting to %@" : {
       "comment" : "is connecting to %@",
@@ -7209,6 +7230,9 @@
           }
         }
       }
+    },
+    "Matcher: %@" : {
+      "comment" : "Matcher: %@"
     },
     "More Info" : {
       "comment" : "More Info",
@@ -9056,6 +9080,12 @@
         }
       }
     },
+    "Regex" : {
+      "comment" : "Regex"
+    },
+    "Regex: %@" : {
+      "comment" : "Regex: %@"
+    },
     "Reverse Domain: %@" : {
       "comment" : "Reverse Domain %@",
       "localizations" : {
@@ -10175,6 +10205,9 @@
           }
         }
       }
+    },
+    "Wildcard" : {
+      "comment" : "Wildcard"
     }
   },
   "version" : "1.0"

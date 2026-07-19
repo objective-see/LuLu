@@ -31,6 +31,17 @@ typedef NS_ENUM(NSInteger, EndpointType) {
     EndpointTypeCIDR  = 2,
 };
 
+//endpoint input kind
+// used only for display/import-export metadata; matching still uses EndpointType
+typedef NS_ENUM(NSInteger, EndpointInputKind) {
+    EndpointInputKindExact = 0,
+    EndpointInputKindRegex = 1,
+    EndpointInputKindCIDR = 2,
+    EndpointInputKindRange = 3,
+    EndpointInputKindGlob = 4,
+    EndpointInputKindUnknown = 99,
+};
+
 //patreon url
 #define PATREON_URL @"https://www.patreon.com/join/objective_see"
 
@@ -338,6 +349,10 @@ typedef NS_ENUM(NSInteger, EndpointType) {
 #define KEY_ENDPOINT_PORT @"endpointPort"
 
 #define KEY_ENDPOINT_ADDR_IS_REGEX @"endpointAddrIsRegex"
+#define KEY_ENDPOINT_ADDR_DISPLAY @"endpointAddrDisplay"
+#define KEY_ENDPOINT_ADDR_MATCHER @"endpointAddrMatcher"
+#define KEY_ENDPOINT_INPUT_KIND @"endpointInputKind"
+#define KEY_ENDPOINT_INPUT_NORMALIZED @"endpointInputNormalized"
 
 #define KEY_UUID @"uuid"
 #define KEY_PROCESS_ID @"pid"
