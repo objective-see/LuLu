@@ -2042,18 +2042,6 @@
         }
       }
     },
-    "W1a-fb-JYO.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Process (+ descendants)\"; ObjectID = \"W1a-fb-JYO\";",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Process (+ descendants)"
-          }
-        }
-      }
-    },
     "W18-Ba-X7J.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Block\"; ObjectID = \"W18-Ba-X7J\";",
       "extractionState" : "extracted_with_value",

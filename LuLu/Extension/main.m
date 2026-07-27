@@ -78,34 +78,14 @@ int main(int argc, char *argv[])
     [rules prepare];
     
     //load rules
-    // if this fails, falls back to (re)generating default rules
+    // if this fails, bail so we don't mask the issue or overwrite the user's rules
     if(YES != [rules load])
     {
         //err msg
-        os_log_error(logHandle, "ERROR: failed to load rules from %{public}@ ...will defaulting back to defualt rules", RULES_FILE);
+        os_log_error(logHandle, "ERROR: failed to load rules from %{public}@ ...will exit", RULES_FILE);
         
-        //generate default rules
-        if(YES != [rules generateDefaultRules])
-        {
-            //err msg
-            os_log_error(logHandle, "ERROR: failed to generate default rules");
-            
-            //bail
-            goto bail;
-        }
-        
-        //save
-        [rules save];
-        
-        //(re)load rules
-        if(YES != [rules load]) {
-            
-            //err msg
-            os_log_error(logHandle, "ERROR: failed again to load rules from %{public}@ ...will exit!", RULES_FILE);
-            
-            //bail
-            goto bail;
-        }
+        //bail
+        goto bail;
     }
     
     //allow list?
