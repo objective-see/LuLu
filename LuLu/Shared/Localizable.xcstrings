@@ -7210,6 +7210,9 @@
         }
       }
     },
+    "LuLu's system extension update will complete after your Mac restarts." : {
+      "comment" : "LuLu's system extension update will complete after your Mac restarts."
+    },
     "More Info" : {
       "comment" : "More Info",
       "localizations" : {
@@ -9055,6 +9058,9 @@
           }
         }
       }
+    },
+    "Restart Required" : {
+      "comment" : "Restart Required"
     },
     "Reverse Domain: %@" : {
       "comment" : "Reverse Domain %@",

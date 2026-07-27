@@ -202,6 +202,28 @@ XPCDaemonClient* xpcDaemonClient = nil;
                     //dbg msg
                     os_log_debug(logHandle, "extension 'activate' returned");
                     
+                    //restart required?
+                    if( (nil != error) &&
+                        (YES == [error.domain isEqualToString:@BUNDLE_ID]) &&
+                        (OSSystemExtensionRequestWillCompleteAfterReboot == error.code) )
+                    {
+                        //dbg msg
+                        os_log(logHandle, "system extension update requires a restart");
+                        
+                        //show alert on main thread
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            //show alert
+                            showAlert(NSAlertStyleInformational, NSLocalizedString(@"Restart Required", @"Restart Required"), NSLocalizedString(@"LuLu's system extension update will complete after your Mac restarts.", @"LuLu's system extension update will complete after your Mac restarts."), @[NSLocalizedString(@"OK", @"OK")]);
+                            
+                            //exit
+                            [NSApplication.sharedApplication terminate:self];
+                            
+                        });
+                        
+                        return;
+                    }
+                    
                     //error
                     if(error)
                     {

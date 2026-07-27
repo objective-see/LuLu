@@ -260,8 +260,22 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked with %{public}@, %ld", __PRETTY_FUNCTION__, request, (long)result);
    
+    //request will complete after reboot?
+    if(OSSystemExtensionRequestWillCompleteAfterReboot == result)
+    {
+        //log msg
+        os_log(logHandle, "system extension request will complete after reboot");
+        
+        //set error
+        error = [NSError errorWithDomain:@BUNDLE_ID
+                                    code:result
+                                userInfo:@{
+                                    NSLocalizedDescriptionKey: @"System extension request will complete after reboot",
+                                    NSLocalizedFailureReasonErrorKey: @"The system extension is not active until after the next restart",
+        }];
+    }
     //issue/error?
-    if(OSSystemExtensionRequestCompleted != result)
+    else if(OSSystemExtensionRequestCompleted != result)
     {
         //err msg
         os_log_error(logHandle, "ERROR: result %ld is an unexpected result for system extension request", (long)result);

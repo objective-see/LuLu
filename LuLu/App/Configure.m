@@ -58,6 +58,14 @@ extern XPCDaemonClient* xpcDaemonClient;
     //dbg msg
     os_log_debug(logHandle, "function '%s' invoked", __PRETTY_FUNCTION__);
     
+    //disable network filter
+    // ensures the provider stops before replacing the app/extension bundle
+    if(YES != [[[Extension alloc] init] toggleNetworkExtension:ACTION_DEACTIVATE])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "network filter was not deactivated before install/upgrade");
+    }
+    
     //quit any running LuLu
     // leave the system extension registered (this is an install/upgrade)
     [self quit:NO];

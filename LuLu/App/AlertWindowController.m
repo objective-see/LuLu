@@ -317,6 +317,9 @@ extern NSMutableDictionary* alerts;
         self.ruleDurationCustom.enabled = YES;
     }
 
+    //disable process descendants rule scope
+    [self.actionScope itemAtIndex:1].enabled = NO;
+    
     //set rule scope
     // ...based on last one
     [self.actionScope selectItemAtIndex:[preferences[PREF_ALERT_LAST_RULE_SCOPE] integerValue]];
