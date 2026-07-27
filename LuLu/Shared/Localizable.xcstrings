@@ -6905,8 +6905,8 @@
       },
       "shouldTranslate" : false
     },
-    "LuLu could not communicate with its system extension. If you just updated LuLu, restart your Mac to complete the update." : {
-      "comment" : "LuLu could not communicate with its system extension. If you just updated LuLu, restart your Mac to complete the update."
+    "LuLu could not communicate with its system extension. A restart might fix this!" : {
+      "comment" : "LuLu could not communicate with its system extension. A restart might fix this!"
     },
     "LuLu must run from within /Applications\r\n" : {
       "comment" : "LuLu must run from within /Applications\r\n",
