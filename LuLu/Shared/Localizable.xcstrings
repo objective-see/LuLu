@@ -6422,6 +6422,9 @@
         }
       }
     },
+    "Failed to Connect to LuLu's Extension" : {
+      "comment" : "Failed to Connect to LuLu's Extension"
+    },
     "Full URL: %@" : {
       "comment" : "Full URL: %@",
       "localizations" : {
@@ -6901,6 +6904,9 @@
         }
       },
       "shouldTranslate" : false
+    },
+    "LuLu could not communicate with its system extension. If you just updated LuLu, restart your Mac to complete the update." : {
+      "comment" : "LuLu could not communicate with its system extension. If you just updated LuLu, restart your Mac to complete the update."
     },
     "LuLu must run from within /Applications\r\n" : {
       "comment" : "LuLu must run from within /Applications\r\n",

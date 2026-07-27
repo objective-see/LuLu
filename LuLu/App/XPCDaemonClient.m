@@ -22,9 +22,16 @@ extern os_log_t logHandle;
 //alert (windows)
 extern NSMutableDictionary* alerts;
 
+@interface XPCDaemonClient ()
+
+@property(atomic, assign)BOOL reportedXPCConnectionError;
+
+@end
+
 @implementation XPCDaemonClient
 
 @synthesize daemon;
+@synthesize reportedXPCConnectionError;
 
 //init
 // create XPC connection & set remote obj interface
@@ -54,6 +61,31 @@ extern NSMutableDictionary* alerts;
     return self;
 }
 
+//handle XPC error
+// show user a one-time alert so failures don't look like wiped settings/rules
+-(void)handleXPCError:(NSError*)proxyError method:(const char*)method
+{
+    //err msg
+    os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", method, proxyError);
+    
+    //already reported?
+    if(YES == self.reportedXPCConnectionError) {
+        return;
+    }
+    
+    //set
+    self.reportedXPCConnectionError = YES;
+    
+    //show alert on main thread
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        //show alert
+        showAlert(NSAlertStyleWarning, NSLocalizedString(@"Failed to Connect to LuLu's Extension", @"Failed to Connect to LuLu's Extension"), NSLocalizedString(@"LuLu could not communicate with its system extension. A restart might fix this!", @"LuLu could not communicate with its system extension. A restart might fix this!"), @[NSLocalizedString(@"OK", @"OK")]);
+    });
+    
+    return;
+}
+
 //get preferences
 // note: synchronous, will block until daemon responds
 -(NSDictionary*)getPreferences
@@ -66,8 +98,8 @@ extern NSMutableDictionary* alerts;
     
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
-          //err msg
-          os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+          //handle error
+          [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
 
    }] getPreferences:^(NSDictionary* preferencesFromDaemon)
    {
@@ -95,8 +127,8 @@ extern NSMutableDictionary* alerts;
     //update prefs
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        //handle error
+        [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
           
     }] updatePreferences:preferences reply:^(NSDictionary* preferences)
     {
@@ -127,8 +159,8 @@ extern NSMutableDictionary* alerts;
     //make XPC request to get rules
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        //handle error
+        [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
         
     }] getRules:^(NSData* archivedRules)
     {
@@ -156,8 +188,8 @@ extern NSMutableDictionary* alerts;
     //make XPC request to add rule
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        //handle error
+        [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
         
     }] addRule:info];
     
@@ -173,8 +205,8 @@ extern NSMutableDictionary* alerts;
     //disable rule
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        //handle error
+        [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
         
     }] toggleRule:key rule:uuid state:state];
     
@@ -190,8 +222,8 @@ extern NSMutableDictionary* alerts;
     //delete rule
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        //handle error
+        [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
         
     }] deleteRule:key rule:uuid];
     
@@ -210,8 +242,8 @@ extern NSMutableDictionary* alerts;
     //import rules
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        //handle error
+        [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
           
     }] cleanupRules:full reply:^(NSInteger result)
     {
@@ -238,8 +270,8 @@ extern NSMutableDictionary* alerts;
     //import rules
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        //handle error
+        [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
           
     }] importRules:newRules userOnly:(BOOL)userOnly result:^(BOOL result)
     {
@@ -266,8 +298,8 @@ extern NSMutableDictionary* alerts;
     //make XPC request to get profiles
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError* proxyError)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        //handle error
+        [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
         
     }] getCurrentProfile:^(NSString* currrentProfileFromDaemon)
     {
@@ -294,8 +326,8 @@ extern NSMutableDictionary* alerts;
     //make XPC request to get profiles
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError* proxyError)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        //handle error
+        [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
         
     }] getProfiles:^(NSArray* profilesFromDaemon)
     {
@@ -319,8 +351,8 @@ extern NSMutableDictionary* alerts;
     //send XPC message to set profile
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError* proxyError)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        //handle error
+        [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
         
     }] setProfile:name reply:^(BOOL reply)
     {
@@ -347,8 +379,8 @@ extern NSMutableDictionary* alerts;
     //make XPC request to add profile
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError* proxyError)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        //handle error
+        [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
         
     }] addProfile:name preferences:preferences reply:^(BOOL reply)
     {
@@ -375,8 +407,8 @@ extern NSMutableDictionary* alerts;
     //send XPC message to delete profile
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError* proxyError)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        //handle error
+        [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
         
     }] deleteProfile:name reply:^(BOOL reply)
     {
@@ -406,8 +438,8 @@ extern NSMutableDictionary* alerts;
     //uninstall
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+        //handle error
+        [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
           
     }] uninstall:^(BOOL result)
     {
