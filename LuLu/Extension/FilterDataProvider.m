@@ -1167,7 +1167,7 @@ bail:
         }
 
         //dbg msg
-        os_log(logHandle, "related flows remaining: %lu key(s)", (unsigned long)self.relatedFlows.count);
+        os_log_debug(logHandle, "related flows remaining: %lu key(s)", (unsigned long)self.relatedFlows.count);
     }
 
     //also clean up rules whose process has exited (temp/process rules) or that have expired
