@@ -292,13 +292,9 @@ extern os_log_t logHandle;
         self.csInfo = [decoder decodeObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class]]] forKey:NSStringFromSelector(@selector(csInfo))];
         
         //endpoint addr match type {exact, regex, cidr}
-        // note: legacy archives stored a bool here (0/1), while newer archives store an integer
-        @try {
-            self.isEndpointAddrRegex = [decoder decodeIntegerForKey:NSStringFromSelector(@selector(isEndpointAddrRegex))];
-        }
-        @catch(NSException* exception) {
-            self.isEndpointAddrRegex = [decoder decodeBoolForKey:NSStringFromSelector(@selector(isEndpointAddrRegex))];
-        }
+        // note: legacy archives stored a bool here, while newer archives store an integer
+        NSNumber* endpointAddrType = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(isEndpointAddrRegex))];
+        self.isEndpointAddrRegex = endpointAddrType.integerValue;
         self.endpointAddr = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointAddr))];
         self.endpointHost = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointHost))];
         self.endpointPort = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointPort))];

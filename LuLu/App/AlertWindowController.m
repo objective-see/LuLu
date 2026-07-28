@@ -319,7 +319,7 @@ extern NSMutableDictionary* alerts;
 
     //set rule scope
     // ...based on last one
-    [self.actionScope selectItemAtIndex:[preferences[PREF_ALERT_LAST_RULE_SCOPE] integerValue]];
+    //[self.actionScope selectItemAtIndex:[preferences[PREF_ALERT_LAST_RULE_SCOPE] integerValue]];
     
     //grab last rule duration tag
     lastRuleDurationTag = [preferences[PREF_ALERT_LAST_RULE_DURATION] integerValue];
