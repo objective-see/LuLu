@@ -634,7 +634,31 @@ bail:
     
     //dbg msg
     os_log_debug(logHandle, "client not in passive mode...");
-    
+
+    //CHECK:
+    // 'allow dns traffic' pref set?
+    // really, just any UDP traffic over port 53
+    // note: checked first (before graylist, related alerts, etc.) as it's protocol/port based, so process-agnostic
+    if(YES == [preferences.preferences[PREF_ALLOW_DNS] boolValue])
+    {
+        //dbg msg
+        os_log_debug(logHandle, "'allow DNS traffic' is enabled, so checking port/protocol");
+
+        //check proto (UDP) and port (53)
+        if( (IPPROTO_UDP == ((NEFilterSocketFlow*)flow).socketProtocol) &&
+            (YES == [((NWHostEndpoint*)((NEFilterSocketFlow*)flow).remoteEndpoint).port isEqualToString:@"53"]) )
+        {
+            //dbg msg
+            os_log_debug(logHandle, "protocol is 'UDP' and port is '53', (so likely DNS traffic) ...will allow" );
+
+            //allow
+            verdict = kFlowVerdictAllow;
+
+            //done
+            goto bail;
+        }
+    }
+
     //CHECK:
     // there is related alert shown (i.e. for same process)
     // save this flow, as only want to process once user responds to first alert
@@ -813,28 +837,6 @@ bail:
         else
         {
             os_log_debug(logHandle, "%{public}@ is external, so skipping 'allow installed' check", process.path);
-        }
-    }
-    
-    //allow dns traffic pref set?
-    // really, just any UDP traffic over port 53
-    if(YES == [preferences.preferences[PREF_ALLOW_DNS] boolValue])
-    {
-        //dbg msg
-        os_log_debug(logHandle, "'allow DNS traffic' is enabled, so checking port/protocol");
-        
-        //check proto (UDP) and port (53)
-        if( (IPPROTO_UDP == ((NEFilterSocketFlow*)flow).socketProtocol) &&
-            (YES == [((NWHostEndpoint*)((NEFilterSocketFlow*)flow).remoteEndpoint).port isEqualToString:@"53"]) )
-        {
-            //dbg msg
-            os_log_debug(logHandle, "protocol is 'UDP' and port is '53', (so likely DNS traffic) ...will allow" );
-            
-            //allow
-            verdict = kFlowVerdictAllow;
-            
-            //done
-            goto bail;
         }
     }
     

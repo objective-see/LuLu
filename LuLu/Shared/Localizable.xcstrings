@@ -6813,6 +6813,9 @@
         }
       }
     },
+    "IP Address: %@" : {
+      "comment" : "IP Address: %@"
+    },
     "is connecting to %@" : {
       "comment" : "is connecting to %@",
       "localizations" : {
