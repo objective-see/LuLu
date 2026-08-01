@@ -668,7 +668,10 @@ bail:
     
     //directory rules
     NSMutableArray* directoryRules = nil;
-    
+
+    //tree ('process + kids') rules
+    NSMutableArray* treeRules = nil;
+
     //item's rules
     NSArray* itemRules = nil;
     
@@ -707,6 +710,9 @@ bail:
         
         //init directory rules
         directoryRules = [NSMutableArray array];
+
+        //init tree rules
+        treeRules = [NSMutableArray array];
         
         //add any directory rules
         // i.e. any rule that's '/<anything>*'
@@ -731,12 +737,55 @@ bail:
                 }
             }
         }
-        
-        //no global, directory, nor item rules
+
+        //add any tree ('process + kids') rules
+        // check each ancestor against rules w/ scope 'ACTION_SCOPE_PROCESS_TREE'
+        // note: ancestors are matched (simply) by path, so no signing validation of the ancestor
+        //       and ancestry is from the ppid/responsible-pid walk, so breaks if an intermediate parent has exited
+        for(NSDictionary* ancestor in process.ancestors)
+        {
+            //ancestor pid
+            pid_t ancestorPID = [ancestor[KEY_PROCESS_ID] intValue];
+
+            //skip self
+            // ...its own (item) rules apply directly
+            if(ancestorPID == process.pid) continue;
+
+            //skip system roots (kernel/launchd)
+            if(ancestorPID <= 1) continue;
+
+            //check all rules for tree-scoped match
+            for(NSString* key in self.rules)
+            {
+                //check each rule
+                for(Rule* rule in self.rules[key][KEY_RULES])
+                {
+                    //skip non-tree rules
+                    if(ACTION_SCOPE_PROCESS_TREE != rule.scope.intValue) continue;
+
+                    //skip if rule's path doesn't match ancestor's
+                    if(YES != [rule.path isEqualToString:ancestor[KEY_PROCESS_PATH]]) continue;
+
+                    //temporary ('process lifetime') rule?
+                    // check ancestor's pid matches rule's pid
+                    if( (nil != rule.pid) &&
+                        (rule.pid.intValue != ancestorPID) ) continue;
+
+                    //dbg msg
+                    os_log_debug(logHandle, "found tree ('process + kids') rule via ancestor %{public}@", ancestor);
+
+                    //add
+                    [treeRules addObject:rule];
+                }
+            }
+        }
+
+        //no global, directory, tree, nor item rules
         // bail, with no match so user is prompted
         if( (nil == itemRules) &&
             (nil == globalRules) &&
-            (0 == directoryRules.count) )
+            (0 == directoryRules.count) &&
+            (0 == treeRules.count) )
         {
             //no match
             goto bail;
@@ -750,7 +799,11 @@ bail:
         
         //add directory rules next
         if(0 != directoryRules.count) [candidateRules addObject:directoryRules];
-        
+
+        //add tree ('process + kids') rules next
+        // note: before item rules, so an item's own rules take precedence
+        if(0 != treeRules.count) [candidateRules addObject:treeRules];
+
         //add item's rules last...
         if(nil != itemRules) [candidateRules addObject:itemRules];
         
@@ -786,7 +839,9 @@ bail:
                 {
                     //process?
                     // check process's pid matches rule's pid
-                    if( (nil != rule.pid) &&
+                    // note: tree rules are exempt, as their pid was already checked against the ancestor's
+                    if( (rules != treeRules) &&
+                        (nil != rule.pid) &&
                         (rule.pid.unsignedIntValue != process.pid) )
                     {
                         //skip

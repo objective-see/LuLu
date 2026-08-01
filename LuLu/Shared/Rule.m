@@ -60,14 +60,19 @@ extern os_log_t logHandle;
         
         //init signing info
         self.csInfo = info[KEY_CS_INFO];
-        
-        //process scope (set via alert)
+
+        //init scope
+        // consulted at match time for 'process + kids' rules
+        self.scope = info[KEY_SCOPE];
+
+        //process (+ kids) scope (set via alert)
         // set endpoint info to all ('*')
         if( (nil != info[KEY_SCOPE]) &&
-            (ACTION_SCOPE_PROCESS == [info[KEY_SCOPE] intValue]) )
+            ((ACTION_SCOPE_PROCESS == [info[KEY_SCOPE] intValue]) ||
+             (ACTION_SCOPE_PROCESS_TREE == [info[KEY_SCOPE] intValue])) )
         {
             //dbg msg
-            os_log_debug(logHandle, "rule info has 'KEY_SCOPE' set to 'ACTION_SCOPE_PROCESS'");
+            os_log_debug(logHandle, "rule info has 'KEY_SCOPE' set to 'ACTION_SCOPE_PROCESS' (or 'ACTION_SCOPE_PROCESS_TREE')");
             
             //any addr
             self.endpointAddr = VALUE_ANY;

@@ -390,9 +390,12 @@ typedef NS_ENUM(NSInteger, EndpointType) {
 
 //scope for action
 // from dropdown in alert window
+// note: values are persisted in rules, so don't renumber
+//       (dropdown menu order differs; items are tagged w/ these values)
 #define ACTION_SCOPE_UNSELECTED -1
 #define ACTION_SCOPE_PROCESS 0
 #define ACTION_SCOPE_ENDPOINT 1
+#define ACTION_SCOPE_PROCESS_TREE 2
 
 //signing info (from ES)
 #define CS_FLAGS @"csFlags"

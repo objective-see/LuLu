@@ -319,7 +319,7 @@ extern NSMutableDictionary* alerts;
 
     //set rule scope
     // ...based on last one
-    //[self.actionScope selectItemAtIndex:[preferences[PREF_ALERT_LAST_RULE_SCOPE] integerValue]];
+    [self.actionScope selectItemWithTag:[preferences[PREF_ALERT_LAST_RULE_SCOPE] integerValue]];
     
     //grab last rule duration tag
     lastRuleDurationTag = [preferences[PREF_ALERT_LAST_RULE_DURATION] integerValue];
@@ -348,7 +348,6 @@ extern NSMutableDictionary* alerts;
         default:
             break;
     }
-    
     
     //show touch bar
     [self initTouchBar];
@@ -388,7 +387,7 @@ extern NSMutableDictionary* alerts;
         [self.window setContentMaxSize:NSMakeSize(self.window.frame.size.width, DEFAULT_WINDOW_HEIGHT)];
         
         //(re)set action scope
-        [self.actionScope selectItemAtIndex:ACTION_SCOPE_PROCESS];
+        [self.actionScope selectItemWithTag:ACTION_SCOPE_PROCESS];
         
         //(re)set rule scope
         self.ruleDurationAlways.state = NSControlStateValueOn;
@@ -727,8 +726,8 @@ bail:
     //show options state
     NSInteger showOptionsState = 0;
     
-    //rule scope index
-    NSInteger ruleScopeIndex = 0;
+    //rule scope
+    NSInteger ruleScope = ACTION_SCOPE_UNSELECTED;
     
     //rule duration
     NSInteger ruleDurationTag = 0;
@@ -742,8 +741,9 @@ bail:
     //grab state
     showOptionsState = self.showOptions.state;
     
-    //grab action scope index
-    ruleScopeIndex = self.actionScope.indexOfSelectedItem;
+    //grab action scope
+    // items are tagged w/ ACTION_SCOPE_* constants
+    ruleScope = self.actionScope.selectedTag;
     
     //default to always
     ruleDurationTag = RuleDurationAlways;
@@ -772,7 +772,7 @@ bail:
     alertResponse[KEY_ACTION] = @(((NSButton*)sender).tag);
     
     //add action scope
-    alertResponse[KEY_SCOPE] = @(ruleScopeIndex);
+    alertResponse[KEY_SCOPE] = @(ruleScope);
 
     //set duration
     alertResponse[KEY_DURATION] = @(ruleDurationTag);
@@ -836,7 +836,7 @@ bail:
     //save preferences
     // includes options shown/last action scope, etc.
     [xpcDaemonClient updatePreferences:@{PREF_ALERT_SHOW_OPTIONS: @(showOptionsState),
-                                         PREF_ALERT_LAST_RULE_SCOPE: @(ruleScopeIndex),
+                                         PREF_ALERT_LAST_RULE_SCOPE: @(ruleScope),
                                          PREF_ALERT_LAST_RULE_DURATION: @(ruleDurationTag)}];
     
     //set app's background/foreground state

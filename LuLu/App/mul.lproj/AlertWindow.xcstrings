@@ -1539,84 +1539,84 @@
       "shouldTranslate" : false
     },
     "N6E-eT-Q39.title" : {
-      "comment" : "Class = \"NSMenuItem\"; title = \"Remote Endpoint\"; ObjectID = \"N6E-eT-Q39\";",
+      "comment" : "Class = \"NSMenuItem\"; title = \"Process + Kids\"; ObjectID = \"N6E-eT-Q39\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Remote-Endpunkt"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Remote Endpoint"
+            "value" : "Process + Kids"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Endpoint Remoto"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Point d’accès distant"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Endpoint remoto"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "원격 엔드포인트"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Zdalny punkt końcowy"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Endpoint remote"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Uzak Bitiş Noktası"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Віддалена веб- або IP-адреса"
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "ریموٹ اینڈ پوائنٹ"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "远程端点"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "遠端端點"
           }
         }
@@ -1702,6 +1702,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Process:"
+          }
+        }
+      }
+    },
+    "s98-Tl-VnW.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Remote Endpoint\"; ObjectID = \"s98-Tl-VnW\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Remote Endpoint"
           }
         }
       }
