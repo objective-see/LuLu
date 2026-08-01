@@ -28,6 +28,8 @@
 #import <arpa/inet.h>
 #import <sys/socket.h>
 #import <sys/sysctl.h>
+#import <mach-o/utils.h>
+#import <mach-o/loader.h>
 
 /* GLOBALS */
 
@@ -1555,41 +1557,121 @@ bail:
 }
 
 //check if app is an simulator app
-// for now check 'iPhoneSimulator' and 'AppleTVSimulator'
+// bundled apps: via bundle's 'CFBundleSupportedPlatforms'
+// unbundled binaries (e.g. simulator runtime daemons): via binary's 'LC_BUILD_VERSION' platform
 BOOL isSimulatorApp(NSString* path)
 {
     //flag
     BOOL simulatorApp = NO;
-    
+
     //bundle
     NSBundle* bundle = nil;
-    
+
     //supported platforms
     NSArray* supportedPlatforms = nil;
-    
+
     //dbg msg
     os_log_debug(logHandle, "checking if %{public}@ is a simulator application", path);
 
-    //get bundle
+    //(try) get bundle
+    // ...and check its supported platforms
     bundle = findAppBundle(path);
-    if(nil == bundle) goto bail;
+    if(nil != bundle)
+    {
+        //get supported platforms
+        supportedPlatforms = bundle.infoDictionary[@"CFBundleSupportedPlatforms"];
+        if( (YES == [supportedPlatforms isKindOfClass:[NSArray class]]) &&
+            (0 != supportedPlatforms.count) )
+        {
+            //dbg msg
+            os_log_debug(logHandle, "supported platforms: %{public}@", supportedPlatforms);
 
-    //get supported platforms
-    supportedPlatforms = bundle.infoDictionary[@"CFBundleSupportedPlatforms"];
-    if(YES != [supportedPlatforms isKindOfClass:[NSArray class]]) goto bail;
+            //check if simulator app
+            simulatorApp = [[NSSet setWithArray: supportedPlatforms] isSubsetOfSet: [NSSet setWithArray: @[@"iPhoneSimulator", @"AppleTVSimulator"]]];
+        }
+    }
 
-    //dbg msg
-    os_log_debug(logHandle, "supported platforms: %{public}@", supportedPlatforms);
-
-    //sanity check
-    if(0 == supportedPlatforms.count) goto bail;
-
-    //check if simulator app
-    simulatorApp = [[NSSet setWithArray: supportedPlatforms] isSubsetOfSet: [NSSet setWithArray: @[@"iPhoneSimulator", @"AppleTVSimulator"]]];
-
-bail:
+    //not (detected) via bundle?
+    // check binary's built-for platform
+    // ...covers unbundled simulator runtime daemons (mobileassetd, geod, etc.)
+    if(YES != simulatorApp)
+    {
+        //check binary
+        simulatorApp = isSimulatorBinary(path);
+    }
 
     return simulatorApp;
+}
+
+//check if a binary was built for a simulator platform
+// via 'LC_BUILD_VERSION' load command (in any slice)
+BOOL isSimulatorBinary(NSString* path)
+{
+    //flag
+    __block BOOL simulatorBinary = NO;
+
+    //macho_* APIs are macOS 13+
+    // on older systems, bundle-based detection (see: isSimulatorApp) is all we do
+    if(@available(macOS 13.0, *))
+    {
+        //parse each slice
+        // note: apple's API handles the (fat) parsing, mapping, & validation
+        macho_for_each_slice(path.fileSystemRepresentation, ^(const struct mach_header* slice, uint64_t sliceFileOffset, size_t size, bool* stop) {
+
+            //load command
+            const struct load_command* command = NULL;
+
+            //load commands start directly after the header
+            // note: 64-bit only (32-bit can't run on macOS 10.15+ anyway)
+            if(MH_MAGIC_64 != slice->magic)
+            {
+                //skip slice
+                return;
+            }
+
+            //init
+            command = (const struct load_command*)((uintptr_t)slice + sizeof(struct mach_header_64));
+
+            //scan load commands for 'LC_BUILD_VERSION'
+            for(uint32_t i = 0; i < slice->ncmds; i++)
+            {
+                //build version?
+                // check if built for a simulator platform
+                if(LC_BUILD_VERSION == command->cmd)
+                {
+                    //platform
+                    uint32_t platform = ((const struct build_version_command*)command)->platform;
+
+                    //simulator platform?
+                    if( (PLATFORM_IOSSIMULATOR == platform) ||
+                        (PLATFORM_TVOSSIMULATOR == platform) ||
+                        (PLATFORM_WATCHOSSIMULATOR == platform) ||
+                        (PLATFORM_VISIONOSSIMULATOR == platform) )
+                    {
+                        //dbg msg
+                        os_log_debug(logHandle, "%{public}@ was built for simulator platform (%d)", path, platform);
+
+                        //set
+                        simulatorBinary = YES;
+
+                        //done
+                        *stop = true;
+
+                        return;
+                    }
+                }
+
+                //malformed?
+                // ...stop scanning slice
+                if(0 == command->cmdsize) return;
+
+                //next
+                command = (const struct load_command*)((uintptr_t)command + command->cmdsize);
+            }
+        });
+    }
+
+    return simulatorBinary;
 }
 
 //was app launched by user

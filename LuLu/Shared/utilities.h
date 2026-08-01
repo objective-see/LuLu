@@ -139,4 +139,8 @@ BOOL isAddressRange(NSString* spec);
 // e.g. '85.140.*.*' -> '^85\.140\..*\..*$' : literal chars are regex-escaped, '*' -> '.*', anchored
 NSString* regexFromGlob(NSString* glob);
 
+//check if a binary was built for a simulator platform
+// via 'LC_BUILD_VERSION' load command (in any slice); always NO pre-macOS 13
+BOOL isSimulatorBinary(NSString* path);
+
 #endif
