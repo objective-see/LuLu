@@ -1108,6 +1108,14 @@ static const NSUInteger kDeleteKeyCode = 51;
                 }
             }
             
+            //process tree rule?
+            // append '+kids' so it's distinguishable from a plain process rule
+            if(ACTION_SCOPE_PROCESS_TREE == rule.scope.intValue)
+            {
+                //append
+                action = [NSString stringWithFormat:NSLocalizedString(@"%@ +kids", @"%@ +kids"), action];
+            }
+
             //disabled?
             // set flag (for highlighting) and color
             ((CustomTableCellView *)cell).isDisabled = rule.isDisabled.boolValue;
@@ -1116,7 +1124,7 @@ static const NSUInteger kDeleteKeyCode = 51;
             } else {
                 cell.textField.textColor = NSColor.controlTextColor;
             }
-        
+
             //set text
             cell.textField.stringValue = action;
         }
