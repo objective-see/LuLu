@@ -163,6 +163,13 @@ extern NSMutableDictionary* alerts;
         //extract host
         self.endpoint = url.host;
     }
+    //use (remote) host name
+    // e.g. DNS name, delivered w/ flow
+    else if(nil != self.alert[KEY_HOST_NAME])
+    {
+        //set
+        self.endpoint = self.alert[KEY_HOST_NAME];
+    }
     //use IP address
     else
     {
@@ -200,6 +207,13 @@ extern NSMutableDictionary* alerts;
     {
         //use (full) URLs
         self.alertMessage.toolTip = [NSString stringWithFormat:NSLocalizedString(@"Full URL: %@", @"Full URL: %@"), url.absoluteString];
+    }
+    //showing (remote) host name?
+    // set tooltip to underlying IP address
+    else if(nil != self.alert[KEY_HOST_NAME])
+    {
+        //use IP
+        self.alertMessage.toolTip = [NSString stringWithFormat:NSLocalizedString(@"IP Address: %@", @"IP Address: %@"), self.alert[KEY_HOST]];
     }
     
     /* BOTTOM (DETAILS) */

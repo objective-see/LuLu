@@ -351,6 +351,7 @@ typedef NS_ENUM(NSInteger, EndpointType) {
 #define KEY_PROCESS_ANCESTORS @"ancestors"
 
 #define KEY_HOST @"host"
+#define KEY_HOST_NAME @"hostName"
 #define KEY_URL @"url"
 #define KEY_PROTOCOL @"protocol"
 #define KEY_ENDPOINT @"endpoint"

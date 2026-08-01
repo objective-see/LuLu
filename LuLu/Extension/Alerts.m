@@ -94,7 +94,19 @@ extern os_log_t logHandle;
     
     //add (remote) ip
     alert[KEY_HOST] = remoteEndpoint.hostname;
-    
+
+    //add (remote) host name (e.g. DNS name)
+    // only available on macOS 11+
+    if(@available(macOS 11, *))
+    {
+        //add
+        if(nil != flow.remoteHostname)
+        {
+            //add
+            alert[KEY_HOST_NAME] = flow.remoteHostname;
+        }
+    }
+
     //add (remote) host
     // as string though, since XPC doesn't like NSURLs
     if(nil != flow.URL)
