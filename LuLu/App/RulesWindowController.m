@@ -78,10 +78,23 @@ extern XPCDaemonClient* xpcDaemonClient;
 
     //set subtitle
     [self setSubTitle];
-    
+
+    //(re)setup observer for new rules
+    // here, not in 'windowDidLoad', as 'windowWillClose' removes it and 'windowDidLoad' only fires on first open
+    if(nil == self.rulesObserver)
+    {
+        //setup observer
+        // will be broadcast (via XPC) when daemon updates rules
+        self.rulesObserver = [[NSNotificationCenter defaultCenter] addObserverForName:RULES_CHANGED object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
+        {
+            //get new rules
+            [self loadRules:YES select:@(0)];
+        }];
+    }
+
     //first cleanup any expired/temp rules
     [xpcDaemonClient cleanupRules:NO];
-    
+
     //then load rules
     [self loadRules:YES select:@0];
 
@@ -153,15 +166,7 @@ extern XPCDaemonClient* xpcDaemonClient;
     
     //set flag
     self.isAscending = YES;
- 
-    //setup observer for new rules
-    // will be broadcast (via XPC) when daemon updates rules
-    self.rulesObserver = [[NSNotificationCenter defaultCenter] addObserverForName:RULES_CHANGED object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification)
-    {
-        //get new rules
-        [self loadRules:YES select:@(0)];
-    }];
-    
+
     return;
 }
 
