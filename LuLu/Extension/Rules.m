@@ -754,6 +754,10 @@ bail:
             //skip system roots (kernel/launchd)
             if(ancestorPID <= 1) continue;
 
+            //resolve ancestor's path
+            // as rule paths (via flow) and ancestor paths (via 'proc_pidpath') can differ (e.g. /tmp vs /private/tmp)
+            NSString* ancestorPath = [ancestor[KEY_PROCESS_PATH] stringByResolvingSymlinksInPath];
+
             //check all rules for tree-scoped match
             for(NSString* key in self.rules)
             {
@@ -763,8 +767,8 @@ bail:
                     //skip non-tree rules
                     if(ACTION_SCOPE_PROCESS_TREE != rule.scope.intValue) continue;
 
-                    //skip if rule's path doesn't match ancestor's
-                    if(YES != [rule.path isEqualToString:ancestor[KEY_PROCESS_PATH]]) continue;
+                    //skip if rule's (resolved) path doesn't match ancestor's
+                    if(YES != [[rule.path stringByResolvingSymlinksInPath] isEqualToString:ancestorPath]) continue;
 
                     //temporary ('process lifetime') rule?
                     // check ancestor's pid matches rule's pid

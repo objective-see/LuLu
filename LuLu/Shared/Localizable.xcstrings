@@ -1245,6 +1245,9 @@
         }
       }
     },
+    "%@ +kids" : {
+      "comment" : "%@ +kids"
+    },
     "%@ does not exist!" : {
       "comment" : "%@ does not exist!",
       "localizations" : {
