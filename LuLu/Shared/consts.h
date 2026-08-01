@@ -29,6 +29,7 @@ typedef NS_ENUM(NSInteger, EndpointType) {
     EndpointTypeExact = 0,
     EndpointTypeRegex = 1,
     EndpointTypeCIDR  = 2,
+    EndpointTypeGlob  = 3,
 };
 
 //patreon url

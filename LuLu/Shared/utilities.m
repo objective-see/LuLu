@@ -2000,3 +2000,21 @@ BOOL isAddressRange(NSString* spec)
 
     return parseAddressRange(spec, &family, lo, hi, &length);
 }
+
+//convert a simple glob (using '*' wildcards) to an anchored regular expression
+// e.g. '85.140.*.*' -> '^85\.140\..*\..*$' : literal chars are regex-escaped, '*' -> '.*', anchored
+NSString* regexFromGlob(NSString* glob)
+{
+    //split on '*'
+    NSArray<NSString*>* parts = [glob componentsSeparatedByString:@"*"];
+
+    //regex-escape each literal piece (handles '.', etc.)
+    NSMutableArray<NSString*>* escaped = [NSMutableArray array];
+    for(NSString* part in parts)
+    {
+        [escaped addObject:[NSRegularExpression escapedPatternForString:part]];
+    }
+
+    //join escaped pieces with '.*' and anchor (^...$) for a full match
+    return [NSString stringWithFormat:@"^%@$", [escaped componentsJoinedByString:@".*"]];
+}

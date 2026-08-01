@@ -1062,12 +1062,13 @@ bail:
     //dbg msg
     os_log_debug(logHandle, "checking rule's endpoint address (%{public}@) and rule's endpoint host %{public}@ against %{public}@", rule.endpointAddr, rule.endpointHost, endpointNames);
     
-    //endpoint addr a regex?
+    //endpoint addr a regex (or glob)?
     // init regex and check for match
-    if(EndpointTypeRegex == rule.isEndpointAddrRegex)
+    if( (EndpointTypeRegex == rule.isEndpointAddrRegex) ||
+        (EndpointTypeGlob == rule.isEndpointAddrRegex) )
     {
         //dbg msg
-        os_log_debug(logHandle, "rule's endpoint address is a regex...");
+        os_log_debug(logHandle, "rule's endpoint address is a regex (or glob)...");
 
         //grab (lazily compiled & cached) regex
         endpointAddrRegex = [rule compiledEndpointRegex];

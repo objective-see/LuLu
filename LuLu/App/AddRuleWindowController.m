@@ -231,24 +231,6 @@ bail:
     return;
 }
 
-//convert a simple glob (using '*' wildcards) to an anchored regular expression
-// e.g. '85.140.*.*' -> '^85\.140\..*\..*$' : literal chars are regex-escaped, '*' -> '.*', anchored
--(NSString*)regexFromGlob:(NSString*)glob
-{
-    //split on '*'
-    NSArray<NSString*>* parts = [glob componentsSeparatedByString:@"*"];
-
-    //regex-escape each literal piece (handles '.', etc.)
-    NSMutableArray<NSString*>* escaped = [NSMutableArray array];
-    for(NSString* part in parts)
-    {
-        [escaped addObject:[NSRegularExpression escapedPatternForString:part]];
-    }
-
-    //join escaped pieces with '.*' and anchor (^...$) for a full match
-    return [NSString stringWithFormat:@"^%@$", [escaped componentsJoinedByString:@".*"]];
-}
-
 //'add' button handler
 // close sheet, returning NSModalResponseOK
 -(IBAction)addButtonHandler:(id)sender
@@ -357,20 +339,15 @@ bail:
     else if(YES != [endpointAddr isEqualToString:VALUE_ANY])
     {
         //contains a glob ('*')?
-        // convert to an anchored regex & send as a regex rule
+        // stored as-is (so the UI shows what the user entered)
+        // ...converted to an anchored regex lazily, at match time
         if(NSNotFound != [endpointAddr rangeOfString:@"*"].location)
         {
             //dbg msg
-            os_log_debug(logHandle, "endpoint address '%{public}@' contains a glob ('*'), converting to regex", endpointAddr);
+            os_log_debug(logHandle, "endpoint address '%{public}@' contains a glob ('*')", endpointAddr);
 
-            //convert glob -> anchored regex
-            endpointAddr = [self regexFromGlob:endpointAddr];
-
-            //regex
-            endpointType = EndpointTypeRegex;
-
-            //dbg msg
-            os_log_debug(logHandle, "converted glob to regex: %{public}@", endpointAddr);
+            //glob
+            endpointType = EndpointTypeGlob;
         }
         //a CIDR ('a.b.c.d/n') or IP range ('ipA - ipB')?
         // matched numerically (IPv4 & IPv6) by the extension

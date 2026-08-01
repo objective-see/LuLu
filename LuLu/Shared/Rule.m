@@ -228,11 +228,16 @@ extern os_log_t logHandle;
 -(NSRegularExpression*)compiledEndpointRegex
 {
     //compile once
+    // note: globs are stored as entered (for the UI), so convert to a regex here
     @synchronized(self)
     {
         if(nil == self.endpointRegex)
         {
-            self.endpointRegex = [NSRegularExpression regularExpressionWithPattern:self.endpointAddr options:0 error:nil];
+            //pattern
+            // ...as-is, or converted from glob
+            NSString* pattern = (EndpointTypeGlob == self.isEndpointAddrRegex) ? regexFromGlob(self.endpointAddr) : self.endpointAddr;
+
+            self.endpointRegex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
         }
     }
 

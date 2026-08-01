@@ -135,4 +135,8 @@ BOOL addressInRange(NSString* address, int family, const uint8_t* lo, const uint
 //is a string a valid CIDR or IP range?
 BOOL isAddressRange(NSString* spec);
 
+//convert a simple glob (using '*' wildcards) to an anchored regular expression
+// e.g. '85.140.*.*' -> '^85\.140\..*\..*$' : literal chars are regex-escaped, '*' -> '.*', anchored
+NSString* regexFromGlob(NSString* glob);
+
 #endif
