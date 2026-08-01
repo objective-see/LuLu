@@ -7,8 +7,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Diese Option erlaub allen bereits installierten Drittanbieterprogrammen auf das Netzwerk zugreifen, ohne eine Mitteilung auszulösen."
+            "state" : "translated",
+            "value" : "Ausgehende Verbindungen von bereits installierten Drittanbieter-Programmen werden erlaubt."
           }
         },
         "en" : {
@@ -19,26 +19,26 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Esta opción permitirá que cualquier aplicación de terceros que ya esté instalada acceda a la red sin generar una alerta."
+            "state" : "translated",
+            "value" : "Se permitirán las conexiones salientes de los programas de terceros ya instalados."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Cette option permet à toute application tierce déjà installée d'accéder au réseau sans générer d'alerte."
+            "state" : "translated",
+            "value" : "Les connexions sortantes des programmes tiers déjà installés seront autorisées."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Questa opzione consentirà a qualsiasi app di terze parti già installata di accedere alla rete senza generare un avviso."
+            "state" : "translated",
+            "value" : "Le connessioni in uscita dai programmi di terze parti già installati saranno consentite."
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "이 옵션은 이전에 설치한 모든 타사 프로그램을 허용합니다. 해당 프로그램은 경고 발생 없이 네트워크에 접근할 수 있습니다."
+            "state" : "translated",
+            "value" : "현재 설치된 타사 프로그램의 나가는 연결이 허용됩니다."
           }
         },
         "pl" : {
@@ -49,8 +49,8 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Esta opção permitirá que qualquer aplicativo de terceiros que já esteja instalado tenha acesso à rede sem gerar um alerta."
+            "state" : "translated",
+            "value" : "Conexões de saída de programas de terceiros já instalados serão permitidas."
           }
         },
         "tr" : {
@@ -61,26 +61,26 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ця опція дозволить будь-якому сторонньому додатку, який уже встановлено, отримувати доступ до мережі без сповіщення."
+            "state" : "translated",
+            "value" : "Вихідні з’єднання від уже встановлених сторонніх програм будуть дозволені."
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "یہ آپشن کسی بھی پہلے سے انسٹال شدہ تھرڈ پارٹی ایپ کو الرٹ پیدا کیے بغیر نیٹ ورک تک رسائی کی اجازت دے گا۔"
+            "state" : "translated",
+            "value" : "پہلے سے انسٹال شدہ تھرڈ پارٹی پروگراموں کے کنکشنز کی اجازت ہوگی۔"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "此选项将允许任何已安装的第三方应用程序访问网络而不会生成警报。"
+            "state" : "translated",
+            "value" : "将允许当前已安装的第三方程序的传出连接。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "這個選項將允許任何已安裝的第三方應用程式存取網路，而不會產生警告。"
+            "state" : "translated",
+            "value" : "將允許目前已安裝的第三方程式的傳出連線。"
           }
         }
       }
@@ -173,10 +173,52 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Note: steps may vary by macOS version\"; ObjectID = \"8KH-RD-y9L\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweis: Die Schritte können je nach macOS-Version variieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Note: steps may vary by macOS version"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nota: los pasos pueden variar según la versión de macOS"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remarque : les étapes peuvent varier selon la version de macOS"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nota: i passaggi possono variare in base alla versione di macOS"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "참고: macOS 버전에 따라 단계가 다를 수 있습니다"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uwaga: kroki mogą się różnić w zależności od wersji systemu macOS"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nota: as etapas podem variar conforme a versão do macOS"
           }
         },
         "tr" : {
@@ -185,10 +227,28 @@
             "value" : "Not: Adımlar, macOS sürümüne göre değişiklik gösterebilir."
           }
         },
-        "pl" : {
+        "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uwaga: kroki mogą się różnić w zależności od wersji systemu macOS"
+            "value" : "Примітка: кроки можуть відрізнятися залежно від версії macOS"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نوٹ: macOS ورژن کے مطابق مراحل مختلف ہو سکتے ہیں"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注意：具体步骤可能因 macOS 版本而异"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注意：步驟可能因 macOS 版本而異"
           }
         }
       }
@@ -547,10 +607,52 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"These can be changed later, via LuLu's Settings.\"; ObjectID = \"NCu-fH-K04\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese können später in den LuLu-Einstellungen geändert werden."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "These can be changed later, via LuLu's Settings."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esto se puede cambiar más tarde en los ajustes de LuLu."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ces réglages peuvent être modifiés ultérieurement dans les réglages de LuLu."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Queste impostazioni possono essere modificate in seguito nelle impostazioni di LuLu."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 설정은 나중에 LuLu 설정에서 변경할 수 있습니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Można to zmienić później w ustawieniach programu LuLu."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Isso pode ser alterado depois, nos ajustes do LuLu."
           }
         },
         "tr" : {
@@ -559,10 +661,28 @@
             "value" : "Bu ayarlar daha sonra LuLu’nun ayarlarından değiştirilebilir."
           }
         },
-        "pl" : {
+        "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Można to zmienić później w ustawieniach programu LuLu."
+            "value" : "Це можна змінити пізніше в налаштуваннях LuLu."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "یہ بعد میں LuLu کی ترتیبات سے تبدیل کی جا سکتی ہیں۔"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这些设置以后可以在 LuLu 设置中更改。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這些設定之後可在 LuLu 設定中更改。"
           }
         }
       }
@@ -993,8 +1113,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Diese Option erlaubt allen von Apple signierten Programmen auf das Netzwerk zuzugreifen, ohne eine Mitteilung auszulösen."
+            "state" : "translated",
+            "value" : "Ausgehende Verbindungen von Apple-signierten Programmen werden erlaubt."
           }
         },
         "en" : {
@@ -1005,26 +1125,26 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Esta opción permitirá que cualquier código binario firmado por Apple acceda a la red sin generar una alerta."
+            "state" : "translated",
+            "value" : "Se permitirán las conexiones salientes de los programas firmados por Apple."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Cette option permet à tout binaire signé par Apple d'accéder au réseau sans générer d'alerte."
+            "state" : "translated",
+            "value" : "Les connexions sortantes des programmes signés par Apple seront autorisées."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Questa opzione consentirà a qualsiasi binario firmato da Apple di accedere alla rete senza generare un avviso."
+            "state" : "translated",
+            "value" : "Le connessioni in uscita dai programmi firmati da Apple saranno consentite."
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "이 옵션을 활성화하면 Apple에 의해 서명된 실행 파일을 허용합니다. 해당 프로그램은 경고 발생 없이 네트워크에 접근할 수 있습니다."
+            "state" : "translated",
+            "value" : "Apple이 서명한 프로그램의 나가는 연결이 허용됩니다."
           }
         },
         "pl" : {
@@ -1035,8 +1155,8 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Esta permissão permitirá que qualquer binário assinado pela Apple tenha acesso à rede sem gerar um alerta."
+            "state" : "translated",
+            "value" : "Conexões de saída de programas assinados pela Apple serão permitidas."
           }
         },
         "tr" : {
@@ -1047,26 +1167,26 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ця опція дозволить будь-якому бінарному файлу, підписаному Apple, отримувати доступ до мережі без сповіщення."
+            "state" : "translated",
+            "value" : "Вихідні з’єднання від програм, підписаних Apple, будуть дозволені."
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "یہ آپشن کسی بھی ایپل سائنڈ بائنری کو الرٹ پیدا کیے بغیر نیٹ ورک تک رسائی کی اجازت دے گا۔"
+            "state" : "translated",
+            "value" : "Apple کے دستخط شدہ پروگراموں کے کنکشنز کی اجازت ہوگی۔"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "此选项将允许任何 Apple 签名的二进制文件访问网络而不会生成警报。"
+            "state" : "translated",
+            "value" : "将允许 Apple 签名程序的传出连接。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "此選項將允許任何由 Apple 簽署的程式存取網路，而不會產生警告。"
+            "state" : "translated",
+            "value" : "將允許 Apple 簽署程式的傳出連線。"
           }
         }
       }
@@ -1161,8 +1281,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Diese Option erlaubt alle (UDP-) Verbindungen auf Port 53."
+            "state" : "translated",
+            "value" : "Sämtlicher ausgehender UDP-Verkehr auf Port 53 wird erlaubt."
           }
         },
         "en" : {
@@ -1173,26 +1293,26 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Esta opción permitirá cualquier tráfico (UDP) sobre el puerto 53. "
+            "state" : "translated",
+            "value" : "Se permitirá todo el tráfico UDP saliente en el puerto 53."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Cette option autorise tout trafic (UDP) sur le port 53."
+            "state" : "translated",
+            "value" : "Tout le trafic UDP sortant sur le port 53 sera autorisé."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Questa opzione consentirà qualsiasi traffico (UDP) sulla porta 53."
+            "state" : "translated",
+            "value" : "Tutto il traffico UDP in uscita sulla porta 53 sarà consentito."
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "이 옵션을 활성화하면 53번 포트를 통하는 모든 (UDP) 트래픽을 허용합니다."
+            "state" : "translated",
+            "value" : "포트 53의 모든 나가는 UDP 트래픽이 허용됩니다."
           }
         },
         "pl" : {
@@ -1203,8 +1323,8 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Esta opção permitirá qualquer tráfego (UDP) na porta 53."
+            "state" : "translated",
+            "value" : "Todo o tráfego UDP de saída na porta 53 será permitido."
           }
         },
         "tr" : {
@@ -1215,26 +1335,26 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ця опція дозволить будь-який (UDP) трафік через порт 53."
+            "state" : "translated",
+            "value" : "Увесь вихідний UDP-трафік на порту 53 буде дозволено."
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "یہ آپشن کسی بھی (UDP) ٹریفک کو پورٹ 53 پر اجازت دے گا۔"
+            "state" : "translated",
+            "value" : "پورٹ 53 پر تمام باہر جانے والی UDP ٹریفک کی اجازت ہوگی۔"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "此选项将允许通过端口 53 的任何 (UDP) 流量。"
+            "state" : "translated",
+            "value" : "将允许端口 53 上的所有传出 UDP 流量。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "此選項將允許任何連接埠 53 的（UDP）流量。"
+            "state" : "translated",
+            "value" : "將允許連接埠 53 上的所有傳出 UDP 流量。"
           }
         }
       }
@@ -1749,8 +1869,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : " Bereits installierte Anwendungen erlauben"
+            "state" : "translated",
+            "value" : " Bereits installierte Programme erlauben"
           }
         },
         "en" : {
@@ -1761,26 +1881,26 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Permitir Aplicaciones Ya Instaladas"
+            "state" : "translated",
+            "value" : " Permitir programas ya instalados"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Autoriser les applications déjà installées"
+            "state" : "translated",
+            "value" : " Autoriser les programmes déjà installés"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Consenti applicazioni già installate"
+            "state" : "translated",
+            "value" : " Consenti programmi già installati"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : " 사전에 설치된 프로그램 허용"
+            "state" : "translated",
+            "value" : " 이미 설치된 프로그램 허용"
           }
         },
         "pl" : {
@@ -1791,8 +1911,8 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Permitir aplicações já instaladas"
+            "state" : "translated",
+            "value" : " Permitir programas já instalados"
           }
         },
         "tr" : {
@@ -1803,26 +1923,26 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Дозволити вже установлені програми"
+            "state" : "translated",
+            "value" : " Дозволити вже встановлені програми"
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "پہلے سے انسٹال شدہ ایپلی کیشنز کو اجازت دیں"
+            "state" : "translated",
+            "value" : " پہلے سے انسٹال شدہ پروگراموں کی اجازت دیں"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "允许已安装的应用程序"
+            "state" : "translated",
+            "value" : " 允许已安装的程序"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "允許已安裝的應用程式"
+            "state" : "translated",
+            "value" : " 允許已安裝的程式"
           }
         }
       }

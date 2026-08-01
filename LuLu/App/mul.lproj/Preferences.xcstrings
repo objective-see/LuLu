@@ -511,8 +511,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Bereits installierte Drittanbieterprogramme werden erlaubt."
+            "state" : "translated",
+            "value" : "Ausgehende Verbindungen von bereits installierten Drittanbieter-Programmen werden erlaubt."
           }
         },
         "en" : {
@@ -523,26 +523,26 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Se permitirán los programas de terceros previamente instalados."
+            "state" : "translated",
+            "value" : "Se permitirán las conexiones salientes de los programas de terceros ya instalados."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Programmes précédemment installées, les programmes de tierce-partie seront autorisés."
+            "state" : "translated",
+            "value" : "Les connexions sortantes des programmes tiers déjà installés seront autorisées."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "I programmi di terze parti già installati saranno consentiti."
+            "state" : "translated",
+            "value" : "Le connessioni in uscita dai programmi di terze parti già installati saranno consentite."
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "이전에 설치한 타사 프로그램을 허용합니다."
+            "state" : "translated",
+            "value" : "현재 설치된 타사 프로그램의 나가는 연결이 허용됩니다."
           }
         },
         "pl" : {
@@ -553,8 +553,8 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Programas terceirizados previamente instalados serão permitidos."
+            "state" : "translated",
+            "value" : "Conexões de saída de programas de terceiros já instalados serão permitidas."
           }
         },
         "tr" : {
@@ -565,26 +565,26 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Раніше встановлені сторонні програми будуть дозволені."
+            "state" : "translated",
+            "value" : "Вихідні з’єднання від уже встановлених сторонніх програм будуть дозволені."
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "پہلے سے انسٹال شدہ، تیسرے فریق کے پروگراموں کو اجازت دی جائے گی۔"
+            "state" : "translated",
+            "value" : "پہلے سے انسٹال شدہ تھرڈ پارٹی پروگراموں کے کنکشنز کی اجازت ہوگی۔"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "先前安装的第三方程序将被允许。"
+            "state" : "translated",
+            "value" : "将允许当前已安装的第三方程序的传出连接。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "已安裝的第三方程式將被允許"
+            "state" : "translated",
+            "value" : "將允許目前已安裝的第三方程式的傳出連線。"
           }
         }
       }
@@ -1097,10 +1097,52 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Outgoing connections to localhost will be allowed.\"; ObjectID = \"caA-Ec-ysj\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausgehende Verbindungen zu localhost werden erlaubt."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Outgoing connections to localhost will be allowed."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se permitirán las conexiones salientes a localhost."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les connexions sortantes vers localhost seront autorisées."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le connessioni in uscita verso localhost saranno consentite."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "localhost로 나가는 연결이 허용됩니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Połączenia wychodzące do localhost (hosta lokalnego) będą dozwolone."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conexões de saída para localhost serão permitidas."
           }
         },
         "tr" : {
@@ -1109,10 +1151,28 @@
             "value" : "localhost’a giden bağlantılara izin verilir."
           }
         },
-        "pl" : {
+        "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Połączenia wychodzące do localhost (hosta lokalnego) będą dozwolone."
+            "value" : "Вихідні з’єднання до localhost будуть дозволені."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "localhost کی جانب جانے والے کنکشنز کی اجازت ہوگی۔"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将允许到 localhost 的传出连接。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將允許連往 localhost 的傳出連線。"
           }
         }
       }
@@ -1543,8 +1603,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Programme, welche in einem Simulator laufen, werden erlaubt."
+            "state" : "translated",
+            "value" : "Ausgehende Verbindungen von Programmen im (iOS-)Simulator werden erlaubt."
           }
         },
         "en" : {
@@ -1555,26 +1615,26 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Se permitirán las aplicaciones que se ejecuten dentro del simulador."
+            "state" : "translated",
+            "value" : "Se permitirán las conexiones salientes de los programas que se ejecutan en el simulador (iOS)."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Les applications fonctionnant dans le simulateur sont autorisées."
+            "state" : "translated",
+            "value" : "Les connexions sortantes des programmes exécutés dans le simulateur (iOS) seront autorisées."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Le applicazioni in esecuzione nel simulatore saranno consentite."
+            "state" : "translated",
+            "value" : "Le connessioni in uscita dai programmi in esecuzione nel simulatore (iOS) saranno consentite."
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "시뮬레이터 내에서 실행되는 애플리케이션을 허용합니다."
+            "state" : "translated",
+            "value" : "(iOS) 시뮬레이터에서 실행 중인 프로그램의 나가는 연결이 허용됩니다."
           }
         },
         "pl" : {
@@ -1585,8 +1645,8 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Aplicações rodando no simulador serão permitidas."
+            "state" : "translated",
+            "value" : "Conexões de saída de programas em execução no simulador (iOS) serão permitidas."
           }
         },
         "tr" : {
@@ -1597,26 +1657,26 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Програми, що працюють у середовищі Симулятора, будуть дозволені."
+            "state" : "translated",
+            "value" : "Вихідні з’єднання від програм, запущених у симуляторі (iOS), будуть дозволені."
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "سیمولیٹر کے اندر چلنے والی ایپلیکیشنز کو اجازت دی جائے گی۔"
+            "state" : "translated",
+            "value" : "(iOS) سمیولیٹر میں چلنے والے پروگراموں کے کنکشنز کی اجازت ہوگی۔"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "将允许在模拟器内运行的应用程序。"
+            "state" : "translated",
+            "value" : "将允许在 (iOS) 模拟器中运行的程序的传出连接。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "執行於模擬器內的應用程式將被允許"
+            "state" : "translated",
+            "value" : "將允許在 (iOS) 模擬器中執行的程式的傳出連線。"
           }
         }
       }
@@ -1793,10 +1853,52 @@
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Allow Localhost Traffic\"; ObjectID = \"F6g-hE-DiK\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localhost-Verkehr erlauben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "Allow Localhost Traffic"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir tráfico a localhost"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser le trafic localhost"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consenti traffico localhost"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localhost 트래픽 허용"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwalaj na ruch lokalny (Localhost)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir tráfego localhost"
           }
         },
         "tr" : {
@@ -1805,10 +1907,28 @@
             "value" : "Localhost (Yerel Makine) trafiğine izin ver"
           }
         },
-        "pl" : {
+        "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zezwalaj na ruch lokalny (Localhost)"
+            "value" : "Дозволити трафік localhost"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "localhost ٹریفک کی اجازت دیں"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许 localhost 流量"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允許 localhost 流量"
           }
         }
       }
@@ -2407,8 +2527,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Alle (UDP-)Verbindungen auf Port 53 werden erlaubt."
+            "state" : "translated",
+            "value" : "Sämtlicher ausgehender UDP-Verkehr auf Port 53 wird erlaubt."
           }
         },
         "en" : {
@@ -2419,26 +2539,26 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Todo el tráfico (UDP) en el puerto 53 será permitido. "
+            "state" : "translated",
+            "value" : "Se permitirá todo el tráfico UDP saliente en el puerto 53."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Tout le trafic (UDP) sur le port 53 sera autorisé."
+            "state" : "translated",
+            "value" : "Tout le trafic UDP sortant sur le port 53 sera autorisé."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Tutto il traffico (UDP) sulla porta 53 sarà consentito."
+            "state" : "translated",
+            "value" : "Tutto il traffico UDP in uscita sulla porta 53 sarà consentito."
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "53번 포트를 통하는 모든 (UDP) 트래픽을 허용합니다."
+            "state" : "translated",
+            "value" : "포트 53의 모든 나가는 UDP 트래픽이 허용됩니다."
           }
         },
         "pl" : {
@@ -2449,8 +2569,8 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Todo tráfego (UDP) na porta 53 será permitido."
+            "state" : "translated",
+            "value" : "Todo o tráfego UDP de saída na porta 53 será permitido."
           }
         },
         "tr" : {
@@ -2461,26 +2581,26 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Увесь (UDP) трафік на порту 53 буде дозволено."
+            "state" : "translated",
+            "value" : "Увесь вихідний UDP-трафік на порту 53 буде дозволено."
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "پورٹ 53 پر تمام (UDP) ٹریفک کو اجازت دی جائے گی۔"
+            "state" : "translated",
+            "value" : "پورٹ 53 پر تمام باہر جانے والی UDP ٹریفک کی اجازت ہوگی۔"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "允许端口 53 上的所有 (UDP) 流量。"
+            "state" : "translated",
+            "value" : "将允许端口 53 上的所有传出 UDP 流量。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "所有 53 連接埠的 （UDP）流量將被允許。"
+            "state" : "translated",
+            "value" : "將允許連接埠 53 上的所有傳出 UDP 流量。"
           }
         }
       }
@@ -2659,8 +2779,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Bereits installierte Programme erlauben."
+            "state" : "translated",
+            "value" : "Bereits installierte Programme erlauben"
           }
         },
         "en" : {
@@ -2671,26 +2791,26 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Permitir Programas Instalados"
+            "state" : "translated",
+            "value" : "Permitir programas ya instalados"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Autoriser les programmes installés"
+            "state" : "translated",
+            "value" : "Autoriser les programmes déjà installés"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Consenti Programmi Installati"
+            "state" : "translated",
+            "value" : "Consenti programmi già installati"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "설치된 프로그램 허용"
+            "state" : "translated",
+            "value" : "이미 설치된 프로그램 허용"
           }
         },
         "pl" : {
@@ -2701,8 +2821,8 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Permitir Programas Instalados"
+            "state" : "translated",
+            "value" : "Permitir programas já instalados"
           }
         },
         "tr" : {
@@ -2713,26 +2833,26 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Дозволити установлені програми"
+            "state" : "translated",
+            "value" : "Дозволити вже встановлені програми"
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "انسٹال شدہ پروگراموں کو اجازت دیں"
+            "state" : "translated",
+            "value" : "پہلے سے انسٹال شدہ پروگراموں کی اجازت دیں"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "允许已安装的程序"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "允許已安裝程式"
+            "state" : "translated",
+            "value" : "允許已安裝的程式"
           }
         }
       }
@@ -3079,8 +3199,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Von Apple signierte Programme werden erlaubt."
+            "state" : "translated",
+            "value" : "Ausgehende Verbindungen von Apple-signierten Programmen werden erlaubt."
           }
         },
         "en" : {
@@ -3091,26 +3211,26 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Se permitirán los binarios firmados por Apple."
+            "state" : "translated",
+            "value" : "Se permitirán las conexiones salientes de los programas firmados por Apple."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Les binaires signés par Apple seront autorisés."
+            "state" : "translated",
+            "value" : "Les connexions sortantes des programmes signés par Apple seront autorisées."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "I binari firmati da Apple saranno consentiti."
+            "state" : "translated",
+            "value" : "Le connessioni in uscita dai programmi firmati da Apple saranno consentite."
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Apple에 의해 서명된 실행 파일을 허용합니다."
+            "state" : "translated",
+            "value" : "Apple이 서명한 프로그램의 나가는 연결이 허용됩니다."
           }
         },
         "pl" : {
@@ -3121,8 +3241,8 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Binários assinados pela Apple serão permitidos."
+            "state" : "translated",
+            "value" : "Conexões de saída de programas assinados pela Apple serão permitidas."
           }
         },
         "tr" : {
@@ -3133,26 +3253,26 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Бінарні файли, підписані Apple, будуть дозволені."
+            "state" : "translated",
+            "value" : "Вихідні з’єднання від програм, підписаних Apple, будуть дозволені."
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "ایپل کے دستخط شدہ بائنریز کو اجازت دی جائے گی۔"
+            "state" : "translated",
+            "value" : "Apple کے دستخط شدہ پروگراموں کے کنکشنز کی اجازت ہوگی۔"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "将允许使用 Apple 签名的二进制文件。"
+            "state" : "translated",
+            "value" : "将允许 Apple 签名程序的传出连接。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "由 Apple 簽署的程式將被允許"
+            "state" : "translated",
+            "value" : "將允許 Apple 簽署程式的傳出連線。"
           }
         }
       }
@@ -3919,8 +4039,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Simulator-Anwendungen erlauben"
+            "state" : "translated",
+            "value" : "Simulator-Programme erlauben"
           }
         },
         "en" : {
@@ -3931,26 +4051,26 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Permitir Aplicaciones del Simulador"
+            "state" : "translated",
+            "value" : "Permitir programas del simulador"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Autoriser les applications du simulateur"
+            "state" : "translated",
+            "value" : "Autoriser les programmes du simulateur"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Consenti Applicazioni del Simulatore"
+            "state" : "translated",
+            "value" : "Consenti programmi del simulatore"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "시뮬레이터 애플리케이션 허용"
+            "state" : "translated",
+            "value" : "시뮬레이터 프로그램 허용"
           }
         },
         "pl" : {
@@ -3961,8 +4081,8 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Permitir Aplicações do Simulador"
+            "state" : "translated",
+            "value" : "Permitir programas do simulador"
           }
         },
         "tr" : {
@@ -3973,26 +4093,26 @@
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Дозволити програми Симулятора"
+            "state" : "translated",
+            "value" : "Дозволити програми симулятора"
           }
         },
         "ur" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "سیمولیٹر ایپلیکیشنز کو اجازت دیں"
+            "state" : "translated",
+            "value" : "سمیولیٹر پروگراموں کی اجازت دیں"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "允许模拟器应用程序"
+            "state" : "translated",
+            "value" : "允许模拟器程序"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "允許模擬器內的應用程式"
+            "state" : "translated",
+            "value" : "允許模擬器程式"
           }
         }
       }
