@@ -263,8 +263,12 @@ XPCDaemonClient* xpcDaemonClient = nil;
                             //bye
                             [NSApplication.sharedApplication terminate:self];
                         });
+
+                        //bail
+                        // don't fall through to the 'isExtensionRunning' wait / completeInitialization while terminating
+                        return;
                     }
-                    
+
                     //dbg msg
                     os_log_debug(logHandle, "network filter activated/enabled");
                     

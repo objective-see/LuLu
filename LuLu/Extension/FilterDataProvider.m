@@ -860,10 +860,10 @@ bail:
         }
     }
     
-    //no user?
+    //no user, or no connected client
     // allow, but create rule for user to review
     if( (nil == consoleUser) ||
-        (nil == alerts.xpcUserClient) )
+        (NO == [alerts.xpcUserClient isConnected]) )
     {
         //dbg msg
         os_log_debug(logHandle, "no active user or no connected client, will allow (and create rule)...");

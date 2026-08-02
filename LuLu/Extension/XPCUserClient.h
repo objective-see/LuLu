@@ -21,6 +21,9 @@
 
 /* METHODS */
 
+//is a user client connected
+-(BOOL)isConnected;
+
 //deliver alert to user
 // note: this is synchronous, so errors can be detected
 -(BOOL)deliverAlert:(NSDictionary*)alert reply:(void (^)(NSDictionary*))reply;

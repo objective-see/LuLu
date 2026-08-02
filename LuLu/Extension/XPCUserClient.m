@@ -23,6 +23,11 @@ extern os_log_t logHandle;
 
 @implementation XPCUserClient
 
+//is a user client (i.e. the LuLu app) connected?
+-(BOOL)isConnected {
+    return (nil != xpcListener.client);
+}
+
 //deliver alert to user
 -(BOOL)deliverAlert:(NSDictionary*)alert reply:(void (^)(NSDictionary*))reply
 {

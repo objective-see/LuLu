@@ -281,6 +281,42 @@ bail:
     return path;
 }
 
+//unarchive rules from data
+-(id)unarchiveRulesData:(NSData*)data
+{
+    //rules
+    id rules = nil;
+
+    @try
+    {
+        //init unarchiver
+        // uses 'initForReadingWithData:' as we need 'NSDecodingFailurePolicyRaiseException'
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        NSKeyedUnarchiver* unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        #pragma clang diagnostic pop
+
+        //(still) require secure coding
+        unarchiver.requiresSecureCoding = YES;
+
+        //decode
+        rules = [unarchiver decodeObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSMutableSet class], [NSDate class], [Rule class]]] forKey:NSKeyedArchiveRootObjectKey];
+
+        //done
+        [unarchiver finishDecoding];
+    }
+    @catch(NSException* exception)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to unarchive rules (exception: %{public}@)", exception);
+
+        //no rules
+        rules = nil;
+    }
+
+    return rules;
+}
+
 //load rules from disk
 // either default location, or from current profile
 -(BOOL)load
@@ -329,13 +365,12 @@ bail:
     {
 
     //unarchive
-    self.rules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSMutableSet class], [NSDate class], [Rule class]]]
-                                                       fromData:archivedRules error:&error];
+    self.rules = [self unarchiveRulesData:archivedRules];
     if(nil == self.rules)
     {
         //err msg
-        os_log_error(logHandle, "ERROR: failed to unarchive rules from %{public}@ (%{public}@)", RULES_FILE, error);
-        
+        os_log_error(logHandle, "ERROR: failed to unarchive rules from %{public}@", RULES_FILE);
+
         //bail
         goto bail;
     }
@@ -1039,9 +1074,12 @@ bail:
     {
         //add full url
         [endpointNames addObject:flow.URL.absoluteString];
-        
+
         //add host
-        [endpointNames addObject:flow.URL.host];
+        if(nil != flow.URL.host)
+        {
+            [endpointNames addObject:flow.URL.host];
+        }
     }
     
     //add host name
@@ -1473,14 +1511,13 @@ bail:
     }
         
     //unarchive
-    unarchivedRules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSMutableSet class], [NSDate class], [Rule class]]] fromData:importedRules error:&error];
-    
+    unarchivedRules = [self unarchiveRulesData:importedRules];
+
     //error?
-    if( (nil != error) ||
-        (nil == unarchivedRules) )
+    if(nil == unarchivedRules)
     {
         //err msg
-        os_log_error(logHandle, "ERROR: failed to unarchive (imported) rules (error: %{public}@)", error);
+        os_log_error(logHandle, "ERROR: failed to unarchive (imported) rules");
         goto bail;
     }
     

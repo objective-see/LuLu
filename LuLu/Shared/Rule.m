@@ -234,8 +234,21 @@ extern os_log_t logHandle;
         if(nil == self.endpointRegex)
         {
             //pattern
-            // ...as-is, or converted from glob
-            NSString* pattern = (EndpointTypeGlob == self.isEndpointAddrRegex) ? regexFromGlob(self.endpointAddr) : self.endpointAddr;
+            NSString* pattern = nil;
+
+            //glob?
+            // convert to an (already-anchored) regex
+            if(EndpointTypeGlob == self.isEndpointAddrRegex)
+            {
+                pattern = regexFromGlob(self.endpointAddr);
+            }
+            //raw regex
+            // anchor for a full-string match, so e.g. 'apple\.com' does NOT match 'apple.com.evil.com'
+            // note: '(?:...)' wraps the user's pattern so any top-level alternation ('a|b') stays within the anchors
+            else
+            {
+                pattern = [NSString stringWithFormat:@"^(?:%@)$", self.endpointAddr];
+            }
 
             self.endpointRegex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
         }
@@ -301,10 +314,21 @@ extern os_log_t logHandle;
         self.name = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(name))];
         self.csInfo = [decoder decodeObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class]]] forKey:NSStringFromSelector(@selector(csInfo))];
         
-        //endpoint addr match type {exact, regex, cidr}
-        // note: legacy archives stored a bool here, while newer archives store an integer
-        NSNumber* endpointAddrType = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(isEndpointAddrRegex))];
-        self.isEndpointAddrRegex = endpointAddrType.integerValue;
+        //endpoint addr match type {exact, regex, cidr, glob}
+        // was bool, now int, hence the try/catch
+        @try
+        {
+            self.isEndpointAddrRegex =
+                [decoder decodeIntegerForKey:
+                    NSStringFromSelector(@selector(isEndpointAddrRegex))];
+        }
+        @catch(NSException* exception)
+        {
+           self.isEndpointAddrRegex =
+                [decoder decodeBoolForKey:
+                    NSStringFromSelector(@selector(isEndpointAddrRegex))];
+        }
+        
         self.endpointAddr = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointAddr))];
         self.endpointHost = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointHost))];
         self.endpointPort = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointPort))];
@@ -756,8 +780,21 @@ bail:
             goto bail;
         }
         
-        self.isEndpointAddrRegex = [info[NSStringFromSelector(@selector(isEndpointAddrRegex))] integerValue];
-        
+        //endpoint addr match type {exact, regex, cidr, glob}
+        // validate before calling 'integerValue', as a non-number (e.g. NSNull) would throw
+        id endpointAddrType = info[NSStringFromSelector(@selector(isEndpointAddrRegex))];
+        if( (nil != endpointAddrType) &&
+            (YES != [endpointAddrType isKindOfClass:[NSNumber class]]) &&
+            (YES != [endpointAddrType isKindOfClass:[NSString class]]) )
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: 'isEndpointAddrRegex' should be a number, not %@", [endpointAddrType class]);
+
+            self = nil;
+            goto bail;
+        }
+        self.isEndpointAddrRegex = [endpointAddrType integerValue];
+
         self.type = info[NSStringFromSelector(@selector(type))];
         if([self.type isKindOfClass:[NSString class]]) {
             self.type = @([(NSString*)self.type integerValue]);
