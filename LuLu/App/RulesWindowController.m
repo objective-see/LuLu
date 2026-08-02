@@ -79,6 +79,9 @@ extern XPCDaemonClient* xpcDaemonClient;
     //set subtitle
     [self setSubTitle];
 
+    //clear (any previous) filter
+    self.filterBox.stringValue = @"";
+
     //(re)setup observer for new rules
     // here, not in 'windowDidLoad', as 'windowWillClose' removes it and 'windowDidLoad' only fires on first open
     if(nil == self.rulesObserver)
