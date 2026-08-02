@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24128" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24765" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24128"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24765"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -400,14 +400,9 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.90000000000000002" id="AM3-9J-hwR">
-                    <rect key="frame" x="258" y="59" width="138" height="31"/>
+                    <rect key="frame" x="263" y="59" width="138" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsMacPaw" id="Ylq-Y7-0yI"/>
-                </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="mxQ-16-QkH">
-                    <rect key="frame" x="573" y="57" width="142" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsHuntress" id="5gc-uV-gX6"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="KQq-D5-uls">
                     <rect key="frame" x="100" y="57" width="142" height="31"/>
@@ -418,16 +413,6 @@
                     <rect key="frame" x="724" y="61" width="73" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsiVerify" id="Qy2-wU-bbf"/>
-                </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="7sb-Zs-q5d">
-                    <rect key="frame" x="234" y="94" width="102" height="37"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsKandji" id="W0a-k0-8a1"/>
-                </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.90000000000000002" id="CsL-Yj-dhy">
-                    <rect key="frame" x="362" y="105" width="89" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="FriendsFleet" id="jTn-RV-2Tp"/>
                 </imageView>
                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="660" translatesAutoresizingMaskIntoConstraints="NO" id="JBN-MO-km3">
                     <rect key="frame" x="38" y="380" width="664" height="54"/>
@@ -452,29 +437,38 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsJamf" id="2Ll-Bq-g75"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="wYW-XY-DPT">
-                    <rect key="frame" x="416" y="54" width="148" height="36"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="lWo-O2-Vdf">
+                    <rect key="frame" x="320" y="99" width="87" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="FriendsSophos" id="ZqJ-o4-Joj"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="FriendsIru" id="zPU-oP-zkm"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.90000000000000002" id="fcd-Wp-myp">
-                    <rect key="frame" x="476" y="100" width="126" height="29"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="leY-OK-7PU">
+                    <rect key="frame" x="566" y="55" width="150" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsPANW" id="Dio-uY-kZm"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="FriendsRippling" id="O2Y-as-49K"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.90000000000000002" id="b7S-vA-Hfx">
+                    <rect key="frame" x="435" y="92" width="165" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="FriendsPANW" id="cYj-tj-TkT"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" alphaValue="0.80000000000000004" id="mxQ-16-QkH">
+                    <rect key="frame" x="416" y="57" width="142" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FriendsHuntress" id="5gc-uV-gX6"/>
                 </imageView>
             </subviews>
             <point key="canvasLocation" x="685" y="1355"/>
         </customView>
     </objects>
     <resources>
-        <image name="FriendsFleet" width="236" height="96"/>
         <image name="FriendsHuntress" width="800" height="198"/>
+        <image name="FriendsIru" width="200" height="74"/>
         <image name="FriendsJamf" width="162" height="56"/>
-        <image name="FriendsKandji" width="1944" height="494"/>
         <image name="FriendsMacPaw" width="1541" height="181"/>
         <image name="FriendsMalwarebytes" width="1888" height="301"/>
         <image name="FriendsPANW" width="1312" height="240"/>
-        <image name="FriendsSophos" width="1201" height="131"/>
+        <image name="FriendsRippling" width="957" height="114"/>
         <image name="FriendsiVerify" width="736" height="268"/>
         <image name="Heart" width="256" height="256"/>
         <image name="Icon" width="144" height="144"/>

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "rippling.png",
+      "idiom" : "mac"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
