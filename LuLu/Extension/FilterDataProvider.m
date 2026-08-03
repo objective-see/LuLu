@@ -297,10 +297,39 @@ bail:
     return verdict;
 }
 
+//no user/client to show an alert to
+// allow the flow, but create a (passive) rule so the user can review it later
+// note: used by every alert-requiring path, so a flow is never left paused w/ no one to answer
+-(FlowVerdict)allowNoClient:(Process*)process
+{
+    //rule info
+    NSMutableDictionary* info = nil;
+
+    //dbg msg
+    os_log_debug(logHandle, "no active user or no connected client, will allow (and create rule)...");
+
+    //init info for (passive allow) rule
+    info = [@{KEY_PATH:process.path, KEY_ACTION:@RULE_STATE_ALLOW, KEY_TYPE:@RULE_TYPE_PASSIVE} mutableCopy];
+
+    //add process cs info?
+    if(nil != process.csInfo) info[KEY_CS_INFO] = process.csInfo;
+
+    //create and add rule
+    // note: no 'rulesChanged' broadcast — there's no connected client to receive it;
+    //       the rule is saved and picked up when the client (re)connects & fetches rules
+    if(YES != [rules add:[[Rule alloc] init:info] save:YES])
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to add rule for %{public}@", info[KEY_PATH]);
+    }
+
+    return kFlowVerdictAllow;
+}
+
 //process a network out event from the network extension (OS)
 // if there is no matching rule, will tell client to show alert
 -(FlowVerdict)processEvent:(NEFilterFlow*)flow {
-    
+
     //process obj
     Process* process = nil;
     
@@ -677,7 +706,13 @@ bail:
     
     //dbg msg
     os_log_debug(logHandle, "no related alert, currently shown...");
-    
+
+    //can we actually show an alert?
+    // need a logged-in user AND a connected client; if not, alert-requiring paths below
+    // allow + create a passive rule instead of pausing a flow no one can answer
+    BOOL canAlert = ( (nil != consoleUser) &&
+                      (YES == [alerts.xpcUserClient isConnected]) );
+
     //CHECK:
     // Apple process and 'PREF_ALLOW_APPLE' is set? Allow
     // Unless:
@@ -695,27 +730,43 @@ bail:
             os_log_debug(logHandle, "is an Apple binary...");
             
             //graylisted item?
-            // pause and alert user
+            // pause and alert user (or, if no client, allow + create a passive rule)
             if(YES == [self.grayList isGrayListed:process])
             {
+                //no user/client to prompt?
+                // allow + create rule, so the flow isn't left paused w/ no one to answer
+                if(NO == canAlert)
+                {
+                    verdict = [self allowNoClient:process];
+                    goto bail;
+                }
+
                 //dbg msg
                 os_log_debug(logHandle, "while signed by apple, %d/%{public}@ is gray listed, so will alert", process.pid, process.binary.name);
-                
+
                 //pause
                 verdict = kFlowVerdictPause;
-                
+
                 //create/deliver alert
                 [self alert:(NEFilterSocketFlow*)flow process:process];
             }
             //other rules for this process?
             else if(0 != [rules ruleCountForKey:process.key])
             {
+                //no user/client to prompt?
+                // allow + create rule, so the flow isn't left paused w/ no one to answer
+                if(NO == canAlert)
+                {
+                    verdict = [self allowNoClient:process];
+                    goto bail;
+                }
+
                 //dbg msg
                 os_log_debug(logHandle, "while signed by apple, %d/%{public}@ has other (non-matching) rules, so will alert", process.pid, process.binary.name);
-                
+
                 //pause
                 verdict = kFlowVerdictPause;
-                
+
                 //create/deliver alert
                 [self alert:(NEFilterSocketFlow*)flow process:process];
             }
@@ -860,37 +911,14 @@ bail:
         }
     }
     
-    //no user, or no connected client
-    // allow, but create rule for user to review
-    if( (nil == consoleUser) ||
-        (NO == [alerts.xpcUserClient isConnected]) )
+    //no user/client to show an alert to?
+    // allow, but create a rule for review
+    if(NO == canAlert)
     {
-        //dbg msg
-        os_log_debug(logHandle, "no active user or no connected client, will allow (and create rule)...");
-        
-        //init info for rule creation
-        info = [@{KEY_PATH:process.path, KEY_ACTION:@RULE_STATE_ALLOW, KEY_TYPE:@RULE_TYPE_PASSIVE} mutableCopy];
-
-        //add process cs info?
-        if(nil != process.csInfo) info[KEY_CS_INFO] = process.csInfo;
-        
-        //create and add rule
-        if(YES != [rules add:[[Rule alloc] init:info] save:YES])
-        {
-            //err msg
-            os_log_error(logHandle, "ERROR: failed to add rule for %{public}@", info[KEY_PATH]);
-             
-            //bail
-            goto bail;
-        }
-        
-        //tell user rules changed
-        [alerts.xpcUserClient rulesChanged];
-        
-        //all set
+        verdict = [self allowNoClient:process];
         goto bail;
     }
-    
+
     //sending to user, so pause!
     verdict = kFlowVerdictPause;
         
