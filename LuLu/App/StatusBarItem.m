@@ -312,12 +312,10 @@ enum menuItems
         case rulesImport:
             
             //import
+            // note: importRules shows its own success/error alerts, and is silent on user cancel
             if(YES != [self.rulesMenuController importRules])
             {
-                //show alert
-                showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: Failed to import rules", @"ERROR: Failed to import rules"), NSLocalizedString(@"See log for (more) details",@"See log for (more) details"), @[NSLocalizedString(@"OK", @"OK")]);
-                
-                //bail
+                //cancel or error — don't pop the rules window
                 goto bail;
             }
             

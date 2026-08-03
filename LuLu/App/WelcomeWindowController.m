@@ -147,12 +147,15 @@ extern os_log_t logHandle;
             // activate and wait for extension to be approved
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
             ^{
+                //brief pause
+                [NSThread sleepForTimeInterval:0.5f];
+
                 //extension
                 Extension* extension = nil;
-                
+
                 //wait semaphore
                 dispatch_semaphore_t semaphore = 0;
-                
+
                 //init extension object
                 extension = [[Extension alloc] init];
                 

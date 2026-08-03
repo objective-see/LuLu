@@ -214,7 +214,11 @@ extern XPCDaemonClient* xpcDaemonClient;
 {
     //flag
     BOOL imported = NO;
-    
+
+    //flag
+    // user cancelled the (file browse) panel — not an error, so no alert
+    BOOL cancelled = NO;
+
     //flag
     __block BOOL userOnlyImport = YES;
     
@@ -261,7 +265,9 @@ extern XPCDaemonClient* xpcDaemonClient;
     response = [panel runModal];
     if(NSModalResponseCancel == response)
     {
-        //bail
+        //user cancelled
+        // not an error, so bail silently (no alert)
+        cancelled = YES;
         goto bail;
     }
     
@@ -388,7 +394,16 @@ extern XPCDaemonClient* xpcDaemonClient;
     showAlert(NSAlertStyleInformational, [NSString stringWithFormat:NSLocalizedString(@"Imported %ld rules",@"Imported %ld rules"), count], nil, @[NSLocalizedString(@"OK", @"OK")]);
     
 bail:
-    
+
+    //failed (and not a user cancel)?
+    // show a generic error (specifics are logged); cancel is silent
+    if( (YES != imported) &&
+        (YES != cancelled) )
+    {
+        //show error
+        showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: Failed to import rules", @"ERROR: Failed to import rules"), NSLocalizedString(@"See log for (more) details", @"See log for (more) details"), @[NSLocalizedString(@"OK", @"OK")]);
+    }
+
     return imported;
 }
 
