@@ -527,6 +527,18 @@ bail:
     //invoked with existing rule (to edit)
     if(YES == [sender isKindOfClass:[Rule class]])
     {
+        //item no longer exists? (globs ('*' / '/*') are exempt)
+        // alert & bail, as editing (re)creates the rule, which would lose its code signing info
+        if( (YES != [((Rule*)sender).path hasSuffix:VALUE_ANY]) &&
+            (YES != [NSFileManager.defaultManager fileExistsAtPath:((Rule*)sender).path]) )
+        {
+            //show alert
+            showAlert(NSAlertStyleWarning, NSLocalizedString(@"Unable to Edit Rule", @"Unable to Edit Rule"), [NSString stringWithFormat:NSLocalizedString(@"%@ no longer exists, so its rule cannot be edited. The rule can still be disabled or deleted.", @"%@ no longer exists, so its rule cannot be edited. The rule can still be disabled or deleted."), ((Rule*)sender).path], @[NSLocalizedString(@"OK", @"OK")]);
+
+            //bail
+            goto bail;
+        }
+
         //default rule?
         //show alert/warning
         if(RULE_TYPE_DEFAULT == ((Rule*)sender).type.intValue)
