@@ -178,9 +178,8 @@ XPCDaemonClient* xpcDaemonClient = nil;
         // note: it stays up (spinning) until the extension is activated & the daemon has checked in
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_main_queue(),
         ^{
-            //taking a while (e.g. user has to approve the extension)?
-            // drop the startup window to a normal level, so it no longer floats above *other* apps
-            // ...it stays up (& spinning) when LuLu is frontmost, but System Settings can now come forward
+            //taking a while
+            // drop the startup window to a normal level
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (STARTUP_WINDOW_FLOAT_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(),
             ^{
                 //still visible? demote

@@ -38,7 +38,7 @@ extern os_log_t logHandle;
     if(nil != self.rule)
     {
         //set title
-        self.window.title = @"Edit Exiting Rule";
+        self.window.title = @"Edit Existing Rule";
         
         //path
         self.path.stringValue = self.rule.path;
@@ -387,14 +387,16 @@ bail:
     endpointAddrRegex = @(endpointType);
 
     //endpoint port
-    // ...set var, but also validate
+    // ...set var, but also validate (digits only, and within 1-65535)
     endpointPort = (0 != self.endpointPort.stringValue.length) ? self.endpointPort.stringValue : VALUE_ANY;
     if( (0 != self.endpointPort.stringValue.length) &&
         (YES != [self.endpointPort.stringValue isEqualToString:VALUE_ANY]) &&
-        (NSNotFound != [endpointPort rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location) )
+        ( (NSNotFound != [endpointPort rangeOfCharacterFromSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]].location) ||
+          (endpointPort.integerValue < 1) ||
+          (endpointPort.integerValue > 65535) ) )
     {
         //show alert
-        showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: invalid port", @"ERROR: invalid port"), [NSString stringWithFormat:NSLocalizedString(@"%@ is not a valid (port) number", @"%@ is not a valid (port) number"), endpointPort], @[NSLocalizedString(@"OK", @"OK")]);
+        showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: invalid port", @"ERROR: invalid port"), [NSString stringWithFormat:NSLocalizedString(@"%@ is not a valid port number (1-65535)", @"%@ is not a valid port number (1-65535)"), endpointPort], @[NSLocalizedString(@"OK", @"OK")]);
 
         //highlight offending field
         [self.endpointPort selectText:nil];
