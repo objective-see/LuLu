@@ -41,24 +41,95 @@ extern NSMutableDictionary* alerts;
     self = [super init];
     if(nil != self)
     {
-        //alloc/init
-        daemon = [[NSXPCConnection alloc] initWithMachServiceName:DAEMON_MACH_SERVICE options:0];
-    
-        //set remote object interface
-        self.daemon.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(XPCDaemonProtocol)];
-        
-        //set exported object interface (protocol)
-        self.daemon.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(XPCUserProtocol)];
-        
-        //set exported object
-        // this will allow daemon to invoke user methods!
-        self.daemon.exportedObject = [[XPCUser alloc] init];
-    
-        //resume
-        [self.daemon resume];
+        //create connection
+        [self createConnection];
     }
-    
+
     return self;
+}
+
+//create (or re-create) the XPC connection to the daemon
+-(void)createConnection
+{
+    //alloc/init
+    daemon = [[NSXPCConnection alloc] initWithMachServiceName:DAEMON_MACH_SERVICE options:0];
+
+    //set remote object interface
+    self.daemon.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(XPCDaemonProtocol)];
+
+    //set exported object interface (protocol)
+    self.daemon.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(XPCUserProtocol)];
+
+    //set exported object
+    // this will allow daemon to invoke user methods!
+    self.daemon.exportedObject = [[XPCUser alloc] init];
+
+    //resume
+    [self.daemon resume];
+
+    return;
+}
+
+//(re)connect to the daemon
+// note: an NSXPCConnection that fails at lookup (e.g. the extension wasn't up yet) is *permanently*
+//       invalidated & will never reconnect on its own ...so throw it away and build a new one
+-(void)reconnect
+{
+    //dbg msg
+    os_log_debug(logHandle, "(re)creating XPC connection to daemon");
+
+    //toss the (dead) connection
+    [self.daemon invalidate];
+    self.daemon = nil;
+
+    //and create a new one
+    [self createConnection];
+
+    return;
+}
+
+//wait for the daemon to be up & accepting XPC connections
+-(BOOL)waitForDaemon:(NSUInteger)maxAttempts
+{
+    //flag
+    __block BOOL ready = NO;
+
+    //dbg msg
+    os_log_debug(logHandle, "waiting for daemon to be ready...");
+
+    //don't alarm the user w/ (expected) errors while we wait
+    self.suppressXPCErrorAlert = YES;
+
+    //try until the daemon replies (or we give up)
+    for(NSUInteger attempt = 0; attempt < maxAttempts; attempt++)
+    {
+        //check in
+        [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
+        {
+            //handle error
+            // rebuilds the (now dead) connection for the next attempt
+            [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
+
+        }] checkIn:^(BOOL checkedIn)
+        {
+            //save
+            ready = checkedIn;
+        }];
+
+        //ready? done
+        if(YES == ready) break;
+
+        //nap, then retry (w/ the rebuilt connection)
+        [NSThread sleepForTimeInterval:0.25f];
+    }
+
+    //(re)enable error alerts
+    self.suppressXPCErrorAlert = NO;
+
+    //dbg msg
+    os_log_debug(logHandle, "daemon ready? %d", ready);
+
+    return ready;
 }
 
 //handle XPC error
@@ -67,7 +138,18 @@ extern NSMutableDictionary* alerts;
 {
     //err msg
     os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", method, proxyError);
-    
+
+    //(re)create the connection
+    // it's now invalidated (and thus dead forever), so rebuild it ...otherwise *every* subsequent
+    // call fails too, and the app shows empty rules/default prefs until it's relaunched
+    [self reconnect];
+
+    //waiting on the daemon (at launch)?
+    // failures are expected until it's up, so don't alarm the user
+    if(YES == self.suppressXPCErrorAlert) {
+        return;
+    }
+
     //already reported?
     if(YES == self.reportedXPCConnectionError) {
         return;
@@ -92,10 +174,10 @@ extern NSMutableDictionary* alerts;
 {
     //preferences
     __block NSDictionary* preferences = nil;
-    
+
     //dbg msg
     os_log_debug(logHandle, "invoking daemon XPC method, '%s'", __PRETTY_FUNCTION__);
-    
+
     [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
     {
           //handle error
@@ -105,12 +187,12 @@ extern NSMutableDictionary* alerts;
    {
        //dbg msg
        os_log_debug(logHandle, "got preferences: %{public}@", preferencesFromDaemon);
-       
+
        //save
        preferences = preferencesFromDaemon;
-       
+
    }];
-    
+
     return preferences;
 }
 

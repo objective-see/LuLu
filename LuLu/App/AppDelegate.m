@@ -174,12 +174,26 @@ XPCDaemonClient* xpcDaemonClient = nil;
             delay = 3;
         }
         
-        //wait a few seconds, so that startup window can show... then fade out
+        //wait a few seconds, so that startup window can show
+        // note: it stays up (spinning) until the extension is activated & the daemon has checked in
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_main_queue(),
         ^{
-            //fade out
-            fadeOut(self.startupWindowController.window, 1.0f);
-            
+            //taking a while (e.g. user has to approve the extension)?
+            // drop the startup window to a normal level, so it no longer floats above *other* apps
+            // ...it stays up (& spinning) when LuLu is frontmost, but System Settings can now come forward
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (STARTUP_WINDOW_FLOAT_DURATION * NSEC_PER_SEC)), dispatch_get_main_queue(),
+            ^{
+                //still visible? demote
+                if(YES == self.startupWindowController.window.isVisible)
+                {
+                    //dbg msg
+                    os_log_debug(logHandle, "extension still starting/awaiting approval, dropping startup window to normal level");
+
+                    //no longer float above other apps
+                    self.startupWindowController.window.level = NSNormalWindowLevel;
+                }
+            });
+
             //(re)activate extension
             // this will call back to complete inits when done
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
@@ -285,10 +299,22 @@ XPCDaemonClient* xpcDaemonClient = nil;
                     
                     //dbg msg
                     os_log_debug(logHandle, "%{public}@ is off and running", EXT_BUNDLE_ID);
-                            
+
+                    //init XPC client & wait for the daemon to be ready
+                    xpcDaemonClient = [[XPCDaemonClient alloc] init];
+                    if(YES != [xpcDaemonClient waitForDaemon:20])
+                    {
+                        //err msg
+                        os_log_error(logHandle, "ERROR: timed out waiting for daemon ...will continue anyway");
+                    }
+
                     //complete initialization on main thread
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        
+
+                        //(now) dismiss the startup window
+                        // kept up 'til here, so it spins while the extension starts & the daemon checks in
+                        fadeOut(self.startupWindowController.window, 1.0f);
+
                         //complete initializations
                         [self completeInitialization:nil];
                         
@@ -645,8 +671,9 @@ bail:
     
     //init extension comms
     // establishes connection to extension
-    xpcDaemonClient = [[XPCDaemonClient alloc] init];
-    
+    // note: may already be initialized (& waited on) during launch, so don't toss that connection
+    if(nil == xpcDaemonClient) xpcDaemonClient = [[XPCDaemonClient alloc] init];
+
     //initial prefs?
     // send to extension
     if(nil != initialPreferences)

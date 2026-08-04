@@ -33,6 +33,19 @@ extern os_log_t logHandle;
 
 @implementation XPCDaemon
 
+//check in
+// if this is invoked (& replies), the daemon is up & accepting XPC connections
+-(void)checkIn:(void (^)(BOOL))reply
+{
+    //dbg msg
+    os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
+
+    //(always) happy
+    reply(YES);
+
+    return;
+}
+
 //send preferences to the client
 -(void)getPreferences:(void (^)(NSDictionary*))reply
 {

@@ -11,6 +11,10 @@
 
 @protocol XPCDaemonProtocol
 
+//check in
+// used by the client to confirm the daemon is up & accepting XPC connections
+-(void)checkIn:(void (^)(BOOL))reply;
+
 //get preferences
 -(void)getPreferences:(void (^)(NSDictionary*))reply;
 

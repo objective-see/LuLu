@@ -19,6 +19,14 @@
 //xpc connection to daemon
 @property (atomic, strong, readwrite)NSXPCConnection* daemon;
 
+//suppress the 'failed to connect' alert
+// set while waiting for the daemon at launch, as errors are expected 'til it's up
+@property (atomic) BOOL suppressXPCErrorAlert;
+
+//wait for the daemon to be up & accepting XPC connections
+// note: blocks, so call from a background thread
+-(BOOL)waitForDaemon:(NSUInteger)maxAttempts;
+
 //get preferences
 // note: synchronous
 -(NSDictionary*)getPreferences;

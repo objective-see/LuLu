@@ -310,6 +310,11 @@ typedef NS_ENUM(NSInteger, EndpointType) {
 //app name
 #define APP_NAME @"LuLu.app"
 
+//seconds to keep the startup window floating above other apps
+// after this it drops to a normal level: still front while LuLu is active, but any app the
+// user switches to (e.g. System Settings, to approve the extension) can now come forward
+#define STARTUP_WINDOW_FLOAT_DURATION 2
+
 #define CMDLINE_FLAG_WELCOME @"-welcome"
 #define CMDLINE_FLAG_PREFS @"-prefs"
 #define CMDLINE_FLAG_RULES @"-rules"

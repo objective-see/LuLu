@@ -18,6 +18,26 @@
 //log handle
 extern os_log_t logHandle;
 
+//derive an endpoint's match type from the address itself
+EndpointType endpointTypeForAddress(NSString* address)
+{
+    //none/any? exact
+    if( (0 == address.length) ||
+        (YES == [address isEqualToString:VALUE_ANY]) ) return EndpointTypeExact;
+
+    //contains a regex metacharacter? raw regex
+    if(NSNotFound != [address rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"\\()[]{}|^$+?"]].location) return EndpointTypeRegex;
+
+    //contains a '*'? glob
+    if(NSNotFound != [address rangeOfString:@"*"].location) return EndpointTypeGlob;
+
+    //a CIDR or IP range?
+    if(YES == isAddressRange(address)) return EndpointTypeCIDR;
+
+    //default
+    return EndpointTypeExact;
+}
+
 @implementation Rule
 
 @synthesize scope;
@@ -314,22 +334,16 @@ extern os_log_t logHandle;
         self.name = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(name))];
         self.csInfo = [decoder decodeObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class]]] forKey:NSStringFromSelector(@selector(csInfo))];
         
-        //endpoint addr match type {exact, regex, cidr, glob}
-        // was bool, now int, hence the try/catch
-        @try
-        {
-            self.isEndpointAddrRegex =
-                [decoder decodeIntegerForKey:
-                    NSStringFromSelector(@selector(isEndpointAddrRegex))];
-        }
-        @catch(NSException* exception)
-        {
-           self.isEndpointAddrRegex =
-                [decoder decodeBoolForKey:
-                    NSStringFromSelector(@selector(isEndpointAddrRegex))];
-        }
-        
         self.endpointAddr = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointAddr))];
+
+        //endpoint addr match type {exact, regex, cidr, glob}
+        // note: newer archives store this as an object, so it decodes directly
+        //       legacy archives stored it as an inline primitive (a bool, then later an integer), which
+        //       'decodeObjectOfClass:' can't read (returns nil, w/o throwing) ...so derive it from the address
+        // important: do NOT use 'decodeIntegerForKey:'/'decodeBoolForKey:' here — either throws on the
+        //            other's format, which (w/ a raising decoder) aborts the entire load & loses all rules
+        NSNumber* endpointAddrType = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(isEndpointAddrRegex))];
+        self.isEndpointAddrRegex = (nil != endpointAddrType) ? endpointAddrType.integerValue : endpointTypeForAddress(self.endpointAddr);
         self.endpointHost = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointHost))];
         self.endpointPort = [decoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(endpointPort))];
         
@@ -362,7 +376,10 @@ extern os_log_t logHandle;
     [encoder encodeObject:self.endpointAddr forKey:NSStringFromSelector(@selector(endpointAddr))];
     [encoder encodeObject:self.endpointHost forKey:NSStringFromSelector(@selector(endpointHost))];
     [encoder encodeObject:self.endpointPort forKey:NSStringFromSelector(@selector(endpointPort))];
-    [encoder encodeInteger:self.isEndpointAddrRegex forKey:NSStringFromSelector(@selector(isEndpointAddrRegex))];
+    //endpoint addr match type
+    // note: encoded as an object (not a primitive), so it can be decoded w/o any chance of a
+    //       type-mismatch exception (which would abort the decode of *all* rules)
+    [encoder encodeObject:@(self.isEndpointAddrRegex) forKey:NSStringFromSelector(@selector(isEndpointAddrRegex))];
     
     [encoder encodeObject:self.type forKey:NSStringFromSelector(@selector(type))];
     [encoder encodeObject:self.scope forKey:NSStringFromSelector(@selector(scope))];

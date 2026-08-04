@@ -270,8 +270,11 @@ bail:
     path = [self.path.stringValue mutableCopy];
     if(0 == path.length)
     {
-        //bail
-        goto bail;
+        //highlight offending field
+        [self.path selectText:nil];
+
+        //keep window open
+        return;
     }
     
     //set flags
@@ -305,9 +308,12 @@ bail:
         {
             //show alert
             showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: invalid path", @"ERROR: invalid path"), [NSString stringWithFormat:NSLocalizedString(@"%@ does not exist!", @"%@ does not exist!"), path], @[NSLocalizedString(@"OK", @"OK")]);
-        
-            //bail
-            goto bail;
+
+            //highlight offending field
+            [self.path selectText:nil];
+
+            //keep window open
+            return;
         }
     }
     
@@ -331,8 +337,11 @@ bail:
             //show alert
             showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: invalid regex", @"ERROR: invalid regex"), [NSString stringWithFormat:NSLocalizedString(@"%@ is not a valid regular expression\r\ndetails: %@", @"%@ is not a valid regular expression\r\ndetails: %@"), endpointAddr, error.localizedDescription], @[NSLocalizedString(@"OK", @"OK")]);
 
-            //bail
-            goto bail;
+            //highlight offending field
+            [self.endpointAddr selectText:nil];
+
+            //keep window open
+            return;
         }
     }
     //not an explicit regex, but the lone '*' (VALUE_ANY) is left untouched ('any endpoint')
@@ -366,8 +375,11 @@ bail:
             //show alert
             showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: invalid CIDR", @"ERROR: invalid CIDR"), [NSString stringWithFormat:NSLocalizedString(@"%@ is not a valid CIDR (e.g. 192.168.1.0/24)", @"%@ is not a valid CIDR (e.g. 192.168.1.0/24)"), endpointAddr], @[NSLocalizedString(@"OK", @"OK")]);
 
-            //bail
-            goto bail;
+            //highlight offending field
+            [self.endpointAddr selectText:nil];
+
+            //keep window open
+            return;
         }
     }
 
@@ -383,9 +395,12 @@ bail:
     {
         //show alert
         showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: invalid port", @"ERROR: invalid port"), [NSString stringWithFormat:NSLocalizedString(@"%@ is not a valid (port) number", @"%@ is not a valid (port) number"), endpointPort], @[NSLocalizedString(@"OK", @"OK")]);
-        
-        //bail
-        goto bail;
+
+        //highlight offending field
+        [self.endpointPort selectText:nil];
+
+        //keep window open
+        return;
     }
 
     //set action
@@ -402,14 +417,13 @@ bail:
     //ok happy
     response = NSModalResponseOK;
 
-bail:
-    
     //stop w/ response
+    // note: validation failures return early (above), keeping the window open
     [NSApp stopModalWithCode:response];
-    
+
     //close
     [self.window close];
-    
+
     return;
 }
 

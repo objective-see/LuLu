@@ -287,31 +287,15 @@ bail:
     //rules
     id rules = nil;
 
-    @try
-    {
-        //init unarchiver
-        // uses 'initForReadingWithData:' as we need 'NSDecodingFailurePolicyRaiseException'
-        #pragma clang diagnostic push
-        #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-        NSKeyedUnarchiver* unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-        #pragma clang diagnostic pop
+    //error
+    NSError* error = nil;
 
-        //(still) require secure coding
-        unarchiver.requiresSecureCoding = YES;
-
-        //decode
-        rules = [unarchiver decodeObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSMutableSet class], [NSDate class], [Rule class]]] forKey:NSKeyedArchiveRootObjectKey];
-
-        //done
-        [unarchiver finishDecoding];
-    }
-    @catch(NSException* exception)
+    //unarchive
+    rules = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[[NSDictionary class], [NSArray class], [NSString class], [NSNumber class], [NSMutableSet class], [NSDate class], [Rule class]]] fromData:data error:&error];
+    if(nil == rules)
     {
         //err msg
-        os_log_error(logHandle, "ERROR: failed to unarchive rules (exception: %{public}@)", exception);
-
-        //no rules
-        rules = nil;
+        os_log_error(logHandle, "ERROR: failed to unarchive rules (error: %{public}@)", error);
     }
 
     return rules;
@@ -324,8 +308,6 @@ bail:
     //result
     BOOL result = NO;
     
-    //error
-    NSError* error = nil;
     
     //rule's file
     NSString* rulesFile = nil;
@@ -1495,9 +1477,6 @@ bail:
     
     //unserialized rules
     NSDictionary* unarchivedRules = nil;
-    
-    //error
-    NSError* error = nil;
     
     //dbg msg
     os_log_debug(logHandle, "method '%s' invoked with %{public}@", __PRETTY_FUNCTION__, importedRules);
