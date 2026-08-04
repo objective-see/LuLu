@@ -140,8 +140,6 @@ extern NSMutableDictionary* alerts;
     os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", method, proxyError);
 
     //(re)create the connection
-    // it's now invalidated (and thus dead forever), so rebuild it ...otherwise *every* subsequent
-    // call fails too, and the app shows empty rules/default prefs until it's relaunched
     [self reconnect];
 
     //waiting on the daemon (at launch)?
@@ -162,7 +160,7 @@ extern NSMutableDictionary* alerts;
     dispatch_async(dispatch_get_main_queue(), ^{
         
         //show alert
-        showAlert(NSAlertStyleWarning, NSLocalizedString(@"Failed to Connect to LuLu's Extension", @"Failed to Connect to LuLu's Extension"), NSLocalizedString(@"LuLu could not communicate with its system extension. A restart might fix this!", @"LuLu could not communicate with its system extension. A restart might fix this!"), @[NSLocalizedString(@"OK", @"OK")]);
+        showAlert(NSAlertStyleWarning, NSLocalizedString(@"Failed to Connect to LuLu's Extension", @"Failed to Connect to LuLu's Extension"), NSLocalizedString(@"LuLu could not communicate with its system extension. A reboot might fix this!", @"LuLu could not communicate with its system extension. A reboot might fix this!"), @[NSLocalizedString(@"OK", @"OK")]);
     });
     
     return;

@@ -7429,8 +7429,12 @@
       },
       "shouldTranslate" : false
     },
+    "LuLu could not communicate with its system extension. A reboot might fix this!" : {
+      "comment" : "LuLu could not communicate with its system extension. A reboot might fix this!"
+    },
     "LuLu could not communicate with its system extension. A restart might fix this!" : {
       "comment" : "LuLu could not communicate with its system extension. A restart might fix this!",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
