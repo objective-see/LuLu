@@ -1478,6 +1478,7 @@
     },
     "%@ is not a valid (port) number" : {
       "comment" : "%@ is not a valid (port) number",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1630,6 +1631,9 @@
         }
       }
     },
+    "%@ is not a valid port number (1-65535)" : {
+      "comment" : "%@ is not a valid port number (1-65535)"
+    },
     "%@ is not a valid regular expression\r\ndetails: %@" : {
       "comment" : "%@ is not a valid regular expression\r\ndetails: %@",
       "localizations" : {
@@ -1712,6 +1716,9 @@
           }
         }
       }
+    },
+    "%@ no longer exists, so its rule cannot be edited. The rule can still be disabled or deleted." : {
+      "comment" : "%@ no longer exists, so its rule cannot be edited. The rule can still be disabled or deleted."
     },
     "%@ signed by 3rd-party/ad hoc" : {
       "comment" : "%@ signed by 3rd-party/ad hoc",
@@ -10315,6 +10322,9 @@
           }
         }
       }
+    },
+    "Unable to Edit Rule" : {
+      "comment" : "Unable to Edit Rule"
     },
     "Uninstall" : {
       "comment" : "Uninstall",
