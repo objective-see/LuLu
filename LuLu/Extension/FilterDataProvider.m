@@ -353,7 +353,30 @@ bail:
     
     //grab console user
     consoleUser = getConsoleUser();
-    
+
+    //pid
+    // extracted from flow's audit token
+    pid_t pid = 0;
+
+    //extract pid
+    // note: 'audit_token_to_pid' is just a field accessor (can't fail), so only call it on a well-formed token
+    if(sizeof(audit_token_t) == flow.sourceAppAuditToken.length)
+    {
+        //extract
+        pid = audit_token_to_pid(*(audit_token_t*)flow.sourceAppAuditToken.bytes);
+    }
+
+    //CHECK:
+    // kernel (pid: 0) flow ...allow
+    if(0 == pid)
+    {
+        //log msg
+        os_log(logHandle, "flow originated from kernel (pid: 0), allowing: %{public}@", ((NEFilterSocketFlow*)flow).remoteEndpoint);
+
+        //bail
+        goto bail;
+    }
+
     //check cache for process
     process = [self.cache objectForKey:flow.sourceAppAuditToken];
     if(!process) {
@@ -374,7 +397,6 @@ bail:
     
     //sanity check
     // process exited? deny
-    pid_t pid = audit_token_to_pid(*(audit_token_t*)flow.sourceAppAuditToken.bytes);
     if(!isAlive(pid))
     {
         //dbg msg

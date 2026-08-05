@@ -75,7 +75,7 @@ extern os_log_t logHandle;
         if(0 == self.pid)
         {
             //err msg
-            os_log_error(logHandle, "ERROR: 'audit_token_to_pid' returned NULL\n");
+            os_log_error(logHandle, "ERROR: audit token contains no pid (0), e.g. kernel or malformed token\n");
             return nil;
         }
         
