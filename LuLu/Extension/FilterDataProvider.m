@@ -379,7 +379,6 @@ bail:
 
     //CHECK:
     // process already exited (or zombie'd)? ...deny
-    // and no need to (try) create a process obj, as its path/code-signing lookups will just fail w/ ESRCH
     if(YES != isAlive(pid))
     {
         //dbg msg
@@ -413,7 +412,6 @@ bail:
     if(nil == process)
     {
         //process exited mid-lookup? ...deny
-        // this is the common case; path/code-signing lookups fail w/ ESRCH once the process is gone
         if(YES != isAlive(pid))
         {
             //dbg msg
