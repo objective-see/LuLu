@@ -377,12 +377,25 @@ bail:
         goto bail;
     }
 
+    //CHECK:
+    // process already exited (or zombie'd)? ...deny
+    // and no need to (try) create a process obj, as its path/code-signing lookups will just fail w/ ESRCH
+    if(YES != isAlive(pid))
+    {
+        //dbg msg
+        os_log_debug(logHandle, "process %d has exited, DENYING flow", pid);
+
+        //block
+        verdict = kFlowVerdictBlock;
+        goto bail;
+    }
+
     //check cache for process
     process = [self.cache objectForKey:flow.sourceAppAuditToken];
     if(!process) {
-        
+
         os_log_debug(logHandle, "no process found in cache, will create");
-        
+
         //create
         // also adds to cache
         process = [self createProcess:flow];
@@ -394,26 +407,27 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "found process object in cache: %{public}@ (pid: %d)", process.path, process.pid);
     }
-    
+
     //sanity check
-    // process exited? deny
-    if(!isAlive(pid))
-    {
-        //dbg msg
-        os_log_debug(logHandle, "process %d has exited, DENYING flow", pid);
-        
-        //block
-        verdict = kFlowVerdictBlock;
-        goto bail;
-    }
-    
-    //sanity check
-    // no process? just allow...
+    // couldn't create process obj?
     if(nil == process)
     {
+        //process exited mid-lookup? ...deny
+        // this is the common case; path/code-signing lookups fail w/ ESRCH once the process is gone
+        if(YES != isAlive(pid))
+        {
+            //dbg msg
+            os_log_debug(logHandle, "process %d exited during lookup, DENYING flow", pid);
+
+            //block
+            verdict = kFlowVerdictBlock;
+            goto bail;
+        }
+
         //err msg
-        os_log_error(logHandle, "ERROR: failed to create process for flow, will allow");
-        
+        // process is alive, but still couldn't be examined ...fail open
+        os_log_error(logHandle, "ERROR: failed to create process for flow (pid: %d), will allow: %{public}@", pid, ((NEFilterSocketFlow*)flow).remoteEndpoint);
+
         //bail
         goto bail;
     }
