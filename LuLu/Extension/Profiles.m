@@ -79,6 +79,47 @@ bail:
     return profiles;
 }
 
+//resolve a (client-supplied) profile name into a path within the profiles directory
+// returns nil if the name is invalid, or if the resolved path escapes the profiles directory
+-(NSString*)resolve:(NSString*)name
+{
+    //resolved path
+    NSString* resolvedPath = nil;
+
+    //sanitized name
+    // just use last path component (e.g. strips any '../')
+    NSString* sanitizedName = name.lastPathComponent;
+
+    //sanity check
+    if(0 == sanitizedName.length)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: profile name '%{public}@' is invalid", name);
+        goto bail;
+    }
+
+    //init path
+    // ...also standardize and resolve any symlinks
+    resolvedPath = [[[self.directory stringByAppendingPathComponent:sanitizedName] stringByStandardizingPath] stringByResolvingSymlinksInPath];
+
+    //sanity check
+    // must (still) be within the profiles directory
+    if(YES != [resolvedPath hasPrefix:[self.directory stringByAppendingString:@"/"]])
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: resolved path '%{public}@' isn't in the profile directory %{public}@",
+                     resolvedPath, self.directory);
+
+        //unset
+        resolvedPath = nil;
+        goto bail;
+    }
+
+bail:
+
+    return resolvedPath;
+}
+
 //add new profile
 // and then set it to default
 -(BOOL)add:(NSString*)name preferences:(NSDictionary*)newPreferences
@@ -104,14 +145,12 @@ bail:
     }
     
     //init path for new profile directory
-    newProfilePath = [[[self.directory stringByAppendingPathComponent:name.lastPathComponent] stringByStandardizingPath] stringByResolvingSymlinksInPath];
-    
-    //sanity check
-    if(YES != [newProfilePath hasPrefix:[self.directory stringByAppendingString:@"/"]]) {
-        
-        //error
-        os_log_error(logHandle, "ERROR: created path '%{public}@' isn't in the profile directory %{public}@",
-                     newProfilePath, self.directory);
+    // note: resolves name, ensuring the result is within the profiles directory
+    newProfilePath = [self resolve:name];
+    if(nil == newProfilePath)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to resolve profile name '%{public}@'", name);
         goto bail;
     }
     
@@ -207,8 +246,15 @@ bail:
     NSString* current = nil;
     
     //path
-    NSString* profile = [self.directory stringByAppendingPathComponent:name];
-    
+    // note: resolves (client-supplied) name, ensuring it's within the profiles directory
+    NSString* profile = [self resolve:name];
+    if(nil == profile)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to resolve profile name '%{public}@'", name);
+        goto bail;
+    }
+
     //dbg msg
     os_log_debug(logHandle, "deleting profile directory: %{public}@", profile);
     

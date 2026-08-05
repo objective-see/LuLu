@@ -365,10 +365,13 @@ bail:
 {
     //flag
     BOOL wasSet = NO;
-    
+
     //full path
     NSString* newProfilePath = nil;
-    
+
+    //directory flag
+    BOOL isDirectory = NO;
+
     //dbg msg
     os_log_debug(logHandle, "XPC request: '%s' with name: %{public}@", __PRETTY_FUNCTION__, name);
 
@@ -376,30 +379,49 @@ bail:
     if(nil != name)
     {
         //init path for new profile directory
-        newProfilePath = [profiles.directory stringByAppendingPathComponent:name];
+        // note: resolves (client-supplied) name, ensuring it's within the profiles directory
+        newProfilePath = [profiles resolve:name];
+        if(nil == newProfilePath)
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: failed to resolve profile name '%{public}@'", name);
+            goto bail;
+        }
+
+        //ensure profile (directory) exists
+        // otherwise would switch to an empty profile (default rules/prefs)
+        if( (YES != [NSFileManager.defaultManager fileExistsAtPath:newProfilePath isDirectory:&isDirectory]) ||
+            (YES != isDirectory) )
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: profile '%{public}@' doesn't exist", newProfilePath);
+            goto bail;
+        }
     }
-    
+
     //set
     [profiles set:newProfilePath];
-    
+
     //reload rules
     [rules load];
-    
+
     //tell user rules changed
     // ...in case rule's window need refreshing
     [alerts.xpcUserClient rulesChanged];
-    
+
     //reload prefs
     [preferences load];
-    
+
     //happy
     wasSet = YES;
-    
+
     //dbg msg
     os_log_debug(logHandle, "set profile to %{public}@", newProfilePath ? newProfilePath : @"Default");
-    
+
+bail:
+
     reply(wasSet);
-    
+
     return;
 }
 
