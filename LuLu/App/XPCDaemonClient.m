@@ -133,7 +133,6 @@ extern NSMutableDictionary* alerts;
 }
 
 //handle XPC error
-// show user a one-time alert so failures don't look like wiped settings/rules
 -(void)handleXPCError:(NSError*)proxyError method:(const char*)method
 {
     //err msg
