@@ -994,25 +994,35 @@ bail:
 
     //deliver alert
     // and process user response
-    if(YES != [alerts deliver:alert reply:^(NSDictionary* alert)
+    if(YES != [alerts deliver:alert reply:^(NSDictionary* userReply)
     {
         //re-strengthen to avoid races within the block
         __strong typeof(weakSelf) strongSelf = weakSelf;
         __strong NEFilterSocketFlow* strongFlow = weakFlow;
 
+        //delivery failed after the flow was already paused
+        // release this process' held flows so NetworkExtension doesn't retain them indefinitely
+        if(nil == userReply)
+        {
+            os_log_error(logHandle, "ERROR: alert delivery failed after pausing flow for %{public}@; releasing held flows", alert[KEY_PATH]);
+            [alerts removeShown:alert[KEY_KEY]];
+            [strongSelf resumeFlowsForKey:alert[KEY_KEY] verdict:[NEFilterNewFlowVerdict allowVerdict]];
+            return;
+        }
+
         //log msg
         // note, this msg persists in log
-        os_log(logHandle, "(user) response: \"%@\" for %{public}@, that was trying to connect to %{public}@:%{public}@", (RULE_STATE_BLOCK == [alert[KEY_ACTION] unsignedIntValue]) ? @"block" : @"allow", alert[KEY_PATH], alert[KEY_ENDPOINT_ADDR], alert[KEY_ENDPOINT_PORT]);
+        os_log(logHandle, "(user) response: \"%@\" for %{public}@, that was trying to connect to %{public}@:%{public}@", (RULE_STATE_BLOCK == [userReply[KEY_ACTION] unsignedIntValue]) ? @"block" : @"allow", userReply[KEY_PATH], userReply[KEY_ENDPOINT_ADDR], userReply[KEY_ENDPOINT_PORT]);
 
         //'once'? no rule created
         // apply the user's verdict to just this (alerted) flow; the next flow will re-prompt
-        if(RuleDurationOnce == [alert[KEY_DURATION] intValue])
+        if(RuleDurationOnce == [userReply[KEY_DURATION] intValue])
         {
             //dbg msg
             os_log_debug(logHandle, "'once' response, so just handling here ...no rule will be created");
             
             //verdict from user's action
-            NEFilterNewFlowVerdict* verdict = (RULE_STATE_BLOCK == [alert[KEY_ACTION] unsignedIntValue])
+            NEFilterNewFlowVerdict* verdict = (RULE_STATE_BLOCK == [userReply[KEY_ACTION] unsignedIntValue])
                 ? [NEFilterNewFlowVerdict dropVerdict]
                 : [NEFilterNewFlowVerdict allowVerdict];
 
@@ -1024,7 +1034,7 @@ bail:
         else
         {
             //init rule
-            rule = [[Rule alloc] init:alert];
+            rule = [[Rule alloc] init:userReply];
 
             //add / save
             [rules add:rule save:![rule isTemporary]];

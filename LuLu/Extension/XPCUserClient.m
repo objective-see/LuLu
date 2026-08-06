@@ -33,7 +33,11 @@ extern os_log_t logHandle;
 {
     //flag
     __block BOOL xpcError = NO;
-    
+
+    //ensure reply path fires at most once
+    NSObject* callbackGuard = [NSObject new];
+    __block BOOL callbackDelivered = NO;
+
     //sanity check
     // no client connection?
     if(nil == xpcListener.client)
@@ -61,13 +65,31 @@ extern os_log_t logHandle;
             //set error
             xpcError = YES;
             
+            //if the proxy fails after the caller already paused the flow,
+            // notify it so it can release any held flow state
+            @synchronized(callbackGuard)
+            {
+                if(YES != callbackDelivered)
+                {
+                    callbackDelivered = YES;
+                    reply(nil);
+                }
+            }
+
         }] alertShow:alert reply:^(NSDictionary* userReply)
         {
             //dbg msg
             os_log_debug(logHandle, "reply: %{public}@", alert);
             
             //respond
-            reply(userReply);
+            @synchronized(callbackGuard)
+            {
+                if(YES != callbackDelivered)
+                {
+                    callbackDelivered = YES;
+                    reply(userReply);
+                }
+            }
         }];
     }
 
