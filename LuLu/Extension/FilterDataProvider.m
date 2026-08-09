@@ -25,6 +25,12 @@ typedef NS_ENUM(NSInteger, FlowVerdict) {
     kFlowVerdictRelated,    // another alert already shown for this process
 };
 
+//max flows held (paused) per process while its alert is unanswered
+// beyond this, new flows are dropped: each paused flow pins framework state
+// (and leaks via a NetworkExtension retain cycle), so a chatty process +
+// an ignored alert would otherwise grow the heap unboundedly (see #873)
+#define MAX_RELATED_FLOWS 1024
+
 /* GLOBALS */
 
 //alerts
@@ -727,13 +733,28 @@ bail:
     // save this flow, as only want to process once user responds to first alert
     if(YES == [alerts isRelated:process])
     {
+        //too many flows already held for this process?
+        // drop, as pausing more would pin (and partially leak) framework state per flow
+        if([self relatedFlowCount:process.key] >= MAX_RELATED_FLOWS)
+        {
+            //log msg
+            // note, this msg persists in log
+            os_log(logHandle, "%d/%{public}@ already has %d flows held awaiting an alert response, so dropping new flow", process.pid, process.binary.name, MAX_RELATED_FLOWS);
+
+            //deny
+            verdict = kFlowVerdictBlock;
+
+            //bail
+            goto bail;
+        }
+
         //dbg msg
         os_log_debug(logHandle, "an alert is shown for process %d/%{public}@, so holding off delivering for now...", process.pid, process.binary.name);
-        
+
         //related
         // will pause
         verdict = kFlowVerdictRelated;
-        
+
         //bail
         goto bail;
     }
@@ -1091,6 +1112,19 @@ bail:
     }
 
     return;
+}
+
+//number of flows currently held for a (process) key
+-(NSUInteger)relatedFlowCount:(NSString*)key
+{
+    //sanity check
+    if(nil == key) return 0;
+
+    //sync
+    @synchronized(self.relatedFlows)
+    {
+        return [self.relatedFlows[key] count];
+    }
 }
 
 //process any related flows
