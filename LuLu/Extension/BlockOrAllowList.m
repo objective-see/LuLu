@@ -159,9 +159,6 @@ bail:
     //update path
     self.path = path;
         
-    //reset list
-    [self.items removeAllObjects];
-        
     //dbg msg
     os_log_debug(logHandle, "%s", __PRETTY_FUNCTION__);
     
@@ -238,6 +235,9 @@ bail:
         {
             //err msg
             os_log_error(logHandle, "ERROR: failed to (re)load (local) list, %{public}@ (error: %{public}@)", self.path, error);
+            
+            // clear items, as 'shouldReload' intends
+            [self.items removeAllObjects];
             
             //bail
             goto bail;
