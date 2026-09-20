@@ -15,6 +15,7 @@
 #import "XPCDaemon.h"
 #import "utilities.h"
 #import "Preferences.h"
+#import "WildcardPath.h"
 
 //global rules obj
 extern Rules* rules;
@@ -125,7 +126,9 @@ extern os_log_t logHandle;
     
     //non-specific path
     // init binary and cs info
-    if(YES != [info[KEY_PATH] hasSuffix:VALUE_ANY])
+    // note: global/directory/wildcard paths name a set of items, so there's no binary to sign-check
+    if( (YES != [info[KEY_PATH] hasSuffix:VALUE_ANY]) &&
+        (YES != isWildcardPath(info[KEY_PATH])) )
     {
         //init binary obj w/ path
         binary = [[Binary alloc] init:info[KEY_PATH]];

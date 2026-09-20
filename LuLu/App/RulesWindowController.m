@@ -11,6 +11,7 @@
 #import "RuleRow.h"
 #import "utilities.h"
 #import "AppDelegate.h"
+#import "WildcardPath.h"
 #import "XPCDaemonClient.h"
 #import "RulesWindowController.h"
 #import "AddRuleWindowController.h"
@@ -527,9 +528,10 @@ bail:
     //invoked with existing rule (to edit)
     if(YES == [sender isKindOfClass:[Rule class]])
     {
-        //item no longer exists? (globs ('*' / '/*') are exempt)
+        //item no longer exists? (globs ('*' / '/*') and wildcard paths are exempt)
         // alert & bail, as editing (re)creates the rule, which would lose its code signing info
         if( (YES != [((Rule*)sender).path hasSuffix:VALUE_ANY]) &&
+            (YES != isWildcardPath(((Rule*)sender).path)) &&
             (YES != [NSFileManager.defaultManager fileExistsAtPath:((Rule*)sender).path]) )
         {
             //show alert
@@ -1239,7 +1241,21 @@ bail:
         // just use path
         ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT]).stringValue = rule.path;
     }
-    
+    //wildcard rule?
+    else if(YES == rule.isWildcard.boolValue)
+    {
+        //set icon
+        // ...of the last directory the path names before its first wildcard
+        processCell.imageView.image = getIconForProcess([wildcardPathPrefix(rule.path) stringByDeletingLastPathComponent]);
+
+        //main text
+        processCell.textField.stringValue = NSLocalizedString(@"Programs matching a path", @"Programs matching a path");
+
+        //details
+        // just use path
+        ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT]).stringValue = rule.path;
+    }
+
     //non global rule?
     // set icon, path, etc.
     else

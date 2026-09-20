@@ -28,6 +28,7 @@
 		CD9E147D25171BF200DA05C3 /* ItemPathsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9E147B25171BF200DA05C3 /* ItemPathsWindowController.m */; };
 		CD9F567F252533CE00F3DEB5 /* NSApplicationKeyEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9F567E252533CD00F3DEB5 /* NSApplicationKeyEvents.m */; };
 		CDA1364624EF4DA1005AD424 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1363324EF4DA0005AD424 /* utilities.m */; };
+		AE9C11A000000000000000A3 /* WildcardPath.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9C11A000000000000000A2 /* WildcardPath.m */; };
 		CDA1364824EF4DA1005AD424 /* Rule.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1363724EF4DA0005AD424 /* Rule.m */; };
 		CDA1366224EF4E57005AD424 /* XPCUserClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1364D24EF4E56005AD424 /* XPCUserClient.m */; };
 		CDA1366324EF4E57005AD424 /* Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1364F24EF4E56005AD424 /* Alerts.m */; };
@@ -38,6 +39,7 @@
 		CDA1366D24EF4F89005AD424 /* Rules.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1366C24EF4F89005AD424 /* Rules.m */; };
 		CDA1366F24EF5587005AD424 /* libbsm.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA1366E24EF5587005AD424 /* libbsm.tbd */; };
 		CDA136C724F0D7C3005AD424 /* utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136C524F0D7C3005AD424 /* utilities.m */; };
+		AE9C11A000000000000000A6 /* WildcardPath.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9C11A000000000000000A5 /* WildcardPath.m */; };
 		CDA136CD24F0D94F005AD424 /* XPCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136CC24F0D94F005AD424 /* XPCUser.m */; };
 		CDA136D024F0D9C1005AD424 /* XPCDaemonClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136CF24F0D9C1005AD424 /* XPCDaemonClient.m */; };
 		CDA136D124F0DA0E005AD424 /* Update.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA136B424F0D4A8005AD424 /* Update.m */; };
@@ -137,6 +139,8 @@
 		CD9F567E252533CD00F3DEB5 /* NSApplicationKeyEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSApplicationKeyEvents.m; sourceTree = "<group>"; };
 		CDA1363224EF4DA0005AD424 /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = Shared/utilities.h; sourceTree = SOURCE_ROOT; };
 		CDA1363324EF4DA0005AD424 /* utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = utilities.m; path = Shared/utilities.m; sourceTree = SOURCE_ROOT; };
+		AE9C11A000000000000000A1 /* WildcardPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WildcardPath.h; path = Shared/WildcardPath.h; sourceTree = SOURCE_ROOT; };
+		AE9C11A000000000000000A2 /* WildcardPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WildcardPath.m; path = Shared/WildcardPath.m; sourceTree = SOURCE_ROOT; };
 		CDA1363424EF4DA0005AD424 /* XPCDaemonProto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPCDaemonProto.h; path = Shared/XPCDaemonProto.h; sourceTree = SOURCE_ROOT; };
 		CDA1363724EF4DA0005AD424 /* Rule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rule.m; path = Shared/Rule.m; sourceTree = SOURCE_ROOT; };
 		CDA1363824EF4DA0005AD424 /* Rule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rule.h; path = Shared/Rule.h; sourceTree = SOURCE_ROOT; };
@@ -187,6 +191,8 @@
 		CDA136B624F0D4A9005AD424 /* UpdateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateWindowController.h; sourceTree = "<group>"; };
 		CDA136C424F0D7C3005AD424 /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilities.h; path = Shared/utilities.h; sourceTree = SOURCE_ROOT; };
 		CDA136C524F0D7C3005AD424 /* utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = utilities.m; path = Shared/utilities.m; sourceTree = SOURCE_ROOT; };
+		AE9C11A000000000000000A4 /* WildcardPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WildcardPath.h; path = Shared/WildcardPath.h; sourceTree = SOURCE_ROOT; };
+		AE9C11A000000000000000A5 /* WildcardPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WildcardPath.m; path = Shared/WildcardPath.m; sourceTree = SOURCE_ROOT; };
 		CDA136C624F0D7C3005AD424 /* consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = consts.h; path = Shared/consts.h; sourceTree = SOURCE_ROOT; };
 		CDA136CB24F0D94F005AD424 /* XPCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCUser.h; sourceTree = "<group>"; };
 		CDA136CC24F0D94F005AD424 /* XPCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPCUser.m; sourceTree = "<group>"; };
@@ -255,6 +261,8 @@
 				CD21D379252FE91E001A19A8 /* signing.m */,
 				CDA1363224EF4DA0005AD424 /* utilities.h */,
 				CDA1363324EF4DA0005AD424 /* utilities.m */,
+				AE9C11A000000000000000A1 /* WildcardPath.h */,
+				AE9C11A000000000000000A2 /* WildcardPath.m */,
 				CDA1363424EF4DA0005AD424 /* XPCDaemonProto.h */,
 				CDA1364124EF4DA1005AD424 /* XPCUserProto.h */,
 			);
@@ -271,6 +279,8 @@
 				CD21D37B252FE94F001A19A8 /* signing.m */,
 				CDA136C424F0D7C3005AD424 /* utilities.h */,
 				CDA136C524F0D7C3005AD424 /* utilities.m */,
+				AE9C11A000000000000000A4 /* WildcardPath.h */,
+				AE9C11A000000000000000A5 /* WildcardPath.m */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -565,6 +575,7 @@
 				CDA136D024F0D9C1005AD424 /* XPCDaemonClient.m in Sources */,
 				CD21D37D252FE94F001A19A8 /* signing.m in Sources */,
 				CDA136C724F0D7C3005AD424 /* utilities.m in Sources */,
+				AE9C11A000000000000000A6 /* WildcardPath.m in Sources */,
 				CDB2CC2524D61A5000D0EECE /* main.m in Sources */,
 				CD9E147D25171BF200DA05C3 /* ItemPathsWindowController.m in Sources */,
 				CDB909EB2B72BC230043FEB4 /* Configure.m in Sources */,
@@ -581,6 +592,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDA1364624EF4DA1005AD424 /* utilities.m in Sources */,
+				AE9C11A000000000000000A3 /* WildcardPath.m in Sources */,
 				CD21D37A252FE91E001A19A8 /* signing.m in Sources */,
 				CDA1366824EF4E57005AD424 /* XPCListener.m in Sources */,
 				CDA1364824EF4DA1005AD424 /* Rule.m in Sources */,
