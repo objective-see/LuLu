@@ -62,6 +62,9 @@
 
 @property (weak) IBOutlet NSButton *allowButton;
 
+//block connection button
+@property (weak) IBOutlet NSButton *blockButton;
+
 /* BOTTOM (DETAILS) */
 
 //process id
