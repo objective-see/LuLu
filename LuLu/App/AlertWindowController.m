@@ -38,6 +38,37 @@ extern NSMutableDictionary* alerts;
 @synthesize virusTotalButton;
 @synthesize signingInfoButton;
 
+//style the decision area without changing the selected rule scope or duration
+-(void)styleDecisionControls
+{
+    NSString* connectionDescription = [NSString stringWithFormat:@"%@ %@", self.processName.stringValue, self.alertMessage.string];
+
+    self.processName.font = [NSFont systemFontOfSize:18.0 weight:NSFontWeightSemibold];
+    self.alertMessage.font = [NSFont systemFontOfSize:15.0];
+    self.alertMessage.textColor = NSColor.secondaryLabelColor;
+
+    NSRange endpointRange = [self.alertMessage.string rangeOfString:self.endpoint options:NSBackwardsSearch];
+    if(NSNotFound != endpointRange.location)
+    {
+        [self.alertMessage.textStorage addAttribute:NSFontAttributeName
+                                             value:[NSFont systemFontOfSize:15.0 weight:NSFontWeightSemibold]
+                                             range:endpointRange];
+        [self.alertMessage.textStorage addAttribute:NSForegroundColorAttributeName
+                                             value:NSColor.labelColor
+                                             range:endpointRange];
+    }
+
+    self.blockButton.font = [NSFont systemFontOfSize:15.0 weight:NSFontWeightSemibold];
+    self.allowButton.font = [NSFont systemFontOfSize:15.0 weight:NSFontWeightSemibold];
+
+    [self.blockButton setAccessibilityLabel:NSLocalizedString(@"Block", @"Block")];
+    [self.allowButton setAccessibilityLabel:NSLocalizedString(@"Allow", @"Allow")];
+    [self.blockButton setAccessibilityHelp:connectionDescription];
+    [self.allowButton setAccessibilityHelp:connectionDescription];
+    self.blockButton.toolTip = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Block", @"Block"), connectionDescription];
+    self.allowButton.toolTip = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Allow", @"Allow"), connectionDescription];
+}
+
 #define DEFAULT_WINDOW_HEIGHT 244
 #define DEFAULT_WINDOW_HEIGHT_EXPANDED 452
 
@@ -201,6 +232,9 @@ extern NSMutableDictionary* alerts;
     
     //alert message
     self.alertMessage.string = [NSString stringWithFormat:NSLocalizedString(@"is connecting to %@", @"is connecting to %@"), self.endpoint];
+
+    //make the connection target and the two decisions visually distinct
+    [self styleDecisionControls];
     
     //set tooltip to full URL
     if(nil != url)

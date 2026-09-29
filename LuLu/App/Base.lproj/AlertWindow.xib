@@ -11,6 +11,7 @@
                 <outlet property="actionScope" destination="TSg-6a-DVi" id="ScH-Wk-QmL"/>
                 <outlet property="alertMessage" destination="HWR-Ex-H2f" id="1p4-Ju-Y8P"/>
                 <outlet property="allowButton" destination="yg5-Dg-d1n" id="cc0-x6-Fb4"/>
+                <outlet property="blockButton" destination="Aix-a5-CPT" id="lvB-UI-blk"/>
                 <outlet property="ancestryButton" destination="32G-48-5jq" id="7ng-Oo-qJS"/>
                 <outlet property="ancestryOutline" destination="1Kj-Rh-cPo" id="aWT-E0-V77"/>
                 <outlet property="ancestryPopover" destination="25r-fL-QMB" id="7Fk-dG-0ME"/>

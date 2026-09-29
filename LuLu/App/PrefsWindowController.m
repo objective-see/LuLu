@@ -70,6 +70,89 @@ extern XPCDaemonClient* xpcDaemonClient;
 #define BUTTON_PASSIVE_MODE_ACTION_ALLOW 0
 #define BUTTON_PASSIVE_MODE_ACTION_BLOCK 1
 
+//find the localized title beside an icon-only preference toggle
+-(NSString*)labelForPreferenceButton:(NSButton*)button
+{
+    NSString* label = nil;
+    CGFloat nearestDistance = CGFLOAT_MAX;
+
+    for(NSView* sibling in button.superview.subviews)
+    {
+        if(YES != [sibling isKindOfClass:[NSTextField class]]) continue;
+
+        NSTextField* textField = (NSTextField*)sibling;
+        if(0 == textField.stringValue.length) continue;
+        if(NSMinX(textField.frame) < NSMaxX(button.frame) - 4.0) continue;
+
+        CGFloat verticalDistance = fabs(NSMidY(textField.frame) - NSMidY(button.frame));
+        if(verticalDistance > 18.0) continue;
+
+        CGFloat distance = verticalDistance * 10.0 + NSMinX(textField.frame) - NSMaxX(button.frame);
+        if(distance < nearestDistance)
+        {
+            nearestDistance = distance;
+            label = textField.stringValue;
+        }
+    }
+
+    return label;
+}
+
+//apply native typography and labels to the currently displayed preference pane
+-(void)stylePreferenceView:(NSView*)view
+{
+    for(NSView* subview in view.subviews)
+    {
+        NSFont* font = nil;
+
+        if(YES == [subview isKindOfClass:[NSTextField class]])
+        {
+            NSTextField* textField = (NSTextField*)subview;
+            font = textField.font;
+
+            if(YES == [font.fontName containsString:@"Menlo-Bold"])
+            {
+                textField.font = [NSFont systemFontOfSize:font.pointSize weight:NSFontWeightSemibold];
+            }
+            else if(YES == [font.fontName containsString:@"Menlo-Regular"])
+            {
+                textField.font = [NSFont systemFontOfSize:font.pointSize];
+            }
+        }
+        else if(YES == [subview isKindOfClass:[NSPopUpButton class]])
+        {
+            NSPopUpButton* popUpButton = (NSPopUpButton*)subview;
+            font = popUpButton.font;
+
+            if(YES == [font.fontName containsString:@"Menlo"])
+            {
+                popUpButton.font = [NSFont systemFontOfSize:font.pointSize];
+            }
+        }
+        else if(YES == [subview isKindOfClass:[NSButton class]])
+        {
+            NSButton* button = (NSButton*)subview;
+            font = button.font;
+
+            if(YES == [font.fontName containsString:@"Menlo"])
+            {
+                button.font = [NSFont systemFontOfSize:font.pointSize weight:NSFontWeightMedium];
+            }
+
+            if(0 == button.title.length)
+            {
+                NSString* accessibilityLabel = [self labelForPreferenceButton:button];
+                if(0 != accessibilityLabel.length)
+                {
+                    [button setAccessibilityLabel:accessibilityLabel];
+                    button.toolTip = accessibilityLabel;
+                }
+            }
+        }
+        [self stylePreferenceView:subview];
+    }
+}
+
 //init 'general' view
 // add it, and make it selected
 -(void)awakeFromNib
@@ -301,6 +384,9 @@ extern XPCDaemonClient* xpcDaemonClient;
     viewFrame.origin.y = container.bounds.size.height - viewFrame.size.height;
     viewFrame.origin.x = 0;
     view.frame = viewFrame;
+
+    //use native text styles and expose icon-only toggles to assistive technologies
+    [self stylePreferenceView:view];
     
     //add to window
     [self.window.contentView addSubview:view];

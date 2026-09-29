@@ -142,6 +142,16 @@ extern XPCDaemonClient* xpcDaemonClient;
     
     //set indentation level for outline view
     self.outlineView.indentationPerLevel = 42;
+
+    //give each rule enough room for its title and supporting detail
+    self.outlineView.rowHeight = 56.0;
+    self.outlineView.intercellSpacing = NSMakeSize(3.0, 2.0);
+
+    //keep the search control keyboard accessible
+    self.filterBox.focusRingType = NSFocusRingTypeDefault;
+    [self.filterBox setAccessibilityLabel:self.filterBox.placeholderString];
+    [self.rulesViewSelector setAccessibilityLabel:NSLocalizedString(@"Rules", @"Rules")];
+    [self.addRuleButton setAccessibilityLabel:self.addRuleLabel.stringValue];
     
     //pre-req for color of overlay
     self.loadingRules.wantsLayer = YES;
@@ -1052,6 +1062,12 @@ static const NSUInteger kDeleteKeyCode = 51;
         //cell
         cell = [self.outlineView makeViewWithIdentifier:@"ruleCell" owner:self];
         if(nil == cell) goto bail;
+
+        //rule menu button
+        NSButton* menuButton = (NSButton*)[cell viewWithTag:110];
+
+        //use the native UI font so rule actions remain compact and legible
+        cell.textField.font = [NSFont systemFontOfSize:13.0 weight:NSFontWeightMedium];
                 
         //only add rule for connection (i.e. not item)
         if(YES == [item isKindOfClass:[Rule class]])
@@ -1147,6 +1163,11 @@ static const NSUInteger kDeleteKeyCode = 51;
 
             //set text
             cell.textField.stringValue = action;
+            [cell setAccessibilityLabel:action];
+
+            //make the otherwise icon-only menu discoverable to VoiceOver and pointer users
+            menuButton.toolTip = NSLocalizedString(@"Rule", @"Rule");
+            [menuButton setAccessibilityLabel:NSLocalizedString(@"Rule", @"Rule")];
         }
         //otherwise unset image/text
         else
@@ -1159,6 +1180,11 @@ static const NSUInteger kDeleteKeyCode = 51;
             
             //unset text
             cell.textField.stringValue = @"";
+
+            //clear reused cell state and describe the group menu accurately
+            [cell setAccessibilityLabel:nil];
+            menuButton.toolTip = NSLocalizedString(@"Rules", @"Rules");
+            [menuButton setAccessibilityLabel:NSLocalizedString(@"Rules", @"Rules")];
         }
     }
     
@@ -1206,6 +1232,10 @@ bail:
     
     //create cell
     processCell = [self.outlineView makeViewWithIdentifier:@"processCell" owner:self];
+
+    //system typography provides a clearer title/detail hierarchy than monospaced text
+    processCell.textField.font = [NSFont systemFontOfSize:15.0 weight:NSFontWeightSemibold];
+    ((NSTextField*)[processCell viewWithTag:TABLE_ROW_SUB_TEXT]).font = [NSFont systemFontOfSize:12.0];
     
     //global rule?
     // no icon, no path, etc.
@@ -1329,6 +1359,9 @@ bail:
     
     //cell
     CustomTableCellView *cell = (CustomTableCellView *)[self.outlineView makeViewWithIdentifier:@"simpleCell" owner:self];
+
+    //connection endpoints benefit from aligned, readable system monospace glyphs
+    cell.textField.font = [NSFont monospacedSystemFontOfSize:13.0 weight:NSFontWeightRegular];
     
     //disabled?
     // set flag (for highlighting) and color
@@ -1371,6 +1404,7 @@ bail:
 
     //set text
     cell.textField.stringValue = contents;
+    [cell setAccessibilityLabel:contents];
     
     return cell;
 }
