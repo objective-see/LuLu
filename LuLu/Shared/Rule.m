@@ -12,6 +12,9 @@
 #import "utilities.h"
 
 #import <objc/runtime.h>
+#import <Security/Security.h>
+#import <math.h>
+#import <arpa/inet.h>
 
 /* GLOBALS */
 
@@ -38,6 +41,15 @@ EndpointType endpointTypeForAddress(NSString* address)
     return EndpointTypeExact;
 }
 
+//strict policies require integer JSON numbers, never permissive string coercion
+static BOOL isRuleInteger(id value, NSInteger minimum, NSInteger maximum)
+{
+    if(YES != [value isKindOfClass:[NSNumber class]]) return NO;
+    if(CFBooleanGetTypeID() == CFGetTypeID((__bridge CFTypeRef)value)) return NO;
+    double number = [value doubleValue];
+    return isfinite(number) && (number == floor(number)) && (number >= minimum) && (number <= maximum);
+}
+
 @implementation Rule
 
 @synthesize scope;
@@ -51,6 +63,30 @@ EndpointType endpointTypeForAddress(NSString* address)
     {
         //url
         NSURL* remoteURL = nil;
+
+        //validate explicit strict policies before using their input fields
+        self.scope = info[KEY_SCOPE];
+        if(YES == [self isStrictProcessTree])
+        {
+            self.path = info[KEY_PATH];
+            self.action = info[KEY_ACTION];
+            self.protocol = info[KEY_PROTOCOL];
+            self.type = info[KEY_TYPE];
+            self.csInfo = info[KEY_CS_INFO];
+            self.pid = info[KEY_PROCESS_ID];
+            self.expiration = info[KEY_DURATION_EXPIRATION];
+            self.endpointAddr = (nil != info[KEY_ENDPOINT_ADDR]) ? info[KEY_ENDPOINT_ADDR] : VALUE_ANY;
+            self.endpointPort = (nil != info[KEY_ENDPOINT_PORT]) ? info[KEY_ENDPOINT_PORT] : VALUE_ANY;
+
+            id endpointType = info[KEY_ENDPOINT_ADDR_IS_REGEX];
+            id duration = info[KEY_DURATION];
+            if( ((nil != endpointType) && (YES != isRuleInteger(endpointType, EndpointTypeExact, EndpointTypeGlob))) ||
+                ((nil != duration) && (YES != isRuleInteger(duration, RuleDurationAlways, RuleDurationAlways))) ) return nil;
+            self.isEndpointAddrRegex = [endpointType integerValue];
+            if(YES != [self isValidStrictProcessTree]) return nil;
+            if((nil != info[KEY_PROCESS_NAME]) && (YES != [info[KEY_PROCESS_NAME] isKindOfClass:[NSString class]])) return nil;
+            if((nil != info[KEY_KEY]) && (YES != [info[KEY_KEY] isKindOfClass:[NSString class]])) return nil;
+        }
         
         //dbg msg
         os_log_debug(logHandle, "creating rule with: %{public}@", info);
@@ -72,8 +108,8 @@ EndpointType endpointTypeForAddress(NSString* address)
             self.expiration = info[KEY_DURATION_EXPIRATION];
         }
         
-        //init path
-        self.path = info[KEY_PATH];
+        //strict roots retain the executable selected when the policy is created
+        self.path = (YES == [self isStrictProcessTree]) ? [info[KEY_PATH] stringByResolvingSymlinksInPath] : info[KEY_PATH];
         
         //init name
         self.name = (nil != info[KEY_PROCESS_NAME]) ? info[KEY_PROCESS_NAME] : getProcessName(0, self.path);
@@ -230,6 +266,102 @@ EndpointType endpointTypeForAddress(NSString* address)
     return _isGlobal;
 }
 
+//is rule a strict process tree policy?
+-(BOOL)isStrictProcessTree
+{
+    return ([self.scope respondsToSelector:@selector(integerValue)] &&
+            (ACTION_SCOPE_PROCESS_TREE_STRICT == self.scope.integerValue));
+}
+
+//strict policies bind an exact permanent root to explicit network constraints
+-(BOOL)isValidStrictProcessTree
+{
+    if(YES == _strictDecodedInvalid) return NO;
+    if(YES != isRuleInteger(self.scope, ACTION_SCOPE_PROCESS_TREE_STRICT, ACTION_SCOPE_PROCESS_TREE_STRICT)) return NO;
+    if(YES != isRuleInteger(self.action, RULE_STATE_BLOCK, RULE_STATE_ALLOW)) return NO;
+    if(YES != isRuleInteger(self.type, RULE_TYPE_DEFAULT, RULE_TYPE_RECENT)) return NO;
+    if((nil != self.isDisabled) && ((YES != [self.isDisabled isKindOfClass:[NSNumber class]]) ||
+       ((0 != self.isDisabled.doubleValue) && (1 != self.isDisabled.doubleValue)))) return NO;
+    if((nil != self.protocol) && (YES != isRuleInteger(self.protocol, 0, 255))) return NO;
+    if((nil != self.pid) || (nil != self.expiration)) return NO;
+
+    if( (YES != [self.path isKindOfClass:[NSString class]]) ||
+        (YES != [self.path hasPrefix:@"/"]) || (YES == [self.path hasSuffix:@"/"]) ||
+        (NSNotFound != [self.path rangeOfString:@"*"].location) ||
+        (YES != [self.path isEqualToString:self.path.stringByStandardizingPath]) ) return NO;
+
+    if((YES != [self.endpointAddr isKindOfClass:[NSString class]]) || (0 == self.endpointAddr.length)) return NO;
+    if((YES != [self.endpointPort isKindOfClass:[NSString class]]) || (0 == self.endpointPort.length)) return NO;
+    if(YES != [self.endpointPort isEqualToString:VALUE_ANY])
+    {
+        if(NSNotFound != [self.endpointPort rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789"].invertedSet].location) return NO;
+        if((self.endpointPort.integerValue < 1) || (self.endpointPort.integerValue > 65535)) return NO;
+    }
+    //strict endpoints match only numeric network addresses
+    if(EndpointTypeCIDR == self.isEndpointAddrRegex)
+    {
+        if(YES != isAddressRange(self.endpointAddr)) return NO;
+    }
+    else if(EndpointTypeExact == self.isEndpointAddrRegex)
+    {
+        uint8_t address[16] = {0};
+        if((YES != [self.endpointAddr isEqualToString:VALUE_ANY]) &&
+           (1 != inet_pton(AF_INET, self.endpointAddr.UTF8String, address)) &&
+           (1 != inet_pton(AF_INET6, self.endpointAddr.UTF8String, address))) return NO;
+    }
+    else return NO;
+
+    //unsigned roots use their exact path; signed roots additionally pin identifier and team
+    if(nil != self.csInfo)
+    {
+        if(YES != [self.csInfo isKindOfClass:[NSDictionary class]]) return NO;
+        id authorities = self.csInfo[KEY_CS_AUTHS];
+        if(nil != authorities)
+        {
+            if(YES != [authorities isKindOfClass:[NSArray class]]) return NO;
+            for(id authority in authorities)
+            {
+                if(YES != [authority isKindOfClass:[NSString class]]) return NO;
+            }
+        }
+        id cdhash = self.csInfo[KEY_CS_CDHASH];
+        if(nil != cdhash)
+        {
+            if((YES != [cdhash isKindOfClass:[NSString class]]) || (40 != [cdhash length])) return NO;
+            if(NSNotFound != [cdhash rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789abcdef"].invertedSet].location) return NO;
+        }
+        id status = self.csInfo[KEY_CS_STATUS];
+        if(YES != isRuleInteger(status, INT_MIN, INT_MAX)) return NO;
+        if(errSecCSUnsigned == [status integerValue])
+        {
+            if((nil != self.csInfo[KEY_CS_ID]) || (nil != self.csInfo[KEY_CS_TEAM_ID]) || (nil != authorities) || (nil != cdhash)) return NO;
+            if((nil != self.csInfo[KEY_CS_SIGNER]) && (YES != isRuleInteger(self.csInfo[KEY_CS_SIGNER], None, None))) return NO;
+        }
+        else
+        {
+            if(errSecSuccess != [status integerValue]) return NO;
+            id signingID = self.csInfo[KEY_CS_ID];
+            id teamID = self.csInfo[KEY_CS_TEAM_ID];
+            id signer = self.csInfo[KEY_CS_SIGNER];
+            if((nil != teamID) && (YES != [teamID isKindOfClass:[NSString class]])) return NO;
+            if(0 != [teamID length])
+            {
+                if((YES != [signingID isKindOfClass:[NSString class]]) || (0 == [signingID length])) return NO;
+                if(YES != isRuleInteger(signer, Apple, DevID)) return NO;
+            }
+            else
+            {
+                if((nil != signingID) && (YES != [signingID isKindOfClass:[NSString class]])) return NO;
+                if(nil == cdhash) return NO;
+                if((YES != isRuleInteger(signer, None, None)) && (YES != isRuleInteger(signer, Apple, Apple)) &&
+                   (YES != isRuleInteger(signer, AdHoc, AdHoc))) return NO;
+            }
+        }
+    }
+
+    return YES;
+}
+
 //is rule temporary?
 // ...just if its duration is set to process lifetime (e.g. has a pid)
 -(BOOL)isTemporary
@@ -349,6 +481,13 @@ EndpointType endpointTypeForAddress(NSString* address)
         
         self.type = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(type))];
         self.scope = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(scope))];
+        if(YES == [self isStrictProcessTree])
+        {
+            self.protocol = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(protocol))];
+        }
+        if( (YES == [self isStrictProcessTree]) &&
+            (((nil != endpointAddrType) && (YES != isRuleInteger(endpointAddrType, EndpointTypeExact, EndpointTypeGlob))) ||
+             ((nil == endpointAddrType) && [decoder containsValueForKey:NSStringFromSelector(@selector(isEndpointAddrRegex))])) ) _strictDecodedInvalid = YES;
         self.action = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(action))];
         
         self.isDisabled = [decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(isDisabled))];
@@ -379,10 +518,14 @@ EndpointType endpointTypeForAddress(NSString* address)
     //endpoint addr match type
     // note: encoded as an object (not a primitive), so it can be decoded w/o any chance of a
     //       type-mismatch exception (which would abort the decode of *all* rules)
-    [encoder encodeObject:@(self.isEndpointAddrRegex) forKey:NSStringFromSelector(@selector(isEndpointAddrRegex))];
+    [encoder encodeObject:(_strictDecodedInvalid ? @(-1) : @(self.isEndpointAddrRegex)) forKey:NSStringFromSelector(@selector(isEndpointAddrRegex))];
     
     [encoder encodeObject:self.type forKey:NSStringFromSelector(@selector(type))];
     [encoder encodeObject:self.scope forKey:NSStringFromSelector(@selector(scope))];
+    if(YES == [self isStrictProcessTree])
+    {
+        [encoder encodeObject:self.protocol forKey:NSStringFromSelector(@selector(protocol))];
+    }
     [encoder encodeObject:self.action forKey:NSStringFromSelector(@selector(action))];
     
     [encoder encodeObject:self.isDisabled forKey:NSStringFromSelector(@selector(isDisabled))];
@@ -522,6 +665,7 @@ bail:
 // note: temporary properties (such as pid) not included
 -(NSMutableString*)toJSON
 {
+    if((YES == [self isStrictProcessTree]) && (YES != [self isValidStrictProcessTree])) return nil;
     //json
     NSMutableString* json = nil;
     
@@ -604,6 +748,12 @@ bail:
     //scope
     [json appendFormat:@"\"%@\" : %d,", NSStringFromSelector(@selector(scope)), self.scope.intValue];
     
+    //strict protocol (optional for any network protocol)
+    if((YES == [self isStrictProcessTree]) && (nil != self.protocol))
+    {
+        [json appendFormat:@"\"%@\" : %d,", NSStringFromSelector(@selector(protocol)), self.protocol.intValue];
+    }
+
     //action
     [json appendFormat:@"\"%@\" : %d,", NSStringFromSelector(@selector(action)), self.action.intValue];
     
@@ -699,7 +849,23 @@ bail:
 -(id)initFromJSON:(NSDictionary*)info
 {
     id value = nil;
-    
+    id inputScope = info[NSStringFromSelector(@selector(scope))];
+    BOOL strict = ([inputScope respondsToSelector:@selector(integerValue)] &&
+                   (ACTION_SCOPE_PROCESS_TREE_STRICT == [inputScope integerValue]));
+
+    //strict JSON must not lose malformed numeric or lifetime constraints through coercion
+    if(YES == strict)
+    {
+        if((YES != isRuleInteger(inputScope, ACTION_SCOPE_PROCESS_TREE_STRICT, ACTION_SCOPE_PROCESS_TREE_STRICT)) ||
+           (YES != isRuleInteger(info[NSStringFromSelector(@selector(action))], RULE_STATE_BLOCK, RULE_STATE_ALLOW)) ||
+           (YES != isRuleInteger(info[NSStringFromSelector(@selector(type))], RULE_TYPE_DEFAULT, RULE_TYPE_RECENT)) ||
+           ((nil != info[NSStringFromSelector(@selector(isDisabled))]) && (YES != [info[NSStringFromSelector(@selector(isDisabled))] isKindOfClass:[NSNumber class]])) ||
+           ((nil != info[NSStringFromSelector(@selector(protocol))]) && (YES != isRuleInteger(info[NSStringFromSelector(@selector(protocol))], 0, 255))) ||
+           ((nil != info[NSStringFromSelector(@selector(isEndpointAddrRegex))]) && (YES != isRuleInteger(info[NSStringFromSelector(@selector(isEndpointAddrRegex))], EndpointTypeExact, EndpointTypeGlob))) ||
+           (nil != info[KEY_PROCESS_ID]) || (nil != info[KEY_DURATION_EXPIRATION]) ||
+           ((nil != info[KEY_DURATION]) && (YES != isRuleInteger(info[KEY_DURATION], RuleDurationAlways, RuleDurationAlways)))) return nil;
+    }
+
     //date formatter
     NSDateFormatter* dateFormatter = nil;
     
@@ -840,6 +1006,8 @@ bail:
             goto bail;
         }
         
+        if(YES == strict) self.protocol = info[NSStringFromSelector(@selector(protocol))];
+
         self.action = info[NSStringFromSelector(@selector(action))];
         if([self.action isKindOfClass:[NSString class]]) {
             self.action = @([(NSString*)self.action integerValue]);
@@ -913,10 +1081,15 @@ bail:
                 goto bail;
             }
         }
+        if(YES == strict)
+        {
+            if(YES != [self isValidStrictProcessTree]) self = nil;
+            else self.path = [self.path stringByResolvingSymlinksInPath];
+        }
     }
-    
+
 bail:
-        
+
     return self;
 }
 

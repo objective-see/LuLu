@@ -39,6 +39,7 @@ NSMutableDictionary* extractSigningInfo(audit_token_t* token, NSString* path, Se
     
     //signing authorities
     NSMutableArray* signingAuths = nil;
+    NSData* cdhash = nil;
     
     //init signing status
     signingInfo = [NSMutableDictionary dictionary];
@@ -157,6 +158,22 @@ NSMutableDictionary* extractSigningInfo(audit_token_t* token, NSString* path, Se
         signingInfo[KEY_CS_ID] = [(__bridge NSDictionary*)signingDetails objectForKey:(__bridge NSString*)kSecCodeInfoIdentifier];
     }
     
+    //extract team identifier
+    if(0 != [[(__bridge NSDictionary*)signingDetails objectForKey:(__bridge NSString*)kSecCodeInfoTeamIdentifier] length])
+    {
+        signingInfo[KEY_CS_TEAM_ID] = [(__bridge NSDictionary*)signingDetails objectForKey:(__bridge NSString*)kSecCodeInfoTeamIdentifier];
+    }
+
+    //extract code-directory hash for explicit image pins
+    cdhash = [(__bridge NSDictionary*)signingDetails objectForKey:(__bridge NSString*)kSecCodeInfoUnique];
+    if([cdhash isKindOfClass:NSData.class] && 20 == cdhash.length)
+    {
+        NSMutableString* hash = [NSMutableString stringWithCapacity:40];
+        const uint8_t* bytes = cdhash.bytes;
+        for(NSUInteger index = 0; index < cdhash.length; index++) [hash appendFormat:@"%02x", bytes[index]];
+        signingInfo[KEY_CS_CDHASH] = hash;
+    }
+
     //extract signing authorities
     signingAuths = extractSigningAuths((__bridge NSDictionary *)(signingDetails));
     if(0 != signingAuths.count)
