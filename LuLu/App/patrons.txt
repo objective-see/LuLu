@@ -1,5 +1,5 @@
 Patrons (2^6+):
-Jan Koum, Matt Mullenweg, Christian Blümlein, Shain Singh, Andreas Fink, Nuno, Rabi Rob Thomas, Mikhail S.
+Jan Koum, Matt Mullenweg, Nuno, Rabi Rob Thomas, Andrew Morris, Junior Mateus
 
 Friends of Objective-See:
-Iru, Palo Alto Networks, Jamf, Moonlock, Malwarebytes, iVerify, Huntress, Rippling IT, SmugMug, Guardian Mobile Firewall, Halo Privacy, The Mitten Mac
+Iru, Palo Alto Networks, Jamf, Moonlock, Malwarebytes, ThreatLocker, iVerify, Huntress, Rippling IT, North Pole Security, SmugMug, Guardian Mobile Firewall, Halo Privacy, ShieldLink AI, The Mitten Mac
