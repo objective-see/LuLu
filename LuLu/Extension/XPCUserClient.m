@@ -57,10 +57,12 @@ extern os_log_t logHandle;
         {
             //err msg
             os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
-            
-            //set error
-            xpcError = YES;
-            
+
+            //respond w/ nil
+            // note: this handler is async (runs after this method has returned), so can't signal via the return value
+            //       and, as XPC invokes either this or the reply (never both), the caller is always told the outcome
+            reply(nil);
+
         }] alertShow:alert reply:^(NSDictionary* userReply)
         {
             //dbg msg
