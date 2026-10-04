@@ -17,6 +17,9 @@
 
 @interface Rule : NSObject <NSSecureCoding>
 {
+    //retain malformed strict archive constraints without aborting unrelated records
+    BOOL _strictDecodedInvalid;
+
     //cached CIDR/range bounds for endpointAddr
     // lazily parsed on first match; not serialized (endpointAddr is immutable after creation)
     BOOL _cidrParsed;
@@ -114,6 +117,12 @@
 
 //matches a(nother) rule?
 -(BOOL)isEqualToRule:(Rule *)rule;
+
+//is rule a strict process tree policy?
+-(BOOL)isStrictProcessTree;
+
+//validate strict policy roots and permanent network constraints
+-(BOOL)isValidStrictProcessTree;
 
 //is rule temp?
 -(BOOL)isTemporary;

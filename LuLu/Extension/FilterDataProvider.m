@@ -191,6 +191,23 @@ extern BlockOrAllowList* blockList;
     return;
 }
 
+//Paused flows must also pass a strict policy added while an alert was open.
+-(void)resumeFlow:(NEFilterFlow*)flow withVerdict:(NEFilterVerdict*)verdict
+{
+    if( (nil != flow) &&
+        ([flow isKindOfClass:[NEFilterSocketFlow class]]) &&
+        (YES != [preferences.preferences[PREF_IS_DISABLED] boolValue]) )
+    {
+        Process* process = [self.cache objectForKey:flow.sourceAppAuditToken];
+        if( (nil == process) &&
+            (YES == [rules hasActiveStrictRules]) ) process = [self createProcess:flow];
+        NSNumber* decision = [rules strictDecisionForAuditToken:flow.sourceAppAuditToken process:process flow:(NEFilterSocketFlow*)flow];
+        if( (nil != decision) &&
+            (RULE_STATE_BLOCK == decision.intValue) ) verdict = [NEFilterNewFlowVerdict dropVerdict];
+    }
+    [super resumeFlow:flow withVerdict:verdict];
+}
+
 //handle flow
 -(NEFilterNewFlowVerdict *)handleNewFlow:(NEFilterFlow *)flow {
     
@@ -208,6 +225,19 @@ extern BlockOrAllowList* blockList;
     
     //init verdict to allow
     verdict = [NEFilterNewFlowVerdict allowVerdict];
+
+    //An unavailable preferences file must not bypass an active strict policy.
+    if( (0 == preferences.preferences.count) &&
+        ([flow isKindOfClass:[NEFilterSocketFlow class]]) &&
+        (NETrafficDirectionOutbound == ((NEFilterSocketFlow*)flow).direction) &&
+        (YES == [rules hasActiveStrictRules]) )
+    {
+        Process* process = [self.cache objectForKey:flow.sourceAppAuditToken];
+        if(nil == process) process = [self createProcess:flow];
+        NSNumber* decision = [rules strictDecisionForAuditToken:flow.sourceAppAuditToken process:process flow:(NEFilterSocketFlow*)flow];
+        if( (nil != decision) &&
+            (RULE_STATE_BLOCK == decision.intValue) ) verdict = [NEFilterNewFlowVerdict dropVerdict];
+    }
     
     //no prefs (yet) or disabled
     // just allow the flow (don't block)
@@ -364,6 +394,11 @@ bail:
     
     //default to allow (on errors, etc)
     FlowVerdict verdict = kFlowVerdictAllow;
+
+    //Check observed strict ancestry before any process lookup or auto-allow path.
+    NSNumber* strictDecision = [rules strictDecisionForAuditToken:flow.sourceAppAuditToken process:nil flow:(NEFilterSocketFlow*)flow];
+    if( (nil != strictDecision) &&
+        (RULE_STATE_BLOCK == strictDecision.intValue) ) return kFlowVerdictBlock;
     
     //(ext) install date
     static NSDate* installDate = nil;
@@ -470,6 +505,14 @@ bail:
             goto bail;
         }
     }
+
+    strictDecision = [rules strictDecisionForAuditToken:flow.sourceAppAuditToken process:process flow:(NEFilterSocketFlow*)flow];
+    if( (nil != strictDecision) &&
+        (RULE_STATE_BLOCK == strictDecision.intValue) )
+    {
+        verdict = kFlowVerdictBlock;
+        goto bail;
+    }
         
     //CHECK:
     // different logged in user?
@@ -537,6 +580,13 @@ bail:
         else os_log_debug(logHandle, "remote endpoint/URL not on block list...");
     }
     
+    //An explicit strict exception has passed the global block checks.
+    if(nil != strictDecision)
+    {
+        verdict = kFlowVerdictAllow;
+        goto bail;
+    }
+
     //CHECK:
     // client using (global) allow list
     if( (YES == [preferences.preferences[PREF_USE_ALLOW_LIST] boolValue]) &&
