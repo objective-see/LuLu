@@ -592,10 +592,12 @@ bail:
         //dbg msg
         os_log_debug(logHandle, "found matching rule for %d/%{public}@: %{public}@", process.pid, process.binary.name, matchingRule);
         
-        //matching rule !global/!directory?
+        //matching rule !global/!directory/!wildcard?
         // add its 'external' path (as might be different than original)
+        // note: the others match a set of items, so the flow's path isn't one of *their* paths
         if( (YES != matchingRule.isGlobal.boolValue) &&
-            (YES != matchingRule.isDirectory.boolValue) )
+            (YES != matchingRule.isDirectory.boolValue) &&
+            (YES != matchingRule.isWildcard.boolValue) )
         {
             //add path
             if(nil != process.path)

@@ -9,6 +9,7 @@
 
 #import "consts.h"
 #import "utilities.h"
+#import "WildcardPath.h"
 #import "AddRuleWindowController.h"
 
 /* GLOBALS */
@@ -303,8 +304,10 @@ bail:
         (0 == path.length) )
     {
         //error
-        // though only if its not '*' or '/*'
-        if(YES != [path hasSuffix:VALUE_ANY])
+        // though only if its not '*' or '/*', nor a wildcard path (e.g. '/Users/*/foo/bar')
+        // ...all of those name a set of items, so nothing exists at the path itself
+        if( (YES != [path hasSuffix:VALUE_ANY]) &&
+            (YES != isWildcardPath(path)) )
         {
             //show alert
             showAlert(NSAlertStyleWarning, NSLocalizedString(@"ERROR: invalid path", @"ERROR: invalid path"), [NSString stringWithFormat:NSLocalizedString(@"%@ does not exist!", @"%@ does not exist!"), path], @[NSLocalizedString(@"OK", @"OK")]);
