@@ -386,83 +386,6 @@
         }
       }
     },
-    "...please copy it into /Applications and re-launch." : {
-      "comment" : "...please copy it into /Applications and re-launch.",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "…bitte kopieren Sie es in /Applications und starten Sie die Anwendung neu."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "…por favor, cópielo en /Applications y reinicie la aplicación."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "…veuillez le copier dans /Applications et relancer l'application."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "…si prega di copiarlo in /Applications e riavviare l'applicazione."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "…/Applications에 복사한 후 다시 실행해 주세요."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "…proszę skopiować do /Applications i ponownie uruchomić aplikację."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "…por favor, copie para /Applications e reinicie o aplicativo."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "…lütfen /Applications klasörüne kopyalayın ve uygulamayı yeniden başlatın."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "…будь ласка, скопіюйте до /Applications та перезапустіть програму."
-          }
-        },
-        "ur" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "…براہ کرم اسے /Applications میں کاپی کریں اور ایپلیکیشن دوبارہ شروع کریں۔"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "…请将其复制到 /Applications 中并重新启动。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "…請將其複製到 /Applications 中並重新啟動。"
-          }
-        }
-      }
-    },
     "...this will fully remove LuLu from your Mac" : {
       "comment" : "...this will fully remove LuLu from your Mac",
       "localizations" : {
@@ -10947,6 +10870,27 @@
           }
         }
       }
+    },
+    "Move it to /Applications and relaunch?" : {
+      "comment" : "Move it to /Applications and relaunch?"
+    },
+    "Move & Relaunch" : {
+      "comment" : "Move & Relaunch"
+    },
+    "ERROR: failed to move LuLu" : {
+      "comment" : "ERROR: failed to move LuLu"
+    },
+    "ERROR: failed to relaunch LuLu" : {
+      "comment" : "ERROR: failed to relaunch LuLu"
+    },
+    "Could not replace existing %@\r\n\r\n%@" : {
+      "comment" : "Could not replace existing %@\r\n\r\n%@"
+    },
+    "Could not copy to %@\r\n\r\n%@" : {
+      "comment" : "Could not copy to %@\r\n\r\n%@"
+    },
+    "Could not launch %@\r\n\r\n%@" : {
+      "comment" : "Could not launch %@\r\n\r\n%@"
     }
   },
   "version" : "1.0"

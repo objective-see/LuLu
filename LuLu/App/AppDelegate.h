@@ -74,6 +74,9 @@
 // determined by the app's window count
 -(void)setActivationPolicy;
 
+//move (copy) app into /Applications & relaunch it (from there)
+-(void)moveToApplicationsAndRelaunch;
+
 //'rules' menu item handler
 // alloc and show rules window
 -(IBAction)showRules:(id)sender;

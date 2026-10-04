@@ -78,13 +78,20 @@ XPCDaemonClient* xpcDaemonClient = nil;
     }
     
     //Apple: item's w/ System Extensions must be run from /Applications 🤷🏻‍♂️
+    // ...so offer to move (copy) it there & relaunch
     if(![NSBundle.mainBundle.bundlePath hasPrefix:@"/Applications/"])
     {
         //dbg msg
         os_log_debug(logHandle, "LuLu running from %{public}@, not from within /Applications", NSBundle.mainBundle.bundlePath);
         
         //show alert
-        showAlert(NSAlertStyleInformational, NSLocalizedString(@"LuLu must run from within /Applications\r\n", @"LuLu must run from within /Applications\r\n"), NSLocalizedString(@"...please copy it into /Applications and re-launch.", @"...please copy it into /Applications and re-launch."), @[NSLocalizedString(@"OK",@"OK")]);
+        // default button: move & relaunch
+        if(NSAlertFirstButtonReturn == showAlert(NSAlertStyleInformational, NSLocalizedString(@"LuLu must run from within /Applications\r\n", @"LuLu must run from within /Applications\r\n"), NSLocalizedString(@"Move it to /Applications and relaunch?", @"Move it to /Applications and relaunch?"), @[NSLocalizedString(@"Move & Relaunch", @"Move & Relaunch"), NSLocalizedString(@"Quit", @"Quit")]))
+        {
+            //move & relaunch
+            // on success, this relaunches (the new copy) then exits
+            [self moveToApplicationsAndRelaunch];
+        }
         
         //exit
         [NSApplication.sharedApplication terminate:self];
@@ -334,6 +341,106 @@ XPCDaemonClient* xpcDaemonClient = nil;
         });
     }
 
+bail:
+    
+    return;
+}
+
+//move (copy) app into /Applications & relaunch it (from there)
+// invoked when LuLu was launched from elsewhere (e.g. ~/Downloads), as system extensions require /Applications
+-(void)moveToApplicationsAndRelaunch
+{
+    //destination
+    NSString* destination = nil;
+    
+    //error
+    NSError* error = nil;
+    
+    //relaunch task
+    NSTask* task = nil;
+    
+    //init destination
+    destination = [@"/Applications" stringByAppendingPathComponent:APP_NAME];
+    
+    //dbg msg
+    os_log_debug(logHandle, "moving %{public}@ to %{public}@", NSBundle.mainBundle.bundlePath, destination);
+    
+    //quit any other running LuLu
+    // e.g. an older copy (in /Applications) that's about to be replaced
+    for(NSRunningApplication* instance in [NSRunningApplication runningApplicationsWithBundleIdentifier:NSBundle.mainBundle.bundleIdentifier])
+    {
+        //skip self
+        if(getpid() == instance.processIdentifier)
+        {
+            //skip
+            continue;
+        }
+        
+        //dbg msg
+        os_log_debug(logHandle, "terminating other running instance: %{public}@ (pid: %d)", instance.bundleURL.path, instance.processIdentifier);
+        
+        //terminate
+        [instance forceTerminate];
+    }
+    
+    //remove any existing copy
+    // move it to the trash (recoverable), rather than deleting it
+    if(YES == [NSFileManager.defaultManager fileExistsAtPath:destination])
+    {
+        //trash
+        if(YES != [NSFileManager.defaultManager trashItemAtURL:[NSURL fileURLWithPath:destination] resultingItemURL:nil error:&error])
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: failed to remove existing %{public}@ (error: %{public}@)", destination, error);
+            
+            //show alert
+            showAlert(NSAlertStyleCritical, NSLocalizedString(@"ERROR: failed to move LuLu", @"ERROR: failed to move LuLu"), [NSString stringWithFormat:NSLocalizedString(@"Could not replace existing %@\r\n\r\n%@", @"Could not replace existing %@\r\n\r\n%@"), destination, error.localizedDescription], @[NSLocalizedString(@"OK", @"OK")]);
+            
+            //bail
+            goto bail;
+        }
+    }
+    
+    //copy
+    if(YES != [NSFileManager.defaultManager copyItemAtPath:NSBundle.mainBundle.bundlePath toPath:destination error:&error])
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to copy to %{public}@ (error: %{public}@)", destination, error);
+        
+        //show alert
+        showAlert(NSAlertStyleCritical, NSLocalizedString(@"ERROR: failed to move LuLu", @"ERROR: failed to move LuLu"), [NSString stringWithFormat:NSLocalizedString(@"Could not copy to %@\r\n\r\n%@", @"Could not copy to %@\r\n\r\n%@"), destination, error.localizedDescription], @[NSLocalizedString(@"OK", @"OK")]);
+        
+        //bail
+        goto bail;
+    }
+    
+    //dbg msg
+    os_log_debug(logHandle, "relaunching from %{public}@", destination);
+    
+    //relaunch (new copy)
+    // via 'open -n', so the new instance starts while we're still exiting
+    task = [[NSTask alloc] init];
+    task.executableURL = [NSURL fileURLWithPath:@"/usr/bin/open"];
+    task.arguments = @[@"-n", @"-a", destination];
+    if(YES != [task launchAndReturnError:&error])
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to relaunch %{public}@ (error: %{public}@)", destination, error);
+        
+        //show alert
+        showAlert(NSAlertStyleCritical, NSLocalizedString(@"ERROR: failed to relaunch LuLu", @"ERROR: failed to relaunch LuLu"), [NSString stringWithFormat:NSLocalizedString(@"Could not launch %@\r\n\r\n%@", @"Could not launch %@\r\n\r\n%@"), destination, error.localizedDescription], @[NSLocalizedString(@"OK", @"OK")]);
+        
+        //bail
+        goto bail;
+    }
+    
+    //wait for 'open' to complete
+    [task waitUntilExit];
+    
+    //exit (now)
+    // nothing else has been initialized yet
+    exit(0);
+    
 bail:
     
     return;
