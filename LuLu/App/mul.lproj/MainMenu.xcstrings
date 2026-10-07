@@ -11,6 +11,12 @@
             "value" : "Anzeigen…"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εμφάνιση…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -93,6 +99,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wechseln"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εναλλαγή"
           }
         },
         "en" : {
@@ -179,6 +191,12 @@
             "value" : "Einstellungen…"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ρυθμίσεις…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -261,6 +279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profile"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προφίλ"
           }
         },
         "en" : {
@@ -347,6 +371,12 @@
             "value" : "Importieren…"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εισαγωγή…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -429,6 +459,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wechseln"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εναλλαγή"
           }
         },
         "en" : {
@@ -594,6 +630,12 @@
             "value" : "Exportieren…"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εξαγωγή…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -676,6 +718,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profile"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προφίλ"
           }
         },
         "en" : {
@@ -762,6 +810,12 @@
             "value" : "LuLu beenden"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Τερματισμός LuLu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -844,6 +898,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hinzufügen…"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προσθήκη…"
           }
         },
         "en" : {
@@ -1009,6 +1069,12 @@
             "value" : "LuLu unterstützen 💕"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Υποστηρίξτε το LuLu 💕"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1091,6 +1157,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deaktivieren"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Απενεργοποίηση"
           }
         },
         "en" : {
@@ -1177,6 +1249,12 @@
             "value" : "LuLu deinstallieren"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Απεγκατάσταση LuLu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1259,6 +1337,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aufräumen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εκκαθάριση"
           }
         },
         "en" : {
@@ -1345,6 +1429,12 @@
             "value" : "Profil: Standard"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προφίλ: Προεπιλογή"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1427,6 +1517,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verwalten…"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαχείριση…"
           }
         },
         "en" : {
@@ -1513,6 +1609,12 @@
             "value" : "Über LuLu"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Πληροφορίες για το LuLu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1595,6 +1697,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu beenden"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Τερματισμός LuLu"
           }
         },
         "en" : {
@@ -1681,6 +1789,12 @@
             "value" : "Hauptmenü"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κύριο μενού"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1763,6 +1877,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regeln"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κανόνες"
           }
         },
         "en" : {
@@ -1849,6 +1969,12 @@
             "value" : "Regeln"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κανόνες"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1933,6 +2059,12 @@
             "value" : "Netzwerkmonitor…"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Παρακολούθηση δικτύου…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -2015,6 +2147,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LULU: aktiviert"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LULU: ενεργό"
           }
         },
         "en" : {

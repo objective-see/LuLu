@@ -10,6 +10,12 @@
             "value" : " hat ein Signaturproblem"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " αντιμετωπίζει πρόβλημα υπογραφής"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -85,6 +91,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : " ist nicht signiert"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " δεν είναι υπογεγραμμένο"
           }
         },
         "es" : {
@@ -164,6 +176,12 @@
             "value" : " ist nicht gültig signiert"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " δεν έχει έγκυρη υπογραφή"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -239,6 +257,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : " ist gültig signiert"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " έχει έγκυρη υπογραφή"
           }
         },
         "es" : {
@@ -318,6 +342,12 @@
             "value" : " unbekannt"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " άγνωστο"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -393,6 +423,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "...das wird LuLu vollständig von deinem Mac entfernen."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…αυτό θα αφαιρέσει πλήρως το LuLu από το Mac σας"
           }
         },
         "es" : {
@@ -472,6 +508,12 @@
             "value" : "...das wird LuLu beenden, bis du dich das nächste Mal anmeldest."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…αυτό θα τερματίσει το LuLu μέχρι την επόμενη σύνδεσή σας."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -547,6 +589,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "„%@“ stimmt mit einem vorhandenen Profilnamen überein."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το «%@» ταιριάζει με υπάρχον όνομα προφίλ."
           }
         },
         "es" : {
@@ -626,6 +674,12 @@
             "value" : "„Default“ ist ein reservierter Profilname."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το «Default» είναι δεσμευμένο όνομα προφίλ."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -703,6 +757,12 @@
             "value" : "› keine Zertifizierungsinstanz"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "› καμία αρχή υπογραφής"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -778,6 +838,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ (pid: %2$@)"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (PID: %2$@)"
           }
         },
         "en" : {
@@ -863,6 +929,12 @@
             "value" : "%1$@ (Unterzeichner: %2$@)"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (υπογράφων: %2$@)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -946,6 +1018,12 @@
             "value" : "%@ (Unterzeichner: Apple Mac OS App Store)"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (υπογράφων: Apple Mac OS App Store)"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1021,6 +1099,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (Unterzeichner: Apple selbst)"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (υπογράφων: Apple)"
           }
         },
         "es" : {
@@ -1100,6 +1184,12 @@
             "value" : "%@ (Unterzeichner: ungültig/unsigniert)"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (υπογράφων: μη έγκυρο/ανυπόγραφο)"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1175,6 +1265,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ +Kindprozesse"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ +θυγατρικές"
           }
         },
         "es" : {
@@ -1254,6 +1350,12 @@
             "value" : "%@ existiert nicht!"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το %@ δεν υπάρχει!"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1329,6 +1431,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ ist ein legitimer macOS-Prozess"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το %@ είναι νόμιμη διεργασία macOS"
           }
         },
         "es" : {
@@ -1409,6 +1517,12 @@
             "value" : "%@ ist keine gültige (Port-)Nummer"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το %@ δεν είναι έγκυρος αριθμός θύρας"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1486,6 +1600,12 @@
             "value" : "%@ ist kein gültiges CIDR (z. B. 192.168.1.0/24)"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το %@ δεν είναι έγκυρο CIDR (π.χ. 192.168.1.0/24)"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1555,7 +1675,15 @@
       }
     },
     "%@ is not a valid port number (1-65535)" : {
-      "comment" : "%@ is not a valid port number (1-65535)"
+      "comment" : "%@ is not a valid port number (1-65535)",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το %@ δεν είναι έγκυρος αριθμός θύρας (1-65535)"
+          }
+        }
+      }
     },
     "%@ is not a valid regular expression\r\ndetails: %@" : {
       "comment" : "%@ is not a valid regular expression\r\ndetails: %@",
@@ -1564,6 +1692,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ ist kein gültiger regulärer Ausdruck\r\nDetails: %2$@"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το %1$@ δεν είναι έγκυρη κανονική έκφραση\r\nλεπτομέρειες: %2$@"
           }
         },
         "en" : {
@@ -1641,7 +1775,15 @@
       }
     },
     "%@ no longer exists, so its rule cannot be edited. The rule can still be disabled or deleted." : {
-      "comment" : "%@ no longer exists, so its rule cannot be edited. The rule can still be disabled or deleted."
+      "comment" : "%@ no longer exists, so its rule cannot be edited. The rule can still be disabled or deleted.",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το %@ δεν υπάρχει πλέον, επομένως ο κανόνας του δεν μπορεί να επεξεργαστεί. Ο κανόνας μπορεί ακόμη να απενεργοποιηθεί ή να διαγραφεί."
+          }
+        }
+      }
     },
     "%@ signed by 3rd-party/ad hoc" : {
       "comment" : "%@ signed by 3rd-party/ad hoc",
@@ -1650,6 +1792,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ von Drittanbieter/ad hoc signiert"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το %@ είναι υπογεγραμμένο από τρίτο μέρος/ad hoc"
           }
         },
         "es" : {
@@ -1729,6 +1877,12 @@
             "value" : "%@ signiert von Apple selbst"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το %@ είναι υπογεγραμμένο από την Apple"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1804,6 +1958,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ signiert vom Mac App Store"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το %@ είναι υπογεγραμμένο από το Mac App Store"
           }
         },
         "es" : {
@@ -1883,6 +2043,12 @@
             "value" : "%@ signiert mit einer Apple Developer ID"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το %@ είναι υπογεγραμμένο με Apple Developer ID"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1960,6 +2126,12 @@
             "value" : "%@ Signaturfehler: %#lx"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Σφάλμα υπογραφής %@: %#lx"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2035,6 +2207,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ diese Regel könnte die legitime Systemfunktionalität beeinträchtigen ...fortfahren?"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Η ενέργεια «%@» σε αυτόν τον κανόνα ενδέχεται να επηρεάσει τη σωστή λειτουργία του συστήματος …συνέχεια;"
           }
         },
         "es" : {
@@ -2115,6 +2293,12 @@
             "value" : "%@s Codesignierungsinformationen haben sich geändert."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Οι πληροφορίες υπογραφής κώδικα του %@ έχουν αλλάξει"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2190,6 +2374,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "<unbekannt (%d)>"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<άγνωστο (%d)>"
           }
         },
         "es" : {
@@ -2269,6 +2459,12 @@
             "value" : "2. Scrolle in den Systemeinstellungen zu der Stelle, an der „LuLu“ erwähnt wird und klicke auf „Erlauben“."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Στις Ρυθμίσεις συστήματος, μετακινηθείτε στο σημείο όπου αναφέρεται το «LuLu» και κάντε κλικ στο «Να επιτρέπεται»"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2344,6 +2540,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2. Schalte die LuLu-Erweiterung in den Systemeinstellungen ein."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Στις Ρυθμίσεις συστήματος, ενεργοποιήστε την επέκταση LuLu"
           }
         },
         "es" : {
@@ -2423,6 +2625,12 @@
             "value" : "eine neue Version (%@) ist verfügbar!"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "είναι διαθέσιμη μια νέα έκδοση (%@)!"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2495,6 +2703,12 @@
       "comment" : "Ad hoc",
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ad hoc"
+          }
+        },
+        "el" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ad hoc"
@@ -2577,6 +2791,12 @@
             "value" : "Profil hinzufügen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προσθήκη προφίλ"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2652,6 +2872,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "In den letzten 24 Stunden hinzugefügt (nach Erstellungszeit sortiert)"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προστέθηκαν τις τελευταίες 24 ώρες (ταξινόμηση κατά χρόνο δημιουργίας)"
           }
         },
         "es" : {
@@ -2731,6 +2957,12 @@
             "value" : "Passiv hinzugefügt (entweder wenn der „Passive Modus“ aktiviert ist oder kein Benutzer angemeldet war, als die Regel erstellt wurde)"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προστέθηκαν παθητικά (είτε επειδή είναι ενεργή η «παθητική λειτουργία» είτε επειδή δεν ήταν συνδεδεμένος κανένας χρήστης όταν δημιουργήθηκε ο κανόνας)"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2806,6 +3038,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profil hinzugefügt"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προστέθηκε προφίλ"
           }
         },
         "es" : {
@@ -2885,6 +3123,12 @@
             "value" : "Alle Regeln"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όλοι οι κανόνες"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2960,6 +3204,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Erlauben"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Να επιτρέπεται"
           }
         },
         "es" : {
@@ -3039,6 +3289,12 @@
             "value" : "Erlauben (pid: %@)"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Να επιτρέπεται (PID: %@)"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3114,6 +3370,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Erlauben (bis: %@)"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Να επιτρέπεται (έως: %@)"
           }
         },
         "es" : {
@@ -3193,6 +3455,12 @@
             "value" : "jede Adresse"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "οποιαδήποτε διεύθυνση"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3268,6 +3536,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "jeder Port"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "οποιαδήποτε θύρα"
           }
         },
         "es" : {
@@ -3347,6 +3621,12 @@
             "value" : "Jedes Programm"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Οποιοδήποτε πρόγραμμα"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3422,6 +3702,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apple-Programme (automatisch zugelassen und hier hinzugefügt, wenn „Apple-Programme erlauben“ aktiviert ist)"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προγράμματα Apple (επιτρέπονται αυτόματα και προστίθενται εδώ αν είναι ενεργή η επιλογή «Να επιτρέπονται προγράμματα της Apple»)"
           }
         },
         "es" : {
@@ -3501,6 +3787,12 @@
             "value" : "Blockieren"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αποκλεισμός"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3576,6 +3868,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Blockieren (pid: %@)"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αποκλεισμός (PID: %@)"
           }
         },
         "es" : {
@@ -3655,6 +3953,12 @@
             "value" : "Blockieren (bis: %@)"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αποκλεισμός (έως: %@)"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3730,6 +4034,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Abbrechen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ακύρωση"
           }
         },
         "es" : {
@@ -3809,6 +4119,12 @@
             "value" : "Regeln bereinigen, die auf gelöschte, abgelaufene oder beendete Elemente verweisen?"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Να γίνει εκκαθάριση κανόνων που αναφέρονται σε διαγραμμένα, ληγμένα ή τερματισμένα στοιχεία;"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3884,6 +4200,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%ld Regeln aufgeräumt"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εκκαθαρίστηκαν %ld κανόνες"
           }
         },
         "es" : {
@@ -3963,6 +4285,12 @@
             "value" : "Löschung bestätigen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επιβεβαίωση διαγραφής"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4038,6 +4366,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fortfahren"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Συνέχεια"
           }
         },
         "es" : {
@@ -4117,6 +4451,12 @@
             "value" : "Aktuelles Profil ist nun: „%@“."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το τρέχον προφίλ είναι πλέον: «%@»."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4192,6 +4532,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aktuelles Profil: %@"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Τρέχον προφίλ: %@"
           }
         },
         "es" : {
@@ -4271,6 +4617,12 @@
             "value" : "Aktuelles Profil: Default"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Τρέχον προφίλ: Προεπιλογή"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4346,6 +4698,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Default"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προεπιλογή"
           }
         },
         "es" : {
@@ -4425,6 +4783,12 @@
             "value" : "Löschen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαγραφή"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4500,6 +4864,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ löschen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαγραφή %@"
           }
         },
         "es" : {
@@ -4579,6 +4949,12 @@
             "value" : "Alle Regeln für %@ löschen?"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαγραφή όλων των κανόνων για %@;"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4654,6 +5030,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alle Regeln für dieses Element löschen?"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαγραφή όλων των κανόνων για αυτό το στοιχείο;"
           }
         },
         "es" : {
@@ -4733,6 +5115,12 @@
             "value" : "Profil „%@“ löschen?"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαγραφή προφίλ: «%@»;"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4808,6 +5196,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regel löschen?"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαγραφή κανόνα;"
           }
         },
         "es" : {
@@ -4887,6 +5281,12 @@
             "value" : "Verzeichnisregeln gelten für alle Objekte innerhalb des Verzeichnisses"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Οι κανόνες καταλόγου εφαρμόζονται σε όλα τα στοιχεία μέσα στον κατάλογο"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4962,6 +5362,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deaktivieren"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Απενεργοποίηση"
           }
         },
         "es" : {
@@ -5041,6 +5447,12 @@
             "value" : "%@ deaktivieren"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Απενεργοποίηση %@"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5115,6 +5527,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pfad/Pfade anzeigen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εμφάνιση διαδρομών"
           }
         },
         "es" : {
@@ -5194,6 +5612,12 @@
             "value" : "%@ bearbeiten"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επεξεργασία %@"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5269,6 +5693,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aktivieren"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ενεργοποίηση"
           }
         },
         "es" : {
@@ -5348,6 +5778,12 @@
             "value" : "%@ aktivieren"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ενεργοποίηση %@"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5423,6 +5859,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "FEHLER: Aktivierung fehlgeschlagen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ΣΦΑΛΜΑ: αποτυχία ενεργοποίησης"
           }
         },
         "es" : {
@@ -5502,6 +5944,12 @@
             "value" : "FEHLER: Geben Sie eine Dauer ungleich Null ein"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ΣΦΑΛΜΑ: Εισαγάγετε διάρκεια μεγαλύτερη από μηδέν"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5577,6 +6025,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "FEHLER: Aufräumen der Regeln fehlgeschlagen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ΣΦΑΛΜΑ: Αποτυχία εκκαθάρισης κανόνων"
           }
         },
         "es" : {
@@ -5656,6 +6110,12 @@
             "value" : "FEHLER: Exportieren der Regeln fehlgeschlagen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ΣΦΑΛΜΑ: Αποτυχία εξαγωγής κανόνων"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5731,6 +6191,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "FEHLER: Hashing von %@ fehlgeschlagen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ΣΦΑΛΜΑ: Αποτυχία υπολογισμού hash για %@"
           }
         },
         "es" : {
@@ -5810,6 +6276,12 @@
             "value" : "FEHLER: Importieren der Regeln fehlgeschlagen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ΣΦΑΛΜΑ: Αποτυχία εισαγωγής κανόνων"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5885,6 +6357,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "FEHLER: Unterstützer konnten nicht geladen werden"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ΣΦΑΛΜΑ: αποτυχία φόρτωσης υποστηρικτών"
           }
         },
         "es" : {
@@ -5964,6 +6442,12 @@
             "value" : "FEHLER: ungültiges CIDR"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ΣΦΑΛΜΑ: μη έγκυρο CIDR"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6039,6 +6523,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "FEHLER: Ungültiger Pfad"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ΣΦΑΛΜΑ: μη έγκυρη διαδρομή"
           }
         },
         "es" : {
@@ -6118,6 +6608,12 @@
             "value" : "FEHLER: Ungültiger Port"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ΣΦΑΛΜΑ: μη έγκυρη θύρα"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6193,6 +6689,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "FEHLER: Ungültiger regulärer Ausdruck"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ΣΦΑΛΜΑ: μη έγκυρη κανονική έκφραση"
           }
         },
         "es" : {
@@ -6272,6 +6774,12 @@
             "value" : "Fehler: Prüfen auf Updates fehlgeschlagen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "σφάλμα: απέτυχε ο έλεγχος ενημέρωσης"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6347,6 +6855,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Erweiterungen müssen manuell über die Systemeinstellungen (Allgemein > Anmeldeobjekte und Erweiterungen > Netzwerkerweiterungen) genehmigt werden."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Οι επεκτάσεις πρέπει να εγκριθούν χειροκίνητα από τις Ρυθμίσεις συστήματος (Γενικά > Στοιχεία σύνδεσης & επεκτάσεις > Επεκτάσεις δικτύου)."
           }
         },
         "es" : {
@@ -6426,6 +6940,12 @@
             "value" : "Netzwerkerweiterung konnte nicht aktiviert werden"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "απέτυχε η ενεργοποίηση της επέκτασης δικτύου"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6501,6 +7021,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Netzwerkfilter konnte nicht aktiviert werden"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "απέτυχε η ενεργοποίηση του φίλτρου δικτύου"
           }
         },
         "es" : {
@@ -6580,6 +7106,12 @@
             "value" : "Systemerweiterung konnte nicht aktiviert werden"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "απέτυχε η ενεργοποίηση της επέκτασης συστήματος"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6655,6 +7187,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "System-/Netzwerkerweiterung konnte nicht aktiviert werden"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "απέτυχε η ενεργοποίηση της επέκτασης συστήματος/δικτύου"
           }
         },
         "es" : {
@@ -6734,6 +7272,12 @@
             "value" : "Verbindung zur LuLu-Erweiterung fehlgeschlagen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αποτυχία σύνδεσης με την επέκταση του LuLu"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6809,6 +7353,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vollständige URL: %@"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Πλήρες URL: %@"
           }
         },
         "es" : {
@@ -6888,6 +7438,12 @@
             "value" : "Globale Regeln gelten für alle Pfade"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Οι καθολικοί κανόνες εφαρμόζονται σε όλες τις διαδρομές"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6963,6 +7519,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%ld Regeln importiert"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εισήχθησαν %ld κανόνες"
           }
         },
         "es" : {
@@ -7042,6 +7604,12 @@
             "value" : "Die installierte Version (%@)\r\nist die neuste."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Η εγκατεστημένη έκδοση (%@)\r\nείναι η πιο πρόσφατη."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7117,6 +7685,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ungültiger Profilname"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Μη έγκυρο όνομα προφίλ"
           }
         },
         "es" : {
@@ -7196,6 +7770,12 @@
             "value" : "IP-Adresse: %@"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διεύθυνση IP: %@"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7271,6 +7851,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "verbindet sich mit %@"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "συνδέεται στο %@"
           }
         },
         "es" : {
@@ -7360,7 +7946,15 @@
       "shouldTranslate" : false
     },
     "LuLu could not communicate with its system extension. A reboot might fix this!" : {
-      "comment" : "LuLu could not communicate with its system extension. A reboot might fix this!"
+      "comment" : "LuLu could not communicate with its system extension. A reboot might fix this!",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το LuLu δεν μπόρεσε να επικοινωνήσει με την επέκταση συστήματος. Μια επανεκκίνηση του Mac ίσως διορθώσει το πρόβλημα!"
+          }
+        }
+      }
     },
     "LuLu could not communicate with its system extension. A restart might fix this!" : {
       "comment" : "LuLu could not communicate with its system extension. A restart might fix this!",
@@ -7370,6 +7964,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu konnte nicht mit seiner Systemerweiterung kommunizieren. Ein Neustart könnte das Problem beheben!"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το LuLu δεν μπόρεσε να επικοινωνήσει με την επέκταση συστήματος. Μια επανεκκίνηση ίσως διορθώσει το πρόβλημα!"
           }
         },
         "es" : {
@@ -7449,6 +8049,12 @@
             "value" : "LuLu muss aus /Applications heraus ausgeführt werden"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το LuLu πρέπει να εκτελείται μέσα από τον φάκελο /Applications\r\n"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7524,6 +8130,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu: deaktiviert"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: απενεργοποιημένο"
           }
         },
         "es" : {
@@ -7603,6 +8215,12 @@
             "value" : "LuLu: aktiviert"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: ενεργοποιημένο"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7678,6 +8296,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLus Netzwerkerweiterung läuft nicht"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Η επέκταση δικτύου του LuLu δεν εκτελείται"
           }
         },
         "es" : {
@@ -7757,6 +8381,12 @@
             "value" : "Die Aktualisierung der LuLu-Systemerweiterung wird nach dem Neustart des Mac abgeschlossen."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Η ενημέρωση της επέκτασης συστήματος του LuLu θα ολοκληρωθεί μετά την επανεκκίνηση του Mac."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7832,6 +8462,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Weitere Informationen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Περισσότερες πληροφορίες"
           }
         },
         "es" : {
@@ -7911,6 +8547,12 @@
             "value" : "Neues Profil „%@“ gespeichert und aktiviert."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το νέο προφίλ «%@» αποθηκεύτηκε και ενεργοποιήθηκε."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7986,6 +8628,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Weiter"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επόμενο"
           }
         },
         "es" : {
@@ -8065,6 +8713,12 @@
             "value" : "keine"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "κανένα"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8140,6 +8794,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "nicht anwendbar"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "δεν εφαρμόζεται"
           }
         },
         "es" : {
@@ -8219,6 +8879,12 @@
             "value" : "Beachte:\n▪ Bestehende Verbindungen sind nicht betroffen.\n▪ Betriebssystemverkehr (der nicht über LuLu geleitet wird) wird nicht blockiert."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Σημείωση:\r\n▪ Οι υπάρχουσες συνδέσεις δεν θα επηρεαστούν.\r\n▪ Η κίνηση του λειτουργικού συστήματος (που δεν δρομολογείται μέσω του LuLu) δεν θα αποκλειστεί."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8291,6 +8957,12 @@
       "comment" : "Ok",
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "el" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
@@ -8373,6 +9045,12 @@
             "value" : "Ok"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8448,6 +9126,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Veraltete Version von LuLu installiert"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Είναι εγκατεστημένη παλιά έκδοση του LuLu"
           }
         },
         "es" : {
@@ -8527,6 +9211,12 @@
             "value" : "Nur benutzererstellte Regeln exportieren"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εξαγωγή μόνο κανόνων που δημιουργήθηκαν από τον χρήστη"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8602,6 +9292,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Betriebssystemprogramme (für Systemfunktionaliät benötigt)"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προγράμματα λειτουργικού συστήματος (απαραίτητα για τη λειτουργία του συστήματος)"
           }
         },
         "es" : {
@@ -8681,6 +9377,12 @@
             "value" : "Ausgehender Datenverkehr wird jetzt blockiert."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Η εξερχόμενη κίνηση θα αποκλείεται πλέον."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8757,6 +9459,12 @@
             "value" : "Pfad/Pfade für %@:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαδρομές για %@:"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8831,6 +9539,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pfad/Pfade:"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαδρομές:"
           }
         },
         "es" : {
@@ -8910,6 +9624,12 @@
             "value" : "Vorinstallierte Drittanbieterprogramme (automatisch zugelassen und hier hinzugefügt, wenn „Bereits installierte Anwendungen erlauben“ aktiviert ist)"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προεγκατεστημένα προγράμματα τρίτων (επιτρέπονται αυτόματα και προστίθενται εδώ αν είναι ενεργή η επιλογή «Να επιτρέπονται εγκατεστημένες εφαρμογές»)"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8985,6 +9705,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prozessargumente: %@"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ορίσματα διεργασίας: %@"
           }
         },
         "es" : {
@@ -9064,6 +9790,12 @@
             "value" : "Prozesspfad: %@"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαδρομή διεργασίας: %@"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9139,6 +9871,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profilname darf nicht leer sein"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το όνομα προφίλ δεν μπορεί να είναι κενό"
           }
         },
         "es" : {
@@ -9218,6 +9956,12 @@
             "value" : "Profil gewechselt"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Έγινε εναλλαγή προφίλ"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9293,6 +10037,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profil: %@"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προφίλ: %@"
           }
         },
         "es" : {
@@ -9372,6 +10122,12 @@
             "value" : "Profil: Default"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προφίλ: Προεπιλογή"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9447,6 +10203,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programme in \"%@/\""
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προγράμματα μέσα στο «%@/»"
           }
         },
         "es" : {
@@ -9526,6 +10288,12 @@
             "value" : "Beenden"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Τερματισμός"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9601,6 +10369,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu beenden?"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Τερματισμός LuLu;"
           }
         },
         "es" : {
@@ -9680,6 +10454,12 @@
             "value" : "Neustart erforderlich"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Απαιτείται επανεκκίνηση"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9755,6 +10535,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reverse Domain: %@"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αντίστροφος τομέας: %@"
           }
         },
         "es" : {
@@ -9834,6 +10620,12 @@
             "value" : "Regel"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κανόνας"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9909,6 +10701,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regeln"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κανόνες"
           }
         },
         "es" : {
@@ -10024,6 +10822,12 @@
             "value" : "Prüfe das Log für (weitere) Details"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Δείτε το αρχείο καταγραφής για περισσότερες λεπτομέρειες"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10099,6 +10903,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dies muss zuerst deinstalliert werden.\r\nKlicke auf „Weitere Informationen“, um zu erfahren, wie du es deinstallieren kannst."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Πρέπει να απεγκατασταθεί πριν συνεχίσετε. Κάντε κλικ στο «Περισσότερες πληροφορίες» για να μάθετε πώς να το απεγκαταστήσετε"
           }
         },
         "es" : {
@@ -10178,6 +10988,12 @@
             "value" : "Zeitstempel: %@"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Χρονική σήμανση: %@"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10247,7 +11063,15 @@
       }
     },
     "Unable to Edit Rule" : {
-      "comment" : "Unable to Edit Rule"
+      "comment" : "Unable to Edit Rule",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Δεν είναι δυνατή η επεξεργασία του κανόνα"
+          }
+        }
+      }
     },
     "Uninstall" : {
       "comment" : "Uninstall",
@@ -10256,6 +11080,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deinstallieren"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Απεγκατάσταση"
           }
         },
         "es" : {
@@ -10335,6 +11165,12 @@
             "value" : "LuLu deinstallieren?"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Απεγκατάσταση LuLu;"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10410,6 +11246,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "unbekannt"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "άγνωστο"
           }
         },
         "es" : {
@@ -10489,6 +11331,12 @@
             "value" : "Update"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ενημέρωση"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10564,6 +11412,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Update verfügbar, wird jedoch auf macOS %ld.%ld nicht unterstützt."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Υπάρχει διαθέσιμη ενημέρωση, αλλά δεν υποστηρίζεται σε macOS %1$ld.%2$ld"
           }
         },
         "en" : {
@@ -10649,6 +11503,12 @@
             "value" : "Vom Benutzer festgelegte Programme (manuell hinzugefügt oder als Reaktion auf eine Mitteilung)"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προγράμματα που καθορίστηκαν από τον χρήστη (προστέθηκαν χειροκίνητα ή ως απάντηση σε ειδοποίηση)"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10724,6 +11584,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version: %@"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Έκδοση: %@"
           }
         },
         "es" : {
@@ -10803,6 +11669,12 @@
             "value" : "Warten auf Genehmigung der Netzwerkerweiterung"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αναμονή έγκρισης επέκτασης δικτύου"
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10872,25 +11744,81 @@
       }
     },
     "Move it to /Applications and relaunch?" : {
-      "comment" : "Move it to /Applications and relaunch?"
+      "comment" : "Move it to /Applications and relaunch?",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Να μετακινηθεί στο /Applications και να επανεκκινηθεί;"
+          }
+        }
+      }
     },
     "Move & Relaunch" : {
-      "comment" : "Move & Relaunch"
+      "comment" : "Move & Relaunch",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Μετακίνηση & επανεκκίνηση"
+          }
+        }
+      }
     },
     "ERROR: failed to move LuLu" : {
-      "comment" : "ERROR: failed to move LuLu"
+      "comment" : "ERROR: failed to move LuLu",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ΣΦΑΛΜΑ: αποτυχία μετακίνησης του LuLu"
+          }
+        }
+      }
     },
     "ERROR: failed to relaunch LuLu" : {
-      "comment" : "ERROR: failed to relaunch LuLu"
+      "comment" : "ERROR: failed to relaunch LuLu",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ΣΦΑΛΜΑ: αποτυχία επανεκκίνησης του LuLu"
+          }
+        }
+      }
     },
     "Could not replace existing %@\r\n\r\n%@" : {
-      "comment" : "Could not replace existing %@\r\n\r\n%@"
+      "comment" : "Could not replace existing %@\r\n\r\n%@",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Δεν ήταν δυνατή η αντικατάσταση του υπάρχοντος %@\r\n\r\n%@"
+          }
+        }
+      }
     },
     "Could not copy to %@\r\n\r\n%@" : {
-      "comment" : "Could not copy to %@\r\n\r\n%@"
+      "comment" : "Could not copy to %@\r\n\r\n%@",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Δεν ήταν δυνατή η αντιγραφή στο %@\r\n\r\n%@"
+          }
+        }
+      }
     },
     "Could not launch %@\r\n\r\n%@" : {
-      "comment" : "Could not launch %@\r\n\r\n%@"
+      "comment" : "Could not launch %@\r\n\r\n%@",
+      "localizations" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Δεν ήταν δυνατή η εκκίνηση του %@\r\n\r\n%@"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

@@ -11,6 +11,12 @@
             "value" : "Bezeichnung"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ετικέτα"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -93,6 +99,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Objektname"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όνομα στοιχείου"
           }
         },
         "en" : {
@@ -179,6 +191,12 @@
             "value" : "Passiv erstellte Regeln"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κανόνες που δημιουργήθηκαν παθητικά"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -261,6 +279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vom Benutzer erstellte Regeln"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κανόνες που δημιουργήθηκαν από τον χρήστη"
           }
         },
         "en" : {
@@ -347,6 +371,12 @@
             "value" : "Regeln filtern"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Φιλτράρισμα κανόνων"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -429,6 +459,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Neueste Regeln"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Πρόσφατοι κανόνες"
           }
         },
         "en" : {
@@ -515,6 +551,12 @@
             "value" : "LuLu-Regeln"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κανόνες LuLu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -597,6 +639,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Benutzerdefinierte Ansicht"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προσαρμοσμένη προβολή"
           }
         },
         "en" : {
@@ -683,6 +731,12 @@
             "value" : "Benutzerdefinierte Ansicht"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προσαρμοσμένη προβολή"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -765,6 +819,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : " Regel"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Κανόνας"
           }
         },
         "en" : {
@@ -851,6 +911,12 @@
             "value" : "Alle Regeln"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όλοι οι κανόνες"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -933,6 +999,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Objektdetails..."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "λεπτομέρειες στοιχείου…"
           }
         },
         "en" : {
@@ -1019,6 +1091,12 @@
             "value" : "Apple-Regeln"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κανόνες Apple"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1101,6 +1179,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Standardregeln"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προεπιλεγμένοι κανόνες"
           }
         },
         "en" : {
@@ -1187,6 +1271,12 @@
             "value" : "Verbindungsinfo"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "πληροφορίες σύνδεσης"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1269,6 +1359,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regeln (neu)laden..."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(επανα)φόρτωση κανόνων…"
           }
         },
         "en" : {
@@ -1355,6 +1451,12 @@
             "value" : "Regel hinzufügen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προσθήκη κανόνα"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1437,6 +1539,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Drittanbieterregeln"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κανόνες τρίτων"
           }
         },
         "en" : {

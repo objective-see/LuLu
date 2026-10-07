@@ -84,6 +84,12 @@
             "value" : "LuLu läuft!"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το LuLu λειτουργεί!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -166,6 +172,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Greife jederzeit von hier aus darauf zu."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Μπορείτε να έχετε πρόσβαση σε αυτό από εδώ οποιαδήποτε στιγμή."
           }
         },
         "en" : {

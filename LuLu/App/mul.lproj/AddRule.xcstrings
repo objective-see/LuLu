@@ -11,6 +11,12 @@
             "value" : "Remote Port"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Απομακρυσμένη θύρα"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -95,6 +101,12 @@
             "value" : "Remote Adresse/Domain"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Απομακρυσμένη διεύθυνση/τομέας"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -177,6 +189,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regel hinzufügen (für ausgehende Verbidungen)"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προσθήκη κανόνα (για εξερχόμενες συνδέσεις)"
           }
         },
         "en" : {
@@ -342,6 +360,12 @@
             "value" : "Abbrechen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ακύρωση"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -424,6 +448,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : " Blockieren"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Αποκλεισμός"
           }
         },
         "en" : {
@@ -589,6 +619,12 @@
             "value" : " Erlauben"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Να επιτρέπεται"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -671,6 +707,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Durchsuchen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αναζήτηση"
           }
         },
         "en" : {
@@ -836,6 +878,12 @@
             "value" : "Programmpfad"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαδρομή προγράμματος"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -918,6 +966,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hinzufügen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προσθήκη"
           }
         },
         "en" : {
