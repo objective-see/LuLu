@@ -11,6 +11,12 @@
             "value" : "Startet jetzt..."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εκκίνηση τώρα…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -93,6 +99,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hinweis: LuLu funktioniert am besten unter macOS 15.3+, da Apple Fehler behoben hat, die die Netzwerkstabilität beeinträchtigten."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Σημείωση: Το LuLu λειτουργεί καλύτερα σε macOS 15.3+, καθώς η Apple διόρθωσε σφάλματα που επηρέαζαν τη σταθερότητα του δικτύου. "
           }
         },
         "en" : {

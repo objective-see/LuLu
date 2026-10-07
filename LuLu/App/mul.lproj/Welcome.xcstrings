@@ -11,6 +11,12 @@
             "value" : "Ausgehende Verbindungen von bereits installierten Drittanbieter-Programmen werden erlaubt."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Θα επιτρέπονται οι εξερχόμενες συνδέσεις από ήδη εγκατεστημένα προγράμματα τρίτων."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -93,6 +99,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mahalo an die \"Friends Objective-See\""
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ένα μεγάλο ευχαριστώ στους «Friends of Objective-See»"
           }
         },
         "en" : {
@@ -179,6 +191,12 @@
             "value" : "Hinweis: Die Schritte können je nach macOS-Version variieren"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Σημείωση: τα βήματα ενδέχεται να διαφέρουν ανάλογα με την έκδοση του macOS"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -261,6 +279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "1. Auf der „Systemerweiterung blockiert“-Meldung drücke: „Systemeinstellungen öffnen“."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Στην ειδοποίηση «Η επέκταση συστήματος αποκλείστηκε», κάντε κλικ στο «Άνοιγμα Ρυθμίσεων συστήματος»"
           }
         },
         "en" : {
@@ -347,6 +371,12 @@
             "value" : "Zuerst muss die LuLu Netzwerkerweiterung zugelassen werden:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Πρώτα, επιτρέψτε την επέκταση δικτύου του LuLu:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -429,6 +459,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Überwacht die Netzwerkaktivität und warnt, wenn ein Programm zum ersten Mal versucht, eine ausgehende Verbindung herzustellen, sodass diese erlaubt oder blockiert werden kann."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Παρακολουθεί τη δραστηριότητα του δικτύου και σας ειδοποιεί όταν ένα πρόγραμμα προσπαθεί για πρώτη φορά να ξεκινήσει μια εξερχόμενη σύνδεση, ώστε να μπορείτε να την επιτρέψετε ή να την απορρίψετε."
           }
         },
         "en" : {
@@ -613,6 +649,12 @@
             "value" : "Diese können später in den LuLu-Einstellungen geändert werden."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αυτές οι επιλογές μπορούν να αλλάξουν αργότερα από τις Ρυθμίσεις του LuLu."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -695,6 +737,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lulu ist eine freie quelloffene Firewall für macOS"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το LuLu είναι ένα δωρεάν τείχος προστασίας ανοιχτού κώδικα για macOS."
           }
         },
         "en" : {
@@ -781,6 +829,12 @@
             "value" : "Nein"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όχι"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -863,6 +917,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu unterstützen?"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Θέλετε να υποστηρίξετε το LuLu;"
           }
         },
         "en" : {
@@ -949,6 +1009,12 @@
             "value" : "4. Klicke in dem Hinweis „Netzwerkinhalte filtern“ auf: „Erlauben“"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Στην ειδοποίηση «Φιλτράρισμα περιεχομένου δικτύου», κάντε κλικ στο «Να επιτρέπεται»"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1031,6 +1097,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Willkommen zu"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Καλώς ήρθατε στο"
           }
         },
         "en" : {
@@ -1117,6 +1189,12 @@
             "value" : "Ausgehende Verbindungen von Apple-signierten Programmen werden erlaubt."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Θα επιτρέπονται οι εξερχόμενες συνδέσεις από προγράμματα υπογεγραμμένα από την Apple."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1199,6 +1277,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ja!"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ναι!"
           }
         },
         "en" : {
@@ -1285,6 +1369,12 @@
             "value" : "Sämtlicher ausgehender UDP-Verkehr auf Port 53 wird erlaubt."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Θα επιτρέπεται όλη η εξερχόμενη κίνηση UDP στη θύρα 53."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1367,6 +1457,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : " DNS-Verbindungen erlauben"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Να επιτρέπεται η κίνηση DNS"
           }
         },
         "en" : {
@@ -1453,6 +1549,12 @@
             "value" : "Es ist frei, quelloffen und von einem einzigen (Mac-liebenden) Entwickler geschrieben! "
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Είναι δωρεάν, ανοιχτού κώδικα και γραμμένο από έναν μόνο προγραμματιστή (λάτρη των Mac)!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1535,6 +1637,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Warten auf die Genehmigung der Systemerweiterung"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αναμονή έγκρισης επέκτασης συστήματος"
           }
         },
         "en" : {
@@ -1621,6 +1729,12 @@
             "value" : "Ein bisschen Liebe zeigen?"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Θέλετε να δείξετε λίγη αγάπη; "
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1703,6 +1817,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Weiter"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επόμενο"
           }
         },
         "en" : {
@@ -1789,6 +1909,12 @@
             "value" : "Nun wollen wir LuLu konfigurieren:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Τώρα, ας ρυθμίσουμε το LuLu:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1871,6 +1997,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : " Bereits installierte Programme erlauben"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Να επιτρέπονται ήδη εγκατεστημένα προγράμματα"
           }
         },
         "en" : {
@@ -1957,6 +2089,12 @@
             "value" : "Weiter"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επόμενο"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -2041,6 +2179,12 @@
             "value" : " Apple-Programme erlauben"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Να επιτρέπονται προγράμματα της Apple"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -2123,6 +2267,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3. Authentifiziere"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Πιστοποιήστε την ταυτότητά σας"
           }
         },
         "en" : {

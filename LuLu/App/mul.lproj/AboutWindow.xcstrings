@@ -11,6 +11,12 @@
             "value" : "Unterstütze uns!"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Υποστηρίξτε μας!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -93,6 +99,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version:"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Έκδοση:"
           }
         },
         "en" : {
@@ -179,6 +191,12 @@
             "value" : "Unterstützer & Freunde:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Υποστηρικτές & Φίλοι"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -261,6 +279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Weitere Informationen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Περισσότερες πληροφορίες"
           }
         },
         "en" : {
