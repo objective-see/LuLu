@@ -38,8 +38,7 @@ extern NSMutableDictionary* alerts;
 @synthesize virusTotalButton;
 @synthesize signingInfoButton;
 
-#define DEFAULT_WINDOW_HEIGHT 244
-#define DEFAULT_WINDOW_HEIGHT_EXPANDED 452
+#define DEFAULT_WINDOW_HEIGHT 216
 
 //center window
 // also, transparency
@@ -59,6 +58,9 @@ extern NSMutableDictionary* alerts;
     //move via background
     self.window.movableByWindowBackground = YES;
     
+    // A long executable name must truncate instead of widening the alert.
+    [self.processName setContentCompressionResistancePriority:NSLayoutPriorityDefaultLow forOrientation:NSLayoutConstraintOrientationHorizontal];
+
     //set hour formatter
     NSNumberFormatter *hoursFormatter = [[NSNumberFormatter alloc] init];
     hoursFormatter.minimum = @0;
@@ -74,6 +76,53 @@ extern NSMutableDictionary* alerts;
     self.ruleDurationMinutes.formatter = minutesFormatter;
     
     return;
+}
+
+// Use native materials and controls while retaining the existing alert actions.
+-(void)configureNativeAppearance
+{
+    self.processName.font = [NSFont systemFontOfSize:21 weight:NSFontWeightSemibold];
+    self.processName.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.processName.toolTip = self.processName.stringValue;
+    self.alertMessage.font = [NSFont systemFontOfSize:15];
+    self.alertMessage.textColor = NSColor.labelColor;
+    self.alertMessage.textContainerInset = NSZeroSize;
+    self.alertMessage.enclosingScrollView.drawsBackground = NO;
+
+    NSView* content = self.window.contentView;
+    for(NSView* view in content.subviews)
+    {
+        if([view isKindOfClass:NSButton.class] && ((NSButton*)view).action == @selector(handleUserResponse:))
+            ((NSButton*)view).font = [NSFont systemFontOfSize:14 weight:NSFontWeightSemibold];
+    }
+
+    // Keep older SDKs and the macOS 10.15 deployment target supported.
+#if __MAC_OS_X_VERSION_MAX_ALLOWED >= 260000
+    if(@available(macOS 26.0, *))
+    {
+        content.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+        NSGlassEffectView* glass = [[NSGlassEffectView alloc] initWithFrame:content.frame];
+        glass.style = NSGlassEffectViewStyleRegular;
+        glass.cornerRadius = 26;
+        self.window.opaque = NO;
+        self.window.backgroundColor = NSColor.clearColor;
+        self.window.contentView = glass;
+        glass.contentView = content;
+
+        NSArray* inspectionButtons = @[self.signingInfoButton, self.ancestryButton, self.virusTotalButton];
+        for(NSView* view in content.subviews)
+        {
+            if(YES != [view isKindOfClass:NSButton.class]) continue;
+            NSButton* button = (NSButton*)view;
+            BOOL inspection = [inspectionButtons containsObject:button];
+            if(NO == inspection && button.action != @selector(handleUserResponse:)) continue;
+            button.bordered = YES;
+            button.bezelStyle = NSBezelStyleGlass;
+            button.borderShape = inspection ? NSControlBorderShapeCircle : NSControlBorderShapeCapsule;
+            if(inspection) button.imageScaling = NSImageScaleProportionallyDown;
+        }
+    }
+#endif
 }
 
 //delegate method
@@ -366,6 +415,9 @@ extern NSMutableDictionary* alerts;
     //show touch bar
     [self initTouchBar];
 
+    // Keep collapsed details out of the accessibility tree as well as off-screen.
+    self.options.hidden = YES;
+
     //default height
     height = DEFAULT_WINDOW_HEIGHT;
     
@@ -407,6 +459,8 @@ extern NSMutableDictionary* alerts;
         self.ruleDurationAlways.state = NSControlStateValueOn;
     }
     
+    [self configureNativeAppearance];
+
 bail:
     
     return;
@@ -999,8 +1053,8 @@ bail:
         windowFrame.size.height += NSHeight(self.options.frame); //NSHeight(self.options.frame);
         windowFrame.origin.y -= NSHeight(self.options.frame);
         
-        [self.window setContentMinSize:NSMakeSize(self.window.frame.size.width, DEFAULT_WINDOW_HEIGHT_EXPANDED)];
-        [self.window setContentMaxSize:NSMakeSize(self.window.frame.size.width, DEFAULT_WINDOW_HEIGHT_EXPANDED)];
+        [self.window setContentMinSize:NSMakeSize(self.window.frame.size.width, DEFAULT_WINDOW_HEIGHT + NSHeight(self.options.frame))];
+        [self.window setContentMaxSize:NSMakeSize(self.window.frame.size.width, DEFAULT_WINDOW_HEIGHT + NSHeight(self.options.frame))];
         
         [self.options setHidden:NO];
         
@@ -1026,7 +1080,7 @@ bail:
     }
         
     //resize
-    [self.window setFrame:windowFrame display:YES animate:YES];
+    [self.window setFrame:windowFrame display:YES animate:!NSWorkspace.sharedWorkspace.accessibilityDisplayShouldReduceMotion];
     
     return;
 }
