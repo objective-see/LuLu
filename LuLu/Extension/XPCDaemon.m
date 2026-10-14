@@ -369,6 +369,8 @@ bail:
     //full path
     NSString* newProfilePath = nil;
 
+    NSString* previousProfilePath = [preferences getCurrentProfile];
+
     //directory flag
     BOOL isDirectory = NO;
 
@@ -403,7 +405,12 @@ bail:
     [profiles set:newProfilePath];
 
     //reload rules
-    [rules load];
+    if(YES != [rules load])
+    {
+        [profiles set:previousProfilePath];
+        os_log_error(logHandle, "ERROR: profile rules could not be activated; retaining previous profile");
+        goto bail;
+    }
 
     //tell user rules changed
     // ...in case rule's window need refreshing

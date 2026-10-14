@@ -72,6 +72,7 @@ extern os_log_t logHandle;
     {
         //save pid
         self.pid = audit_token_to_pid(*token);
+        self.auditToken = [NSData dataWithBytes:token length:sizeof(*token)];
         if(0 == self.pid)
         {
             //err msg
@@ -142,6 +143,7 @@ extern os_log_t logHandle;
                 //unset
                 arguments = nil;
                 ancestors = nil;
+                self.auditToken = nil;
             }
         }
     }

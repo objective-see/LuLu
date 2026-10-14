@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB51A0200000000000000001 /* ProcessTreeTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = EB51A0200000000000000002 /* ProcessTreeTracker.m */; };
+		EB51A0200000000000000003 /* libEndpointSecurity.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EB51A0200000000000000004 /* libEndpointSecurity.tbd */; };
 		CD0070262C3954220011979F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CD0070252C3954220011979F /* Localizable.xcstrings */; };
 		CD0070272C3954220011979F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CD0070252C3954220011979F /* Localizable.xcstrings */; };
 		CD00702C2C3956F50011979F /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD00702B2C3956F50011979F /* Welcome.xib */; };
@@ -98,6 +100,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EB51A0200000000000000002 /* ProcessTreeTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProcessTreeTracker.m; sourceTree = "<group>"; };
+		EB51A0200000000000000005 /* ProcessTreeTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProcessTreeTracker.h; sourceTree = "<group>"; };
+		EB51A0200000000000000004 /* libEndpointSecurity.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libEndpointSecurity.tbd; path = usr/lib/libEndpointSecurity.tbd; sourceTree = SDKROOT; };
 		CD0070252C3954220011979F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = Shared/Localizable.xcstrings; sourceTree = "<group>"; };
 		CD00702A2C3956F50011979F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Welcome.xib; sourceTree = "<group>"; };
 		CD00702D2C3956F50011979F /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Welcome.xcstrings; sourceTree = "<group>"; };
@@ -238,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDA1366F24EF5587005AD424 /* libbsm.tbd in Frameworks */,
+				EB51A0200000000000000003 /* libEndpointSecurity.tbd in Frameworks */,
 				CDB2CC3324D61B3900D0EECE /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				CDA1366E24EF5587005AD424 /* libbsm.tbd */,
+				EB51A0200000000000000004 /* libEndpointSecurity.tbd */,
 				CDB2CC3224D61B3900D0EECE /* NetworkExtension.framework */,
 			);
 			name = Frameworks;
@@ -399,6 +406,8 @@
 				CDEA3AD12E0724EC00FDD0C0 /* Profiles.m */,
 				CD03F8FB24F8E6C600723BDC /* Process.h */,
 				CD03F8F424F8E68300723BDC /* Process.m */,
+				EB51A0200000000000000005 /* ProcessTreeTracker.h */,
+				EB51A0200000000000000002 /* ProcessTreeTracker.m */,
 				CDA1366B24EF4F89005AD424 /* Rules.h */,
 				CDA1366C24EF4F89005AD424 /* Rules.m */,
 				CDA135F824EBB58E005AD424 /* Shared */,
@@ -585,6 +594,7 @@
 				CDA1366824EF4E57005AD424 /* XPCListener.m in Sources */,
 				CDA1364824EF4DA1005AD424 /* Rule.m in Sources */,
 				CD03F8F624F8E68300723BDC /* Process.m in Sources */,
+				EB51A0200000000000000001 /* ProcessTreeTracker.m in Sources */,
 				CDA1366424EF4E57005AD424 /* GrayList.m in Sources */,
 				CDB2CC3924D61B3900D0EECE /* main.m in Sources */,
 				CDA1366724EF4E57005AD424 /* XPCDaemon.m in Sources */,

@@ -14,6 +14,10 @@
 #import "Process.h"
 #import "utilities.h"
 #import "Preferences.h"
+#import "ProcessTreeTracker.h"
+
+#import <arpa/inet.h>
+#import <bsm/libbsm.h>
 
 //default systems 'allow' rules
 NSString* const DEFAULT_RULES[] =
@@ -52,6 +56,12 @@ extern Alerts* alerts;
 //prefs obj
 extern Preferences* preferences;
 
+@interface Rules ()
+-(BOOL)prepareStrictRules:(NSDictionary*)candidateRules;
+-(BOOL)strictRoot:(Rule*)rule matchesSnapshot:(NSDictionary*)snapshot;
+-(BOOL)strictEndpoint:(Rule*)rule matchesFlow:(NEFilterSocketFlow*)flow;
+@end
+
 @implementation Rules
 
 @synthesize rules;
@@ -66,6 +76,7 @@ extern Preferences* preferences;
     {
         //alloc rules dictionary
         rules = [NSMutableDictionary dictionary];
+        self.processTreeTracker = [[ProcessTreeTracker alloc] init];
         
         //init XPC client
         xpcUserClient = [[XPCUserClient alloc] init];
@@ -347,8 +358,9 @@ bail:
     {
 
     //unarchive
-    self.rules = [self unarchiveRulesData:archivedRules];
-    if(nil == self.rules)
+    NSMutableDictionary* loadedRules = [self unarchiveRulesData:archivedRules];
+    if( (nil == loadedRules) ||
+        (YES != [self prepareStrictRules:loadedRules]) )
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to unarchive rules from %{public}@", RULES_FILE);
@@ -356,6 +368,7 @@ bail:
         //bail
         goto bail;
     }
+    self.rules = loadedRules;
     
     //make sure all item rules have a set for 'external' paths
     // older rules didn't use this, so let's make do it here manually
@@ -555,6 +568,17 @@ bail:
         //bail
         goto bail;
     }
+
+    if(YES == [rule isStrictProcessTree])
+    {
+        if( (0 == rule.key.length) ||
+            (YES != [rule isValidStrictProcessTree]) ||
+            (YES != [self prepareStrictRules:@{rule.key: @{KEY_RULES: @[rule]}}]) )
+        {
+            os_log_error(logHandle, "ERROR: strict process-tree policy is invalid or tracking is unavailable");
+            goto bail;
+        }
+    }
     
     //sync to access
     @synchronized(self)
@@ -674,9 +698,204 @@ bail:
     return;
 }
 
+//Only active strict policies need a fresh lookup for an uncached paused flow.
+-(BOOL)hasActiveStrictRules
+{
+    @synchronized(self)
+    {
+        for(NSString* key in self.rules)
+        {
+            for(Rule* rule in self.rules[key][KEY_RULES])
+            {
+                if( (YES == [rule isStrictProcessTree]) &&
+                    (YES != rule.isDisabled.boolValue) ) return YES;
+            }
+        }
+    }
+    return NO;
+}
+
+//Validate before replacing or extending the active ruleset.
+-(BOOL)prepareStrictRules:(NSDictionary*)candidateRules
+{
+    BOOL needsTracking = NO;
+    for(NSString* key in candidateRules)
+    {
+        for(Rule* rule in candidateRules[key][KEY_RULES])
+        {
+            if(YES != [rule isStrictProcessTree]) continue;
+            if( (0 == rule.key.length) ||
+                (YES != [rule isValidStrictProcessTree]) )
+            {
+                os_log_error(logHandle, "ERROR: invalid strict process-tree policy");
+                return NO;
+            }
+            if(YES != rule.isDisabled.boolValue) needsTracking = YES;
+        }
+    }
+
+    if(YES != needsTracking) return YES;
+    if( (YES != self.processTreeTracker.available) &&
+        (YES != [self.processTreeTracker start]) )
+    {
+        os_log_error(logHandle, "ERROR: strict process-tree tracking is unavailable: %{public}@", self.processTreeTracker.failureReason);
+        return NO;
+    }
+    if(YES != self.processTreeTracker.healthy)
+    {
+        os_log_error(logHandle, "ERROR: strict process-tree tracking is incomplete: %{public}@", self.processTreeTracker.failureReason);
+        return NO;
+    }
+    return YES;
+}
+
+//A strict root is an exact executable and, for signed code, a pinned identity.
+-(BOOL)strictRoot:(Rule*)rule matchesSnapshot:(NSDictionary*)snapshot
+{
+    if(YES != [rule.path isEqualToString:snapshot[@"path"]]) return NO;
+
+    NSString* signingID = rule.csInfo[KEY_CS_ID];
+    NSString* cdhash = rule.csInfo[KEY_CS_CDHASH];
+    if( (0 == [rule.csInfo[KEY_CS_TEAM_ID] length]) &&
+        (0 != cdhash.length) )
+    {
+        NSData* observedHash = snapshot[@"cdhash"];
+        NSString* observedHashString = snapshot[@"codeSignatureHash"];
+        if(YES != [snapshot[@"codeSignatureValid"] boolValue]) return NO;
+        if(40 == observedHashString.length) return [cdhash.lowercaseString isEqualToString:observedHashString.lowercaseString];
+        if(20 != observedHash.length) return NO;
+        NSMutableString* observed = [NSMutableString stringWithCapacity:40];
+        const uint8_t* bytes = observedHash.bytes;
+        for(NSUInteger index = 0; index < observedHash.length; index++) [observed appendFormat:@"%02x", bytes[index]];
+        return [cdhash.lowercaseString isEqualToString:observed];
+    }
+    if(0 == signingID.length)
+    {
+        return (0 == [snapshot[@"signingIdentifier"] length]) &&
+               (0 == [snapshot[@"teamIdentifier"] length]);
+    }
+
+    return [snapshot[@"signatureValid"] boolValue] &&
+           [signingID isEqualToString:snapshot[@"signingIdentifier"]] &&
+           [rule.csInfo[KEY_CS_TEAM_ID] isEqualToString:snapshot[@"teamIdentifier"]];
+}
+
+//Only the numeric socket destination can grant a strict exception.
+-(BOOL)strictEndpoint:(Rule*)rule matchesFlow:(NEFilterSocketFlow*)flow
+{
+    NWHostEndpoint* endpoint = (NWHostEndpoint*)flow.remoteEndpoint;
+    if( (0 != rule.protocol.integerValue) &&
+        (rule.protocol.integerValue != flow.socketProtocol) ) return NO;
+    if( (YES != [rule.endpointPort isEqualToString:VALUE_ANY]) &&
+        (YES != [rule.endpointPort isEqualToString:endpoint.port]) ) return NO;
+    if([rule.endpointAddr isEqualToString:VALUE_ANY]) return YES;
+
+    if(EndpointTypeCIDR == rule.isEndpointAddrRegex)
+    {
+        return [rule endpointAddrInRange:endpoint.hostname];
+    }
+
+    uint8_t expected[16] = {0};
+    uint8_t actual[16] = {0};
+    for(NSNumber* family in @[@(AF_INET), @(AF_INET6)])
+    {
+        if( (1 == inet_pton(family.intValue, rule.endpointAddr.UTF8String, expected)) &&
+            (1 == inet_pton(family.intValue, endpoint.hostname.UTF8String, actual)) )
+        {
+            return 0 == memcmp(expected, actual, (AF_INET == family.intValue) ? 4 : 16);
+        }
+    }
+    return NO;
+}
+
+//Each observed strict owner supplies its own allowlist; all owners must allow.
+-(NSNumber*)strictDecisionForAuditToken:(NSData*)token process:(Process*)process flow:(NEFilterSocketFlow*)flow
+{
+    if(sizeof(audit_token_t) != token.length) return nil;
+
+    NSArray* observed = [self.processTreeTracker ancestorsForAuditToken:token];
+    NSMutableArray* snapshots = (nil != observed) ? [observed mutableCopy] : [NSMutableArray array];
+
+    //A flow lookup can identify the selected root when ES is unavailable.
+    //It cannot reconstruct descendants whose creation was never observed.
+    NSString* identity = [ProcessTreeTracker identityForAuditToken:token];
+    if( (nil != identity) &&
+        ([identity isEqualToString:[ProcessTreeTracker identityForAuditToken:process.auditToken]]) &&
+        (0 != process.path.length) )
+    {
+        [snapshots addObject:@{@"path": [process.path stringByResolvingSymlinksInPath],
+                              @"signingIdentifier": process.csInfo[KEY_CS_ID] ?: @"",
+                              @"teamIdentifier": process.csInfo[KEY_CS_TEAM_ID] ?: @"",
+                              @"codeSignatureHash": process.csInfo[KEY_CS_CDHASH] ?: @"",
+                              @"codeSignatureValid": @((nil != process.csInfo[KEY_CS_STATUS]) && (errSecSuccess == [process.csInfo[KEY_CS_STATUS] intValue])),
+                              @"signatureValid": @((nil != process.csInfo[KEY_CS_STATUS]) && (errSecSuccess == [process.csInfo[KEY_CS_STATUS] intValue]))}];
+    }
+
+    @synchronized(self)
+    {
+        NSMutableDictionary* owners = [NSMutableDictionary dictionary];
+        for(NSString* key in self.rules)
+        {
+            for(Rule* rule in self.rules[key][KEY_RULES])
+            {
+                if( (YES != [rule isStrictProcessTree]) ||
+                    (YES == rule.isDisabled.boolValue) ) continue;
+
+                for(NSDictionary* snapshot in snapshots)
+                {
+                    if(YES != [self strictRoot:rule matchesSnapshot:snapshot]) continue;
+                    NSString* team = rule.csInfo[KEY_CS_TEAM_ID] ?: @"";
+                    NSArray* owner = @[rule.key ?: @"", rule.path, team,
+                                       (0 != team.length) ? rule.csInfo[KEY_CS_ID] : @"",
+                                       (0 == team.length) ? (rule.csInfo[KEY_CS_CDHASH] ?: @"") : @""];
+                    if(nil == owners[owner]) owners[owner] = [NSMutableArray array];
+                    if(YES != [owners[owner] containsObject:rule]) [owners[owner] addObject:rule];
+                    break;
+                }
+            }
+        }
+
+        if(0 == owners.count) return nil;
+        if( (YES != self.processTreeTracker.available) ||
+            (YES != self.processTreeTracker.healthy) ) return @(RULE_STATE_BLOCK);
+
+        for(NSArray* ownerRules in owners.allValues)
+        {
+            Rule* bestMatch = nil;
+            NSInteger bestSpecificity = -1;
+            for(Rule* rule in ownerRules)
+            {
+                if(YES != [rule isValidStrictProcessTree]) return @(RULE_STATE_BLOCK);
+                if(YES != [self strictEndpoint:rule matchesFlow:flow]) continue;
+                NSInteger specificity = ![rule.endpointAddr isEqualToString:VALUE_ANY] +
+                                        ![rule.endpointPort isEqualToString:VALUE_ANY] +
+                                        (0 != rule.protocol.integerValue);
+                if( (specificity > bestSpecificity) ||
+                    ((specificity == bestSpecificity) && (RULE_STATE_BLOCK == rule.action.intValue)) )
+                {
+                    bestSpecificity = specificity;
+                    bestMatch = rule;
+                }
+            }
+            if( (nil == bestMatch) ||
+                (RULE_STATE_ALLOW != bestMatch.action.intValue) ) return @(RULE_STATE_BLOCK);
+        }
+    }
+    return @(RULE_STATE_ALLOW);
+}
+
 //find (matching) rule
 -(Rule*)find:(Process*)process flow:(NEFilterSocketFlow*)flow
 {
+    NSNumber* strictDecision = [self strictDecisionForAuditToken:flow.sourceAppAuditToken process:process flow:flow];
+    if(nil != strictDecision)
+    {
+        Rule* decision = [[Rule alloc] init];
+        decision.scope = @(ACTION_SCOPE_PROCESS_TREE_STRICT);
+        decision.action = strictDecision;
+        return decision;
+    }
+
     //matching rule
     Rule* matchingRule = nil;
     
@@ -839,6 +1058,8 @@ bail:
             // note: * is a wildcard, meaning any match
             for(Rule* rule in rules)
             {
+                //Strict policies are evaluated independently of ordinary precedence.
+                if(YES == [rule isStrictProcessTree]) continue;
                 //set flag: any port ('*')
                 portAny = [rule.endpointPort isEqualToString:VALUE_ANY];
                 
@@ -1202,6 +1423,19 @@ bail:
     //sync to access
     @synchronized(self)
     {
+        //Re-enabling strict rules requires the same monitoring capability as adding them.
+        if(RULE_TOGGLE_STATE_ENABLE == state.intValue)
+        {
+            for(Rule* rule in self.rules[key][KEY_RULES])
+            {
+                if( (nil != uuid) && (YES != [rule.uuid isEqualToString:uuid]) ) continue;
+                if(YES != [rule isStrictProcessTree]) continue;
+                if( (YES != [rule isValidStrictProcessTree]) ||
+                    ((YES != self.processTreeTracker.available) && (YES != [self.processTreeTracker start])) ||
+                    (YES != self.processTreeTracker.healthy) ) return NO;
+            }
+        }
+
         //no uuid
         // set all (process') rules to specified state
         if(nil == uuid)
@@ -1493,7 +1727,8 @@ bail:
     unarchivedRules = [self unarchiveRulesData:importedRules];
 
     //error?
-    if(nil == unarchivedRules)
+    if( (nil == unarchivedRules) ||
+        (YES != [self prepareStrictRules:unarchivedRules]) )
     {
         //err msg
         os_log_error(logHandle, "ERROR: failed to unarchive (imported) rules");
@@ -1683,6 +1918,9 @@ bail:
             // and expiration, and process id (temp rules)
             for(Rule* rule in rules)
             {
+                //A deleted root binary can still have live protected descendants.
+                if(YES == [rule isStrictProcessTree]) continue;
+
                 //only do path checks on full cleanup
                 if(full)
                 {
