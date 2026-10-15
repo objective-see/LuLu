@@ -25,6 +25,10 @@ typedef NS_ENUM(NSInteger, FlowVerdict) {
     kFlowVerdictRelated,    // another alert already shown for this process
 };
 
+//system resolver
+// DNS it does on an app's behalf is attributed to the app, but the (shared) socket is its own ...see 'isResolverDNS:' & #920
+#define RESOLVER_PATH @"/usr/sbin/mDNSResponder"
+
 /* GLOBALS */
 
 //alerts
@@ -614,6 +618,20 @@ bail:
             
             //deny
             verdict = kFlowVerdictBlock;
+            
+            //...unless 'allow DNS traffic' is set and this is DNS the system resolver is doing on the app's behalf
+            // the socket is the resolver's, shared by every process resolving that name: once dropped, the kernel fails
+            // all further sends on it (EPIPE) and mDNSResponder doesn't re-create it, so the name is unresolvable for
+            // *every* process until mDNSResponder restarts (see #920) ...the app's own connection is still blocked
+            if( (YES == [preferences.preferences[PREF_ALLOW_DNS] boolValue]) &&
+                (YES == [self isResolverDNS:flow evaluatedAs:process.pid]) )
+            {
+                //dbg msg
+                os_log_debug(logHandle, "...but 'allow DNS traffic' is set and flow is DNS the system resolver is doing on the app's behalf, so allowing (dropping would kill the shared resolver socket)");
+                
+                //allow
+                verdict = kFlowVerdictAllow;
+            }
         }
         //allow (msg)
         else os_log_debug(logHandle, "rule says: ALLOW");
@@ -653,6 +671,17 @@ bail:
             
             //block
             verdict = kFlowVerdictBlock;
+            
+            //...unless 'allow DNS traffic' is set and this is DNS the system resolver is doing on the app's behalf (see #920)
+            if( (YES == [preferences.preferences[PREF_ALLOW_DNS] boolValue]) &&
+                (YES == [self isResolverDNS:flow evaluatedAs:process.pid]) )
+            {
+                //dbg msg
+                os_log_debug(logHandle, "passive mode: ...but flow is DNS the system resolver is doing on the app's behalf, so allowing");
+                
+                //allow
+                verdict = kFlowVerdictAllow;
+            }
         }
         
         //create rule?
@@ -1020,6 +1049,10 @@ bail:
 
     //rule
     __block Rule* rule = nil;
+    
+    //pid of (alerted) process
+    // captured by value, for the 'once' case (see 'isResolverDNS:evaluatedAs:')
+    pid_t alertedPid = process.pid;
 
     //create alert
     alert = [alerts create:(NEFilterSocketFlow*)flow process:process];
@@ -1076,7 +1109,19 @@ bail:
             os_log_debug(logHandle, "'once' response, so just handling here ...no rule will be created");
             
             //verdict from user's action
-            NEFilterNewFlowVerdict* verdict = (RULE_STATE_BLOCK == [alert[KEY_ACTION] unsignedIntValue])
+            // ...but w/ 'allow DNS traffic' set, don't drop DNS the system resolver is doing on the app's behalf (see #920)
+            BOOL block = (RULE_STATE_BLOCK == [alert[KEY_ACTION] unsignedIntValue]);
+            if( (YES == block) &&
+                (YES == [preferences.preferences[PREF_ALLOW_DNS] boolValue]) &&
+                (YES == [strongSelf isResolverDNS:strongFlow evaluatedAs:alertedPid]) )
+            {
+                //dbg msg
+                os_log_debug(logHandle, "'block once' on DNS the system resolver is doing on the app's behalf, allowing it instead (see #920)");
+                
+                //allow
+                block = NO;
+            }
+            NEFilterNewFlowVerdict* verdict = (YES == block)
                 ? [NEFilterNewFlowVerdict dropVerdict]
                 : [NEFilterNewFlowVerdict allowVerdict];
 
@@ -1267,6 +1312,9 @@ bail:
 // 2. temporary ('while process runs') rules whose process exited, plus any expired rules
 -(void)reapDeadFlows
 {
+    //keys of exited processes
+    NSMutableArray* deadKeys = [NSMutableArray array];
+    
     //dbg msg
     os_log_debug(logHandle, "cleaning up flows from terminated processes...");
 
@@ -1290,21 +1338,40 @@ bail:
             }
 
             //process exited, but flow was created on its behalf by a (still running) delegate?
-            // then its flows were evaluated (& are held) as that delegate ...so leave them be too
-            if(nil != [self delegateToken:flow])
+            // if its flows were evaluated (& are held) as that delegate, the key (and the pending alert) is the delegate's
+            // ...so leave them be (the user will answer); can't tell (cache miss)? also leave them be
+            NSData* delegate = [self delegateToken:flow];
+            if(nil != delegate)
             {
-                continue;
+                //delegate's process object
+                Process* delegateProcess = [self.cache objectForKey:delegate];
+                if( (nil == delegateProcess) ||
+                    (YES == [delegateProcess.key isEqualToString:key]) )
+                {
+                    continue;
+                }
             }
 
-            //process is gone
-            // drop all its held flows, then clear its (now-stale) alert state
-            os_log_debug(logHandle, "process %d (key: %{public}@) has exited; reaping its flows", pid, key);
-            [self resumeFlowsForKey:key verdict:[NEFilterNewFlowVerdict dropVerdict]];
-            [alerts removeShown:key];
+            //process is gone (and the key is its own)
+            // save, to re-evaluate its held flows below (outside the lock)
+            os_log_debug(logHandle, "process %d (key: %{public}@) has exited; will re-evaluate its held flows", pid, key);
+            [deadKeys addObject:key];
         }
 
         //dbg msg
         os_log_debug(logHandle, "related flows remaining: %lu key(s)", (unsigned long)self.relatedFlows.count);
+    }
+    
+    //re-evaluate (rather than just drop) the held flows of each exited process, as an alert reply would
+    // its own flows are still denied (it's gone), but DNS the system resolver was doing on its behalf is now judged as
+    // the resolver (see 'delegateProcess:') instead of being dropped, which would kill the resolver's shared socket (see #920)
+    // note: if that re-evaluation itself alerts (e.g. the resolver has no rule), the rest stay queued under this key
+    //       and are picked up again on the next tick ...so a held flow may wait up to one more reap interval
+    for(NSString* key in deadKeys)
+    {
+        //clear its (now-stale) alert state, then re-evaluate
+        [alerts removeShown:key];
+        [self processRelatedFlow:key];
     }
 
     //also clean up rules whose process has exited (temp/process rules) or that have expired
@@ -1364,6 +1431,50 @@ bail:
     }
 
     return token;
+}
+
+//is this DNS (UDP, remote port 53) that the system resolver (mDNSResponder) is doing on the app's behalf?
+// the flow is attributed to the app, but the socket is mDNSResponder's and is shared by every process resolving
+// that name ...so dropping it breaks resolution of that name for all of them until mDNSResponder restarts (see #920)
+// notes: 'pid' is the process the flow is being evaluated as; if that *is* the resolver (app exited, see
+//        'delegateProcess:') the caller's decision is about the resolver itself, so answer NO
+//        the delegate must be the resolver, not just any delegate (nsurlsessiond, web content processes, ...),
+//        so a blocked app can't get a port-53 connection of its own through
+-(BOOL)isResolverDNS:(NEFilterFlow*)flow evaluatedAs:(pid_t)pid
+{
+    //delegate's token
+    NSData* token = nil;
+    
+    //delegate's pid
+    pid_t delegatePid = 0;
+    
+    //not delegated (or delegate is gone)?
+    token = [self delegateToken:flow];
+    if(nil == token)
+    {
+        //bail
+        return NO;
+    }
+    
+    //not UDP, or not remote port 53?
+    if( (IPPROTO_UDP != ((NEFilterSocketFlow*)flow).socketProtocol) ||
+        (YES != [((NWHostEndpoint*)((NEFilterSocketFlow*)flow).remoteEndpoint).port isEqualToString:@"53"]) )
+    {
+        //bail
+        return NO;
+    }
+    
+    //being evaluated as the delegate itself?
+    delegatePid = audit_token_to_pid(*(audit_token_t*)token.bytes);
+    if(pid == delegatePid)
+    {
+        //bail
+        return NO;
+    }
+    
+    //delegate must be the system resolver
+    // note: its path is on the sealed system volume, so a path compare is sound
+    return [RESOLVER_PATH isEqualToString:getProcessPath(delegatePid)];
 }
 
 //create (or lookup) process object for the delegate that created a flow (see 'delegateToken:')
