@@ -50,4 +50,7 @@
 -(NSData* _Nullable)delegateToken:(NEFilterFlow* _Nonnull)flow;
 -(Process* _Nullable)delegateProcess:(NEFilterFlow* _Nonnull)flow;
 
+//is flow DNS that the system resolver (mDNSResponder) is doing on behalf of the app (evaluated as 'pid')?
+-(BOOL)isResolverDNS:(NEFilterFlow* _Nonnull)flow evaluatedAs:(pid_t)pid;
+
 @end
