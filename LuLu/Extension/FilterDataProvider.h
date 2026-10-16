@@ -46,8 +46,7 @@
 // invoked periodically (timer) so paused flows of dead processes aren't held forever
 -(void)reapDeadFlows;
 
-//delegate (e.g. mDNSResponder) that created flow on behalf of its (exited) app
--(NSData* _Nullable)delegateToken:(NEFilterFlow* _Nonnull)flow;
--(Process* _Nullable)delegateProcess:(NEFilterFlow* _Nonnull)flow;
+//was flow created on behalf of its (exited) app by a (still running) delegate, e.g. mDNSResponder?
+-(BOOL)isDelegated:(NEFilterFlow* _Nonnull)flow;
 
 @end

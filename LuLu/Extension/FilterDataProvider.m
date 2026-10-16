@@ -398,45 +398,43 @@ bail:
     }
 
     //CHECK:
-    // process already exited (or zombie'd)?
-    // ...unless the flow was created on its behalf by a (still running) system process, e.g. mDNSResponder (see #920)
-    //    the socket belongs to that process & outlives the app, so evaluate the flow as it ...otherwise, deny
+    // process already exited (or zombie'd)? ...deny
+    // unless the flow was created on its behalf by a (still running) system process, e.g. mDNSResponder (see #920)
+    // as that socket belongs to the delegate & outlives the app (and is shared!), so dropping it would break it for everybody
     if(YES != isAlive(pid))
     {
-        //evaluate as delegate (if any)
-        process = [self delegateProcess:flow];
-        if(nil == process)
+        //delegated? allow
+        if(YES == [self isDelegated:flow])
         {
-            //dbg msg
-            os_log_debug(logHandle, "process %d has exited, DENYING flow", pid);
-
-            //block
-            verdict = kFlowVerdictBlock;
+            //bail
+            // verdict defaults to allow
             goto bail;
         }
+
+        //dbg msg
+        os_log_debug(logHandle, "process %d has exited, DENYING flow", pid);
+
+        //block
+        verdict = kFlowVerdictBlock;
+        goto bail;
     }
 
-    //process is alive
-    // lookup in cache, or create
+    //check cache for process
+    process = [self.cache objectForKey:flow.sourceAppAuditToken];
+    if(!process) {
+
+        os_log_debug(logHandle, "no process found in cache, will create");
+
+        //create
+        // also adds to cache
+        process = [self createProcess:flow];
+    }
+
+    //in cache
     else
     {
-        //check cache for process
-        process = [self.cache objectForKey:flow.sourceAppAuditToken];
-        if(!process) {
-
-            os_log_debug(logHandle, "no process found in cache, will create");
-
-            //create
-            // also adds to cache
-            process = [self createProcess:flow];
-        }
-
-        //in cache
-        else
-        {
-            //dbg msg
-            os_log_debug(logHandle, "found process object in cache: %{public}@ (pid: %d)", process.path, process.pid);
-        }
+        //dbg msg
+        os_log_debug(logHandle, "found process object in cache: %{public}@ (pid: %d)", process.path, process.pid);
     }
 
     //sanity check
@@ -444,31 +442,31 @@ bail:
     if(nil == process)
     {
         //process exited mid-lookup?
-        // again, evaluate as its delegate (if any), otherwise deny
+        // same as above: allow if delegated, otherwise deny
         if(YES != isAlive(pid))
         {
-            //evaluate as delegate (if any)
-            process = [self delegateProcess:flow];
-            if(nil == process)
+            //delegated? allow
+            if(YES == [self isDelegated:flow])
             {
-                //dbg msg
-                os_log_debug(logHandle, "process %d exited during lookup, DENYING flow", pid);
-
-                //block
-                verdict = kFlowVerdictBlock;
+                //bail
+                // verdict defaults to allow
                 goto bail;
             }
-        }
 
-        //process is alive, but still couldn't be examined ...fail open
-        else
-        {
-            //err msg
-            os_log_error(logHandle, "ERROR: failed to create process for flow (pid: %d), will allow: %{public}@", pid, ((NEFilterSocketFlow*)flow).remoteEndpoint);
+            //dbg msg
+            os_log_debug(logHandle, "process %d exited during lookup, DENYING flow", pid);
 
-            //bail
+            //block
+            verdict = kFlowVerdictBlock;
             goto bail;
         }
+
+        //err msg
+        // process is alive, but still couldn't be examined ...fail open
+        os_log_error(logHandle, "ERROR: failed to create process for flow (pid: %d), will allow: %{public}@", pid, ((NEFilterSocketFlow*)flow).remoteEndpoint);
+
+        //bail
+        goto bail;
     }
         
     //CHECK:
@@ -1289,17 +1287,17 @@ bail:
                 continue;
             }
 
-            //process exited, but flow was created on its behalf by a (still running) delegate?
-            // then its flows were evaluated (& are held) as that delegate ...so leave them be too
-            if(nil != [self delegateToken:flow])
-            {
-                continue;
-            }
-
             //process is gone
             // drop all its held flows, then clear its (now-stale) alert state
+            // ...except any created on its behalf by a (still running) delegate: those are allowed (see 'isDelegated:')
             os_log_debug(logHandle, "process %d (key: %{public}@) has exited; reaping its flows", pid, key);
-            [self resumeFlowsForKey:key verdict:[NEFilterNewFlowVerdict dropVerdict]];
+            for(NEFilterSocketFlow* held in self.relatedFlows[key])
+            {
+                //resume
+                // allow if delegated, otherwise drop
+                [self resumeFlow:held withVerdict:(YES == [self isDelegated:held]) ? [NEFilterNewFlowVerdict allowVerdict] : [NEFilterNewFlowVerdict dropVerdict]];
+            }
+            [self.relatedFlows removeObjectForKey:key];
             [alerts removeShown:key];
         }
 
@@ -1318,16 +1316,15 @@ bail:
     return;
 }
 
-//get (audit) token of the process that created a flow on behalf of the flow's (source) app
+//was the flow created on behalf of its (now exited) app, by a (still running) delegate? ...if so, it's allowed
 // e.g. mDNSResponder resolving a name for an app: the flow is attributed to the app, but the socket is mDNSResponder's
-// note: only returned if it differs from the app's token & that process is still alive ...and only available on macOS 13+
--(NSData*)delegateToken:(NEFilterFlow*)flow
+// ...and is shared by everybody resolving that name, so dropping it would break it for all of them (see #920)
+// note: 'sourceProcessAuditToken' (macOS 13+) is the process that created the socket; it only differs from the app's
+//       token for delegated flows, and only entitled system daemons can delegate, so there's nothing for an app to forge
+-(BOOL)isDelegated:(NEFilterFlow*)flow
 {
-    //token
+    //delegate's token
     NSData* token = nil;
-
-    //pid
-    pid_t pid = 0;
 
     //grab token
     // macOS 13+ only
@@ -1337,87 +1334,27 @@ bail:
         token = flow.sourceProcessAuditToken;
     }
 
-    //sanity check
-    if(sizeof(audit_token_t) != token.length)
-    {
-        //bail
-        return nil;
-    }
-
-    //same as app's token?
+    //none, or same as the app's?
     // not a delegated flow
-    if(YES == [token isEqualToData:flow.sourceAppAuditToken])
+    if( (nil == token) ||
+        (YES == [token isEqualToData:flow.sourceAppAuditToken]) )
     {
         //bail
-        return nil;
+        return NO;
     }
 
-    //extract pid
-    pid = audit_token_to_pid(*(audit_token_t*)token.bytes);
-
-    //kernel, or exited?
-    if( (0 == pid) ||
-        (YES != isAlive(pid)) )
+    //delegate exited too?
+    // nothing (left) to protect
+    if(YES != isAlive(audit_token_to_pid(*(audit_token_t*)token.bytes)))
     {
         //bail
-        return nil;
-    }
-
-    return token;
-}
-
-//create (or lookup) process object for the delegate that created a flow (see 'delegateToken:')
-// used when the flow's app has exited: the socket belongs to the delegate (e.g. mDNSResponder), so the flow is evaluated as it
-// note: cached under both the delegate's token & the flow's (app) token, so later lookups via the flow find the delegate, not the dead app
--(Process*)delegateProcess:(NEFilterFlow*)flow
-{
-    //delegate's token
-    NSData* token = nil;
-
-    //process obj
-    Process* process = nil;
-
-    //grab delegate's token
-    // nil if flow wasn't delegated, or delegate is gone too
-    token = [self delegateToken:flow];
-    if(nil == token)
-    {
-        //bail
-        goto bail;
-    }
-
-    //check cache
-    // keyed by delegate's token, which is shared by all flows it creates
-    process = [self.cache objectForKey:token];
-    if(nil == process)
-    {
-        //create
-        process = [[Process alloc] init:(audit_token_t*)token.bytes];
-        if(nil == process)
-        {
-            //err msg
-            os_log_error(logHandle, "ERROR: failed to create process for delegate %d", audit_token_to_pid(*(audit_token_t*)token.bytes));
-
-            //bail
-            goto bail;
-        }
+        return NO;
     }
 
     //log msg
-    os_log(logHandle, "process %d has exited, but flow was created on its behalf by %{public}@ (pid: %d), so evaluating as that: %{public}@", audit_token_to_pid(*(audit_token_t*)flow.sourceAppAuditToken.bytes), process.path, process.pid, ((NEFilterSocketFlow*)flow).remoteEndpoint);
+    os_log(logHandle, "process %d has exited, but flow was created on its behalf by (still running) process %d, so allowing: %{public}@", audit_token_to_pid(*(audit_token_t*)flow.sourceAppAuditToken.bytes), audit_token_to_pid(*(audit_token_t*)token.bytes), ((NEFilterSocketFlow*)flow).remoteEndpoint);
 
-    //sync to add to cache
-    @synchronized(self.cache) {
-
-        //add to cache
-        // under both the delegate's token & the flow's (app) token
-        [self.cache setObject:process forKey:token];
-        [self.cache setObject:process forKey:flow.sourceAppAuditToken];
-    }
-
-bail:
-
-    return process;
+    return YES;
 }
 
 //create process object
