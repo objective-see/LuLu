@@ -66,6 +66,12 @@
             "value" : "Verbindungen:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Σύνδεση:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -148,6 +154,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regeldauer:"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διάρκεια κανόνα:"
           }
         },
         "en" : {
@@ -234,6 +246,12 @@
             "value" : "Port/Protokoll:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "θύρα/πρωτόκολλο:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -316,6 +334,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prozesslaufzeit"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διάρκεια διεργασίας"
           }
         },
         "en" : {
@@ -494,6 +518,12 @@
             "value" : "Details:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Λεπτομέρειες:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -591,6 +621,12 @@
             "value" : "Zertifizierungsinstanzen:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αρχές υπογραφής:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -673,6 +709,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu Mitteilung"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ειδοποίηση LuLu"
           }
         },
         "en" : {
@@ -814,6 +856,12 @@
             "value" : "(Reverse) DNS: "
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(αντίστροφο) DNS:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -896,6 +944,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Details & Optionen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Λεπτομέρειες & επιλογές"
           }
         },
         "en" : {
@@ -982,6 +1036,12 @@
             "value" : "Regel-Geltungsbereich:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εμβέλεια κανόνα:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1066,6 +1126,12 @@
             "value" : "Pfad:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "διαδρομή:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1148,6 +1214,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Einmalig"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Μία φορά"
           }
         },
         "en" : {
@@ -1313,6 +1385,12 @@
             "value" : "Prozess"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διεργασία"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1397,6 +1475,12 @@
             "value" : "Prozessname"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όνομα διεργασίας"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1479,6 +1563,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Name"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όνομα"
           }
         },
         "en" : {
@@ -1620,6 +1710,12 @@
             "value" : "Prozess + Kindprozesse"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διεργασία + θυγατρικές"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1702,6 +1798,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prozess:"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διεργασία:"
           }
         },
         "en" : {
@@ -1788,6 +1890,12 @@
             "value" : "Remote-Endpunkt"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Απομακρυσμένο τελικό σημείο"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1870,6 +1978,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nachricht"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "μήνυμα"
           }
         },
         "en" : {
@@ -1956,6 +2070,12 @@
             "value" : "Argumente:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ορίσματα:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -2038,6 +2158,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Immer"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Πάντα"
           }
         },
         "en" : {
@@ -2124,6 +2250,12 @@
             "value" : "IP-Adresse:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "διεύθυνση IP:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -2206,6 +2338,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Blockieren"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αποκλεισμός"
           }
         },
         "en" : {
@@ -2292,6 +2430,12 @@
             "value" : "Läuft ab in:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Λήγει σε:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -2376,6 +2520,12 @@
             "value" : "Zeitstempel:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Χρονική σήμανση: "
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -2458,6 +2608,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Erlauben"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Να επιτρέπεται"
           }
         },
         "en" : {

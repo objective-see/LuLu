@@ -11,6 +11,12 @@
             "value" : "Jetzt prüfen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Έλεγχος τώρα"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -93,6 +99,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Blockierungsmodus"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Λειτουργία αποκλεισμού"
           }
         },
         "en" : {
@@ -179,6 +191,12 @@
             "value" : "Abbrechen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ακύρωση"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -261,6 +279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profile"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προφίλ"
           }
         },
         "en" : {
@@ -347,6 +371,12 @@
             "value" : "Profile"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προφίλ"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -429,6 +459,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sollen Regeln für neue Verbindungen erstellt werden?"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Να δημιουργούνται κανόνες για νέες συνδέσεις;"
           }
         },
         "en" : {
@@ -515,6 +551,12 @@
             "value" : "Ausgehende Verbindungen von bereits installierten Drittanbieter-Programmen werden erlaubt."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Θα επιτρέπονται οι εξερχόμενες συνδέσεις από ήδη εγκατεστημένα προγράμματα τρίτων."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -597,6 +639,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hinweis: Wenn eine neue Verbindung hergestellt wird, ist manchmal nur die IP-Adresse verfügbar. In solchen Fällen können die Domains in der Erlauben- oder Blockieren-Liste nicht abgeglichen werden, was sich darauf auswirken kann, ob eine Anfrage blockiert oder erlaubt wird."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Σημείωση: Όταν δημιουργείται μια νέα σύνδεση, μερικές φορές μπορεί να είναι διαθέσιμη μόνο η διεύθυνση IP. Σε αυτές τις περιπτώσεις, οι τομείς στη λίστα επιτρεπόμενων ή αποκλεισμένων δεν μπορούν να αντιστοιχιστούν, γεγονός που μπορεί να επηρεάσει το αν ένα αίτημα θα αποκλειστεί ή θα επιτραπεί."
           }
         },
         "en" : {
@@ -683,6 +731,12 @@
             "value" : "Lokale oder externe Datei, die Endpunkte enthält, die immer erlaubt werden sollen."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Τοπικό ή απομακρυσμένο αρχείο που περιέχει τελικά σημεία τα οποία θα επιτρέπονται πάντα."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -765,6 +819,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hinweis: Ein Profil definiert eine Reihe von Regeln und Einstellungen. Sobald es aktiviert ist, gelten diese Einstellungen für ganz LuLu (und können in den LuLu-Einstellungen geändert werden). Neue Regeln werden nur zu diesem Profil hinzugefügt."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Σημείωση: Ένα προφίλ ορίζει ένα σύνολο κανόνων και ρυθμίσεων. Μόλις ενεργοποιηθεί, οι ρυθμίσεις του εφαρμόζονται σε όλο το LuLu (και μπορούν να τροποποιηθούν από τις Ρυθμίσεις του LuLu). Κάθε νέος κανόνας θα προστίθεται μόνο στο σύνολο κανόνων αυτού του προφίλ."
           }
         },
         "en" : {
@@ -851,6 +911,12 @@
             "value" : "Ausgewähltes Profil"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επιλεγμένο προφίλ"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -933,6 +999,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lokale oder externe Datei, die Endpunkte enthält, die immer blockiert werden sollen."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Τοπικό ή απομακρυσμένο αρχείο που περιέχει τελικά σημεία τα οποία θα αποκλείονται πάντα."
           }
         },
         "en" : {
@@ -1019,6 +1091,12 @@
             "value" : "Ausführen, ohne ein Statussymbol in der Menüleiste anzuzeigen."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εκτέλεση χωρίς εμφάνιση εικονιδίου στη γραμμή μενού κατάστασης."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1101,6 +1179,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ausgehende Verbindungen zu localhost werden erlaubt."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Θα επιτρέπονται οι εξερχόμενες συνδέσεις προς το localhost."
           }
         },
         "en" : {
@@ -1187,6 +1271,12 @@
             "value" : "Regeln anzeigen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προβολή κανόνων"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1269,6 +1359,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Erlauben"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επιτρεπόμενα"
           }
         },
         "en" : {
@@ -1355,6 +1451,12 @@
             "value" : "Erstellen Sie zuerst einen Namen für Ihr Profil.\n\nKlicken Sie dann auf „Weiter“, um die Einstellungen für Ihr neues Profil zu konfigurieren."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αρχικά, δημιουργήστε ένα όνομα για το προφίλ σας.\n\nΣτη συνέχεια, κάντε κλικ στο «Επόμενο» για να διαμορφώσετε τις ρυθμίσεις του νέου προφίλ."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1437,6 +1539,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Stille Ausführung ohne Mitteilungen unter Anwendung bestehender Regeln."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αθόρυβη εκτέλεση χωρίς ειδοποιήσεις, με εφαρμογή των υπαρχόντων κανόνων."
           }
         },
         "en" : {
@@ -1523,6 +1631,12 @@
             "value" : "Ja"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ναι"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1605,6 +1719,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ausgehende Verbindungen von Programmen im (iOS-)Simulator werden erlaubt."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Θα επιτρέπονται οι εξερχόμενες συνδέσεις από προγράμματα που εκτελούνται στον Προσομοιωτή (iOS)."
           }
         },
         "en" : {
@@ -1691,6 +1811,12 @@
             "value" : "Blockieren-Liste:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Λίστα αποκλεισμού:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1773,6 +1899,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Einstellungen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ρυθμίσεις"
           }
         },
         "en" : {
@@ -1859,6 +1991,12 @@
             "value" : "Localhost-Verkehr erlauben"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Να επιτρέπεται η κίνηση localhost"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -1941,6 +2079,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Erlauben-Liste:"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Λίστα επιτρεπόμενων:"
           }
         },
         "en" : {
@@ -2027,6 +2171,12 @@
             "value" : "Durchsuchen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αναζήτηση"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -2109,6 +2259,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profilname"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όνομα προφίλ"
           }
         },
         "en" : {
@@ -2195,6 +2351,12 @@
             "value" : "Neue Verbindungen:"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Οι νέες συνδέσεις θα είναι:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -2277,6 +2439,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profilname"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όνομα προφίλ"
           }
         },
         "en" : {
@@ -2363,6 +2531,12 @@
             "value" : "Profil hinzufügen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προσθήκη προφίλ"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -2445,6 +2619,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kein-Statussymbol-Modus"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Λειτουργία χωρίς εικονίδιο"
           }
         },
         "en" : {
@@ -2531,6 +2711,12 @@
             "value" : "Sämtlicher ausgehender UDP-Verkehr auf Port 53 wird erlaubt."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Θα επιτρέπεται όλη η εξερχόμενη κίνηση UDP στη θύρα 53."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -2613,6 +2799,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nicht automatisch nach Updates suchen."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Να μην γίνεται αυτόματος έλεγχος για νέες εκδόσεις."
           }
         },
         "en" : {
@@ -2699,6 +2891,12 @@
             "value" : "Passiver Modus"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Παθητική λειτουργία"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -2781,6 +2979,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bereits installierte Programme erlauben"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Να επιτρέπονται ήδη εγκατεστημένα προγράμματα"
           }
         },
         "en" : {
@@ -2867,6 +3071,12 @@
             "value" : "Nein"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όχι"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -2949,6 +3159,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modus"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Λειτουργία"
           }
         },
         "en" : {
@@ -3035,6 +3251,12 @@
             "value" : "Modus"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Λειτουργία"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -3117,6 +3339,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profilname"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όνομα προφίλ:"
           }
         },
         "en" : {
@@ -3203,6 +3431,12 @@
             "value" : "Ausgehende Verbindungen von Apple-signierten Programmen werden erlaubt."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Θα επιτρέπονται οι εξερχόμενες συνδέσεις από προγράμματα υπογεγραμμένα από την Apple."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -3285,6 +3519,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Blockieren"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αποκλεισμένα"
           }
         },
         "en" : {
@@ -3371,6 +3611,12 @@
             "value" : "Update"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ενημέρωση"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -3453,6 +3699,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Update"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ενημέρωση"
           }
         },
         "en" : {
@@ -3539,6 +3791,12 @@
             "value" : "Listen"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Λίστες"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -3621,6 +3879,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Listen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Λίστες"
           }
         },
         "en" : {
@@ -3707,6 +3971,12 @@
             "value" : "Alle über LuLu geleiteten Verbindungen werden blockiert (es sei denn, der Endpunkt ist ausdrücklich in der „Erlauben“-Liste aufgeführt)."
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Όλη η κίνηση που δρομολογείται μέσω του LuLu θα αποκλείεται (εκτός αν το τελικό σημείο βρίσκεται ρητά στη λίστα «Επιτρεπόμενα»)."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -3789,6 +4059,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apple-Programme erlauben"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Να επιτρέπονται προγράμματα της Apple"
           }
         },
         "en" : {
@@ -3875,6 +4151,12 @@
             "value" : "Regeln"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κανόνες"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -3957,6 +4239,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regeln"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κανόνες"
           }
         },
         "en" : {
@@ -4043,6 +4331,12 @@
             "value" : "Simulator-Programme erlauben"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Να επιτρέπονται προγράμματα Προσομοιωτή"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -4125,6 +4419,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Durchsuchen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αναζήτηση"
           }
         },
         "en" : {
@@ -4211,6 +4511,12 @@
             "value" : "DNS-Verbindungen erlauben"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Να επιτρέπεται η κίνηση DNS"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -4293,6 +4599,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kein-VirusTotal-Modus"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Λειτουργία χωρίς VirusTotal"
           }
         },
         "en" : {
@@ -4379,6 +4691,12 @@
             "value" : "Profilname"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επόμενο"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -4461,6 +4779,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "VirusTotal-Integration deaktivieren."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Απενεργοποίηση ενσωμάτωσης με το VirusTotal."
           }
         },
         "en" : {
@@ -4547,6 +4871,12 @@
             "value" : "Update-Prüfungen deaktivieren"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Απενεργοποίηση ελέγχου ενημερώσεων"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -4629,6 +4959,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profil hinzufügen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προσθήκη προφίλ"
           }
         },
         "en" : {

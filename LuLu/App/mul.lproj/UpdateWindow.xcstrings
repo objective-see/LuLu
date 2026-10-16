@@ -11,6 +11,12 @@
             "value" : "LuLu Update"
           }
         },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ενημέρωση LuLu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -93,6 +99,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Update"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ενημέρωση"
           }
         },
         "en" : {
