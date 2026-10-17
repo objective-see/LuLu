@@ -90,6 +90,10 @@ NSDate* dateAdded(NSString* file);
 //show an alert
 NSModalResponse showAlert(NSAlertStyle style, NSString* messageText, NSString* informativeText, NSArray* buttons);
 
+//apply (liquid) glass to a window
+// macOS 26+ only; returns NO (and leaves the window untouched) on older systems
+BOOL applyGlass(NSWindow* window);
+
 //get audit token for pid
 NSData* tokenForPid(pid_t pid);
 

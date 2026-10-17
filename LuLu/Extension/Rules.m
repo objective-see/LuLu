@@ -559,6 +559,19 @@ bail:
     //sync to access
     @synchronized(self)
     {
+        //duplicate?
+        // e.g. user answered two alerts for the same item (shown before the first was answered)
+        // ...nothing to add, but it's not a failure either, as the rule (effectively) exists
+        if(nil != [self findDuplicate:rule])
+        {
+            //dbg msg
+            os_log_debug(logHandle, "an identical rule already exists for %{public}@, skipping", rule.key);
+
+            //happy
+            added = YES;
+            goto bail;
+        }
+
         //new rule for item
         // need to init array for rules, paths, & cs info
         if(nil == self.rules[rule.key])
@@ -650,6 +663,33 @@ bail:
 bail:
     
     return added;
+}
+
+//find an existing (enabled, permanent) rule for the same item, w/ the same endpoint, protocol, action & scope
+// note: temporary (process/expiring) rules are never considered duplicates; caller must hold the lock
+-(Rule*)findDuplicate:(Rule*)rule
+{
+    //temporary? never a dup
+    if( (nil != rule.pid) ||
+        (nil != rule.expiration) ) return nil;
+
+    //check item's (permanent, enabled) rules
+    for(Rule* existing in self.rules[rule.key][KEY_RULES])
+    {
+        //skip temporary/disabled
+        if( (nil != existing.pid) ||
+            (nil != existing.expiration) ||
+            (0 != existing.isDisabled.intValue) ) continue;
+
+        //match?
+        if( (YES == [existing.endpointAddr isEqualToString:rule.endpointAddr]) &&
+            (YES == [existing.endpointPort isEqualToString:rule.endpointPort]) &&
+            (existing.protocol.intValue == rule.protocol.intValue) &&
+            (existing.action.intValue == rule.action.intValue) &&
+            (existing.scope.intValue == rule.scope.intValue) ) return existing;
+    }
+
+    return nil;
 }
 
 //number of rules for a given key

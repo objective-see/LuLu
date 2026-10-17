@@ -100,27 +100,10 @@ extern NSMutableDictionary* alerts;
 #if __MAC_OS_X_VERSION_MAX_ALLOWED >= 260000
     if(@available(macOS 26.0, *))
     {
-        content.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
-        NSGlassEffectView* glass = [[NSGlassEffectView alloc] initWithFrame:content.frame];
-        glass.style = NSGlassEffectViewStyleRegular;
-        // no (own) corner radius: the (titled) window already masks its content to its corners
-        // ...a larger radius here left dark notches in each corner, where the two curves didn't match
-        self.window.opaque = NO;
-        self.window.backgroundColor = NSColor.clearColor;
-        self.window.contentView = glass;
-        glass.contentView = content;
-
-        // glass (capsule) bezels for the block/allow buttons only
-        // the inspection buttons (signing info, ancestry, VirusTotal) stay as plain icons
-        for(NSView* view in content.subviews)
-        {
-            if(YES != [view isKindOfClass:NSButton.class]) continue;
-            NSButton* button = (NSButton*)view;
-            if(button.action != @selector(handleUserResponse:)) continue;
-            button.bordered = YES;
-            button.bezelStyle = NSBezelStyleGlass;
-            button.borderShape = NSControlBorderShapeCapsule;
-        }
+        //(liquid) glass
+        // wraps content view, and gives the block/allow (push) buttons glass bezels
+        // note: the inspection buttons (signing info, ancestry, VirusTotal) are borderless, so stay as plain icons
+        applyGlass(self.window);
 
         // 'expires in' (HH/mm) fields: drop the bezel & draw a flat (control-colored) rounded background
         // ...on glass, the system bezel is always drawn as a dark/opaque box, regardless of
@@ -130,6 +113,8 @@ extern NSMutableDictionary* alerts;
             field.bezeled = NO;
             field.drawsBackground = NO;
             field.alignment = NSTextAlignmentCenter;
+            // w/o a bezel, the (scrollable) cell top-aligns its text; single-line mode vertically centers it
+            field.usesSingleLineMode = YES;
             field.wantsLayer = YES;
             field.layer.cornerRadius = 6;
             field.layer.backgroundColor = NSColor.controlColor.CGColor;

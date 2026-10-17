@@ -28,17 +28,21 @@ extern os_log_t logHandle;
     //start progress indicator
     [self.spinner startAnimation:nil];
     
-    //rounded corners: clear window background, content view provides the surface
-    self.window.opaque = NO;
-    self.window.backgroundColor = NSColor.clearColor;
-    self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
-    self.window.titlebarAppearsTransparent = YES;
-    self.window.contentView.wantsLayer = YES;
-    self.window.contentView.layer.cornerRadius = 10.0;
-    self.window.contentView.layer.masksToBounds = YES;
+    //(liquid) glass, when available
+    // ...otherwise, rounded corners: clear window background, content view provides the surface
+    if(YES != applyGlass(self.window))
+    {
+        self.window.opaque = NO;
+        self.window.backgroundColor = NSColor.clearColor;
+        self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
+        self.window.titlebarAppearsTransparent = YES;
+        self.window.contentView.wantsLayer = YES;
+        self.window.contentView.layer.cornerRadius = 10.0;
+        self.window.contentView.layer.masksToBounds = YES;
 
-    //content view provides the solid background (adapts to light/dark mode)
-    self.window.contentView.layer.backgroundColor = NSColor.windowBackgroundColor.CGColor;
+        //content view provides the solid background (adapts to light/dark mode)
+        self.window.contentView.layer.backgroundColor = NSColor.windowBackgroundColor.CGColor;
+    }
     
     //need to display warning?
     [self displayVersionWarning];

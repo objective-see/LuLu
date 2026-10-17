@@ -1299,7 +1299,12 @@ NSModalResponse showAlert(NSAlertStyle style, NSString* messageText, NSString* i
 
     //make first button, first responder
     alert.buttons[0].keyEquivalent = @"\r";
-    
+
+    //(liquid) glass
+    // note: layout first, so the alert's content view (& buttons) exist to be wrapped
+    [alert layout];
+    applyGlass(alert.window);
+
     //center
     [alert.window center];
     
@@ -1328,6 +1333,104 @@ NSModalResponse showAlert(NSAlertStyle style, NSString* messageText, NSString* i
     [((AppDelegate*)[[NSApplication sharedApplication] delegate]) setActivationPolicy];
     
     return response;
+}
+
+//give (push) buttons a glass (capsule) bezel
+// recurses into subviews; skips radio/checkbox/bevel/borderless buttons, which aren't 'rounded' push buttons
+static void applyGlassToButtons(NSView* view)
+{
+#if __MAC_OS_X_VERSION_MAX_ALLOWED >= 260000
+    if(@available(macOS 26.0, *))
+    {
+        for(NSView* subview in view.subviews)
+        {
+            //push button?
+            if( (YES == [subview isKindOfClass:NSButton.class]) &&
+                (YES == ((NSButton*)subview).bordered) &&
+                (NSBezelStyleRounded == ((NSButton*)subview).bezelStyle) )
+            {
+                ((NSButton*)subview).bezelStyle = NSBezelStyleGlass;
+                ((NSButton*)subview).borderShape = NSControlBorderShapeCapsule;
+            }
+
+            //recurse
+            applyGlassToButtons(subview);
+        }
+    }
+#endif
+
+    return;
+}
+
+//apply (liquid) glass to a window
+// wraps the window's content view in a glass effect view & gives its push buttons glass bezels
+// note: a titled window keeps its own (rounded) corners, so the glass gets no radius of its own
+//       a borderless window has none, so the glass provides them
+BOOL applyGlass(NSWindow* window)
+{
+    //flag
+    BOOL applied = NO;
+
+#if __MAC_OS_X_VERSION_MAX_ALLOWED >= 260000
+    if(@available(macOS 26.0, *))
+    {
+        //(original) content view
+        NSView* content = window.contentView;
+
+        //glass
+        NSGlassEffectView* glass = nil;
+
+        //sanity check
+        // no content view, or already glass'd?
+        if( (nil == content) ||
+            (YES == [content isKindOfClass:NSGlassEffectView.class]) )
+        {
+            //bail
+            goto bail;
+        }
+
+        //titled?
+        // extend content under the (now transparent) title bar
+        if(0 != (window.styleMask & NSWindowStyleMaskTitled))
+        {
+            window.styleMask |= NSWindowStyleMaskFullSizeContentView;
+            window.titlebarAppearsTransparent = YES;
+        }
+
+        //transparent window
+        // ...the glass provides the surface
+        window.opaque = NO;
+        window.backgroundColor = NSColor.clearColor;
+
+        //init glass
+        // and wrap the content view
+        content.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+        glass = [[NSGlassEffectView alloc] initWithFrame:content.frame];
+        glass.style = NSGlassEffectViewStyleRegular;
+
+        //borderless?
+        // no window corners, so glass has to provide them
+        if(0 == (window.styleMask & NSWindowStyleMaskTitled))
+        {
+            glass.cornerRadius = 16;
+        }
+
+        //swap in
+        window.contentView = glass;
+        glass.contentView = content;
+
+        //glass'ify push buttons
+        applyGlassToButtons(content);
+
+        //applied
+        applied = YES;
+    }
+
+bail:
+
+#endif
+
+    return applied;
 }
 
 //get audit token for pid

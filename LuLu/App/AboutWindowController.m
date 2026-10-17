@@ -34,14 +34,15 @@
     //super
     [super windowDidLoad];
     
-    //not in dark mode?
-    // make window white
-    if(YES != isDarkMode())
+    //(liquid) glass, when available
+    // ...otherwise, if not in dark mode, make window white
+    if( (YES != applyGlass(self.window)) &&
+        (YES != isDarkMode()) )
     {
         //make white
         self.window.backgroundColor = NSColor.whiteColor;
     }
-    
+
     //grab app version
     version = getAppVersion();
     if(nil == version)

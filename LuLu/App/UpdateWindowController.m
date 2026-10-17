@@ -33,17 +33,18 @@
     //super
     [super windowDidLoad];
     
-    //not in dark mode?
-    // make window white
-    if(YES != isDarkMode())
+    //(liquid) glass, when available
+    // ...otherwise, if not in dark mode, make window white
+    if( (YES != applyGlass(self.window)) &&
+        (YES != isDarkMode()) )
     {
         //make white
         self.window.backgroundColor = NSColor.whiteColor;
     }
-    
+
     //indicated title bar is transparent (too)
     self.window.titlebarAppearsTransparent = YES;
-    
+
     //set main label
     self.infoLabel.stringValue = self.infoLabelString;
         
