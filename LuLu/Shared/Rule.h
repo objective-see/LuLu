@@ -50,6 +50,10 @@
 //flag for directory rule
 @property(nonatomic, retain)NSNumber* isDirectory;
 
+//flag for wildcard rule
+// i.e. a path w/ a '*' in it, such as '/Users/*/.vscode/extensions/foo-*/bar'
+@property(nonatomic, retain)NSNumber* isWildcard;
+
 //name
 @property(nonatomic, retain)NSString* name;
 
@@ -111,6 +115,9 @@
 
 //matches a string?
 -(BOOL)matchesString:(NSString*)match;
+
+//does a (process) path match this rule's wildcard path?
+-(BOOL)matchesWildcardPath:(NSString*)path;
 
 //matches a(nother) rule?
 -(BOOL)isEqualToRule:(Rule *)rule;

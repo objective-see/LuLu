@@ -686,6 +686,9 @@ bail:
     //directory rules
     NSMutableArray* directoryRules = nil;
 
+    //wildcard rules
+    NSMutableArray* wildcardRules = nil;
+
     //tree ('process + kids') rules
     NSMutableArray* treeRules = nil;
 
@@ -728,19 +731,24 @@ bail:
         //init directory rules
         directoryRules = [NSMutableArray array];
 
+        //init wildcard rules
+        wildcardRules = [NSMutableArray array];
+
         //init tree rules
         treeRules = [NSMutableArray array];
         
-        //add any directory rules
-        // i.e. any rule that's '/<anything>*'
+        //add any directory or wildcard rules
         for(NSString* key in self.rules)
         {
             //directory
             NSString* directory = nil;
             
+            //first/any rule for the item
+            Rule* itemRule = [self.rules[key][KEY_RULES] firstObject];
+
             //directory rule?
-            // grab first/any rule and check
-            if(YES == ((Rule*)[self.rules[key][KEY_RULES] firstObject]).isDirectory.boolValue)
+            // i.e. any rule that's '/<anything>*'
+            if(YES == itemRule.isDirectory.boolValue)
             {
                 //init directory
                 // ...by removing *
@@ -751,6 +759,18 @@ bail:
                 {
                     //add
                     [directoryRules addObjectsFromArray:self.rules[key][KEY_RULES]];
+                }
+            }
+
+            //wildcard rule?
+            // i.e. any rule w/ a '*' in its path, such as '/Users/*/.vscode/extensions/foo-*/bar'
+            else if(YES == itemRule.isWildcard.boolValue)
+            {
+                //does item match the rule's (wildcard) path?
+                if(YES == [itemRule matchesWildcardPath:process.path])
+                {
+                    //add
+                    [wildcardRules addObjectsFromArray:self.rules[key][KEY_RULES]];
                 }
             }
         }
@@ -801,11 +821,12 @@ bail:
             }
         }
 
-        //no global, directory, tree, nor item rules
+        //no global, directory, wildcard, tree, nor item rules
         // bail, with no match so user is prompted
         if( (nil == itemRules) &&
             (nil == globalRules) &&
             (0 == directoryRules.count) &&
+            (0 == wildcardRules.count) &&
             (0 == treeRules.count) )
         {
             //no match
@@ -821,6 +842,10 @@ bail:
         //add directory rules next
         if(0 != directoryRules.count) [candidateRules addObject:directoryRules];
 
+        //add wildcard rules next
+        // note: after directory rules, as a wildcard path names a narrower set of items than a whole directory
+        if(0 != wildcardRules.count) [candidateRules addObject:wildcardRules];
+
         //add tree ('process + kids') rules next
         // note: before item rules, so an item's own rules take precedence
         if(0 != treeRules.count) [candidateRules addObject:treeRules];
@@ -832,7 +857,7 @@ bail:
         remoteEndpoint = (NWHostEndpoint*)flow.remoteEndpoint;
         
         //check each set of rules
-        // set: global, directory, and/or item rules
+        // set: global, directory, wildcard, tree, and/or item rules
         for(NSArray* rules in candidateRules)
         {
             //check all set of rules
@@ -1641,6 +1666,14 @@ bail:
             //only do path checks on full cleanup
             if(full)
             {
+                //wildcard rule?
+                // its path names a set of items rather than one, so there's nothing to check for deletion
+                if(YES == rule.isWildcard.boolValue)
+                {
+                    //next
+                    continue;
+                }
+
                 //directory rule?
                 // check if directory has been deleted
                 if(YES == rule.isDirectory.boolValue)
