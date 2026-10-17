@@ -122,12 +122,17 @@ extern NSMutableDictionary* alerts;
             button.borderShape = NSControlBorderShapeCapsule;
         }
 
-        // 'expires in' (HH/mm) fields: use the (system) rounded bezel, w/o an explicit background
-        // ...the square bezel + 'textBackgroundColor' fill rendered as dark/opaque boxes on the glass
+        // 'expires in' (HH/mm) fields: drop the bezel & draw a flat (control-colored) rounded background
+        // ...on glass, the system bezel is always drawn as a dark/opaque box, regardless of
+        //    'bezelStyle', 'drawsBackground', or 'backgroundColor' (verified on macOS 26/27)
         for(NSTextField* field in @[self.ruleDurationHours, self.ruleDurationMinutes])
         {
-            field.bezelStyle = NSTextFieldRoundedBezel;
+            field.bezeled = NO;
             field.drawsBackground = NO;
+            field.alignment = NSTextAlignmentCenter;
+            field.wantsLayer = YES;
+            field.layer.cornerRadius = 6;
+            field.layer.backgroundColor = NSColor.controlColor.CGColor;
         }
     }
 #endif
