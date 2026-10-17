@@ -103,23 +103,31 @@ extern NSMutableDictionary* alerts;
         content.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
         NSGlassEffectView* glass = [[NSGlassEffectView alloc] initWithFrame:content.frame];
         glass.style = NSGlassEffectViewStyleRegular;
-        glass.cornerRadius = 26;
+        // no (own) corner radius: the (titled) window already masks its content to its corners
+        // ...a larger radius here left dark notches in each corner, where the two curves didn't match
         self.window.opaque = NO;
         self.window.backgroundColor = NSColor.clearColor;
         self.window.contentView = glass;
         glass.contentView = content;
 
-        NSArray* inspectionButtons = @[self.signingInfoButton, self.ancestryButton, self.virusTotalButton];
+        // glass (capsule) bezels for the block/allow buttons only
+        // the inspection buttons (signing info, ancestry, VirusTotal) stay as plain icons
         for(NSView* view in content.subviews)
         {
             if(YES != [view isKindOfClass:NSButton.class]) continue;
             NSButton* button = (NSButton*)view;
-            BOOL inspection = [inspectionButtons containsObject:button];
-            if(NO == inspection && button.action != @selector(handleUserResponse:)) continue;
+            if(button.action != @selector(handleUserResponse:)) continue;
             button.bordered = YES;
             button.bezelStyle = NSBezelStyleGlass;
-            button.borderShape = inspection ? NSControlBorderShapeCircle : NSControlBorderShapeCapsule;
-            if(inspection) button.imageScaling = NSImageScaleProportionallyDown;
+            button.borderShape = NSControlBorderShapeCapsule;
+        }
+
+        // 'expires in' (HH/mm) fields: use the (system) rounded bezel, w/o an explicit background
+        // ...the square bezel + 'textBackgroundColor' fill rendered as dark/opaque boxes on the glass
+        for(NSTextField* field in @[self.ruleDurationHours, self.ruleDurationMinutes])
+        {
+            field.bezelStyle = NSTextFieldRoundedBezel;
+            field.drawsBackground = NO;
         }
     }
 #endif
