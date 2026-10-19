@@ -1172,91 +1172,91 @@
       }
     },
     "caA-Ec-ysj.title" : {
-      "comment" : "Class = \"NSTextFieldCell\"; title = \"Outgoing connections to localhost will be allowed.\"; ObjectID = \"caA-Ec-ysj\";",
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Outgoing connections to localhost (incl. 0.0.0.0 and ::) will be allowed.\"; ObjectID = \"caA-Ec-ysj\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ausgehende Verbindungen zu localhost werden erlaubt."
+            "value" : "Ausgehende Verbindungen zu localhost (inkl. 0.0.0.0 und ::) werden erlaubt."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Θα επιτρέπονται οι εξερχόμενες συνδέσεις προς το localhost."
+            "value" : "Θα επιτρέπονται οι εξερχόμενες συνδέσεις προς το localhost (συμπ. 0.0.0.0 και ::)."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Outgoing connections to localhost will be allowed."
+            "value" : "Outgoing connections to localhost (incl. 0.0.0.0 and ::) will be allowed."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Se permitirán las conexiones salientes a localhost."
+            "value" : "Se permitirán las conexiones salientes a localhost (incl. 0.0.0.0 y ::)."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les connexions sortantes vers localhost seront autorisées."
+            "value" : "Les connexions sortantes vers localhost (y compris 0.0.0.0 et ::) seront autorisées."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le connessioni in uscita verso localhost saranno consentite."
+            "value" : "Le connessioni in uscita verso localhost (incl. 0.0.0.0 e ::) saranno consentite."
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "localhost로 나가는 연결이 허용됩니다."
+            "value" : "localhost(0.0.0.0 및 :: 포함)로 나가는 연결이 허용됩니다."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Połączenia wychodzące do localhost (hosta lokalnego) będą dozwolone."
+            "value" : "Połączenia wychodzące do localhost (w tym 0.0.0.0 i ::) będą dozwolone."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conexões de saída para localhost serão permitidas."
+            "value" : "Conexões de saída para localhost (incl. 0.0.0.0 e ::) serão permitidas."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "localhost’a giden bağlantılara izin verilir."
+            "value" : "localhost’a (0.0.0.0 ve :: dahil) giden bağlantılara izin verilir."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вихідні з’єднання до localhost будуть дозволені."
+            "value" : "Вихідні з’єднання до localhost (вкл. 0.0.0.0 та ::) будуть дозволені."
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "localhost کی جانب جانے والے کنکشنز کی اجازت ہوگی۔"
+            "value" : "localhost (بشمول 0.0.0.0 اور ::) کی جانب جانے والے کنکشنز کی اجازت ہوگی۔"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "将允许到 localhost 的传出连接。"
+            "value" : "将允许到 localhost（含 0.0.0.0 和 ::）的传出连接。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "將允許連往 localhost 的傳出連線。"
+            "value" : "將允許連往 localhost（含 0.0.0.0 和 ::）的傳出連線。"
           }
         }
       }

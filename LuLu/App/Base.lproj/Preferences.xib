@@ -242,7 +242,7 @@
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="3XI-VJ-kgK">
                     <rect key="frame" x="70" y="191" width="508" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Outgoing connections to localhost will be allowed." id="caA-Ec-ysj">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Outgoing connections to localhost (incl. 0.0.0.0 and ::) will be allowed." id="caA-Ec-ysj">
                         <font key="font" size="11" name="Menlo-Regular"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
