@@ -1454,6 +1454,7 @@ bail:
 }
 
 //check if hostname is a valid localhost address
+// note: the unspecified addresses (0.0.0.0 / ::) are included, as the kernel treats them as 'this host'
 -(BOOL)isLocalhostHostname:(NSString*)hostname {
     
     struct sockaddr_in sa4 = {0};
@@ -1470,14 +1471,16 @@ bail:
         return YES;
     }
     
-    //check for valid IPv4 loopback range (127.0.0.0/8)
+    //check for valid IPv4 loopback range (127.0.0.0/8), or unspecified (0.0.0.0)
     if(inet_pton(AF_INET, hostname.UTF8String, &(sa4.sin_addr)) == 1) {
-        return IN_LOOPBACK(ntohl(sa4.sin_addr.s_addr));
+        return ( (IN_LOOPBACK(ntohl(sa4.sin_addr.s_addr))) ||
+                 (INADDR_ANY == ntohl(sa4.sin_addr.s_addr)) );
     }
     
-    //check for valid IPv6 loopback (::1)
+    //check for valid IPv6 loopback (::1), or unspecified (::)
     if(inet_pton(AF_INET6, [hostname UTF8String], &(sa6.sin6_addr)) == 1) {
-        return IN6_IS_ADDR_LOOPBACK(&sa6.sin6_addr);
+        return ( (IN6_IS_ADDR_LOOPBACK(&sa6.sin6_addr)) ||
+                 (IN6_IS_ADDR_UNSPECIFIED(&sa6.sin6_addr)) );
     }
     
     //not a valid localhost address
