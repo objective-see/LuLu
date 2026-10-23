@@ -609,9 +609,21 @@ bail:
         {
             //dbg msg
             os_log_debug(logHandle, "setting verdict to: BLOCK");
-            
+
             //deny
             verdict = kFlowVerdictBlock;
+
+            //...unless 'allow DNS traffic' is set and this is DNS the resolver is doing on the app's behalf
+            // dropping it would kill the resolver's shared socket (see #920) ...the app's own connections stay blocked
+            if( (YES == [preferences.preferences[PREF_ALLOW_DNS] boolValue]) &&
+                (YES == [self isResolverDNS:flow]) )
+            {
+                //dbg msg
+                os_log_debug(logHandle, "...but 'allow DNS traffic' is set and this is resolver DNS on the app's behalf, so allowing");
+
+                //allow
+                verdict = kFlowVerdictAllow;
+            }
         }
         //allow (msg)
         else os_log_debug(logHandle, "rule says: ALLOW");
@@ -648,9 +660,20 @@ bail:
         {
             //dbg msg
             os_log_debug(logHandle, "passive mode: action is 'block', so blocking %d/%{public}@", process.pid, process.binary.name);
-            
+
             //block
             verdict = kFlowVerdictBlock;
+
+            //...unless 'allow DNS traffic' is set and this is DNS the resolver is doing on the app's behalf (see #920)
+            if( (YES == [preferences.preferences[PREF_ALLOW_DNS] boolValue]) &&
+                (YES == [self isResolverDNS:flow]) )
+            {
+                //dbg msg
+                os_log_debug(logHandle, "passive mode: ...but this is resolver DNS on the app's behalf, so allowing");
+
+                //allow
+                verdict = kFlowVerdictAllow;
+            }
         }
         
         //create rule?
@@ -1318,6 +1341,45 @@ bail:
     }
 
     return;
+}
+
+//is this DNS (UDP, remote port 53) that the system resolver is doing on the app's behalf?
+// the flow is attributed to the app, but the socket is mDNSResponder's and is shared by every process
+// resolving that name ...so dropping it breaks resolution of that name for all of them (see #920)
+// note: only the resolver gets this exemption; other delegates (nsurlsessiond, web content, etc.) do not
+-(BOOL)isResolverDNS:(NEFilterFlow*)flow
+{
+    //delegate's token
+    NSData* token = nil;
+
+    //not UDP, or not remote port 53?
+    if( (IPPROTO_UDP != ((NEFilterSocketFlow*)flow).socketProtocol) ||
+        (YES != [((NWHostEndpoint*)((NEFilterSocketFlow*)flow).remoteEndpoint).port isEqualToString:@"53"]) )
+    {
+        //bail
+        return NO;
+    }
+
+    //grab (delegate's) token
+    // macOS 13+ only
+    if(@available(macOS 13.0, *))
+    {
+        //grab
+        token = flow.sourceProcessAuditToken;
+    }
+
+    //none, or same as the app's?
+    // not delegated, so the socket is the app's own ...rules apply as normal
+    if( (nil == token) ||
+        (YES == [token isEqualToData:flow.sourceAppAuditToken]) )
+    {
+        //bail
+        return NO;
+    }
+
+    //delegate must be the system resolver
+    // note: its path is on the sealed system volume, so a path compare is sound
+    return [@"/usr/sbin/mDNSResponder" isEqualToString:getProcessPath(audit_token_to_pid(*(audit_token_t*)token.bytes))];
 }
 
 //was the flow created on behalf of its (now exited) app, by a (still running) delegate? ...if so, it's allowed

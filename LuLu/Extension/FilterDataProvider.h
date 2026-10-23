@@ -49,4 +49,7 @@
 //was flow created on behalf of its (exited) app by a (still running) delegate, e.g. mDNSResponder?
 -(BOOL)isDelegated:(NEFilterFlow* _Nonnull)flow;
 
+//is flow DNS (UDP/53) the system resolver is doing on the app's behalf?
+-(BOOL)isResolverDNS:(NEFilterFlow* _Nonnull)flow;
+
 @end
