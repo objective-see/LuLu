@@ -1096,10 +1096,11 @@ bail:
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.75 * NSEC_PER_SEC), dispatch_get_main_queue(),
     ^{
         //check for update
-        [update checkForUpdate:^(NSUInteger result, NSString* newVersion) {
-            
+        // manual (user-initiated) check, so use 'latest' channel (GitHub)
+        [update checkForUpdate:Update_Channel_Latest completionHandler:^(NSUInteger result, NSString* newVersion, NSString* url) {
+
             //process response
-            [self updateResponse:result newVersion:newVersion];
+            [self updateResponse:result newVersion:newVersion url:url];
             
         }];
     });
@@ -1119,7 +1120,7 @@ bail:
 
 //process update response
 // error, no update, update/new version
--(void)updateResponse:(NSInteger)result newVersion:(NSString*)newVersion
+-(void)updateResponse:(NSInteger)result newVersion:(NSString*)newVersion url:(NSString*)url
 {
     //re-enable button
     self.updateButton.enabled = YES;
@@ -1168,7 +1169,7 @@ bail:
             updateWindowController = [[UpdateWindowController alloc] initWithWindowNibName:@"UpdateWindow"];
             
             //configure
-            [self.updateWindowController configure:[NSString stringWithFormat:NSLocalizedString(@"a new version (%@) is available!",@"a new version (%@) is available!"), newVersion]];
+            [self.updateWindowController configure:[NSString stringWithFormat:NSLocalizedString(@"a new version (%@) is available!",@"a new version (%@) is available!"), newVersion] url:url];
             
             //center window
             [[self.updateWindowController window] center];

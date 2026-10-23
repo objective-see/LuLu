@@ -85,12 +85,16 @@
     return;
 }
 
-//save the main label
--(void)configure:(NSString*)label
+//save the main label (and url)
+-(void)configure:(NSString*)label url:(NSString*)url
 {
     //save label's string
     self.infoLabelString = label;
-    
+
+    //save url
+    // none? default to product's (website) page
+    self.url = (nil != url) ? url : PRODUCT_URL;
+
     return;
 }
 
@@ -98,7 +102,7 @@
 -(IBAction)buttonHandler:(id)sender
 {
     //open URL
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:PRODUCT_URL]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:self.url]];
     
     //always close window
     [[self window] close];

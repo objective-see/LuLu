@@ -464,6 +464,23 @@ typedef NS_ENUM(NSInteger, EndpointType) {
 //updates
 typedef enum {Update_Error, Update_None, Update_NotSupported, Update_Available} UpdateStatus;
 
+//update channels
+// stable: products.json (updated once a release has been out a while), latest: GitHub's latest release
+typedef enum {Update_Channel_Stable, Update_Channel_Latest} UpdateChannel;
+
+//latest release (GitHub API)
+#define LATEST_RELEASE_URL @"https://api.github.com/repos/objective-see/LuLu/releases/latest"
+
+//releases page (GitHub)
+// used if a release's own page can't be determined
+#define LATEST_RELEASES_PAGE_URL @"https://github.com/objective-see/LuLu/releases"
+
+//latest release: tag (key)
+#define LATEST_RELEASE_TAG @"tag_name"
+
+//latest release: page (key)
+#define LATEST_RELEASE_PAGE @"html_url"
+
 //profiles directory
 #define PROFILE_DIRECTORY @"Profiles"
 

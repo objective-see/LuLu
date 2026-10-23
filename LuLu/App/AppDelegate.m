@@ -843,8 +843,8 @@ bail:
     update = [[Update alloc] init];
     
     //check for update
-    // 'updateResponse newVersion:' method will be called when check is done
-    [update checkForUpdate:^(NSUInteger result, NSString* newVersion) {
+    // automatic check, so use 'stable' channel (products.json)
+    [update checkForUpdate:Update_Channel_Stable completionHandler:^(NSUInteger result, NSString* newVersion, NSString* url) {
         
         //handle response
         // new version, show popup
@@ -878,8 +878,8 @@ bail:
                 self.updateWindowController = [[UpdateWindowController alloc] initWithWindowNibName:@"UpdateWindow"];
                 
                 //configure
-                [self.updateWindowController configure:[NSString stringWithFormat:NSLocalizedString(@"a new version (%@) is available!",@"a new version (%@) is available!"), newVersion]];
-                
+                [self.updateWindowController configure:[NSString stringWithFormat:NSLocalizedString(@"a new version (%@) is available!",@"a new version (%@) is available!"), newVersion] url:url];
+
                 //center window
                 [self.updateWindowController.window center];
                 

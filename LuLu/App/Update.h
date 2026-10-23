@@ -14,11 +14,14 @@
 @import Cocoa;
 @import Foundation;
 
+#import "consts.h"
+
 @interface Update : NSObject
 
 //check for an update
-// will invoke app delegate method to update UI when check completes
--(void)checkForUpdate:(void (^)(NSUInteger result, NSString* latestVersion))completionHandler;
+// stable channel: products.json (website), latest channel: GitHub's latest release
+// will invoke completion handler (on main thread) w/ result, version, and URL (for the user to visit)
+-(void)checkForUpdate:(UpdateChannel)channel completionHandler:(void (^)(NSUInteger result, NSString* latestVersion, NSString* url))completionHandler;
 
 @end
 
