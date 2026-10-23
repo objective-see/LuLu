@@ -1005,7 +1005,11 @@ bail:
     // match on this if you want detailed insight into LuLu's decision
     // log stream --level debug --predicate 'subsystem == "com.objective-see.lulu" && composedMessage BEGINSWITH "[LULU]"'
     os_log_debug(logHandle, "[LULU] PROCESS: %{public}@, FLOW (endpoint): %{public}@, RULE: %{public}@, verdict: %ld", process.path, ((NEFilterSocketFlow*)flow).remoteEndpoint, matchingRule, verdict);
-    
+
+    //blocked?
+    // log at default level (so it's persisted)
+    if(kFlowVerdictBlock == verdict) os_log(logHandle, "blocked %{public}@ -> %{public}@ (rule: %{public}@)", process.path, ((NEFilterSocketFlow*)flow).remoteEndpoint, matchingRule);
+
     return verdict;
 }
 
