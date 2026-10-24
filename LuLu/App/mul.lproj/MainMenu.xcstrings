@@ -1174,7 +1174,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deshabilitar"
+            "value" : "Desactivar"
           }
         },
         "fr" : {
@@ -2164,7 +2164,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "LULU: habilitado"
+            "value" : "LULU: activado"
           }
         },
         "fr" : {
