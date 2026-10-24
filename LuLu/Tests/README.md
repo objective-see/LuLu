@@ -41,3 +41,7 @@ This directory contains tests for the passive mode FQDN rule creation improvemen
 - `test_passive_mode_improvements.m` - Comprehensive test suite
 - `run_passive_mode_tests.sh` - Build and run script
 - `README.md` - This file
+
+## Interface Controller Regression Tests
+
+Run `./run_interface_controller_tests.sh` with Xcode command-line tools available. The test loads the production Preferences, Rules and Alert NIBs with their real controllers in English, Traditional Chinese and Urdu. It checks accessibility objects, typography, pane switching, rule filtering, preference updates and alert responses against an in-memory daemon boundary. Temporary bundles are removed after the run.
