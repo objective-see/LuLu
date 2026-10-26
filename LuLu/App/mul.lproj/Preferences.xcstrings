@@ -59,6 +59,12 @@
             "value" : "Verificar Agora"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проверить сейчас"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -147,6 +153,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloquear Modo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режим блокировки"
           }
         },
         "tr" : {
@@ -239,6 +251,12 @@
             "value" : "Cancelar"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отмена"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -327,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perfis"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профили"
           }
         },
         "tr" : {
@@ -419,6 +443,12 @@
             "value" : "Perfis"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профили"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -507,6 +537,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Criar regras para novas conexões?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создавать правила для новых подключений?"
           }
         },
         "tr" : {
@@ -599,6 +635,12 @@
             "value" : "Conexões de saída de programas de terceiros já instalados serão permitidas."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Исходящие подключения уже установленных сторонних программ будут разрешены."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -687,6 +729,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nota: quando uma nova conexão é feita, às vezes somente o endereço de IP estará disponível. Nestes casos, os domínios nas listas de permissão ou bloqueio não conseguirão ser encontrados, o que pode impactar se a solicitação será bloqueada ou permitida."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Примечание: при новом подключении иногда известен только IP-адрес. В таких случаях домены из списков разрешённых и запрещённых сопоставить нельзя, и это может повлиять на то, будет ли запрос заблокирован или разрешён."
           }
         },
         "tr" : {
@@ -779,6 +827,12 @@
             "value" : "Arquivo local ou remoto, contendo endpoints para sempre permitir."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Локальный или удалённый файл с адресами, которые всегда разрешены."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -867,6 +921,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nota: Um perfil define um conjunto de regras e configurações. Uma vez ativado, suas configurações são aplicadas em todo o LuLu (e podem ser modificadas nos painéis de Configurações do LuLu). Novas regras serão adicionadas somente ao conjunto de regras desse perfil."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Примечание: профиль — это набор правил и настроек. После активации его настройки действуют во всём LuLu (их можно менять в окне настроек LuLu). Новые правила будут добавляться только в правила этого профиля."
           }
         },
         "tr" : {
@@ -959,6 +1019,12 @@
             "value" : "Perfil selecionado"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбранный профиль"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1047,6 +1113,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Arquivo local ou remoto, contendo endpoints para sempre bloquear."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Локальный или удалённый файл с адресами, которые всегда запрещены."
           }
         },
         "tr" : {
@@ -1139,6 +1211,12 @@
             "value" : "Rodar sem mostrar ícone de staus na barra do menu."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Работать без значка в строке меню."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1227,6 +1305,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Conexões de saída para localhost (incl. 0.0.0.0 e ::) serão permitidas."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Исходящие подключения к localhost (включая 0.0.0.0 и ::) будут разрешены."
           }
         },
         "tr" : {
@@ -1319,6 +1403,12 @@
             "value" : "Ver Regras"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показать правила"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1407,6 +1497,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitido"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешено"
           }
         },
         "tr" : {
@@ -1499,6 +1595,12 @@
             "value" : "Primeiro crie um nome para o seu perfil.\n\nEm seguida, clique em “Avançar” para configurar as configurações do seu novo perfil."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сначала придумайте имя профиля. \n\nЗатем нажмите «Далее», чтобы настроить новый профиль."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1587,6 +1689,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rodar silenciado sem alertas, aplicando regras existentes."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Работать тихо, без оповещений, применяя существующие правила."
           }
         },
         "tr" : {
@@ -1679,6 +1787,12 @@
             "value" : "Sim"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Да"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1767,6 +1881,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Conexões de saída de programas em execução no simulador (iOS) serão permitidas."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Исходящие подключения программ в симуляторе (iOS) будут разрешены."
           }
         },
         "tr" : {
@@ -1859,6 +1979,12 @@
             "value" : "Lista de Bloqueio:"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Список запрещённых:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1947,6 +2073,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Configurações"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
           }
         },
         "tr" : {
@@ -2039,6 +2171,12 @@
             "value" : "Permitir tráfego localhost"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешить трафик localhost"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2127,6 +2265,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lista de Permissões:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Список разрешённых:"
           }
         },
         "tr" : {
@@ -2219,6 +2363,12 @@
             "value" : "Buscar"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обзор"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2307,6 +2457,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nome do perfil"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя профиля"
           }
         },
         "tr" : {
@@ -2399,6 +2555,12 @@
             "value" : "Novas conexões devem ser:"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новые подключения следует:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2487,6 +2649,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nome do perfil"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя профиля"
           }
         },
         "tr" : {
@@ -2579,6 +2747,12 @@
             "value" : "Adicionar perfil"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить профиль"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2667,6 +2841,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modo Sem Ícone"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режим без значка"
           }
         },
         "tr" : {
@@ -2759,6 +2939,12 @@
             "value" : "Todo o tráfego UDP de saída na porta 53 será permitido."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Весь исходящий UDP-трафик на порт 53 будет разрешён."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2847,6 +3033,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Não verifique novas atualizações  automaticamente."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не проверять новые версии автоматически."
           }
         },
         "tr" : {
@@ -2939,6 +3131,12 @@
             "value" : "Modo Passivo"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пассивный режим"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3027,6 +3225,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir programas já instalados"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешить уже установленные программы"
           }
         },
         "tr" : {
@@ -3119,6 +3323,12 @@
             "value" : "Não"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3207,6 +3417,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режим"
           }
         },
         "tr" : {
@@ -3299,6 +3515,12 @@
             "value" : "Modo"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режим"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3387,6 +3609,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nome do perfil:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя профиля:"
           }
         },
         "tr" : {
@@ -3479,6 +3707,12 @@
             "value" : "Conexões de saída de programas assinados pela Apple serão permitidas."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Исходящие подключения программ, подписанных Apple, будут разрешены."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3567,6 +3801,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloqueado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запрещено"
           }
         },
         "tr" : {
@@ -3659,6 +3899,12 @@
             "value" : "Atualizar"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновление"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3747,6 +3993,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Atualizar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновление"
           }
         },
         "tr" : {
@@ -3839,6 +4091,12 @@
             "value" : "Listas"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Списки"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3927,6 +4185,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Listas"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Списки"
           }
         },
         "tr" : {
@@ -4019,6 +4283,12 @@
             "value" : "Todo tráfego roteado pelo LuLu será bloqueado (a menos que o endpoint esteja explicitamente na lista de ‘Permissões’)."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Весь трафик через LuLu будет заблокирован (кроме адресов из списка разрешённых)."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4107,6 +4377,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir Programas Apple"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешить программы Apple"
           }
         },
         "tr" : {
@@ -4199,6 +4475,12 @@
             "value" : "Regras"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4287,6 +4569,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regras"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила"
           }
         },
         "tr" : {
@@ -4379,6 +4667,12 @@
             "value" : "Permitir programas do simulador"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешить программы в симуляторе"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4467,6 +4761,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Buscar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обзор"
           }
         },
         "tr" : {
@@ -4559,6 +4859,12 @@
             "value" : "Permitir Tráfego DNS"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешить DNS-трафик"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4647,6 +4953,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modo sem vírusTotal"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режим без VirusTotal"
           }
         },
         "tr" : {
@@ -4739,6 +5051,12 @@
             "value" : "Avançar"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далее"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4827,6 +5145,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desabilite a integração com o VirusTotal."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отключить интеграцию с VirusTotal."
           }
         },
         "tr" : {
@@ -4919,6 +5243,12 @@
             "value" : "Desabilitar Verificação de Atualizações"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отключить проверку обновлений"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5007,6 +5337,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Adicionar perfil"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить профиль"
           }
         },
         "tr" : {

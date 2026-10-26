@@ -132,6 +132,12 @@
             "value" : "LuLu está rodando!"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu запущен и работает!"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -220,6 +226,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Acesse-o daqui quando quiser."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть его можно отсюда в любое время."
           }
         },
         "tr" : {

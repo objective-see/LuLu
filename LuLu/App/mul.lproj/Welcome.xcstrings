@@ -59,6 +59,12 @@
             "value" : "Conexões de saída de programas de terceiros já instalados serão permitidas."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Исходящие подключения уже установленных сторонних программ будут разрешены."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -147,6 +153,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mahalo para os “Amigos Objective-See\""
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спасибо «Друзьям Objective-See»"
           }
         },
         "tr" : {
@@ -239,6 +251,12 @@
             "value" : "Nota: as etapas podem variar conforme a versão do macOS"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Примечание: шаги могут отличаться в зависимости от версии macOS"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -327,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "1. No alerta de “Extensão do Sistema Bloqueada”, clique em “Abrir Preferências do Sistema”"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. В окне «Системное расширение заблокировано» нажмите «Открыть Системные настройки»"
           }
         },
         "tr" : {
@@ -419,6 +443,12 @@
             "value" : "Primeiro, dê permissão à Extensão de Rede LuLu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сначала разрешите сетевое расширение LuLu:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -507,6 +537,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ele monitora a atividade na rede e te alerta quando um programa tenta iniciar uma conexão de saída, lhe permitindo que possa autorizá-la ou não."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Он следит за сетевой активностью и сообщает, когда программа впервые пытается установить исходящее подключение, чтобы вы могли разрешить или запретить его."
           }
         },
         "tr" : {
@@ -697,6 +733,12 @@
             "value" : "Isso pode ser alterado depois, nos ajustes do LuLu."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это можно изменить позже в настройках LuLu."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -785,6 +827,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu é um firewall gratuito e open-source para macOS."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu — бесплатный файрвол для macOS с открытым исходным кодом."
           }
         },
         "tr" : {
@@ -877,6 +925,12 @@
             "value" : "Não"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -965,6 +1019,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apoiar o LuLu?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поддержать LuLu?"
           }
         },
         "tr" : {
@@ -1057,6 +1117,12 @@
             "value" : "4. No alerta de “Filtrar Conteúdo de Rede”, clique em “Permitir”"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. В окне «Фильтрация сетевого содержимого» нажмите «Разрешить»"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1145,6 +1211,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bem-vindo ao"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добро пожаловать в"
           }
         },
         "tr" : {
@@ -1237,6 +1309,12 @@
             "value" : "Conexões de saída de programas assinados pela Apple serão permitidas."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Исходящие подключения программ, подписанных Apple, будут разрешены."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1325,6 +1403,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sim!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Да!"
           }
         },
         "tr" : {
@@ -1417,6 +1501,12 @@
             "value" : "Todo o tráfego UDP de saída na porta 53 será permitido."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Весь исходящий UDP-трафик на порт 53 будет разрешён."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1505,6 +1595,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir tráfego de DNS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Разрешить DNS-трафик"
           }
         },
         "tr" : {
@@ -1597,6 +1693,12 @@
             "value" : "É gratuito, open-source, e criado por um único programador (amante de Mac)!"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Он бесплатный, с открытым кодом и написан одним разработчиком, обожающим Mac!"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1685,6 +1787,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Esperando aprovação da extensão do sistema"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ожидание разрешения системного расширения"
           }
         },
         "tr" : {
@@ -1777,6 +1885,12 @@
             "value" : "Dar carinho?"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поддержите проект? "
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1865,6 +1979,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Próximo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далее"
           }
         },
         "tr" : {
@@ -1957,6 +2077,12 @@
             "value" : "Agora vamos configurar o LuLu:"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Теперь настроим LuLu:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2045,6 +2171,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : " Permitir programas já instalados"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Разрешить уже установленные программы"
           }
         },
         "tr" : {
@@ -2137,6 +2269,12 @@
             "value" : "Próximo"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далее"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2227,6 +2365,12 @@
             "value" : "Permitir programas Apple"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Разрешить программы Apple"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2315,6 +2459,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3. Autenticar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Подтвердите паролем"
           }
         },
         "tr" : {

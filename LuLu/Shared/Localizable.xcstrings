@@ -52,6 +52,12 @@
             "value" : "tem um problema de assinatura"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " — проблема с подписью"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -133,6 +139,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "não possui assinatura"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " — не подписан"
           }
         },
         "tr" : {
@@ -218,6 +230,12 @@
             "value" : "não possui assinatura válida"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " — недействительная подпись"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -299,6 +317,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "possui assinatura válida"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " — подпись действительна"
           }
         },
         "tr" : {
@@ -384,6 +408,12 @@
             "value" : "desconhecido"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " — неизвестно"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -465,6 +495,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "…isto vai remover LuLu completamente do seu Mac"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…LuLu будет полностью удалён с вашего Mac"
           }
         },
         "tr" : {
@@ -550,6 +586,12 @@
             "value" : "…isto vai encerrar LuLu, até o próximo login."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…LuLu будет остановлен до следующего входа в систему."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -631,6 +673,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "“%@” corresponde a um nome de perfil existente."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профиль «%@» уже существует."
           }
         },
         "tr" : {
@@ -716,6 +764,12 @@
             "value" : "“Default” é um nome de perfil reservado."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя «Default» зарезервировано."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -797,6 +851,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "> sem autoridades de assinatura"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "› нет цепочки подписи"
           }
         },
         "tr" : {
@@ -883,6 +943,12 @@
           }
         },
         "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (pid: %2$@)"
+          }
+        },
+        "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ (pid: %2$@)"
@@ -977,6 +1043,12 @@
             "value" : "%1$@ (assinante: %2$@)"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (подписант: %2$@)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1058,6 +1130,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (assinante: Apple Mac OS App Store)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (подписант: Apple Mac App Store)"
           }
         },
         "tr" : {
@@ -1143,6 +1221,12 @@
             "value" : "%@ (assinante: a própria Apple)"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (подписант: Apple)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1224,6 +1308,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ (assinante: inválido/sem assinatura)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (подписант: недействителен/без подписи)"
           }
         },
         "tr" : {
@@ -1309,6 +1399,12 @@
             "value" : "%@ +filhos"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ + дочерние"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1392,6 +1488,12 @@
             "value" : "%@ não existe!"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ не существует!"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1473,6 +1575,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ é um processo legítimo do macOS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — легитимный процесс macOS"
           }
         },
         "tr" : {
@@ -1559,6 +1667,12 @@
             "value" : "%@ não é um número (de porta) válido "
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — недопустимый номер (порта)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1642,6 +1756,12 @@
             "value" : "%@ não é um CIDR válido (ex.: 192.168.1.0/24)"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — недопустимый CIDR (например, 192.168.1.0/24)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1681,6 +1801,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Το %@ δεν είναι έγκυρος αριθμός θύρας (1-65535)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — недопустимый номер порта (1–65535)"
           }
         }
       }
@@ -1742,6 +1868,12 @@
             "value" : "%1$@ não é uma expressão regular válida. Detalhes: %2$@"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ — недопустимое регулярное выражение\r\nподробности: %2$@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1781,6 +1913,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Το %@ δεν υπάρχει πλέον, επομένως ο κανόνας του δεν μπορεί να επεξεργαστεί. Ο κανόνας μπορεί ακόμη να απενεργοποιηθεί ή να διαγραφεί."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ больше не существует, поэтому его правило нельзя изменить. Правило можно отключить или удалить."
           }
         }
       }
@@ -1834,6 +1972,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ assinado por terceiros/ad hoc"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ подписан сторонним разработчиком/ad hoc"
           }
         },
         "tr" : {
@@ -1919,6 +2063,12 @@
             "value" : "%@ assinado pela própria Apple"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ подписан Apple"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2000,6 +2150,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ assinado pela App Store no Mac"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ подписан Mac App Store"
           }
         },
         "tr" : {
@@ -2085,6 +2241,12 @@
             "value" : "%@ assinado com ID de Desenvolvidor Apple"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ подписан Apple Developer ID"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2168,6 +2330,12 @@
             "value" : "%@ erro de assinatura: %#lx"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ошибка подписи: %#lx"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2249,6 +2417,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ esta regra, pode impactar funcionalidade legítima do sistema …prosseguir?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ это правило может нарушить работу системы… продолжить?"
           }
         },
         "tr" : {
@@ -2335,6 +2509,12 @@
             "value" : " %@ teve mudanças na informação da sua assinatura de código"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У %@ изменилась информация о подписи кода"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2416,6 +2596,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "<desconhecido (%d)>"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<неизвестно (%d)>"
           }
         },
         "tr" : {
@@ -2501,6 +2687,12 @@
             "value" : "2. Nas Preferências do Sistema, role até encontrar ‘LuLu’ e clique em ‘Permitir’"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. В Системных настройках прокрутите до упоминания «LuLu» и нажмите «Разрешить»"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2582,6 +2774,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2. Nas Preferências do Sistema, clique na extensão do LuLu"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. В Системных настройках включите расширение LuLu"
           }
         },
         "tr" : {
@@ -2667,6 +2865,12 @@
             "value" : "uma nova versão (%@) está disponível!"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "доступна новая версия (%@)!"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2748,6 +2952,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ad Hoc"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ad hoc"
           }
         },
         "tr" : {
@@ -2833,6 +3043,12 @@
             "value" : "Adicionar perfil"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить профиль"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2914,6 +3130,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Adicionado nas últimas 24h (ordenados por hora de criação)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавлены за последние 24 часа (по времени создания)"
           }
         },
         "tr" : {
@@ -2999,6 +3221,12 @@
             "value" : "Adicionado passivamente (quando o “modo passivo” está ativado ou nenhum usuário estava logado quando a regra foi criada)"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавлены пассивно (включён пассивный режим или при создании правила никто не вошёл в систему)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3080,6 +3308,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perfil adicionado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профиль добавлен"
           }
         },
         "tr" : {
@@ -3165,6 +3399,12 @@
             "value" : "Todas as Regras"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все правила"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3246,6 +3486,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешить"
           }
         },
         "tr" : {
@@ -3331,6 +3577,12 @@
             "value" : "Permitir (pid: %@)"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешено (pid: %@)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3412,6 +3664,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir (até: %@)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешено (до: %@)"
           }
         },
         "tr" : {
@@ -3497,6 +3755,12 @@
             "value" : "qualquer endereço"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "любой адрес"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3578,6 +3842,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "qualquer porta"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "любой порт"
           }
         },
         "tr" : {
@@ -3663,6 +3933,12 @@
             "value" : "Qualquer programa"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Любая программа"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3744,6 +4020,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programas da Apple (automaticamente adicionados aqui se ‘permitir programas Apple’ está selecionado)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Программы Apple (разрешаются и добавляются сюда автоматически, если включено «Разрешить программы Apple»)"
           }
         },
         "tr" : {
@@ -3829,6 +4111,12 @@
             "value" : "Bloquear"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запретить"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3910,6 +4198,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloquear (pid: %@)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запрещено (pid: %@)"
           }
         },
         "tr" : {
@@ -3995,6 +4289,12 @@
             "value" : "Bloquear (até: %@)"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запрещено (до: %@)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4076,6 +4376,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancelar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отмена"
           }
         },
         "tr" : {
@@ -4161,6 +4467,12 @@
             "value" : "Limpar regras que fazem referência a itens excluídos, expirados ou encerrados?"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить правила для удалённых, истёкших или завершённых программ?"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4242,6 +4554,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "As regras de %ld foram limpas"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалено правил: %ld"
           }
         },
         "tr" : {
@@ -4327,6 +4645,12 @@
             "value" : "Confirmar exclusão"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подтвердите удаление"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4408,6 +4732,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Coninuar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продолжить"
           }
         },
         "tr" : {
@@ -4493,6 +4823,12 @@
             "value" : "O perfil atual agora é: “%@”."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Текущий профиль: «%@»."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4574,6 +4910,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perfil atual: %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Текущий профиль: %@"
           }
         },
         "tr" : {
@@ -4659,6 +5001,12 @@
             "value" : "Perfil atual: Default"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Текущий профиль: по умолчанию"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4740,6 +5088,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Default"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "По умолчанию"
           }
         },
         "tr" : {
@@ -4825,6 +5179,12 @@
             "value" : "Excluir"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4906,6 +5266,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Excluir %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить %@"
           }
         },
         "tr" : {
@@ -4991,6 +5357,12 @@
             "value" : "Excluir todas as regras de %@?"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить все правила для %@?"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5072,6 +5444,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Excluir todas as regras deste item?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить все правила для этой программы?"
           }
         },
         "tr" : {
@@ -5157,6 +5535,12 @@
             "value" : "Excluir o perfil “%@”?"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить профиль «%@»?"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5238,6 +5622,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Excluir regra?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить правило?"
           }
         },
         "tr" : {
@@ -5323,6 +5713,12 @@
             "value" : "Regras do Diretório se aplicam à todos os itens contidos no diretório"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила для папки действуют на всё её содержимое"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5404,6 +5800,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desabilitar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отключить"
           }
         },
         "tr" : {
@@ -5489,6 +5891,12 @@
             "value" : "Desativar %@"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отключить %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5569,6 +5977,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exibir caminho(s)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показать путь(и)"
           }
         },
         "tr" : {
@@ -5654,6 +6068,12 @@
             "value" : "Editar %@"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5735,6 +6155,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Habilitar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включить"
           }
         },
         "tr" : {
@@ -5820,6 +6246,12 @@
             "value" : "Ativar %@"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включить %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5901,6 +6333,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRO: ativação falhou"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОШИБКА: не удалось активировать"
           }
         },
         "tr" : {
@@ -5986,6 +6424,12 @@
             "value" : "ERRO: Insira uma duração diferente de zero"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОШИБКА: укажите ненулевой срок"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6067,6 +6511,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRO: Falha ao limpar regras"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОШИБКА: не удалось очистить правила"
           }
         },
         "tr" : {
@@ -6152,6 +6602,12 @@
             "value" : "ERRO: Falha na exportação de regras"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОШИБКА: не удалось экспортировать правила"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6233,6 +6689,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRO: Falha ao gerar o hash de %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОШИБКА: не удалось вычислить хеш %@"
           }
         },
         "tr" : {
@@ -6318,6 +6780,12 @@
             "value" : "ERRO: Falha na importação de regras"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОШИБКА: не удалось импортировать правила"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6399,6 +6867,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRO: Falha ao carregar patrocinadores"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОШИБКА: не удалось загрузить список спонсоров"
           }
         },
         "tr" : {
@@ -6484,6 +6958,12 @@
             "value" : "ERRO: CIDR inválido"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОШИБКА: недопустимый CIDR"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6565,6 +7045,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRO: Caminho inválido"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОШИБКА: недопустимый путь"
           }
         },
         "tr" : {
@@ -6650,6 +7136,12 @@
             "value" : "ERRO: Porta inválida"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОШИБКА: недопустимый порт"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6731,6 +7223,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ERRO: Expressão regular inválida"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОШИБКА: недопустимое регулярное выражение"
           }
         },
         "tr" : {
@@ -6816,6 +7314,12 @@
             "value" : "ERRO: Falha na verificação de update"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ошибка: не удалось проверить обновления"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6897,6 +7401,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "As extensões devem ser aprovadas manualmente por meio das Configurações do sistema (Geral > Itens de login e extensões > Extensões de rede)."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Расширения нужно разрешить вручную в Системных настройках (Основные > Объекты входа и расширения > Сетевые расширения)."
           }
         },
         "tr" : {
@@ -6982,6 +7492,12 @@
             "value" : "falha ao tentar ativar extensão de rede"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "не удалось активировать сетевое расширение"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7063,6 +7579,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "falha ao tentar ativar filtro de rede"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "не удалось активировать сетевой фильтр"
           }
         },
         "tr" : {
@@ -7148,6 +7670,12 @@
             "value" : "falha ao tentar ativar extensão do sistema"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "не удалось активировать системное расширение"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7229,6 +7757,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "falha ao tentar ativar extensão de sistema/rede"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "не удалось активировать системное/сетевое расширение"
           }
         },
         "tr" : {
@@ -7314,6 +7848,12 @@
             "value" : "Falha ao conectar à extensão do LuLu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось подключиться к расширению LuLu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7395,6 +7935,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL completo: %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Полный URL: %@"
           }
         },
         "tr" : {
@@ -7480,6 +8026,12 @@
             "value" : "Regras Globais se aplicam a todos os caminhos"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Глобальные правила действуют для всех путей"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7561,6 +8113,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%ld regras importadas"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Импортировано правил: %ld"
           }
         },
         "tr" : {
@@ -7646,6 +8204,12 @@
             "value" : "Versão instalada (%@), é a mais recente"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установленная версия (%@)\r\nсамая новая."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7727,6 +8291,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nome de perfil inválido"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Недопустимое имя профиля"
           }
         },
         "tr" : {
@@ -7812,6 +8382,12 @@
             "value" : "Endereço IP: %@"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP-адрес: %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7895,6 +8471,12 @@
             "value" : "está conectando a %@"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "подключается к %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7953,6 +8535,12 @@
             "state" : "translated",
             "value" : "Το LuLu δεν μπόρεσε να επικοινωνήσει με την επέκταση συστήματος. Μια επανεκκίνηση του Mac ίσως διορθώσει το πρόβλημα!"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu не может связаться со своим системным расширением. Перезагрузка может помочь!"
+          }
         }
       }
     },
@@ -8006,6 +8594,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "O LuLu não conseguiu se comunicar com sua extensão do sistema. Reiniciar pode resolver!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu не может связаться со своим системным расширением. Перезапуск может помочь!"
           }
         },
         "tr" : {
@@ -8091,6 +8685,12 @@
             "value" : "O LuLu deve ser executado a partir de /Applications"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu должен запускаться из папки /Applications\r\n"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8172,6 +8772,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LuLu: desabilitado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: отключён"
           }
         },
         "tr" : {
@@ -8257,6 +8863,12 @@
             "value" : "LuLu: habilitado"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu: включён"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8338,6 +8950,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "A Extensão de Rede do LuLu não está rodando"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сетевое расширение LuLu не запущено"
           }
         },
         "tr" : {
@@ -8423,6 +9041,12 @@
             "value" : "A atualização da extensão do sistema do LuLu será concluída após o Mac reiniciar."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновление системного расширения LuLu завершится после перезагрузки Mac."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8504,6 +9128,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mais Informações"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подробнее"
           }
         },
         "tr" : {
@@ -8589,6 +9219,12 @@
             "value" : "Novo perfil “%@” salvo e ativado."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новый профиль «%@» сохранён и активирован."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8670,6 +9306,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Avançar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далее"
           }
         },
         "tr" : {
@@ -8755,6 +9397,12 @@
             "value" : "nenhum(a)"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "нет"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8836,6 +9484,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "não se aplica"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "не применимо"
           }
         },
         "tr" : {
@@ -8921,6 +9575,12 @@
             "value" : "Observação:\r\n▪ Conexões existentes não serão impactadas.\r\n▪ Tráfego do sistema operacional (não encaminhado pelo LuLu) não será bloqueado."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Однако учтите:\r\n▪ Уже установленные подключения не затрагиваются.\r\n▪ Системный трафик (не проходящий через LuLu) не блокируется."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9002,6 +9662,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОК"
           }
         },
         "tr" : {
@@ -9087,6 +9753,12 @@
             "value" : "OK"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОК"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9168,6 +9840,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Versão Antiga do LuLu Instalada."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установлена старая версия LuLu"
           }
         },
         "tr" : {
@@ -9253,6 +9931,12 @@
             "value" : "Exportar apenas regras criadas pelo usuário"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экспортировать только правила пользователя"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9334,6 +10018,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programas do Sistema Operacional (necessários para funcionalidade do sistema)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Системные программы (нужны для работы системы)"
           }
         },
         "tr" : {
@@ -9419,6 +10109,12 @@
             "value" : "Tráfego de saída será bloqueado."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Теперь исходящий трафик будет блокироваться."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9501,6 +10197,12 @@
             "value" : "Caminho(s) de %@:"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Путь(и) для %@:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9581,6 +10283,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Caminho(s):"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Путь(и):"
           }
         },
         "tr" : {
@@ -9666,6 +10374,12 @@
             "value" : "Programas Terceirizados Pré-Instalados (automaticamente permitidos e adicionados aqui se ‘permitir aplicações instaladas’ estiver selecionado)"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ранее установленные сторонние программы (разрешаются и добавляются сюда автоматически, если включено «Разрешить уже установленные программы»)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9747,6 +10461,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Argumentos do Processo: %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аргументы процесса: %@"
           }
         },
         "tr" : {
@@ -9832,6 +10552,12 @@
             "value" : "Caminho do Processo: %@"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Путь процесса: %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9913,6 +10639,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "O nome do perfil não pode estar vazio"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя профиля не может быть пустым"
           }
         },
         "tr" : {
@@ -9998,6 +10730,12 @@
             "value" : "Perfil alterado"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профиль переключён"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10079,6 +10817,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perfil: %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профиль: %@"
           }
         },
         "tr" : {
@@ -10164,6 +10908,12 @@
             "value" : "Perfil: Default"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профиль: по умолчанию"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10245,6 +10995,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programas em “%@/“"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Программы в «%@/»"
           }
         },
         "tr" : {
@@ -10330,6 +11086,12 @@
             "value" : "Sair"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завершить"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10411,6 +11173,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sair do LuLu"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завершить LuLu?"
           }
         },
         "tr" : {
@@ -10496,6 +11264,12 @@
             "value" : "Reinicialização necessária"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Требуется перезагрузка"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10577,6 +11351,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Domínio Reverso: %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обратный домен: %@"
           }
         },
         "tr" : {
@@ -10662,6 +11442,12 @@
             "value" : "Regra"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правило"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10743,6 +11529,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regras"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила"
           }
         },
         "tr" : {
@@ -10864,6 +11656,12 @@
             "value" : "Veja registro para (mais) detalhes"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подробности — в журнале"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10945,6 +11743,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Isto deve ser desinstalado antes de continuar. Clique em ‘Mais Informações’ para aprender como desinstalar."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Её нужно удалить, прежде чем продолжить. Нажмите «Подробнее», чтобы узнать, как это сделать"
           }
         },
         "tr" : {
@@ -11030,6 +11834,12 @@
             "value" : "Registro da hora: %@"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Время: %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11069,6 +11879,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Δεν είναι δυνατή η επεξεργασία του κανόνα"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удаётся изменить правило"
           }
         }
       }
@@ -11122,6 +11938,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desinstalar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить"
           }
         },
         "tr" : {
@@ -11207,6 +12029,12 @@
             "value" : "Desinstalar LuLu?"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить LuLu?"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11290,6 +12118,12 @@
             "value" : "Desconhecido"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "неизвестно"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11371,6 +12205,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Atualização"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновление"
           }
         },
         "tr" : {
@@ -11462,6 +12302,12 @@
             "value" : "Atualização disponível, mas não é compatível com o macOS %ld.%ld"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступно обновление, но оно не поддерживается в macOS %1$ld.%2$ld"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11543,6 +12389,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Programas especificados pelo usuário (adicionados manualmente, ou em resposta à um alerta)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Программы пользователя (добавлены вручную или в ответ на оповещение)"
           }
         },
         "tr" : {
@@ -11628,6 +12480,12 @@
             "value" : "Versão: %@"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версия: %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11711,6 +12569,12 @@
             "value" : "Aguardando aprovação da Extensão de Rede"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ожидание разрешения сетевого расширения"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11751,6 +12615,12 @@
             "state" : "translated",
             "value" : "Να μετακινηθεί στο /Applications και να επανεκκινηθεί;"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переместить в /Applications и перезапустить?"
+          }
         }
       }
     },
@@ -11761,6 +12631,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Μετακίνηση & επανεκκίνηση"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переместить и перезапустить"
           }
         }
       }
@@ -11773,6 +12649,12 @@
             "state" : "translated",
             "value" : "ΣΦΑΛΜΑ: αποτυχία μετακίνησης του LuLu"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОШИБКА: не удалось переместить LuLu"
+          }
         }
       }
     },
@@ -11783,6 +12665,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ΣΦΑΛΜΑ: αποτυχία επανεκκίνησης του LuLu"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОШИБКА: не удалось перезапустить LuLu"
           }
         }
       }
@@ -11795,6 +12683,12 @@
             "state" : "translated",
             "value" : "Δεν ήταν δυνατή η αντικατάσταση του υπάρχοντος %@\r\n\r\n%@"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось заменить существующий %@\r\n\r\n%@"
+          }
         }
       }
     },
@@ -11806,6 +12700,12 @@
             "state" : "translated",
             "value" : "Δεν ήταν δυνατή η αντιγραφή στο %@\r\n\r\n%@"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось скопировать в %@\r\n\r\n%@"
+          }
         }
       }
     },
@@ -11816,6 +12716,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Δεν ήταν δυνατή η εκκίνηση του %@\r\n\r\n%@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось запустить %@\r\n\r\n%@"
           }
         }
       }

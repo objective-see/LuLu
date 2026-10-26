@@ -59,6 +59,12 @@
             "value" : "Rótulo"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Метка"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -147,6 +153,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nome do Item"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Название"
           }
         },
         "tr" : {
@@ -239,6 +251,12 @@
             "value" : "Regras criadas passivamente"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила, созданные пассивно"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -327,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regras criadas pelo usuário"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила пользователя"
           }
         },
         "tr" : {
@@ -419,6 +443,12 @@
             "value" : "Filtrar Regras"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фильтр правил"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -507,6 +537,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regras recentes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Недавние правила"
           }
         },
         "tr" : {
@@ -599,6 +635,12 @@
             "value" : "Regras LuLu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила LuLu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -687,6 +729,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vista Customizada"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Своё представление"
           }
         },
         "tr" : {
@@ -779,6 +827,12 @@
             "value" : "Vista Customizada"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Своё представление"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -867,6 +921,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regra"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Правило"
           }
         },
         "tr" : {
@@ -959,6 +1019,12 @@
             "value" : "Todas as Regras"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все правила"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1047,6 +1113,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "detalhes sobre item…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "подробности…"
           }
         },
         "tr" : {
@@ -1139,6 +1211,12 @@
             "value" : "Regras da Apple"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила Apple"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1227,6 +1305,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regras Padrão"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стандартные правила"
           }
         },
         "tr" : {
@@ -1319,6 +1403,12 @@
             "value" : "informação sobre conexão"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "сведения о подключении"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1407,6 +1497,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "(re)carregando regras…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(пере)загрузка правил…"
           }
         },
         "tr" : {
@@ -1499,6 +1595,12 @@
             "value" : "Adicionar Regra"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить правило"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1587,6 +1689,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regras de Terceiros"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила сторонних программ"
           }
         },
         "tr" : {
