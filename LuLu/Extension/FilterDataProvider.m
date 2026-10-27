@@ -411,6 +411,22 @@ bail:
             goto bail;
         }
 
+        //'allow DNS traffic' set and this is DNS (UDP, port 53)? allow
+        // the process is gone so we can't classify it, but a DNS flow must never be wedged when
+        // 'allow DNS traffic' is set ...dropping it kills the resolver's socket and the queried name
+        // stays unresolvable system-wide until LuLu is toggled (self-inflicted DoS, see #941)
+        if( (YES == [preferences.preferences[PREF_ALLOW_DNS] boolValue]) &&
+            (IPPROTO_UDP == ((NEFilterSocketFlow*)flow).socketProtocol) &&
+            (YES == [((NWHostEndpoint*)((NEFilterSocketFlow*)flow).remoteEndpoint).port isEqualToString:@"53"]) )
+        {
+            //dbg msg
+            os_log_debug(logHandle, "process %d has exited, but 'allow DNS traffic' is set and this is DNS, so allowing", pid);
+
+            //bail
+            // verdict defaults to allow
+            goto bail;
+        }
+
         //dbg msg
         os_log_debug(logHandle, "process %d has exited, DENYING flow", pid);
 
@@ -448,6 +464,21 @@ bail:
             //delegated? allow
             if(YES == [self isDelegated:flow])
             {
+                //bail
+                // verdict defaults to allow
+                goto bail;
+            }
+
+            //'allow DNS traffic' set and this is DNS (UDP, port 53)? allow
+            // same as above: the process is gone and unclassifiable, but a DNS flow must not be wedged
+            // when 'allow DNS traffic' is set (self-inflicted DoS, see #941)
+            if( (YES == [preferences.preferences[PREF_ALLOW_DNS] boolValue]) &&
+                (IPPROTO_UDP == ((NEFilterSocketFlow*)flow).socketProtocol) &&
+                (YES == [((NWHostEndpoint*)((NEFilterSocketFlow*)flow).remoteEndpoint).port isEqualToString:@"53"]) )
+            {
+                //dbg msg
+                os_log_debug(logHandle, "process %d exited during lookup, but 'allow DNS traffic' is set and this is DNS, so allowing", pid);
+
                 //bail
                 // verdict defaults to allow
                 goto bail;
