@@ -6872,7 +6872,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les extensions doivent être approuvées manuellement via les paramètres système (Général > Éléments de connexion et extensions > Extensions réseau)."
+            "value" : "Les extensions doivent être approuvées manuellement via les Réglages Système (Général > Ouverture et extensions > Extensions du réseau)."
           }
         },
         "it" : {
