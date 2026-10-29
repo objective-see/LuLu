@@ -149,7 +149,7 @@ extern BlockOrAllowList* blockList;
     [self applySettings:filterSettings completionHandler:^(NSError * _Nullable error) {
 
         //log msg
-        os_log_debug(logHandle, "'applySettings' completed");
+        os_log(logHandle, "filter started (error: %{public}@)", error);
 
         //error?
         if(nil != error) os_log_error(logHandle, "ERROR: failed to apply filter settings: %@", error.localizedDescription);
@@ -165,7 +165,7 @@ extern BlockOrAllowList* blockList;
 -(void)stopFilterWithReason:(NEProviderStopReason)reason completionHandler:(void (^)(void))completionHandler {
     
     //log msg
-    os_log_debug(logHandle, "method '%s' invoked with %ld", __PRETTY_FUNCTION__, (long)reason);
+    os_log(logHandle, "stopping filter (reason: %ld)", (long)reason);
     
     //extra dbg info
     if(NEProviderStopReasonUserInitiated == reason)

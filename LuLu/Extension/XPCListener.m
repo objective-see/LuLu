@@ -250,7 +250,7 @@ extern os_log_t logHandle;
     [newConnection setInvalidationHandler:^{
 
         //dbg msg
-        os_log_debug(logHandle, "XPC 'invalidationHandler' method invoked ...client is gone");
+        os_log(logHandle, "XPC client disconnected");
 
         //unset user
         alerts.consoleUser = nil;
@@ -273,7 +273,7 @@ extern os_log_t logHandle;
     [newConnection resume];
     
     //dbg msg
-    os_log_debug(logHandle, "allowing XPC connection from client (pid: %d, user: %{public}@)", audit_token_to_pid(auditToken), alerts.consoleUser);
+    os_log(logHandle, "allowing XPC connection from client (pid: %d, user: %{public}@)", audit_token_to_pid(auditToken), alerts.consoleUser);
     
     //happy
     shouldAccept = YES;

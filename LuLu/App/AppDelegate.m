@@ -304,7 +304,7 @@ XPCDaemonClient* xpcDaemonClient = nil;
                     } while(YES != [extension isExtensionRunning]);
                     
                     //dbg msg
-                    os_log_debug(logHandle, "%{public}@ is off and running", EXT_BUNDLE_ID);
+                    os_log(logHandle, "%{public}@ is off and running", EXT_BUNDLE_ID);
 
                     //init XPC client & wait for the daemon to be ready
                     xpcDaemonClient = [[XPCDaemonClient alloc] init];

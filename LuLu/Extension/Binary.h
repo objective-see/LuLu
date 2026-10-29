@@ -35,9 +35,6 @@
 //file attributes
 @property(nonatomic, retain)NSDictionary* _Nullable attributes;
 
-//spotlight meta data
-@property(nonatomic, retain)NSDictionary* _Nullable metadata;
-
 //bundle
 // nil for non-apps
 @property(nonatomic, retain)NSBundle* _Nullable bundle;

@@ -447,7 +447,7 @@ bail:
     }
 
     //dbg msg
-    os_log_debug(logHandle, "loaded %lu rules", (unsigned long)self.rules.count);
+    os_log(logHandle, "loaded %lu rules", (unsigned long)self.rules.count);
 
     //happy
     result = YES;

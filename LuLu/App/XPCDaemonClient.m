@@ -127,7 +127,7 @@ extern NSMutableDictionary* alerts;
     self.suppressXPCErrorAlert = NO;
 
     //dbg msg
-    os_log_debug(logHandle, "daemon ready? %d", ready);
+    os_log(logHandle, "daemon ready? %d", ready);
 
     return ready;
 }

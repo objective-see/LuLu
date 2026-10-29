@@ -64,7 +64,7 @@ extern os_log_t logHandle;
     request.delegate = self;
     
     //dbg msg
-    os_log_debug(logHandle, "submitting request");
+    os_log(logHandle, "submitting system extension request (action: %lu)", (unsigned long)action);
        
     //submit request
     [OSSystemExtensionManager.sharedManager submitRequest:request];
@@ -232,7 +232,7 @@ bail:
 -(OSSystemExtensionReplacementAction)request:(nonnull OSSystemExtensionRequest *)request actionForReplacingExtension:(nonnull OSSystemExtensionProperties *)existing withExtension:(nonnull OSSystemExtensionProperties *)ext
 {
     //dbg msg
-    os_log_debug(logHandle, "method '%s' invoked with %{public}@, %{public}@ -> %{public}@", __PRETTY_FUNCTION__, request.identifier, existing.bundleShortVersion, ext.bundleShortVersion);
+    os_log(logHandle, "system extension replacement: %{public}@ -> %{public}@", existing.bundleShortVersion, ext.bundleShortVersion);
     
     return OSSystemExtensionReplacementActionReplace;
 }
@@ -258,7 +258,7 @@ bail:
     NSError* error = nil;
     
     //dbg msg
-    os_log_debug(logHandle, "method '%s' invoked with %{public}@, %ld", __PRETTY_FUNCTION__, request, (long)result);
+    os_log(logHandle, "system extension request finished (result: %ld)", (long)result);
    
     //request will complete after reboot?
     if(OSSystemExtensionRequestWillCompleteAfterReboot == result)
@@ -300,7 +300,7 @@ bail:
 -(void)requestNeedsUserApproval:(nonnull OSSystemExtensionRequest *)request {
     
     //dbg msg
-    os_log_debug(logHandle, "method '%s' invoked with %{public}@", __PRETTY_FUNCTION__, request);
+    os_log(logHandle, "system extension request needs user approval");
     
     //not user launched?
     // show alert on desktop

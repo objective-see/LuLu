@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     logHandle = os_log_create(BUNDLE_ID, "extension");
     
     //dbg msg
-    os_log_debug(logHandle, "started: %{public}@ (pid: %d / uid: %d)", NSProcessInfo.processInfo.arguments.firstObject, getpid(), getuid());
+    os_log(logHandle, "started: %{public}@ (pid: %d / uid: %d)", NSProcessInfo.processInfo.arguments.firstObject, getpid(), getuid());
     
     //start sysext
     // Apple notes, "call [this] as early as possible"
@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
     xpcListener = [[XPCListener alloc] init];
         
     //dbg msg
-    os_log_debug(logHandle, "created client XPC listener");
+    os_log(logHandle, "created client XPC listener");
     
     //need to create
     // create install directory?

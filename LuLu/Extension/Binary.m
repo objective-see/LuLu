@@ -14,7 +14,6 @@
 @synthesize name;
 @synthesize path;
 @synthesize bundle;
-@synthesize metadata;
 @synthesize attributes;
 
 /* GLOBALS */
@@ -45,9 +44,6 @@ extern os_log_t logHandle;
         
         //get file attributes
         [self getAttributes];
-        
-        //get meta data (spotlight)
-        [self getMetadata];
     }
 
     return self;
@@ -100,55 +96,6 @@ extern os_log_t logHandle;
     //grab (file) attributes
     self.attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:self.path error:nil];
     
-    return;
-}
-
-//get (spotlight) meta data
--(void)getMetadata
-{
-    //md item ref
-    MDItemRef mdItem = nil;
-    
-    //attributes names
-    CFArrayRef attributeNames = nil;
-
-    //create
-    mdItem = MDItemCreate(kCFAllocatorDefault, (CFStringRef)self.path);
-    if(nil == mdItem)
-    {
-        //bail
-        goto bail;
-    }
-    
-    //copy names
-    attributeNames = MDItemCopyAttributeNames(mdItem);
-    if(nil == attributeNames)
-    {
-        //bail
-        goto bail;
-    }
-    
-    //get metadata
-    self.metadata = CFBridgingRelease(MDItemCopyAttributes(mdItem, attributeNames));
-    
-bail:
-    
-    //release names
-    if(NULL != attributeNames)
-    {
-        //release
-        CFRelease(attributeNames);
-        attributeNames = NULL;
-    }
-    
-    //release md item
-    if(NULL != mdItem)
-    {
-        //release
-        CFRelease(mdItem);
-        mdItem = NULL;
-    }
-
     return;
 }
 
@@ -243,7 +190,7 @@ bail:
 -(NSString *)description
 {
     //pretty print
-    return [NSString stringWithFormat: @"name: %@\npath: %@\nattributes: %@\nsigning info: %@\nmetadata: %@", self.name, self.path, self.attributes, self.metadata, self.csInfo];
+    return [NSString stringWithFormat: @"name: %@\npath: %@\nattributes: %@\nsigning info: %@", self.name, self.path, self.attributes, self.csInfo];
 }
 
 @end
