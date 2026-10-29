@@ -25,7 +25,7 @@
 
 //wait for the daemon to be up & accepting XPC connections
 // note: blocks, so call from a background thread
--(BOOL)waitForDaemon:(NSUInteger)maxAttempts;
+-(BOOL)waitForDaemon:(NSTimeInterval)timeout;
 
 //get preferences
 // note: synchronous

@@ -188,6 +188,19 @@ extern BlockOrAllowList* blockList;
     //required
     completionHandler();
     
+    //exit
+    // the system expects a (system) extension to exit once its filter is stopped: otherwise it's flagged as
+    // failed and lingers, which can break the XPC (mach) service registration of the next (upgraded) version
+    // ...the system will (re)launch us when the filter is (re)enabled
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        //log msg
+        os_log(logHandle, "filter stopped, exiting");
+        
+        //bye
+        exit(0);
+    });
+    
     return;
 }
 

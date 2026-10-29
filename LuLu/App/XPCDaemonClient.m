@@ -89,42 +89,75 @@ extern NSMutableDictionary* alerts;
 }
 
 //wait for the daemon to be up & accepting XPC connections
--(BOOL)waitForDaemon:(NSUInteger)maxAttempts
+-(BOOL)waitForDaemon:(NSTimeInterval)timeout
 {
     //flag
     __block BOOL ready = NO;
+    
+    //deadline
+    NSDate* deadline = [NSDate dateWithTimeIntervalSinceNow:timeout];
 
     //dbg msg
     os_log_debug(logHandle, "waiting for daemon to be ready...");
 
     //don't alarm the user w/ (expected) errors while we wait
+    // note: caller re-enables alerts once done (it may reactivate the extension & wait again)
     self.suppressXPCErrorAlert = YES;
 
     //try until the daemon replies (or we give up)
-    for(NSUInteger attempt = 0; attempt < maxAttempts; attempt++)
+    while(YES != ready)
     {
+        //timed out flag
+        __block BOOL timedOut = NO;
+        
+        //wait semaphore
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        
         //check in
-        [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
+        // async + bounded wait, so an (alive but) unresponsive extension can't stall us forever
+        [[self.daemon remoteObjectProxyWithErrorHandler:^(NSError * proxyError)
         {
-            //handle error
-            // rebuilds the (now dead) connection for the next attempt
-            [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
+            //(late) error from an attempt that already timed out? ignore
+            if(YES != timedOut)
+            {
+                //handle error
+                // rebuilds the (now dead) connection for the next attempt
+                [self handleXPCError:proxyError method:__PRETTY_FUNCTION__];
+            }
+            
+            //signal
+            dispatch_semaphore_signal(semaphore);
 
         }] checkIn:^(BOOL checkedIn)
         {
             //save
             ready = checkedIn;
+            
+            //signal
+            dispatch_semaphore_signal(semaphore);
         }];
+        
+        //wait (max 1s, but never past the deadline) for reply/error
+        if(0 != dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(MIN(1.0, MAX(0.1, [deadline timeIntervalSinceNow])) * NSEC_PER_SEC))))
+        {
+            //err msg
+            os_log_error(logHandle, "ERROR: daemon didn't answer check-in in time");
+            
+            //set flag
+            // ...then toss the (stuck) connection, for the next attempt
+            timedOut = YES;
+            [self reconnect];
+        }
 
         //ready? done
         if(YES == ready) break;
+        
+        //out of time? give up
+        if([deadline timeIntervalSinceNow] < 0) break;
 
-        //nap, then retry (w/ the rebuilt connection)
+        //nap, then retry
         [NSThread sleepForTimeInterval:0.25f];
     }
-
-    //(re)enable error alerts
-    self.suppressXPCErrorAlert = NO;
 
     //dbg msg
     os_log(logHandle, "daemon ready? %d", ready);

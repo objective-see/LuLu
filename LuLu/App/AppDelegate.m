@@ -292,27 +292,33 @@ XPCDaemonClient* xpcDaemonClient = nil;
                     //dbg msg
                     os_log_debug(logHandle, "network filter activated/enabled");
                     
-                    //wait to ensure extension is up an running
-                    do
+                    //init XPC client
+                    xpcDaemonClient = [[XPCDaemonClient alloc] init];
+                    
+                    //wait for the extension to (start &) check in
+                    // if it doesn't, (once) deactivate & reactivate it, then wait again
+                    // ...as an (in-place) upgrade can leave the extension running, but unreachable (XPC service never registered)
+                    if(YES != [xpcDaemonClient waitForDaemon:DAEMON_READY_TIMEOUT])
                     {
-                        //dbg msg
-                        os_log_debug(logHandle, "waiting for %{public}@", EXT_BUNDLE_ID);
+                        //err msg
+                        os_log_error(logHandle, "ERROR: extension didn't check in within %d seconds, will deactivate & reactivate", DAEMON_READY_TIMEOUT);
                         
-                        //nap
-                        [NSThread sleepForTimeInterval:0.25f];
-                        
-                    } while(YES != [extension isExtensionRunning]);
+                        //reactivate, re-enable network filter, and wait (again) for check in
+                        if( (nil != [extension reactivate]) ||
+                            (YES != [[[Extension alloc] init] toggleNetworkExtension:ACTION_ACTIVATE]) ||
+                            (YES != [xpcDaemonClient waitForDaemon:DAEMON_READY_TIMEOUT]) )
+                        {
+                            //err msg
+                            os_log_error(logHandle, "ERROR: extension (still) not responding ...will continue anyway");
+                        }
+                    }
+                    
+                    //(re)enable XPC error alerts
+                    // (suppressed while waiting for the extension)
+                    xpcDaemonClient.suppressXPCErrorAlert = NO;
                     
                     //dbg msg
                     os_log(logHandle, "%{public}@ is off and running", EXT_BUNDLE_ID);
-
-                    //init XPC client & wait for the daemon to be ready
-                    xpcDaemonClient = [[XPCDaemonClient alloc] init];
-                    if(YES != [xpcDaemonClient waitForDaemon:20])
-                    {
-                        //err msg
-                        os_log_error(logHandle, "ERROR: timed out waiting for daemon ...will continue anyway");
-                    }
 
                     //complete initialization on main thread
                     dispatch_async(dispatch_get_main_queue(), ^{

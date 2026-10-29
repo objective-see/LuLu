@@ -29,6 +29,9 @@ typedef void(^replyBlockType)(NSError*);
 //check if extension is running
 -(BOOL)isExtensionRunning;
 
+//deactivate, then (re)activate the extension
+-(NSError*)reactivate;
+
 //activate/deactive network extension
 -(BOOL)toggleNetworkExtension:(NSUInteger)action;
 

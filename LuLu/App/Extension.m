@@ -84,6 +84,71 @@ bail:
     return !![findProcesses(EXT_BUNDLE_ID) count];
 }
 
+//submit request to toggle system extension, and wait for it to complete
+-(NSError*)toggleExtensionSync:(NSUInteger)action
+{
+    //error
+    __block NSError* error = nil;
+    
+    //wait semaphore
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    //toggle
+    [self toggleExtension:action reply:^(NSError* replyError)
+    {
+        //save error
+        error = replyError;
+        
+        //signal semaphore
+        dispatch_semaphore_signal(semaphore);
+    }];
+    
+    //wait
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    return error;
+}
+
+//deactivate, then (re)activate the extension
+// fallback for when an (in-place) upgrade leaves the extension unreachable (e.g. its XPC service never got registered)
+// note: deactivation removes the extension (& its filter config), so the user will have to (re)approve
+-(NSError*)reactivate
+{
+    //error
+    NSError* error = nil;
+    
+    //log msg
+    os_log(logHandle, "deactivating extension (will then reactivate)");
+    
+    //deactivate
+    error = [self toggleExtensionSync:ACTION_DEACTIVATE];
+    if(nil != error)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to deactivate extension: %{public}@", error);
+        goto bail;
+    }
+    
+    //log msg
+    os_log(logHandle, "extension deactivated, now (re)activating");
+    
+    //(re)activate
+    error = [self toggleExtensionSync:ACTION_ACTIVATE];
+    if(nil != error)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to (re)activate extension: %{public}@", error);
+        goto bail;
+    }
+    
+    //log msg
+    os_log(logHandle, "extension (re)activated");
+    
+bail:
+    
+    return error;
+}
+
 //get network extension's status
 -(BOOL)isNetworkExtensionEnabled
 {

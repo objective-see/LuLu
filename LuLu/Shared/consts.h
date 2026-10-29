@@ -313,6 +313,9 @@ typedef NS_ENUM(NSInteger, EndpointType) {
 //seconds to keep the startup window floating above other apps
 #define STARTUP_WINDOW_FLOAT_DURATION 2
 
+//max time (seconds) to wait for the extension to (start &) answer XPC
+#define DAEMON_READY_TIMEOUT 5
+
 #define CMDLINE_FLAG_WELCOME @"-welcome"
 #define CMDLINE_FLAG_PREFS @"-prefs"
 #define CMDLINE_FLAG_RULES @"-rules"
