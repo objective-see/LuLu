@@ -1248,20 +1248,27 @@ bail:
 // pass a (process) key to resume just that one; pass nil to resume all keys
 -(void)resumeFlowsForKey:(NSString*)key verdict:(NEFilterNewFlowVerdict*)verdict
 {
+    //flows to resume
+    NSMutableArray* flows = [NSMutableArray array];
+    
     //sync
+    // grab held flows & drop the key(s)
     @synchronized(self.relatedFlows)
     {
         //one key, or all keys (nil)
         NSArray* keys = (nil != key) ? @[key] : self.relatedFlows.allKeys;
         for(NSString* k in keys)
         {
-            //resume each held flow, then drop the key
-            for(NEFilterSocketFlow* flow in self.relatedFlows[k])
-            {
-                [self resumeFlow:flow withVerdict:verdict];
-            }
+            [flows addObjectsFromArray:[self.relatedFlows[k] array]];
             [self.relatedFlows removeObjectForKey:k];
         }
+    }
+    
+    //resume
+    // outside the lock, as the framework may sync w/ the provider queue
+    for(NEFilterSocketFlow* flow in flows)
+    {
+        [self resumeFlow:flow withVerdict:verdict];
     }
 
     return;
@@ -1292,6 +1299,9 @@ bail:
 // 2. temporary ('while process runs') rules whose process exited, plus any expired rules
 -(void)reapDeadFlows
 {
+    //flows to resume
+    NSMutableArray* flows = [NSMutableArray array];
+    
     //dbg msg
     os_log_debug(logHandle, "cleaning up flows from terminated processes...");
 
@@ -1315,21 +1325,23 @@ bail:
             }
 
             //process is gone
-            // drop all its held flows, then clear its (now-stale) alert state
-            // ...except any created on its behalf by a (still running) delegate: those are allowed (see 'isDelegated:')
+            // grab all its held flows, then clear its (now-stale) alert state
             os_log_debug(logHandle, "process %d (key: %{public}@) has exited; reaping its flows", pid, key);
-            for(NEFilterSocketFlow* held in self.relatedFlows[key])
-            {
-                //resume
-                // allow if delegated, otherwise drop
-                [self resumeFlow:held withVerdict:(YES == [self isDelegated:held]) ? [NEFilterNewFlowVerdict allowVerdict] : [NEFilterNewFlowVerdict dropVerdict]];
-            }
+            [flows addObjectsFromArray:[self.relatedFlows[key] array]];
             [self.relatedFlows removeObjectForKey:key];
             [alerts removeShown:key];
         }
 
         //dbg msg
         os_log_debug(logHandle, "related flows remaining: %lu key(s)", (unsigned long)self.relatedFlows.count);
+    }
+    
+    //resume (drop) held flows of exited processes
+    // ...except any created on their behalf by a (still running) delegate: those are allowed (see 'isDelegated:')
+    // note: outside the lock, as the framework may sync w/ the provider queue
+    for(NEFilterSocketFlow* held in flows)
+    {
+        [self resumeFlow:held withVerdict:(YES == [self isDelegated:held]) ? [NEFilterNewFlowVerdict allowVerdict] : [NEFilterNewFlowVerdict dropVerdict]];
     }
 
     //also clean up rules whose process has exited (temp/process rules) or that have expired

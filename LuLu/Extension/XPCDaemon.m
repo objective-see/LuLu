@@ -91,7 +91,11 @@ extern os_log_t logHandle;
     os_log_debug(logHandle, "XPC request: '%s'", __PRETTY_FUNCTION__);
     
     //archive rules
-    archivedRules = [NSKeyedArchiver archivedDataWithRootObject:rules.rules requiringSecureCoding:YES error:&error];
+    // under lock, as rules may be mutated concurrently (e.g. temp rule added/reaped)
+    @synchronized(rules)
+    {
+        archivedRules = [NSKeyedArchiver archivedDataWithRootObject:rules.rules requiringSecureCoding:YES error:&error];
+    }
     if(nil == archivedRules)
     {
         //err msg
