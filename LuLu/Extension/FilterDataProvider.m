@@ -148,11 +148,11 @@ extern BlockOrAllowList* blockList;
     //apply rules
     [self applySettings:filterSettings completionHandler:^(NSError * _Nullable error) {
 
-        //log msg
-        os_log(logHandle, "filter started (error: %{public}@)", error);
-
         //error?
-        if(nil != error) os_log_error(logHandle, "ERROR: failed to apply filter settings: %@", error.localizedDescription);
+        if(nil != error) os_log_error(logHandle, "ERROR: failed to apply filter settings: %{public}@", error);
+        
+        //log msg
+        else os_log(logHandle, "filter started");
 
         //call completion handler
         completionHandler(error);
