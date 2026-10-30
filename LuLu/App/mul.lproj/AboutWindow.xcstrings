@@ -59,6 +59,12 @@
             "value" : "Suporte-nos!"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поддержите нас!"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -147,6 +153,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Versão:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версия:"
           }
         },
         "tr" : {
@@ -239,6 +251,12 @@
             "value" : "Patrocinadores e Amigos"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спонсоры и друзья"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -327,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mais Informações"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подробнее"
           }
         },
         "tr" : {

@@ -114,6 +114,12 @@
             "value" : "Conexão:"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подключение:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -202,6 +208,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Duração da Regra:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Срок правила:"
           }
         },
         "tr" : {
@@ -294,6 +306,12 @@
             "value" : "porta/protocolo:"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "порт/протокол:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -382,6 +400,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Duração do processo:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пока работает процесс"
           }
         },
         "tr" : {
@@ -566,6 +590,12 @@
             "value" : "Detalhes:"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подробности:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -669,6 +699,12 @@
             "value" : "Assinaturas de Autorizações:"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цепочка подписи:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -757,6 +793,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alerta LuLu"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оповещение LuLu"
           }
         },
         "tr" : {
@@ -904,6 +946,12 @@
             "value" : "DNS (reverso):"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(обратный) DNS:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -992,6 +1040,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detalhes e Opções"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подробности и параметры"
           }
         },
         "tr" : {
@@ -1084,6 +1138,12 @@
             "value" : "Alcance da Regra:"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Область правила:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1174,6 +1234,12 @@
             "value" : "caminho:"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "путь:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1262,6 +1328,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uma vez"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Однократно"
           }
         },
         "tr" : {
@@ -1433,6 +1505,12 @@
             "value" : "Processo"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Процесс"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1523,6 +1601,12 @@
             "value" : "Nome do Processo"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя процесса"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1611,6 +1695,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nome"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя"
           }
         },
         "tr" : {
@@ -1758,6 +1848,12 @@
             "value" : "Processo + filhos"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Процесс + дочерние"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1846,6 +1942,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Processo:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Процесс:"
           }
         },
         "tr" : {
@@ -1938,6 +2040,12 @@
             "value" : "Endpoint remoto"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалённый адрес"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2026,6 +2134,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "mensagem"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "сообщение"
           }
         },
         "tr" : {
@@ -2118,6 +2232,12 @@
             "value" : "argumentos:"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "аргументы:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2206,6 +2326,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sempre"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Всегда"
           }
         },
         "tr" : {
@@ -2298,6 +2424,12 @@
             "value" : "endereço de ip:"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP-адрес:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2386,6 +2518,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloquear"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запретить"
           }
         },
         "tr" : {
@@ -2478,6 +2616,12 @@
             "value" : "Expira em:"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Истекает через:"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2568,6 +2712,12 @@
             "value" : "Registro da hora:"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Время: "
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2656,6 +2806,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Permitir"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешить"
           }
         },
         "tr" : {
