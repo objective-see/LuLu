@@ -6106,6 +6106,23 @@
         }
       }
     },
+    "Edit Existing Rule" : {
+      "comment" : "Title of the rule editor",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Existing Rule"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить правило"
+          }
+        }
+      }
+    },
     "Enable" : {
       "comment" : "Enable",
       "localizations" : {

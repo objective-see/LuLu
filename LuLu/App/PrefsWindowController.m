@@ -658,7 +658,8 @@ bail:
         NSButton* deleteButton = (NSButton*)[cell viewWithTag:TABLE_ROW_DELETE_BTN_TAG];
         
         //add name
-        cell.textField.stringValue = self.profiles[row];
+        // row zero is the built-in default profile, show it localized (stored name is unchanged)
+        cell.textField.stringValue = (0 == row) ? NSLocalizedString(@"Default", @"Default profile display name") : self.profiles[row];
         
         //first row?
         // this is 'default' profile, so disable delete button

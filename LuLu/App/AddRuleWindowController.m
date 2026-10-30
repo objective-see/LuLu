@@ -38,7 +38,7 @@ extern os_log_t logHandle;
     if(nil != self.rule)
     {
         //set title
-        self.window.title = @"Edit Existing Rule";
+        self.window.title = NSLocalizedString(@"Edit Existing Rule", @"Title of the rule editor");
         
         //path
         self.path.stringValue = self.rule.path;
