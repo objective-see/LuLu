@@ -26,6 +26,9 @@ extern NSMutableDictionary* alerts;
 
 @property(atomic, assign)BOOL reportedXPCConnectionError;
 
+//check (back) in w/ the extension
+-(void)checkBackIn:(NSUInteger)attemptsLeft;
+
 @end
 
 @implementation XPCDaemonClient
@@ -64,6 +67,24 @@ extern NSMutableDictionary* alerts;
     // this will allow daemon to invoke user methods!
     self.daemon.exportedObject = [[XPCUser alloc] init];
 
+    //set interruption handler
+    // fires if the extension exits while we're connected (e.g. replaced during an upgrade, or crashed & relaunched)
+    // ...the (new) extension has no client until we talk to it (so can't deliver alerts), so check back in
+    __weak typeof(self) weakSelf = self;
+    __weak NSXPCConnection* connection = self.daemon;
+    self.daemon.interruptionHandler = ^{
+        
+        //stale (already replaced) connection? ignore
+        if( (nil == weakSelf) ||
+            (connection != weakSelf.daemon) ) return;
+        
+        //log msg
+        os_log(logHandle, "XPC connection to extension was interrupted (extension exited/restarted?), will check back in");
+        
+        //check back in
+        [weakSelf checkBackIn:5];
+    };
+    
     //resume
     [self.daemon resume];
 
@@ -85,6 +106,37 @@ extern NSMutableDictionary* alerts;
     //and create a new one
     [self createConnection];
 
+    return;
+}
+
+//check (back) in w/ the extension, after our connection was interrupted
+// note: a message after an interruption (re)connects to the mach service
+//       ...but fails if the (new) extension isn't up yet, so retry (bounded)
+-(void)checkBackIn:(NSUInteger)attemptsLeft
+{
+    //check in
+    [[self.daemon remoteObjectProxyWithErrorHandler:^(NSError* proxyError) {
+        
+        //err msg
+        os_log_error(logHandle, "ERROR: check (back) in failed (error: %{public}@), attempts left: %lu", proxyError, (unsigned long)attemptsLeft-1);
+        
+        //toss the (dead) connection
+        [self reconnect];
+        
+        //retry (after a sec)?
+        if(attemptsLeft > 1)
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
+                [self checkBackIn:attemptsLeft-1];
+            });
+        }
+        
+    }] checkIn:^(BOOL checkedIn) {
+        
+        //log msg
+        os_log(logHandle, "checked (back) in with extension: %d", checkedIn);
+    }];
+    
     return;
 }
 
