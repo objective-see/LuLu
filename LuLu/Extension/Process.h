@@ -20,6 +20,9 @@
 //pid
 @property pid_t pid;
 
+//flow's kernel identity, including the PID generation
+@property(nonatomic, retain)NSData* _Nullable auditToken;
+
 //user id
 @property uid_t uid;
 

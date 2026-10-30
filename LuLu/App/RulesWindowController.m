@@ -1135,6 +1135,10 @@ static const NSUInteger kDeleteKeyCode = 51;
                 //append
                 action = [NSString stringWithFormat:NSLocalizedString(@"%@ +kids", @"%@ +kids"), action];
             }
+            else if(ACTION_SCOPE_PROCESS_TREE_STRICT == rule.scope.intValue)
+            {
+                action = [NSString stringWithFormat:NSLocalizedString(@"%@ +kids (strict)", @"Strict process tree rule"), action];
+            }
 
             //disabled?
             // set flag (for highlighting) and color
