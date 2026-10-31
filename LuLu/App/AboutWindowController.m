@@ -36,8 +36,15 @@
     
     //(liquid) glass, when available
     // ...otherwise, if not in dark mode, make window white
-    if( (YES != applyGlass(self.window)) &&
-        (YES != isDarkMode()) )
+    if(YES == applyGlass(self.window))
+    {
+        //glass extends the content under the (now transparent) title bar
+        // so grow the window by the title bar's height, to keep the (bottom-anchored) content clear of it
+        NSRect frame = self.window.frame;
+        frame.size.height += NSHeight(self.window.contentView.bounds) - NSHeight(self.window.contentLayoutRect);
+        [self.window setFrame:frame display:NO];
+    }
+    else if(YES != isDarkMode())
     {
         //make white
         self.window.backgroundColor = NSColor.whiteColor;
