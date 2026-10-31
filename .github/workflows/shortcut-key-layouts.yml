@@ -1,0 +1,19 @@
+name: Shortcut Key Layouts
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  shortcut-key-layouts:
+    name: Shortcut key layout regression tests
+    runs-on: macos-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Run shortcut key layout tests
+        run: LuLu/Tests/run_shortcut_key_layout_tests.sh
