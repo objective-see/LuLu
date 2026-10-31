@@ -328,6 +328,8 @@ typedef NS_ENUM(NSInteger, EndpointType) {
 #define KEY_KEY @"key"
 
 #define KEY_CS_ID @"signatureIdentifier"
+#define KEY_CS_TEAM_ID @"signatureTeamIdentifier"
+#define KEY_CS_CDHASH @"signatureCDHash"
 #define KEY_CS_INFO @"signingInfo"
 #define KEY_CS_AUTHS @"signatureAuthorities"
 #define KEY_CS_SIGNER @"signatureSigner"
@@ -404,6 +406,7 @@ typedef NS_ENUM(NSInteger, EndpointType) {
 #define ACTION_SCOPE_PROCESS 0
 #define ACTION_SCOPE_ENDPOINT 1
 #define ACTION_SCOPE_PROCESS_TREE 2
+#define ACTION_SCOPE_PROCESS_TREE_STRICT 3
 
 //signing info (from ES)
 #define CS_FLAGS @"csFlags"

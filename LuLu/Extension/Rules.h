@@ -19,6 +19,7 @@
 @import NetworkExtension;
 
 @class Rule;
+@class ProcessTreeTracker;
 
 
 @interface Rules : NSObject
@@ -30,6 +31,9 @@
 
 //rules
 @property(nonatomic, retain)NSMutableDictionary* rules;
+
+//kernel-observed ancestry for explicitly selected strict policies
+@property(nonatomic, retain)ProcessTreeTracker* processTreeTracker;
 
 //xpc client for talking to login item
 @property(nonatomic, retain)XPCUserClient* xpcUserClient;
@@ -52,6 +56,12 @@
 
 //find (matching) rule
 -(Rule*)find:(Process*)process flow:(NEFilterSocketFlow*)flow;
+
+//nil means this flow has no observed strict owner
+-(NSNumber*)strictDecisionForAuditToken:(NSData*)token process:(Process*)process flow:(NEFilterSocketFlow*)flow;
+
+//whether paused flows need a fresh root lookup
+-(BOOL)hasActiveStrictRules;
 
 //disable (or re-enable)
 -(BOOL)toggleRule:(NSString*)key rule:(NSString*)uuid state:(NSNumber*)state;
