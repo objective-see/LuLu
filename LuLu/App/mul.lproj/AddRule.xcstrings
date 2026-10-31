@@ -59,6 +59,12 @@
             "value" : "Porta remota"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалённый порт"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -149,6 +155,12 @@
             "value" : "Endereço/domínio remoto"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалённый адрес/домен"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -237,6 +249,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Adicionar regra (para conexões de saída)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить правило (для исходящих подключений)"
           }
         },
         "tr" : {
@@ -408,6 +426,12 @@
             "value" : "Cancelar"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отмена"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -496,6 +520,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bloquear"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Запретить"
           }
         },
         "tr" : {
@@ -667,6 +697,12 @@
             "value" : "Permitir"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Разрешить"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -755,6 +791,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Buscar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обзор"
           }
         },
         "tr" : {
@@ -926,6 +968,12 @@
             "value" : "Caminho do programa"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Путь к программе"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1014,6 +1062,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Adicionar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить"
           }
         },
         "tr" : {

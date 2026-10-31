@@ -59,6 +59,12 @@
             "value" : "Atualização LuLu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновление LuLu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -147,6 +153,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Atializar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновление"
           }
         },
         "tr" : {

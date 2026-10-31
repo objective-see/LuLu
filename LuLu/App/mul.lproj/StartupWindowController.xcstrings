@@ -59,6 +59,12 @@
             "value" : "Inicializando…"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запуск…"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -147,6 +153,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nota: O LuLu funciona melhor no macOS 15.3+, pois a Apple corrigiu bugs que afetavam a estabilidade da rede."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Примечание: LuLu лучше всего работает на macOS 15.3+, где Apple исправила ошибки, влиявшие на стабильность сети. "
           }
         },
         "tr" : {

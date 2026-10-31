@@ -59,6 +59,12 @@
             "value" : "Mostrar..."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показать…"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -147,6 +153,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alternar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переключить"
           }
         },
         "tr" : {
@@ -239,6 +251,12 @@
             "value" : "Configurações…"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки…"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -327,6 +345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perfis"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профили"
           }
         },
         "tr" : {
@@ -419,6 +443,12 @@
             "value" : "Importar…"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Импорт…"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -507,6 +537,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alternar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переключить"
           }
         },
         "tr" : {
@@ -678,6 +714,12 @@
             "value" : "Exportar…"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экспорт…"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -766,6 +808,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perfis"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профили"
           }
         },
         "tr" : {
@@ -858,6 +906,12 @@
             "value" : "Fechar LuLu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завершить LuLu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -946,6 +1000,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Adicionar..."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить…"
           }
         },
         "tr" : {
@@ -1117,6 +1177,12 @@
             "value" : "Apoiar LuLu 💕"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поддержать LuLu 💕"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1205,6 +1271,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desabilitar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отключить"
           }
         },
         "tr" : {
@@ -1297,6 +1369,12 @@
             "value" : "Desinstalar LuLu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить LuLu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1385,6 +1463,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Limpeza"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистка"
           }
         },
         "tr" : {
@@ -1477,6 +1561,12 @@
             "value" : "Perfil: Padrão"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профиль: по умолчанию"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1565,6 +1655,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gerenciar..."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Управление…"
           }
         },
         "tr" : {
@@ -1657,6 +1753,12 @@
             "value" : "Sobre LuLu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "О программе LuLu"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1745,6 +1847,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fechar LuLu"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завершить LuLu"
           }
         },
         "tr" : {
@@ -1837,6 +1945,12 @@
             "value" : "Menu Principal"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Главное меню"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1925,6 +2039,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regras"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила"
           }
         },
         "tr" : {
@@ -2017,6 +2137,12 @@
             "value" : "Regras"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2107,6 +2233,12 @@
             "value" : "Monitor de Rede"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сетевой монитор…"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2195,6 +2327,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "LULU: habilitado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LULU: включён"
           }
         },
         "tr" : {
