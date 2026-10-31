@@ -518,7 +518,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <action selector="updateBlockList:" target="-2" id="yHB-JK-0Yl"/>
+                        <action selector="updateAllowList:" target="-2" id="yHB-JK-0Yl"/>
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" preferredMaxLayoutWidth="471" translatesAutoresizingMaskIntoConstraints="NO" id="RXk-GO-rzE">

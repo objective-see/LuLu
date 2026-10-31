@@ -550,6 +550,19 @@ bail:
     return;
 }
 
+//invoked when allow list path is (manually entered)
+-(IBAction)updateAllowList:(id)sender
+{
+    //dbg msg
+    os_log_debug(logHandle, "got 'update allow list event' (value: %{public}@)", self.allowList.stringValue);
+    
+    //send XPC msg to daemon to update prefs
+    // returns (all/latest) prefs, which is what we want
+    self.preferences = [xpcDaemonClient updatePreferences:@{PREF_ALLOW_LIST:self.allowList.stringValue}];
+
+    return;
+}
+
 //invoked when block list path is (manually entered)
 -(IBAction)updateBlockList:(id)sender
 {
