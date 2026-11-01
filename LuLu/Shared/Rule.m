@@ -10,6 +10,7 @@
 #import "Rule.h"
 #import "consts.h"
 #import "utilities.h"
+#import "WildcardPath.h"
 
 #import <objc/runtime.h>
 
@@ -299,6 +300,7 @@ EndpointType endpointTypeForAddress(NSString* address)
 }
 
 //is rule directory?
+// note: a path w/ wildcards elsewhere (e.g. '/Users/*/foo/*') isn't prefix-matchable, so isn't one
 -(NSNumber*)isDirectory
 {
     //first time?
@@ -306,10 +308,33 @@ EndpointType endpointTypeForAddress(NSString* address)
     if(nil == _isDirectory)
     {
         //set
-        _isDirectory = [NSNumber numberWithBool:((YES == [self.path hasPrefix:@"/"]) && (YES == [self.path hasSuffix:@"/*"]))];
+        _isDirectory = [NSNumber numberWithBool:((YES == [self.path hasPrefix:@"/"]) && (YES == [self.path hasSuffix:@"/*"]) && (YES != isWildcardPath(self.path)))];
     }
     
     return _isDirectory;
+}
+
+//is rule wildcard?
+-(NSNumber*)isWildcard
+{
+    //first time?
+    // init and set
+    if(nil == _isWildcard)
+    {
+        //set
+        _isWildcard = [NSNumber numberWithBool:isWildcardPath(self.path)];
+    }
+
+    return _isWildcard;
+}
+
+//does a (process) path match this rule's wildcard path?
+-(BOOL)matchesWildcardPath:(NSString*)path
+{
+    //only wildcard rules match this way
+    if(YES != self.isWildcard.boolValue) return NO;
+
+    return wildcardPathMatch(self.path, path);
 }
 
 //required as we support secure coding

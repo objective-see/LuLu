@@ -9,6 +9,7 @@
 #import "consts.h"
 #import "signing.h"
 #import "utilities.h"
+#import "WildcardPath.h"
 #import "XPCDaemonClient.h"
 #import "ItemPathsWindowController.h"
 
@@ -44,7 +45,8 @@ extern XPCDaemonClient* xpcDaemonClient;
     
     //set heading if 'normal' rule
     if(!rule.isGlobal.boolValue &&
-       !rule.isDirectory.boolValue) {
+       !rule.isDirectory.boolValue &&
+       !rule.isWildcard.boolValue) {
         
         //set heading
         self.heading.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Path(s) for %@:", nil), rule.name];
@@ -118,7 +120,20 @@ extern XPCDaemonClient* xpcDaemonClient;
     {
         //set message
         [paths addObject:NSLocalizedString(@"Directory Rules apply to all items within the directory", @"Directory Rules apply to all items within the directory")];
-        
+
+        //done
+        goto bail;
+    }
+
+    //wildcard rule?
+    if(YES == rule.isWildcard.boolValue)
+    {
+        //set message
+        [paths addObject:NSLocalizedString(@"Wildcard Rules apply to all items whose path matches", @"Wildcard Rules apply to all items whose path matches")];
+
+        //also show the path itself
+        [paths addObject:rule.path];
+
         //done
         goto bail;
     }
