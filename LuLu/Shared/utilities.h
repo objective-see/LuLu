@@ -23,6 +23,10 @@ NSString* getBundleExecutable(NSString* appPath);
 // extracted from Info.plist
 NSString* getAppVersion(void);
 
+//get (versioned) mach service name of extension
+// extracted from extension's Info.plist
+NSString* getMachServiceName(void);
+
 //get (true) parent
 NSDictionary* getRealParent(pid_t pid);
 

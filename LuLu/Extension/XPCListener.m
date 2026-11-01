@@ -74,7 +74,7 @@ extern os_log_t logHandle;
     if(nil != self)
     {
         //init listener
-        listener = [[NSXPCListener alloc] initWithMachServiceName:DAEMON_MACH_SERVICE];
+        listener = [[NSXPCListener alloc] initWithMachServiceName:getMachServiceName()];
         
         //macOS 13+
         // set code signing requirement for clients via 'setConnectionCodeSigningRequirement'
@@ -93,7 +93,7 @@ extern os_log_t logHandle;
         }
         
         //dbg msg
-        os_log_debug(logHandle, "created mach service %@", DAEMON_MACH_SERVICE);
+        os_log_debug(logHandle, "created mach service %{public}@", getMachServiceName());
         
         //set delegate
         self.listener.delegate = self;

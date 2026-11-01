@@ -44,6 +44,25 @@ NSString* getAppVersion(void)
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
 
+//get (versioned) mach service name of extension
+// from its Info.plist (own bundle, or the one bundled in the app), so app & extension can't drift
+NSString* getMachServiceName(void)
+{
+    //bundle
+    NSBundle* bundle = NSBundle.mainBundle;
+    
+    //app?
+    // use bundled extension
+    if(YES != [bundle.bundleIdentifier isEqualToString:EXT_BUNDLE_ID])
+    {
+        //load
+        bundle = [NSBundle bundleWithPath:[bundle.bundlePath stringByAppendingPathComponent:EXT_BUNDLE_PATH]];
+    }
+    
+    //read and return 'NEMachServiceName'
+    return bundle.infoDictionary[@"NetworkExtension"][@"NEMachServiceName"];
+}
+
 //give path to bundle
 // get full path to its binary
 NSString* getBundleExecutable(NSString* appPath)

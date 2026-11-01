@@ -55,7 +55,7 @@ extern NSMutableDictionary* alerts;
 -(void)createConnection
 {
     //alloc/init
-    daemon = [[NSXPCConnection alloc] initWithMachServiceName:DAEMON_MACH_SERVICE options:0];
+    daemon = [[NSXPCConnection alloc] initWithMachServiceName:getMachServiceName() options:0];
 
     //set remote object interface
     self.daemon.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(XPCDaemonProtocol)];

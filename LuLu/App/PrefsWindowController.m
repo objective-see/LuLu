@@ -1178,6 +1178,9 @@ bail:
             //dbg msg
             os_log_debug(logHandle, "a new version (%@) is available", newVersion);
             
+            //set label
+            self.updateLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"a new version (%@) is available!",@"a new version (%@) is available!"), newVersion];
+            
             //alloc update window
             updateWindowController = [[UpdateWindowController alloc] initWithWindowNibName:@"UpdateWindow"];
             

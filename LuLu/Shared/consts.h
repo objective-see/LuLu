@@ -77,8 +77,8 @@ typedef NS_ENUM(NSInteger, EndpointType) {
 //client enabled
 #define STATUS_CLIENT_ENABLED 1
 
-//daemon mach name
-#define DAEMON_MACH_SERVICE @"VBG97UB4TA.com.objective-see.lulu"
+//extension (bundle) path, within app
+#define EXT_BUNDLE_PATH @"Contents/Library/SystemExtensions/com.objective-see.lulu.extension.systemextension"
 
 //rule state; not found
 #define RULE_STATE_NOT_FOUND -1
