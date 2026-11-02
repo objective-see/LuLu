@@ -20,6 +20,9 @@ typedef void(^replyBlockType)(NSError*);
 //reply
 @property(nonatomic, copy)replyBlockType replyBlock;
 
+//(activation) request needs user approval
+@property(nonatomic)BOOL needsApproval;
+
 
 /* METHODS */
 

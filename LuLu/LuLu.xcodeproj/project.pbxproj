@@ -48,6 +48,7 @@
 		CDA136D624F0DA0E005AD424 /* RuleRow.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369E24F0D2CF005AD424 /* RuleRow.m */; };
 		CDA136D924F0DA0E005AD424 /* RulesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369C24F0D2CF005AD424 /* RulesWindowController.m */; };
 		CDA136DA24F0DA0E005AD424 /* WelcomeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1369924F0D2CF005AD424 /* WelcomeWindowController.m */; };
+		CD7E5E0100000000000000A1 /* WelcomePages.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7E5E0100000000000000A3 /* WelcomePages.m */; };
 		CDA136DB24F0DA0E005AD424 /* AlertWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367224F0D268005AD424 /* AlertWindowController.m */; };
 		CDA136DD24F0DA0F005AD424 /* ParentsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367E24F0D268005AD424 /* ParentsWindowController.m */; };
 		CDA136DE24F0DA0F005AD424 /* SigningInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA1367524F0D268005AD424 /* SigningInfoViewController.m */; };
@@ -175,6 +176,8 @@
 		CDA1369524F0D2CF005AD424 /* AboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWindowController.m; sourceTree = "<group>"; };
 		CDA1369624F0D2CF005AD424 /* patrons.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = patrons.txt; sourceTree = "<group>"; };
 		CDA1369724F0D2CF005AD424 /* WelcomeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeWindowController.h; sourceTree = "<group>"; };
+		CD7E5E0100000000000000A2 /* WelcomePages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomePages.h; sourceTree = "<group>"; };
+		CD7E5E0100000000000000A3 /* WelcomePages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomePages.m; sourceTree = "<group>"; };
 		CDA1369924F0D2CF005AD424 /* WelcomeWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeWindowController.m; sourceTree = "<group>"; };
 		CDA1369A24F0D2CF005AD424 /* AddRuleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRuleWindowController.m; sourceTree = "<group>"; };
 		CDA1369B24F0D2CF005AD424 /* AboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWindowController.h; sourceTree = "<group>"; };
@@ -357,6 +360,8 @@
 				CDA136B624F0D4A9005AD424 /* UpdateWindowController.h */,
 				CDA136B324F0D4A8005AD424 /* UpdateWindowController.m */,
 				CD00702B2C3956F50011979F /* Welcome.xib */,
+				CD7E5E0100000000000000A2 /* WelcomePages.h */,
+				CD7E5E0100000000000000A3 /* WelcomePages.m */,
 				CDA1369724F0D2CF005AD424 /* WelcomeWindowController.h */,
 				CDA1369924F0D2CF005AD424 /* WelcomeWindowController.m */,
 				CDA136CE24F0D9C1005AD424 /* XPCDaemonClient.h */,
@@ -557,6 +562,7 @@
 				CDCAA9692B677AFC00FE27DD /* StartupWindowController.m in Sources */,
 				CDA136D924F0DA0E005AD424 /* RulesWindowController.m in Sources */,
 				CDA136DA24F0DA0E005AD424 /* WelcomeWindowController.m in Sources */,
+				CD7E5E0100000000000000A1 /* WelcomePages.m in Sources */,
 				CDA136DB24F0DA0E005AD424 /* AlertWindowController.m in Sources */,
 				CDA136DD24F0DA0F005AD424 /* ParentsWindowController.m in Sources */,
 				CDA136DE24F0DA0F005AD424 /* SigningInfoViewController.m in Sources */,
@@ -844,7 +850,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4.5.6;
+				CURRENT_PROJECT_VERSION = 4.5.7;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -858,7 +864,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 4.5.6;
+				MARKETING_VERSION = 4.5.7;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -876,7 +882,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4.5.6;
+				CURRENT_PROJECT_VERSION = 4.5.7;
 				DEVELOPMENT_TEAM = VBG97UB4TA;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -890,7 +896,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 4.5.6;
+				MARKETING_VERSION = 4.5.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "LuLu Application";
@@ -906,7 +912,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.5.6;
+				CURRENT_PROJECT_VERSION = 4.5.7;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -920,7 +926,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 4.5.6;
+				MARKETING_VERSION = 4.5.7;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.extension";
 				PRODUCT_NAME = "com.objective-see.lulu.extension";
@@ -937,7 +943,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.5.6;
+				CURRENT_PROJECT_VERSION = 4.5.7;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = VBG97UB4TA;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -951,7 +957,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 4.5.6;
+				MARKETING_VERSION = 4.5.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.objective-see.lulu.extension";
 				PRODUCT_NAME = "com.objective-see.lulu.extension";
 				PROVISIONING_PROFILE_SPECIFIER = "";

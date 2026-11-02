@@ -1119,8 +1119,12 @@ bail:
                 : [NEFilterNewFlowVerdict allowVerdict];
 
             //resume this (alerted) flow, & pull it from the queue so it isn't re-processed below
-            [strongSelf resumeFlow:strongFlow withVerdict:verdict];
-            [strongSelf removeRelatedFlow:strongFlow forKey:alert[KEY_KEY]];
+            // note: may be gone, if its process exited (and so it was reaped) before the user responded
+            if(nil != strongFlow)
+            {
+                [strongSelf resumeFlow:strongFlow withVerdict:verdict];
+                [strongSelf removeRelatedFlow:strongFlow forKey:alert[KEY_KEY]];
+            }
         }
         //otherwise create a rule (from user's response)
         else
@@ -1324,25 +1328,36 @@ bail:
         //note: iterating a snapshot (allKeys), so safe to mutate the dict in the loop
         for(NSString* key in self.relatedFlows.allKeys)
         {
-            //pid via the flow's (kernel) audit token; all flows for a key share the process
-            NEFilterSocketFlow* flow = [self.relatedFlows[key] firstObject];
-            if(nil == flow) continue;
-            pid_t pid = audit_token_to_pid(*(audit_token_t*)flow.sourceAppAuditToken.bytes);
-
-            //process still alive?
-            // leave its flows be (still awaiting a verdict)
-            if((0 != pid) &&
-               (YES == isAlive(pid)))
+            //check each flow
+            // a key is per process (not pid), so its flows may belong to several pids, some alive, some gone
+            // note: iterating a copy, so safe to remove from the queue in the loop
+            for(NEFilterSocketFlow* flow in [self.relatedFlows[key] array])
             {
-                continue;
+                //pid via the flow's (kernel) audit token
+                pid_t pid = audit_token_to_pid(*(audit_token_t*)flow.sourceAppAuditToken.bytes);
+
+                //process still alive?
+                // leave its flow be (still awaiting a verdict)
+                if((0 != pid) &&
+                   (YES == isAlive(pid)))
+                {
+                    continue;
+                }
+
+                //process is gone
+                // grab its held flow
+                os_log_debug(logHandle, "process %d (key: %{public}@) has exited; reaping its flow", pid, key);
+                [flows addObject:flow];
+                [self.relatedFlows[key] removeObject:flow];
             }
 
-            //process is gone
-            // grab all its held flows, then clear its (now-stale) alert state
-            os_log_debug(logHandle, "process %d (key: %{public}@) has exited; reaping its flows", pid, key);
-            [flows addObjectsFromArray:[self.relatedFlows[key] array]];
-            [self.relatedFlows removeObjectForKey:key];
-            [alerts removeShown:key];
+            //no flows left for key?
+            // remove key, but leave any 'shown' alert as is: it's only ever cleared by the user's reply
+            // (or the client going away), so a new instance of the process gets no (duplicate) alert
+            if(0 == [self.relatedFlows[key] count])
+            {
+                [self.relatedFlows removeObjectForKey:key];
+            }
         }
 
         //dbg msg

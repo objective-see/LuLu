@@ -202,6 +202,21 @@ enum menuItems
     //set delegate
     self.popover.delegate = self;
     
+    //close on click of the status item
+    // note: while the popover is up, AppKit swallows clicks on the item (the menu doesn't open, nor are
+    //       they delivered to the app), so only a global monitor sees them ...removed when the popover closes
+    self.clickMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:NSEventMaskLeftMouseDown handler:^(NSEvent* event) {
+        
+        //click on status item (w/ popover shown)?
+        // close popover
+        if( (YES == self.popover.shown) &&
+            (YES == NSPointInRect(NSEvent.mouseLocation, self.statusItem.button.window.frame)) )
+        {
+            //close
+            [self.popover performClose:nil];
+        }
+    }];
+    
     //show popover
     // have to wait cuz...
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(),
@@ -225,9 +240,27 @@ enum menuItems
         //remove action handler
         self.statusItem.button.action = nil;
         
+        //remove click monitor
+        // (normally already done, when the popover closed)
+        [self removeClickMonitor];
+        
         //reset highlight mode
         ((NSButtonCell*)self.statusItem.button.cell).highlightsBy = NSContentsCellMask | NSChangeBackgroundCellMask;
     });
+    
+    return;
+}
+
+//remove (global) click monitor
+-(void)removeClickMonitor
+{
+    //remove
+    if(nil != self.clickMonitor)
+    {
+        //remove
+        [NSEvent removeMonitor:self.clickMonitor];
+        self.clickMonitor = nil;
+    }
     
     return;
 }
@@ -237,6 +270,9 @@ enum menuItems
 {
     //unset
     self.popover = nil;
+    
+    //remove click monitor
+    [self removeClickMonitor];
     
     //reset highlight mode
     ((NSButtonCell*)self.statusItem.button.cell).highlightsBy = NSContentsCellMask | NSChangeBackgroundCellMask;

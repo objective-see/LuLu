@@ -27,6 +27,10 @@
 //popover
 @property(retain, nonatomic)NSPopover* popover;
 
+//(global) click monitor
+// closes the popover when the status item is clicked
+@property(nonatomic, strong)id clickMonitor;
+
 //disabled flag
 @property BOOL isDisabled;
 

@@ -77,6 +77,12 @@ typedef NS_ENUM(NSInteger, EndpointType) {
 //client enabled
 #define STATUS_CLIENT_ENABLED 1
 
+//system settings: login items & extensions (macOS 13+)
+#define SETTINGS_EXTENSIONS_URL @"x-apple.systempreferences:com.apple.LoginItems-Settings.extension"
+
+//system settings: security & privacy (pre-macOS 13)
+#define SETTINGS_SECURITY_URL @"x-apple.systempreferences:com.apple.preference.security?General"
+
 //extension (bundle) path, within app
 #define EXT_BUNDLE_PATH @"Contents/Library/SystemExtensions/com.objective-see.lulu.extension.systemextension"
 

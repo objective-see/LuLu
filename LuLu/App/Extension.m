@@ -367,6 +367,9 @@ bail:
     //dbg msg
     os_log(logHandle, "system extension request needs user approval");
     
+    //set flag
+    self.needsApproval = YES;
+    
     //not user launched?
     // show alert on desktop
     if(YES != launchedByUser())
