@@ -70,6 +70,73 @@ extern XPCDaemonClient* xpcDaemonClient;
 #define BUTTON_PASSIVE_MODE_ACTION_ALLOW 0
 #define BUTTON_PASSIVE_MODE_ACTION_BLOCK 1
 
+//title fields share the preference tag with this offset
+#define PREFERENCE_LABEL_TAG_OFFSET 1000
+
+//use the localized title, independent of layout direction
+-(NSString*)labelForPreferenceButton:(NSButton*)button
+{
+    if(button.action != @selector(togglePreference:)) return nil;
+
+    NSTextField* label = (NSTextField*)[button.superview viewWithTag:PREFERENCE_LABEL_TAG_OFFSET + button.tag];
+    return [label isKindOfClass:[NSTextField class]] ? label.stringValue : nil;
+}
+
+//apply native typography and labels to preference panes
+-(void)stylePreferenceView:(NSView*)view
+{
+    for(NSView* subview in view.subviews)
+    {
+        NSFont* font = nil;
+
+        if(YES == [subview isKindOfClass:[NSTextField class]])
+        {
+            NSTextField* textField = (NSTextField*)subview;
+            font = textField.font;
+
+            if(YES == [font.fontName containsString:@"Menlo-Bold"])
+            {
+                textField.font = [NSFont systemFontOfSize:font.pointSize weight:NSFontWeightSemibold];
+            }
+            else if(YES == [font.fontName containsString:@"Menlo-Regular"])
+            {
+                textField.font = [NSFont systemFontOfSize:font.pointSize];
+            }
+        }
+        else if(YES == [subview isKindOfClass:[NSPopUpButton class]])
+        {
+            NSPopUpButton* popUpButton = (NSPopUpButton*)subview;
+            font = popUpButton.font;
+
+            if(YES == [font.fontName containsString:@"Menlo"])
+            {
+                popUpButton.font = [NSFont systemFontOfSize:font.pointSize];
+            }
+        }
+        else if(YES == [subview isKindOfClass:[NSButton class]])
+        {
+            NSButton* button = (NSButton*)subview;
+            font = button.font;
+
+            if(YES == [font.fontName containsString:@"Menlo"])
+            {
+                button.font = [NSFont systemFontOfSize:font.pointSize weight:NSFontWeightMedium];
+            }
+
+            if(0 == button.title.length)
+            {
+                NSString* accessibilityLabel = [self labelForPreferenceButton:button];
+                if(0 != accessibilityLabel.length)
+                {
+                    [button.cell setAccessibilityLabel:accessibilityLabel];
+                    button.toolTip = accessibilityLabel;
+                }
+            }
+        }
+        [self stylePreferenceView:subview];
+    }
+}
+
 //init 'general' view
 // add it, and make it selected
 -(void)awakeFromNib
@@ -79,6 +146,12 @@ extern XPCDaemonClient* xpcDaemonClient;
     
     //get prefs
     self.preferences = [xpcDaemonClient getPreferences];
+
+    //style every pane before it is shown in the window or a new-profile sheet
+    for(NSView* view in @[self.rulesView, self.modesView, self.listsView, self.profilesView, self.updateView])
+    {
+        [self stylePreferenceView:view];
+    }
     
     return;
 }

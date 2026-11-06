@@ -93,7 +93,13 @@ extern NSMutableDictionary* alerts;
     for(NSView* view in content.subviews)
     {
         if([view isKindOfClass:NSButton.class] && ((NSButton*)view).action == @selector(handleUserResponse:))
+        {
             ((NSButton*)view).font = [NSFont systemFontOfSize:14 weight:NSFontWeightSemibold];
+
+            NSString* connectionDescription = [NSString stringWithFormat:@"%@ %@", self.processName.stringValue, self.alertMessage.string];
+            [view setAccessibilityHelp:connectionDescription];
+            view.toolTip = connectionDescription;
+        }
     }
 
     // Keep older SDKs and the macOS 10.15 deployment target supported.
