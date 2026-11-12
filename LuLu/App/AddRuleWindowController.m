@@ -281,10 +281,11 @@ bail:
     // exists/is directory
     exists = [NSFileManager.defaultManager fileExistsAtPath:path isDirectory:&isDirectory];
 
-    //if its a directory (but not bundle)
+    //if its a directory (but not an app/bundle with an executable)
+    // note: 'bundleWithPath:' returns an object for any directory
     // add '/*' to make it directory rule
     if( (YES == isDirectory) &&
-        (nil == [NSBundle bundleWithPath:path]))
+        (nil == [NSBundle bundleWithPath:path].executablePath))
     {
         //no '/'?
         // ...append it
