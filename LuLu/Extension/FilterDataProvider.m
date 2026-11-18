@@ -331,30 +331,13 @@ bail:
 }
 
 //no user/client to show an alert to
-// allow the flow, but create a (passive) rule so the user can review it later
+// allow the flow without creating a rule, so a temporary client disconnect does not
+// permanently suppress the alert that should be shown after the client reconnects
 // note: used by every alert-requiring path, so a flow is never left paused w/ no one to answer
--(FlowVerdict)allowNoClient:(Process*)process
+-(FlowVerdict)allowNoClient
 {
-    //rule info
-    NSMutableDictionary* info = nil;
-
     //dbg msg
-    os_log_debug(logHandle, "no active user or no connected client, will allow (and create rule)...");
-
-    //init info for (passive allow) rule
-    info = [@{KEY_PATH:process.path, KEY_ACTION:@RULE_STATE_ALLOW, KEY_TYPE:@RULE_TYPE_PASSIVE} mutableCopy];
-
-    //add process cs info?
-    if(nil != process.csInfo) info[KEY_CS_INFO] = process.csInfo;
-
-    //create and add rule
-    // note: no 'rulesChanged' broadcast — there's no connected client to receive it;
-    //       the rule is saved and picked up when the client (re)connects & fetches rules
-    if(YES != [rules add:[[Rule alloc] init:info] save:YES])
-    {
-        //err msg
-        os_log_error(logHandle, "ERROR: failed to add rule for %{public}@", info[KEY_PATH]);
-    }
+    os_log_debug(logHandle, "no active user or no connected client, will allow without creating a rule...");
 
     return kFlowVerdictAllow;
 }
@@ -818,7 +801,7 @@ bail:
 
     //can we actually show an alert?
     // need a logged-in user AND a connected client; if not, alert-requiring paths below
-    // allow + create a passive rule instead of pausing a flow no one can answer
+    // allow without pausing a flow no one can answer
     BOOL canAlert = ( (nil != consoleUser) &&
                       (YES == [alerts.xpcUserClient isConnected]) );
 
@@ -839,14 +822,14 @@ bail:
             os_log_debug(logHandle, "is an Apple binary...");
             
             //graylisted item?
-            // pause and alert user (or, if no client, allow + create a passive rule)
+            // pause and alert user (or, if no client, allow without creating a rule)
             if(YES == [self.grayList isGrayListed:process])
             {
                 //no user/client to prompt?
-                // allow + create rule, so the flow isn't left paused w/ no one to answer
+                // allow, so the flow isn't left paused w/ no one to answer
                 if(NO == canAlert)
                 {
-                    verdict = [self allowNoClient:process];
+                    verdict = [self allowNoClient];
                     goto bail;
                 }
 
@@ -863,10 +846,10 @@ bail:
             else if(0 != [rules ruleCountForKey:process.key])
             {
                 //no user/client to prompt?
-                // allow + create rule, so the flow isn't left paused w/ no one to answer
+                // allow, so the flow isn't left paused w/ no one to answer
                 if(NO == canAlert)
                 {
-                    verdict = [self allowNoClient:process];
+                    verdict = [self allowNoClient];
                     goto bail;
                 }
 
@@ -1021,10 +1004,10 @@ bail:
     }
     
     //no user/client to show an alert to?
-    // allow, but create a rule for review
+    // allow without creating a rule
     if(NO == canAlert)
     {
-        verdict = [self allowNoClient:process];
+        verdict = [self allowNoClient];
         goto bail;
     }
 
