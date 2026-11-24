@@ -362,8 +362,8 @@ bail:
     }
    
     //find matches
-    matches = [self.items objectsPassingTest:^BOOL(NSString* item, BOOL* stop) {
-        return [endpointNames containsObject:item];
+    matches = [endpointNames objectsPassingTest:^BOOL(NSString* item, BOOL* stop) {
+        return [self.items containsObject:item];
     }];
         
     //any matches?
