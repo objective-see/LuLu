@@ -1330,8 +1330,11 @@ bail:
         {
             //check each flow
             // a key is per process (not pid), so its flows may belong to several pids, some alive, some gone
-            // note: iterating a copy, so safe to remove from the queue in the loop
-            for(NEFilterSocketFlow* flow in [self.relatedFlows[key] array])
+            // note: -[NSMutableOrderedSet array] returns a LIVE proxy, not a snapshot;
+            // mutating the set while enumerating it crashes in -[NSArray getObjects:range:]
+            // so iterate a real immutable snapshot instead
+            NSArray* flowsSnapshot = [NSArray arrayWithArray:self.relatedFlows[key]];
+            for(NEFilterSocketFlow* flow in flowsSnapshot)
             {
                 //pid via the flow's (kernel) audit token
                 pid_t pid = audit_token_to_pid(*(audit_token_t*)flow.sourceAppAuditToken.bytes);
