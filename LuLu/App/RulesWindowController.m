@@ -441,6 +441,14 @@ bail:
     return;
 }
 
+//switch to a rule view (RULE_TYPE_*)
+-(void)showView:(NSInteger)type
+{
+    //select, then handle as if user had
+    [self.rulesViewSelector selectItemWithTag:type];
+    [self rulesViewSelectorHandler:nil];
+}
+
 //filter (search box) handler
 // just call into update method (which filters, etc)
 -(IBAction)filterBoxHandler:(id)sender {
@@ -768,9 +776,16 @@ bail:
         
     }];}
     
-    //sort recent rules
-    if(RULE_TYPE_RECENT == self.selectedRuleView)
+    //sort recent (and passive) rules
+    if( (RULE_TYPE_RECENT == self.selectedRuleView) ||
+        (RULE_TYPE_PASSIVE == self.selectedRuleView) )
     {
+        //rule's creation time
+        // older (passive) rules may not have one
+        NSDate* (^creation)(id) = ^NSDate*(id item) {
+            return ((Rule*)[((NSDictionary*)item)[KEY_RULES] firstObject]).creation ?: NSDate.distantPast;
+        };
+
         //nap for UI (loading msg)
         [NSThread sleepForTimeInterval:0.5f];
         
@@ -787,13 +802,13 @@ bail:
             if(YES == self.isAscending)
             {
                 //compare/return
-                return [((Rule*)[((NSDictionary*)obj2)[KEY_RULES] firstObject]).creation compare:((Rule*)[((NSDictionary*)obj1)[KEY_RULES] firstObject]).creation];
+                return [creation(obj2) compare:creation(obj1)];
             }
             //reversed
             else
             {
                 //compare/return
-                return [((Rule*)[((NSDictionary*)obj1)[KEY_RULES] firstObject]).creation compare:((Rule*)[((NSDictionary*)obj2)[KEY_RULES] firstObject]).creation];
+                return [creation(obj1) compare:creation(obj2)];
             }
         }];
         

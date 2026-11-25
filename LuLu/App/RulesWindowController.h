@@ -105,6 +105,9 @@
 //configure (UI)
 -(void)configure;
 
+//switch to a rule view (RULE_TYPE_*)
+-(void)showView:(NSInteger)type;
+
 //add a rule
 -(IBAction)addRule:(id)sender;
 

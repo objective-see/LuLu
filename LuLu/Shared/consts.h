@@ -227,6 +227,10 @@ typedef NS_ENUM(NSInteger, EndpointType) {
 // not really a 'pref' but need to save it
 #define PREF_ALERT_LAST_RULE_DURATION @"alertLastRuleDuration"
 
+//rules were (passively) created while no client was connected
+// not really a 'pref': set by the extension, cleared by the app once the user's been told
+#define PREF_AWAY_RULES @"awayRules"
+
 //rule duration buttons
 #define RULE_DURATION_BUTTON_ALWAYS 100
 #define RULE_DURATION_BUTTON_PROCESS 101

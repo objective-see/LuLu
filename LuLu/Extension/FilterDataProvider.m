@@ -356,6 +356,13 @@ bail:
         os_log_error(logHandle, "ERROR: failed to add rule for %{public}@", info[KEY_PATH]);
     }
 
+    //set flag (once)
+    // so when the client (re)connects, it can tell the user to review such rules
+    else if(YES != [preferences.preferences[PREF_AWAY_RULES] boolValue])
+    {
+        [preferences update:@{PREF_AWAY_RULES:@YES} replace:NO];
+    }
+
     return kFlowVerdictAllow;
 }
 

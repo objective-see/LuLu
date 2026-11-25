@@ -835,7 +835,38 @@ bail:
             [self check4Update];
        });
     }
+
+    //rules were (passively) created while LuLu wasn't running/no user was logged in?
+    // clear flag, then tell user
+    if(YES == [preferences[PREF_AWAY_RULES] boolValue])
+    {
+        //clear
+        [xpcDaemonClient updatePreferences:@{PREF_AWAY_RULES:@NO}];
+
+        //tell user
+        // async, so as not to hold up initialization
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showAwayRulesAlert];
+        });
+    }
     
+    return;
+}
+
+//tell user that rules were (passively) created while LuLu wasn't running
+// ...and (if they want) show them
+-(void)showAwayRulesAlert
+{
+    //show alert
+    NSModalResponse response = showAlert(NSAlertStyleInformational, NSLocalizedString(@"Rules Were Created While LuLu Wasn't Running", @"Rules Were Created While LuLu Wasn't Running"), NSLocalizedString(@"Programs made connections while LuLu wasn't running (or no user was logged in).\r\nThese were allowed, and rules were created for you to review.", @"Programs made connections while LuLu wasn't running (or no user was logged in).\r\nThese were allowed, and rules were created for you to review."), @[NSLocalizedString(@"Show Rules", @"Show Rules"), NSLocalizedString(@"OK", @"OK")]);
+
+    //show (passive) rules
+    if(NSAlertFirstButtonReturn == response)
+    {
+        [self showRules:nil];
+        [self.rulesWindowController showView:RULE_TYPE_PASSIVE];
+    }
+
     return;
 }
 

@@ -15564,6 +15564,255 @@
           }
         }
       }
+    },
+    "Rules Were Created While LuLu Wasn't Running" : {
+      "comment" : "Rules Were Created While LuLu Wasn't Running",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regeln wurden erstellt, während LuLu nicht lief"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Δημιουργήθηκαν κανόνες ενώ το LuLu δεν εκτελούνταν"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se crearon reglas mientras LuLu no estaba en ejecución"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Des règles ont été créées pendant que LuLu n'était pas en cours d'exécution"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sono state create regole mentre LuLu non era in esecuzione"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu가 실행 중이 아닐 때 규칙이 생성되었습니다"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utworzono reguły, gdy LuLu nie był uruchomiony"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regras foram criadas enquanto o LuLu não estava em execução"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu çalışmıyorken kurallar oluşturuldu"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Правила було створено, поки LuLu не працював"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu کے نہ چلنے کے دوران قواعد بنائے گئے"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 未运行时创建了规则"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu 未執行時建立了規則"
+          }
+        }
+      }
+    },
+    "Programs made connections while LuLu wasn't running (or no user was logged in).\r\nThese were allowed, and rules were created for you to review." : {
+      "comment" : "Programs made connections while LuLu wasn't running (or no user was logged in).\r\nThese were allowed, and rules were created for you to review.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programme haben Verbindungen hergestellt, während LuLu nicht lief (oder kein Benutzer angemeldet war).\r\nDiese wurden erlaubt, und es wurden Regeln erstellt, die du überprüfen kannst."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Προγράμματα πραγματοποίησαν συνδέσεις ενώ το LuLu δεν εκτελούνταν (ή δεν ήταν συνδεδεμένος κανένας χρήστης).\r\nΑυτές επιτράπηκαν και δημιουργήθηκαν κανόνες για να τους ελέγξετε."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Algunos programas realizaron conexiones mientras LuLu no estaba en ejecución (o no había ningún usuario conectado).\r\nSe permitieron y se crearon reglas para que las revises."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Des programmes ont établi des connexions pendant que LuLu n'était pas en cours d'exécution (ou qu'aucun utilisateur n'était connecté).\r\nElles ont été autorisées, et des règles ont été créées pour vérification."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alcuni programmi hanno effettuato connessioni mentre LuLu non era in esecuzione (o nessun utente era connesso).\r\nSono state consentite e sono state create regole da rivedere."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu가 실행 중이 아니거나 로그인한 사용자가 없을 때 프로그램이 연결을 시도했습니다.\r\n해당 연결은 허용되었으며, 검토할 수 있도록 규칙이 생성되었습니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programy nawiązały połączenia, gdy LuLu nie był uruchomiony (lub żaden użytkownik nie był zalogowany).\r\nZostały one dozwolone i utworzono reguły do przejrzenia."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programas fizeram conexões enquanto o LuLu não estava em execução (ou nenhum usuário estava conectado).\r\nElas foram permitidas, e regras foram criadas para você revisar."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu çalışmıyorken (veya hiçbir kullanıcı oturum açmamışken) programlar bağlantı kurdu.\r\nBunlara izin verildi ve incelemeniz için kurallar oluşturuldu."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Програми встановлювали з'єднання, поки LuLu не працював (або жоден користувач не ввійшов у систему).\r\nЇх було дозволено, і створено правила, які ви можете переглянути."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LuLu کے نہ چلنے کے دوران (یا جب کوئی صارف لاگ اِن نہیں تھا) پروگراموں نے کنکشن بنائے۔\r\nان کی اجازت دے دی گئی، اور آپ کے جائزے کے لیے قواعد بنائے گئے۔"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 LuLu 未运行（或没有用户登录）时，有程序建立了连接。\r\n这些连接已被允许，并已创建规则供您检查。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 LuLu 未執行（或沒有使用者登入）時，有程式建立了連線。\r\n這些連線已被允許，並已建立規則供您檢查。"
+          }
+        }
+      }
+    },
+    "Show Rules" : {
+      "comment" : "Show Rules",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regeln anzeigen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εμφάνιση κανόνων"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar reglas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les règles"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra regole"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "규칙 보기"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokaż reguły"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar regras"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kuralları Göster"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показати правила"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قواعد دکھائیں"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示规则"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "顯示規則"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
