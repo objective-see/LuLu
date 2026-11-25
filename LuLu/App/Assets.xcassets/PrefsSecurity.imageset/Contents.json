@@ -1,0 +1,32 @@
+{
+  "images" : [
+    {
+      "idiom" : "mac",
+      "filename" : "prefsSecurity Any.png"
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "prefsSecurity Light.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "idiom" : "mac",
+      "filename" : "prefsSecurity Dark.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

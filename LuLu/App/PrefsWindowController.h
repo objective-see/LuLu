@@ -31,7 +31,11 @@
 #define TOOLBAR_UPDATE 4
 
 //to select, need string ID
+//to select, security
+#define TOOLBAR_SECURITY 5
+
 #define TOOLBAR_RULES_ID @"Rules"
+#define TOOLBAR_SECURITY_ID @"Security"
 #define TOOLBAR_PROFILES_ID @"Profiles"
 
 @interface PrefsWindowController : NSWindowController <NSWindowDelegate, NSTableViewDelegate, NSTableViewDataSource, NSTextFieldDelegate>
@@ -142,6 +146,19 @@ enum profileViews
 
 //added view
 @property (nonatomic) BOOL viewWasAdded;
+
+//security view
+// built in code (not in the xib)
+@property (strong) NSView* securityView;
+
+//'self-defense' button
+@property (strong) NSButton* selfDefenseButton;
+
+//'self-defense' status
+@property (strong) NSTextField* selfDefenseStatus;
+
+//waiting for full disk access?
+@property BOOL waitingForFullDiskAccess;
 
 
 /* METHODS */

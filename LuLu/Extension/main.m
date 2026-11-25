@@ -41,6 +41,11 @@ int main(int argc, char *argv[])
     
     //alloc/init/load prefs
     preferences = [[Preferences alloc] init];
+
+    //alloc/init self-defense object
+    // and start, if enabled
+    selfDefense = [[SelfDefense alloc] init];
+    if(YES == [preferences.preferences[PREF_SELF_DEFENSE] boolValue]) [selfDefense start];
             
     //alloc/init alerts object
     alerts = [[Alerts alloc] init];

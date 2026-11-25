@@ -72,4 +72,7 @@
 //uninstall
 -(BOOL)uninstall;
 
+//get self-defense status (a 'SelfDefenseStatus')
+-(NSInteger)selfDefenseStatus;
+
 @end

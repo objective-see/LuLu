@@ -619,4 +619,25 @@ extern NSMutableDictionary* alerts;
 
 }
 
+//get self-defense status (a 'SelfDefenseStatus')
+// note: synchronous, will block until daemon responds
+-(NSInteger)selfDefenseStatus
+{
+    //status
+    __block NSInteger status = 0;
+
+    //ask daemon
+    [[self.daemon synchronousRemoteObjectProxyWithErrorHandler:^(NSError * proxyError)
+    {
+        //err msg
+        os_log_error(logHandle, "ERROR: failed to execute daemon XPC method '%s' (error: %{public}@)", __PRETTY_FUNCTION__, proxyError);
+
+    }] selfDefenseStatus:^(NSInteger result)
+    {
+        status = result;
+    }];
+
+    return status;
+}
+
 @end

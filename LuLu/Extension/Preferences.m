@@ -9,6 +9,7 @@
 #import "consts.h"
 #import "BlockOrAllowList.h"
 #import "Preferences.h"
+#import "SelfDefense.h"
 
 /* GLOBALS */
 
@@ -20,6 +21,9 @@ extern BlockOrAllowList* allowList;
 
 //block list
 extern BlockOrAllowList* blockList;
+
+//self-defense
+extern SelfDefense* selfDefense;
 
 @implementation Preferences
 
@@ -204,6 +208,15 @@ bail:
         
         //bail
         goto bail;
+    }
+
+    //self-defense (maybe) changed?
+    // start/stop to match
+    if( (YES == replace) ||
+        (nil != updates[PREF_SELF_DEFENSE]) )
+    {
+        if(YES == [self.preferences[PREF_SELF_DEFENSE] boolValue]) [selfDefense start];
+        else [selfDefense stop];
     }
 
     //extract any allow list

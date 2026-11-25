@@ -81,6 +81,13 @@
                             <action selector="toolbarButtonHandler:" target="-2" id="lEh-OO-GmV"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="5EC0D1F2-7A3B-4C6D-9E8F-0A1B2C3D4E5F" explicitItemIdentifier="Security" label="Security" paletteLabel="Security" tag="5" image="PrefsSecurity" selectable="YES" id="sEc-01-tbi">
+                        <size key="minSize" width="22" height="22"/>
+                        <size key="maxSize" width="22" height="22"/>
+                        <connections>
+                            <action selector="toolbarButtonHandler:" target="-2" id="sEc-02-act"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Twx-TJ-y2Q"/>
@@ -90,6 +97,8 @@
                     <toolbarItem reference="rrF-xj-cXp"/>
                     <toolbarItem reference="J66-tT-qAf"/>
                     <toolbarItem reference="5li-Ut-Gsb"/>
+                    <toolbarItem reference="J66-tT-qAf"/>
+                    <toolbarItem reference="sEc-01-tbi"/>
                     <toolbarItem reference="J66-tT-qAf"/>
                     <toolbarItem reference="pGG-dq-qkU"/>
                 </defaultToolbarItems>
@@ -907,6 +916,7 @@ Then click "Next" to configure the settings for your new profile.</string>
         <image name="PrefsMode" width="72" height="72"/>
         <image name="PrefsProfiles" width="32" height="32"/>
         <image name="PrefsRules" width="72" height="72"/>
+        <image name="PrefsSecurity" width="256" height="256"/>
         <image name="PrefsUpdate" width="72" height="72"/>
     </resources>
 </document>

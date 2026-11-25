@@ -13,6 +13,7 @@
 #import "Profiles.h"
 #import "utilities.h"
 #import "Preferences.h"
+#import "SelfDefense.h"
 #import "XPCListener.h"
 #import "BlockOrAllowList.h"
 #import "FilterDataProvider.h"
@@ -45,6 +46,9 @@ Preferences* preferences = nil;
 
 //profile obj
 Profiles* profiles = nil;
+
+//self-defense obj
+SelfDefense* selfDefense = nil;
 
 //dispatch source for SIGTERM
 dispatch_source_t dispatchSource = nil;

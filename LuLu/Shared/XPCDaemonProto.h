@@ -57,4 +57,8 @@
 //uninstall
 -(void)uninstall:(void (^)(BOOL))reply;
 
+//get self-defense status (a 'SelfDefenseStatus')
+// if enabled but not (yet) active, (re)tries to start it first, e.g. as full disk access may now be granted
+-(void)selfDefenseStatus:(void (^)(NSInteger))reply;
+
 @end

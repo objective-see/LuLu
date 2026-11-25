@@ -83,6 +83,9 @@ typedef NS_ENUM(NSInteger, EndpointType) {
 //system settings: security & privacy (pre-macOS 13)
 #define SETTINGS_SECURITY_URL @"x-apple.systempreferences:com.apple.preference.security?General"
 
+//system settings: full disk access
+#define SETTINGS_FDA_URL @"x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles"
+
 //extension (bundle) path, within app
 #define EXT_BUNDLE_PATH @"Contents/Library/SystemExtensions/com.objective-see.lulu.extension.systemextension"
 
@@ -226,6 +229,29 @@ typedef NS_ENUM(NSInteger, EndpointType) {
 //rule duration
 // not really a 'pref' but need to save it
 #define PREF_ALERT_LAST_RULE_DURATION @"alertLastRuleDuration"
+
+//self-defense
+// extension (as an endpoint security client) blocks other programs from terminating/pausing LuLu
+#define PREF_SELF_DEFENSE @"selfDefense"
+
+//self-defense status
+typedef NS_ENUM(NSInteger, SelfDefenseStatus)
+{
+    //not enabled
+    SelfDefenseOff = 0,
+
+    //enabled, and protecting
+    SelfDefenseActive,
+
+    //needs full disk access (TCC)
+    SelfDefenseNeedsFullDiskAccess,
+
+    //OS doesn't support 'fail open' (macOS 27+)
+    SelfDefenseUnsupported,
+
+    //some other error (e.g. not entitled)
+    SelfDefenseError
+};
 
 //rules were (passively) created while no client was connected
 // not really a 'pref': set by the extension, cleared by the app once the user's been told

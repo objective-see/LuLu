@@ -79,6 +79,12 @@ extern XPCDaemonClient* xpcDaemonClient;
     
     //get prefs
     self.preferences = [xpcDaemonClient getPreferences];
+
+    //set (localized) label for 'security' toolbar item
+    for(NSToolbarItem* item in self.toolbar.items)
+    {
+        if(TOOLBAR_SECURITY == item.tag) item.label = NSLocalizedString(@"Security", @"Security");
+    }
     
     return;
 }
@@ -283,6 +289,24 @@ extern XPCDaemonClient* xpcDaemonClient;
             self.updateLabel.stringValue = @"";
             
             break;
+
+        //security
+        case TOOLBAR_SECURITY:
+
+            //build view (first time)
+            if(nil == self.securityView) [self buildSecurityView];
+
+            //set view
+            view = self.securityView;
+
+            //set 'self-defense' button state
+            self.selfDefenseButton.state = [self.preferences[PREF_SELF_DEFENSE] boolValue];
+
+            //show status
+            // and (if needed) wait for full disk access
+            [self updateSelfDefenseStatus];
+
+            break;
             
         default:
             return;
@@ -310,6 +334,104 @@ extern XPCDaemonClient* xpcDaemonClient;
     
 bail:
     
+    return;
+}
+
+//build the 'security' view
+-(void)buildSecurityView
+{
+    //label
+    NSTextField* (^label)(NSString*, NSRect, NSFont*, NSColor*) = ^NSTextField*(NSString* text, NSRect frame, NSFont* font, NSColor* color)
+    {
+        NSTextField* field = [NSTextField wrappingLabelWithString:text];
+        field.frame = frame;
+        field.font = font;
+        field.textColor = color;
+        field.selectable = NO;
+        return field;
+    };
+
+    //view
+    self.securityView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 650, 190)];
+
+    //'self-defense' button
+    self.selfDefenseButton = [NSButton checkboxWithTitle:@"" target:self action:@selector(toggleSelfDefense:)];
+    self.selfDefenseButton.frame = NSMakeRect(39, 138, 29, 18);
+    [self.securityView addSubview:self.selfDefenseButton];
+
+    //title
+    [self.securityView addSubview:label(NSLocalizedString(@"Self-Defense", @"Self-Defense"), NSMakeRect(72, 136, 510, 19), [NSFont fontWithName:@"Menlo-Bold" size:13], NSColor.labelColor)];
+
+    //details
+    [self.securityView addSubview:label(NSLocalizedString(@"Prevent other programs from terminating or pausing LuLu.\nRequires macOS 27 (or newer), and Full Disk Access for LuLu's extension.", @"Prevent other programs from terminating or pausing LuLu.\nRequires macOS 27 (or newer), and Full Disk Access for LuLu's extension."), NSMakeRect(72, 88, 510, 44), [NSFont fontWithName:@"Menlo-Regular" size:11], NSColor.secondaryLabelColor)];
+
+    //status
+    self.selfDefenseStatus = label(@"", NSMakeRect(72, 30, 510, 44), [NSFont fontWithName:@"Menlo-Bold" size:11], NSColor.labelColor);
+    [self.securityView addSubview:self.selfDefenseStatus];
+
+    return;
+}
+
+//'self-defense' button handler
+// update preference, then show status (which, if needed, waits for full disk access)
+-(IBAction)toggleSelfDefense:(id)sender
+{
+    //update prefs
+    self.preferences = [xpcDaemonClient updatePreferences:@{PREF_SELF_DEFENSE:@(NSControlStateValueOn == self.selfDefenseButton.state)}];
+
+    //show status
+    [self updateSelfDefenseStatus];
+
+    //needs full disk access?
+    // tell user, then open System Settings so they can grant it
+    if(YES == self.waitingForFullDiskAccess)
+    {
+        showAlert(NSAlertStyleInformational, NSLocalizedString(@"Full Disk Access Required", @"Full Disk Access Required"), NSLocalizedString(@"In System Settings, enable “LuLu” under Full Disk Access.", @"In System Settings, enable “LuLu” under Full Disk Access."), @[NSLocalizedString(@"OK", @"OK")]);
+
+        [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:SETTINGS_FDA_URL]];
+    }
+
+    return;
+}
+
+//show 'self-defense' status
+// if it's waiting on full disk access, check again (every second) 'til it's granted
+-(void)updateSelfDefenseStatus
+{
+    //status
+    NSInteger status = [xpcDaemonClient selfDefenseStatus];
+
+    //set status msg
+    switch(status)
+    {
+        case SelfDefenseNeedsFullDiskAccess:
+            self.selfDefenseStatus.stringValue = NSLocalizedString(@"Status: waiting for Full Disk Access.\nEnable “LuLu” in System Settings › Privacy & Security › Full Disk Access.", @"Status: waiting for Full Disk Access.\nEnable “LuLu” in System Settings › Privacy & Security › Full Disk Access.");
+            break;
+
+        case SelfDefenseUnsupported:
+            self.selfDefenseStatus.stringValue = NSLocalizedString(@"Status: not supported on this version of macOS", @"Status: not supported on this version of macOS");
+            break;
+
+        case SelfDefenseError:
+            self.selfDefenseStatus.stringValue = NSLocalizedString(@"Status: failed to enable", @"Status: failed to enable");
+            break;
+
+        default:
+            self.selfDefenseStatus.stringValue = @"";
+            break;
+    }
+
+    //waiting for full disk access?
+    // check again in a bit, while the (security) view is still shown
+    self.waitingForFullDiskAccess = (SelfDefenseNeedsFullDiskAccess == status);
+    if( (YES == self.waitingForFullDiskAccess) &&
+        (YES == self.window.visible) &&
+        (YES == [self.toolbar.selectedItemIdentifier isEqualToString:TOOLBAR_SECURITY_ID]) )
+    {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateSelfDefenseStatus) object:nil];
+        [self performSelector:@selector(updateSelfDefenseStatus) withObject:nil afterDelay:1.0];
+    }
+
     return;
 }
 

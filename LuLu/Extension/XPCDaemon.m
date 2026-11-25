@@ -15,6 +15,7 @@
 #import "XPCDaemon.h"
 #import "utilities.h"
 #import "Preferences.h"
+#import "SelfDefense.h"
 
 //global rules obj
 extern Rules* rules;
@@ -27,6 +28,9 @@ extern Profiles* profiles;
 
 //global prefs obj
 extern Preferences* preferences;
+
+//self-defense
+extern SelfDefense* selfDefense;
 
 //global log handle
 extern os_log_t logHandle;
@@ -464,6 +468,22 @@ bail:
     
     reply(wasDeleted);
     
+    return;
+}
+
+//get self-defense status
+// if enabled but not (yet) active, (re)tries to start it first, e.g. as full disk access may now be granted
+-(void)selfDefenseStatus:(void (^)(NSInteger))reply
+{
+    //enabled?
+    // (re)start, which is a no-op if already active
+    if(YES == [preferences.preferences[PREF_SELF_DEFENSE] boolValue])
+    {
+        reply([selfDefense start]);
+        return;
+    }
+
+    reply([selfDefense status]);
     return;
 }
 
