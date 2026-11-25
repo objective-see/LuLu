@@ -320,7 +320,7 @@ typedef NS_ENUM(NSInteger, EndpointType) {
 #define STARTUP_WINDOW_FLOAT_DURATION 2
 
 //max time (seconds) to wait for the extension to (start &) answer XPC
-#define DAEMON_READY_TIMEOUT 5
+#define DAEMON_READY_TIMEOUT 20
 
 #define CMDLINE_FLAG_WELCOME @"-welcome"
 #define CMDLINE_FLAG_PREFS @"-prefs"
