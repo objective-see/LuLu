@@ -417,7 +417,9 @@ bail:
     if(YES != isAlive(pid))
     {
         //delegated? allow
-        if(YES == [self isDelegated:flow])
+        // ...or loopback, when 'allow localhost' is set (socket may live on in a child, see #964)
+        if( (YES == [self isDelegated:flow]) ||
+            (YES == [self isAllowedLocalhost:flow]) )
         {
             //bail
             // verdict defaults to allow
@@ -459,7 +461,9 @@ bail:
         if(YES != isAlive(pid))
         {
             //delegated? allow
-            if(YES == [self isDelegated:flow])
+            // ...or loopback, when 'allow localhost' is set
+            if( (YES == [self isDelegated:flow]) ||
+                (YES == [self isAllowedLocalhost:flow]) )
             {
                 //bail
                 // verdict defaults to allow
@@ -1460,6 +1464,15 @@ bail:
     os_log(logHandle, "process %d has exited, but flow was created on its behalf by (still running) process %d, so allowing: %{public}@", audit_token_to_pid(*(audit_token_t*)flow.sourceAppAuditToken.bytes), audit_token_to_pid(*(audit_token_t*)token.bytes), ((NEFilterSocketFlow*)flow).remoteEndpoint);
 
     return YES;
+}
+
+//loopback flow, from a process that has exited, that should be allowed?
+// yes if 'allow localhost' is set (and not in block mode)
+-(BOOL)isAllowedLocalhost:(NEFilterFlow*)flow
+{
+    return (YES == [preferences.preferences[PREF_ALLOW_LOCALHOST] boolValue]) &&
+           (YES != [preferences.preferences[PREF_BLOCK_MODE] boolValue]) &&
+           (YES == [self isLocalhostHostname:((NWHostEndpoint*)((NEFilterSocketFlow*)flow).remoteEndpoint).hostname]);
 }
 
 //create process object
