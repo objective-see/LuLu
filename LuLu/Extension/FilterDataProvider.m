@@ -1329,9 +1329,8 @@ bail:
         for(NSString* key in self.relatedFlows.allKeys)
         {
             //check each flow
-            // a key is per process (not pid), so its flows may belong to several pids, some alive, some gone
             // note: iterating a copy, so safe to remove from the queue in the loop
-            for(NEFilterSocketFlow* flow in [self.relatedFlows[key] array])
+            for(NEFilterSocketFlow* flow in [self.relatedFlows[key] copy])
             {
                 //pid via the flow's (kernel) audit token
                 pid_t pid = audit_token_to_pid(*(audit_token_t*)flow.sourceAppAuditToken.bytes);
