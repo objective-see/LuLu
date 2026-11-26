@@ -14,6 +14,9 @@
 #import "Extension.h"
 #import "AppDelegate.h"
 
+#import <bsm/libbsm.h>
+#import <Security/Security.h>
+
 /* GLOBALS */
 
 //log handle
@@ -31,7 +34,99 @@ XPCDaemonClient* xpcDaemonClient = nil;
 
 @end
 
+//who may ask LuLu to quit, when self-defense is active
+// loginwindow: logout/restart/shutdown, Dock & Activity Monitor: the user ...and LuLu itself
+#define QUIT_REQUIREMENT @"(anchor apple and (identifier \"com.apple.loginwindow\" or identifier \"com.apple.dock\" or identifier \"com.apple.ActivityMonitor\")) or (anchor apple generic and certificate leaf[subject.OU] = \"VBG97UB4TA\")"
+
+//is the sender of a (quit) apple event allowed?
+// identified by its audit token, which is set by the system (so, can't be spoofed)
+static BOOL isAllowedQuitSender(NSAppleEventDescriptor* event, NSString** sender)
+{
+    //allowed
+    BOOL allowed = NO;
+
+    //sender's audit token
+    NSData* token = [event attributeDescriptorForKeyword:keySenderAuditTokenAttr].data;
+
+    //code refs
+    SecCodeRef code = NULL;
+    SecStaticCodeRef staticCode = NULL;
+    SecRequirementRef requirement = NULL;
+
+    //signing info
+    CFDictionaryRef info = NULL;
+
+    //init
+    *sender = @"unknown";
+
+    //sanity check
+    if(sizeof(audit_token_t) != token.length) goto bail;
+
+    //sender's code
+    if(errSecSuccess != SecCodeCopyGuestWithAttributes(NULL, (__bridge CFDictionaryRef)@{(__bridge NSString*)kSecGuestAttributeAudit:token}, kSecCSDefaultFlags, &code)) goto bail;
+
+    //sender's identifier (for logging)
+    if( (errSecSuccess == SecCodeCopyStaticCode(code, kSecCSDefaultFlags, &staticCode)) &&
+        (errSecSuccess == SecCodeCopySigningInformation(staticCode, kSecCSDefaultFlags, &info)) &&
+        (nil != ((__bridge NSDictionary*)info)[(__bridge NSString*)kSecCodeInfoIdentifier]) )
+    {
+        *sender = ((__bridge NSDictionary*)info)[(__bridge NSString*)kSecCodeInfoIdentifier];
+    }
+
+    //meets requirement?
+    if(errSecSuccess != SecRequirementCreateWithString((__bridge CFStringRef)QUIT_REQUIREMENT, kSecCSDefaultFlags, &requirement)) goto bail;
+    allowed = (errSecSuccess == SecCodeCheckValidity(code, kSecCSDefaultFlags, requirement));
+
+bail:
+
+    if(NULL != info) CFRelease(info);
+    if(NULL != requirement) CFRelease(requirement);
+    if(NULL != staticCode) CFRelease(staticCode);
+    if(NULL != code) CFRelease(code);
+
+    return allowed;
+}
+
 @implementation AppDelegate
+
+//asked to quit
+// when self-defense is active, refuse if another (non-allowed) program is asking
+// note: the user quitting via LuLu's own menu isn't an apple event, so is always allowed
+-(NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication*)application
+{
+    //sender
+    NSString* sender = nil;
+
+    //(any) apple event that triggered this
+    NSAppleEventDescriptor* event = NSAppleEventManager.sharedAppleEventManager.currentAppleEvent;
+
+    //not a quit request (from another program)?
+    if( (nil == event) ||
+        (kAEQuitApplication != event.eventID) )
+    {
+        return NSTerminateNow;
+    }
+
+    //self-defense not active?
+    if(SelfDefenseActive != [xpcDaemonClient selfDefenseStatus])
+    {
+        return NSTerminateNow;
+    }
+
+    //sender allowed?
+    if(YES == isAllowedQuitSender(event, &sender))
+    {
+        //log msg
+        os_log(logHandle, "self-defense: allowed quit request from %{public}@", sender);
+
+        return NSTerminateNow;
+    }
+
+    //log msg
+    os_log(logHandle, "self-defense: denied quit request from %{public}@", sender);
+
+    return NSTerminateCancel;
+}
 
 @synthesize aboutWindowController;
 @synthesize prefsWindowController;
