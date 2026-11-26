@@ -284,7 +284,7 @@ bail:
     //if its a directory (but not bundle)
     // add '/*' to make it directory rule
     if( (YES == isDirectory) &&
-        (nil == [NSBundle bundleWithPath:path]))
+        (YES != [NSWorkspace.sharedWorkspace isFilePackageAtPath:path.stringByResolvingSymlinksInPath]))
     {
         //no '/'?
         // ...append it
