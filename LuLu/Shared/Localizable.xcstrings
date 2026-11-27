@@ -15813,6 +15813,670 @@
           }
         }
       }
+    },
+    "Security" : {
+      "comment" : "Security",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicherheit"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ασφάλεια"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seguridad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sécurité"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicurezza"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "보안"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bezpieczeństwo"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segurança"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güvenlik"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Безпека"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سیکیورٹی"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安全"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安全性"
+          }
+        }
+      }
+    },
+    "Self-Defense" : {
+      "comment" : "Self-Defense",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selbstschutz"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αυτοπροστασία"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autodefensa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autodéfense"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autodifesa"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "자체 보호"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Samoobrona"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autodefesa"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öz Savunma"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Самозахист"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خود حفاظتی"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自我保护"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自我保護"
+          }
+        }
+      }
+    },
+    "Prevent other programs from terminating or pausing LuLu.\nRequires macOS 27 (or newer), and Full Disk Access for LuLu's extension." : {
+      "comment" : "Prevent other programs from terminating or pausing LuLu.\nRequires macOS 27 (or newer), and Full Disk Access for LuLu's extension.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verhindert, dass andere Programme LuLu beenden oder anhalten.\nErfordert macOS 27 (oder neuer) und Festplattenvollzugriff für die LuLu-Erweiterung."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εμποδίζει άλλα προγράμματα να τερματίσουν ή να παύσουν το LuLu.\nΑπαιτεί macOS 27 (ή νεότερο) και Πλήρη πρόσβαση στον δίσκο για την επέκταση του LuLu."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impide que otros programas cierren o pausen LuLu.\nRequiere macOS 27 (o posterior) y Acceso total al disco para la extensión de LuLu."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empêche d’autres programmes de fermer ou de suspendre LuLu.\nNécessite macOS 27 (ou ultérieur) et l’accès complet au disque pour l’extension de LuLu."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impedisce ad altri programmi di chiudere o sospendere LuLu.\nRichiede macOS 27 (o successivo) e Accesso completo al disco per l’estensione di LuLu."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다른 프로그램이 LuLu를 종료하거나 일시 정지하지 못하게 합니다.\nmacOS 27 이상 및 LuLu 확장 프로그램의 전체 디스크 접근 권한이 필요합니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uniemożliwia innym programom zamykanie lub wstrzymywanie LuLu.\nWymaga macOS 27 (lub nowszego) oraz pełnego dostępu do dysku dla rozszerzenia LuLu."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impede que outros programas encerrem ou pausem o LuLu.\nRequer macOS 27 (ou posterior) e Acesso Total ao Disco para a extensão do LuLu."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diğer programların LuLu'yu sonlandırmasını veya duraklatmasını engeller.\nmacOS 27 (veya daha yenisi) ve LuLu uzantısı için Tam Disk Erişimi gerektirir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не дає іншим програмам завершувати або призупиняти LuLu.\nПотрібні macOS 27 (або новіша) і повний доступ до диска для розширення LuLu."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "دوسرے پروگراموں کو LuLu کو بند یا موقوف کرنے سے روکتا ہے۔\nmacOS 27 (یا جدید تر) اور LuLu کی ایکسٹینشن کے لیے Full Disk Access درکار ہے۔"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "防止其他程序终止或暂停 LuLu。\n需要 macOS 27（或更高版本），并为 LuLu 的扩展授予完全磁盘访问权限。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "防止其他程式終止或暫停 LuLu。\n需要 macOS 27（或以上版本），並為 LuLu 的延伸功能授予「完全取用磁碟」權限。"
+          }
+        }
+      }
+    },
+    "Full Disk Access Required" : {
+      "comment" : "Full Disk Access Required",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Festplattenvollzugriff erforderlich"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Απαιτείται Πλήρης πρόσβαση στον δίσκο"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se requiere Acceso total al disco"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accès complet au disque requis"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accesso completo al disco richiesto"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "전체 디스크 접근 권한 필요"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wymagany pełny dostęp do dysku"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acesso Total ao Disco necessário"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tam Disk Erişimi Gerekli"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Потрібен повний доступ до диска"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full Disk Access درکار ہے"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "需要完全磁盘访问权限"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "需要「完全取用磁碟」權限"
+          }
+        }
+      }
+    },
+    "In System Settings, enable “LuLu” under Full Disk Access." : {
+      "comment" : "In System Settings, enable “LuLu” under Full Disk Access.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktiviere „LuLu“ in den Systemeinstellungen unter „Festplattenvollzugriff“."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Στις Ρυθμίσεις συστήματος, ενεργοποίησε το «LuLu» στην Πλήρη πρόσβαση στον δίσκο."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Ajustes del Sistema, activa «LuLu» en Acceso total al disco."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dans Réglages Système, activez « LuLu » sous Accès complet au disque."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Impostazioni di Sistema, abilita “LuLu” in Accesso completo al disco."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시스템 설정의 전체 디스크 접근 권한에서 ‘LuLu’를 켜세요."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W Ustawieniach systemowych włącz „LuLu” w sekcji Pełny dostęp do dysku."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nos Ajustes do Sistema, ative “LuLu” em Acesso Total ao Disco."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem Ayarları'nda, Tam Disk Erişimi altında “LuLu”yu etkinleştirin."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У «Системних параметрах» увімкніть LuLu в розділі «Повний доступ до диска»."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سسٹم سیٹنگز میں، Full Disk Access کے تحت “LuLu” کو فعال کریں۔"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在系统设置的“完全磁盘访问权限”中启用“LuLu”。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在「系統設定」的「完全取用磁碟」中啟用「LuLu」。"
+          }
+        }
+      }
+    },
+    "Status: waiting for Full Disk Access.\nEnable “LuLu” in System Settings › Privacy & Security › Full Disk Access." : {
+      "comment" : "Status: waiting for Full Disk Access.\nEnable “LuLu” in System Settings › Privacy & Security › Full Disk Access.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status: Warten auf Festplattenvollzugriff.\nAktiviere „LuLu“ in Systemeinstellungen › Datenschutz & Sicherheit › Festplattenvollzugriff."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κατάσταση: αναμονή για Πλήρη πρόσβαση στον δίσκο.\nΕνεργοποίησε το «LuLu» στις Ρυθμίσεις συστήματος › Απόρρητο και ασφάλεια › Πλήρης πρόσβαση στον δίσκο."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado: esperando Acceso total al disco.\nActiva «LuLu» en Ajustes del Sistema › Privacidad y seguridad › Acceso total al disco."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "État : en attente de l’accès complet au disque.\nActivez « LuLu » dans Réglages Système › Confidentialité et sécurité › Accès complet au disque."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stato: in attesa di Accesso completo al disco.\nAbilita “LuLu” in Impostazioni di Sistema › Privacy e sicurezza › Accesso completo al disco."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "상태: 전체 디스크 접근 권한을 기다리는 중.\n시스템 설정 › 개인정보 보호 및 보안 › 전체 디스크 접근 권한에서 ‘LuLu’를 켜세요."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status: oczekiwanie na pełny dostęp do dysku.\nWłącz „LuLu” w: Ustawienia systemowe › Prywatność i ochrona › Pełny dostęp do dysku."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status: aguardando Acesso Total ao Disco.\nAtive “LuLu” em Ajustes do Sistema › Privacidade e Segurança › Acesso Total ao Disco."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durum: Tam Disk Erişimi bekleniyor.\nSistem Ayarları › Gizlilik ve Güvenlik › Tam Disk Erişimi'nde “LuLu”yu etkinleştirin."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стан: очікування повного доступу до диска.\nУвімкніть LuLu: Системні параметри › Приватність і безпека › Повний доступ до диска."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حالت: Full Disk Access کا انتظار ہے۔\nSystem Settings › Privacy & Security › Full Disk Access میں “LuLu” کو فعال کریں۔"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状态：正在等待完全磁盘访问权限。\n请在系统设置 › 隐私与安全性 › 完全磁盘访问权限中启用“LuLu”。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "狀態：正在等待「完全取用磁碟」權限。\n請在「系統設定」›「隱私權與安全性」›「完全取用磁碟」中啟用「LuLu」。"
+          }
+        }
+      }
+    },
+    "Status: not supported on this version of macOS" : {
+      "comment" : "Status: not supported on this version of macOS",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status: Wird von dieser macOS-Version nicht unterstützt"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κατάσταση: δεν υποστηρίζεται σε αυτήν την έκδοση του macOS"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado: no compatible con esta versión de macOS"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "État : non pris en charge sur cette version de macOS"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stato: non supportato su questa versione di macOS"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "상태: 이 macOS 버전에서는 지원되지 않습니다"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status: nieobsługiwane w tej wersji macOS"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status: não compatível com esta versão do macOS"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durum: macOS'in bu sürümünde desteklenmiyor"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стан: не підтримується в цій версії macOS"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حالت: macOS کے اس ورژن پر تعاون یافتہ نہیں"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状态：此版本的 macOS 不支持"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "狀態：此版本的 macOS 不支援"
+          }
+        }
+      }
+    },
+    "Status: failed to enable" : {
+      "comment" : "Status: failed to enable",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status: Aktivierung fehlgeschlagen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κατάσταση: αποτυχία ενεργοποίησης"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado: no se pudo activar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "État : échec de l’activation"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stato: attivazione non riuscita"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "상태: 활성화 실패"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status: nie udało się włączyć"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status: falha ao ativar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durum: etkinleştirilemedi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стан: не вдалося ввімкнути"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حالت: فعال کرنے میں ناکامی"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状态：启用失败"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "狀態：啟用失敗"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
